@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grekiska alfabetet – minnesspel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     PRESENTATION (utseende). Färger och typsnitt på ett ställe.
+     ============================================================ */
+  :root{
+    --paper:#f4ead2; --paper-2:#efe2c4; --card:#fbf4e2;
+    --ink:#2c2318; --ink-soft:#7a6a52; --line:#e0d2af;
+    --gold:#b0822f; --gold-deep:#8a6320;
+    --correct:#5e7445; --correct-bg:#e7edd7;
+    --wrong:#a64a36; --wrong-bg:#f1ddd4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Spectral',Georgia,serif; color:var(--ink); line-height:1.5;
+    background:radial-gradient(120% 90% at 50% 0%, #f9f0da 0%, var(--paper) 45%, var(--paper-2) 100%);
+    min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    padding:2rem 1.25rem 3rem;
+  }
+  /* svag papperskornighet ovanpå allt */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  }
+  header{text-align:center; margin-bottom:1.4rem; animation:rise .7s ease both;}
+  h1{font-family:'GFS Didot',Palatino,serif; font-weight:400; font-size:clamp(2rem,6vw,3rem); letter-spacing:.02em;}
+  .subtitle{color:var(--ink-soft); font-style:italic; margin-top:.2rem;}
+
+  .tabs{display:flex; gap:.5rem; margin-bottom:1.4rem;}
+  .tab{font-family:'Spectral',serif; font-size:.95rem; padding:.5rem 1.1rem; border:1px solid var(--line);
+       background:transparent; color:var(--ink-soft); border-radius:999px; cursor:pointer; transition:.2s;}
+  .tab:hover{color:var(--ink); border-color:var(--gold);}
+  .tab.active{background:var(--ink); color:var(--card); border-color:var(--ink);}
+
+  .card{
+    position:relative; background:var(--card); border:1px solid var(--line); border-radius:14px;
+    box-shadow:0 1px 0 #fff inset, 0 18px 42px -26px rgba(44,35,24,.55);
+    padding:2.4rem 1.8rem; width:min(440px,100%); text-align:center;
+  }
+  .card::after{content:""; position:absolute; inset:9px; border:1px solid var(--line); border-radius:8px; pointer-events:none;}
+
+  .hero{
+    font-family:'GFS Didot',Palatino,serif; font-size:clamp(5.5rem,26vw,9rem); line-height:1;
+    color:var(--gold-deep); margin:.3rem 0 1.2rem; text-shadow:0 2px 0 #fff, 0 1px 18px rgba(176,130,47,.22);
+  }
+
+  .facit{margin-bottom:1.2rem; animation:rise .3s ease both;}
+  .facit-name{font-family:'GFS Didot',serif; font-size:1.7rem; color:var(--ink);}
+  .facit-meta{color:var(--ink-soft); font-style:italic; margin-top:.3rem;}
+
+  .actions{display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap;}
+  .btn{font-family:'Spectral',serif; font-size:1rem; padding:.65rem 1.3rem; border-radius:8px; cursor:pointer;
+       background:var(--ink); color:var(--card); border:1px solid var(--ink);
+       transition:transform .12s ease, background .2s ease;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn:active{transform:translateY(0);}
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn.ghost:hover{border-color:var(--gold);}
+  kbd{font-family:'Spectral',serif; font-size:.68rem; opacity:.6; border:1px solid currentColor;
+      border-radius:4px; padding:0 .3rem; margin-left:.4rem; vertical-align:middle;}
+
+  .prompt{color:var(--ink-soft); font-style:italic; margin-bottom:1rem;}
+  .choices{display:grid; grid-template-columns:1fr 1fr; gap:.6rem;}
+  .choice{font-family:'Spectral',serif; font-size:1.05rem; padding:.8rem; border:1px solid var(--line);
+          border-radius:8px; background:var(--paper); color:var(--ink); cursor:pointer; transition:.15s;
+          display:flex; align-items:center; justify-content:center; gap:.45rem;}
+  .choice .num{font-size:.7rem; color:var(--ink-soft);}
+  .choice:hover:not(:disabled){border-color:var(--gold); background:#fbf2da;}
+  .choice:disabled{cursor:default;}
+  .choice.correct{background:var(--correct-bg); border-color:var(--correct); color:var(--correct);}
+  .choice.wrong{background:var(--wrong-bg); border-color:var(--wrong); color:var(--wrong); animation:shake .3s;}
+  .feedback{min-height:1.5rem; margin:1rem 0 .6rem; font-style:italic;}
+  .feedback.ok{color:var(--correct);}
+  .feedback.no{color:var(--wrong);}
+
+  .scoreboard{margin-top:1.25rem; color:var(--ink-soft); font-size:.95rem; animation:rise .4s ease both;}
+  .scoreboard strong{color:var(--ink);}
+  .scoreboard .best{margin-left:.5rem; opacity:.85;}
+
+  footer{margin-top:2rem; max-width:440px; text-align:center; color:var(--ink-soft); font-size:.82rem;}
+  footer code{background:var(--paper-2); padding:.05rem .35rem; border-radius:4px;}
+
+  .hidden{display:none !important;}
+  @keyframes rise{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;}}
+  @keyframes shake{0%,100%{transform:translateX(0);} 25%{transform:translateX(-4px);} 75%{transform:translateX(4px);}}
+  @media(max-width:340px){ .choices{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+  <header>
+    <h1>Grekiska alfabetet</h1>
+    <p class="subtitle">ett minnesspel · Bibelgrekiska I</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-mode="flashcard">Lär in · vänd-kort</button>
+    <button class="tab" data-mode="quiz">Testa · flerval</button>
+  </nav>
+
+  <main>
+    <div class="card">
+      <div class="hero" id="hero">α</div>
+
+      <!-- VÄND-KORT -->
+      <div id="flashcard">
+        <div class="facit hidden" id="facit">
+          <div class="facit-name" id="fc-name"></div>
+          <div class="facit-meta"><span id="fc-translit"></span> · <span id="fc-sound"></span></div>
+        </div>
+        <div class="actions">
+          <button class="btn" id="flip">Vänd<kbd>mellanslag</kbd></button>
+          <button class="btn ghost" id="fc-next">Nästa<kbd>enter</kbd></button>
+        </div>
+      </div>
+
+      <!-- FLERVAL -->
+      <div id="quiz" class="hidden">
+        <p class="prompt">Vilken bokstav är detta?</p>
+        <div class="choices" id="choices"></div>
+        <div class="feedback" id="feedback"></div>
+        <button class="btn hidden" id="quiz-next">Nästa<kbd>enter</kbd></button>
+      </div>
+    </div>
+
+    <div class="scoreboard hidden" id="scoreboard">
+      Rätt <strong id="sb-correct">0</strong> / <span id="sb-total">0</span>
+      · Streak <strong id="sb-streak">0</strong>
+      <span class="best">bästa <span id="sb-best">0</span></span>
+    </div>
+  </main>
+
+  <footer>
+    <p>Uttal följer kursens lathund (Sjösvärd 2010). Bygg på spelet genom att lägga till poster
+       i <code>letters</code>-listan högst upp i koden.</p>
+  </footer>
+
+<script>
+/* ============================================================
+   DATA — det här är det enda du rör för att lägga till innehåll.
+   Varje post = ett "kort". Spelmotorn nedan vet inget om grekiska;
+   den visar bara det som står här. (Som frågekort i ett brädspel.)
+   audio: null  →  plats reserverad för ljudfil senare.
+   ============================================================ */
+const letters = [
+  { lower:"α", upper:"Α", name:"alfa",    translit:"a",   sound:"a, kort eller långt",        audio:null },
+  { lower:"β", upper:"Β", name:"beta",    translit:"b",   sound:"b",                          audio:null },
+  { lower:"γ", upper:"Γ", name:"gamma",   translit:"g",   sound:"g; ng framför γ κ ξ χ",      audio:null },
+  { lower:"δ", upper:"Δ", name:"delta",   translit:"d",   sound:"d",                          audio:null },
+  { lower:"ε", upper:"Ε", name:"epsilon", translit:"e",   sound:"e/ä, kort",                  audio:null },
+  { lower:"ζ", upper:"Ζ", name:"zeta",    translit:"z",   sound:"ds eller ts",                audio:null },
+  { lower:"η", upper:"Η", name:"eta",     translit:"ē",   sound:"e/ä, långt",                 audio:null },
+  { lower:"θ", upper:"Θ", name:"theta",   translit:"th",  sound:"th (eng. thin)",             audio:null },
+  { lower:"ι", upper:"Ι", name:"iota",    translit:"i",   sound:"i, kort/långt (ibland j)",   audio:null },
+  { lower:"κ", upper:"Κ", name:"kappa",   translit:"k",   sound:"k",                          audio:null },
+  { lower:"λ", upper:"Λ", name:"lambda",  translit:"l",   sound:"l",                          audio:null },
+  { lower:"μ", upper:"Μ", name:"my",      translit:"m",   sound:"m",                          audio:null },
+  { lower:"ν", upper:"Ν", name:"ny",      translit:"n",   sound:"n",                          audio:null },
+  { lower:"ξ", upper:"Ξ", name:"xi",      translit:"x",   sound:"ks",                         audio:null },
+  { lower:"ο", upper:"Ο", name:"omikron", translit:"o",   sound:"å, kort",                    audio:null },
+  { lower:"π", upper:"Π", name:"pi",      translit:"p",   sound:"p",                          audio:null },
+  { lower:"ρ", upper:"Ρ", name:"rho",     translit:"r",   sound:"r",                          audio:null },
+  { lower:"σ", upper:"Σ", name:"sigma",   translit:"s",   sound:"s (slutform i ordslut: ς)",  audio:null },
+  { lower:"τ", upper:"Τ", name:"tau",     translit:"t",   sound:"t",                          audio:null },
+  { lower:"υ", upper:"Υ", name:"ypsilon", translit:"y",   sound:"y, kort eller långt",        audio:null },
+  { lower:"φ", upper:"Φ", name:"fi",      translit:"ph",  sound:"f",                          audio:null },
+  { lower:"χ", upper:"Χ", name:"chi",     translit:"ch",  sound:"tyskt ch (Bach)",            audio:null },
+  { lower:"ψ", upper:"Ψ", name:"psi",     translit:"ps",  sound:"ps",                         audio:null },
+  { lower:"ω", upper:"Ω", name:"omega",   translit:"ō",   sound:"å, långt",                   audio:null },
+];
+
+/* ============================================================
+   HJÄLPFUNKTIONER — små, återanvändbara verktyg.
+   ============================================================ */
+
+// Fisher–Yates: blandar en kopia av listan utan att röra originalet.
+function shuffle(arr){
+  const a = [...arr];                              // spread = kopia, så originalet är orört
+  for(let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];                    // byt plats (destructuring-swap)
+  }
+  return a;
+}
+
+// Slumpa fram en bokstav, gärna inte samma som förra.
+function randomLetter(exclude){
+  let pick;
+  do { pick = letters[Math.floor(Math.random() * letters.length)]; }
+  while(exclude && pick === exclude && letters.length > 1);
+  return pick;
+}
+
+/* ============================================================
+   TILLSTÅND (state) — allt spelet behöver minnas, på ett ställe.
+   ============================================================ */
+const state = {
+  mode: "flashcard",   // "flashcard" | "quiz"
+  current: null,       // bokstaven som visas just nu
+  revealed: false,     // är facit vänt fram? (vänd-kort)
+  answered: false,     // har man svarat? (flerval)
+  chosen: null,        // vilket alternativ man klickade på (flerval)
+  correct: 0, total: 0, streak: 0, bestStreak: 0,
+};
+
+/* ============================================================
+   PERSISTENS — kommer ihåg bästa streak mellan besök.
+   try/catch: localStorage är blockerat i vissa lägen (t.ex.
+   förhandsvisning), då hoppar vi tyst över det.
+   ============================================================ */
+const STORAGE_KEY = "grekiska-alfabetspel:bestStreak";
+function loadBest(){ try{ return Number(localStorage.getItem(STORAGE_KEY)) || 0; } catch{ return 0; } }
+function saveBest(v){ try{ localStorage.setItem(STORAGE_KEY, String(v)); } catch{} }
+
+/* ============================================================
+   LOGIK — vad som händer i spelet.
+   ============================================================ */
+function newQuestion(){
+  state.current = randomLetter(state.current);
+  state.revealed = false;
+  state.answered = false;
+  state.chosen = null;
+  render();
+}
+
+function flip(){
+  if(state.mode !== "flashcard") return;
+  state.revealed = true;
+  render();
+}
+
+function answer(chosen){
+  if(state.mode !== "quiz" || state.answered) return;
+  state.answered = true;
+  state.chosen = chosen;
+  state.total++;
+  const isRight = chosen === state.current;
+  if(isRight){
+    state.correct++;
+    state.streak++;
+    if(state.streak > state.bestStreak){ state.bestStreak = state.streak; saveBest(state.bestStreak); }
+  } else {
+    state.streak = 0;
+  }
+  render();
+}
+
+/* ============================================================
+   PRESENTATION (rendering) — ritar om skärmen från state.
+   Logiken ändrar bara state och ropar render(); render läser
+   state och uppdaterar DOM:en. Det är samma princip som moderna
+   ramverk (React m.fl.) bygger på, fast handgjord här.
+   ============================================================ */
+const el = id => document.getElementById(id);
+
+function render(){
+  // växla mellan lägena
+  el("flashcard").classList.toggle("hidden", state.mode !== "flashcard");
+  el("quiz").classList.toggle("hidden", state.mode !== "quiz");
+  el("scoreboard").classList.toggle("hidden", state.mode !== "quiz");
+  document.querySelectorAll(".tab").forEach(t =>
+    t.classList.toggle("active", t.dataset.mode === state.mode));
+
+  // hjälteglyfen, med en liten "pop" varje gång den byts
+  const hero = el("hero");
+  hero.textContent = state.current.lower;
+  hero.animate(
+    [{ transform:"scale(.82)", opacity:.2 }, { transform:"scale(1)", opacity:1 }],
+    { duration:280, easing:"ease-out" }
+  );
+
+  if(state.mode === "flashcard") renderFlashcard();
+  else renderQuiz();
+}
+
+function renderFlashcard(){
+  const c = state.current;
+  el("facit").classList.toggle("hidden", !state.revealed);
+  if(state.revealed){
+    el("fc-name").textContent = c.name;
+    el("fc-translit").textContent = c.translit;
+    el("fc-sound").textContent = c.sound;
+  }
+  el("flip").classList.toggle("hidden", state.revealed);   // göm "Vänd" när redan vänt
+}
+
+function renderQuiz(){
+  const c = state.current;
+
+  // bygg svarsalternativ bara när en ny fråga ställs (inte vid varje render)
+  const box = el("choices");
+  if(!state.answered){
+    const distractors = shuffle(letters.filter(l => l !== c)).slice(0, 3);
+    const options = shuffle([c, ...distractors]);
+    box.innerHTML = "";
+    options.forEach((opt, i) => {
+      const b = document.createElement("button");
+      b.className = "choice";
+      b.innerHTML = `<span class="num">${i + 1}</span> ${opt.name}`;
+      b.addEventListener("click", () => answer(opt));
+      b.dataset.name = opt.name;
+      box.appendChild(b);
+    });
+    el("feedback").textContent = "";
+    el("feedback").className = "feedback";
+    el("quiz-next").classList.add("hidden");
+  } else {
+    // markera facit grönt, det felklickade rött, och lås knapparna
+    const wasRight = state.chosen === c;
+    box.querySelectorAll(".choice").forEach(b => {
+      b.disabled = true;
+      if(b.dataset.name === c.name) b.classList.add("correct");
+      else if(b.dataset.name === state.chosen.name) b.classList.add("wrong");
+    });
+    const fb = el("feedback");
+    if(wasRight){
+      fb.textContent = `Rätt! ${c.lower} = ${c.name}`;
+      fb.className = "feedback ok";
+    } else {
+      fb.textContent = `Fel — ${c.lower} = ${c.name}`;
+      fb.className = "feedback no";
+    }
+    el("quiz-next").classList.remove("hidden");
+  }
+
+  // poängtavla
+  el("sb-correct").textContent = state.correct;
+  el("sb-total").textContent = state.total;
+  el("sb-streak").textContent = state.streak;
+  el("sb-best").textContent = state.bestStreak;
+}
+
+/* ============================================================
+   HÄNDELSER (events) — kopplar knappar och tangenter till logiken.
+   ============================================================ */
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => { state.mode = tab.dataset.mode; newQuestion(); });
+});
+el("flip").addEventListener("click", flip);
+el("fc-next").addEventListener("click", newQuestion);
+el("quiz-next").addEventListener("click", newQuestion);
+
+document.addEventListener("keydown", e => {
+  if(state.mode === "flashcard"){
+    if(e.code === "Space"){ e.preventDefault(); state.revealed ? newQuestion() : flip(); }
+    if(e.code === "Enter"){ newQuestion(); }
+  } else {                              // flerval
+    if(e.code === "Enter" && state.answered){ newQuestion(); }
+    if(["1","2","3","4"].includes(e.key) && !state.answered){
+      const btn = el("choices").querySelectorAll(".choice")[Number(e.key) - 1];
+      if(btn) btn.click();
+    }
+  }
+});
+
+/* ============================================================
+   START
+   ============================================================ */
+state.bestStreak = loadBest();
+newQuestion();
+</script>
+</body>
+</html>
