@@ -1,0 +1,839 @@
+{
+ "_om": "Andra deklinationens adjektiv (2-1-2: maskulinum -ος, neutrum -ον, femininum 1:a deklinationen) for bibelgrekiska kongruens-spel. Femininformerna tillkom i seminarium 4 och ingar nu fullstandigt. Former verifierade mot seminariets facit, NT-attestationer (MorphGNT) och LSJ. Feminin gen.pl foljer maskulinums accent (ἁγίων), inte substantivens -ῶν.",
+ "_genererad": "2026-06-27",
+ "_falt": {
+  "former": "former.m, former.n och former.f -> kasus (nom/gen/dat/ack/vok) -> numerus (sg/pl). Femininum ar 1:a deklinationen (alfa-typ efter ε/ι/ρ, annars eta-typ).",
+  "accenttyp": "oxyton | paroxyton | proparoxyton | properispomenon — styr om accenten flyttar i bojningen",
+  "kortlekar": "oxytona (cirkumflex i gen/dat) | ovriga (forskjutande eller fast accent)",
+  "ntFrekvensOver60": "true om lemmat forekommer >60 ggr i NT"
+ },
+ "_kortlekar": {
+  "oxytona": "Oxytona adjektiv (ἀγαθός-typ): cirkumflex i genitiv/dativ",
+  "ovriga": "Adjektiv med fast eller forskjutande stamaccent (ἅγιος, μόνος, πρῶτος)"
+ },
+ "adjektiv": [
+  {
+   "lemma": "ἀγαθός",
+   "glosa": "god",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    3,
+    4
+   ],
+   "kortlekar": [
+    "oxytona"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "ἀγαθός",
+      "pl": "ἀγαθοί"
+     },
+     "gen": {
+      "sg": "ἀγαθοῦ",
+      "pl": "ἀγαθῶν"
+     },
+     "dat": {
+      "sg": "ἀγαθῷ",
+      "pl": "ἀγαθοῖς"
+     },
+     "ack": {
+      "sg": "ἀγαθόν",
+      "pl": "ἀγαθούς"
+     },
+     "vok": {
+      "sg": "ἀγαθέ",
+      "pl": "ἀγαθοί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "ἀγαθόν",
+      "pl": "ἀγαθά"
+     },
+     "gen": {
+      "sg": "ἀγαθοῦ",
+      "pl": "ἀγαθῶν"
+     },
+     "dat": {
+      "sg": "ἀγαθῷ",
+      "pl": "ἀγαθοῖς"
+     },
+     "ack": {
+      "sg": "ἀγαθόν",
+      "pl": "ἀγαθά"
+     },
+     "vok": {
+      "sg": "ἀγαθόν",
+      "pl": "ἀγαθά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "ἀγαθή",
+      "pl": "ἀγαθαί"
+     },
+     "gen": {
+      "sg": "ἀγαθῆς",
+      "pl": "ἀγαθῶν"
+     },
+     "dat": {
+      "sg": "ἀγαθῇ",
+      "pl": "ἀγαθαῖς"
+     },
+     "ack": {
+      "sg": "ἀγαθήν",
+      "pl": "ἀγαθάς"
+     },
+     "vok": {
+      "sg": "ἀγαθή",
+      "pl": "ἀγαθαί"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "πονηρός",
+   "glosa": "ond, fördärvad",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    3,
+    4
+   ],
+   "kortlekar": [
+    "oxytona"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "πονηρός",
+      "pl": "πονηροί"
+     },
+     "gen": {
+      "sg": "πονηροῦ",
+      "pl": "πονηρῶν"
+     },
+     "dat": {
+      "sg": "πονηρῷ",
+      "pl": "πονηροῖς"
+     },
+     "ack": {
+      "sg": "πονηρόν",
+      "pl": "πονηρούς"
+     },
+     "vok": {
+      "sg": "πονηρέ",
+      "pl": "πονηροί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "πονηρόν",
+      "pl": "πονηρά"
+     },
+     "gen": {
+      "sg": "πονηροῦ",
+      "pl": "πονηρῶν"
+     },
+     "dat": {
+      "sg": "πονηρῷ",
+      "pl": "πονηροῖς"
+     },
+     "ack": {
+      "sg": "πονηρόν",
+      "pl": "πονηρά"
+     },
+     "vok": {
+      "sg": "πονηρόν",
+      "pl": "πονηρά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "πονηρά",
+      "pl": "πονηραί"
+     },
+     "gen": {
+      "sg": "πονηρᾶς",
+      "pl": "πονηρῶν"
+     },
+     "dat": {
+      "sg": "πονηρᾷ",
+      "pl": "πονηραῖς"
+     },
+     "ack": {
+      "sg": "πονηράν",
+      "pl": "πονηράς"
+     },
+     "vok": {
+      "sg": "πονηρά",
+      "pl": "πονηραί"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "καλός",
+   "glosa": "vacker, god",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    3,
+    4
+   ],
+   "kortlekar": [
+    "oxytona"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "καλός",
+      "pl": "καλοί"
+     },
+     "gen": {
+      "sg": "καλοῦ",
+      "pl": "καλῶν"
+     },
+     "dat": {
+      "sg": "καλῷ",
+      "pl": "καλοῖς"
+     },
+     "ack": {
+      "sg": "καλόν",
+      "pl": "καλούς"
+     },
+     "vok": {
+      "sg": "καλέ",
+      "pl": "καλοί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "καλόν",
+      "pl": "καλά"
+     },
+     "gen": {
+      "sg": "καλοῦ",
+      "pl": "καλῶν"
+     },
+     "dat": {
+      "sg": "καλῷ",
+      "pl": "καλοῖς"
+     },
+     "ack": {
+      "sg": "καλόν",
+      "pl": "καλά"
+     },
+     "vok": {
+      "sg": "καλόν",
+      "pl": "καλά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "καλή",
+      "pl": "καλαί"
+     },
+     "gen": {
+      "sg": "καλῆς",
+      "pl": "καλῶν"
+     },
+     "dat": {
+      "sg": "καλῇ",
+      "pl": "καλαῖς"
+     },
+     "ack": {
+      "sg": "καλήν",
+      "pl": "καλάς"
+     },
+     "vok": {
+      "sg": "καλή",
+      "pl": "καλαί"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "νεκρός",
+   "glosa": "död",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    3
+   ],
+   "kortlekar": [
+    "oxytona"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "νεκρός",
+      "pl": "νεκροί"
+     },
+     "gen": {
+      "sg": "νεκροῦ",
+      "pl": "νεκρῶν"
+     },
+     "dat": {
+      "sg": "νεκρῷ",
+      "pl": "νεκροῖς"
+     },
+     "ack": {
+      "sg": "νεκρόν",
+      "pl": "νεκρούς"
+     },
+     "vok": {
+      "sg": "νεκρέ",
+      "pl": "νεκροί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "νεκρόν",
+      "pl": "νεκρά"
+     },
+     "gen": {
+      "sg": "νεκροῦ",
+      "pl": "νεκρῶν"
+     },
+     "dat": {
+      "sg": "νεκρῷ",
+      "pl": "νεκροῖς"
+     },
+     "ack": {
+      "sg": "νεκρόν",
+      "pl": "νεκρά"
+     },
+     "vok": {
+      "sg": "νεκρόν",
+      "pl": "νεκρά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "νεκρά",
+      "pl": "νεκραί"
+     },
+     "gen": {
+      "sg": "νεκρᾶς",
+      "pl": "νεκρῶν"
+     },
+     "dat": {
+      "sg": "νεκρᾷ",
+      "pl": "νεκραῖς"
+     },
+     "ack": {
+      "sg": "νεκράν",
+      "pl": "νεκράς"
+     },
+     "vok": {
+      "sg": "νεκρά",
+      "pl": "νεκραί"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "πιστός",
+   "glosa": "trogen, troende",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    3
+   ],
+   "kortlekar": [
+    "oxytona"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "πιστός",
+      "pl": "πιστοί"
+     },
+     "gen": {
+      "sg": "πιστοῦ",
+      "pl": "πιστῶν"
+     },
+     "dat": {
+      "sg": "πιστῷ",
+      "pl": "πιστοῖς"
+     },
+     "ack": {
+      "sg": "πιστόν",
+      "pl": "πιστούς"
+     },
+     "vok": {
+      "sg": "πιστέ",
+      "pl": "πιστοί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "πιστόν",
+      "pl": "πιστά"
+     },
+     "gen": {
+      "sg": "πιστοῦ",
+      "pl": "πιστῶν"
+     },
+     "dat": {
+      "sg": "πιστῷ",
+      "pl": "πιστοῖς"
+     },
+     "ack": {
+      "sg": "πιστόν",
+      "pl": "πιστά"
+     },
+     "vok": {
+      "sg": "πιστόν",
+      "pl": "πιστά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "πιστή",
+      "pl": "πισταί"
+     },
+     "gen": {
+      "sg": "πιστῆς",
+      "pl": "πιστῶν"
+     },
+     "dat": {
+      "sg": "πιστῇ",
+      "pl": "πισταῖς"
+     },
+     "ack": {
+      "sg": "πιστήν",
+      "pl": "πιστάς"
+     },
+     "vok": {
+      "sg": "πιστή",
+      "pl": "πισταί"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "μικρός",
+   "glosa": "liten",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    3
+   ],
+   "kortlekar": [
+    "oxytona"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "μικρός",
+      "pl": "μικροί"
+     },
+     "gen": {
+      "sg": "μικροῦ",
+      "pl": "μικρῶν"
+     },
+     "dat": {
+      "sg": "μικρῷ",
+      "pl": "μικροῖς"
+     },
+     "ack": {
+      "sg": "μικρόν",
+      "pl": "μικρούς"
+     },
+     "vok": {
+      "sg": "μικρέ",
+      "pl": "μικροί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "μικρόν",
+      "pl": "μικρά"
+     },
+     "gen": {
+      "sg": "μικροῦ",
+      "pl": "μικρῶν"
+     },
+     "dat": {
+      "sg": "μικρῷ",
+      "pl": "μικροῖς"
+     },
+     "ack": {
+      "sg": "μικρόν",
+      "pl": "μικρά"
+     },
+     "vok": {
+      "sg": "μικρόν",
+      "pl": "μικρά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "μικρά",
+      "pl": "μικραί"
+     },
+     "gen": {
+      "sg": "μικρᾶς",
+      "pl": "μικρῶν"
+     },
+     "dat": {
+      "sg": "μικρᾷ",
+      "pl": "μικραῖς"
+     },
+     "ack": {
+      "sg": "μικράν",
+      "pl": "μικράς"
+     },
+     "vok": {
+      "sg": "μικρά",
+      "pl": "μικραί"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "ἅγιος",
+   "glosa": "helig, ren",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "proparoxyton",
+   "seminarium": [
+    3
+   ],
+   "kortlekar": [
+    "ovriga"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "ἅγιος",
+      "pl": "ἅγιοι"
+     },
+     "gen": {
+      "sg": "ἁγίου",
+      "pl": "ἁγίων"
+     },
+     "dat": {
+      "sg": "ἁγίῳ",
+      "pl": "ἁγίοις"
+     },
+     "ack": {
+      "sg": "ἅγιον",
+      "pl": "ἁγίους"
+     },
+     "vok": {
+      "sg": "ἅγιε",
+      "pl": "ἅγιοι"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "ἅγιον",
+      "pl": "ἅγια"
+     },
+     "gen": {
+      "sg": "ἁγίου",
+      "pl": "ἁγίων"
+     },
+     "dat": {
+      "sg": "ἁγίῳ",
+      "pl": "ἁγίοις"
+     },
+     "ack": {
+      "sg": "ἅγιον",
+      "pl": "ἅγια"
+     },
+     "vok": {
+      "sg": "ἅγιον",
+      "pl": "ἅγια"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "ἁγία",
+      "pl": "ἅγιαι"
+     },
+     "gen": {
+      "sg": "ἁγίας",
+      "pl": "ἁγίων"
+     },
+     "dat": {
+      "sg": "ἁγίᾳ",
+      "pl": "ἁγίαις"
+     },
+     "ack": {
+      "sg": "ἁγίαν",
+      "pl": "ἁγίας"
+     },
+     "vok": {
+      "sg": "ἁγία",
+      "pl": "ἅγιαι"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "μόνος",
+   "glosa": "ensam, allena",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    3
+   ],
+   "kortlekar": [
+    "ovriga"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "μόνος",
+      "pl": "μόνοι"
+     },
+     "gen": {
+      "sg": "μόνου",
+      "pl": "μόνων"
+     },
+     "dat": {
+      "sg": "μόνῳ",
+      "pl": "μόνοις"
+     },
+     "ack": {
+      "sg": "μόνον",
+      "pl": "μόνους"
+     },
+     "vok": {
+      "sg": "μόνε",
+      "pl": "μόνοι"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "μόνον",
+      "pl": "μόνα"
+     },
+     "gen": {
+      "sg": "μόνου",
+      "pl": "μόνων"
+     },
+     "dat": {
+      "sg": "μόνῳ",
+      "pl": "μόνοις"
+     },
+     "ack": {
+      "sg": "μόνον",
+      "pl": "μόνα"
+     },
+     "vok": {
+      "sg": "μόνον",
+      "pl": "μόνα"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "μόνη",
+      "pl": "μόναι"
+     },
+     "gen": {
+      "sg": "μόνης",
+      "pl": "μόνων"
+     },
+     "dat": {
+      "sg": "μόνῃ",
+      "pl": "μόναις"
+     },
+     "ack": {
+      "sg": "μόνην",
+      "pl": "μόνας"
+     },
+     "vok": {
+      "sg": "μόνη",
+      "pl": "μόναι"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "πρῶτος",
+   "glosa": "först, främst",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "properispomenon",
+   "seminarium": [
+    3
+   ],
+   "kortlekar": [
+    "ovriga"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "πρῶτος",
+      "pl": "πρῶτοι"
+     },
+     "gen": {
+      "sg": "πρώτου",
+      "pl": "πρώτων"
+     },
+     "dat": {
+      "sg": "πρώτῳ",
+      "pl": "πρώτοις"
+     },
+     "ack": {
+      "sg": "πρῶτον",
+      "pl": "πρώτους"
+     },
+     "vok": {
+      "sg": "πρῶτε",
+      "pl": "πρῶτοι"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "πρῶτον",
+      "pl": "πρῶτα"
+     },
+     "gen": {
+      "sg": "πρώτου",
+      "pl": "πρώτων"
+     },
+     "dat": {
+      "sg": "πρώτῳ",
+      "pl": "πρώτοις"
+     },
+     "ack": {
+      "sg": "πρῶτον",
+      "pl": "πρῶτα"
+     },
+     "vok": {
+      "sg": "πρῶτον",
+      "pl": "πρῶτα"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "πρώτη",
+      "pl": "πρῶται"
+     },
+     "gen": {
+      "sg": "πρώτης",
+      "pl": "πρώτων"
+     },
+     "dat": {
+      "sg": "πρώτῃ",
+      "pl": "πρώταις"
+     },
+     "ack": {
+      "sg": "πρώτην",
+      "pl": "πρώτας"
+     },
+     "vok": {
+      "sg": "πρώτη",
+      "pl": "πρῶται"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "δίκαιος",
+   "glosa": "rättvis, rättfärdig",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "proparoxyton",
+   "seminarium": [
+    4
+   ],
+   "kortlekar": [
+    "ovriga"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "δίκαιος",
+      "pl": "δίκαιοι"
+     },
+     "gen": {
+      "sg": "δικαίου",
+      "pl": "δικαίων"
+     },
+     "dat": {
+      "sg": "δικαίῳ",
+      "pl": "δικαίοις"
+     },
+     "ack": {
+      "sg": "δίκαιον",
+      "pl": "δικαίους"
+     },
+     "vok": {
+      "sg": "δίκαιε",
+      "pl": "δίκαιοι"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "δίκαιον",
+      "pl": "δίκαια"
+     },
+     "gen": {
+      "sg": "δικαίου",
+      "pl": "δικαίων"
+     },
+     "dat": {
+      "sg": "δικαίῳ",
+      "pl": "δικαίοις"
+     },
+     "ack": {
+      "sg": "δίκαιον",
+      "pl": "δίκαια"
+     },
+     "vok": {
+      "sg": "δίκαιον",
+      "pl": "δίκαια"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "δικαία",
+      "pl": "δίκαιαι"
+     },
+     "gen": {
+      "sg": "δικαίας",
+      "pl": "δικαίων"
+     },
+     "dat": {
+      "sg": "δικαίᾳ",
+      "pl": "δικαίαις"
+     },
+     "ack": {
+      "sg": "δικαίαν",
+      "pl": "δικαίας"
+     },
+     "vok": {
+      "sg": "δικαία",
+      "pl": "δίκαιαι"
+     }
+    }
+   }
+  }
+ ]
+}

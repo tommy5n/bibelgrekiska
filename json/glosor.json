@@ -1,0 +1,2836 @@
+{
+ "_om": "Glosor fran kursens NT-frekvenslista (>60 ggr). Grekisk form, frekvens och genus avstamda mot nt-lemman.json (MorphGNT). Svenska glosor och ordklass fran kursen. Utokad med seminarium-taggning (seminarium 1-4) och ord fran seminariernas ordlistor (kalla=seminarium-ordlista, kan ligga under 60-gransen).",
+ "_genererad": "2026-06-26",
+ "_falt": {
+  "frekvens": "NT-forekomster (nt-lemman.json)",
+  "genus": "m/f/n for substantiv",
+  "harParadigm": "true om ordet ocksa har fullt paradigm i ord.json",
+  "status": "exakt = exakt traff mot facit | rattad = form justerad mot utgavan | form = bojningsform av annat lemma",
+  "seminarium": "Lista over seminarier (2-4) dar ordet forekommer i ovningsbladens/breakout-rummens ordlistor. [] = ej i nagot seminariedack.",
+  "kalla": "seminarium-ordlista = tillagt fran ett seminariums ordlista (ej fran >60-frekvenslistan); saknar falt = ursprunglig >60-lista."
+ },
+ "_statistik": {
+  "antal": 257,
+  "fran_frekvenslista": 244,
+  "fran_seminarium_ordlista": 13,
+  "med_seminarietagg": 63
+ },
+ "_reconciliation": [
+  {
+   "kurs": "δεῖ",
+   "status": "form",
+   "lemma": "δεῖ",
+   "anteckning": "opersonligt; lemmatiseras under δέω"
+  },
+  {
+   "kurs": "εἶδον",
+   "status": "form",
+   "lemma": "εἶδον",
+   "anteckning": "aoristform; lemma ὁράω"
+  },
+  {
+   "kurs": "εἶπον",
+   "status": "form",
+   "lemma": "εἶπον",
+   "anteckning": "aoristform; lemma λέγω"
+  },
+  {
+   "kurs": "ἦλθον",
+   "status": "form",
+   "lemma": "ἦλθον",
+   "anteckning": "aoristform; lemma ἔρχομαι"
+  },
+  {
+   "kurs": "ἡμεῖς",
+   "status": "form",
+   "lemma": "ἡμεῖς",
+   "anteckning": "nom. pl.; lemma ἐγώ"
+  },
+  {
+   "kurs": "ἱερόν",
+   "status": "form",
+   "lemma": "ἱερόν",
+   "anteckning": "subst. 'tempel'; under adj. ἱερός"
+  },
+  {
+   "kurs": "οὕτως",
+   "status": "rattad",
+   "lemma": "οὕτω(ς)",
+   "anteckning": "MorphGNT-lemma med valfritt slut-ς"
+  },
+  {
+   "kurs": "ποῦς",
+   "status": "rattad",
+   "lemma": "πούς",
+   "anteckning": "rattad accent mot utgavan"
+  },
+  {
+   "kurs": "τε",
+   "status": "rattad",
+   "lemma": "τέ",
+   "anteckning": "rattad accent mot utgavan"
+  },
+  {
+   "kurs": "ὑμεῖς",
+   "status": "form",
+   "lemma": "ὑμεῖς",
+   "anteckning": "nom. pl.; lemma σύ"
+  },
+  {
+   "kurs": "φαρισαῖος",
+   "status": "rattad",
+   "lemma": "Φαρισαῖος",
+   "anteckning": "rattad versal mot utgavan"
+  }
+ ],
+ "glosor": [
+  {
+   "lemma": "ἀγαθός",
+   "glosa": "god",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 101,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "ἀγαπάω",
+   "glosa": "älska",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 143,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀγάπη",
+   "glosa": "kärlek",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 116,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "ἄγγελος",
+   "glosa": "budbärare, ängel",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 175,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3
+   ]
+  },
+  {
+   "lemma": "ἅγιος",
+   "glosa": "helig, vördnadsvärd",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 233,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3
+   ]
+  },
+  {
+   "lemma": "ἀδελφός",
+   "glosa": "bror",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 342,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "αἷμα",
+   "glosa": "blod",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 97,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "αἴρω",
+   "glosa": "ta upp, lyfta, höja",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 101,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "αἰτέω",
+   "glosa": "bedja, begära, kräva",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 70,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "αἰών",
+   "glosa": "evighet",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 122,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "αἰώνιος",
+   "glosa": "evig",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 69,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀκολουθέω",
+   "glosa": "följa",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 89,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀκούω",
+   "glosa": "höra, lyssna",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 427,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3
+   ]
+  },
+  {
+   "lemma": "ἀλήθεια",
+   "glosa": "sanning",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 109,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "ἀλλά",
+   "glosa": "utan, men, dock",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 638,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀλλήλων",
+   "glosa": "varandra",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 100,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἄλλος",
+   "glosa": "annan, annat",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 154,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἁμαρτία",
+   "glosa": "synd",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 172,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀμήν",
+   "glosa": "amen, sannerligen",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 128,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἄν",
+   "glosa": "modalpartikel",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 171,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀναβαίνω",
+   "glosa": "stiga upp, gå upp",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 81,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀνήρ",
+   "glosa": "man",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 216,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἄνθρωπος",
+   "glosa": "människa",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 550,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2
+   ]
+  },
+  {
+   "lemma": "ἀνίστημι",
+   "glosa": "resa upp, resa sig, uppträda",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 108,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀνοίγω",
+   "glosa": "öppna",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 77,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀπέρχομαι",
+   "glosa": "gå bort, bege sig",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 117,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀπό",
+   "glosa": "från, av",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 644,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀποθνῄσκω",
+   "glosa": "dö",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 111,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀποκρίνομαι",
+   "glosa": "svara",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 232,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀποκτείνω",
+   "glosa": "döda",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 74,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀπόλλυμι",
+   "glosa": "förlora, förgöra",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 90,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀποστέλλω",
+   "glosa": "sända ut, skicka",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 132,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἀπόστολος",
+   "glosa": "sändebud, apostel",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 79,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2
+   ]
+  },
+  {
+   "lemma": "ἄρτος",
+   "glosa": "bröd",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 97,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "ἀρχιερεύς",
+   "glosa": "överstepräst",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 122,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἄρχω",
+   "glosa": "börja, härska över",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 86,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "αὐτός",
+   "glosa": "han, hon, den, det",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 5546,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "βάλλω",
+   "glosa": "kasta, lägga, sätta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 121,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "βαπτίζω",
+   "glosa": "döpa",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 77,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3
+   ]
+  },
+  {
+   "lemma": "βασιλεία",
+   "glosa": "rike",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 162,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "βασιλεύς",
+   "glosa": "kung",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 115,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "βλέπω",
+   "glosa": "se, titta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 133,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3
+   ]
+  },
+  {
+   "lemma": "γάρ",
+   "glosa": "ty, för, ju",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 1039,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "γεννάω",
+   "glosa": "föda, avla, framkalla",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 97,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "γῆ",
+   "glosa": "jord",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 248,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "γίνομαι",
+   "glosa": "bli, födas, uppstå",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 667,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "γινώσκω",
+   "glosa": "känna, veta, förstå, inse",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 221,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "γραμματεύς",
+   "glosa": "skrivare, skriftlärd",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 62,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "γράφω",
+   "glosa": "skriva, rita",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 190,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3
+   ]
+  },
+  {
+   "lemma": "γυνή",
+   "glosa": "kvinna",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 212,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δαιμόνιον",
+   "glosa": "ond ande, demon",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 63,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δέ",
+   "glosa": "och, men",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 2766,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δεῖ",
+   "glosa": "man måste, det åligger",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": null,
+   "harParadigm": false,
+   "status": "form",
+   "anteckning": "opersonligt; lemmatiseras under δέω",
+   "seminarium": []
+  },
+  {
+   "lemma": "διά",
+   "glosa": "genom; på grund av",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 666,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "διδάσκω",
+   "glosa": "undervisa, lära",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 96,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δίδωμι",
+   "glosa": "ge",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 415,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δίκαιος",
+   "glosa": "rättvis, rättfärdig",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 79,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "δικαιοσύνη",
+   "glosa": "rättvisa, rättfärdighet",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 91,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δόξα",
+   "glosa": "ära, heder; glans",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 165,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δοῦλος",
+   "glosa": "tjänare, slav",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 126,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "δύναμαι",
+   "glosa": "kunna, förmå",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 209,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δύναμις",
+   "glosa": "förmåga, makt, kraft",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 119,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δύο",
+   "glosa": "två",
+   "ordklass": "räkneord",
+   "genus": null,
+   "frekvens": 135,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "δώδεκα",
+   "glosa": "tolv",
+   "ordklass": "räkneord",
+   "genus": null,
+   "frekvens": 75,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐάν",
+   "glosa": "om",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 331,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἑαυτοῦ",
+   "glosa": "sig själv",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 333,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐγείρω",
+   "glosa": "väcka, låta stå upp",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 143,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐγώ",
+   "glosa": "jag",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 2572,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἔθνος",
+   "glosa": "folkstam, folk, hednafolk",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 160,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "εἰ",
+   "glosa": "om",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 502,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "εἶδον",
+   "glosa": "jag såg",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": null,
+   "harParadigm": false,
+   "status": "form",
+   "anteckning": "aoristform; lemma ὁράω",
+   "seminarium": []
+  },
+  {
+   "lemma": "εἰμί",
+   "glosa": "vara",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 2456,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "εἶπον",
+   "glosa": "jag sade",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": null,
+   "harParadigm": false,
+   "status": "form",
+   "anteckning": "aoristform; lemma λέγω",
+   "seminarium": []
+  },
+  {
+   "lemma": "εἰρήνη",
+   "glosa": "fred",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 91,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "εἰς",
+   "glosa": "in i, mot",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 1754,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "εἷς",
+   "glosa": "en, ett",
+   "ordklass": "räkneord",
+   "genus": null,
+   "frekvens": 342,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "εἰσέρχομαι",
+   "glosa": "gå in, komma in",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 193,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐκ",
+   "glosa": "ur, ut ur, från",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 913,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἕκαστος",
+   "glosa": "varje, var och en",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 81,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐκβάλλω",
+   "glosa": "kasta ut, förkasta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 81,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐκεῖ",
+   "glosa": "där",
+   "ordklass": "adverb",
+   "genus": null,
+   "frekvens": 95,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐκεῖνος",
+   "glosa": "den där",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 242,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐκκλησία",
+   "glosa": "församling",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 114,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐμός",
+   "glosa": "min, mitt",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 76,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐν",
+   "glosa": "i, med",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 2733,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "ἐντολή",
+   "glosa": "bud, budord",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 66,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "ἐνώπιον",
+   "glosa": "inför",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 94,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐξέρχομαι",
+   "glosa": "gå ut, komma ut",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 216,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐξουσία",
+   "glosa": "rätt, fullmakt, myndighet",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 102,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐπί",
+   "glosa": "på, över, vid, mot",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 885,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἑπτά",
+   "glosa": "sju",
+   "ordklass": "räkneord",
+   "genus": null,
+   "frekvens": 88,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἔργον",
+   "glosa": "verk, gärning",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 169,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "ἔρχομαι",
+   "glosa": "gå, komma",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 631,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἐσθίω",
+   "glosa": "äta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 157,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "ἕτερος",
+   "glosa": "annan, övrig",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 97,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἔτι",
+   "glosa": "ännu, fortfarande",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 93,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "εὐαγγέλιον",
+   "glosa": "glatt budskap, evangelium",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 75,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3
+   ]
+  },
+  {
+   "lemma": "εὐθύς",
+   "glosa": "rakt, genast",
+   "ordklass": "adverb",
+   "genus": null,
+   "frekvens": 59,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "εὑρίσκω",
+   "glosa": "finna, hitta, påträffa",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 176,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2
+   ]
+  },
+  {
+   "lemma": "ἔχω",
+   "glosa": "ha, hålla, äga",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 706,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἕως",
+   "glosa": "till dess, förrän",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 145,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ζάω",
+   "glosa": "leva",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 140,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ζητέω",
+   "glosa": "söka, sträva efter, undersöka",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 117,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "ζωή",
+   "glosa": "liv",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 135,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἤ",
+   "glosa": "eller",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 346,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἦλθον",
+   "glosa": "jag kom, jag gick",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": null,
+   "harParadigm": false,
+   "status": "form",
+   "anteckning": "aoristform; lemma ἔρχομαι",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἡμεῖς",
+   "glosa": "vi",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": null,
+   "harParadigm": false,
+   "status": "form",
+   "anteckning": "nom. pl.; lemma ἐγώ",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἡμέρα",
+   "glosa": "dag",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 389,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "θάλασσα",
+   "glosa": "hav, sjö",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 90,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "θάνατος",
+   "glosa": "död",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 120,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "θέλημα",
+   "glosa": "vilja, lust",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 62,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "θέλω",
+   "glosa": "vilja, önska",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 208,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "θεός",
+   "glosa": "gud",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 1307,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3
+   ]
+  },
+  {
+   "lemma": "ἴδιος",
+   "glosa": "egen, eget",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 114,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἰδού",
+   "glosa": "se!",
+   "ordklass": "interjektion",
+   "genus": null,
+   "frekvens": 200,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἱερόν",
+   "glosa": "tempel, helgedom",
+   "ordklass": "substantiv",
+   "genus": null,
+   "frekvens": null,
+   "harParadigm": false,
+   "status": "form",
+   "anteckning": "subst. 'tempel'; under adj. ἱερός",
+   "seminarium": [
+    3
+   ]
+  },
+  {
+   "lemma": "ἵνα",
+   "glosa": "för att",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 662,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ἵστημι",
+   "glosa": "ställa, stå, bestå",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 153,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "κάθημαι",
+   "glosa": "sitta, sätta sig",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 91,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "καθώς",
+   "glosa": "som, sådan som",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 182,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "καί",
+   "glosa": "och, också",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 8973,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "καιρός",
+   "glosa": "tid, tidpunkt",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 85,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "καλέω",
+   "glosa": "kalla",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 148,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "καλός",
+   "glosa": "fin, skön, vacker",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 101,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "καρδία",
+   "glosa": "hjärta",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 156,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "καρπός",
+   "glosa": "frukt",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 66,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "κατά",
+   "glosa": "mot; enligt",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 469,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "καταβαίνω",
+   "glosa": "stiga ned, komma ned",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 80,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "κεφαλή",
+   "glosa": "huvud",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 75,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "κόσμος",
+   "glosa": "värld, världsordning",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 185,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "κρίνω",
+   "glosa": "döma, bedöma",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 114,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "κύριος",
+   "glosa": "herre, härskare",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 713,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    4
+   ]
+  },
+  {
+   "lemma": "λαλέω",
+   "glosa": "prata, tala",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 297,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "λαμβάνω",
+   "glosa": "ta, ta emot, få",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 258,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2
+   ]
+  },
+  {
+   "lemma": "λαός",
+   "glosa": "folk",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 141,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "λέγω",
+   "glosa": "tala, säga",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 2345,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3
+   ]
+  },
+  {
+   "lemma": "λόγος",
+   "glosa": "ord, tal, berättelse",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 330,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3
+   ]
+  },
+  {
+   "lemma": "μαθητής",
+   "glosa": "lärjunge",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 262,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μᾶλλον",
+   "glosa": "mer, snarare",
+   "ordklass": "adverb",
+   "genus": null,
+   "frekvens": 81,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μαρτυρέω",
+   "glosa": "vittna, intyga",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 76,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μέγας",
+   "glosa": "stor, stark",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 240,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μέλλω",
+   "glosa": "kommer att",
+   "ordklass": "hjälpverb",
+   "genus": null,
+   "frekvens": 109,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μένω",
+   "glosa": "stanna, bli kvar, förbliva",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 118,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μετά",
+   "glosa": "med; efter",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 470,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μή",
+   "glosa": "inte",
+   "ordklass": "negation",
+   "genus": null,
+   "frekvens": 1036,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μηδείς",
+   "glosa": "ingen",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 90,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μήτηρ",
+   "glosa": "mor",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 83,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "μόνος",
+   "glosa": "ensam, allena",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 110,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "νεκρός",
+   "glosa": "död, avliden",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 128,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "νόμος",
+   "glosa": "lag, sed, ordning",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 193,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "νῦν",
+   "glosa": "nu",
+   "ordklass": "adverb",
+   "genus": null,
+   "frekvens": 145,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "νύξ",
+   "glosa": "natt",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 61,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὁ",
+   "glosa": "den, det",
+   "ordklass": "artikel",
+   "genus": null,
+   "frekvens": 19769,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὁδός",
+   "glosa": "väg, färd",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 101,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "οἶδα",
+   "glosa": "veta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 296,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "οἶκος",
+   "glosa": "hus",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 112,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "ὅλος",
+   "glosa": "hel",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 108,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὄνομα",
+   "glosa": "namn",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 229,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὅπου",
+   "glosa": "där (som)",
+   "ordklass": "pron.adv",
+   "genus": null,
+   "frekvens": 81,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὁράω",
+   "glosa": "se",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 476,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὄρος",
+   "glosa": "berg",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 62,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὅς",
+   "glosa": "som, vilken",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 1408,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὅσος",
+   "glosa": "så stor/många som",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 111,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὅστις",
+   "glosa": "den som",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 144,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὅταν",
+   "glosa": "när (som helst)",
+   "ordklass": "pron.adv",
+   "genus": null,
+   "frekvens": 123,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὅτε",
+   "glosa": "när",
+   "ordklass": "pron.adv",
+   "genus": null,
+   "frekvens": 102,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὅτι",
+   "glosa": "att, eftersom",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 1294,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "οὐ",
+   "glosa": "inte",
+   "ordklass": "negation",
+   "genus": null,
+   "frekvens": 1605,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "οὐδέ",
+   "glosa": "och inte, inte heller",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 142,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "οὐδείς",
+   "glosa": "ingen",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 232,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "οὖν",
+   "glosa": "alltså",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 494,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "οὐρανός",
+   "glosa": "himmel",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 273,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3
+   ]
+  },
+  {
+   "lemma": "οὔτε",
+   "glosa": "varken ... eller",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 87,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "οὗτος",
+   "glosa": "denne, denna, detta",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 1385,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "οὕτω(ς)",
+   "glosa": "på så sätt, sålunda",
+   "ordklass": "pron.adv",
+   "genus": null,
+   "frekvens": 207,
+   "harParadigm": false,
+   "status": "rattad",
+   "anteckning": "MorphGNT-lemma med valfritt slut-ς",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὀφθαλμός",
+   "glosa": "öga",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 100,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὄχλος",
+   "glosa": "folkhop",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 174,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πάλιν",
+   "glosa": "igen, åter",
+   "ordklass": "adverb",
+   "genus": null,
+   "frekvens": 139,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "παρά",
+   "glosa": "från; hos, vid; bredvid",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 193,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "παραδίδωμι",
+   "glosa": "överlämna, uppge",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 119,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "παρακαλέω",
+   "glosa": "tillkalla, förmana, uppmuntra",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 109,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πᾶς",
+   "glosa": "var och en, all",
+   "ordklass": "pron.adj",
+   "genus": null,
+   "frekvens": 1244,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πατήρ",
+   "glosa": "far",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 413,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πέμπω",
+   "glosa": "skicka",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 79,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3
+   ]
+  },
+  {
+   "lemma": "περί",
+   "glosa": "om, angående; kring",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 332,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "περιπατέω",
+   "glosa": "gå omkring, vandra",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 95,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πίνω",
+   "glosa": "dricka",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 72,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πίπτω",
+   "glosa": "falla",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 90,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πιστεύω",
+   "glosa": "tro, lita på",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 241,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "πίστις",
+   "glosa": "tro, förtroende, tillit",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 242,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πληρόω",
+   "glosa": "fylla",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 86,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πλοῖον",
+   "glosa": "båt",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 67,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3
+   ]
+  },
+  {
+   "lemma": "πνεῦμα",
+   "glosa": "ande",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 379,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ποιέω",
+   "glosa": "göra, handla",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 568,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "πόλις",
+   "glosa": "stad",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 162,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πολύς",
+   "glosa": "mycket, många",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 415,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πονηρός",
+   "glosa": "dålig, ond",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 78,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "πορεύομαι",
+   "glosa": "färdas, resa, gå",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 150,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πούς",
+   "glosa": "fot",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 93,
+   "harParadigm": false,
+   "status": "rattad",
+   "anteckning": "rattad accent mot utgavan",
+   "seminarium": []
+  },
+  {
+   "lemma": "πρεσβύτερος",
+   "glosa": "äldste",
+   "ordklass": "substantiv",
+   "genus": null,
+   "frekvens": 65,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πρός",
+   "glosa": "på; vid; till, hos",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 696,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "προσέρχομαι",
+   "glosa": "gå/komma till, träda fram",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 86,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "προσεύχομαι",
+   "glosa": "be",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 85,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πρόσωπον",
+   "glosa": "ansikte",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 76,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "προφήτης",
+   "glosa": "profet",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 144,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πρῶτος",
+   "glosa": "först",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 153,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πῦρ",
+   "glosa": "eld",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 71,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "πῶς",
+   "glosa": "hur",
+   "ordklass": "adverb",
+   "genus": null,
+   "frekvens": 103,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "σάρξ",
+   "glosa": "kött, kropp",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 147,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "σημεῖον",
+   "glosa": "tecken",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 77,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "στόμα",
+   "glosa": "mun",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 78,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "σύ",
+   "glosa": "du",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 2894,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "σύν",
+   "glosa": "med, jämte",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 129,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "συναγωγή",
+   "glosa": "samlingsställe, synagoga",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 56,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "σῴζω",
+   "glosa": "rädda, hjälpa, bevara",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 106,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "σῶμα",
+   "glosa": "kropp",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 142,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "τέ",
+   "glosa": "och",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 213,
+   "harParadigm": false,
+   "status": "rattad",
+   "anteckning": "rattad accent mot utgavan",
+   "seminarium": []
+  },
+  {
+   "lemma": "τέκνον",
+   "glosa": "barn",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 99,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3,
+    4
+   ]
+  },
+  {
+   "lemma": "τηρέω",
+   "glosa": "iaktta, bevaka, bevara",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 71,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "τίθημι",
+   "glosa": "ställa, lägga, sätta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 100,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "τίς",
+   "glosa": "vem, vad",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 554,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "τις",
+   "glosa": "någon, något",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": 530,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "τόπος",
+   "glosa": "plats, ställe, ort",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 94,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "τότε",
+   "glosa": "då, därpå",
+   "ordklass": "adverb",
+   "genus": null,
+   "frekvens": 159,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "τρεῖς",
+   "glosa": "tre",
+   "ordklass": "räkneord",
+   "genus": null,
+   "frekvens": 67,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὕδωρ",
+   "glosa": "vatten",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 76,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "υἱός",
+   "glosa": "son",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 375,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    3
+   ]
+  },
+  {
+   "lemma": "ὑμεῖς",
+   "glosa": "ni",
+   "ordklass": "pronomen",
+   "genus": null,
+   "frekvens": null,
+   "harParadigm": false,
+   "status": "form",
+   "anteckning": "nom. pl.; lemma σύ",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὑπάγω",
+   "glosa": "gå bort, gå",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 79,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὑπέρ",
+   "glosa": "över, för; mer än",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 150,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὑπό",
+   "glosa": "av, genom; under",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 220,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "Φαρισαῖος",
+   "glosa": "farisé",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 96,
+   "harParadigm": true,
+   "status": "rattad",
+   "anteckning": "rattad versal mot utgavan",
+   "seminarium": []
+  },
+  {
+   "lemma": "φοβέομαι",
+   "glosa": "frukta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 95,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "φωνή",
+   "glosa": "röst, ljud",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 139,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "φῶς",
+   "glosa": "ljus",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 72,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "χαίρω",
+   "glosa": "glädja sig, vara glad",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 74,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "χάρις",
+   "glosa": "nåd, gunst, tack",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 155,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "χείρ",
+   "glosa": "hand",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 176,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "Χριστός",
+   "glosa": "Kristus",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 528,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ψυχή",
+   "glosa": "själ",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 102,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ]
+  },
+  {
+   "lemma": "ὧδε",
+   "glosa": "här, hit, så här",
+   "ordklass": "pron.adv",
+   "genus": null,
+   "frekvens": 61,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὥρα",
+   "glosa": "tid, stund, timme",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 106,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὡς",
+   "glosa": "såsom",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 503,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "ὥστε",
+   "glosa": "så att, därför",
+   "ordklass": "partikel",
+   "genus": null,
+   "frekvens": 83,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": []
+  },
+  {
+   "lemma": "κηρύσσω",
+   "glosa": "predika",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 61,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2,
+    3,
+    4
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "κλέπτω",
+   "glosa": "stjäla",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 13,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "λύω",
+   "glosa": "lösa",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 42,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "μικρός",
+   "glosa": "liten",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 46,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "παιδεύω",
+   "glosa": "uppfostra",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 13,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    2
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "πιστός",
+   "glosa": "trogen",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 67,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    3
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "πτωχός",
+   "glosa": "fattig",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 34,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "φιλέω",
+   "glosa": "gilla, älska",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 25,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ἀγρός",
+   "glosa": "fält",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 36,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ἀδελφή",
+   "glosa": "syster",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 25,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ἀργύριον",
+   "glosa": "pengar, silver",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 20,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ἄγω",
+   "glosa": "leda",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 68,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "Ἰησοῦς",
+   "glosa": "Jesus",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 906,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    4
+   ],
+   "kalla": "seminarium-ordlista"
+  }
+ ]
+}

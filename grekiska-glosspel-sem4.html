@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grekiska — glosor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f1e6; --paper-2:#efe7d6; --card:#fffdf7;
+    --ink:#2c2620; --ink-soft:#6f6557; --line:#e3d9c6; --gold:#a8842c;
+    --good:#3f7a4f; --good-bg:#eaf3e7; --bad:#a8492c; --bad-bg:#f6eae4;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
+    font-family:'Spectral',Georgia,serif; line-height:1.55;
+    display:flex; flex-direction:column; align-items:center;
+    padding:2rem 1rem 3rem;
+  }
+  @keyframes rise{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;}}
+
+  header{text-align:center; margin-bottom:1.4rem; animation:rise .6s ease both;}
+  h1{font-size:1.5rem; font-weight:600; margin:0 0 .25rem;}
+  .sub{color:var(--ink-soft); font-size:.92rem; font-style:italic;}
+
+  /* lägesväljare */
+  .modes{display:flex; gap:.5rem; margin-bottom:1.1rem; animation:rise .6s ease both;}
+  .mode{
+    font-family:inherit; font-size:.92rem; color:var(--ink-soft);
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:.45rem 1.05rem; cursor:pointer; transition:.2s;
+  }
+  .mode:hover:not(:disabled){border-color:var(--gold); color:var(--ink);}
+  .mode[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .mode:disabled{opacity:.4; cursor:default;}
+
+  /* kortet */
+  .stage{width:min(440px,100%); display:flex; flex-direction:column; align-items:center;}
+  .card{
+    width:100%; background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:2.2rem 1.4rem; text-align:center; box-shadow:0 1px 0 rgba(0,0,0,.02);
+    animation:rise .35s ease both; min-height:9.5rem;
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .card.flippable{cursor:pointer;}
+  .lemma{font-size:3rem; font-weight:500; letter-spacing:.01em; min-height:1.2em;}
+  .prompt-hint{color:var(--ink-soft); font-style:italic; margin-top:.7rem; font-size:.88rem;}
+
+  .reveal{margin-top:0;}
+  .reveal .glosa{font-size:1.55rem; font-weight:600; color:var(--gold); line-height:1.3;}
+  .reveal .meta{color:var(--ink-soft); margin-top:.5rem; font-size:.98rem;}
+  .reveal .meta .art{font-style:normal; color:var(--ink);}
+  .reveal .prompt-echo{font-size:1.15rem; color:var(--ink); margin-bottom:.5rem;}
+
+  /* knappar under kortet */
+  .controls{display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:1.1rem; width:100%; min-height:2.6rem;}
+  .btn{
+    font-family:inherit; font-size:.95rem; padding:.55rem 1.2rem; border-radius:10px;
+    border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; transition:.18s;
+  }
+  .btn:hover{border-color:var(--gold);}
+  .btn.primary{background:var(--ink); color:var(--paper); border-color:var(--ink); flex:1;}
+  .btn.good{background:var(--good-bg); border-color:var(--good); color:var(--good); flex:1;}
+  .btn.bad{background:var(--bad-bg); border-color:var(--bad); color:var(--bad); flex:1;}
+  .btn .key{font-size:.75rem; opacity:.6; margin-left:.35rem;}
+
+  /* flerval-alternativ */
+  .options{display:grid; grid-template-columns:1fr 1fr; gap:.55rem; width:100%; margin-top:1.1rem;}
+  .opt{
+    font-family:inherit; font-size:1rem; padding:.7rem .5rem; border-radius:10px;
+    border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; transition:.15s;
+    text-align:center;
+  }
+  .opt:hover:not(:disabled){border-color:var(--gold);}
+  .opt:disabled{cursor:default;}
+  .opt.correct{background:var(--good-bg); border-color:var(--good); color:var(--good); font-weight:600;}
+  .opt.wrong{background:var(--bad-bg); border-color:var(--bad); color:var(--bad);}
+
+  /* streak / räknare */
+  .stats{margin-top:1.3rem; color:var(--ink-soft); font-size:.92rem; text-align:center;}
+  .stats b{color:var(--ink); font-weight:600;}
+  .stats .dot{margin:0 .55rem; opacity:.4;}
+
+  .empty{color:var(--bad); font-style:italic; text-align:center; padding:1.5rem 0;}
+
+  /* väljaren */
+  .picker{width:min(440px,100%); margin-top:1.6rem; animation:rise .6s ease both;}
+  .picker-toggle{
+    width:100%; font-family:inherit; font-size:.95rem; color:var(--ink-soft);
+    background:var(--card); border:1px solid var(--line); border-radius:10px; padding:.6rem 1rem;
+    cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:.2s;
+  }
+  .picker-toggle:hover{border-color:var(--gold); color:var(--ink);}
+  .picker-toggle .count{font-style:italic;}
+  .picker-toggle .chev{transition:transform .25s ease; margin-left:.5rem;}
+  .picker-toggle[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  .picker-body{margin-top:.7rem; padding:1rem; background:var(--card); border:1px solid var(--line); border-radius:10px;}
+  .picker-body h2{font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);
+    font-weight:600; margin:.2rem 0 .5rem;}
+  .picker-section + .picker-section{margin-top:1.1rem;}
+  .quickrow{display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.7rem; align-items:center;}
+  .quicklabel{font-size:.8rem; color:var(--ink-soft); margin-right:.15rem;}
+  .chip{
+    font-family:inherit; font-size:.8rem; padding:.3rem .7rem; border-radius:999px;
+    border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); cursor:pointer; transition:.15s;
+  }
+  .chip:hover{border-color:var(--gold); color:var(--ink);}
+  .grid{display:flex; flex-wrap:wrap; gap:.4rem;}
+  .toggle{
+    font-family:inherit; font-size:.92rem; padding:.35rem .8rem; border-radius:8px;
+    border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); cursor:pointer; transition:.15s;
+  }
+  .toggle:hover{border-color:var(--gold);}
+  .toggle[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .toggle .n{opacity:.6; font-size:.82rem; margin-left:.3rem;}
+  .note{color:var(--ink-soft); font-size:.82rem; font-style:italic; margin-top:.8rem;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Bibelgrekiska — glosor</h1>
+  <div class="sub">seminarium 2–4 · grekiska → svenska</div>
+</header>
+
+<div class="modes" role="group" aria-label="Spelläge">
+  <button class="mode" id="mode-flashcard" aria-pressed="true">Flashcard</button>
+  <button class="mode" id="mode-flerval" aria-pressed="false">Flerval</button>
+</div>
+
+<div class="stage">
+  <div class="card" id="card"></div>
+  <div class="controls" id="controls"></div>
+  <div class="stats" id="stats"></div>
+</div>
+
+<div class="picker">
+  <button class="picker-toggle" id="picker-toggle" aria-expanded="false">
+    <span>Urval <span class="count" id="picker-count"></span></span>
+    <span class="chev">▾</span>
+  </button>
+  <div class="picker-body" id="picker-body" hidden>
+    <div class="picker-section">
+      <h2>Seminarium</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-quick="sem-all">alla</button>
+        <button class="chip" data-quick="sem-none">inga</button>
+      </div>
+      <div class="grid" id="sem-grid"></div>
+    </div>
+    <div class="picker-section">
+      <h2>Ordklass</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-quick="ok-all">alla</button>
+        <button class="chip" data-quick="ok-none">inga</button>
+      </div>
+      <div class="grid" id="ok-grid"></div>
+    </div>
+    <div class="note" id="picker-note"></div>
+  </div>
+</div>
+
+<script>
+/* ── DATA (snapshot ur glosor.json: seminarie-taggade ord 2–4) ─────────── */
+const GLOSOR = [{"l": "βλέπω", "g": "se, titta", "o": "verb", "gen": null, "f": 133, "s": [2, 3]}, {"l": "γράφω", "g": "skriva, rita", "o": "verb", "gen": null, "f": 190, "s": [2, 3]}, {"l": "δοῦλος", "g": "tjänare, slav", "o": "substantiv", "gen": "m", "f": 126, "s": [2, 3, 4]}, {"l": "εὑρίσκω", "g": "finna, hitta, påträffa", "o": "verb", "gen": null, "f": 176, "s": [2]}, {"l": "θεός", "g": "gud", "o": "substantiv", "gen": "m", "f": 1307, "s": [2, 3]}, {"l": "κηρύσσω", "g": "predika", "o": "verb", "gen": null, "f": 61, "s": [2, 3, 4]}, {"l": "κύριος", "g": "herre, härskare", "o": "substantiv", "gen": "m", "f": 713, "s": [2, 4]}, {"l": "λέγω", "g": "tala, säga", "o": "verb", "gen": null, "f": 2345, "s": [2, 3]}, {"l": "λαμβάνω", "g": "ta, ta emot, få", "o": "verb", "gen": null, "f": 258, "s": [2]}, {"l": "λόγος", "g": "ord, tal, berättelse", "o": "substantiv", "gen": "m", "f": 330, "s": [2, 3]}, {"l": "λύω", "g": "lösa", "o": "verb", "gen": null, "f": 42, "s": [2]}, {"l": "οἶκος", "g": "hus", "o": "substantiv", "gen": "m", "f": 112, "s": [2, 3, 4]}, {"l": "οὐρανός", "g": "himmel", "o": "substantiv", "gen": "m", "f": 273, "s": [2, 3]}, {"l": "πέμπω", "g": "skicka", "o": "verb", "gen": null, "f": 79, "s": [2, 3]}, {"l": "παιδεύω", "g": "uppfostra", "o": "verb", "gen": null, "f": 13, "s": [2]}, {"l": "ἀδελφός", "g": "bror", "o": "substantiv", "gen": "m", "f": 342, "s": [2, 3, 4]}, {"l": "ἀκούω", "g": "höra, lyssna", "o": "verb", "gen": null, "f": 427, "s": [2, 3]}, {"l": "ἀπόστολος", "g": "sändebud, apostel", "o": "substantiv", "gen": "m", "f": 79, "s": [2]}, {"l": "ἄγγελος", "g": "budbärare, ängel", "o": "substantiv", "gen": "m", "f": 175, "s": [2, 3]}, {"l": "ἄνθρωπος", "g": "människa", "o": "substantiv", "gen": "m", "f": 550, "s": [2]}, {"l": "ἐσθίω", "g": "äta", "o": "verb", "gen": null, "f": 157, "s": [2, 3, 4]}, {"l": "βαπτίζω", "g": "döpa", "o": "verb", "gen": null, "f": 77, "s": [3]}, {"l": "εὐαγγέλιον", "g": "glatt budskap, evangelium", "o": "substantiv", "gen": "n", "f": 75, "s": [3]}, {"l": "καλός", "g": "fin, skön, vacker", "o": "adjektiv", "gen": null, "f": 101, "s": [3, 4]}, {"l": "μικρός", "g": "liten", "o": "adjektiv", "gen": null, "f": 46, "s": [3]}, {"l": "πιστεύω", "g": "tro, lita på", "o": "verb", "gen": null, "f": 241, "s": [3, 4]}, {"l": "πιστός", "g": "trogen", "o": "adjektiv", "gen": null, "f": 67, "s": [3]}, {"l": "πλοῖον", "g": "båt", "o": "substantiv", "gen": "n", "f": 67, "s": [3]}, {"l": "πονηρός", "g": "dålig, ond", "o": "adjektiv", "gen": null, "f": 78, "s": [3, 4]}, {"l": "σημεῖον", "g": "tecken", "o": "substantiv", "gen": "n", "f": 77, "s": [3, 4]}, {"l": "σῴζω", "g": "rädda, hjälpa, bevara", "o": "verb", "gen": null, "f": 106, "s": [3, 4]}, {"l": "τέκνον", "g": "barn", "o": "substantiv", "gen": "n", "f": 99, "s": [3, 4]}, {"l": "υἱός", "g": "son", "o": "substantiv", "gen": "m", "f": 375, "s": [3]}, {"l": "ἀγαθός", "g": "god", "o": "adjektiv", "gen": null, "f": 101, "s": [3, 4]}, {"l": "ἄρτος", "g": "bröd", "o": "substantiv", "gen": "m", "f": 97, "s": [3, 4]}, {"l": "ἅγιος", "g": "helig, vördnadsvärd", "o": "adjektiv", "gen": null, "f": 233, "s": [3]}, {"l": "ἱερόν", "g": "tempel, helgedom", "o": "substantiv", "gen": null, "f": null, "s": [3]}, {"l": "βασιλεία", "g": "rike", "o": "substantiv", "gen": "f", "f": 162, "s": [4]}, {"l": "γάρ", "g": "ty, för, ju", "o": "partikel", "gen": null, "f": 1039, "s": [4]}, {"l": "δίκαιος", "g": "rättvis, rättfärdig", "o": "adjektiv", "gen": null, "f": 79, "s": [4]}, {"l": "εἰμί", "g": "vara", "o": "verb", "gen": null, "f": 2456, "s": [4]}, {"l": "εἰρήνη", "g": "fred", "o": "substantiv", "gen": "f", "f": 91, "s": [4]}, {"l": "εἰς", "g": "in i, mot", "o": "preposition", "gen": null, "f": 1754, "s": [4]}, {"l": "ζητέω", "g": "söka, sträva efter, undersöka", "o": "verb", "gen": null, "f": 117, "s": [4]}, {"l": "καί", "g": "och, också", "o": "partikel", "gen": null, "f": 8973, "s": [4]}, {"l": "κλέπτω", "g": "stjäla", "o": "verb", "gen": null, "f": 13, "s": [4]}, {"l": "κόσμος", "g": "värld, världsordning", "o": "substantiv", "gen": "m", "f": 185, "s": [4]}, {"l": "λαλέω", "g": "prata, tala", "o": "verb", "gen": null, "f": 297, "s": [4]}, {"l": "ποιέω", "g": "göra, handla", "o": "verb", "gen": null, "f": 568, "s": [4]}, {"l": "πτωχός", "g": "fattig", "o": "adjektiv", "gen": null, "f": 34, "s": [4]}, {"l": "τηρέω", "g": "iaktta, bevaka, bevara", "o": "verb", "gen": null, "f": 71, "s": [4]}, {"l": "φιλέω", "g": "gilla, älska", "o": "verb", "gen": null, "f": 25, "s": [4]}, {"l": "ψυχή", "g": "själ", "o": "substantiv", "gen": "f", "f": 102, "s": [4]}, {"l": "ἀγάπη", "g": "kärlek", "o": "substantiv", "gen": "f", "f": 116, "s": [4]}, {"l": "ἀγρός", "g": "fält", "o": "substantiv", "gen": "m", "f": 36, "s": [4]}, {"l": "ἀδελφή", "g": "syster", "o": "substantiv", "gen": "f", "f": 25, "s": [4]}, {"l": "ἀλήθεια", "g": "sanning", "o": "substantiv", "gen": "f", "f": 109, "s": [4]}, {"l": "ἀργύριον", "g": "pengar, silver", "o": "substantiv", "gen": "n", "f": 20, "s": [4]}, {"l": "ἄγω", "g": "leda", "o": "verb", "gen": null, "f": 68, "s": [4]}, {"l": "ἐν", "g": "i, med", "o": "preposition", "gen": null, "f": 2733, "s": [4]}, {"l": "ἐντολή", "g": "bud, budord", "o": "substantiv", "gen": "f", "f": 66, "s": [4]}, {"l": "ἔργον", "g": "verk, gärning", "o": "substantiv", "gen": "n", "f": 169, "s": [4]}, {"l": "Ἰησοῦς", "g": "Jesus", "o": "substantiv", "gen": "m", "f": 906, "s": [4]}];
+
+const SEMINARIER = [2, 3, 4];
+const ORDKLASSER = [...new Set(GLOSOR.map(w => w.o))];   // i förekomstordning
+const ARTIKEL = { m: "ὁ", f: "ἡ", n: "τό" };
+const GENUS_NAMN = { m: "maskulinum", f: "femininum", n: "neutrum" };
+const LAGER = "grek-glosspel-v1";
+
+/* ── STATE ───────────────────────────────────────────────────────────── */
+const state = {
+  mode: "flashcard",                              // "flashcard" | "flerval"
+  valdaSem: new Set(SEMINARIER),
+  valdaOk:  new Set(ORDKLASSER),
+  streak: 0,
+  best: { flashcard: 0, flerval: 0 },
+  ratt: 0, totalt: 0,                             // sessionsräknare
+  card: null,                                     // upplöst EN gång i newQuestion()
+  vand: false,                                    // flashcard: är kortet vänt?
+  besvarad: false,                                // flerval: har man svarat?
+  ko: [],                                         // flashcard: rundkö (med retry)
+};
+
+/* ── HJÄLPARE ────────────────────────────────────────────────────────── */
+function shuffle(arr){                            // Fisher-Yates
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+function aktivaOrd(){
+  return GLOSOR.filter(w =>
+    w.s.some(s => state.valdaSem.has(s)) && state.valdaOk.has(w.o)
+  );
+}
+
+/* ── PERSISTENS (localStorage, try/catch) ────────────────────────────── */
+function spara(){
+  try{
+    localStorage.setItem(LAGER, JSON.stringify({
+      mode: state.mode,
+      valdaSem: [...state.valdaSem],
+      valdaOk:  [...state.valdaOk],
+      best: state.best,
+    }));
+  }catch(e){ /* privat läge e.d. — strunt samma */ }
+}
+function ladda(){
+  try{
+    const r = JSON.parse(localStorage.getItem(LAGER));
+    if(!r) return;
+    if(r.mode === "flashcard" || r.mode === "flerval") state.mode = r.mode;
+    if(Array.isArray(r.valdaSem)) state.valdaSem = new Set(r.valdaSem.filter(s => SEMINARIER.includes(s)));
+    if(Array.isArray(r.valdaOk))  state.valdaOk  = new Set(r.valdaOk.filter(o => ORDKLASSER.includes(o)));
+    if(r.best && typeof r.best === "object"){
+      if(typeof r.best.flashcard === "number") state.best.flashcard = r.best.flashcard;
+      if(typeof r.best.flerval   === "number") state.best.flerval   = r.best.flerval;
+    }
+    if(!state.valdaSem.size) state.valdaSem = new Set(SEMINARIER);
+    if(!state.valdaOk.size)  state.valdaOk  = new Set(ORDKLASSER);
+  }catch(e){ /* trasig data — börja om rent */ }
+}
+
+/* ── DISTRAKTORER ────────────────────────────────────────────────────── */
+/* Samma ordklass i första hand, och helst inom samma frekvensband: vi
+   sorterar kandidaterna efter närhet i log-frekvens, tar de närmaste och
+   blandar bland dem. Räcker inte samma ordklass faller vi tillbaka på alla. */
+function byggOptioner(svar){
+  const aktiva = aktivaOrd();
+  const lf = w => (w.f && w.f > 0) ? Math.log(w.f) : 0;
+  const sammaOk = aktiva.filter(w => w.l !== svar.l && w.o === svar.o && w.g !== svar.g);
+  let pool;
+  if(sammaOk.length >= 3){
+    const nara = sammaOk.slice().sort((a,b) => Math.abs(lf(a)-lf(svar)) - Math.abs(lf(b)-lf(svar)));
+    pool = shuffle(nara.slice(0, Math.min(7, nara.length)));     // de ~7 närmaste i frekvens
+  }else{
+    // för få i samma ordklass → komplettera med övriga
+    const ovriga = aktiva.filter(w => w.l !== svar.l && w.g !== svar.g && !sammaOk.includes(w));
+    pool = sammaOk.concat(shuffle(ovriga));
+  }
+  // unika glosor (skydd mot dubblettöversättningar)
+  const distraktorer = [];
+  const sedda = new Set([svar.g]);
+  for(const w of pool){
+    if(sedda.has(w.g)) continue;
+    sedda.add(w.g); distraktorer.push(w.g);
+    if(distraktorer.length === 3) break;
+  }
+  return shuffle([svar.g, ...distraktorer]);
+}
+
+/* ── KORTLOGIK ───────────────────────────────────────────────────────── */
+function fyllKo(){
+  state.ko = shuffle(aktivaOrd());
+}
+function newQuestion(){
+  const aktiva = aktivaOrd();
+  state.vand = false;
+  state.besvarad = false;
+
+  if(!aktiva.length){ state.card = null; render(); return; }
+
+  if(state.mode === "flashcard"){
+    if(!state.ko.length) fyllKo();
+    const svar = state.ko.shift();
+    state.card = { svar, sida: "fram" };
+  }else{
+    const svar = aktiva[Math.floor(Math.random()*aktiva.length)];
+    state.card = { svar, optioner: byggOptioner(svar) };
+  }
+  render();
+}
+
+/* ── BEDÖMNING ───────────────────────────────────────────────────────── */
+function bokfor(korrekt){
+  state.totalt++;
+  if(korrekt){ state.ratt++; state.streak++; if(state.streak > state.best[state.mode]) state.best[state.mode] = state.streak; }
+  else { state.streak = 0; }
+  spara();
+}
+function flashcardSvar(kunde){
+  if(!state.vand) return;
+  bokfor(kunde);
+  if(!kunde) state.ko.push(state.card.svar);      // retry-kö: tillbaka senare i rundan
+  newQuestion();
+}
+function flervalSvar(valdGlosa, knapp){
+  if(state.besvarad) return;
+  state.besvarad = true;
+  const korrekt = valdGlosa === state.card.svar.g;
+  bokfor(korrekt);
+  renderFlervalFacit(knapp, korrekt);
+}
+
+/* ── RENDER ──────────────────────────────────────────────────────────── */
+function artikelText(w){
+  if(w.o !== "substantiv" || !w.gen) return "";
+  return ARTIKEL[w.gen] + " · " + GENUS_NAMN[w.gen];
+}
+function metaRad(w){
+  const delar = [w.o];
+  const art = artikelText(w);
+  if(art) delar.push(`<span class="art">${art}</span>`);
+  return delar.join(" · ");
+}
+
+function render(){
+  const card = document.getElementById("card");
+  const controls = document.getElementById("controls");
+  const stats = document.getElementById("stats");
+  card.className = "card";
+  controls.innerHTML = "";
+
+  // mode-knapparnas tryckläge + flerval-spärr vid <4 ord
+  const antal = aktivaOrd().length;
+  document.getElementById("mode-flashcard").setAttribute("aria-pressed", state.mode === "flashcard");
+  document.getElementById("mode-flerval").setAttribute("aria-pressed", state.mode === "flerval");
+  document.getElementById("mode-flerval").disabled = antal < 4;
+
+  if(!state.card){
+    card.innerHTML = `<div class="empty">Inga ord i urvalet.<br>Välj minst ett seminarium och en ordklass.</div>`;
+    stats.innerHTML = "";
+    renderPickerCount();
+    return;
+  }
+
+  const w = state.card.svar;
+
+  if(state.mode === "flashcard"){
+    if(!state.vand){
+      card.className = "card flippable";
+      card.innerHTML = `<div class="lemma">${w.l}</div><div class="prompt-hint">tryck på kortet eller mellanslag för att vända</div>`;
+      card.onclick = () => { state.vand = true; render(); };
+    }else{
+      card.className = "card flippable";
+      card.innerHTML = `
+        <div class="reveal">
+          <div class="prompt-echo">${w.l}</div>
+          <div class="glosa">${w.g}</div>
+          <div class="meta">${metaRad(w)}</div>
+        </div>`;
+      card.onclick = null;
+      const bra = mkBtn("✓ Kunde", "btn good", () => flashcardSvar(true), "→");
+      const fel = mkBtn("✗ Kunde inte", "btn bad", () => flashcardSvar(false), "←");
+      controls.append(fel, bra);
+    }
+  }else{
+    card.className = "card";
+    card.onclick = null;
+    card.innerHTML = `<div class="lemma">${w.l}</div>`;
+    renderOptioner();
+  }
+
+  renderStats();
+  renderPickerCount();
+}
+
+function renderOptioner(){
+  const card = document.getElementById("card");
+  const grid = document.createElement("div");
+  grid.className = "options";
+  state.card.optioner.forEach((glosa, i) => {
+    const b = document.createElement("button");
+    b.className = "opt";
+    b.textContent = glosa;
+    b.dataset.glosa = glosa;
+    b.onclick = () => flervalSvar(glosa, b);
+    grid.appendChild(b);
+  });
+  card.appendChild(grid);
+}
+function renderFlervalFacit(valdKnapp, korrekt){
+  const knappar = document.querySelectorAll(".opt");
+  knappar.forEach(b => {
+    b.disabled = true;
+    if(b.dataset.glosa === state.card.svar.g) b.classList.add("correct");
+    else if(b === valdKnapp) b.classList.add("wrong");
+  });
+  const controls = document.getElementById("controls");
+  controls.innerHTML = "";
+  controls.appendChild(mkBtn("Nästa", "btn primary", () => newQuestion(), "mellanslag"));
+  renderStats();
+}
+
+function mkBtn(text, cls, fn, key){
+  const b = document.createElement("button");
+  b.className = cls;
+  b.innerHTML = key ? `${text}<span class="key">${key}</span>` : text;
+  b.onclick = fn;
+  return b;
+}
+
+function renderStats(){
+  const stats = document.getElementById("stats");
+  const b = state.best[state.mode];
+  const andel = state.totalt ? Math.round(100*state.ratt/state.totalt) : 0;
+  stats.innerHTML =
+    `Svit: <b>${state.streak}</b> i rad` +
+    `<span class="dot">·</span>Bästa: <b>${b}</b>` +
+    `<span class="dot">·</span>Session: <b>${state.ratt}/${state.totalt}</b> (${andel}%)`;
+}
+
+/* ── VÄLJAREN ────────────────────────────────────────────────────────── */
+function renderPickerCount(){
+  document.getElementById("picker-count").textContent = `(${aktivaOrd().length} ord)`;
+}
+function antalForSem(s){ return GLOSOR.filter(w => w.s.includes(s)).length; }
+function antalForOk(o){ return GLOSOR.filter(w => w.o === o).length; }
+
+function byggPicker(){
+  const semGrid = document.getElementById("sem-grid");
+  SEMINARIER.forEach(s => {
+    const b = document.createElement("button");
+    b.className = "toggle";
+    b.innerHTML = `Sem ${s}<span class="n">${antalForSem(s)}</span>`;
+    b.setAttribute("aria-pressed", state.valdaSem.has(s));
+    b.onclick = () => { toggleSet(state.valdaSem, s); b.setAttribute("aria-pressed", state.valdaSem.has(s)); efterUrval(); };
+    semGrid.appendChild(b);
+  });
+  const okGrid = document.getElementById("ok-grid");
+  ORDKLASSER.forEach(o => {
+    const b = document.createElement("button");
+    b.className = "toggle";
+    b.innerHTML = `${o}<span class="n">${antalForOk(o)}</span>`;
+    b.setAttribute("aria-pressed", state.valdaOk.has(o));
+    b.onclick = () => { toggleSet(state.valdaOk, o); b.setAttribute("aria-pressed", state.valdaOk.has(o)); efterUrval(); };
+    okGrid.appendChild(b);
+  });
+}
+function toggleSet(set, v){ set.has(v) ? set.delete(v) : set.add(v); }
+function synkaToggles(){
+  document.querySelectorAll("#sem-grid .toggle").forEach((b,i) =>
+    b.setAttribute("aria-pressed", state.valdaSem.has(SEMINARIER[i])));
+  document.querySelectorAll("#ok-grid .toggle").forEach((b,i) =>
+    b.setAttribute("aria-pressed", state.valdaOk.has(ORDKLASSER[i])));
+}
+function efterUrval(){
+  // urvalet ändrades → ny runda/kö, fallback från flerval om för få ord
+  const antal = aktivaOrd().length;
+  document.getElementById("picker-note").textContent =
+    antal < 4 ? "Färre än 4 ord — flerval är avstängt. Flashcard fungerar." : "";
+  if(state.mode === "flerval" && antal < 4) state.mode = "flashcard";
+  state.streak = 0;
+  fyllKo();
+  spara();
+  newQuestion();
+}
+
+/* ── EVENTS ──────────────────────────────────────────────────────────── */
+function setMode(m){
+  if(m === "flerval" && aktivaOrd().length < 4) return;
+  state.mode = m;
+  state.streak = 0;
+  if(m === "flashcard") fyllKo();
+  spara();
+  newQuestion();
+}
+document.getElementById("mode-flashcard").onclick = () => setMode("flashcard");
+document.getElementById("mode-flerval").onclick   = () => setMode("flerval");
+
+document.getElementById("picker-toggle").onclick = (e) => {
+  const t = e.currentTarget;
+  const open = t.getAttribute("aria-expanded") === "true";
+  t.setAttribute("aria-expanded", !open);
+  document.getElementById("picker-body").hidden = open;
+};
+document.querySelectorAll("[data-quick]").forEach(btn => {
+  btn.onclick = () => {
+    const q = btn.dataset.quick;
+    if(q === "sem-all")  state.valdaSem = new Set(SEMINARIER);
+    if(q === "sem-none") state.valdaSem = new Set();
+    if(q === "ok-all")   state.valdaOk  = new Set(ORDKLASSER);
+    if(q === "ok-none")  state.valdaOk  = new Set();
+    synkaToggles(); efterUrval();
+  };
+});
+
+document.addEventListener("keydown", (e) => {
+  if(e.target.closest(".picker")) return;
+  if(state.mode === "flashcard"){
+    if(e.code === "Space"){ e.preventDefault();
+      if(!state.vand){ state.vand = true; render(); } }
+    else if(state.vand && (e.code === "ArrowRight" || e.key === "Enter")){ e.preventDefault(); flashcardSvar(true); }
+    else if(state.vand && e.code === "ArrowLeft"){ e.preventDefault(); flashcardSvar(false); }
+  }else{
+    if(state.besvarad && (e.code === "Space" || e.key === "Enter")){ e.preventDefault(); newQuestion(); }
+    else if(!state.besvarad && /^[1-4]$/.test(e.key)){
+      const knapp = document.querySelectorAll(".opt")[+e.key - 1];
+      if(knapp) flervalSvar(knapp.dataset.glosa, knapp);
+    }
+  }
+});
+
+/* ── INIT ────────────────────────────────────────────────────────────── */
+ladda();
+byggPicker();
+if(state.mode === "flashcard") fyllKo();
+newQuestion();
+</script>
+</body>
+</html>

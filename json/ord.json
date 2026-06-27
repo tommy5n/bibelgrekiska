@@ -1,0 +1,1983 @@
+{
+  "_om": "Lexikon for bibelgrekiska kasus-spel. Andra deklinationens substantiv: maskulina (-ος) och neutrala (-ον); forsta deklinationens feminina substantiv (-α/-η). Alla former verifierade mot seminariets facit, NT-attestationer (MorphGNT) och LSJ/Smyth.",
+  "_genererad": "2026-06-25",
+  "_falt": {
+    "glosaGen": "Svensk genitiv (explicit dar -s-regeln inte racker, t.ex. Kristus -> Kristi)",
+    "accenttyp": "oxyton | paroxyton | proparoxyton | properispomenon",
+    "seminarium": "Kursseminarier dar ordet forekommer ([] = endast fran NT-frekvenslistan)",
+    "kortlekar": "Fordefinierade urval: sem1, sem2, ovriga, oxytona, neutrum, feminina",
+    "ntFrekvensOver60": "true om ordet forekommer >60 ggr i NT (annars seminarium 1-lasord)",
+    "deklination": "1 (feminina pa -α/-η) eller 2 (-ος/-ον)"
+  },
+  "_kortlekar": {
+    "sem1": "Seminarium 1 (lasovning)",
+    "sem2": "Seminarium 2 (deklinationslektion)",
+    "ovriga": "Hogfrekventa NT-ord (>60 ggr), ej i seminarielistorna",
+    "oxytona": "Accent pa sista stavelsen -> cirkumflex i genitiv/dativ",
+    "neutrum": "Andra deklinationens neutrala substantiv (-ον), seminarium 3",
+    "feminina": "Forsta deklinationens feminina substantiv (-α/-η), seminarium 4"
+  },
+  "ord": [
+    {
+      "lemma": "ἄνθρωπος",
+      "glosa": "människa",
+      "glosaGen": "människas",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        2
+      ],
+      "kortlekar": [
+        "sem2"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἄνθρωπος",
+          "pl": "ἄνθρωποι"
+        },
+        "gen": {
+          "sg": "ἀνθρώπου",
+          "pl": "ἀνθρώπων"
+        },
+        "dat": {
+          "sg": "ἀνθρώπῳ",
+          "pl": "ἀνθρώποις"
+        },
+        "ack": {
+          "sg": "ἄνθρωπον",
+          "pl": "ἀνθρώπους"
+        },
+        "vok": {
+          "sg": "ἄνθρωπε",
+          "pl": "ἄνθρωποι"
+        }
+      }
+    },
+    {
+      "lemma": "λόγος",
+      "glosa": "ord, berättelse",
+      "glosaGen": "ords, berättelses",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        2
+      ],
+      "kortlekar": [
+        "sem2"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "λόγος",
+          "pl": "λόγοι"
+        },
+        "gen": {
+          "sg": "λόγου",
+          "pl": "λόγων"
+        },
+        "dat": {
+          "sg": "λόγῳ",
+          "pl": "λόγοις"
+        },
+        "ack": {
+          "sg": "λόγον",
+          "pl": "λόγους"
+        },
+        "vok": {
+          "sg": "λόγε",
+          "pl": "λόγοι"
+        }
+      }
+    },
+    {
+      "lemma": "οἶκος",
+      "glosa": "hus",
+      "glosaGen": "husets",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "properispomenon",
+      "seminarium": [
+        2
+      ],
+      "kortlekar": [
+        "sem2"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "οἶκος",
+          "pl": "οἶκοι"
+        },
+        "gen": {
+          "sg": "οἴκου",
+          "pl": "οἴκων"
+        },
+        "dat": {
+          "sg": "οἴκῳ",
+          "pl": "οἴκοις"
+        },
+        "ack": {
+          "sg": "οἶκον",
+          "pl": "οἴκους"
+        },
+        "vok": {
+          "sg": "οἶκε",
+          "pl": "οἶκοι"
+        }
+      }
+    },
+    {
+      "lemma": "κύριος",
+      "glosa": "herre",
+      "glosaGen": "herres",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        2
+      ],
+      "kortlekar": [
+        "sem2"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "κύριος",
+          "pl": "κύριοι"
+        },
+        "gen": {
+          "sg": "κυρίου",
+          "pl": "κυρίων"
+        },
+        "dat": {
+          "sg": "κυρίῳ",
+          "pl": "κυρίοις"
+        },
+        "ack": {
+          "sg": "κύριον",
+          "pl": "κυρίους"
+        },
+        "vok": {
+          "sg": "κύριε",
+          "pl": "κύριοι"
+        }
+      }
+    },
+    {
+      "lemma": "θεός",
+      "glosa": "gud",
+      "glosaGen": "guds",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        1,
+        2
+      ],
+      "kortlekar": [
+        "sem1",
+        "sem2",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "θεός",
+          "pl": "θεοί"
+        },
+        "gen": {
+          "sg": "θεοῦ",
+          "pl": "θεῶν"
+        },
+        "dat": {
+          "sg": "θεῷ",
+          "pl": "θεοῖς"
+        },
+        "ack": {
+          "sg": "θεόν",
+          "pl": "θεούς"
+        },
+        "vok": {
+          "sg": "θεέ",
+          "pl": "θεοί"
+        }
+      }
+    },
+    {
+      "lemma": "ἀπόστολος",
+      "glosa": "apostel",
+      "glosaGen": "apostels",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        2
+      ],
+      "kortlekar": [
+        "sem2"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἀπόστολος",
+          "pl": "ἀπόστολοι"
+        },
+        "gen": {
+          "sg": "ἀποστόλου",
+          "pl": "ἀποστόλων"
+        },
+        "dat": {
+          "sg": "ἀποστόλῳ",
+          "pl": "ἀποστόλοις"
+        },
+        "ack": {
+          "sg": "ἀπόστολον",
+          "pl": "ἀποστόλους"
+        },
+        "vok": {
+          "sg": "ἀπόστολε",
+          "pl": "ἀπόστολοι"
+        }
+      }
+    },
+    {
+      "lemma": "ἄγγελος",
+      "glosa": "budbärare, ängel",
+      "glosaGen": "budbärares, ängels",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        1,
+        2
+      ],
+      "kortlekar": [
+        "sem1",
+        "sem2"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἄγγελος",
+          "pl": "ἄγγελοι"
+        },
+        "gen": {
+          "sg": "ἀγγέλου",
+          "pl": "ἀγγέλων"
+        },
+        "dat": {
+          "sg": "ἀγγέλῳ",
+          "pl": "ἀγγέλοις"
+        },
+        "ack": {
+          "sg": "ἄγγελον",
+          "pl": "ἀγγέλους"
+        },
+        "vok": {
+          "sg": "ἄγγελε",
+          "pl": "ἄγγελοι"
+        }
+      }
+    },
+    {
+      "lemma": "δοῦλος",
+      "glosa": "slav",
+      "glosaGen": "slavs",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "properispomenon",
+      "seminarium": [
+        2
+      ],
+      "kortlekar": [
+        "sem2"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "δοῦλος",
+          "pl": "δοῦλοι"
+        },
+        "gen": {
+          "sg": "δούλου",
+          "pl": "δούλων"
+        },
+        "dat": {
+          "sg": "δούλῳ",
+          "pl": "δούλοις"
+        },
+        "ack": {
+          "sg": "δοῦλον",
+          "pl": "δούλους"
+        },
+        "vok": {
+          "sg": "δοῦλε",
+          "pl": "δοῦλοι"
+        }
+      }
+    },
+    {
+      "lemma": "ἀδελφός",
+      "glosa": "bror",
+      "glosaGen": "brors",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        2
+      ],
+      "kortlekar": [
+        "sem2",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἀδελφός",
+          "pl": "ἀδελφοί"
+        },
+        "gen": {
+          "sg": "ἀδελφοῦ",
+          "pl": "ἀδελφῶν"
+        },
+        "dat": {
+          "sg": "ἀδελφῷ",
+          "pl": "ἀδελφοῖς"
+        },
+        "ack": {
+          "sg": "ἀδελφόν",
+          "pl": "ἀδελφούς"
+        },
+        "vok": {
+          "sg": "ἀδελφέ",
+          "pl": "ἀδελφοί"
+        }
+      }
+    },
+    {
+      "lemma": "ἄρτος",
+      "glosa": "bröd",
+      "glosaGen": "bröds",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "paroxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἄρτος",
+          "pl": "ἄρτοι"
+        },
+        "gen": {
+          "sg": "ἄρτου",
+          "pl": "ἄρτων"
+        },
+        "dat": {
+          "sg": "ἄρτῳ",
+          "pl": "ἄρτοις"
+        },
+        "ack": {
+          "sg": "ἄρτον",
+          "pl": "ἄρτους"
+        },
+        "vok": {
+          "sg": "ἄρτε",
+          "pl": "ἄρτοι"
+        }
+      }
+    },
+    {
+      "lemma": "θάνατος",
+      "glosa": "död",
+      "glosaGen": "döds",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "θάνατος",
+          "pl": "θάνατοι"
+        },
+        "gen": {
+          "sg": "θανάτου",
+          "pl": "θανάτων"
+        },
+        "dat": {
+          "sg": "θανάτῳ",
+          "pl": "θανάτοις"
+        },
+        "ack": {
+          "sg": "θάνατον",
+          "pl": "θανάτους"
+        },
+        "vok": {
+          "sg": "θάνατε",
+          "pl": "θάνατοι"
+        }
+      }
+    },
+    {
+      "lemma": "καιρός",
+      "glosa": "tid",
+      "glosaGen": "tids",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "καιρός",
+          "pl": "καιροί"
+        },
+        "gen": {
+          "sg": "καιροῦ",
+          "pl": "καιρῶν"
+        },
+        "dat": {
+          "sg": "καιρῷ",
+          "pl": "καιροῖς"
+        },
+        "ack": {
+          "sg": "καιρόν",
+          "pl": "καιρούς"
+        },
+        "vok": {
+          "sg": "καιρέ",
+          "pl": "καιροί"
+        }
+      }
+    },
+    {
+      "lemma": "καρπός",
+      "glosa": "frukt",
+      "glosaGen": "frukts",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "καρπός",
+          "pl": "καρποί"
+        },
+        "gen": {
+          "sg": "καρποῦ",
+          "pl": "καρπῶν"
+        },
+        "dat": {
+          "sg": "καρπῷ",
+          "pl": "καρποῖς"
+        },
+        "ack": {
+          "sg": "καρπόν",
+          "pl": "καρπούς"
+        },
+        "vok": {
+          "sg": "καρπέ",
+          "pl": "καρποί"
+        }
+      }
+    },
+    {
+      "lemma": "κόσμος",
+      "glosa": "värld",
+      "glosaGen": "världs",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "paroxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "κόσμος",
+          "pl": "κόσμοι"
+        },
+        "gen": {
+          "sg": "κόσμου",
+          "pl": "κόσμων"
+        },
+        "dat": {
+          "sg": "κόσμῳ",
+          "pl": "κόσμοις"
+        },
+        "ack": {
+          "sg": "κόσμον",
+          "pl": "κόσμους"
+        },
+        "vok": {
+          "sg": "κόσμε",
+          "pl": "κόσμοι"
+        }
+      }
+    },
+    {
+      "lemma": "λαός",
+      "glosa": "folk",
+      "glosaGen": "folks",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "λαός",
+          "pl": "λαοί"
+        },
+        "gen": {
+          "sg": "λαοῦ",
+          "pl": "λαῶν"
+        },
+        "dat": {
+          "sg": "λαῷ",
+          "pl": "λαοῖς"
+        },
+        "ack": {
+          "sg": "λαόν",
+          "pl": "λαούς"
+        },
+        "vok": {
+          "sg": "λαέ",
+          "pl": "λαοί"
+        }
+      }
+    },
+    {
+      "lemma": "νόμος",
+      "glosa": "lag",
+      "glosaGen": "lags",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "paroxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "νόμος",
+          "pl": "νόμοι"
+        },
+        "gen": {
+          "sg": "νόμου",
+          "pl": "νόμων"
+        },
+        "dat": {
+          "sg": "νόμῳ",
+          "pl": "νόμοις"
+        },
+        "ack": {
+          "sg": "νόμον",
+          "pl": "νόμους"
+        },
+        "vok": {
+          "sg": "νόμε",
+          "pl": "νόμοι"
+        }
+      }
+    },
+    {
+      "lemma": "οὐρανός",
+      "glosa": "himmel",
+      "glosaGen": "himmels",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        2
+      ],
+      "kortlekar": [
+        "sem2",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "οὐρανός",
+          "pl": "οὐρανοί"
+        },
+        "gen": {
+          "sg": "οὐρανοῦ",
+          "pl": "οὐρανῶν"
+        },
+        "dat": {
+          "sg": "οὐρανῷ",
+          "pl": "οὐρανοῖς"
+        },
+        "ack": {
+          "sg": "οὐρανόν",
+          "pl": "οὐρανούς"
+        },
+        "vok": {
+          "sg": "οὐρανέ",
+          "pl": "οὐρανοί"
+        }
+      }
+    },
+    {
+      "lemma": "ὀφθαλμός",
+      "glosa": "öga",
+      "glosaGen": "ögas",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ὀφθαλμός",
+          "pl": "ὀφθαλμοί"
+        },
+        "gen": {
+          "sg": "ὀφθαλμοῦ",
+          "pl": "ὀφθαλμῶν"
+        },
+        "dat": {
+          "sg": "ὀφθαλμῷ",
+          "pl": "ὀφθαλμοῖς"
+        },
+        "ack": {
+          "sg": "ὀφθαλμόν",
+          "pl": "ὀφθαλμούς"
+        },
+        "vok": {
+          "sg": "ὀφθαλμέ",
+          "pl": "ὀφθαλμοί"
+        }
+      }
+    },
+    {
+      "lemma": "ὄχλος",
+      "glosa": "folkhop",
+      "glosaGen": "folkhops",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "paroxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ὄχλος",
+          "pl": "ὄχλοι"
+        },
+        "gen": {
+          "sg": "ὄχλου",
+          "pl": "ὄχλων"
+        },
+        "dat": {
+          "sg": "ὄχλῳ",
+          "pl": "ὄχλοις"
+        },
+        "ack": {
+          "sg": "ὄχλον",
+          "pl": "ὄχλους"
+        },
+        "vok": {
+          "sg": "ὄχλε",
+          "pl": "ὄχλοι"
+        }
+      }
+    },
+    {
+      "lemma": "τόπος",
+      "glosa": "plats",
+      "glosaGen": "platsens",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "paroxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "τόπος",
+          "pl": "τόποι"
+        },
+        "gen": {
+          "sg": "τόπου",
+          "pl": "τόπων"
+        },
+        "dat": {
+          "sg": "τόπῳ",
+          "pl": "τόποις"
+        },
+        "ack": {
+          "sg": "τόπον",
+          "pl": "τόπους"
+        },
+        "vok": {
+          "sg": "τόπε",
+          "pl": "τόποι"
+        }
+      }
+    },
+    {
+      "lemma": "υἱός",
+      "glosa": "son",
+      "glosaGen": "sons",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        1
+      ],
+      "kortlekar": [
+        "sem1",
+        "ovriga",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "υἱός",
+          "pl": "υἱοί"
+        },
+        "gen": {
+          "sg": "υἱοῦ",
+          "pl": "υἱῶν"
+        },
+        "dat": {
+          "sg": "υἱῷ",
+          "pl": "υἱοῖς"
+        },
+        "ack": {
+          "sg": "υἱόν",
+          "pl": "υἱούς"
+        },
+        "vok": {
+          "sg": "υἱέ",
+          "pl": "υἱοί"
+        }
+      }
+    },
+    {
+      "lemma": "Φαρισαῖος",
+      "glosa": "farisé",
+      "glosaGen": "farisés",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "properispomenon",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "Φαρισαῖος",
+          "pl": "Φαρισαῖοι"
+        },
+        "gen": {
+          "sg": "Φαρισαίου",
+          "pl": "Φαρισαίων"
+        },
+        "dat": {
+          "sg": "Φαρισαίῳ",
+          "pl": "Φαρισαίοις"
+        },
+        "ack": {
+          "sg": "Φαρισαῖον",
+          "pl": "Φαρισαίους"
+        },
+        "vok": {
+          "sg": "Φαρισαῖε",
+          "pl": "Φαρισαῖοι"
+        }
+      }
+    },
+    {
+      "lemma": "Χριστός",
+      "glosa": "Kristus",
+      "glosaGen": "Kristi",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [],
+      "kortlekar": [
+        "ovriga",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "Χριστός",
+          "pl": "Χριστοί"
+        },
+        "gen": {
+          "sg": "Χριστοῦ",
+          "pl": "Χριστῶν"
+        },
+        "dat": {
+          "sg": "Χριστῷ",
+          "pl": "Χριστοῖς"
+        },
+        "ack": {
+          "sg": "Χριστόν",
+          "pl": "Χριστούς"
+        },
+        "vok": {
+          "sg": "Χριστέ",
+          "pl": "Χριστοί"
+        }
+      }
+    },
+    {
+      "lemma": "διάβολος",
+      "glosa": "djävul",
+      "glosaGen": "djävuls",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        1
+      ],
+      "kortlekar": [
+        "sem1"
+      ],
+      "ntFrekvensOver60": false,
+      "former": {
+        "nom": {
+          "sg": "διάβολος",
+          "pl": "διάβολοι"
+        },
+        "gen": {
+          "sg": "διαβόλου",
+          "pl": "διαβόλων"
+        },
+        "dat": {
+          "sg": "διαβόλῳ",
+          "pl": "διαβόλοις"
+        },
+        "ack": {
+          "sg": "διάβολον",
+          "pl": "διαβόλους"
+        },
+        "vok": {
+          "sg": "διάβολε",
+          "pl": "διάβολοι"
+        }
+      }
+    },
+    {
+      "lemma": "παράδεισος",
+      "glosa": "paradis",
+      "glosaGen": "paradisets",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        1
+      ],
+      "kortlekar": [
+        "sem1"
+      ],
+      "ntFrekvensOver60": false,
+      "former": {
+        "nom": {
+          "sg": "παράδεισος",
+          "pl": "παράδεισοι"
+        },
+        "gen": {
+          "sg": "παραδείσου",
+          "pl": "παραδείσων"
+        },
+        "dat": {
+          "sg": "παραδείσῳ",
+          "pl": "παραδείσοις"
+        },
+        "ack": {
+          "sg": "παράδεισον",
+          "pl": "παραδείσους"
+        },
+        "vok": {
+          "sg": "παράδεισε",
+          "pl": "παράδεισοι"
+        }
+      }
+    },
+    {
+      "lemma": "κατάλογος",
+      "glosa": "förteckning",
+      "glosaGen": "förtecknings",
+      "genus": "maskulinum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        1
+      ],
+      "kortlekar": [
+        "sem1"
+      ],
+      "ntFrekvensOver60": false,
+      "former": {
+        "nom": {
+          "sg": "κατάλογος",
+          "pl": "κατάλογοι"
+        },
+        "gen": {
+          "sg": "καταλόγου",
+          "pl": "καταλόγων"
+        },
+        "dat": {
+          "sg": "καταλόγῳ",
+          "pl": "καταλόγοις"
+        },
+        "ack": {
+          "sg": "κατάλογον",
+          "pl": "καταλόγους"
+        },
+        "vok": {
+          "sg": "κατάλογε",
+          "pl": "κατάλογοι"
+        }
+      }
+    },
+    {
+      "lemma": "ἔργον",
+      "glosa": "verk, arbete",
+      "glosaGen": "verks",
+      "genus": "neutrum",
+      "deklination": 2,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        3
+      ],
+      "kortlekar": [
+        "neutrum"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἔργον",
+          "pl": "ἔργα"
+        },
+        "gen": {
+          "sg": "ἔργου",
+          "pl": "ἔργων"
+        },
+        "dat": {
+          "sg": "ἔργῳ",
+          "pl": "ἔργοις"
+        },
+        "ack": {
+          "sg": "ἔργον",
+          "pl": "ἔργα"
+        },
+        "vok": {
+          "sg": "ἔργον",
+          "pl": "ἔργα"
+        }
+      }
+    },
+    {
+      "lemma": "τέκνον",
+      "glosa": "barn",
+      "glosaGen": "barns",
+      "genus": "neutrum",
+      "deklination": 2,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        3
+      ],
+      "kortlekar": [
+        "neutrum"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "τέκνον",
+          "pl": "τέκνα"
+        },
+        "gen": {
+          "sg": "τέκνου",
+          "pl": "τέκνων"
+        },
+        "dat": {
+          "sg": "τέκνῳ",
+          "pl": "τέκνοις"
+        },
+        "ack": {
+          "sg": "τέκνον",
+          "pl": "τέκνα"
+        },
+        "vok": {
+          "sg": "τέκνον",
+          "pl": "τέκνα"
+        }
+      }
+    },
+    {
+      "lemma": "εὐαγγέλιον",
+      "glosa": "evangelium, glatt budskap",
+      "glosaGen": "evangeliums",
+      "genus": "neutrum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        3
+      ],
+      "kortlekar": [
+        "neutrum"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "εὐαγγέλιον",
+          "pl": "εὐαγγέλια"
+        },
+        "gen": {
+          "sg": "εὐαγγελίου",
+          "pl": "εὐαγγελίων"
+        },
+        "dat": {
+          "sg": "εὐαγγελίῳ",
+          "pl": "εὐαγγελίοις"
+        },
+        "ack": {
+          "sg": "εὐαγγέλιον",
+          "pl": "εὐαγγέλια"
+        },
+        "vok": {
+          "sg": "εὐαγγέλιον",
+          "pl": "εὐαγγέλια"
+        }
+      }
+    },
+    {
+      "lemma": "ἱερόν",
+      "glosa": "tempel",
+      "glosaGen": "tempels",
+      "genus": "neutrum",
+      "deklination": 2,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        3
+      ],
+      "kortlekar": [
+        "neutrum",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἱερόν",
+          "pl": "ἱερά"
+        },
+        "gen": {
+          "sg": "ἱεροῦ",
+          "pl": "ἱερῶν"
+        },
+        "dat": {
+          "sg": "ἱερῷ",
+          "pl": "ἱεροῖς"
+        },
+        "ack": {
+          "sg": "ἱερόν",
+          "pl": "ἱερά"
+        },
+        "vok": {
+          "sg": "ἱερόν",
+          "pl": "ἱερά"
+        }
+      },
+      "_not": "τὸ ἱερόν är substantiverat neutrum av adj. ἱερός; MorphGNT lemmatiserar under ἱερός."
+    },
+    {
+      "lemma": "σημεῖον",
+      "glosa": "tecken",
+      "glosaGen": "tecknets",
+      "genus": "neutrum",
+      "deklination": 2,
+      "accenttyp": "properispomenon",
+      "seminarium": [
+        3
+      ],
+      "kortlekar": [
+        "neutrum"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "σημεῖον",
+          "pl": "σημεῖα"
+        },
+        "gen": {
+          "sg": "σημείου",
+          "pl": "σημείων"
+        },
+        "dat": {
+          "sg": "σημείῳ",
+          "pl": "σημείοις"
+        },
+        "ack": {
+          "sg": "σημεῖον",
+          "pl": "σημεῖα"
+        },
+        "vok": {
+          "sg": "σημεῖον",
+          "pl": "σημεῖα"
+        }
+      }
+    },
+    {
+      "lemma": "πλοῖον",
+      "glosa": "båt, skepp",
+      "glosaGen": "båts",
+      "genus": "neutrum",
+      "deklination": 2,
+      "accenttyp": "properispomenon",
+      "seminarium": [
+        3
+      ],
+      "kortlekar": [
+        "neutrum"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "πλοῖον",
+          "pl": "πλοῖα"
+        },
+        "gen": {
+          "sg": "πλοίου",
+          "pl": "πλοίων"
+        },
+        "dat": {
+          "sg": "πλοίῳ",
+          "pl": "πλοίοις"
+        },
+        "ack": {
+          "sg": "πλοῖον",
+          "pl": "πλοῖα"
+        },
+        "vok": {
+          "sg": "πλοῖον",
+          "pl": "πλοῖα"
+        }
+      }
+    },
+    {
+      "lemma": "σάββατον",
+      "glosa": "sabbat",
+      "glosaGen": "sabbats",
+      "genus": "neutrum",
+      "deklination": 2,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        3
+      ],
+      "kortlekar": [
+        "neutrum"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "σάββατον",
+          "pl": "σάββατα"
+        },
+        "gen": {
+          "sg": "σαββάτου",
+          "pl": "σαββάτων"
+        },
+        "dat": {
+          "sg": "σαββάτῳ",
+          "pl": "σαββάτοις"
+        },
+        "ack": {
+          "sg": "σάββατον",
+          "pl": "σάββατα"
+        },
+        "vok": {
+          "sg": "σάββατον",
+          "pl": "σάββατα"
+        }
+      }
+    },
+    {
+      "lemma": "ἀρχή",
+      "glosa": "begynnelse",
+      "glosaGen": "begynnelses",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": false,
+      "former": {
+        "nom": {
+          "sg": "ἀρχή",
+          "pl": "ἀρχαί"
+        },
+        "gen": {
+          "sg": "ἀρχῆς",
+          "pl": "ἀρχῶν"
+        },
+        "dat": {
+          "sg": "ἀρχῇ",
+          "pl": "ἀρχαῖς"
+        },
+        "ack": {
+          "sg": "ἀρχήν",
+          "pl": "ἀρχάς"
+        },
+        "vok": {
+          "sg": "ἀρχή",
+          "pl": "ἀρχαί"
+        }
+      }
+    },
+    {
+      "lemma": "φωνή",
+      "glosa": "röst",
+      "glosaGen": "rösts",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "φωνή",
+          "pl": "φωναί"
+        },
+        "gen": {
+          "sg": "φωνῆς",
+          "pl": "φωνῶν"
+        },
+        "dat": {
+          "sg": "φωνῇ",
+          "pl": "φωναῖς"
+        },
+        "ack": {
+          "sg": "φωνήν",
+          "pl": "φωνάς"
+        },
+        "vok": {
+          "sg": "φωνή",
+          "pl": "φωναί"
+        }
+      }
+    },
+    {
+      "lemma": "ψυχή",
+      "glosa": "själ",
+      "glosaGen": "själs",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ψυχή",
+          "pl": "ψυχαί"
+        },
+        "gen": {
+          "sg": "ψυχῆς",
+          "pl": "ψυχῶν"
+        },
+        "dat": {
+          "sg": "ψυχῇ",
+          "pl": "ψυχαῖς"
+        },
+        "ack": {
+          "sg": "ψυχήν",
+          "pl": "ψυχάς"
+        },
+        "vok": {
+          "sg": "ψυχή",
+          "pl": "ψυχαί"
+        }
+      }
+    },
+    {
+      "lemma": "ζωή",
+      "glosa": "liv",
+      "glosaGen": "livs",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ζωή",
+          "pl": "ζωαί"
+        },
+        "gen": {
+          "sg": "ζωῆς",
+          "pl": "ζωῶν"
+        },
+        "dat": {
+          "sg": "ζωῇ",
+          "pl": "ζωαῖς"
+        },
+        "ack": {
+          "sg": "ζωήν",
+          "pl": "ζωάς"
+        },
+        "vok": {
+          "sg": "ζωή",
+          "pl": "ζωαί"
+        }
+      }
+    },
+    {
+      "lemma": "ἐντολή",
+      "glosa": "bud, uppdrag",
+      "glosaGen": "buds",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἐντολή",
+          "pl": "ἐντολαί"
+        },
+        "gen": {
+          "sg": "ἐντολῆς",
+          "pl": "ἐντολῶν"
+        },
+        "dat": {
+          "sg": "ἐντολῇ",
+          "pl": "ἐντολαῖς"
+        },
+        "ack": {
+          "sg": "ἐντολήν",
+          "pl": "ἐντολάς"
+        },
+        "vok": {
+          "sg": "ἐντολή",
+          "pl": "ἐντολαί"
+        }
+      }
+    },
+    {
+      "lemma": "ἀδελφή",
+      "glosa": "syster",
+      "glosaGen": "systers",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": false,
+      "former": {
+        "nom": {
+          "sg": "ἀδελφή",
+          "pl": "ἀδελφαί"
+        },
+        "gen": {
+          "sg": "ἀδελφῆς",
+          "pl": "ἀδελφῶν"
+        },
+        "dat": {
+          "sg": "ἀδελφῇ",
+          "pl": "ἀδελφαῖς"
+        },
+        "ack": {
+          "sg": "ἀδελφήν",
+          "pl": "ἀδελφάς"
+        },
+        "vok": {
+          "sg": "ἀδελφή",
+          "pl": "ἀδελφαί"
+        }
+      }
+    },
+    {
+      "lemma": "κεφαλή",
+      "glosa": "huvud",
+      "glosaGen": "huvuds",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "κεφαλή",
+          "pl": "κεφαλαί"
+        },
+        "gen": {
+          "sg": "κεφαλῆς",
+          "pl": "κεφαλῶν"
+        },
+        "dat": {
+          "sg": "κεφαλῇ",
+          "pl": "κεφαλαῖς"
+        },
+        "ack": {
+          "sg": "κεφαλήν",
+          "pl": "κεφαλάς"
+        },
+        "vok": {
+          "sg": "κεφαλή",
+          "pl": "κεφαλαί"
+        }
+      }
+    },
+    {
+      "lemma": "συναγωγή",
+      "glosa": "synagoga",
+      "glosaGen": "synagogas",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "oxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina",
+        "oxytona"
+      ],
+      "ntFrekvensOver60": false,
+      "former": {
+        "nom": {
+          "sg": "συναγωγή",
+          "pl": "συναγωγαί"
+        },
+        "gen": {
+          "sg": "συναγωγῆς",
+          "pl": "συναγωγῶν"
+        },
+        "dat": {
+          "sg": "συναγωγῇ",
+          "pl": "συναγωγαῖς"
+        },
+        "ack": {
+          "sg": "συναγωγήν",
+          "pl": "συναγωγάς"
+        },
+        "vok": {
+          "sg": "συναγωγή",
+          "pl": "συναγωγαί"
+        }
+      }
+    },
+    {
+      "lemma": "ἀγάπη",
+      "glosa": "kärlek",
+      "glosaGen": "kärleks",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἀγάπη",
+          "pl": "ἀγάπαι"
+        },
+        "gen": {
+          "sg": "ἀγάπης",
+          "pl": "ἀγαπῶν"
+        },
+        "dat": {
+          "sg": "ἀγάπῃ",
+          "pl": "ἀγάπαις"
+        },
+        "ack": {
+          "sg": "ἀγάπην",
+          "pl": "ἀγάπας"
+        },
+        "vok": {
+          "sg": "ἀγάπη",
+          "pl": "ἀγάπαι"
+        }
+      }
+    },
+    {
+      "lemma": "εἰρήνη",
+      "glosa": "fred",
+      "glosaGen": "freds",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "εἰρήνη",
+          "pl": "εἰρῆναι"
+        },
+        "gen": {
+          "sg": "εἰρήνης",
+          "pl": "εἰρηνῶν"
+        },
+        "dat": {
+          "sg": "εἰρήνῃ",
+          "pl": "εἰρήναις"
+        },
+        "ack": {
+          "sg": "εἰρήνην",
+          "pl": "εἰρήνας"
+        },
+        "vok": {
+          "sg": "εἰρήνη",
+          "pl": "εἰρῆναι"
+        }
+      }
+    },
+    {
+      "lemma": "δικαιοσύνη",
+      "glosa": "rättfärdighet, rättvisa",
+      "glosaGen": "rättfärdighets",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "δικαιοσύνη",
+          "pl": "δικαιοσύναι"
+        },
+        "gen": {
+          "sg": "δικαιοσύνης",
+          "pl": "δικαιοσυνῶν"
+        },
+        "dat": {
+          "sg": "δικαιοσύνῃ",
+          "pl": "δικαιοσύναις"
+        },
+        "ack": {
+          "sg": "δικαιοσύνην",
+          "pl": "δικαιοσύνας"
+        },
+        "vok": {
+          "sg": "δικαιοσύνη",
+          "pl": "δικαιοσύναι"
+        }
+      }
+    },
+    {
+      "lemma": "ἐκκλησία",
+      "glosa": "församling, kyrka",
+      "glosaGen": "församlings",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἐκκλησία",
+          "pl": "ἐκκλησίαι"
+        },
+        "gen": {
+          "sg": "ἐκκλησίας",
+          "pl": "ἐκκλησιῶν"
+        },
+        "dat": {
+          "sg": "ἐκκλησίᾳ",
+          "pl": "ἐκκλησίαις"
+        },
+        "ack": {
+          "sg": "ἐκκλησίαν",
+          "pl": "ἐκκλησίας"
+        },
+        "vok": {
+          "sg": "ἐκκλησία",
+          "pl": "ἐκκλησίαι"
+        }
+      }
+    },
+    {
+      "lemma": "ἡμέρα",
+      "glosa": "dag",
+      "glosaGen": "dags",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἡμέρα",
+          "pl": "ἡμέραι"
+        },
+        "gen": {
+          "sg": "ἡμέρας",
+          "pl": "ἡμερῶν"
+        },
+        "dat": {
+          "sg": "ἡμέρᾳ",
+          "pl": "ἡμέραις"
+        },
+        "ack": {
+          "sg": "ἡμέραν",
+          "pl": "ἡμέρας"
+        },
+        "vok": {
+          "sg": "ἡμέρα",
+          "pl": "ἡμέραι"
+        }
+      }
+    },
+    {
+      "lemma": "ἁμαρτία",
+      "glosa": "synd, felsteg",
+      "glosaGen": "synds",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἁμαρτία",
+          "pl": "ἁμαρτίαι"
+        },
+        "gen": {
+          "sg": "ἁμαρτίας",
+          "pl": "ἁμαρτιῶν"
+        },
+        "dat": {
+          "sg": "ἁμαρτίᾳ",
+          "pl": "ἁμαρτίαις"
+        },
+        "ack": {
+          "sg": "ἁμαρτίαν",
+          "pl": "ἁμαρτίας"
+        },
+        "vok": {
+          "sg": "ἁμαρτία",
+          "pl": "ἁμαρτίαι"
+        }
+      }
+    },
+    {
+      "lemma": "ἐξουσία",
+      "glosa": "makt",
+      "glosaGen": "makts",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἐξουσία",
+          "pl": "ἐξουσίαι"
+        },
+        "gen": {
+          "sg": "ἐξουσίας",
+          "pl": "ἐξουσιῶν"
+        },
+        "dat": {
+          "sg": "ἐξουσίᾳ",
+          "pl": "ἐξουσίαις"
+        },
+        "ack": {
+          "sg": "ἐξουσίαν",
+          "pl": "ἐξουσίας"
+        },
+        "vok": {
+          "sg": "ἐξουσία",
+          "pl": "ἐξουσίαι"
+        }
+      }
+    },
+    {
+      "lemma": "καρδία",
+      "glosa": "hjärta",
+      "glosaGen": "hjärtas",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "καρδία",
+          "pl": "καρδίαι"
+        },
+        "gen": {
+          "sg": "καρδίας",
+          "pl": "καρδιῶν"
+        },
+        "dat": {
+          "sg": "καρδίᾳ",
+          "pl": "καρδίαις"
+        },
+        "ack": {
+          "sg": "καρδίαν",
+          "pl": "καρδίας"
+        },
+        "vok": {
+          "sg": "καρδία",
+          "pl": "καρδίαι"
+        }
+      }
+    },
+    {
+      "lemma": "βασιλεία",
+      "glosa": "rike, kungadöme",
+      "glosaGen": "rikes",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "βασιλεία",
+          "pl": "βασιλεῖαι"
+        },
+        "gen": {
+          "sg": "βασιλείας",
+          "pl": "βασιλειῶν"
+        },
+        "dat": {
+          "sg": "βασιλείᾳ",
+          "pl": "βασιλείαις"
+        },
+        "ack": {
+          "sg": "βασιλείαν",
+          "pl": "βασιλείας"
+        },
+        "vok": {
+          "sg": "βασιλεία",
+          "pl": "βασιλεῖαι"
+        }
+      }
+    },
+    {
+      "lemma": "ὥρα",
+      "glosa": "stund, timme",
+      "glosaGen": "stunds",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "paroxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ὥρα",
+          "pl": "ὧραι"
+        },
+        "gen": {
+          "sg": "ὥρας",
+          "pl": "ὡρῶν"
+        },
+        "dat": {
+          "sg": "ὥρᾳ",
+          "pl": "ὥραις"
+        },
+        "ack": {
+          "sg": "ὥραν",
+          "pl": "ὥρας"
+        },
+        "vok": {
+          "sg": "ὥρα",
+          "pl": "ὧραι"
+        }
+      }
+    },
+    {
+      "lemma": "ἀλήθεια",
+      "glosa": "sanning",
+      "glosaGen": "sannings",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "ἀλήθεια",
+          "pl": "ἀλήθειαι"
+        },
+        "gen": {
+          "sg": "ἀληθείας",
+          "pl": "ἀληθειῶν"
+        },
+        "dat": {
+          "sg": "ἀληθείᾳ",
+          "pl": "ἀληθείαις"
+        },
+        "ack": {
+          "sg": "ἀλήθειαν",
+          "pl": "ἀληθείας"
+        },
+        "vok": {
+          "sg": "ἀλήθεια",
+          "pl": "ἀλήθειαι"
+        }
+      }
+    },
+    {
+      "lemma": "θάλασσα",
+      "glosa": "hav, sjö",
+      "glosaGen": "havs",
+      "genus": "femininum",
+      "deklination": 1,
+      "accenttyp": "proparoxyton",
+      "seminarium": [
+        4
+      ],
+      "kortlekar": [
+        "feminina"
+      ],
+      "ntFrekvensOver60": true,
+      "former": {
+        "nom": {
+          "sg": "θάλασσα",
+          "pl": "θάλασσαι"
+        },
+        "gen": {
+          "sg": "θαλάσσης",
+          "pl": "θαλασσῶν"
+        },
+        "dat": {
+          "sg": "θαλάσσῃ",
+          "pl": "θαλάσσαις"
+        },
+        "ack": {
+          "sg": "θάλασσαν",
+          "pl": "θαλάσσας"
+        },
+        "vok": {
+          "sg": "θάλασσα",
+          "pl": "θάλασσαι"
+        }
+      }
+    }
+  ]
+}
