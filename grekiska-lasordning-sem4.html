@@ -110,6 +110,13 @@
   footer{margin-top:2rem; padding-top:1.2rem; border-top:1px solid var(--line);
     color:var(--ink-soft); font-style:italic; font-size:var(--fs-xl); text-align:center;}
 </style>
+<style>
+.site-foot{margin:2.4rem 0 .5rem; text-align:center;}
+.site-foot a{font-family:inherit; color:var(--ink-soft); font-style:italic; font-size:.95rem;
+  text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:.12rem;
+  transition:color .15s, border-color .15s;}
+.site-foot a:hover{color:var(--gold); border-color:var(--gold);}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -251,6 +258,12 @@ document.getElementById("reset").addEventListener("click", () => {
 
 ladda();
 render();
+</script>
+<footer class="site-foot"><a href="index.html">← Alla spel</a></footer>
+<script>
+if("serviceWorker" in navigator){
+  addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
 </script>
 </body>
 </html>

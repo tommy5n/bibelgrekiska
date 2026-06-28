@@ -46,7 +46,7 @@
     background:var(--card); border:1px solid var(--line); border-radius:10px;
     padding:.45rem 1.05rem; cursor:pointer; transition:.2s;
   }
-  .mode:hover:not(:disabled){border-color:var(--gold); color:var(--ink);}
+  .mode:not([aria-pressed="true"]):hover:not(:disabled){border-color:var(--gold); color:var(--ink);}
   .mode[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink);}
   .mode:disabled{opacity:.4; cursor:default;}
 
@@ -135,6 +135,13 @@
   .deck-grid .toggle{flex:1; text-align:center; font-size:var(--fs-lg); padding:.5rem .6rem;}
   .deck-desc{color:var(--ink-soft); font-size:var(--fs-xs); font-style:italic; margin-top:.55rem;}
   .picker-section[hidden]{display:none;}
+</style>
+<style>
+.site-foot{margin:2.4rem 0 .5rem; text-align:center;}
+.site-foot a{font-family:inherit; color:var(--ink-soft); font-style:italic; font-size:.95rem;
+  text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:.12rem;
+  transition:color .15s, border-color .15s;}
+.site-foot a:hover{color:var(--gold); border-color:var(--gold);}
 </style>
 </head>
 <body>
@@ -875,6 +882,12 @@ ladda();
 byggPicker();
 if(state.mode === "flashcard") fyllKo();
 newQuestion();
+</script>
+<footer class="site-foot"><a href="index.html">← Alla spel</a></footer>
+<script>
+if("serviceWorker" in navigator){
+  addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
 </script>
 </body>
 </html>

@@ -140,5 +140,10 @@
       <a href="Bibelgrekiska-lathund-sem4.pdf">Lathund (PDF) ↗</a>
     </footer>
   </main>
+<script>
+if("serviceWorker" in navigator){
+  addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
+</script>
 </body>
 </html>
