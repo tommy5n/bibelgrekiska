@@ -6,9 +6,21 @@
 <title>Grekiska — kasusigenkänning</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cardo:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
+    /* Typografisk skala — ändra ett värde här för att skala om */
+    --fs-3xs: .88rem;
+    --fs-2xs: .9rem;
+    --fs-xs: .92rem;
+    --fs-sm: 1rem;
+    --fs-md: 1.02rem;
+    --fs-lg: 1.05rem;
+    --fs-xl: 1.08rem;
+    --fs-2xl: 1.35rem;
+    --fs-3xl: 1.6rem;
+    --fs-4xl: 3.2rem;   /* grekisk display */
+
     --paper:#f7f1e6; --paper-2:#efe7d6; --card:#fffdf7;
     --ink:#2c2620; --ink-soft:#6f6557; --line:#e3d9c6; --gold:#a8842c;
     --good:#3f7a4f; --good-bg:#eaf3e7; --bad:#a8492c; --bad-bg:#f6eae4;
@@ -23,13 +35,13 @@
   @keyframes rise{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;}}
 
   header{text-align:center; margin-bottom:1.4rem; animation:rise .6s ease both;}
-  h1{font-size:1.5rem; font-weight:600; margin:0 0 .25rem;}
-  .sub{color:var(--ink-soft); font-size:.92rem; font-style:italic;}
+  h1{font-size:var(--fs-3xl); font-weight:600; margin:0 0 .25rem;}
+  .sub{color:var(--ink-soft); font-size:var(--fs-md); font-style:italic;}
 
   /* lägesväljare */
   .modes{display:flex; gap:.5rem; margin-bottom:1.1rem; animation:rise .6s ease both;}
   .mode{
-    font-family:inherit; font-size:.92rem; color:var(--ink-soft);
+    font-family:inherit; font-size:var(--fs-md); color:var(--ink-soft);
     background:var(--card); border:1px solid var(--line); border-radius:10px;
     padding:.45rem 1.05rem; cursor:pointer; transition:.2s;
   }
@@ -43,18 +55,18 @@
     padding:2.2rem 1.4rem; text-align:center; box-shadow:0 1px 0 rgba(0,0,0,.02);
     animation:rise .35s ease both;
   }
-  .form{font-size:3.2rem; font-weight:500; letter-spacing:.01em; min-height:1.2em;}
-  .glosa{color:var(--ink-soft); font-style:italic; margin-top:.4rem; font-size:1rem;}
+  .form{font-size:var(--fs-4xl); font-weight:500; letter-spacing:.01em; min-height:1.2em;}
+  .glosa{color:var(--ink-soft); font-style:italic; margin-top:.4rem; font-size:var(--fs-xl);}
   .reveal{margin-top:1.2rem; padding-top:1.1rem; border-top:1px solid var(--line);}
-  .reveal .kasus{font-size:1.35rem; font-weight:600; color:var(--gold);}
-  .reveal .satsdel{font-size:1.05rem; margin-top:.15rem;}
-  .reveal .fraga{color:var(--ink-soft); font-style:italic; margin-top:.1rem; font-size:.95rem;}
-  .reveal .not{color:var(--ink-soft); font-size:.82rem; margin-top:.55rem;}
+  .reveal .kasus{font-size:var(--fs-2xl); font-weight:600; color:var(--gold);}
+  .reveal .satsdel{font-size:var(--fs-lg); margin-top:.15rem;}
+  .reveal .fraga{color:var(--ink-soft); font-style:italic; margin-top:.1rem; font-size:var(--fs-lg);}
+  .reveal .not{color:var(--ink-soft); font-size:var(--fs-xs); margin-top:.55rem;}
 
   /* knappar under kortet */
   .controls{display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:1.1rem; width:100%;}
   .btn{
-    font-family:inherit; font-size:.95rem; padding:.55rem 1.2rem; border-radius:10px;
+    font-family:inherit; font-size:var(--fs-lg); padding:.55rem 1.2rem; border-radius:10px;
     border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; transition:.18s;
   }
   .btn:hover{border-color:var(--gold);}
@@ -65,7 +77,7 @@
   /* flerval-alternativ */
   .options{display:grid; grid-template-columns:1fr 1fr; gap:.55rem; width:100%; margin-top:1.1rem;}
   .opt{
-    font-family:inherit; font-size:1rem; padding:.7rem .5rem; border-radius:10px;
+    font-family:inherit; font-size:var(--fs-xl); padding:.7rem .5rem; border-radius:10px;
     border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; transition:.15s;
   }
   .opt:hover:not(:disabled){border-color:var(--gold);}
@@ -74,13 +86,13 @@
   .opt.wrong{background:var(--bad-bg); border-color:var(--bad); color:var(--bad);}
 
   /* streak */
-  .streak{margin-top:1.2rem; color:var(--ink-soft); font-size:.92rem; text-align:center;}
+  .streak{margin-top:1.2rem; color:var(--ink-soft); font-size:var(--fs-md); text-align:center;}
   .streak b{color:var(--ink); font-weight:600;}
 
   /* väljaren */
   .picker{width:min(440px,100%); margin-top:1.6rem; animation:rise .6s ease both;}
   .picker-toggle{
-    width:100%; font-family:inherit; font-size:.95rem; color:var(--ink-soft);
+    width:100%; font-family:inherit; font-size:var(--fs-lg); color:var(--ink-soft);
     background:var(--card); border:1px solid var(--line); border-radius:10px; padding:.6rem 1rem;
     cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:.2s;
   }
@@ -88,19 +100,19 @@
   .picker-toggle .chev{transition:transform .25s ease;}
   .picker-toggle[aria-expanded="true"] .chev{transform:rotate(180deg);}
   .picker-body{margin-top:.7rem; padding:1rem; background:var(--card); border:1px solid var(--line); border-radius:10px;}
-  .picker-body h2{font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);
+  .picker-body h2{font-size:var(--fs-2xs); text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);
     font-weight:600; margin:.2rem 0 .5rem;}
   .picker-section + .picker-section{margin-top:1.1rem;}
   .quickrow{display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.7rem;}
-  .quicklabel{align-self:center; font-size:.8rem; color:var(--ink-soft); margin-right:.15rem;}
+  .quicklabel{align-self:center; font-size:var(--fs-2xs); color:var(--ink-soft); margin-right:.15rem;}
   .chip{
-    font-family:inherit; font-size:.8rem; padding:.3rem .7rem; border-radius:999px;
+    font-family:inherit; font-size:var(--fs-2xs); padding:.3rem .7rem; border-radius:999px;
     border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); cursor:pointer; transition:.15s;
   }
   .chip:hover{border-color:var(--gold); color:var(--ink);}
   .grid{display:flex; flex-wrap:wrap; gap:.4rem;}
   .toggle{
-    font-family:inherit; font-size:.92rem; padding:.35rem .7rem; border-radius:8px; text-transform:lowercase;
+    font-family:inherit; font-size:var(--fs-md); padding:.35rem .7rem; border-radius:8px; text-transform:lowercase;
     border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); cursor:pointer; transition:.15s;
     position:relative;
   }
@@ -111,20 +123,20 @@
     content:attr(data-tip);
     position:absolute; left:50%; bottom:calc(100% + 6px); transform:translateX(-50%);
     white-space:nowrap; background:var(--ink); color:var(--paper);
-    font-size:.78rem; text-transform:none; padding:.25rem .5rem; border-radius:6px;
+    font-size:var(--fs-3xs); text-transform:none; padding:.25rem .5rem; border-radius:6px;
     pointer-events:none; z-index:5;
   }
   .toggle[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink);}
   /* segmenterad numerus-kontroll */
   .seg{display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
   .seg button{
-    font-family:inherit; font-size:.9rem; padding:.4rem .9rem; border:0; background:var(--card);
+    font-family:inherit; font-size:var(--fs-sm); padding:.4rem .9rem; border:0; background:var(--card);
     color:var(--ink-soft); cursor:pointer; transition:.15s;
   }
   .seg button + button{border-left:1px solid var(--line);}
   .seg button[aria-pressed="true"]{background:var(--ink); color:var(--paper);}
 
-  footer{margin-top:2rem; color:var(--ink-soft); font-size:.8rem; text-align:center; max-width:440px;}
+  footer{margin-top:2rem; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; max-width:440px;}
   footer code{background:var(--paper-2); padding:.05rem .35rem; border-radius:4px;}
   .hidden{display:none !important;}
 </style>

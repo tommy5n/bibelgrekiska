@@ -6,9 +6,21 @@
 <title>Grekiska — kongruens</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cardo:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
+    /* Typografisk skala — ändra ett värde här för att skala om */
+    --fs-3xs: .8rem;
+    --fs-2xs: .9rem;
+    --fs-xs: .96rem;
+    --fs-sm: 1rem;
+    --fs-md: 1.02rem;
+    --fs-lg: 1.05rem;
+    --fs-xl: 1.15rem;
+    --fs-2xl: 1.45rem;
+    --fs-3xl: 1.6rem;
+    --fs-4xl: 2.05rem;   /* grekisk display */
+
     /* samma papper-och-guld-palett som de andra spelen — konsistens i sviten */
     --paper:#f7f1e6; --paper-2:#efe7d6; --card:#fffdf7;
     --ink:#2c2620; --ink-soft:#6f6557; --line:#e3d9c6; --gold:#a8842c;
@@ -30,8 +42,8 @@
   }
 
   header{text-align:center; margin-bottom:1.4rem; animation:rise .6s ease both;}
-  h1{font-size:1.5rem; font-weight:600; margin:0 0 .25rem;}
-  .sub{color:var(--ink-soft); font-size:.92rem; font-style:italic;}
+  h1{font-size:var(--fs-3xl); font-weight:600; margin:0 0 .25rem;}
+  .sub{color:var(--ink-soft); font-size:var(--fs-md); font-style:italic;}
 
   .stage{width:min(560px,100%); display:flex; flex-direction:column; align-items:center;}
   .card{
@@ -39,14 +51,14 @@
     padding:1.7rem 1.4rem 1.9rem; box-shadow:0 1px 0 rgba(0,0,0,.02);
     animation:rise .35s ease both; position:relative;
   }
-  .prompt{ text-align:center; color:var(--ink-soft); font-size:.95rem; }
-  .prompt .lemma{ color:var(--ink); font-weight:600; font-style:normal; font-size:1.15rem; }
+  .prompt{ text-align:center; color:var(--ink-soft); font-size:var(--fs-lg); }
+  .prompt .lemma{ color:var(--ink); font-weight:600; font-style:normal; font-size:var(--fs-xl); }
   .prompt .glosa{ font-style:italic; }
 
   /* frasen — artikel _____ substantiv */
   .fras{
     display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; align-items:center;
-    margin:1.5rem 0 1.7rem; font-size:1.9rem; line-height:1.15;
+    margin:1.5rem 0 1.7rem; font-size:var(--fs-4xl); line-height:1.15;
   }
   .slot{
     min-width:3.2rem; text-align:center; color:var(--ink-soft);
@@ -57,14 +69,14 @@
   /* svarsalternativ */
   .alternativ{ display:grid; grid-template-columns:1fr 1fr; gap:.55rem; }
   .opt{
-    font-family:inherit; font-size:1.35rem; color:var(--ink);
+    font-family:inherit; font-size:var(--fs-2xl); color:var(--ink);
     background:var(--card); border:1.5px solid var(--line); border-radius:12px;
     padding:.55rem .6rem .5rem; cursor:pointer; transition:.15s;
     display:flex; flex-direction:column; align-items:center; gap:.15rem;
   }
   .opt:hover:not(:disabled){ border-color:var(--gold); }
   .opt:disabled{ cursor:default; }
-  .opt .axel{ font-size:.66rem; font-style:italic; color:var(--ink-soft);
+  .opt .axel{ font-size:var(--fs-3xs); font-style:italic; color:var(--ink-soft);
     height:.9rem; letter-spacing:.02em; }
   .opt.skaka{ animation:shake .35s ease; }
   .opt.ratt{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
@@ -73,27 +85,27 @@
 
   /* facit */
   .reveal{ margin-top:1.3rem; padding-top:1.05rem; border-top:1px solid var(--line); text-align:center; }
-  .reveal .helfras{ font-size:1.35rem; color:var(--ink); }
-  .reveal .analys{ margin-top:.5rem; font-size:.86rem; text-transform:uppercase;
+  .reveal .helfras{ font-size:var(--fs-2xl); color:var(--ink); }
+  .reveal .analys{ margin-top:.5rem; font-size:var(--fs-xs); text-transform:uppercase;
     letter-spacing:.07em; color:var(--axel); }
-  .reveal .not{ color:var(--ink-soft); font-size:.86rem; font-style:italic; margin-top:.45rem; }
+  .reveal .not{ color:var(--ink-soft); font-size:var(--fs-xs); font-style:italic; margin-top:.45rem; }
 
   .controls{display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:1.2rem; width:100%;}
   .btn{
-    font-family:inherit; font-size:.95rem; padding:.55rem 1.2rem; border-radius:10px;
+    font-family:inherit; font-size:var(--fs-lg); padding:.55rem 1.2rem; border-radius:10px;
     border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; transition:.18s;
   }
   .btn:hover{border-color:var(--gold);}
   .btn.primary{background:var(--ink); color:var(--paper); border-color:var(--ink);}
   .btn.ghost{ color:var(--ink-soft); }
 
-  .streak{margin-top:1.2rem; color:var(--ink-soft); font-size:.92rem; text-align:center;}
+  .streak{margin-top:1.2rem; color:var(--ink-soft); font-size:var(--fs-md); text-align:center;}
   .streak b{color:var(--ink); font-weight:600;}
 
   /* väljaren */
   .picker{width:min(560px,100%); margin-top:1.6rem; animation:rise .6s ease both;}
   .picker-toggle{
-    width:100%; font-family:inherit; font-size:.95rem; color:var(--ink-soft);
+    width:100%; font-family:inherit; font-size:var(--fs-lg); color:var(--ink-soft);
     background:var(--card); border:1px solid var(--line); border-radius:10px; padding:.6rem 1rem;
     cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:.2s;
   }
@@ -102,24 +114,24 @@
   .picker-toggle[aria-expanded="true"] .chev{transform:rotate(180deg);}
   .picker-body{margin-top:.7rem; padding:1rem; background:var(--card); border:1px solid var(--line); border-radius:10px;}
   .picker-section + .picker-section{margin-top:1.1rem;}
-  .picker-section h2{font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);
+  .picker-section h2{font-size:var(--fs-2xs); text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);
     font-weight:600; margin:.2rem 0 .5rem;}
   .seg{display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; flex-wrap:wrap;}
   .seg button{
-    font-family:inherit; font-size:.9rem; padding:.4rem .9rem; border:0; background:var(--card);
+    font-family:inherit; font-size:var(--fs-sm); padding:.4rem .9rem; border:0; background:var(--card);
     color:var(--ink-soft); cursor:pointer; transition:.15s;
   }
   .seg button + button{border-left:1px solid var(--line);}
   .seg button[aria-pressed="true"]{background:var(--ink); color:var(--paper);}
   .toggle{
-    font-family:inherit; font-size:.9rem; padding:.4rem .8rem; border-radius:8px;
+    font-family:inherit; font-size:var(--fs-sm); padding:.4rem .8rem; border-radius:8px;
     border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); cursor:pointer; transition:.15s;
   }
   .toggle:hover{border-color:var(--gold);}
   .toggle[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink);}
-  .hint{font-size:.8rem; color:var(--ink-soft); font-style:italic; margin-top:.5rem;}
+  .hint{font-size:var(--fs-2xs); color:var(--ink-soft); font-style:italic; margin-top:.5rem;}
 
-  footer{margin-top:2rem; color:var(--ink-soft); font-size:.8rem; text-align:center; max-width:560px;}
+  footer{margin-top:2rem; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; max-width:560px;}
   .hidden{display:none !important;}
 </style>
 </head>

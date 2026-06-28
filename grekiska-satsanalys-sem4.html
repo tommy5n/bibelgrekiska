@@ -6,9 +6,25 @@
 <title>Grekiska — satsanalys</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Cardo:ital,wght@0,400;0,700;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
+    /* Typografisk skala — ändra ett värde här för att skala om */
+    --fs-3xs: .8rem;
+    --fs-2xs: .84rem;
+    --fs-xs: .86rem;
+    --fs-sm: .88rem;
+    --fs-md: .9rem;
+    --fs-lg: .92rem;
+    --fs-xl: .96rem;
+    --fs-2xl: 1rem;
+    --fs-3xl: 1.02rem;
+    --fs-4xl: 1.05rem;
+    --fs-5xl: 1.08rem;
+    --fs-6xl: 1.12rem;
+    --fs-7xl: 1.6rem;
+    --fs-8xl: 1.85rem;   /* grekisk display */
+
     /* samma papper-och-guld-palett som kasus-spelet — konsistens mellan spelen */
     --paper:#f7f1e6; --paper-2:#efe7d6; --card:#fffdf7;
     --ink:#2c2620; --ink-soft:#6f6557; --line:#e3d9c6; --gold:#a8842c;
@@ -50,13 +66,13 @@
   }
 
   header{text-align:center; margin-bottom:1.4rem; animation:rise .6s ease both;}
-  h1{font-size:1.5rem; font-weight:600; margin:0 0 .25rem;}
-  .sub{color:var(--ink-soft); font-size:.92rem; font-style:italic;}
+  h1{font-size:var(--fs-7xl); font-weight:600; margin:0 0 .25rem;}
+  .sub{color:var(--ink-soft); font-size:var(--fs-3xl); font-style:italic;}
 
   /* lägesväljare */
   .modes{display:flex; gap:.5rem; margin-bottom:1.1rem; animation:rise .6s ease both;}
   .mode{
-    font-family:inherit; font-size:.92rem; color:var(--ink-soft);
+    font-family:inherit; font-size:var(--fs-3xl); color:var(--ink-soft);
     background:var(--card); border:1px solid var(--line); border-radius:10px;
     padding:.45rem 1.05rem; cursor:pointer; transition:.2s;
   }
@@ -72,7 +88,7 @@
   }
   /* källflagga uppe i kortet */
   .kalla{
-    position:absolute; top:.85rem; right:.95rem; font-size:.72rem; font-style:italic;
+    position:absolute; top:.85rem; right:.95rem; font-size:var(--fs-2xs); font-style:italic;
     padding:.12rem .5rem; border-radius:999px; border:1px solid var(--line);
   }
   .kalla.kurs   { color:var(--gold);     border-color:#e3d3a6; background:#faf4e2; }
@@ -84,12 +100,12 @@
     margin:1.5rem 0 .4rem; min-height:3.2rem; align-items:flex-end;
   }
   .chunk{
-    font-family:inherit; font-size:1.7rem; line-height:1.15; color:var(--ink);
+    font-family:inherit; font-size:var(--fs-8xl); line-height:1.15; color:var(--ink);
     background:var(--card); border:1.5px solid var(--line); border-radius:12px;
     padding:.35rem .7rem .3rem; cursor:pointer; transition:.15s; position:relative;
     display:flex; flex-direction:column; align-items:center;
   }
-  .chunk .etikett{ font-size:.66rem; font-style:italic; letter-spacing:.02em;
+  .chunk .etikett{ font-size:var(--fs-3xs); font-style:italic; letter-spacing:.02em;
     margin-top:.2rem; height:.9rem; color:var(--ink-soft); text-transform:lowercase; }
   .chunk:hover:not(:disabled){ border-color:var(--gold); }
   .chunk:disabled{ cursor:default; }
@@ -102,33 +118,33 @@
 
   /* GUIDAT — stegfråga */
   .steg{ text-align:center; margin-top:.4rem; min-height:3.3rem; }
-  .steg .raknare{ font-size:.74rem; text-transform:uppercase; letter-spacing:.09em;
+  .steg .raknare{ font-size:var(--fs-xs); text-transform:uppercase; letter-spacing:.09em;
     color:var(--ink-soft); }
-  .steg .fraga{ font-size:1.08rem; margin-top:.15rem; }
-  .steg .instr{ font-size:.9rem; color:var(--ink-soft); font-style:italic; margin-top:.1rem; }
+  .steg .fraga{ font-size:var(--fs-5xl); margin-top:.15rem; }
+  .steg .instr{ font-size:var(--fs-2xl); color:var(--ink-soft); font-style:italic; margin-top:.1rem; }
   .steg .roll-namn{ font-weight:600; }
 
   /* FRITT — rollpalett */
   .palett{ display:flex; flex-wrap:wrap; gap:.45rem; justify-content:center; margin-top:.6rem; }
   .roll{
-    font-family:inherit; font-size:.92rem; padding:.4rem .8rem; border-radius:999px;
+    font-family:inherit; font-size:var(--fs-3xl); padding:.4rem .8rem; border-radius:999px;
     background:var(--cbg); border:1.5px solid var(--cbd); color:var(--c); cursor:pointer; transition:.15s;
   }
   .roll:hover{ filter:brightness(.97); }
   .roll[aria-pressed="true"]{ box-shadow:0 0 0 2px var(--c) inset; font-weight:600; }
-  .palett-tips{ width:100%; text-align:center; font-size:.82rem; color:var(--ink-soft);
+  .palett-tips{ width:100%; text-align:center; font-size:var(--fs-lg); color:var(--ink-soft);
     font-style:italic; margin-top:.2rem; }
 
   /* facit-ruta (översättning + noter) */
   .reveal{ margin-top:1.1rem; padding-top:1rem; border-top:1px solid var(--line); text-align:center; }
-  .reveal .sv{ font-size:1.12rem; }
-  .reveal .not{ color:var(--ink-soft); font-size:.86rem; margin-top:.5rem; }
+  .reveal .sv{ font-size:var(--fs-6xl); }
+  .reveal .not{ color:var(--ink-soft); font-size:var(--fs-xl); margin-top:.5rem; }
   .reveal .not b{ color:var(--ink); font-weight:600; }
 
   /* knappar */
   .controls{display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-top:1.1rem; width:100%;}
   .btn{
-    font-family:inherit; font-size:.95rem; padding:.55rem 1.2rem; border-radius:10px;
+    font-family:inherit; font-size:var(--fs-4xl); padding:.55rem 1.2rem; border-radius:10px;
     border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; transition:.18s;
   }
   .btn:hover{border-color:var(--gold);}
@@ -136,13 +152,13 @@
   .btn.ghost{ color:var(--ink-soft); }
 
   /* streak */
-  .streak{margin-top:1.2rem; color:var(--ink-soft); font-size:.92rem; text-align:center;}
+  .streak{margin-top:1.2rem; color:var(--ink-soft); font-size:var(--fs-3xl); text-align:center;}
   .streak b{color:var(--ink); font-weight:600;}
 
   /* väljaren */
   .picker{width:min(560px,100%); margin-top:1.6rem; animation:rise .6s ease both;}
   .picker-toggle{
-    width:100%; font-family:inherit; font-size:.95rem; color:var(--ink-soft);
+    width:100%; font-family:inherit; font-size:var(--fs-4xl); color:var(--ink-soft);
     background:var(--card); border:1px solid var(--line); border-radius:10px; padding:.6rem 1rem;
     cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:.2s;
   }
@@ -150,19 +166,19 @@
   .picker-toggle .chev{transition:transform .25s ease;}
   .picker-toggle[aria-expanded="true"] .chev{transform:rotate(180deg);}
   .picker-body{margin-top:.7rem; padding:1rem; background:var(--card); border:1px solid var(--line); border-radius:10px;}
-  .picker-body h2{font-size:.8rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);
+  .picker-body h2{font-size:var(--fs-md); text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);
     font-weight:600; margin:.2rem 0 .5rem;}
   .picker-section + .picker-section{margin-top:1.1rem;}
   .quickrow{display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.7rem;}
-  .quicklabel{align-self:center; font-size:.8rem; color:var(--ink-soft); margin-right:.15rem;}
+  .quicklabel{align-self:center; font-size:var(--fs-md); color:var(--ink-soft); margin-right:.15rem;}
   .chip{
-    font-family:inherit; font-size:.8rem; padding:.3rem .7rem; border-radius:999px;
+    font-family:inherit; font-size:var(--fs-md); padding:.3rem .7rem; border-radius:999px;
     border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); cursor:pointer; transition:.15s;
   }
   .chip:hover{border-color:var(--gold); color:var(--ink);}
   .grid{display:flex; flex-wrap:wrap; gap:.4rem;}
   .toggle{
-    font-family:inherit; font-size:.9rem; padding:.35rem .7rem; border-radius:8px;
+    font-family:inherit; font-size:var(--fs-2xl); padding:.35rem .7rem; border-radius:8px;
     border:1px solid var(--line); background:var(--paper-2); color:var(--ink-soft); cursor:pointer; transition:.15s;
     position:relative;
   }
@@ -172,18 +188,18 @@
     content:attr(data-tip);
     position:absolute; left:50%; bottom:calc(100% + 6px); transform:translateX(-50%);
     white-space:nowrap; background:var(--ink); color:var(--paper);
-    font-size:.78rem; padding:.25rem .5rem; border-radius:6px; pointer-events:none; z-index:5;
+    font-size:var(--fs-sm); padding:.25rem .5rem; border-radius:6px; pointer-events:none; z-index:5;
   }
   .toggle[aria-pressed="true"]{background:var(--ink); color:var(--paper); border-color:var(--ink);}
   .seg{display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
   .seg button{
-    font-family:inherit; font-size:.9rem; padding:.4rem .9rem; border:0; background:var(--card);
+    font-family:inherit; font-size:var(--fs-2xl); padding:.4rem .9rem; border:0; background:var(--card);
     color:var(--ink-soft); cursor:pointer; transition:.15s;
   }
   .seg button + button{border-left:1px solid var(--line);}
   .seg button[aria-pressed="true"]{background:var(--ink); color:var(--paper);}
 
-  footer{margin-top:2rem; color:var(--ink-soft); font-size:.8rem; text-align:center; max-width:560px;}
+  footer{margin-top:2rem; color:var(--ink-soft); font-size:var(--fs-md); text-align:center; max-width:560px;}
   footer code{background:var(--paper-2); padding:.05rem .35rem; border-radius:4px;}
   .hidden{display:none !important;}
 </style>
