@@ -19,7 +19,7 @@
     --fs-xl: 1.08rem;
     --fs-2xl: 1.35rem;
     --fs-3xl: 1.6rem;
-    --fs-4xl: 3.2rem;   /* grekisk display */
+    --fs-4xl: 2.5rem;   /* grekisk display */
 
     --paper:#f7f1e6; --paper-2:#efe7d6; --card:#fffdf7;
     --ink:#2c2620; --ink-soft:#6f6557; --line:#e3d9c6; --gold:#a8842c;
@@ -56,7 +56,7 @@
     padding:2.2rem 1.4rem; text-align:center; box-shadow:0 1px 0 rgba(0,0,0,.02);
     animation:rise .35s ease both;
   }
-  .form{font-size:var(--fs-4xl); font-weight:500; letter-spacing:.01em; min-height:1.2em;}
+  .form{font-size:2rem; font-weight:400; letter-spacing:.01em; min-height:1.2em;}
   .glosa{color:var(--ink-soft); font-style:italic; margin-top:.4rem; font-size:var(--fs-xl);}
   .reveal{margin-top:1.2rem; padding-top:1.1rem; border-top:1px solid var(--line);}
   .reveal .kasus{font-size:var(--fs-2xl); font-weight:600; color:var(--gold);}
@@ -143,7 +143,7 @@
 
 
 
-  .lemma{font-family:'Cardo',serif; font-weight:700; font-size:var(--fs-4xl); line-height:1.1; color:var(--ink); min-height:1.1em;}
+  .lemma{font-family:'Cardo',serif; font-weight:400; font-size:var(--fs-4xl); line-height:1.1; color:var(--ink); min-height:1.1em;}
   .tag{color:var(--ink-soft); font-size:var(--fs-md); font-style:italic; margin-top:.2rem;}
   .slot{font-size:var(--fs-2xl); font-weight:600; color:var(--gold); margin:.95rem 0 .1rem;
     padding:.5rem 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
@@ -151,7 +151,7 @@
   .answer-label{font-size:var(--fs-2xs); text-transform:uppercase; letter-spacing:.08em;
     color:var(--ink-soft); margin-bottom:.45rem;}
   .opts{display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center;}
-  .optx{font-family:'Cardo',serif; font-weight:700; font-size:var(--fs-2xl); padding:.35rem .85rem;
+  .optx{font-family:'Cardo',serif; font-weight:400; font-size:var(--fs-2xl); padding:.35rem .85rem;
     border-radius:10px; border:1px solid var(--line); background:var(--card); color:var(--ink);
     cursor:pointer; transition:.15s; min-width:3rem;}
   .optx:hover:not(:disabled){border-color:var(--gold);}
