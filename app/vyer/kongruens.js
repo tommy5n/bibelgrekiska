@@ -427,7 +427,7 @@ function render(){
     const span = document.createElement("span");
     if(tok.slot){
       span.className = "slot" + (state.klar ? " fylld" : "");
-      span.textContent = state.klar ? state.ratt : "—";
+      span.textContent = state.klar ? state.ratt : "\u00A0";
     } else {
       span.textContent = tok.text;
     }
