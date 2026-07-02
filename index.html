@@ -1,156 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bibelgrekiska I — Övningsspel</title>
-
-  <!-- Hemskärm-/app-känsla på iPhone & iPad -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Bibelgrekiska">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#a8842c">
-
-  <!-- Installerbar app-känsla på Android & desktop-Chrome/Edge -->
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="appletouchicon.png">
-
-
-  <link rel="stylesheet" href="fonts.css">
-<style>
-
-    :root{
-    /* Typografisk skala — ändra ett värde här för att skala om */
-    --fs-3xs: 1rem;
-    --fs-2xs: 1.05rem;
-    --fs-xs: 1.15rem;
-    --fs-sm: 1.7rem;
-
-      --paper:#f7f1e6; --card:#fffdf7; --ink:#2c2620; --ink-soft:#6f6557;
-      --line:#e3d9c6; --gold:#a8842c;
-    }
-    *{box-sizing:border-box;}
-    body{
-      margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
-      font-family:'Cardo','Spectral',Georgia,serif; line-height:1.55;
-      -webkit-text-size-adjust:100%;
-      padding:env(safe-area-inset-top) 1rem env(safe-area-inset-bottom);
-    }
-    .wrap{max-width:720px; margin:0 auto; padding:2.4rem 0 1.2rem;}
-
-    header{margin:0 0 1.6rem; padding:0 .2rem;}
-    h1{font-size:var(--fs-sm); font-weight:600; margin:0 0 .25rem; letter-spacing:.01em;}
-    .sub{color:var(--ink-soft); font-size:var(--fs-2xs); font-style:italic; margin:0;}
-
-    .grid{
-      display:grid; gap:.8rem;
-      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-    }
-
-    .card{
-      display:flex; align-items:flex-start; gap:.85rem;
-      background:var(--card); border:1px solid var(--line); border-radius:16px;
-      padding:1.05rem 1.15rem; text-decoration:none; color:inherit;
-      transition:.18s; -webkit-tap-highlight-color:transparent;
-    }
-    .card:hover, .card:focus-visible{
-      border-color:var(--gold);
-      transform:translateY(-2px);
-      box-shadow:0 4px 14px rgba(44,38,32,.07);
-      outline:none;
-    }
-    .card:active{transform:translateY(0);}
-
-    .num{
-      flex:0 0 auto; font-size:var(--fs-xs); font-weight:600; font-style:italic;
-      color:var(--gold); line-height:1.7; min-width:1.1em; text-align:center;
-    }
-    .body{min-width:0;}
-    .name{font-size:var(--fs-xs); font-weight:600; margin:0 0 .15rem;}
-    .desc{font-size:var(--fs-3xs); color:var(--ink-soft); margin:0;}
-
-    footer{
-      margin-top:1.8rem; padding:.2rem;
-      font-size:var(--fs-3xs); color:var(--ink-soft); text-align:center;
-    }
-    footer a{color:var(--gold); text-decoration:none; border-bottom:1px solid transparent;}
-    footer a:hover{border-bottom-color:var(--gold);}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bibelgrekiska</title>
+<link rel="stylesheet" href="app.css?v=3">
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <h1>Bibelgrekiska I</h1>
-      <p class="sub">Övningsspel · Seminarium 4</p>
-    </header>
-
-    <nav class="grid">
-      <a class="card" href="grekiska-alfabetspel-sem4.html">
-        <span class="num">1</span>
-        <span class="body">
-          <span class="name">Alfabetet</span>
-          <span class="desc">Bokstäver, namn och ljud</span>
-        </span>
-      </a>
-
-      <a class="card" href="grekiska-glosspel-sem4.html">
-        <span class="num">2</span>
-        <span class="body">
-          <span class="name">Glosor</span>
-          <span class="desc">Vokabulär från seminarium 2–4</span>
-        </span>
-      </a>
-
-      <a class="card" href="grekiska-kasusspel-sem4.html">
-        <span class="num">3</span>
-        <span class="body">
-          <span class="name">Kasusigenkänning</span>
-          <span class="desc">Genus, kasus och bestämd artikel</span>
-        </span>
-      </a>
-
-      <a class="card" href="grekiska-satsanalys-sem4.html">
-        <span class="num">4</span>
-        <span class="body">
-          <span class="name">Satsanalys</span>
-          <span class="desc">Identifiera satsdelarna</span>
-        </span>
-      </a>
-
-      <a class="card" href="grekiska-kongruensspel-sem4.html">
-        <span class="num">5</span>
-        <span class="body">
-          <span class="name">Kongruens</span>
-          <span class="desc">Adjektivens böjning och överensstämmelse</span>
-        </span>
-      </a>
-
-      <a class="card" href="grekiska-lasordning-sem4.html">
-        <span class="num">6</span>
-        <span class="body">
-          <span class="name">Läsordning</span>
-          <span class="desc">Träna ordföljden i läsning</span>
-        </span>
-      </a>
-      <a class="card" href="grekiska-andelsespel-sem4.html">
-        <span class="num">7</span>
-        <span class="body">
-          <span class="name">Artiklar &amp; ändelser</span>
-          <span class="desc">Bygg formen i rätt deklination</span>
-        </span>
-      </a>
-
-    </nav>
-
-    <footer>
-      <a href="Bibelgrekiska-lathund-sem4.pdf">Lathund (PDF) ↗</a>
-    </footer>
-  </main>
-<script>
-if("serviceWorker" in navigator){
-  addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(()=>{}));
-}
-</script>
+<header class="app-bar" id="app-bar" style="display:none">
+  <a class="hem" href="#/">← Spel</a>
+  <span class="wordmark">Bibelgrekiska</span>
+</header>
+<main id="vy"></main>
+<script type="module" src="app.js?v=3"></script>
 </body>
 </html>
