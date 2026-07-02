@@ -46,9 +46,9 @@ body{margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
 /* ══════════ VYER (namnrymdade) ══════════ */
 /* ═══ vy: alfabet ═══ */
 .vy-alfabet{
-        --paper: #f4ead2;
+        --paper: #f7f1e6;
         --paper-2: #efe2c4;
-        --card: #fbf4e2;
+        --card: #fffdf7;
         --ink: #2c2318;
         --ink-soft: #7a6a52;
         --line: #e0d2af;
@@ -149,6 +149,7 @@ body{margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
         min-height: 22rem;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         text-align: center;
       }
 .vy-alfabet .card::after{
@@ -163,24 +164,18 @@ body{margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
         font-family: 'Cardo', serif;
         font-size: clamp(3rem, 12vw, 4.5rem);
         line-height: 1;
-        color: var(--gold-deep);
+        color: var(--ink);
         margin: 0;
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-shadow:
-          0 2px 0 #fff,
-          0 1px 18px rgba(176, 130, 47, 0.22);
       }
 .vy-alfabet .facit{
+        min-height: 5rem;
         margin-bottom: 1.2rem;
         animation: rise__alfabet 0.3s ease both;
       }
 .vy-alfabet .facit-name{
         font-family: 'Cardo', serif;
         font-size: 1.7rem;
-        color: var(--ink);
+        color: var(--gold);
       }
 .vy-alfabet .facit-forms{
         font-family: 'Cardo', serif;
@@ -458,6 +453,10 @@ body{margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
       }
 .vy-alfabet .hidden{
         display: none !important;
+      }
+.vy-alfabet #facit.hidden{
+        display: block !important;
+        visibility: hidden;
       }
 @keyframes rise__alfabet {
         from {
