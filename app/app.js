@@ -1,36 +1,36 @@
 // Bibelgrekiska — skal: hash-router + hubb.
-// Portade vyer laddas som ES-moduler on demand; ännu ej portade spel
-// länkar tillfälligt till sina gamla fristående filer under migreringen.
+// Alla spel är nu portade som vy-moduler (vyer/*.js), laddade on demand.
 
 const SPEL = [
-  { num: 1, namn: "Alfabetet",        desc: "Bokstäver, namn och ljud",                   fil: "../grekiska-alfabetspel-sem4.html" },
-  { num: 2, namn: "Glosor",           desc: "Vokabulär från seminarium 2–4",              fil: "../grekiska-glosspel-sem4.html" },
-  { num: 3, namn: "Kasusigenkänning", desc: "Genus, kasus och bestämd artikel",           fil: "../grekiska-kasusspel-sem4.html" },
-  { num: 4, namn: "Satsanalys",       desc: "Identifiera satsdelarna",                     fil: "../grekiska-satsanalys-sem4.html" },
-  { num: 5, namn: "Kongruens",        desc: "Adjektivens böjning och överensstämmelse",    fil: "../grekiska-kongruensspel-sem4.html" },
-  { num: 6, namn: "Läsordning",       desc: "Träna ordföljden i läsning",                  fil: "../grekiska-lasordning-sem4.html" },
-  { num: 7, namn: "Artiklar & ändelser", desc: "Bygg formen i rätt deklination",           route: "#/andelser" },
+  { nr: 1, namn: "Alfabetet",           desc: "Bokstäver, namn och ljud",                 route: "#/alfabet" },
+  { nr: 2, namn: "Glosor",              desc: "Vokabulär från seminarium 2–4",            route: "#/glosor" },
+  { nr: 3, namn: "Kasusigenkänning",    desc: "Genus, kasus och bestämd artikel",         route: "#/kasus" },
+  { nr: 4, namn: "Satsanalys",          desc: "Identifiera satsdelarna",                   route: "#/satsanalys" },
+  { nr: 5, namn: "Kongruens",           desc: "Adjektivens böjning och överensstämmelse",  route: "#/kongruens" },
+  { nr: 6, namn: "Läsordning",          desc: "Träna ordföljden i läsning",                route: "#/lasordning" },
+  { nr: 7, namn: "Artiklar & ändelser", desc: "Bygg formen i rätt deklination",            route: "#/andelser" },
 ];
 
-// Route → dynamisk import av vymodul
 const ROUTES = {
-  "/andelser": () => import("./vyer/andelser.js"),
+  "/alfabet":    () => import("./vyer/alfabet.js"),
+  "/glosor":     () => import("./vyer/glosor.js"),
+  "/kasus":      () => import("./vyer/kasus.js"),
+  "/satsanalys": () => import("./vyer/satsanalys.js"),
+  "/kongruens":  () => import("./vyer/kongruens.js"),
+  "/lasordning": () => import("./vyer/lasordning.js"),
+  "/andelser":   () => import("./vyer/andelser.js"),
 };
 
 let current = null;
 
 function renderHub(root) {
-  const kort = SPEL.map(s => {
-    const href = s.route ? s.route : s.fil;
-    const extern = s.route ? "" : " extern";
-    return `<a class="hub-card${extern}" href="${href}">
-      <span class="num">${s.num}</span>
+  const kort = SPEL.map(s => `<a class="hub-card" href="${s.route}">
+      <span class="num">${s.nr}</span>
       <span class="body">
         <span class="name">${s.namn}</span>
         <span class="desc">${s.desc}</span>
       </span>
-    </a>`;
-  }).join("");
+    </a>`).join("");
   root.innerHTML = `<div class="hub">
     <h1>Bibelgrekiska</h1>
     <p class="sub">Interaktiva övningar för Bibelgrekiska I.</p>
@@ -67,7 +67,7 @@ async function navigate() {
       vy.innerHTML = '<p style="padding:2rem 0">Kunde inte ladda vyn.</p>';
     }
   } else {
-    location.hash = "";   // okänd route → tillbaka till hubben
+    location.hash = "";
   }
 }
 

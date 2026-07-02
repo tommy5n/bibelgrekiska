@@ -1,0 +1,758 @@
+// Vy: Glosor — portad exakt från grekiska-glosspel.html
+let _added = [];
+export function teardown(){
+  for (const [tg,t,f,o] of _added){ try{ (tg==='w'?window:document).removeEventListener(t,f,o); }catch(e){} }
+  _added = [];
+}
+const MARKUP = `<div class="vy vy-glosor">
+<header>
+  <h1>Bibelgrekiska — glosor</h1>
+  <div class="sub" id="subtitle">seminarium 2–4 · grekiska → svenska</div>
+</header>
+
+<div class="modes" role="group" aria-label="Spelläge">
+  <button class="mode" id="mode-flashcard" aria-pressed="true">Flashcard</button>
+  <button class="mode" id="mode-flerval" aria-pressed="false">Flerval</button>
+</div>
+
+<div class="stage">
+  <div class="card" id="card"></div>
+  <div class="controls" id="controls"></div>
+  <div class="stats" id="stats"></div>
+</div>
+
+<div class="picker">
+  <button class="picker-toggle" id="picker-toggle" aria-expanded="false">
+    <span>Urval <span class="count" id="picker-count"></span></span>
+    <span class="chev">▾</span>
+  </button>
+  <div class="picker-body" id="picker-body" hidden>
+    <div class="picker-section">
+      <h2>Kortlek</h2>
+      <div class="grid deck-grid" id="deck-grid"></div>
+      <div class="deck-desc" id="deck-desc"></div>
+    </div>
+    <div class="picker-section" id="sem-section">
+      <h2>Seminarium</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-quick="sem-all">alla</button>
+        <button class="chip" data-quick="sem-none">inga</button>
+      </div>
+      <div class="grid" id="sem-grid"></div>
+    </div>
+    <div class="picker-section" id="band-section" hidden>
+      <h2>Frekvens i NT</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-quick="band-all">alla</button>
+        <button class="chip" data-quick="band-none">inga</button>
+      </div>
+      <div class="grid" id="band-grid"></div>
+    </div>
+    <div class="picker-section">
+      <h2>Ordklass</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-quick="ok-all">alla</button>
+        <button class="chip" data-quick="ok-none">inga</button>
+      </div>
+      <div class="grid" id="ok-grid"></div>
+    </div>
+    <div class="note" id="picker-note"></div>
+  </div>
+</div>
+</div>`;
+export function render(root){
+  root.innerHTML = MARKUP;
+  const _da = document.addEventListener.bind(document);
+  const _wa = window.addEventListener.bind(window);
+  _added = [];
+  document.addEventListener = (t,f,o)=>{ _added.push(['d',t,f,o]); _da(t,f,o); };
+  window.addEventListener   = (t,f,o)=>{ _added.push(['w',t,f,o]); _wa(t,f,o); };
+  try {
+
+/* ── DATA (snapshot ur glosor.json: hela uppsättningen, d=kortlek ["sem"|"60"], f=effektiv frekvens) ─ */
+const GLOSOR = [
+  {"l":"ἀγαθός","g":"god","o":"adjektiv","gen":null,"f":101,"s":[3,4],"d":["sem","60"]},
+  {"l":"ἀγαπάω","g":"älska","o":"verb","gen":null,"f":143,"s":[],"d":["60"]},
+  {"l":"ἀγάπη","g":"kärlek","o":"substantiv","gen":"f","f":116,"s":[4],"d":["sem","60"]},
+  {"l":"ἄγγελος","g":"budbärare, ängel","o":"substantiv","gen":"m","f":175,"s":[2,3],"d":["sem","60"]},
+  {"l":"ἅγιος","g":"helig, vördnadsvärd","o":"adjektiv","gen":null,"f":233,"s":[3],"d":["sem","60"]},
+  {"l":"ἀδελφός","g":"bror","o":"substantiv","gen":"m","f":342,"s":[2,3,4],"d":["sem","60"]},
+  {"l":"αἷμα","g":"blod","o":"substantiv","gen":"n","f":97,"s":[],"d":["60"]},
+  {"l":"αἴρω","g":"ta upp, lyfta, höja","o":"verb","gen":null,"f":101,"s":[],"d":["60"]},
+  {"l":"αἰτέω","g":"bedja, begära, kräva","o":"verb","gen":null,"f":70,"s":[],"d":["60"]},
+  {"l":"αἰών","g":"evighet","o":"substantiv","gen":"m","f":122,"s":[],"d":["60"]},
+  {"l":"αἰώνιος","g":"evig","o":"adjektiv","gen":null,"f":69,"s":[],"d":["60"]},
+  {"l":"ἀκολουθέω","g":"följa","o":"verb","gen":null,"f":89,"s":[],"d":["60"]},
+  {"l":"ἀκούω","g":"höra, lyssna","o":"verb","gen":null,"f":427,"s":[2,3],"d":["sem","60"]},
+  {"l":"ἀλήθεια","g":"sanning","o":"substantiv","gen":"f","f":109,"s":[4],"d":["sem","60"]},
+  {"l":"ἀλλά","g":"utan, men, dock","o":"partikel","gen":null,"f":638,"s":[],"d":["60"]},
+  {"l":"ἀλλήλων","g":"varandra","o":"pron.adj","gen":null,"f":100,"s":[],"d":["60"]},
+  {"l":"ἄλλος","g":"annan, annat","o":"pron.adj","gen":null,"f":154,"s":[],"d":["60"]},
+  {"l":"ἁμαρτία","g":"synd","o":"substantiv","gen":"f","f":172,"s":[],"d":["60"]},
+  {"l":"ἀμήν","g":"amen, sannerligen","o":"partikel","gen":null,"f":128,"s":[],"d":["60"]},
+  {"l":"ἄν","g":"modalpartikel","o":"partikel","gen":null,"f":171,"s":[],"d":["60"]},
+  {"l":"ἀναβαίνω","g":"stiga upp, gå upp","o":"verb","gen":null,"f":81,"s":[],"d":["60"]},
+  {"l":"ἀνήρ","g":"man","o":"substantiv","gen":"m","f":216,"s":[],"d":["60"]},
+  {"l":"ἄνθρωπος","g":"människa","o":"substantiv","gen":"m","f":550,"s":[2],"d":["sem","60"]},
+  {"l":"ἀνίστημι","g":"resa upp, resa sig, uppträda","o":"verb","gen":null,"f":108,"s":[],"d":["60"]},
+  {"l":"ἀνοίγω","g":"öppna","o":"verb","gen":null,"f":77,"s":[],"d":["60"]},
+  {"l":"ἀπέρχομαι","g":"gå bort, bege sig","o":"verb","gen":null,"f":117,"s":[],"d":["60"]},
+  {"l":"ἀπό","g":"från, av","o":"preposition","gen":null,"f":644,"s":[],"d":["60"]},
+  {"l":"ἀποθνῄσκω","g":"dö","o":"verb","gen":null,"f":111,"s":[],"d":["60"]},
+  {"l":"ἀποκρίνομαι","g":"svara","o":"verb","gen":null,"f":232,"s":[],"d":["60"]},
+  {"l":"ἀποκτείνω","g":"döda","o":"verb","gen":null,"f":74,"s":[],"d":["60"]},
+  {"l":"ἀπόλλυμι","g":"förlora, förgöra","o":"verb","gen":null,"f":90,"s":[],"d":["60"]},
+  {"l":"ἀποστέλλω","g":"sända ut, skicka","o":"verb","gen":null,"f":132,"s":[],"d":["60"]},
+  {"l":"ἀπόστολος","g":"sändebud, apostel","o":"substantiv","gen":"m","f":79,"s":[2],"d":["sem","60"]},
+  {"l":"ἄρτος","g":"bröd","o":"substantiv","gen":"m","f":97,"s":[3,4],"d":["sem","60"]},
+  {"l":"ἀρχιερεύς","g":"överstepräst","o":"substantiv","gen":"m","f":122,"s":[],"d":["60"]},
+  {"l":"ἄρχω","g":"börja, härska över","o":"verb","gen":null,"f":86,"s":[],"d":["60"]},
+  {"l":"αὐτός","g":"han, hon, den, det","o":"pronomen","gen":null,"f":5546,"s":[],"d":["60"]},
+  {"l":"βάλλω","g":"kasta, lägga, sätta","o":"verb","gen":null,"f":121,"s":[],"d":["60"]},
+  {"l":"βαπτίζω","g":"döpa","o":"verb","gen":null,"f":77,"s":[3],"d":["sem","60"]},
+  {"l":"βασιλεία","g":"rike","o":"substantiv","gen":"f","f":162,"s":[4],"d":["sem","60"]},
+  {"l":"βασιλεύς","g":"kung","o":"substantiv","gen":"m","f":115,"s":[],"d":["60"]},
+  {"l":"βλέπω","g":"se, titta","o":"verb","gen":null,"f":133,"s":[2,3],"d":["sem","60"]},
+  {"l":"γάρ","g":"ty, för, ju","o":"partikel","gen":null,"f":1039,"s":[4],"d":["sem","60"]},
+  {"l":"γεννάω","g":"föda, avla, framkalla","o":"verb","gen":null,"f":97,"s":[],"d":["60"]},
+  {"l":"γῆ","g":"jord","o":"substantiv","gen":"f","f":248,"s":[],"d":["60"]},
+  {"l":"γίνομαι","g":"bli, födas, uppstå","o":"verb","gen":null,"f":667,"s":[],"d":["60"]},
+  {"l":"γινώσκω","g":"känna, veta, förstå, inse","o":"verb","gen":null,"f":221,"s":[],"d":["60"]},
+  {"l":"γραμματεύς","g":"skrivare, skriftlärd","o":"substantiv","gen":"m","f":62,"s":[],"d":["60"]},
+  {"l":"γράφω","g":"skriva, rita","o":"verb","gen":null,"f":190,"s":[2,3],"d":["sem","60"]},
+  {"l":"γυνή","g":"kvinna","o":"substantiv","gen":"f","f":212,"s":[],"d":["60"]},
+  {"l":"δαιμόνιον","g":"ond ande, demon","o":"substantiv","gen":"n","f":63,"s":[],"d":["60"]},
+  {"l":"δέ","g":"och, men","o":"partikel","gen":null,"f":2766,"s":[],"d":["60"]},
+  {"l":"δεῖ","g":"man måste, det åligger","o":"verb","gen":null,"f":154,"s":[],"d":["60"]},
+  {"l":"διά","g":"genom; på grund av","o":"preposition","gen":null,"f":666,"s":[],"d":["60"]},
+  {"l":"διδάσκω","g":"undervisa, lära","o":"verb","gen":null,"f":96,"s":[],"d":["60"]},
+  {"l":"δίδωμι","g":"ge","o":"verb","gen":null,"f":415,"s":[],"d":["60"]},
+  {"l":"δίκαιος","g":"rättvis, rättfärdig","o":"adjektiv","gen":null,"f":79,"s":[4],"d":["sem","60"]},
+  {"l":"δικαιοσύνη","g":"rättvisa, rättfärdighet","o":"substantiv","gen":"f","f":91,"s":[],"d":["60"]},
+  {"l":"δόξα","g":"ära, heder; glans","o":"substantiv","gen":"f","f":165,"s":[],"d":["60"]},
+  {"l":"δοῦλος","g":"tjänare, slav","o":"substantiv","gen":"m","f":126,"s":[2,3,4],"d":["sem","60"]},
+  {"l":"δύναμαι","g":"kunna, förmå","o":"verb","gen":null,"f":209,"s":[],"d":["60"]},
+  {"l":"δύναμις","g":"förmåga, makt, kraft","o":"substantiv","gen":"f","f":119,"s":[],"d":["60"]},
+  {"l":"δύο","g":"två","o":"räkneord","gen":null,"f":135,"s":[],"d":["60"]},
+  {"l":"δώδεκα","g":"tolv","o":"räkneord","gen":null,"f":75,"s":[],"d":["60"]},
+  {"l":"ἐάν","g":"om","o":"partikel","gen":null,"f":331,"s":[],"d":["60"]},
+  {"l":"ἑαυτοῦ","g":"sig själv","o":"pronomen","gen":null,"f":333,"s":[],"d":["60"]},
+  {"l":"ἐγείρω","g":"väcka, låta stå upp","o":"verb","gen":null,"f":143,"s":[],"d":["60"]},
+  {"l":"ἐγώ","g":"jag","o":"pronomen","gen":null,"f":2572,"s":[],"d":["60"]},
+  {"l":"ἔθνος","g":"folkstam, folk, hednafolk","o":"substantiv","gen":"n","f":160,"s":[],"d":["60"]},
+  {"l":"εἰ","g":"om","o":"partikel","gen":null,"f":502,"s":[],"d":["60"]},
+  {"l":"εἶδον","g":"jag såg","o":"verb","gen":null,"f":476,"s":[],"d":["60"]},
+  {"l":"εἰμί","g":"vara","o":"verb","gen":null,"f":2456,"s":[4],"d":["sem","60"]},
+  {"l":"εἶπον","g":"jag sade","o":"verb","gen":null,"f":2345,"s":[],"d":["60"]},
+  {"l":"εἰρήνη","g":"fred","o":"substantiv","gen":"f","f":91,"s":[4],"d":["sem","60"]},
+  {"l":"εἰς","g":"in i, mot","o":"preposition","gen":null,"f":1754,"s":[4],"d":["sem","60"]},
+  {"l":"εἷς","g":"en, ett","o":"räkneord","gen":null,"f":342,"s":[],"d":["60"]},
+  {"l":"εἰσέρχομαι","g":"gå in, komma in","o":"verb","gen":null,"f":193,"s":[],"d":["60"]},
+  {"l":"ἐκ","g":"ur, ut ur, från","o":"preposition","gen":null,"f":913,"s":[],"d":["60"]},
+  {"l":"ἕκαστος","g":"varje, var och en","o":"pron.adj","gen":null,"f":81,"s":[],"d":["60"]},
+  {"l":"ἐκβάλλω","g":"kasta ut, förkasta","o":"verb","gen":null,"f":81,"s":[],"d":["60"]},
+  {"l":"ἐκεῖ","g":"där","o":"adverb","gen":null,"f":95,"s":[],"d":["60"]},
+  {"l":"ἐκεῖνος","g":"den där","o":"pronomen","gen":null,"f":242,"s":[],"d":["60"]},
+  {"l":"ἐκκλησία","g":"församling","o":"substantiv","gen":"f","f":114,"s":[],"d":["60"]},
+  {"l":"ἐμός","g":"min, mitt","o":"pron.adj","gen":null,"f":76,"s":[],"d":["60"]},
+  {"l":"ἐν","g":"i, med","o":"preposition","gen":null,"f":2733,"s":[4],"d":["sem","60"]},
+  {"l":"ἐντολή","g":"bud, budord","o":"substantiv","gen":"f","f":66,"s":[4],"d":["sem","60"]},
+  {"l":"ἐνώπιον","g":"inför","o":"preposition","gen":null,"f":94,"s":[],"d":["60"]},
+  {"l":"ἐξέρχομαι","g":"gå ut, komma ut","o":"verb","gen":null,"f":216,"s":[],"d":["60"]},
+  {"l":"ἐξουσία","g":"rätt, fullmakt, myndighet","o":"substantiv","gen":"f","f":102,"s":[],"d":["60"]},
+  {"l":"ἐπί","g":"på, över, vid, mot","o":"preposition","gen":null,"f":885,"s":[],"d":["60"]},
+  {"l":"ἑπτά","g":"sju","o":"räkneord","gen":null,"f":88,"s":[],"d":["60"]},
+  {"l":"ἔργον","g":"verk, gärning","o":"substantiv","gen":"n","f":169,"s":[4],"d":["sem","60"]},
+  {"l":"ἔρχομαι","g":"gå, komma","o":"verb","gen":null,"f":631,"s":[],"d":["60"]},
+  {"l":"ἐσθίω","g":"äta","o":"verb","gen":null,"f":157,"s":[2,3,4],"d":["sem","60"]},
+  {"l":"ἕτερος","g":"annan, övrig","o":"pron.adj","gen":null,"f":97,"s":[],"d":["60"]},
+  {"l":"ἔτι","g":"ännu, fortfarande","o":"partikel","gen":null,"f":93,"s":[],"d":["60"]},
+  {"l":"εὐαγγέλιον","g":"glatt budskap, evangelium","o":"substantiv","gen":"n","f":75,"s":[3],"d":["sem","60"]},
+  {"l":"εὐθύς","g":"rakt, genast","o":"adverb","gen":null,"f":59,"s":[],"d":["60"]},
+  {"l":"εὑρίσκω","g":"finna, hitta, påträffa","o":"verb","gen":null,"f":176,"s":[2],"d":["sem","60"]},
+  {"l":"ἔχω","g":"ha, hålla, äga","o":"verb","gen":null,"f":706,"s":[],"d":["60"]},
+  {"l":"ἕως","g":"till dess, förrän","o":"partikel","gen":null,"f":145,"s":[],"d":["60"]},
+  {"l":"ζάω","g":"leva","o":"verb","gen":null,"f":140,"s":[],"d":["60"]},
+  {"l":"ζητέω","g":"söka, sträva efter, undersöka","o":"verb","gen":null,"f":117,"s":[4],"d":["sem","60"]},
+  {"l":"ζωή","g":"liv","o":"substantiv","gen":"f","f":135,"s":[],"d":["60"]},
+  {"l":"ἤ","g":"eller","o":"partikel","gen":null,"f":346,"s":[],"d":["60"]},
+  {"l":"ἦλθον","g":"jag kom, jag gick","o":"verb","gen":null,"f":631,"s":[],"d":["60"]},
+  {"l":"ἡμεῖς","g":"vi","o":"pronomen","gen":null,"f":2572,"s":[],"d":["60"]},
+  {"l":"ἡμέρα","g":"dag","o":"substantiv","gen":"f","f":389,"s":[],"d":["60"]},
+  {"l":"θάλασσα","g":"hav, sjö","o":"substantiv","gen":"f","f":90,"s":[],"d":["60"]},
+  {"l":"θάνατος","g":"död","o":"substantiv","gen":"m","f":120,"s":[],"d":["60"]},
+  {"l":"θέλημα","g":"vilja, lust","o":"substantiv","gen":"n","f":62,"s":[],"d":["60"]},
+  {"l":"θέλω","g":"vilja, önska","o":"verb","gen":null,"f":208,"s":[],"d":["60"]},
+  {"l":"θεός","g":"gud","o":"substantiv","gen":"m","f":1307,"s":[2,3],"d":["sem","60"]},
+  {"l":"ἴδιος","g":"egen, eget","o":"pron.adj","gen":null,"f":114,"s":[],"d":["60"]},
+  {"l":"ἰδού","g":"se!","o":"interjektion","gen":null,"f":200,"s":[],"d":["60"]},
+  {"l":"ἱερόν","g":"tempel, helgedom","o":"substantiv","gen":"n","f":73,"s":[3],"d":["sem","60"]},
+  {"l":"ἵνα","g":"för att","o":"partikel","gen":null,"f":662,"s":[],"d":["60"]},
+  {"l":"ἵστημι","g":"ställa, stå, bestå","o":"verb","gen":null,"f":153,"s":[],"d":["60"]},
+  {"l":"κάθημαι","g":"sitta, sätta sig","o":"verb","gen":null,"f":91,"s":[],"d":["60"]},
+  {"l":"καθώς","g":"som, sådan som","o":"partikel","gen":null,"f":182,"s":[],"d":["60"]},
+  {"l":"καί","g":"och, också","o":"partikel","gen":null,"f":8973,"s":[4],"d":["sem","60"]},
+  {"l":"καιρός","g":"tid, tidpunkt","o":"substantiv","gen":"m","f":85,"s":[],"d":["60"]},
+  {"l":"καλέω","g":"kalla","o":"verb","gen":null,"f":148,"s":[],"d":["60"]},
+  {"l":"καλός","g":"fin, skön, vacker","o":"adjektiv","gen":null,"f":101,"s":[3,4],"d":["sem","60"]},
+  {"l":"καρδία","g":"hjärta","o":"substantiv","gen":"f","f":156,"s":[],"d":["60"]},
+  {"l":"καρπός","g":"frukt","o":"substantiv","gen":"m","f":66,"s":[],"d":["60"]},
+  {"l":"κατά","g":"mot; enligt","o":"preposition","gen":null,"f":469,"s":[],"d":["60"]},
+  {"l":"καταβαίνω","g":"stiga ned, komma ned","o":"verb","gen":null,"f":80,"s":[],"d":["60"]},
+  {"l":"κεφαλή","g":"huvud","o":"substantiv","gen":"f","f":75,"s":[],"d":["60"]},
+  {"l":"κόσμος","g":"värld, världsordning","o":"substantiv","gen":"m","f":185,"s":[4],"d":["sem","60"]},
+  {"l":"κρίνω","g":"döma, bedöma","o":"verb","gen":null,"f":114,"s":[],"d":["60"]},
+  {"l":"κύριος","g":"herre, härskare","o":"substantiv","gen":"m","f":713,"s":[2,4],"d":["sem","60"]},
+  {"l":"λαλέω","g":"prata, tala","o":"verb","gen":null,"f":297,"s":[4],"d":["sem","60"]},
+  {"l":"λαμβάνω","g":"ta, ta emot, få","o":"verb","gen":null,"f":258,"s":[2],"d":["sem","60"]},
+  {"l":"λαός","g":"folk","o":"substantiv","gen":"m","f":141,"s":[],"d":["60"]},
+  {"l":"λέγω","g":"tala, säga","o":"verb","gen":null,"f":2345,"s":[2,3],"d":["sem","60"]},
+  {"l":"λόγος","g":"ord, tal, berättelse","o":"substantiv","gen":"m","f":330,"s":[2,3],"d":["sem","60"]},
+  {"l":"μαθητής","g":"lärjunge","o":"substantiv","gen":"m","f":262,"s":[],"d":["60"]},
+  {"l":"μᾶλλον","g":"mer, snarare","o":"adverb","gen":null,"f":81,"s":[],"d":["60"]},
+  {"l":"μαρτυρέω","g":"vittna, intyga","o":"verb","gen":null,"f":76,"s":[],"d":["60"]},
+  {"l":"μέγας","g":"stor, stark","o":"adjektiv","gen":null,"f":240,"s":[],"d":["60"]},
+  {"l":"μέλλω","g":"kommer att","o":"hjälpverb","gen":null,"f":109,"s":[],"d":["60"]},
+  {"l":"μένω","g":"stanna, bli kvar, förbliva","o":"verb","gen":null,"f":118,"s":[],"d":["60"]},
+  {"l":"μετά","g":"med; efter","o":"preposition","gen":null,"f":470,"s":[],"d":["60"]},
+  {"l":"μή","g":"inte","o":"negation","gen":null,"f":1036,"s":[],"d":["60"]},
+  {"l":"μηδείς","g":"ingen","o":"pron.adj","gen":null,"f":90,"s":[],"d":["60"]},
+  {"l":"μήτηρ","g":"mor","o":"substantiv","gen":"f","f":83,"s":[],"d":["60"]},
+  {"l":"μόνος","g":"ensam, allena","o":"adjektiv","gen":null,"f":110,"s":[3],"d":["sem","60"]},
+  {"l":"νεκρός","g":"död, avliden","o":"adjektiv","gen":null,"f":128,"s":[3],"d":["sem","60"]},
+  {"l":"νόμος","g":"lag, sed, ordning","o":"substantiv","gen":"m","f":193,"s":[],"d":["60"]},
+  {"l":"νῦν","g":"nu","o":"adverb","gen":null,"f":145,"s":[],"d":["60"]},
+  {"l":"νύξ","g":"natt","o":"substantiv","gen":"f","f":61,"s":[],"d":["60"]},
+  {"l":"ὁ","g":"den, det","o":"artikel","gen":null,"f":19769,"s":[],"d":["60"]},
+  {"l":"ὁδός","g":"väg, färd","o":"substantiv","gen":"f","f":101,"s":[],"d":["60"]},
+  {"l":"οἶδα","g":"veta","o":"verb","gen":null,"f":296,"s":[],"d":["60"]},
+  {"l":"οἶκος","g":"hus","o":"substantiv","gen":"m","f":112,"s":[2,3,4],"d":["sem","60"]},
+  {"l":"ὅλος","g":"hel","o":"adjektiv","gen":null,"f":108,"s":[],"d":["60"]},
+  {"l":"ὄνομα","g":"namn","o":"substantiv","gen":"n","f":229,"s":[],"d":["60"]},
+  {"l":"ὅπου","g":"där (som)","o":"pron.adv","gen":null,"f":81,"s":[],"d":["60"]},
+  {"l":"ὁράω","g":"se","o":"verb","gen":null,"f":476,"s":[],"d":["60"]},
+  {"l":"ὄρος","g":"berg","o":"substantiv","gen":"n","f":62,"s":[],"d":["60"]},
+  {"l":"ὅς","g":"som, vilken","o":"pronomen","gen":null,"f":1408,"s":[],"d":["60"]},
+  {"l":"ὅσος","g":"så stor/många som","o":"pron.adj","gen":null,"f":111,"s":[],"d":["60"]},
+  {"l":"ὅστις","g":"den som","o":"pronomen","gen":null,"f":144,"s":[],"d":["60"]},
+  {"l":"ὅταν","g":"när (som helst)","o":"pron.adv","gen":null,"f":123,"s":[],"d":["60"]},
+  {"l":"ὅτε","g":"när","o":"pron.adv","gen":null,"f":102,"s":[],"d":["60"]},
+  {"l":"ὅτι","g":"att, eftersom","o":"partikel","gen":null,"f":1294,"s":[],"d":["60"]},
+  {"l":"οὐ","g":"inte","o":"negation","gen":null,"f":1605,"s":[],"d":["60"]},
+  {"l":"οὐδέ","g":"och inte, inte heller","o":"partikel","gen":null,"f":142,"s":[],"d":["60"]},
+  {"l":"οὐδείς","g":"ingen","o":"pron.adj","gen":null,"f":232,"s":[],"d":["60"]},
+  {"l":"οὖν","g":"alltså","o":"partikel","gen":null,"f":494,"s":[],"d":["60"]},
+  {"l":"οὐρανός","g":"himmel","o":"substantiv","gen":"m","f":273,"s":[2,3],"d":["sem","60"]},
+  {"l":"οὔτε","g":"varken ... eller","o":"partikel","gen":null,"f":87,"s":[],"d":["60"]},
+  {"l":"οὗτος","g":"denne, denna, detta","o":"pronomen","gen":null,"f":1385,"s":[],"d":["60"]},
+  {"l":"οὕτω(ς)","g":"på så sätt, sålunda","o":"pron.adv","gen":null,"f":207,"s":[],"d":["60"]},
+  {"l":"ὀφθαλμός","g":"öga","o":"substantiv","gen":"m","f":100,"s":[],"d":["60"]},
+  {"l":"ὄχλος","g":"folkhop","o":"substantiv","gen":"m","f":174,"s":[],"d":["60"]},
+  {"l":"πάλιν","g":"igen, åter","o":"adverb","gen":null,"f":139,"s":[],"d":["60"]},
+  {"l":"παρά","g":"från; hos, vid; bredvid","o":"preposition","gen":null,"f":193,"s":[],"d":["60"]},
+  {"l":"παραδίδωμι","g":"överlämna, uppge","o":"verb","gen":null,"f":119,"s":[],"d":["60"]},
+  {"l":"παρακαλέω","g":"tillkalla, förmana, uppmuntra","o":"verb","gen":null,"f":109,"s":[],"d":["60"]},
+  {"l":"πᾶς","g":"var och en, all","o":"pron.adj","gen":null,"f":1244,"s":[],"d":["60"]},
+  {"l":"πατήρ","g":"far","o":"substantiv","gen":"m","f":413,"s":[],"d":["60"]},
+  {"l":"πέμπω","g":"skicka","o":"verb","gen":null,"f":79,"s":[2,3],"d":["sem","60"]},
+  {"l":"περί","g":"om, angående; kring","o":"preposition","gen":null,"f":332,"s":[],"d":["60"]},
+  {"l":"περιπατέω","g":"gå omkring, vandra","o":"verb","gen":null,"f":95,"s":[],"d":["60"]},
+  {"l":"πίνω","g":"dricka","o":"verb","gen":null,"f":72,"s":[],"d":["60"]},
+  {"l":"πίπτω","g":"falla","o":"verb","gen":null,"f":90,"s":[],"d":["60"]},
+  {"l":"πιστεύω","g":"tro, lita på","o":"verb","gen":null,"f":241,"s":[3,4],"d":["sem","60"]},
+  {"l":"πίστις","g":"tro, förtroende, tillit","o":"substantiv","gen":"f","f":242,"s":[],"d":["60"]},
+  {"l":"πληρόω","g":"fylla","o":"verb","gen":null,"f":86,"s":[],"d":["60"]},
+  {"l":"πλοῖον","g":"båt","o":"substantiv","gen":"n","f":67,"s":[3],"d":["sem","60"]},
+  {"l":"πνεῦμα","g":"ande","o":"substantiv","gen":"n","f":379,"s":[],"d":["60"]},
+  {"l":"ποιέω","g":"göra, handla","o":"verb","gen":null,"f":568,"s":[4],"d":["sem","60"]},
+  {"l":"πόλις","g":"stad","o":"substantiv","gen":"f","f":162,"s":[],"d":["60"]},
+  {"l":"πολύς","g":"mycket, många","o":"adjektiv","gen":null,"f":415,"s":[],"d":["60"]},
+  {"l":"πονηρός","g":"dålig, ond","o":"adjektiv","gen":null,"f":78,"s":[3,4],"d":["sem","60"]},
+  {"l":"πορεύομαι","g":"färdas, resa, gå","o":"verb","gen":null,"f":150,"s":[],"d":["60"]},
+  {"l":"πούς","g":"fot","o":"substantiv","gen":"m","f":93,"s":[],"d":["60"]},
+  {"l":"πρεσβύτερος","g":"äldste","o":"substantiv","gen":"m","f":65,"s":[],"d":["60"]},
+  {"l":"πρός","g":"på; vid; till, hos","o":"preposition","gen":null,"f":696,"s":[],"d":["60"]},
+  {"l":"προσέρχομαι","g":"gå/komma till, träda fram","o":"verb","gen":null,"f":86,"s":[],"d":["60"]},
+  {"l":"προσεύχομαι","g":"be","o":"verb","gen":null,"f":85,"s":[],"d":["60"]},
+  {"l":"πρόσωπον","g":"ansikte","o":"substantiv","gen":"n","f":76,"s":[],"d":["60"]},
+  {"l":"προφήτης","g":"profet","o":"substantiv","gen":"m","f":144,"s":[],"d":["60"]},
+  {"l":"πρῶτος","g":"först","o":"adjektiv","gen":null,"f":153,"s":[3],"d":["sem","60"]},
+  {"l":"πῦρ","g":"eld","o":"substantiv","gen":"n","f":71,"s":[],"d":["60"]},
+  {"l":"πῶς","g":"hur","o":"adverb","gen":null,"f":103,"s":[],"d":["60"]},
+  {"l":"σάρξ","g":"kött, kropp","o":"substantiv","gen":"f","f":147,"s":[],"d":["60"]},
+  {"l":"σημεῖον","g":"tecken","o":"substantiv","gen":"n","f":77,"s":[3,4],"d":["sem","60"]},
+  {"l":"στόμα","g":"mun","o":"substantiv","gen":"n","f":78,"s":[],"d":["60"]},
+  {"l":"σύ","g":"du","o":"pronomen","gen":null,"f":2894,"s":[],"d":["60"]},
+  {"l":"σύν","g":"med, jämte","o":"preposition","gen":null,"f":129,"s":[],"d":["60"]},
+  {"l":"συναγωγή","g":"samlingsställe, synagoga","o":"substantiv","gen":"f","f":56,"s":[],"d":["60"]},
+  {"l":"σῴζω","g":"rädda, hjälpa, bevara","o":"verb","gen":null,"f":106,"s":[3,4],"d":["sem","60"]},
+  {"l":"σῶμα","g":"kropp","o":"substantiv","gen":"n","f":142,"s":[],"d":["60"]},
+  {"l":"τέ","g":"och","o":"partikel","gen":null,"f":213,"s":[],"d":["60"]},
+  {"l":"τέκνον","g":"barn","o":"substantiv","gen":"n","f":99,"s":[3,4],"d":["sem","60"]},
+  {"l":"τηρέω","g":"iaktta, bevaka, bevara","o":"verb","gen":null,"f":71,"s":[4],"d":["sem","60"]},
+  {"l":"τίθημι","g":"ställa, lägga, sätta","o":"verb","gen":null,"f":100,"s":[],"d":["60"]},
+  {"l":"τίς","g":"vem, vad","o":"pronomen","gen":null,"f":554,"s":[],"d":["60"]},
+  {"l":"τις","g":"någon, något","o":"pronomen","gen":null,"f":530,"s":[],"d":["60"]},
+  {"l":"τόπος","g":"plats, ställe, ort","o":"substantiv","gen":"m","f":94,"s":[],"d":["60"]},
+  {"l":"τότε","g":"då, därpå","o":"adverb","gen":null,"f":159,"s":[],"d":["60"]},
+  {"l":"τρεῖς","g":"tre","o":"räkneord","gen":null,"f":67,"s":[],"d":["60"]},
+  {"l":"ὕδωρ","g":"vatten","o":"substantiv","gen":"n","f":76,"s":[],"d":["60"]},
+  {"l":"υἱός","g":"son","o":"substantiv","gen":"m","f":375,"s":[3],"d":["sem","60"]},
+  {"l":"ὑμεῖς","g":"ni","o":"pronomen","gen":null,"f":2894,"s":[],"d":["60"]},
+  {"l":"ὑπάγω","g":"gå bort, gå","o":"verb","gen":null,"f":79,"s":[],"d":["60"]},
+  {"l":"ὑπέρ","g":"över, för; mer än","o":"preposition","gen":null,"f":150,"s":[],"d":["60"]},
+  {"l":"ὑπό","g":"av, genom; under","o":"preposition","gen":null,"f":220,"s":[],"d":["60"]},
+  {"l":"Φαρισαῖος","g":"farisé","o":"substantiv","gen":"m","f":96,"s":[],"d":["60"]},
+  {"l":"φοβέομαι","g":"frukta","o":"verb","gen":null,"f":95,"s":[],"d":["60"]},
+  {"l":"φωνή","g":"röst, ljud","o":"substantiv","gen":"f","f":139,"s":[],"d":["60"]},
+  {"l":"φῶς","g":"ljus","o":"substantiv","gen":"n","f":72,"s":[],"d":["60"]},
+  {"l":"χαίρω","g":"glädja sig, vara glad","o":"verb","gen":null,"f":74,"s":[],"d":["60"]},
+  {"l":"χάρις","g":"nåd, gunst, tack","o":"substantiv","gen":"f","f":155,"s":[],"d":["60"]},
+  {"l":"χείρ","g":"hand","o":"substantiv","gen":"f","f":176,"s":[],"d":["60"]},
+  {"l":"Χριστός","g":"Kristus","o":"substantiv","gen":"m","f":528,"s":[],"d":["60"]},
+  {"l":"ψυχή","g":"själ","o":"substantiv","gen":"f","f":102,"s":[4],"d":["sem","60"]},
+  {"l":"ὧδε","g":"här, hit, så här","o":"pron.adv","gen":null,"f":61,"s":[],"d":["60"]},
+  {"l":"ὥρα","g":"tid, stund, timme","o":"substantiv","gen":"f","f":106,"s":[],"d":["60"]},
+  {"l":"ὡς","g":"såsom","o":"partikel","gen":null,"f":503,"s":[],"d":["60"]},
+  {"l":"ὥστε","g":"så att, därför","o":"partikel","gen":null,"f":83,"s":[],"d":["60"]},
+  {"l":"κηρύσσω","g":"predika","o":"verb","gen":null,"f":61,"s":[2,3,4],"d":["sem"]},
+  {"l":"κλέπτω","g":"stjäla","o":"verb","gen":null,"f":13,"s":[4],"d":["sem"]},
+  {"l":"λύω","g":"lösa","o":"verb","gen":null,"f":42,"s":[2],"d":["sem"]},
+  {"l":"μικρός","g":"liten","o":"adjektiv","gen":null,"f":46,"s":[3],"d":["sem"]},
+  {"l":"παιδεύω","g":"uppfostra","o":"verb","gen":null,"f":13,"s":[2],"d":["sem"]},
+  {"l":"πιστός","g":"trogen","o":"adjektiv","gen":null,"f":67,"s":[3],"d":["sem"]},
+  {"l":"πτωχός","g":"fattig","o":"adjektiv","gen":null,"f":34,"s":[4],"d":["sem"]},
+  {"l":"φιλέω","g":"gilla, älska","o":"verb","gen":null,"f":25,"s":[4],"d":["sem"]},
+  {"l":"ἀγρός","g":"fält","o":"substantiv","gen":"m","f":36,"s":[4],"d":["sem"]},
+  {"l":"ἀδελφή","g":"syster","o":"substantiv","gen":"f","f":25,"s":[4],"d":["sem"]},
+  {"l":"ἀργύριον","g":"pengar, silver","o":"substantiv","gen":"n","f":20,"s":[4],"d":["sem"]},
+  {"l":"ἄγω","g":"leda","o":"verb","gen":null,"f":68,"s":[4],"d":["sem"]},
+  {"l":"Ἰησοῦς","g":"Jesus","o":"substantiv","gen":"m","f":906,"s":[4],"d":["sem"]}
+];
+
+const SEMINARIER = [2, 3, 4];
+const ORDKLASSER = [...new Set(GLOSOR.map(w => w.o))];   // i förekomstordning
+const DECKS = [
+  { id:"sem", namn:"Seminarium 2–4", desc:"Kursens ordlistor, seminarium 2–4 (66 ord)." },
+  { id:"60",  namn:"NT-frekvens > 60", desc:"Alla ord som förekommer fler än 60 ggr i NT (244 ord)." },
+];
+const BAND = [
+  { id:"500", namn:"≥ 500",   test:f => f >= 500 },
+  { id:"200", namn:"200–499", test:f => f >= 200 && f < 500 },
+  { id:"100", namn:"100–199", test:f => f >= 100 && f < 200 },
+  { id:"0",   namn:"< 100",   test:f => f <  100 },
+];
+const BAND_IDS = BAND.map(b => b.id);
+const DECK_IDS = DECKS.map(d => d.id);
+const ARTIKEL = { m: "ὁ", f: "ἡ", n: "τό" };
+const GENUS_NAMN = { m: "maskulinum", f: "femininum", n: "neutrum" };
+const LAGER = "grek-glosspel-v1";
+
+/* ── STATE ───────────────────────────────────────────────────────────── */
+const state = {
+  mode: "flashcard",                              // "flashcard" | "flerval"
+  deck: "sem",                                    // "sem" | "60"
+  valdaSem: new Set(SEMINARIER),
+  valdaBand: new Set(BAND_IDS),
+  valdaOk:  new Set(ORDKLASSER),
+  streak: 0,
+  best: { flashcard: 0, flerval: 0 },
+  ratt: 0, totalt: 0,                             // sessionsräknare
+  card: null,                                     // upplöst EN gång i newQuestion()
+  vand: false,                                    // flashcard: är kortet vänt?
+  besvarad: false,                                // flerval: har man svarat?
+  ko: [],                                         // flashcard: rundkö (med retry)
+};
+
+/* ── HJÄLPARE ────────────────────────────────────────────────────────── */
+function shuffle(arr){                            // Fisher-Yates
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+function aktivaOrd(){
+  if(state.deck === "60"){
+    return GLOSOR.filter(w =>
+      w.d.includes("60") &&
+      state.valdaOk.has(w.o) &&
+      BAND.some(b => state.valdaBand.has(b.id) && b.test(w.f))
+    );
+  }
+  return GLOSOR.filter(w =>
+    w.d.includes("sem") &&
+    w.s.some(s => state.valdaSem.has(s)) &&
+    state.valdaOk.has(w.o)
+  );
+}
+
+/* ── PERSISTENS (localStorage, try/catch) ────────────────────────────── */
+function spara(){
+  try{
+    localStorage.setItem(LAGER, JSON.stringify({
+      mode: state.mode,
+      deck: state.deck,
+      valdaSem:  [...state.valdaSem],
+      valdaBand: [...state.valdaBand],
+      valdaOk:   [...state.valdaOk],
+      best: state.best,
+    }));
+  }catch(e){ /* privat läge e.d. — strunt samma */ }
+}
+function ladda(){
+  try{
+    const r = JSON.parse(localStorage.getItem(LAGER));
+    if(!r) return;
+    if(r.mode === "flashcard" || r.mode === "flerval") state.mode = r.mode;
+    if(r.deck === "sem" || r.deck === "60") state.deck = r.deck;
+    if(Array.isArray(r.valdaSem))  state.valdaSem  = new Set(r.valdaSem.filter(s => SEMINARIER.includes(s)));
+    if(Array.isArray(r.valdaBand)) state.valdaBand = new Set(r.valdaBand.filter(b => BAND_IDS.includes(b)));
+    if(Array.isArray(r.valdaOk))   state.valdaOk   = new Set(r.valdaOk.filter(o => ORDKLASSER.includes(o)));
+    if(r.best && typeof r.best === "object"){
+      if(typeof r.best.flashcard === "number") state.best.flashcard = r.best.flashcard;
+      if(typeof r.best.flerval   === "number") state.best.flerval   = r.best.flerval;
+    }
+    if(!state.valdaSem.size)  state.valdaSem  = new Set(SEMINARIER);
+    if(!state.valdaBand.size) state.valdaBand = new Set(BAND_IDS);
+    if(!state.valdaOk.size)   state.valdaOk   = new Set(ORDKLASSER);
+  }catch(e){ /* trasig data — börja om rent */ }
+}
+
+/* ── DISTRAKTORER ────────────────────────────────────────────────────── */
+/* Samma ordklass i första hand, och helst inom samma frekvensband: vi
+   sorterar kandidaterna efter närhet i log-frekvens, tar de närmaste och
+   blandar bland dem. Räcker inte samma ordklass faller vi tillbaka på alla. */
+function byggOptioner(svar){
+  const aktiva = aktivaOrd();
+  const lf = w => (w.f && w.f > 0) ? Math.log(w.f) : 0;
+  const sammaOk = aktiva.filter(w => w.l !== svar.l && w.o === svar.o && w.g !== svar.g);
+  let pool;
+  if(sammaOk.length >= 3){
+    const nara = sammaOk.slice().sort((a,b) => Math.abs(lf(a)-lf(svar)) - Math.abs(lf(b)-lf(svar)));
+    pool = shuffle(nara.slice(0, Math.min(7, nara.length)));     // de ~7 närmaste i frekvens
+  }else{
+    // för få i samma ordklass → komplettera med övriga
+    const ovriga = aktiva.filter(w => w.l !== svar.l && w.g !== svar.g && !sammaOk.includes(w));
+    pool = sammaOk.concat(shuffle(ovriga));
+  }
+  // unika glosor (skydd mot dubblettöversättningar)
+  const distraktorer = [];
+  const sedda = new Set([svar.g]);
+  for(const w of pool){
+    if(sedda.has(w.g)) continue;
+    sedda.add(w.g); distraktorer.push(w.g);
+    if(distraktorer.length === 3) break;
+  }
+  return shuffle([svar.g, ...distraktorer]);
+}
+
+/* ── KORTLOGIK ───────────────────────────────────────────────────────── */
+function fyllKo(){
+  state.ko = shuffle(aktivaOrd());
+}
+function newQuestion(){
+  const aktiva = aktivaOrd();
+  state.vand = false;
+  state.besvarad = false;
+
+  if(!aktiva.length){ state.card = null; render(); return; }
+
+  if(state.mode === "flashcard"){
+    if(!state.ko.length) fyllKo();
+    const svar = state.ko.shift();
+    state.card = { svar, sida: "fram" };
+  }else{
+    const svar = aktiva[Math.floor(Math.random()*aktiva.length)];
+    state.card = { svar, optioner: byggOptioner(svar) };
+  }
+  render();
+}
+
+/* ── BEDÖMNING ───────────────────────────────────────────────────────── */
+function bokfor(korrekt){
+  state.totalt++;
+  if(korrekt){ state.ratt++; state.streak++; if(state.streak > state.best[state.mode]) state.best[state.mode] = state.streak; }
+  else { state.streak = 0; }
+  spara();
+}
+function flashcardSvar(kunde){
+  if(!state.vand) return;
+  bokfor(kunde);
+  if(!kunde) state.ko.push(state.card.svar);      // retry-kö: tillbaka senare i rundan
+  newQuestion();
+}
+function flervalSvar(valdGlosa, knapp){
+  if(state.besvarad) return;
+  state.besvarad = true;
+  const korrekt = valdGlosa === state.card.svar.g;
+  bokfor(korrekt);
+  renderFlervalFacit(knapp, korrekt);
+}
+
+/* ── RENDER ──────────────────────────────────────────────────────────── */
+function artikelText(w){
+  if(w.o !== "substantiv" || !w.gen) return "";
+  return ARTIKEL[w.gen] + " · " + GENUS_NAMN[w.gen];
+}
+function metaRad(w){
+  const delar = [w.o];
+  const art = artikelText(w);
+  if(art) delar.push(`<span class="art">${art}</span>`);
+  return delar.join(" · ");
+}
+
+function render(){
+  const card = document.getElementById("card");
+  const controls = document.getElementById("controls");
+  const stats = document.getElementById("stats");
+  card.className = "card";
+  controls.innerHTML = "";
+
+  // mode-knapparnas tryckläge + flerval-spärr vid <4 ord
+  const antal = aktivaOrd().length;
+  document.getElementById("mode-flashcard").setAttribute("aria-pressed", state.mode === "flashcard");
+  document.getElementById("mode-flerval").setAttribute("aria-pressed", state.mode === "flerval");
+  document.getElementById("mode-flerval").disabled = antal < 4;
+
+  if(!state.card){
+    const tips = state.deck === "60"
+      ? "Välj minst ett frekvensband och en ordklass."
+      : "Välj minst ett seminarium och en ordklass.";
+    card.innerHTML = `<div class="empty">Inga ord i urvalet.<br>${tips}</div>`;
+    stats.innerHTML = "";
+    renderPickerCount();
+    return;
+  }
+
+  const w = state.card.svar;
+
+  if(state.mode === "flashcard"){
+    if(!state.vand){
+      card.className = "card flippable";
+      card.innerHTML = `<div class="lemma">${w.l}</div><div class="prompt-hint">tryck på kortet eller mellanslag för att vända</div>`;
+      card.onclick = () => { state.vand = true; render(); };
+    }else{
+      card.className = "card flippable";
+      card.innerHTML = `
+        <div class="reveal">
+          <div class="prompt-echo">${w.l}</div>
+          <div class="glosa">${w.g}</div>
+          <div class="meta">${metaRad(w)}</div>
+        </div>`;
+      card.onclick = null;
+      const bra = mkBtn("✓ Kunde", "btn good", () => flashcardSvar(true), "→");
+      const fel = mkBtn("✗ Kunde inte", "btn bad", () => flashcardSvar(false), "←");
+      controls.append(fel, bra);
+    }
+  }else{
+    card.className = "card";
+    card.onclick = null;
+    card.innerHTML = `<div class="lemma">${w.l}</div>`;
+    renderOptioner();
+  }
+
+  renderStats();
+  renderPickerCount();
+}
+
+function renderOptioner(){
+  const card = document.getElementById("card");
+  const grid = document.createElement("div");
+  grid.className = "options";
+  state.card.optioner.forEach((glosa, i) => {
+    const b = document.createElement("button");
+    b.className = "opt";
+    b.textContent = glosa;
+    b.dataset.glosa = glosa;
+    b.onclick = () => flervalSvar(glosa, b);
+    grid.appendChild(b);
+  });
+  card.appendChild(grid);
+}
+function renderFlervalFacit(valdKnapp, korrekt){
+  const knappar = document.querySelectorAll(".opt");
+  knappar.forEach(b => {
+    b.disabled = true;
+    if(b.dataset.glosa === state.card.svar.g) b.classList.add("correct");
+    else if(b === valdKnapp) b.classList.add("wrong");
+  });
+  const controls = document.getElementById("controls");
+  controls.innerHTML = "";
+  controls.appendChild(mkBtn("Nästa", "btn primary", () => newQuestion(), "mellanslag"));
+  renderStats();
+}
+
+function mkBtn(text, cls, fn, key){
+  const b = document.createElement("button");
+  b.className = cls;
+  b.innerHTML = key ? `${text}<span class="key">${key}</span>` : text;
+  b.onclick = fn;
+  return b;
+}
+
+function renderStats(){
+  const stats = document.getElementById("stats");
+  const b = state.best[state.mode];
+  const andel = state.totalt ? Math.round(100*state.ratt/state.totalt) : 0;
+  stats.innerHTML =
+    `Svit: <b>${state.streak}</b> i rad` +
+    `<span class="dot">·</span>Bästa: <b>${b}</b>` +
+    `<span class="dot">·</span>Session: <b>${state.ratt}/${state.totalt}</b> (${andel}%)`;
+}
+
+/* ── VÄLJAREN ────────────────────────────────────────────────────────── */
+function renderPickerCount(){
+  document.getElementById("picker-count").textContent = `(${aktivaOrd().length} ord)`;
+}
+function antalForSem(s){ return GLOSOR.filter(w => w.d.includes("sem") && w.s.includes(s)).length; }
+function antalForBand(bid){ const b = BAND.find(x => x.id === bid); return GLOSOR.filter(w => w.d.includes("60") && b.test(w.f)).length; }
+function antalForOk(o){
+  const dack = state.deck === "60" ? "60" : "sem";
+  return GLOSOR.filter(w => w.d.includes(dack) && w.o === o).length;
+}
+
+function byggPicker(){
+  // Kortlek (enkelval)
+  const deckGrid = document.getElementById("deck-grid");
+  DECKS.forEach(d => {
+    const b = document.createElement("button");
+    b.className = "toggle"; b.dataset.deck = d.id; b.textContent = d.namn;
+    b.setAttribute("aria-pressed", state.deck === d.id);
+    b.onclick = () => setDeck(d.id);
+    deckGrid.appendChild(b);
+  });
+  // Seminarium
+  const semGrid = document.getElementById("sem-grid");
+  SEMINARIER.forEach(s => {
+    const b = document.createElement("button");
+    b.className = "toggle";
+    b.innerHTML = `Sem ${s}<span class="n">${antalForSem(s)}</span>`;
+    b.setAttribute("aria-pressed", state.valdaSem.has(s));
+    b.onclick = () => { toggleSet(state.valdaSem, s); b.setAttribute("aria-pressed", state.valdaSem.has(s)); efterUrval(); };
+    semGrid.appendChild(b);
+  });
+  // Frekvensband
+  const bandGrid = document.getElementById("band-grid");
+  BAND.forEach(bd => {
+    const b = document.createElement("button");
+    b.className = "toggle";
+    b.innerHTML = `${bd.namn}<span class="n">${antalForBand(bd.id)}</span>`;
+    b.setAttribute("aria-pressed", state.valdaBand.has(bd.id));
+    b.onclick = () => { toggleSet(state.valdaBand, bd.id); b.setAttribute("aria-pressed", state.valdaBand.has(bd.id)); efterUrval(); };
+    bandGrid.appendChild(b);
+  });
+  // Ordklass
+  const okGrid = document.getElementById("ok-grid");
+  ORDKLASSER.forEach(o => {
+    const b = document.createElement("button");
+    b.className = "toggle"; b.dataset.ok = o;
+    b.innerHTML = `${o}<span class="n">${antalForOk(o)}</span>`;
+    b.setAttribute("aria-pressed", state.valdaOk.has(o));
+    b.onclick = () => { toggleSet(state.valdaOk, o); b.setAttribute("aria-pressed", state.valdaOk.has(o)); efterUrval(); };
+    okGrid.appendChild(b);
+  });
+  uppdateraDackVy();
+}
+
+function setDeck(id){
+  if(state.deck === id) return;
+  state.deck = id;
+  uppdateraDackVy();
+  efterUrval();
+}
+
+function uppdateraDackVy(){
+  document.getElementById("sem-section").hidden  = state.deck !== "sem";
+  document.getElementById("band-section").hidden = state.deck !== "60";
+  const d = DECKS.find(x => x.id === state.deck);
+  document.querySelectorAll("#deck-grid .toggle").forEach(b =>
+    b.setAttribute("aria-pressed", b.dataset.deck === state.deck));
+  document.getElementById("deck-desc").textContent = d.desc;
+  document.getElementById("subtitle").textContent =
+    (state.deck === "60" ? "NT-frekvens > 60" : "seminarium 2–4") + " · grekiska → svenska";
+  document.querySelectorAll("#ok-grid .toggle").forEach(b => {
+    const n = b.querySelector(".n");
+    if(n) n.textContent = antalForOk(b.dataset.ok);
+  });
+}
+function toggleSet(set, v){ set.has(v) ? set.delete(v) : set.add(v); }
+function synkaToggles(){
+  document.querySelectorAll("#sem-grid .toggle").forEach((b,i) =>
+    b.setAttribute("aria-pressed", state.valdaSem.has(SEMINARIER[i])));
+  document.querySelectorAll("#band-grid .toggle").forEach((b,i) =>
+    b.setAttribute("aria-pressed", state.valdaBand.has(BAND_IDS[i])));
+  document.querySelectorAll("#ok-grid .toggle").forEach((b,i) =>
+    b.setAttribute("aria-pressed", state.valdaOk.has(ORDKLASSER[i])));
+}
+function efterUrval(){
+  // urvalet ändrades → ny runda/kö, fallback från flerval om för få ord
+  const antal = aktivaOrd().length;
+  document.getElementById("picker-note").textContent =
+    antal < 4 ? "Färre än 4 ord — flerval är avstängt. Flashcard fungerar." : "";
+  if(state.mode === "flerval" && antal < 4) state.mode = "flashcard";
+  state.streak = 0;
+  fyllKo();
+  spara();
+  newQuestion();
+}
+
+/* ── EVENTS ──────────────────────────────────────────────────────────── */
+function setMode(m){
+  if(m === "flerval" && aktivaOrd().length < 4) return;
+  state.mode = m;
+  state.streak = 0;
+  if(m === "flashcard") fyllKo();
+  spara();
+  newQuestion();
+}
+document.getElementById("mode-flashcard").onclick = () => setMode("flashcard");
+document.getElementById("mode-flerval").onclick   = () => setMode("flerval");
+
+document.getElementById("picker-toggle").onclick = (e) => {
+  const t = e.currentTarget;
+  const open = t.getAttribute("aria-expanded") === "true";
+  t.setAttribute("aria-expanded", !open);
+  document.getElementById("picker-body").hidden = open;
+};
+document.querySelectorAll("[data-quick]").forEach(btn => {
+  btn.onclick = () => {
+    const q = btn.dataset.quick;
+    if(q === "sem-all")   state.valdaSem  = new Set(SEMINARIER);
+    if(q === "sem-none")  state.valdaSem  = new Set();
+    if(q === "band-all")  state.valdaBand = new Set(BAND_IDS);
+    if(q === "band-none") state.valdaBand = new Set();
+    if(q === "ok-all")    state.valdaOk   = new Set(ORDKLASSER);
+    if(q === "ok-none")   state.valdaOk   = new Set();
+    synkaToggles(); efterUrval();
+  };
+});
+
+document.addEventListener("keydown", (e) => {
+  if(e.target.closest(".picker")) return;
+  if(state.mode === "flashcard"){
+    if(e.code === "Space"){ e.preventDefault();
+      if(!state.vand){ state.vand = true; render(); } }
+    else if(state.vand && (e.code === "ArrowRight" || e.key === "Enter")){ e.preventDefault(); flashcardSvar(true); }
+    else if(state.vand && e.code === "ArrowLeft"){ e.preventDefault(); flashcardSvar(false); }
+  }else{
+    if(state.besvarad && (e.code === "Space" || e.key === "Enter")){ e.preventDefault(); newQuestion(); }
+    else if(!state.besvarad && /^[1-4]$/.test(e.key)){
+      const knapp = document.querySelectorAll(".opt")[+e.key - 1];
+      if(knapp) flervalSvar(knapp.dataset.glosa, knapp);
+    }
+  }
+});
+
+/* ── INIT ────────────────────────────────────────────────────────────── */
+ladda();
+byggPicker();
+if(state.mode === "flashcard") fyllKo();
+newQuestion();
+
+  } finally {
+    document.addEventListener = _da;
+    window.addEventListener   = _wa;
+  }
+}
