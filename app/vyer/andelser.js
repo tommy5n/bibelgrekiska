@@ -1,8 +1,7 @@
-// Vy: Artiklar & ändelser (portad exakt från grekiska-andelsespel-sem4.html)
-let keyHandler = null;
-export function teardown(){ if(keyHandler){ document.removeEventListener('keydown', keyHandler); keyHandler = null; } }
-
-const MARKUP = `
+// Vy: Artiklar & ändelser — portad exakt från grekiska-andelsespel.html
+let __kh = null;
+export function teardown(){ if(__kh){ document.removeEventListener("keydown", __kh); __kh = null; } }
+const MARKUP = `<div class="vy vy-andelser">
 <header>
   <h1>Grekiska — artiklar &amp; ändelser</h1>
   <div class="sub">Bygg formen: välj rätt artikel och ändelse för kasuset.</div>
@@ -99,8 +98,7 @@ const MARKUP = `
   <i>bara ändelse</i> är artikeln redan given. Deklination 1 har tre singular-typer som bara
   nominativ avslöjar: <code>ἀρχή</code> (η), <code>ἡμέρα</code> (ren α), <code>θάλασσα</code> (blandad α).
 </footer>
-`;
-
+</div>`;
 export function render(root){
   root.innerHTML = MARKUP;
 
@@ -720,10 +718,10 @@ document.querySelector("[data-kasus-clear]").onclick = () => { state.valdaKasus 
 document.querySelectorAll("#seg-num button").forEach(b =>
   b.onclick = () => { state.numerus = b.dataset.num; uppdateraNumKnappar(); spara(); newQuestion(); });
 
-keyHandler = (e) => {
+__kh = e => {
   if(e.key === "Enter"){ if(state.besvarad) newQuestion(); else if(klar()) rätta(); }
 };
-  document.addEventListener("keydown", keyHandler);
+  document.addEventListener("keydown", __kh);;
 
 /* ── START ───────────────────────────────────────────────────────────── */
 ladda(); uppdateraLägesknappar(); uppdateraNumKnappar();
