@@ -68,7 +68,7 @@ body{margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
         font-family: 'Cardo', "Spectral", Georgia, serif;
         color: var(--ink);
         line-height: 1.5;
-        background: var(--paper);
+        background: transparent;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -136,10 +136,9 @@ body{margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
           0 18px 42px -26px rgba(44, 35, 24, 0.55);
         padding: 2.4rem 1.8rem;
         width: min(440px, 100%);
-        min-height: 13rem;
+        min-height: 21rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         text-align: center;
       }
 .vy-alfabet .card::after{
@@ -155,7 +154,11 @@ body{margin:0; min-height:100vh; background:var(--paper); color:var(--ink);
         font-size: clamp(4rem, 18vw, 6.5rem);
         line-height: 1;
         color: var(--gold-deep);
-        margin: 0.3rem 0 1.2rem;
+        margin: 0;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-shadow:
           0 2px 0 #fff,
           0 1px 18px rgba(176, 130, 47, 0.22);
