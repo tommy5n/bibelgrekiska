@@ -1,9 +1,6 @@
 // Vy: Alfabetet — portad exakt från grekiska-alfabet.html
-let _added = [];
-export function teardown(){
-  for (const [tg,t,f,o] of _added){ try{ (tg==='w'?window:document).removeEventListener(t,f,o); }catch(e){} }
-  _added = [];
-}
+let __kh = null;
+export function teardown(){ if(__kh){ document.removeEventListener("keydown", __kh); __kh = null; } }
 const MARKUP = `<div class="vy vy-alfabet">
 <header>
       <h1>Grekiska alfabetet</h1>
@@ -93,12 +90,6 @@ const MARKUP = `<div class="vy vy-alfabet">
 </div>`;
 export function render(root){
   root.innerHTML = MARKUP;
-  const _da = document.addEventListener.bind(document);
-  const _wa = window.addEventListener.bind(window);
-  _added = [];
-  document.addEventListener = (t,f,o)=>{ _added.push(['d',t,f,o]); _da(t,f,o); };
-  window.addEventListener   = (t,f,o)=>{ _added.push(['w',t,f,o]); _wa(t,f,o); };
-  try {
 
       /* ============================================================
    DATA — det här är det enda du rör för att lägga till innehåll.
@@ -679,7 +670,7 @@ export function render(root){
           seg.addEventListener("click", () => setCase(seg.dataset.case)),
         );
 
-      document.addEventListener("keydown", (e) => {
+      __kh = (e) => {
         // låt väljarens egna knappar sköta sina egna tangenttryck
         if (e.target.closest && e.target.closest(".picker")) return;
 
@@ -713,7 +704,8 @@ export function render(root){
         } else if (e.code === "Enter" && state.answered) {
           newQuestion();
         }
-      });
+      };
+  document.addEventListener("keydown", __kh);;
 
       /* ============================================================
    START
@@ -726,8 +718,4 @@ export function render(root){
       renderCaseControl();
       newQuestion();
     
-  } finally {
-    document.addEventListener = _da;
-    window.addEventListener   = _wa;
-  }
 }

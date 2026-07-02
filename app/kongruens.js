@@ -1,9 +1,6 @@
 // Vy: Kongruens — portad exakt från grekiska-kongruensspel.html
-let _added = [];
-export function teardown(){
-  for (const [tg,t,f,o] of _added){ try{ (tg==='w'?window:document).removeEventListener(t,f,o); }catch(e){} }
-  _added = [];
-}
+let __kh = null;
+export function teardown(){ if(__kh){ document.removeEventListener("keydown", __kh); __kh = null; } }
 const MARKUP = `<div class="vy vy-kongruens">
 <header>
   <h1>Grekiska — kongruens</h1>
@@ -94,12 +91,6 @@ const MARKUP = `<div class="vy vy-kongruens">
 </div>`;
 export function render(root){
   root.innerHTML = MARKUP;
-  const _da = document.addEventListener.bind(document);
-  const _wa = window.addEventListener.bind(window);
-  _added = [];
-  document.addEventListener = (t,f,o)=>{ _added.push(['d',t,f,o]); _da(t,f,o); };
-  window.addEventListener   = (t,f,o)=>{ _added.push(['w',t,f,o]); _wa(t,f,o); };
-  try {
 
 const ADJEKTIV = [
   {lemma:"ἀγαθός", glosa:"god", accenttyp:"oxyton", kortlek:"oxytona",
@@ -537,8 +528,4 @@ function init(){
 }
 init();
 
-  } finally {
-    document.addEventListener = _da;
-    window.addEventListener   = _wa;
-  }
 }

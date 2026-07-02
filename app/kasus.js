@@ -1,9 +1,6 @@
 // Vy: Kasusigenkänning — portad exakt från grekiska-kasusspel.html
-let _added = [];
-export function teardown(){
-  for (const [tg,t,f,o] of _added){ try{ (tg==='w'?window:document).removeEventListener(t,f,o); }catch(e){} }
-  _added = [];
-}
+let __kh = null;
+export function teardown(){ if(__kh){ document.removeEventListener("keydown", __kh); __kh = null; } }
 const MARKUP = `<div class="vy vy-kasus">
 <header>
   <h1>Grekiska — kasusigenkänning</h1>
@@ -101,12 +98,6 @@ const MARKUP = `<div class="vy vy-kasus">
 </div>`;
 export function render(root){
   root.innerHTML = MARKUP;
-  const _da = document.addEventListener.bind(document);
-  const _wa = window.addEventListener.bind(window);
-  _added = [];
-  document.addEventListener = (t,f,o)=>{ _added.push(['d',t,f,o]); _da(t,f,o); };
-  window.addEventListener   = (t,f,o)=>{ _added.push(['w',t,f,o]); _wa(t,f,o); };
-  try {
 
 /* ── DATA ─────────────────────────────────────────────────────────────
    Artikeln är genusberoende (m/n/f) — den visas alltid och gör kortet
@@ -731,13 +722,14 @@ document.querySelectorAll("#seg-num button").forEach(b =>
   b.onclick = () => { state.numerus = b.dataset.num; uppdateraNumKnappar(); spara(); newQuestion(); });
 
 // tangentbord: mellanslag vänder, siffror svarar i flerval
-document.addEventListener("keydown", e => {
+__kh = e => {
   if(e.code === "Space" && state.mode === "vand" && !state.besvarad){ e.preventDefault(); state.besvarad = true; render(); }
   else if(e.key === "Enter" && state.besvarad){ if(state.mode==="flerval") newQuestion(); }
   else if(state.mode === "flerval" && !state.besvarad && /^[1-4]$/.test(e.key)){
     const k = state.card.optioner[+e.key - 1]; if(k) svaraFlerval(k);
   }
-});
+};
+  document.addEventListener("keydown", __kh);;
 
 /* ── START ───────────────────────────────────────────────────────────── */
 ladda();
@@ -747,8 +739,4 @@ byggGridOrd();
 byggGridKasus();
 newQuestion();
 
-  } finally {
-    document.addEventListener = _da;
-    window.addEventListener   = _wa;
-  }
 }

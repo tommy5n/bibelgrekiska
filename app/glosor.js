@@ -1,9 +1,6 @@
 // Vy: Glosor — portad exakt från grekiska-glosspel.html
-let _added = [];
-export function teardown(){
-  for (const [tg,t,f,o] of _added){ try{ (tg==='w'?window:document).removeEventListener(t,f,o); }catch(e){} }
-  _added = [];
-}
+let __kh = null;
+export function teardown(){ if(__kh){ document.removeEventListener("keydown", __kh); __kh = null; } }
 const MARKUP = `<div class="vy vy-glosor">
 <header>
   <h1>Bibelgrekiska — glosor</h1>
@@ -65,12 +62,6 @@ const MARKUP = `<div class="vy vy-glosor">
 </div>`;
 export function render(root){
   root.innerHTML = MARKUP;
-  const _da = document.addEventListener.bind(document);
-  const _wa = window.addEventListener.bind(window);
-  _added = [];
-  document.addEventListener = (t,f,o)=>{ _added.push(['d',t,f,o]); _da(t,f,o); };
-  window.addEventListener   = (t,f,o)=>{ _added.push(['w',t,f,o]); _wa(t,f,o); };
-  try {
 
 /* ── DATA (snapshot ur glosor.json: hela uppsättningen, d=kortlek ["sem"|"60"], f=effektiv frekvens) ─ */
 const GLOSOR = [
@@ -729,7 +720,7 @@ document.querySelectorAll("[data-quick]").forEach(btn => {
   };
 });
 
-document.addEventListener("keydown", (e) => {
+__kh = (e) => {
   if(e.target.closest(".picker")) return;
   if(state.mode === "flashcard"){
     if(e.code === "Space"){ e.preventDefault();
@@ -743,7 +734,8 @@ document.addEventListener("keydown", (e) => {
       if(knapp) flervalSvar(knapp.dataset.glosa, knapp);
     }
   }
-});
+};
+  document.addEventListener("keydown", __kh);;
 
 /* ── INIT ────────────────────────────────────────────────────────────── */
 ladda();
@@ -751,8 +743,4 @@ byggPicker();
 if(state.mode === "flashcard") fyllKo();
 newQuestion();
 
-  } finally {
-    document.addEventListener = _da;
-    window.addEventListener   = _wa;
-  }
 }

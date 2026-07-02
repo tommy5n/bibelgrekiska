@@ -1,9 +1,6 @@
 // Vy: Artiklar & ändelser — portad exakt från grekiska-andelsespel.html
-let _added = [];
-export function teardown(){
-  for (const [tg,t,f,o] of _added){ try{ (tg==='w'?window:document).removeEventListener(t,f,o); }catch(e){} }
-  _added = [];
-}
+let __kh = null;
+export function teardown(){ if(__kh){ document.removeEventListener("keydown", __kh); __kh = null; } }
 const MARKUP = `<div class="vy vy-andelser">
 <header>
   <h1>Grekiska — artiklar &amp; ändelser</h1>
@@ -104,12 +101,6 @@ const MARKUP = `<div class="vy vy-andelser">
 </div>`;
 export function render(root){
   root.innerHTML = MARKUP;
-  const _da = document.addEventListener.bind(document);
-  const _wa = window.addEventListener.bind(window);
-  _added = [];
-  document.addEventListener = (t,f,o)=>{ _added.push(['d',t,f,o]); _da(t,f,o); };
-  window.addEventListener   = (t,f,o)=>{ _added.push(['w',t,f,o]); _wa(t,f,o); };
-  try {
 
 /* ── DATA ─────────────────────────────────────────────────────────────
    Ord-arrayen och kortlekarna är samma ögonblicksbild som kasusspelet.
@@ -727,16 +718,13 @@ document.querySelector("[data-kasus-clear]").onclick = () => { state.valdaKasus 
 document.querySelectorAll("#seg-num button").forEach(b =>
   b.onclick = () => { state.numerus = b.dataset.num; uppdateraNumKnappar(); spara(); newQuestion(); });
 
-document.addEventListener("keydown", e => {
+__kh = e => {
   if(e.key === "Enter"){ if(state.besvarad) newQuestion(); else if(klar()) rätta(); }
-});
+};
+  document.addEventListener("keydown", __kh);;
 
 /* ── START ───────────────────────────────────────────────────────────── */
 ladda(); uppdateraLägesknappar(); uppdateraNumKnappar();
 byggGridOrd(); byggGridKasus(); newQuestion();
 
-  } finally {
-    document.addEventListener = _da;
-    window.addEventListener   = _wa;
-  }
 }
