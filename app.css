@@ -291,10 +291,14 @@ body {
   font-size: clamp(3rem, 12vw, 4.5rem);
   line-height: 1;
   color: var(--ink);
-  margin: 0, 0, 0.75rem;
+  margin: 0 0 1rem;
+}
+.vy-alfabet #flashcard {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .vy-alfabet .facit {
-  min-height: 5rem;
   margin-bottom: 1.2rem;
   animation: rise__alfabet 0.3s ease both;
 }
@@ -315,6 +319,7 @@ body {
   margin-top: 0.3rem;
 }
 .vy-alfabet .actions {
+  margin-top: auto;
   display: flex;
   gap: 0.6rem;
   justify-content: center;
@@ -579,10 +584,6 @@ body {
 }
 .vy-alfabet .hidden {
   display: none !important;
-}
-.vy-alfabet #facit.hidden {
-  display: block !important;
-  visibility: hidden;
 }
 @keyframes rise__alfabet {
   from {
