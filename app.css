@@ -291,7 +291,7 @@ body {
   font-size: clamp(3rem, 12vw, 4.5rem);
   line-height: 1;
   color: var(--ink);
-  margin: 0;
+  margin: 0, 0, 0.75rem;
 }
 .vy-alfabet .facit {
   min-height: 5rem;
