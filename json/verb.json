@@ -85,7 +85,7 @@
   "belagda_former": "Personnycklar vars form är direkt belagd (facit) i seminarierna — extra tillit.",
   "verifierad": "true först när formerna är samverifierade; false = mönstergenererad, väntar bekräftelse."
  },
- "_verifiering": "ω-formerna genererades ur det verifierade mönstret (stam+ändelse, recessiv accent) och matchar samtliga 10 facit-belagda former utan avvikelse. Övriga former är mönstergenererade och väntar samverifiering (verifierad:false). Auto-generering görs EJ för verb med accentkomplikationer (proparoxytona lemman, kontraktion m.m.) — de verifieras per verb.",
+ "_verifiering": "ω-däcket (presens ind. aktiv) är samverifierat: formerna genererades ur det verifierade mönstret (stam+ändelse, recessiv accent), matchar samtliga 10 facit-belagda former, och mönstret är bekräftat för dessa paroxytona verb. Auto-generering görs EJ för verb med accentkomplikationer (proparoxytona lemman, kontraktion m.m.) — de verifieras per verb.",
  "verb": [
   {
    "lemma": "λύω",
@@ -137,7 +137,7 @@
    "belagda_former": [
     "2sg"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "ἀκούω",
@@ -164,7 +164,7 @@
    "belagda_former": [
     "2pl"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "λέγω",
@@ -191,7 +191,7 @@
    "belagda_former": [
     "3pl"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "γράφω",
@@ -218,7 +218,7 @@
    "belagda_former": [
     "3sg"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "ἐσθίω",
@@ -245,7 +245,7 @@
    "belagda_former": [
     "3sg"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "κηρύσσω",
@@ -272,7 +272,7 @@
    "belagda_former": [
     "1pl"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "λαμβάνω",
@@ -299,7 +299,7 @@
    "belagda_former": [
     "3pl"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "παιδεύω",
@@ -326,7 +326,7 @@
    "belagda_former": [
     "2sg"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "πέμπω",
@@ -353,7 +353,7 @@
    "belagda_former": [
     "3sg"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "εὑρίσκω",
@@ -380,7 +380,7 @@
    "belagda_former": [
     "3pl"
    ],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "πιστεύω",
@@ -405,7 +405,7 @@
     }
    },
    "belagda_former": [],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "βαπτίζω",
@@ -430,7 +430,7 @@
     }
    },
    "belagda_former": [],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "σῴζω",
@@ -455,7 +455,7 @@
     }
    },
    "belagda_former": [],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "κλέπτω",
@@ -480,7 +480,7 @@
     }
    },
    "belagda_former": [],
-   "verifierad": false
+   "verifierad": true
   },
   {
    "lemma": "ἄγω",
@@ -505,7 +505,7 @@
     }
    },
    "belagda_former": [],
-   "verifierad": false
+   "verifierad": true
   }
  ]
 }
