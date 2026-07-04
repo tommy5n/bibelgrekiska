@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grammatikreferens · Bibelgrekiska</title>
+    <meta name="theme-color" content="#a8842c" />
+    <link rel="apple-touch-icon" href="appletouchicon.png" />
+    <!-- Ärver Cardo/Spectral-fonter och :root-temat från appen -->
+    <link rel="stylesheet" href="app.css?v=4" />
+    <style>
+      /* ── Grammatikreferens — egen, namnrymdad layout (.gr-*) ───────── */
+      body { background: var(--paper); }
+
+      .gr-bar {
+        position: sticky; top: 0; z-index: 20;
+        display: flex; align-items: center; gap: 1rem;
+        padding: 0.7rem 1.4rem;
+        background: color-mix(in srgb, var(--paper) 88%, transparent);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
+      .gr-bar .hem { color: var(--gold); text-decoration: none; font-weight: 600; font-size: var(--fs-sm); }
+      .gr-bar .hem:hover { text-decoration: underline; }
+      .gr-bar .wordmark { font-weight: 600; color: var(--ink-soft); font-size: var(--fs-sm); letter-spacing: 0.02em; }
+
+      .gr-layout {
+        display: grid;
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: 2.5rem;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 1.6rem 1.6rem 5rem;
+      }
+
+      /* ── Sidopanel (innehållsförteckning + filter) ───────────────── */
+      .gr-toc {
+        position: sticky; top: 4rem; align-self: start;
+        max-height: calc(100vh - 5rem); overflow-y: auto;
+        font-size: var(--fs-2xs);
+      }
+      .gr-toc h2 {
+        font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em;
+        color: var(--ink-soft); font-weight: 600; margin: 0 0 0.6rem;
+      }
+      .gr-filter {
+        width: 100%; padding: 0.5rem 0.7rem; margin-bottom: 0.8rem;
+        border: 1px solid var(--line); border-radius: 9px;
+        background: var(--card); color: var(--ink);
+        font-family: inherit; font-size: var(--fs-2xs);
+      }
+      .gr-filter:focus { outline: none; border-color: var(--gold); }
+      .gr-toc ul { list-style: none; margin: 0; padding: 0; }
+      .gr-toc li.group { margin-top: 0.8rem; }
+      .gr-toc li.group > span {
+        display: block; font-weight: 700; color: var(--ink);
+        font-size: var(--fs-3xs); margin-bottom: 0.15rem;
+      }
+      .gr-toc a {
+        display: block; padding: 0.28rem 0.6rem; border-radius: 7px;
+        color: var(--ink-soft); text-decoration: none;
+        border-left: 3px solid transparent;
+      }
+      .gr-toc a:hover { background: var(--card); color: var(--ink); }
+      .gr-toc a.active { color: var(--gold); border-left-color: var(--gold); font-weight: 600; }
+      .gr-toc a.hidden { display: none; }
+
+      /* ── Innehåll ─────────────────────────────────────────────────── */
+      .gr-main { min-width: 0; }
+      .gr-main > .lead {
+        margin: 0 0 1.8rem; color: var(--ink-soft); max-width: 60ch;
+        font-size: var(--fs-lg);
+      }
+      .gr-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--accent, var(--gold));
+        border-radius: 14px;
+        padding: 1.3rem 1.5rem 1.5rem;
+        margin-bottom: 1.5rem;
+        scroll-margin-top: 4.5rem;
+      }
+      .gr-card.dim { opacity: 0.28; }
+      .gr-card > h3 {
+        margin: 0 0 0.2rem; font-size: var(--fs-2xl); color: var(--ink);
+        display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+      }
+      .gr-card > h3 .ex {
+        font-size: var(--fs-lg); color: var(--gold); font-weight: 600;
+      }
+      .gr-card > .note {
+        color: var(--ink-soft); font-size: var(--fs-xs); margin: 0.1rem 0 1rem;
+      }
+      .gr-card .sem {
+        font-size: var(--fs-3xs); color: var(--ink-soft);
+        border: 1px solid var(--line); border-radius: 999px;
+        padding: 0.05rem 0.55rem; font-weight: 600; white-space: nowrap;
+      }
+
+      /* Tabeller */
+      .gr-tables { display: flex; flex-wrap: wrap; gap: 1.2rem 1.6rem; }
+      table.gr {
+        border-collapse: collapse; font-size: var(--fs-md);
+      }
+      table.gr caption {
+        text-align: left; font-weight: 600; color: var(--ink-soft);
+        font-size: var(--fs-xs); padding-bottom: 0.35rem;
+      }
+      table.gr th, table.gr td {
+        padding: 0.32rem 0.7rem; text-align: left; border-bottom: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      table.gr thead th {
+        color: var(--ink-soft); font-weight: 600; font-size: var(--fs-2xs);
+        border-bottom: 2px solid var(--line);
+      }
+      table.gr th.kasus { color: var(--ink); font-weight: 600; }
+      table.gr td.gr-el { font-size: var(--fs-lg); }   /* grekiska former */
+      table.gr td.end { color: var(--gold); font-weight: 600; }
+      table.gr tr:last-child td { border-bottom: none; }
+      table.gr tr.total td { border-top: 2px solid var(--line); }
+      /* subtil kasus-markör i första kolumnen */
+      table.gr tbody tr td:first-child, table.gr tbody tr th:first-child {
+        border-left: 3px solid var(--kc, transparent);
+      }
+      .k-nom { --kc: #4a6a8a; } .k-gen { --kc: #8a5a86; }
+      .k-dat { --kc: #3f7a4f; } .k-ack { --kc: #b0642f; } .k-vok { --kc: #9a9285; }
+
+      .gr-grek { font-size: var(--fs-lg); }
+      .gr-rule {
+        background: var(--paper-2); border-radius: 10px;
+        padding: 0.6rem 0.9rem; margin: 0.9rem 0 0;
+        font-size: var(--fs-sm);
+      }
+      .gr-rule b { color: var(--gold); }
+      .gr-rule ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+      .gr-rule li { margin: 0.15rem 0; }
+
+      .gr-inline-ex { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 0.6rem; }
+      .gr-inline-ex div { font-size: var(--fs-sm); }
+      .gr-inline-ex .gr-el { font-size: var(--fs-lg); color: var(--ink); }
+
+      mark { background: #f6e6a8; color: inherit; border-radius: 3px; padding: 0 2px; }
+
+      @media (max-width: 900px) {
+        .gr-layout { grid-template-columns: 1fr; }
+        .gr-toc { position: static; max-height: none; margin-bottom: 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="gr-bar">
+      <a class="hem" href="index.html">← Spel</a>
+      <span class="wordmark">Bibelgrekiska · Grammatikreferens</span>
+    </header>
+
+    <div class="gr-layout">
+      <!-- ── Innehållsförteckning ─────────────────────────────────── -->
+      <aside class="gr-toc">
+        <h2>Innehåll</h2>
+        <input class="gr-filter" type="search" placeholder="Filtrera…" aria-label="Filtrera avsnitt" />
+        <ul id="toc">
+          <li class="group"><span>Grunder</span></li>
+          <li><a href="#artikel">Bestämd artikel</a></li>
+          <li><a href="#kasus">Kasus &amp; satsdelar</a></li>
+          <li class="group"><span>Substantiv</span></li>
+          <li><a href="#subst-mask">2:a dekl. maskulinum (-ος)</a></li>
+          <li><a href="#subst-neut">2:a dekl. neutrum (-ον)</a></li>
+          <li><a href="#subst-fem">1:a dekl. femininum</a></li>
+          <li class="group"><span>Adjektiv</span></li>
+          <li><a href="#adjektiv">Adjektiv 2-1-2</a></li>
+          <li><a href="#kongruens">Kongruens-exempel</a></li>
+          <li class="group"><span>Verb</span></li>
+          <li><a href="#verb-omega">ω-verb, presens</a></li>
+          <li><a href="#verb-kontrakt">Kontraherade -έω</a></li>
+          <li><a href="#verb-eimi">εἰμί (vara)</a></li>
+          <li class="group"><span>Syntax</span></li>
+          <li><a href="#prepositioner">Prepositioner</a></li>
+          <li><a href="#satsanalys">Satsanalys</a></li>
+        </ul>
+      </aside>
+
+      <main class="gr-main">
+        <p class="lead">
+          Kärnan ur seminarierna i Bibelgrekiska I — deklinationer, böjningar och
+          exempel, samlat för snabb uppslagning. Kasus ordnas alltid
+          <b>nom · gen · dat · ack · vok</b>.
+        </p>
+
+        <!-- ══ Bestämd artikel ══ -->
+        <section class="gr-card" id="artikel" style="--accent:#a8842c">
+          <h3>Bestämd artikel <span class="sem">Sem 2–4</span></h3>
+          <p class="note">Artikeln böjs i genus, kasus och numerus och avslöjar substantivets form. Vokativ har ingen artikel — <span class="gr-grek">ὦ</span> är en interjektion.</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>Maskulinum</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Sg</th><th>Pl</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ὁ</td><td class="gr-el">οἱ</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">τοῦ</td><td class="gr-el">τῶν</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">τῷ</td><td class="gr-el">τοῖς</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">τὸν</td><td class="gr-el">τοὺς</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>Neutrum</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Sg</th><th>Pl</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">τὸ</td><td class="gr-el">τὰ</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">τοῦ</td><td class="gr-el">τῶν</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">τῷ</td><td class="gr-el">τοῖς</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">τὸ</td><td class="gr-el">τὰ</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>Femininum</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Sg</th><th>Pl</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἡ</td><td class="gr-el">αἱ</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">τῆς</td><td class="gr-el">τῶν</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">τῇ</td><td class="gr-el">ταῖς</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">τὴν</td><td class="gr-el">τὰς</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ══ Kasus & satsdelar ══ -->
+        <section class="gr-card" id="kasus" style="--accent:#4a6a8a">
+          <h3>Kasus &amp; satsdelar <span class="sem">Sem 2</span></h3>
+          <p class="note">Kasus — inte ordföljden — avgör ordets roll i satsen.</p>
+          <table class="gr" style="width:100%">
+            <thead><tr><th class="kasus">Kasus</th><th>Satsdel</th><th>Frågar</th><th>Kommentar</th></tr></thead>
+            <tbody>
+              <tr class="k-nom"><th class="kasus">nominativ</th><td>subjekt</td><td>vem/vad gör?</td><td></td></tr>
+              <tr class="k-gen"><th class="kasus">genitiv</th><td>genitivattribut</td><td>vems?</td><td>Hör till ett substantiv, inte direkt till verbet.</td></tr>
+              <tr class="k-dat"><th class="kasus">dativ</th><td>indirekt objekt</td><td>till/åt/för vem?</td><td></td></tr>
+              <tr class="k-ack"><th class="kasus">ackusativ</th><td>direkt objekt</td><td>vem/vad påverkas?</td><td></td></tr>
+              <tr class="k-vok"><th class="kasus">vokativ</th><td>tilltal</td><td>vem tilltalas?</td><td><span class="gr-grek">ὦ</span> är en interjektion, inte en artikel.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ══ Substantiv 2 dekl mask ══ -->
+        <section class="gr-card" id="subst-mask" style="--accent:#b0642f">
+          <h3>2:a deklinationen, maskulinum <span class="ex">ἄνθρωπος · människa</span> <span class="sem">Sem 2</span></h3>
+          <p class="note">Maskulina substantiv på <b>-ος</b>. Genus-signal: artikeln <span class="gr-grek">ὁ</span>.</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>ἄνθρωπος</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἄνθρωπος</td><td class="gr-el">ἄνθρωποι</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἀνθρώπου</td><td class="gr-el">ἀνθρώπων</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἀνθρώπῳ</td><td class="gr-el">ἀνθρώποις</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἄνθρωπον</td><td class="gr-el">ἀνθρώπους</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἄνθρωπε</td><td class="gr-el">ἄνθρωποι</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>Ändelser</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Sg</th><th>Pl</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="end">-ος</td><td class="end">-οι</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="end">-ου</td><td class="end">-ων</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="end">-ῳ</td><td class="end">-οις</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="end">-ον</td><td class="end">-ους</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="end">-ε</td><td class="end">-οι</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule">Vokativ pl = nom pl. Många maskulina egennamn och ord som <span class="gr-grek">λόγος, κύριος, θεός, υἱός, Χριστός</span> följer samma mönster.</div>
+        </section>
+
+        <!-- ══ Substantiv 2 dekl neutrum ══ -->
+        <section class="gr-card" id="subst-neut" style="--accent:#b0642f">
+          <h3>2:a deklinationen, neutrum <span class="ex">ἔργον · verk</span> <span class="sem">Sem 3</span></h3>
+          <p class="note">Neutrala substantiv på <b>-ον</b>. Genus-signal: artikeln <span class="gr-grek">τὸ</span>.</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>ἔργον</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἔργον</td><td class="gr-el">ἔργα</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἔργου</td><td class="gr-el">ἔργων</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἔργῳ</td><td class="gr-el">ἔργοις</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἔργον</td><td class="gr-el">ἔργα</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἔργον</td><td class="gr-el">ἔργα</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>Ändelser</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Sg</th><th>Pl</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="end">-ον</td><td class="end">-α</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="end">-ου</td><td class="end">-ων</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="end">-ῳ</td><td class="end">-οις</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="end">-ον</td><td class="end">-α</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="end">-ον</td><td class="end">-α</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule"><b>Neutrumregeln:</b> nominativ, ackusativ och vokativ är alltid lika — i plural på <b>-α</b>. Gen/dat är identiska med maskulinum. Jfr <span class="gr-grek">τέκνον, εὐαγγέλιον, ἱερόν, σημεῖον, πλοῖον, σάββατον</span>.</div>
+        </section>
+
+        <!-- ══ Substantiv 1 dekl femininum ══ -->
+        <section class="gr-card" id="subst-fem" style="--accent:#8a5a86">
+          <h3>1:a deklinationen, femininum <span class="sem">Sem 4</span></h3>
+          <p class="note">Feminina substantiv. Ändelsen i singular styrs av bokstaven före: <b>-α</b> efter ε, ι, ρ; annars <b>-η</b> (och en mellantyp med kort α). Plural är alltid lika.</p>
+          <table class="gr" style="width:100%">
+            <thead>
+              <tr>
+                <th class="kasus" rowspan="2">Kasus</th>
+                <th colspan="1">-α efter ε/ι/ρ</th>
+                <th colspan="1">-η</th>
+                <th colspan="1">-α (annan bokstav)</th>
+                <th colspan="1">Plural (alla)</th>
+              </tr>
+              <tr>
+                <th class="gr-grek">ἐκκλησία</th>
+                <th class="gr-grek">ἀρχή</th>
+                <th class="gr-grek">θάλασσα</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="k-nom"><th class="kasus">nom</th><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="end">-αι</td></tr>
+              <tr class="k-gen"><th class="kasus">gen</th><td class="end">-ας</td><td class="end">-ης</td><td class="end">-ης</td><td class="end">-ῶν</td></tr>
+              <tr class="k-dat"><th class="kasus">dat</th><td class="end">-ᾳ</td><td class="end">-ῃ</td><td class="end">-ῃ</td><td class="end">-αις</td></tr>
+              <tr class="k-ack"><th class="kasus">ack</th><td class="end">-αν</td><td class="end">-ην</td><td class="end">-αν</td><td class="end">-ας</td></tr>
+              <tr class="k-vok"><th class="kasus">vok</th><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="end">-αι</td></tr>
+            </tbody>
+          </table>
+          <div class="gr-rule">
+            <b>Att minnas:</b>
+            <ul>
+              <li>Genitiv plural är alltid <span class="gr-grek">-ῶν</span> (perispomenon) för substantiv.</li>
+              <li>Mellantypen (<span class="gr-grek">θάλασσα</span>) har kort -α i nom/ack men -η-böjning i gen/dat sg.</li>
+              <li>Exempelord: <span class="gr-grek">ἐκκλησία, ἡμέρα, βασιλεία, ἀλήθεια</span> (α-typ) · <span class="gr-grek">ἀρχή, φωνή, ζωή, ἀγάπη, εἰρήνη</span> (η-typ).</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ══ Adjektiv 2-1-2 ══ -->
+        <section class="gr-card" id="adjektiv" style="--accent:#3f7a4f">
+          <h3>Adjektiv 2-1-2 <span class="ex">ἀγαθός, -ή, -όν · god</span> <span class="sem">Sem 3–4</span></h3>
+          <p class="note">Maskulinum &amp; neutrum böjs som 2:a deklinationen, femininum som 1:a. Adjektivet <b>kongruerar</b> med sitt substantiv i genus, kasus och numerus.</p>
+          <table class="gr" style="width:100%">
+            <thead>
+              <tr>
+                <th class="kasus" rowspan="2">Kasus</th>
+                <th colspan="2">Maskulinum</th>
+                <th colspan="2">Neutrum</th>
+                <th colspan="2">Femininum</th>
+              </tr>
+              <tr><th>Sg</th><th>Pl</th><th>Sg</th><th>Pl</th><th>Sg</th><th>Pl</th></tr>
+            </thead>
+            <tbody>
+              <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἀγαθός</td><td class="gr-el">ἀγαθοί</td><td class="gr-el">ἀγαθόν</td><td class="gr-el">ἀγαθά</td><td class="gr-el">ἀγαθή</td><td class="gr-el">ἀγαθαί</td></tr>
+              <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἀγαθοῦ</td><td class="gr-el">ἀγαθῶν</td><td class="gr-el">ἀγαθοῦ</td><td class="gr-el">ἀγαθῶν</td><td class="gr-el">ἀγαθῆς</td><td class="gr-el">ἀγαθῶν</td></tr>
+              <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἀγαθῷ</td><td class="gr-el">ἀγαθοῖς</td><td class="gr-el">ἀγαθῷ</td><td class="gr-el">ἀγαθοῖς</td><td class="gr-el">ἀγαθῇ</td><td class="gr-el">ἀγαθαῖς</td></tr>
+              <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἀγαθόν</td><td class="gr-el">ἀγαθούς</td><td class="gr-el">ἀγαθόν</td><td class="gr-el">ἀγαθά</td><td class="gr-el">ἀγαθήν</td><td class="gr-el">ἀγαθάς</td></tr>
+              <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἀγαθέ</td><td class="gr-el">ἀγαθοί</td><td class="gr-el">ἀγαθόν</td><td class="gr-el">ἀγαθά</td><td class="gr-el">ἀγαθή</td><td class="gr-el">ἀγαθαί</td></tr>
+            </tbody>
+          </table>
+          <div class="gr-rule">
+            Oxytona adjektiv (<span class="gr-grek">ἀγαθός</span>-typ) har cirkumflex i genitiv och dativ. Feminin gen.pl följer maskulinums accent (<span class="gr-grek">ἀγαθῶν</span>), inte substantivens. Jfr <span class="gr-grek">πονηρός, δίκαιος, ἅγιος, πρῶτος</span>.
+          </div>
+        </section>
+
+        <!-- ══ Kongruens-exempel ══ -->
+        <section class="gr-card" id="kongruens" style="--accent:#3f7a4f">
+          <h3>Kongruens-exempel <span class="sem">Sem 4</span></h3>
+          <p class="note">Adjektivet tar substantivets genus, kasus och numerus. Från seminariets facit (<span class="gr-grek">ἀγαθός</span> / <span class="gr-grek">δίκαιος</span>).</p>
+          <table class="gr" style="width:100%">
+            <thead><tr><th>Fras</th><th>Kasus / genus / numerus</th><th class="gr-grek">ἀγαθός</th><th class="gr-grek">δίκαιος</th><th>Översättning</th></tr></thead>
+            <tbody>
+              <tr><td class="gr-el">ἡ __ εἰρήνη</td><td>nom · fem · sg</td><td class="gr-el">ἀγαθή</td><td class="gr-el">δικαία</td><td>den goda/rättvisa freden</td></tr>
+              <tr><td class="gr-el">τοῦ __ δούλου</td><td>gen · mask · sg</td><td class="gr-el">ἀγαθοῦ</td><td class="gr-el">δικαίου</td><td>den gode slavens</td></tr>
+              <tr><td class="gr-el">τῆς __ ἀδελφῆς</td><td>gen · fem · sg</td><td class="gr-el">ἀγαθῆς</td><td class="gr-el">δικαίας</td><td>den goda systerns</td></tr>
+              <tr><td class="gr-el">ταῖς __ ἐντολαῖς</td><td>dat · fem · pl</td><td class="gr-el">ἀγαθαῖς</td><td class="gr-el">δικαίαις</td><td>till de goda buden</td></tr>
+              <tr><td class="gr-el">τὴν __ ἀγάπην</td><td>ack · fem · sg</td><td class="gr-el">ἀγαθήν</td><td class="gr-el">δικαίαν</td><td>den goda kärleken</td></tr>
+              <tr><td class="gr-el">τῇ __ βασιλείᾳ</td><td>dat · fem · sg</td><td class="gr-el">ἀγαθῇ</td><td class="gr-el">δικαίᾳ</td><td>till det goda kungadömet</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- ══ ω-verb ══ -->
+        <section class="gr-card" id="verb-omega" style="--accent:#4a6a8a">
+          <h3>ω-verb, presens aktiv indikativ <span class="ex">λύω · lösa</span> <span class="sem">Sem 2</span></h3>
+          <p class="note">Stam + personändelse. Betoningen är recessiv (så långt tillbaka ultiman tillåter).</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>λύω</caption>
+              <thead><tr><th class="kasus">Person</th><th>Grekiska</th><th>Ändelse</th><th>Svenska</th></tr></thead>
+              <tbody>
+                <tr><th class="kasus">1 sg</th><td class="gr-el">λύω</td><td class="end">-ω</td><td>jag löser</td></tr>
+                <tr><th class="kasus">2 sg</th><td class="gr-el">λύεις</td><td class="end">-εις</td><td>du löser</td></tr>
+                <tr><th class="kasus">3 sg</th><td class="gr-el">λύει</td><td class="end">-ει</td><td>han/hon/det löser</td></tr>
+                <tr><th class="kasus">1 pl</th><td class="gr-el">λύομεν</td><td class="end">-ομεν</td><td>vi löser</td></tr>
+                <tr><th class="kasus">2 pl</th><td class="gr-el">λύετε</td><td class="end">-ετε</td><td>ni löser</td></tr>
+                <tr><th class="kasus">3 pl</th><td class="gr-el">λύουσι(ν)</td><td class="end">-ουσι(ν)</td><td>de löser</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule">Rörligt <b>ν</b> i 3 pl (<span class="gr-grek">λύουσιν</span>) framför vokal eller vid satsslut. Samma ändelser i <span class="gr-grek">βλέπω, ἀκούω, λέγω, γράφω, πιστεύω…</span></div>
+        </section>
+
+        <!-- ══ Kontraherade verb ══ -->
+        <section class="gr-card" id="verb-kontrakt" style="--accent:#4a6a8a">
+          <h3>Kontraherade verb på -έω <span class="ex">φιλέω · älska</span> <span class="sem">Sem 4</span></h3>
+          <p class="note">Stamvokalen ε smälter samman med ändelsens vokal. Betoningen faller på kontraktionsstavelsen (cirkumflex).</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>φιλέω</caption>
+              <thead><tr><th class="kasus">Person</th><th>Oböjt</th><th>Kontraherat</th><th>Ändelse</th><th>Svenska</th></tr></thead>
+              <tbody>
+                <tr><th class="kasus">1 sg</th><td class="gr-grek">φιλέ-ω</td><td class="gr-el">φιλῶ</td><td class="end">-ῶ</td><td>jag älskar</td></tr>
+                <tr><th class="kasus">2 sg</th><td class="gr-grek">φιλέ-εις</td><td class="gr-el">φιλεῖς</td><td class="end">-εῖς</td><td>du älskar</td></tr>
+                <tr><th class="kasus">3 sg</th><td class="gr-grek">φιλέ-ει</td><td class="gr-el">φιλεῖ</td><td class="end">-εῖ</td><td>han/hon/det älskar</td></tr>
+                <tr><th class="kasus">1 pl</th><td class="gr-grek">φιλέ-ομεν</td><td class="gr-el">φιλοῦμεν</td><td class="end">-οῦμεν</td><td>vi älskar</td></tr>
+                <tr><th class="kasus">2 pl</th><td class="gr-grek">φιλέ-ετε</td><td class="gr-el">φιλεῖτε</td><td class="end">-εῖτε</td><td>ni älskar</td></tr>
+                <tr><th class="kasus">3 pl</th><td class="gr-grek">φιλέ-ουσι(ν)</td><td class="gr-el">φιλοῦσι(ν)</td><td class="end">-οῦσι(ν)</td><td>de älskar</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule">
+            <b>Kontraktionsregler:</b>
+            <ul>
+              <li>ε + ε = <b>ει</b> &nbsp;(<span class="gr-grek">φιλέ-ει → φιλεῖ</span>)</li>
+              <li>ε + ο = <b>ου</b> &nbsp;(<span class="gr-grek">φιλέ-ομεν → φιλοῦμεν</span>)</li>
+              <li>ε + lång vokal = <b>lång vokal</b> &nbsp;(<span class="gr-grek">φιλέ-ω → φιλῶ</span>)</li>
+            </ul>
+            Jfr <span class="gr-grek">ζητέω, καλέω, λαλέω, ποιέω, τηρέω, μαρτυρέω</span>.
+          </div>
+        </section>
+
+        <!-- ══ εἰμί ══ -->
+        <section class="gr-card" id="verb-eimi" style="--accent:#b0642f">
+          <h3>εἰμί (vara) — presens &amp; imperfekt <span class="sem">Sem 3–4</span></h3>
+          <p class="note">Oregelbundet. Presens är enklitiskt (utom 2 sg <span class="gr-grek">εἶ</span>). Imperfekt har belagda varianter. Tar predikatsfyllnad i nominativ.</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>Böjning</caption>
+              <thead><tr><th class="kasus">Person</th><th>Presens</th><th>Imperfekt</th><th>Svenska</th></tr></thead>
+              <tbody>
+                <tr><th class="kasus">1 sg</th><td class="gr-el">εἰμί</td><td class="gr-el">ἤμην / ἦν</td><td>jag är / var</td></tr>
+                <tr><th class="kasus">2 sg</th><td class="gr-el">εἶ</td><td class="gr-el">ἦς / ἦσθα</td><td>du är / var</td></tr>
+                <tr><th class="kasus">3 sg</th><td class="gr-el">ἐστί(ν)</td><td class="gr-el">ἦν</td><td>han/hon/det är / var</td></tr>
+                <tr><th class="kasus">1 pl</th><td class="gr-el">ἐσμέν</td><td class="gr-el">ἦμεν / ἤμεθα</td><td>vi är / var</td></tr>
+                <tr><th class="kasus">2 pl</th><td class="gr-el">ἐστέ</td><td class="gr-el">ἦτε</td><td>ni är / var</td></tr>
+                <tr><th class="kasus">3 pl</th><td class="gr-el">εἰσί(ν)</td><td class="gr-el">ἦσαν</td><td>de är / var</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule"><b>Predikatsfyllnad:</b> εἰμί binder ihop subjekt och en beskrivning som står i nominativ — <span class="gr-grek">ὁ λόγος ἀγαθός ἐστιν</span> ”ordet är gott”.</div>
+        </section>
+
+        <!-- ══ Prepositioner ══ -->
+        <section class="gr-card" id="prepositioner" style="--accent:#8a5a86">
+          <h3>Prepositioner <span class="sem">Sem 4</span></h3>
+          <p class="note">En preposition kräver alltid ett bestämt kasus. Frasen räknas i satsanalysen som <b>ett</b> adverbial.</p>
+          <table class="gr" style="width:100%">
+            <thead><tr><th>Preposition</th><th>Kasus</th><th>Betydelse</th><th>Exempel</th></tr></thead>
+            <tbody>
+              <tr class="k-dat"><td class="gr-el">ἐν</td><td>dativ</td><td>i</td><td class="gr-grek">ἐν τῷ οἴκῳ &nbsp;— i huset</td></tr>
+              <tr class="k-ack"><td class="gr-el">εἰς</td><td>ackusativ</td><td>till, in i</td><td class="gr-grek">εἰς τὸν οἶκον &nbsp;— till huset</td></tr>
+              <tr class="k-gen"><td class="gr-el">ἐκ / ἐξ</td><td>genitiv</td><td>ut ur</td><td class="gr-grek">ἐκ τοῦ οἴκου &nbsp;— ut ur huset</td></tr>
+            </tbody>
+          </table>
+          <div class="gr-rule"><span class="gr-grek">ἐξ</span> används framför vokal. Vissa prepositioner (<span class="gr-grek">διά</span> m.fl.) tar olika kasus med olika betydelse.</div>
+        </section>
+
+        <!-- ══ Satsanalys ══ -->
+        <section class="gr-card" id="satsanalys" style="--accent:#a8842c">
+          <h3>Satsanalys <span class="sem">Sem 2–4</span></h3>
+          <p class="note">Analysera uppifrån: först predikatet (verbhandlingen), sedan subjektet, direkt och indirekt objekt. Kasus avslöjar rollen — inte ordföljden.</p>
+          <table class="gr" style="width:100%">
+            <thead><tr><th>Satsdel</th><th>Kasus</th><th>Frågar</th></tr></thead>
+            <tbody>
+              <tr><th class="kasus">predikat</th><td>verbet</td><td>Vilken är verbhandlingen?</td></tr>
+              <tr class="k-nom"><th class="kasus">subjekt</th><td>nominativ</td><td>Vem/vad utför handlingen?</td></tr>
+              <tr class="k-ack"><th class="kasus">direkt objekt</th><td>ackusativ</td><td>Vem/vad påverkas direkt?</td></tr>
+              <tr class="k-dat"><th class="kasus">indirekt objekt</th><td>dativ</td><td>Till/åt/för vem?</td></tr>
+              <tr class="k-gen"><th class="kasus">genitivattribut</th><td>genitiv</td><td>Vems? (hör till ett substantiv)</td></tr>
+              <tr class="k-nom"><th class="kasus">predikatsfyllnad</th><td>nominativ</td><td>Vad sägs om subjektet? (med εἰμί)</td></tr>
+              <tr><th class="kasus">adverbial</th><td>prepositionsfras</td><td>Var/när äger handlingen rum?</td></tr>
+              <tr class="k-vok"><th class="kasus">vokativ</th><td>vokativ</td><td>Vem tilltalas?</td></tr>
+            </tbody>
+          </table>
+          <div class="gr-rule">Alla satsdelar finns inte i varje sats. Saknas ett utskrivet subjekt ligger det i verbets ändelse (<span class="gr-grek">λέγει</span> = ”han/hon säger”).</div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // Scrollspy: markera aktivt avsnitt i innehållsförteckningen.
+      const links = [...document.querySelectorAll('#toc a')];
+      const byId = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+      const spy = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              links.forEach((l) => l.classList.remove('active'));
+              const a = byId.get(e.target.id);
+              if (a) a.classList.add('active');
+            }
+          });
+        },
+        { rootMargin: '-10% 0px -75% 0px', threshold: 0 },
+      );
+      document.querySelectorAll('.gr-card').forEach((s) => spy.observe(s));
+
+      // Mjuk scrollning för ankarlänkar.
+      links.forEach((a) =>
+        a.addEventListener('click', (ev) => {
+          const el = document.getElementById(a.getAttribute('href').slice(1));
+          if (el) {
+            ev.preventDefault();
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', a.getAttribute('href'));
+          }
+        }),
+      );
+
+      // Filter: matchar mot avsnittens rubriker + brödtext, dämpar resten.
+      const filter = document.querySelector('.gr-filter');
+      const cards = [...document.querySelectorAll('.gr-card')];
+      filter.addEventListener('input', () => {
+        const q = filter.value.trim().toLowerCase();
+        cards.forEach((c) => {
+          const hit = !q || c.textContent.toLowerCase().includes(q);
+          c.classList.toggle('dim', !hit);
+        });
+        links.forEach((a) => {
+          const c = document.getElementById(a.getAttribute('href').slice(1));
+          const hit = !q || (c && c.textContent.toLowerCase().includes(q));
+          a.classList.toggle('hidden', !hit);
+        });
+      });
+    </script>
+  </body>
+</html>
