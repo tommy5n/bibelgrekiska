@@ -92,7 +92,15 @@ function renderHub(root) {
   root.innerHTML = `<div class="hub">
     <h1>Bibelgrekiska</h1>
     <p class="sub">Interaktiva övningar för Bibelgrekiska I.</p>
-    <div class="hub-grid">${kort}</div>
+    <div class="hub-grid">${kort}
+      <a class="hub-card" href="grammatikreferens.html">
+        <span class="num">§</span>
+        <span class="body">
+          <span class="name">Grammatikreferens</span>
+          <span class="desc">Deklinationer, böjningar och exempel – för uppslag</span>
+        </span>
+      </a>
+    </div>
   </div>`;
 }
 
