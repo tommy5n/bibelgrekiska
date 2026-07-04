@@ -9,7 +9,8 @@ export function teardown(){
   if(s) s.remove();
 }
 
-/* ── DATA — snapshot av verb.json. Former nycklas per tempus (pres, impf …) ─ */
+/* ── DATA — snapshot av verb.json. Former nycklas per tempus (pres, impf …);
+   varianter håller godtagbara dubbelformer per tempus/person. ───────────── */
 const verb = [
   { lemma:"λύω", glosa:"lösa", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"λύω", "2sg":"λύεις", "3sg":"λύει", "1pl":"λύομεν", "2pl":"λύετε", "3pl":"λύουσι(ν)"} } },
   { lemma:"βλέπω", glosa:"se", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"βλέπω", "2sg":"βλέπεις", "3sg":"βλέπει", "1pl":"βλέπομεν", "2pl":"βλέπετε", "3pl":"βλέπουσι(ν)"} } },
@@ -34,7 +35,7 @@ const verb = [
   { lemma:"μαρτυρέω", glosa:"vittna om", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"μαρτυρῶ", "2sg":"μαρτυρεῖς", "3sg":"μαρτυρεῖ", "1pl":"μαρτυροῦμεν", "2pl":"μαρτυρεῖτε", "3pl":"μαρτυροῦσι(ν)"} } },
   { lemma:"ποιέω", glosa:"göra", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"ποιῶ", "2sg":"ποιεῖς", "3sg":"ποιεῖ", "1pl":"ποιοῦμεν", "2pl":"ποιεῖτε", "3pl":"ποιοῦσι(ν)"} } },
   { lemma:"τηρέω", glosa:"bevaka, bevara", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"τηρῶ", "2sg":"τηρεῖς", "3sg":"τηρεῖ", "1pl":"τηροῦμεν", "2pl":"τηρεῖτε", "3pl":"τηροῦσι(ν)"} } },
-  { lemma:"εἰμί", glosa:"vara", klass:"oregelbunden", kortlekar:["sem4","eimi"], former:{ pres:{"1sg":"εἰμί", "2sg":"εἶ", "3sg":"ἐστί(ν)", "1pl":"ἐσμέν", "2pl":"ἐστέ", "3pl":"εἰσί(ν)"}, impf:{"1sg":"ἤμην", "2sg":"ἦς", "3sg":"ἦν", "1pl":"ἦμεν", "2pl":"ἦτε", "3pl":"ἦσαν"} } }
+  { lemma:"εἰμί", glosa:"vara", klass:"oregelbunden", kortlekar:["sem4","eimi"], former:{ pres:{"1sg":"εἰμί", "2sg":"εἶ", "3sg":"ἐστί(ν)", "1pl":"ἐσμέν", "2pl":"ἐστέ", "3pl":"εἰσί(ν)"}, impf:{"1sg":"ἤμην", "2sg":"ἦς", "3sg":"ἦν", "1pl":"ἦμεν", "2pl":"ἦτε", "3pl":"ἦσαν"} }, varianter:{ impf:{"1sg":["ἦν"], "2sg":["ἦσθα"], "1pl":["ἤμεθα"]} } }
 ];
 
 /* Tempus: nyckel → svensk etikett (standard: presens). */
@@ -206,23 +207,31 @@ export function render(root){
     if(typeof r.best === "number") state.best = r.best;
   }catch(e){} }
 
-  function byggOptioner(v, facit){
-    // distraktorer = andra former av SAMMA verb och tempus (mest förväxlingsbara), unika strängar
-    const former = v.former[state.tempus];
-    const övriga = PN_ORDNING.map(k => former[k]).filter(f => f !== former[facit]);
-    const unika = [...new Set(övriga)];
-    return shuffle([former[facit], ...shuffle(unika).slice(0,3)]);
+  // Godtagbara svar för en person = primärform + ev. variantformer (samma tempus).
+  const variantformer = (v, t, k) => (v.varianter && v.varianter[t] && v.varianter[t][k]) || [];
+  const accepterade   = (v, t, k) => [v.former[t][k], ...variantformer(v, t, k)];
+
+  function byggOptioner(v, t, rätta){
+    // distraktorer = alla andra former (primär + variant) av SAMMA verb och tempus,
+    // minus de som räknas som rätt svar (så en godtagbar variant aldrig blir "fel").
+    const former = v.former[t];
+    const pool = [];
+    PN_ORDNING.forEach(k => { pool.push(former[k]); variantformer(v, t, k).forEach(f => pool.push(f)); });
+    const distraktorer = [...new Set(pool)].filter(f => !rätta.has(f));
+    const rätt = pick([...rätta]);   // slumpvis primär- eller variantform som rätt alternativ
+    return shuffle([rätt, ...shuffle(distraktorer).slice(0,3)]);
   }
 
   function newQuestion(){
-    const vs = aktivaVerb(), ps = aktivaPN();
+    const vs = aktivaVerb(), ps = aktivaPN(), t = state.tempus;
     let v, k, sig, n=0;
     do { v = pick(vs); k = pick(ps); sig = v.lemma+"|"+k; } while(sig === state.forra && ++n < 30);
     state.forra = sig;
+    const rätta = new Set(accepterade(v, t, k));
     state.card = {
       lemma: v.lemma, glosa: v.glosa, pn: k,
-      form: v.former[state.tempus][k],
-      optioner: state.mode === "flerval" ? byggOptioner(v, k) : null,
+      form: v.former[t][k], varianter: variantformer(v, t, k), rätta,
+      optioner: state.mode === "flerval" ? byggOptioner(v, t, rätta) : null,
     };
     state.besvarad = false; state.valt = null;
     render2();
@@ -251,8 +260,11 @@ export function render(root){
     }
   }
   function visaSvar(){
-    $("svar").textContent = state.card.form;
-    $("svarlabel").textContent = state.card.lemma + " · " + PN[state.card.pn].namn;
+    const c = state.card;
+    $("svar").textContent = c.form;
+    let label = c.lemma + " · " + PN[c.pn].namn;
+    if(c.varianter.length) label += " · äv. " + c.varianter.join(", ");
+    $("svarlabel").textContent = label;
     $("reveal").classList.remove("hidden");
   }
   function renderOptioner(){
@@ -262,14 +274,14 @@ export function render(root){
       b.className = "opt"; b.textContent = f;
       if(state.besvarad){
         b.disabled = true;
-        if(f === state.card.form) b.classList.add("correct");
+        if(state.card.rätta.has(f)) b.classList.add("correct");
         else if(f === state.valt) b.classList.add("wrong");
       } else { b.onclick = () => svara(f); }
       box.appendChild(b);
     });
   }
   function registrera(rätt){ if(rätt){ state.streak++; if(state.streak>state.best){ state.best=state.streak; spara(); } } else state.streak=0; }
-  function svara(f){ state.valt=f; state.besvarad=true; registrera(f===state.card.form); render2(); }
+  function svara(f){ state.valt=f; state.besvarad=true; registrera(state.card.rätta.has(f)); render2(); }
 
   function byggGridTempus(){
     const g = $("grid-tempus"); g.innerHTML = "";
