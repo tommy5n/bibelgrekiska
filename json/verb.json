@@ -71,7 +71,7 @@
  },
  "_kortlekar": {
   "sem2": "ω-verb, presens ind. aktiv",
-  "sem4": "kontraherade -έω + εἰμί (tillkommer)"
+  "sem4": "kontraherade -έω, presens ind. aktiv (εἰμί tillkommer)"
  },
  "_falt": {
   "lemma": "Uppslagsform (1sg pres ind akt).",
@@ -85,7 +85,7 @@
   "belagda_former": "Personnycklar vars form är direkt belagd (facit) i seminarierna — extra tillit.",
   "verifierad": "true först när formerna är samverifierade; false = mönstergenererad, väntar bekräftelse."
  },
- "_verifiering": "ω-däcket (presens ind. aktiv) är samverifierat: formerna genererades ur det verifierade mönstret (stam+ändelse, recessiv accent), matchar samtliga 10 facit-belagda former, och mönstret är bekräftat för dessa paroxytona verb. Auto-generering görs EJ för verb med accentkomplikationer (proparoxytona lemman, kontraktion m.m.) — de verifieras per verb.",
+ "_verifiering": "ω-däcket och kontrakt-däcket (-έω) är samverifierade: alla former genererades ur verifierade mönster (ω: stam+ändelse, recessiv accent; -έω: stam+kontraherad ändelse, cirkumflex på kontraktionsstavelsen) och matchar samtliga facit-belagda former (10 ω + 13 kontrakt) utan avvikelse. Auto-generering görs EJ för verb med accentkomplikationer utanför dessa mönster — de verifieras per verb.",
  "verb": [
   {
    "lemma": "λύω",
@@ -505,6 +505,201 @@
     }
    },
    "belagda_former": [],
+   "verifierad": true
+  },
+  {
+   "lemma": "φιλέω",
+   "glosa": "älska, gilla",
+   "klass": "kontrakt_e",
+   "stam": "φιλ",
+   "seminarium": [
+    4
+   ],
+   "kortlekar": [
+    "sem4"
+   ],
+   "nt_frekvens": 25,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "φιλῶ",
+     "2sg": "φιλεῖς",
+     "3sg": "φιλεῖ",
+     "1pl": "φιλοῦμεν",
+     "2pl": "φιλεῖτε",
+     "3pl": "φιλοῦσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "1sg",
+    "2sg",
+    "3sg",
+    "1pl",
+    "2pl",
+    "3pl"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "ζητέω",
+   "glosa": "söka",
+   "klass": "kontrakt_e",
+   "stam": "ζητ",
+   "seminarium": [
+    4
+   ],
+   "kortlekar": [
+    "sem4"
+   ],
+   "nt_frekvens": 117,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "ζητῶ",
+     "2sg": "ζητεῖς",
+     "3sg": "ζητεῖ",
+     "1pl": "ζητοῦμεν",
+     "2pl": "ζητεῖτε",
+     "3pl": "ζητοῦσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "1pl",
+    "3pl"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "καλέω",
+   "glosa": "kalla",
+   "klass": "kontrakt_e",
+   "stam": "καλ",
+   "seminarium": [
+    4
+   ],
+   "kortlekar": [
+    "sem4"
+   ],
+   "nt_frekvens": 148,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "καλῶ",
+     "2sg": "καλεῖς",
+     "3sg": "καλεῖ",
+     "1pl": "καλοῦμεν",
+     "2pl": "καλεῖτε",
+     "3pl": "καλοῦσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3sg"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "λαλέω",
+   "glosa": "tala",
+   "klass": "kontrakt_e",
+   "stam": "λαλ",
+   "seminarium": [
+    4
+   ],
+   "kortlekar": [
+    "sem4"
+   ],
+   "nt_frekvens": 297,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "λαλῶ",
+     "2sg": "λαλεῖς",
+     "3sg": "λαλεῖ",
+     "1pl": "λαλοῦμεν",
+     "2pl": "λαλεῖτε",
+     "3pl": "λαλοῦσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3pl"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "μαρτυρέω",
+   "glosa": "vittna om",
+   "klass": "kontrakt_e",
+   "stam": "μαρτυρ",
+   "seminarium": [
+    4
+   ],
+   "kortlekar": [
+    "sem4"
+   ],
+   "nt_frekvens": 76,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "μαρτυρῶ",
+     "2sg": "μαρτυρεῖς",
+     "3sg": "μαρτυρεῖ",
+     "1pl": "μαρτυροῦμεν",
+     "2pl": "μαρτυρεῖτε",
+     "3pl": "μαρτυροῦσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "2pl"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "ποιέω",
+   "glosa": "göra",
+   "klass": "kontrakt_e",
+   "stam": "ποι",
+   "seminarium": [
+    4
+   ],
+   "kortlekar": [
+    "sem4"
+   ],
+   "nt_frekvens": 568,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "ποιῶ",
+     "2sg": "ποιεῖς",
+     "3sg": "ποιεῖ",
+     "1pl": "ποιοῦμεν",
+     "2pl": "ποιεῖτε",
+     "3pl": "ποιοῦσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3sg"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "τηρέω",
+   "glosa": "bevaka, bevara",
+   "klass": "kontrakt_e",
+   "stam": "τηρ",
+   "seminarium": [
+    4
+   ],
+   "kortlekar": [
+    "sem4"
+   ],
+   "nt_frekvens": 71,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "τηρῶ",
+     "2sg": "τηρεῖς",
+     "3sg": "τηρεῖ",
+     "1pl": "τηροῦμεν",
+     "2pl": "τηρεῖτε",
+     "3pl": "τηροῦσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3sg"
+   ],
    "verifierad": true
   }
  ]
