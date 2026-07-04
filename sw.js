@@ -1,5 +1,5 @@
 // Bibelgrekiska — network-first service worker
-const CACHE = "bibelgrekiska-v2";
+const CACHE = "bibelgrekiska-v3";
 
 // För-cacha fonterna så att grekiskan (Cardo) alltid finns, även offline.
 const PRECACHE = [
