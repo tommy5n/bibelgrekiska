@@ -71,7 +71,8 @@
  },
  "_kortlekar": {
   "sem2": "ω-verb, presens ind. aktiv",
-  "sem4": "kontraherade -έω, presens ind. aktiv (εἰμί tillkommer)"
+  "sem4": "kontraherade -έω, presens ind. aktiv (εἰμί tillkommer)",
+  "eimi": "εἰμί (vara) — presens + imperfekt"
  },
  "_falt": {
   "lemma": "Uppslagsform (1sg pres ind akt).",
@@ -701,6 +702,64 @@
     "3sg"
    ],
    "verifierad": true
+  },
+  {
+   "lemma": "εἰμί",
+   "glosa": "vara",
+   "klass": "oregelbunden",
+   "stam": null,
+   "seminarium": [
+    4
+   ],
+   "kortlekar": [
+    "sem4",
+    "eimi"
+   ],
+   "nt_frekvens": 2456,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "εἰμί",
+     "2sg": "εἶ",
+     "3sg": "ἐστί(ν)",
+     "1pl": "ἐσμέν",
+     "2pl": "ἐστέ",
+     "3pl": "εἰσί(ν)"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἤμην",
+     "2sg": "ἦς",
+     "3sg": "ἦν",
+     "1pl": "ἦμεν",
+     "2pl": "ἦτε",
+     "3pl": "ἦσαν"
+    }
+   },
+   "varianter": {
+    "impf.ind.akt": {
+     "1sg": [
+      "ἤμην",
+      "ἦν"
+     ],
+     "2sg": [
+      "ἦς",
+      "ἦσθα"
+     ],
+     "1pl": [
+      "ἦμεν",
+      "ἤμεθα"
+     ]
+    }
+   },
+   "belagda_former": [
+    "1sg",
+    "2sg",
+    "3sg",
+    "1pl",
+    "2pl",
+    "3pl"
+   ],
+   "verifierad": true,
+   "not": "Enklitiskt i presens (utom 2sg εἶ); accentuering = uppslagsform. Imperfekt har belagda varianter (se 'varianter')."
   }
  ]
 }
