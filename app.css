@@ -300,7 +300,6 @@ body {
 }
 .vy-alfabet .facit {
   margin-bottom: 1.2rem;
-  animation: rise__alfabet 0.3s ease both;
 }
 .vy-alfabet .facit-name {
   font-family: "Cardo", serif;

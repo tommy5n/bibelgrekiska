@@ -474,9 +474,12 @@ export function render(root) {
 
   // Ritar hjälteglyfen (med en liten "pop"). Utbruten så att formväxling kan
   // uppdatera enbart glyfen utan att rita om hela skärmen (och råka blanda om quizet).
+  let lastPainted = null;
   function paintHero() {
     const hero = el("hero");
     hero.textContent = state.glyph;
+    if (state.glyph === lastPainted) return; // samma tecken → ingen pop (t.ex. vid vändning)
+    lastPainted = state.glyph;
     hero.animate(
       [
         { transform: "scale(.82)", opacity: 0.2 },
