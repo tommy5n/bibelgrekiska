@@ -1,0 +1,511 @@
+{
+ "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope hittills (kursens första hälft): presens indikativ aktiv för ω-verb. Kontraherade verb och εἰμί samt fler tempus tillkommer.",
+ "_genererad": "2026-07-04",
+ "_nycklar": {
+  "_forklaring": "Formnyckel = 'tempus.modus.diates'. Person/numerus = '1sg'..'3pl'. Kortformer för konsekvens med ord.json; långformer nedan.",
+  "tempus": {
+   "pres": "presens",
+   "impf": "imperfekt",
+   "aor": "aorist",
+   "fut": "futurum",
+   "perf": "perfekt",
+   "plusq": "pluskvamperfekt"
+  },
+  "modus": {
+   "ind": "indikativ",
+   "konj": "konjunktiv",
+   "opt": "optativ",
+   "imp": "imperativ",
+   "inf": "infinitiv",
+   "part": "particip"
+  },
+  "diates": {
+   "akt": "aktiv",
+   "med": "medium",
+   "pass": "passiv"
+  },
+  "person_numerus": {
+   "1sg": "1:a person singular",
+   "2sg": "2:a person singular",
+   "3sg": "3:e person singular",
+   "1pl": "1:a person plural",
+   "2pl": "2:a person plural",
+   "3pl": "3:e person plural"
+  }
+ },
+ "_klasser": {
+  "omega": {
+   "beskrivning": "Tematiska ω-verb. Ändelse på stammen, recessiv betoning.",
+   "andelser": {
+    "pres.ind.akt": {
+     "1sg": "-ω",
+     "2sg": "-εις",
+     "3sg": "-ει",
+     "1pl": "-ομεν",
+     "2pl": "-ετε",
+     "3pl": "-ουσι(ν)"
+    }
+   }
+  },
+  "kontrakt_e": {
+   "beskrivning": "Stam på -ε, kontraherar med ändelsen; betoning på kontraktionsstavelsen (cirkumflex).",
+   "andelser": {
+    "pres.ind.akt": {
+     "1sg": "-ῶ",
+     "2sg": "-εῖς",
+     "3sg": "-εῖ",
+     "1pl": "-οῦμεν",
+     "2pl": "-εῖτε",
+     "3pl": "-οῦσι(ν)"
+    }
+   },
+   "kontraktionsregler": [
+    "ε+ε=ει",
+    "ε+ο=ου",
+    "ε+lång vokal=lång vokal"
+   ]
+  },
+  "oregelbunden": {
+   "beskrivning": "Egna paradigm (εἰμί)."
+  }
+ },
+ "_kortlekar": {
+  "sem2": "ω-verb, presens ind. aktiv",
+  "sem4": "kontraherade -έω + εἰμί (tillkommer)"
+ },
+ "_falt": {
+  "lemma": "Uppslagsform (1sg pres ind akt).",
+  "glosa": "Svensk betydelse.",
+  "klass": "omega / kontrakt_e / oregelbunden (se _klasser).",
+  "stam": "Del före ändelsen.",
+  "seminarium": "Seminarier där ordet införs.",
+  "kortlekar": "Vilka speldäck ordet ingår i.",
+  "nt_frekvens": "Förekomster i NT (nt-lemman.json).",
+  "former": "Böjda former, nyklade 'tempus.modus.diates' -> {person_numerus: form}.",
+  "belagda_former": "Personnycklar vars form är direkt belagd (facit) i seminarierna — extra tillit.",
+  "verifierad": "true först när formerna är samverifierade; false = mönstergenererad, väntar bekräftelse."
+ },
+ "_verifiering": "ω-formerna genererades ur det verifierade mönstret (stam+ändelse, recessiv accent) och matchar samtliga 10 facit-belagda former utan avvikelse. Övriga former är mönstergenererade och väntar samverifiering (verifierad:false). Auto-generering görs EJ för verb med accentkomplikationer (proparoxytona lemman, kontraktion m.m.) — de verifieras per verb.",
+ "verb": [
+  {
+   "lemma": "λύω",
+   "glosa": "lösa",
+   "klass": "omega",
+   "stam": "λύ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 42,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "λύω",
+     "2sg": "λύεις",
+     "3sg": "λύει",
+     "1pl": "λύομεν",
+     "2pl": "λύετε",
+     "3pl": "λύουσι(ν)"
+    }
+   },
+   "belagda_former": [],
+   "verifierad": true
+  },
+  {
+   "lemma": "βλέπω",
+   "glosa": "se",
+   "klass": "omega",
+   "stam": "βλέπ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 133,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "βλέπω",
+     "2sg": "βλέπεις",
+     "3sg": "βλέπει",
+     "1pl": "βλέπομεν",
+     "2pl": "βλέπετε",
+     "3pl": "βλέπουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "2sg"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "ἀκούω",
+   "glosa": "höra",
+   "klass": "omega",
+   "stam": "ἀκού",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 427,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "ἀκούω",
+     "2sg": "ἀκούεις",
+     "3sg": "ἀκούει",
+     "1pl": "ἀκούομεν",
+     "2pl": "ἀκούετε",
+     "3pl": "ἀκούουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "2pl"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "λέγω",
+   "glosa": "säga",
+   "klass": "omega",
+   "stam": "λέγ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 2345,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "λέγω",
+     "2sg": "λέγεις",
+     "3sg": "λέγει",
+     "1pl": "λέγομεν",
+     "2pl": "λέγετε",
+     "3pl": "λέγουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3pl"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "γράφω",
+   "glosa": "skriva",
+   "klass": "omega",
+   "stam": "γράφ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 190,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "γράφω",
+     "2sg": "γράφεις",
+     "3sg": "γράφει",
+     "1pl": "γράφομεν",
+     "2pl": "γράφετε",
+     "3pl": "γράφουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3sg"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "ἐσθίω",
+   "glosa": "äta",
+   "klass": "omega",
+   "stam": "ἐσθί",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 157,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "ἐσθίω",
+     "2sg": "ἐσθίεις",
+     "3sg": "ἐσθίει",
+     "1pl": "ἐσθίομεν",
+     "2pl": "ἐσθίετε",
+     "3pl": "ἐσθίουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3sg"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "κηρύσσω",
+   "glosa": "predika",
+   "klass": "omega",
+   "stam": "κηρύσσ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 61,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "κηρύσσω",
+     "2sg": "κηρύσσεις",
+     "3sg": "κηρύσσει",
+     "1pl": "κηρύσσομεν",
+     "2pl": "κηρύσσετε",
+     "3pl": "κηρύσσουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "1pl"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "λαμβάνω",
+   "glosa": "ta, gripa",
+   "klass": "omega",
+   "stam": "λαμβάν",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 258,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "λαμβάνω",
+     "2sg": "λαμβάνεις",
+     "3sg": "λαμβάνει",
+     "1pl": "λαμβάνομεν",
+     "2pl": "λαμβάνετε",
+     "3pl": "λαμβάνουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3pl"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "παιδεύω",
+   "glosa": "uppfostra",
+   "klass": "omega",
+   "stam": "παιδεύ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 13,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "παιδεύω",
+     "2sg": "παιδεύεις",
+     "3sg": "παιδεύει",
+     "1pl": "παιδεύομεν",
+     "2pl": "παιδεύετε",
+     "3pl": "παιδεύουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "2sg"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "πέμπω",
+   "glosa": "skicka",
+   "klass": "omega",
+   "stam": "πέμπ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 79,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "πέμπω",
+     "2sg": "πέμπεις",
+     "3sg": "πέμπει",
+     "1pl": "πέμπομεν",
+     "2pl": "πέμπετε",
+     "3pl": "πέμπουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3sg"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "εὑρίσκω",
+   "glosa": "finna",
+   "klass": "omega",
+   "stam": "εὑρίσκ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 176,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "εὑρίσκω",
+     "2sg": "εὑρίσκεις",
+     "3sg": "εὑρίσκει",
+     "1pl": "εὑρίσκομεν",
+     "2pl": "εὑρίσκετε",
+     "3pl": "εὑρίσκουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3pl"
+   ],
+   "verifierad": false
+  },
+  {
+   "lemma": "πιστεύω",
+   "glosa": "tro (på)",
+   "klass": "omega",
+   "stam": "πιστεύ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 241,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "πιστεύω",
+     "2sg": "πιστεύεις",
+     "3sg": "πιστεύει",
+     "1pl": "πιστεύομεν",
+     "2pl": "πιστεύετε",
+     "3pl": "πιστεύουσι(ν)"
+    }
+   },
+   "belagda_former": [],
+   "verifierad": false
+  },
+  {
+   "lemma": "βαπτίζω",
+   "glosa": "döpa",
+   "klass": "omega",
+   "stam": "βαπτίζ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 77,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "βαπτίζω",
+     "2sg": "βαπτίζεις",
+     "3sg": "βαπτίζει",
+     "1pl": "βαπτίζομεν",
+     "2pl": "βαπτίζετε",
+     "3pl": "βαπτίζουσι(ν)"
+    }
+   },
+   "belagda_former": [],
+   "verifierad": false
+  },
+  {
+   "lemma": "σῴζω",
+   "glosa": "rädda",
+   "klass": "omega",
+   "stam": "σῴζ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 106,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "σῴζω",
+     "2sg": "σῴζεις",
+     "3sg": "σῴζει",
+     "1pl": "σῴζομεν",
+     "2pl": "σῴζετε",
+     "3pl": "σῴζουσι(ν)"
+    }
+   },
+   "belagda_former": [],
+   "verifierad": false
+  },
+  {
+   "lemma": "κλέπτω",
+   "glosa": "stjäla",
+   "klass": "omega",
+   "stam": "κλέπτ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 13,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "κλέπτω",
+     "2sg": "κλέπτεις",
+     "3sg": "κλέπτει",
+     "1pl": "κλέπτομεν",
+     "2pl": "κλέπτετε",
+     "3pl": "κλέπτουσι(ν)"
+    }
+   },
+   "belagda_former": [],
+   "verifierad": false
+  },
+  {
+   "lemma": "ἄγω",
+   "glosa": "leda",
+   "klass": "omega",
+   "stam": "ἄγ",
+   "seminarium": [
+    2
+   ],
+   "kortlekar": [
+    "sem2"
+   ],
+   "nt_frekvens": 68,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "ἄγω",
+     "2sg": "ἄγεις",
+     "3sg": "ἄγει",
+     "1pl": "ἄγομεν",
+     "2pl": "ἄγετε",
+     "3pl": "ἄγουσι(ν)"
+    }
+   },
+   "belagda_former": [],
+   "verifierad": false
+  }
+ ]
+}

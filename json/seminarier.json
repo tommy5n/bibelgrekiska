@@ -1,0 +1,4994 @@
+{
+ "_om": "Seminariearkiv för Bibelgrekiska I (SU 2026). Extraherat ur seminariernas PDF:er (zip-arkiv med JPEG + textsidecar per sida). 'index' är det trogna arkivet (ämneskarta + full sidtext + bildsökväg). 'glosor', 'satser', 'verb', 'kongruens' och 'paradigm' är strukturerade vyer för att mata spelen. Masterfilerna (ord.json, glosor.json, adjektiv.json, nt-lemman.json) är sanningskälla; denna fil dubblerar dem inte utan pekar via 'tacks_av_master'/'i_glosor_master'. Verb-sektionen är avsiktligt formad efter ord.json så den kan lyftas till en framtida verb.json-master.",
+ "_genererad": "2026-07-04",
+ "_verifiering": "Grekiska former kommer ur PDF:ernas textlager (rent, ej OCR). Övningsformer korskördes mot ord.json/adjektiv.json (grav→akut- och versalnormaliserat); enda äkta avvikelsen var ett facit-typo (κύριου→κυρίου). Vid diff gäller offentlig/vettad grekiska (nt-lemman/MorphGNT, LSJ, Smyth); avvikelser flaggas, skrivs ej över. Verbparadigm auto-genereras EJ — mallparadigm (λύω, φιλέω, εἰμί) och belagda övningsformer lagras verifierade; övriga verbformer ska genereras + verifieras per verb när verbspelet byggs (accenter är inte mekaniska).",
+ "_avvikelser": [
+  {
+   "korrekt": "κυρίου",
+   "typ": "skrivfel",
+   "not": "Genitiv av κύριος. Lång ultima (-ου) tvingar accenten till penultima → κυρίου; uppgiftssidan (s.1) har rätt form. Verifierad mot nt-lemman och accentregel (Smyth).",
+   "facit_har": "κύριου",
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 2
+  }
+ ],
+ "_falt": {
+  "index": "Per arkiv: kalla, seminarium, typ, antal_sidor, amneskarta (sektioner med slide-intervall), sidor (sida, bild, har_grafik, har_grekiska, text).",
+  "glosa": "lemma, artikel, glosa (sv), ordklass, nt_lemma, nt_frekvens, i_glosor_master, forekomster[].",
+  "sats": "grekiska, instruktion, oversattning (om facit), satsdelar[] (om annoterat), diffar[]/avvikelse_ref, kalla/sida.",
+  "verb": "lemma, glosa, klass (omega/kontrakt_e/oregelbunden), stam, seminarium, nt_frekvens, attesterade_former[] (verifierade ur seminarier), former_kompletta (bool), se_paradigm (mallreferens). Master-formad för framtida verb.json.",
+  "kongruens": "substantiv, fras (med __ för adjektivluckan), kasus/genus/numerus, adjektiv[] (lemma+kongruent form), oversattning. För kongruensspelet.",
+  "paradigm": "mallar & regler för böjning (subst/adj/verb): former/andelser/regler; tacks_av_master pekar på masterfil om formerna redan finns där."
+ },
+ "_kallor": [
+  {
+   "kalla": "1_Presentation.pdf",
+   "seminarium": 1,
+   "typ": "presentation",
+   "antal_sidor": 35
+  },
+  {
+   "kalla": "1__Lathund_alfabet.pdf",
+   "seminarium": 1,
+   "typ": "lathund",
+   "antal_sidor": 1
+  },
+  {
+   "kalla": "1__Breakout_rooms.pdf",
+   "seminarium": 1,
+   "typ": "breakout",
+   "antal_sidor": 1
+  },
+  {
+   "kalla": "2_Presentation.pdf",
+   "seminarium": 2,
+   "typ": "presentation",
+   "antal_sidor": 60
+  },
+  {
+   "kalla": "2__O_vningsblad.pdf",
+   "seminarium": 2,
+   "typ": "ovningsblad",
+   "antal_sidor": 2
+  },
+  {
+   "kalla": "2__Breakout_rooms.pdf",
+   "seminarium": 2,
+   "typ": "breakout",
+   "antal_sidor": 2
+  },
+  {
+   "kalla": "3__Presentation.pdf",
+   "seminarium": 3,
+   "typ": "presentation",
+   "antal_sidor": 46
+  },
+  {
+   "kalla": "3__O_vningsblad.pdf",
+   "seminarium": 3,
+   "typ": "ovningsblad",
+   "antal_sidor": 4
+  },
+  {
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "seminarium": 3,
+   "typ": "seminarieovning",
+   "antal_sidor": 2
+  },
+  {
+   "kalla": "4__Presentation.pdf",
+   "seminarium": 4,
+   "typ": "presentation",
+   "antal_sidor": 57
+  },
+  {
+   "kalla": "4__O_vningsblad.pdf",
+   "seminarium": 4,
+   "typ": "ovningsblad",
+   "antal_sidor": 6
+  },
+  {
+   "kalla": "4__Breakout_rooms.pdf",
+   "seminarium": 4,
+   "typ": "breakout",
+   "antal_sidor": 3
+  },
+  {
+   "kalla": "Ord_som_fo_rekommer_fler_a_n_60_ggr_i_NT.pdf",
+   "seminarium": null,
+   "typ": "frekvenslista",
+   "antal_sidor": 5
+  }
+ ],
+ "index": [
+  {
+   "kalla": "1_Presentation.pdf",
+   "seminarium": 1,
+   "typ": "presentation",
+   "antal_sidor": 35,
+   "amneskarta": [
+    {
+     "nr": 1,
+     "titel": "Kursplan",
+     "start_slide": 3,
+     "slut_slide": 3
+    },
+    {
+     "nr": 2,
+     "titel": "Nya testamentet och koine-grekiskan",
+     "start_slide": 4,
+     "slut_slide": 7
+    },
+    {
+     "nr": 3,
+     "titel": "Alfabetet",
+     "start_slide": 8,
+     "slut_slide": 12
+    },
+    {
+     "nr": 4,
+     "titel": "Diftonger, spiritus lenis/asper, accenttecken",
+     "start_slide": 13,
+     "slut_slide": 23
+    },
+    {
+     "nr": 5,
+     "titel": "Gruppövningar m.m.",
+     "start_slide": 24,
+     "slut_slide": 35
+    }
+   ],
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "1_Presentation/1.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "Bibelgrekiska I\nSeminarium 1: 16 juni 2026; oskar.andersson@su.se"
+    },
+    {
+     "sida": 2,
+     "bild": "1_Presentation/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Innehåll\nKursplan\nNya testamentet och koine-grekiskan\nAlfabetet\nDiftonger, spiritus lenis/asper, accenttecken\nGruppövning 1\nng-ljud\nGruppövning 2\nGrundläggande ordklasser\nAvslutning\n2"
+    },
+    {
+     "sida": 3,
+     "bild": "1_Presentation/3.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "1. Kursplan"
+    },
+    {
+     "sida": 4,
+     "bild": "1_Presentation/4.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "2. Nya testamentet och \nkoine-grekiskan"
+    },
+    {
+     "sida": 5,
+     "bild": "1_Presentation/5.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Nya Testamentet\nNya testamentet (NT) utgör andra delen av Bibeln\nNT består av 27 skrifter av varierande längd\nInnehåll:\n• Fyra evangelier: skildrar Jesu liv, gärningar, död och återuppståndelse\n• Apostlagärningarna: skildrar hur den kristna lärans spreds från Jerusalem till Rom\n• 21 brev, av bl. a. Paulus, som riktar sig till kristna församlingar och individer.\n• Uppenbarelseboken: en apokalyptisk skrift om framtiden\nFörfattade omkring 50–130 e. Kr.\nSkrivna på koine-grekiska\n5"
+    },
+    {
+     "sida": 6,
+     "bild": "1_Presentation/6.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Koine-grekiska\n• Attisk grekiska talades främst i och runt Athen under klassisk tid (480–336).\n• Genom litteratur och handel påverkades attiskan under 400-talet av en annan\ngrekisk dialekt, östjoniskan, som talades bland greker i dagens Turkiet.\n• Bland påverkan märks till exempel:\n• σσ ersatte ττ\n• γίνωσκω ersatte γιγνώσκω\n• Denna nya attiska, som främst talades i de ledande skikten, brukar kallas för\n”Great Attic”.\n• Genom det athenska imperiet spreds denna ”storattiska” över stora delar av\nGrekland under 400-talet främst bland de ledande skikten.\n6"
+    },
+    {
+     "sida": 7,
+     "bild": "1_Presentation/7.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Koine-grekiska\n• Under 300-talet spreds dialekten genom Alexander den stores erövringar också till\nstora delar av östra Medelhavsområdet (inklusive Egypten).\n• Storattiskan blev där ett gemensamt grekiskt kulturspråk som används inom\nhandel, administration, diplomati och utbildning. Det talades av såväl greker som\nicke-greker.\n• Förändringar: språket både förändras och förenklas, och ordförrådet utvecklas.\n• Denna variant av storattiskan kallas koine (”gemensam” – underförstå ”dialekt”).\n• Under 200-talet låter judar i Alexandria översätta Gamla Testamentet till koine\u0002grekiska (s.k. septuaginta, eller LXX).\n• Tidiga kristna nedtecknar evangelierna på en talspråklig variant av koine.\n7"
+    },
+    {
+     "sida": 8,
+     "bild": "1_Presentation/8.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "3. Alfabetet"
+    },
+    {
+     "sida": 9,
+     "bild": "1_Presentation/9.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": ""
+    },
+    {
+     "sida": 10,
+     "bild": "1_Presentation/10.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": ""
+    },
+    {
+     "sida": 11,
+     "bild": "1_Presentation/11.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": ""
+    },
+    {
+     "sida": 12,
+     "bild": "1_Presentation/12.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Grekiska minuskler (= små bokstäver) att hålla extra koll på:\nγ, gamma: g\nε, epsilon: kort e-ljud\nη, eta: långt ä-ljud\nθ, theta: th\nλ, lambda: l\nν, ny: n\nξ, xi: ks\nζ, zeta: ds/ts\nπ, pi: p\nρ, rho: r\nσ, ς sigma: s\nυ, ypsilon: y\nφ, phi: f\nχ, chi: ch\nψ, psi, ps\nω, omega: långt å-ljud"
+    },
+    {
+     "sida": 13,
+     "bild": "1_Presentation/13.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "4. Diftonger, spiritus \nlenis/asper, accenttecken"
+    },
+    {
+     "sida": 14,
+     "bild": "1_Presentation/14.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Diftonger\nVad är diftonger? Diftonger är två vokaler som uttalas tillsammans.\nGrekiska (kort)diftonger är αι, ει, οι, υι, αυ, ευ och uttalas som aj, ej, oj, yi, ao/av, \neo/ev).\nου uttalas däremot alltid som långt o-ljud (som i svenskans ’ko’).\nTill exempel: εἰρήνη (fred, jfr. Irene, Irina), οἶκος (hus, jfr. ekonomi), οὐρανός\n(himmel, jfr. Uranus) \n(Blomqvist § 16)"
+    },
+    {
+     "sida": 15,
+     "bild": "1_Presentation/15.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Spiritus lenis och spiritus asper\nAlla ord som börjar på vokal har en spiritus lenis ( ̓ ) eller en spiritus asper ( ʽ )\nsom står över den första vokalen, eller framför den, om vokalen skrivs som stor\nbokstav, t.ex. vid namn eller i början av en mening."
+    },
+    {
+     "sida": 16,
+     "bild": "1_Presentation/16.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ε med spiritus lenis ( ̓ ):\nἐ, Ἐ\nε med spiritus asper ( ʽ ):\nἑ, Ἑ"
+    },
+    {
+     "sida": 17,
+     "bild": "1_Presentation/17.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ε med spiritus lenis ( ̓ ):\nἐ, Ἐ (= e)\nε med spiritus asper ( ʽ ):\nἑ, Ἑ (= he)"
+    },
+    {
+     "sida": 18,
+     "bild": "1_Presentation/18.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ο med spiritus lenis ( ̓ ):\nὀ, Ὀ (= ?)\nο med spiritus asper ( ʽ ):\nὁ, Ὁ (= ?)"
+    },
+    {
+     "sida": 19,
+     "bild": "1_Presentation/19.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ο med spiritus lenis ( ̓ ):\nὀ, Ὀ (= o)\nο med spiritus asper ( ʽ ):\nὁ, Ὁ (= ho)"
+    },
+    {
+     "sida": 20,
+     "bild": "1_Presentation/20.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Spiritus lenis och spiritus asper\nAlla ord som börjar på vokal har en spiritus lenis ( ̓) el. en spiritus asper ( ʽ )\n1. Spiritus lenis har inget ljudvärde: οὐρανός, εἰρήνη\n2. Spiritus asper ger ett h-ljud före vokalen: ἡγεμών (ledare, jfr. hegemoni), ἁμαρτία\n(synd, felsteg)\nFörutom över vokaler, så står spiritus asper också över ρ-, som i ῥητορική (retorik),\nmen i detta fall så ger spiritus asper inget h-ljud. (Blomqvist § 18)"
+    },
+    {
+     "sida": 21,
+     "bild": "1_Presentation/21.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Betoning\nDet finns tre olika tecken: akut accent, grav accent och cirkumflex. \nAkut ( ´ ): θεός (en gud)\nGrav ( ` ) : τὸν θεόν (Gud)\nCirkumflex ( ~ ): δοῦλος (slav)\n(Blomqvist § 19)"
+    },
+    {
+     "sida": 22,
+     "bild": "1_Presentation/22.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Anmärkningar till betoning\n1. Notera att spiritus asper/lenis och accenttecknet kan stå tillsammans över en \nvokal:\nἥλιος Ἥλιος\nοὗτος Οὗτος\n2. Det finns ord som ibland saknar accenttecken."
+    },
+    {
+     "sida": 23,
+     "bild": "1_Presentation/23.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Sammanfattning\n• Alfabetet: hur de enskilda bokstäverna låter\n• Diftonger: två vokaler som uttalas som ett ljud: εἰ (ej), osv.\n• Spiritus asper/lenis: litet tecken över en vokal i början av ett ord som anger om ett\nh-ljud ska tillkomma (ἡγεμών) eller inte (εἰρήνη).\n• Betoning: akut, grav och cirkumflex. Det räcker med att ni vet att ni ska lägga\ntrycket på den stavelsen som bär accent när ni uttalar ett ord."
+    },
+    {
+     "sida": 24,
+     "bild": "1_Presentation/24.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "5. Gruppövningar m.m."
+    },
+    {
+     "sida": 25,
+     "bild": "1_Presentation/25.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout-room (1)\nSkriv av orden, öva på att läsa tillsammans och fundera på vad de kan betyda\nθεός\nγυμνάσιον\nστάδιον\nδρᾶμα\nδιάβολος\nθέατρον\nἀρχαιολογία\nπαράδεισος\nεὐχαριστία\nφιλοσοφία\nχαράκτηρ\nκατάλογος"
+    },
+    {
+     "sida": 26,
+     "bild": "1_Presentation/26.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout-room (1)\nHur uttalas orden? Vad kan orden betyda?\nθεός\nγυμνάσιον\nστάδιον\nδρᾶμα\nδιάβολος\nθέατρον\nἀρχαιολογία\ngud\növningsplats\ntävlingsbana\ndrama\ndjävul\nåskådarplats (teater)\nforntidsberättelse (arkeologi)"
+    },
+    {
+     "sida": 27,
+     "bild": "1_Presentation/27.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout-room (1)\nHur uttalas orden? Vad kan orden betyda? \nπαράδεισος\nεὐχαριστία\nφιλοσοφία\nχαρακτήρ\nκατάλογος\nträdgård (paradis)\ntacksägelse (nattvard)\nfilosofi\nstämpel, karaktär\nförteckning, katalog"
+    },
+    {
+     "sida": 28,
+     "bild": "1_Presentation/28.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "”ng”-ljud\n”ng”-ljud: γ framför γ, κ, ξ och χ uttalas som -ng- i ”äng”.\nἐγγύς ’nära’ (engýs)\n(Blomqvist § 15)"
+    },
+    {
+     "sida": 29,
+     "bild": "1_Presentation/29.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout-room (2)\nSkriv av orden, öva på att läsa tillsammans, fundera på vad de kan betyda och dess ordklass\nἄγγελος\nεὑρίσκω\nεὐαγγέλιον\nυἱός \nὀρχήστρα\nῥῆμα\nὅλος\nἅγιος\nμέταλλον\nδαιμόνιον\nπρόθεσις\nἐγκαλέω"
+    },
+    {
+     "sida": 30,
+     "bild": "1_Presentation/30.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout-room (2)\nSkriv av orden, öva på att läsa tillsammans, fundera på vad de kan betyda och dess ordklass\nἄγγελος\nεὑρίσκω\nεὐαγγέλιον\nυἱός \nὀρχήστρα\nῥῆμα\nὅλος\nbudbärare, ängel (subst.)\nfinna, jfr. Heureka! (verb)\nevangelium (subst.)\nson (subst.)\ndansplats, orkester (subst.)\ntal, ord (subst.)\nhel, jfr. katolicism, holism (adjektiv)"
+    },
+    {
+     "sida": 31,
+     "bild": "1_Presentation/31.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout-room (2)\nSkriv av orden, öva på att läsa tillsammans, fundera på vad de kan betyda och dess ordklass\nἅγιος\nμέταλλον\nδαιμόνιον\nπρόθεσις\nἐγκαλέω\nhelig, ren, jfr. Hagia Sofia (adjektiv)\ngruva (subst.)\ngudomlighet, ond ande (subst.)\nuppställning, jfr. protes (subst.)\nbeskylla (verb)"
+    },
+    {
+     "sida": 32,
+     "bild": "1_Presentation/32.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "En (gammal men alltjämt) hjälpsam minnesramsa\nSubstantiv är namn på ting,\ntill exempel boll och ring (ἀπόστολος apostel)\nAdjektiven sen oss lär,\nhurudana tingen är (ἅγιος helig)\nVerb är sådant man kan göra,\nsom att hoppa, se och höra (εὑρίσκω jag finner)"
+    },
+    {
+     "sida": 33,
+     "bild": "1_Presentation/33.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Sammanfattning\nVad har vi gjort idag?\n• Alfabetet\n• Diftonger (Vad är det? Hur låter uttalas de?)\n• Spiritus asper/lenis (Vad är det? Vad betyder det för uttalet?)\n• Betoning (Vad är det?)\n• Ordklasser: substantiv, adjektiv och verb"
+    },
+    {
+     "sida": 34,
+     "bild": "1_Presentation/34.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Breakout room (3): Reflektion\nSkriv av följande ord och förklara sedan för varandra vad de betyder:\n• substantiv\n• verb\n• adjektiv\n• diftong\n• minuskel och majuskel\n• diakritiska tecken"
+    },
+    {
+     "sida": 35,
+     "bild": "1_Presentation/35.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Bibelgrekiska \n1:2\nFokus på:\n• Två av ordklasserna (substantiv och verb)\n• Hur man kan bilda meningar med substantiv och \nverb"
+    }
+   ]
+  },
+  {
+   "kalla": "1__Lathund_alfabet.pdf",
+   "seminarium": 1,
+   "typ": "lathund",
+   "antal_sidor": 1,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "1__Lathund_alfabet/1.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Thomas Sjösvärd 2010\nAtt läsa grekiska tecken – en liten lathund\nTecken Konventionellt uttal\nΑ α a, kort eller långt\nΒ β b\nΓ γ g, ng-ljud (framför γ, κ, ξ, χ)\nΔ δ d\nΕ ε e/ä, kort\nΖ ζ ds eller ts\nΗ η e/ä, långt\nΘ θ th\nΙ ι i, kort eller långt (ibland j)\nΚ κ k\nΛ λ l\nΜ μ m\nΝ ν n\nΞ ξ ks\nΟ ο o (dvs. å), kort\nΠ π p\nΡ ρ r\nΣ σ/ς (c) s\nΤ τ t\nΥ υ y, kort eller långt\nΦ φ f\nΧ χ tyskt ch\nΨ ψ ps\nΩ ω o (dvs. å), långt\nDiftonger:\nαι, υι (med kort α resp. υ), ει, οι, uttalas \nalltid som diftonger, dvs. ungefär som \nsvenskans aj, uj osv. \nαυ och ευ kan uttalas på nygrekiskt vis, \ndvs. som av/ev framför vokal och tonande \nkonsonant respektive af/ef framför tonlös \nkonsonant.\nου uttalas alltid som ett långt u, dvs. det \nsvenska o:et i ”bok”. Jfr. ou i Guillou!\nDe långdiftonger som slutar på ι skrivs i \nmajuskelskrift (stora bokstäver) med så \nkallat iota adscriptum, (t.ex. ΩΙ). Även i\nminuskelskrift (små bokstäver) används \nibland iota adscriptum (ωι) men ofta iota \nsubscriptum (ῳ). I:et uttalas inte i \nlångdiftonger!\nBetoning och accenttecken\nBetoning markeras med accenttecken. Tre \nsådana finns: akut ώ, gravis ὼ, och \ncirkumflex ῶ. Man skiljer vanligen inte \nmellan hur de olika accenterna uttalas. \nSpiritus\nAlla vokaler och diftonger som börjar ett \nord förses med antingen spiritus lenis (’), \nsom saknar ljudvärde, eller spiritus asper\n(ʽ), som betecknar h-ljud. Jämför ἀγρός \n(agrós) och ὑγρóς (hygrós).\nFör den som vill slå upp ett ord rekommenderas Liddell & Scott, Greek-English Lexicon\n(”LSJ”). Observera att ett ord kan har en mängd olika former och förändras på olika sätt, \nvilket ibland gör att det kan vara svårt att hitta grundformen. Många av de mest kända \ntexterna återfinns bland ”Greek and Roman Materials” på sajten Perseus Digital Library,\nhttp://www.perseus.tufts.edu/hopper/collections, där man kan växla mellan engelsk text och \ngrekiskt original, och klicka på ett ord för att få fram grundform och betydelse."
+    }
+   ]
+  },
+  {
+   "kalla": "1__Breakout_rooms.pdf",
+   "seminarium": 1,
+   "typ": "breakout",
+   "antal_sidor": 1,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "1__Breakout_rooms/1.jpeg",
+     "har_grafik": true,
+     "har_grekiska": true,
+     "text": "1 (1)\nBIBELGREKISKA I: Seminarium 1. Läsövningar\nBreakout room (1)\nUppgift: Skriv av orden nedan och öva på att läsa. Fundera också på om ni kan gissa \ner till betydelsen hos några av orden.\nθεός\nγυμνάσιον\nστάδιον\nδρᾶμα\nδιάβολος\nθέατρον\nἀρχαιολογία\nπαράδεισος\nεὐχαριστία\nφιλοσοφία\nχαράκτηρ\nκατάλογος\nBreakout room (2)\nUppgift: Skriv av orden och öva på att läsa. Fundera också på om ni kan gissa er till \nbetydelsen hos några av orden\nἄγγελος\nεὑρίσκω\nεὐαγγέλιον\nυἱός\nὀρχήστρα\nῥῆμα\nὅλος \nἅγιος\nμέταλλον\nδαιμόνιον\nπρόθεσις\nἐγκαλέω"
+    }
+   ]
+  },
+  {
+   "kalla": "2_Presentation.pdf",
+   "seminarium": 2,
+   "typ": "presentation",
+   "antal_sidor": 60,
+   "amneskarta": [
+    {
+     "nr": 1,
+     "titel": "Repetition",
+     "start_slide": 3,
+     "slut_slide": 10
+    },
+    {
+     "nr": 2,
+     "titel": "Långdiftonger",
+     "start_slide": 11,
+     "slut_slide": 12
+    },
+    {
+     "nr": 3,
+     "titel": "Ordklasser",
+     "start_slide": 13,
+     "slut_slide": 32
+    },
+    {
+     "nr": 4,
+     "titel": "Kasus och satslära",
+     "start_slide": 33,
+     "slut_slide": 60
+    }
+   ],
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "2_Presentation/1.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "Bibelgrekiska 1:2\n18 juni 2026; oskar.andersson@su.se"
+    },
+    {
+     "sida": 2,
+     "bild": "2_Presentation/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Innehåll \nBibelgrekiska \n1:2\n1. Repetition: diftonger, betoning, spiritus asper/lenis \n2. Långdiftonger och iota subscriptum/adscriptum\n3. Ordklasser: substantiv och verb och hur de böjs \n(morfologi)\n4. Satsanalys: hur substantiv och verb sammanfogas \ntill meningar (syntax)"
+    },
+    {
+     "sida": 3,
+     "bild": "2_Presentation/3.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "1. Repetition"
+    },
+    {
+     "sida": 4,
+     "bild": "2_Presentation/4.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Repetition\nTesta dig själv – vad följande betyder termer?\n• diftong\n• ng-ljud\n• minuskel och majuskel\n• diakritiska tecken (spiritus lenis/asper, accentuering)\n• ordklasserna: substantiv, adjektiv och verb"
+    },
+    {
+     "sida": 5,
+     "bild": "2_Presentation/5.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Repetition: diftonger\nαι, ει, οι, υι, αυ, ευ uttalas alltid som diftonger (aj, ej, oj, yi, ao/av, eo/ev)\nου uttalas alltid som långt o-ljud (som i svenskans ’ko’)\ntill exempel: εἰρήνη (fred, jfr. Irene, Irina), οἶκος (hus, jfr. ekonomi), οὐρανός\n(himmel, jfr. Uranus)\n(Blomqvist § 16)"
+    },
+    {
+     "sida": 6,
+     "bild": "2_Presentation/6.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Repetition: ng-ljud\nng-ljud: γ framför γ, κ, ξ eller χ uttalas som -ng- i äng. Det γ, κ, ξ eller χ som följer \npå γ uttalas däremot som vanligt.\nἄγγελος anggelos (inte aggelos)\nἐγκαλέω engkaleo (inte egkaleo)\n(Blomqvist § 15)"
+    },
+    {
+     "sida": 7,
+     "bild": "2_Presentation/7.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Repetition: accenter\nDet finns tre accenttecken: akut accent, grav accent och cirkumflex. \nAkut: ´ (θεός)\nGrav: ` (τὸν θεόν)\nCirkumflex: ~ (δοῦλος) \n(Blomqvist § 19)"
+    },
+    {
+     "sida": 8,
+     "bild": "2_Presentation/8.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Repetition: spiritus lenis och spiritus asper\nAlla ord som börjar på vokal eller diftong har en spiritus lenis ( ’ - ser ut som en \nhögerparentes) eller en spiritus asper ( ʽ - ser ut som en vänsterparentes el. c)\n1. Spiritus lenis har inget ljudvärde: ἐγώ (jag), εἰρήνη (fred), οὐρανός (himmel)\n2. Spiritus asper ger ett h-ljud före vokalen: ἡγεμών (ledare, jfr. hegemoni), ἁμαρτία\n(synd, felsteg), οὗτος (denne)\nFörutom över vokaler, så står spiritus asper också över ett initialt ρ-, ῥητορική, men \ndetta asper beaktas inte i skoluttalet (men translittererat: rhetorike).\n(Blomqvist § 18)"
+    },
+    {
+     "sida": 9,
+     "bild": "2_Presentation/9.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Vokalljud\nο (omikron) uttalas som kort å-ljud (som i om)\nω (omega) uttalas som långt å-ljud (som i mås)\nου (omikron + ypsilon) uttalas som långt o (som i ko)\nε (epsilon) uttalas om kort e-ljud (som i ett)\nη (eta) uttalas som långt ä-ljud (som i käke)"
+    },
+    {
+     "sida": 10,
+     "bild": "2_Presentation/10.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout room (1) övning: alfabet, uttal och \nordkunskap\n1. Skriv av följande ord på grekiska tillsammans med översättningen och läs \ndem för varandra\nἄνθρωπος människa\nβλέπω jag ser\nοἶκος hus\nἄγγελος ängel\nγράφω jag skriver\nἀδελφός bror\nἀπόστολος apostel\nθεός gud\nοὐρανός himmel\nκύριος herre\nδοῦλος slav\nλόγος ord, tal"
+    },
+    {
+     "sida": 11,
+     "bild": "2_Presentation/11.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "2. Långdiftonger"
+    },
+    {
+     "sida": 12,
+     "bild": "2_Presentation/12.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Långdiftonger\nKortdiftonger (eftersom första vokalen är kort) är ει, οι, αι, osv.\nLångdiftonger (eftersom första vokalen är lång) är lång vokal (ᾱ, ω, η) + ι eller υ\nEfter ᾱ, η och ω står ι (iota) \n• bredvid (vid majuskler: ΑΙ ΗΙ ΩΙ, s.k. iota adscriptum ’iota skrivet bredvid’)\n• under (vid minuskler: ᾳ ῃ ῳ, s.k. iota subscriptum ’iota skrivet under’). Detta iota \nuttalas inte.\nἀποστόλῳ (till aposteln) läses med andra ord apostólō. (Blomqvist § 16)"
+    },
+    {
+     "sida": 13,
+     "bild": "2_Presentation/13.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "3. Ordklasser"
+    },
+    {
+     "sida": 14,
+     "bild": "2_Presentation/14.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Formlära: substantiv\nSubstantiv delas in i olika deklinationer, dvs. böjningsmönster. \nVi börjar idag med maskulina substantiv i 2:a deklinationen som slutar på -ος. \n(Blomqvist § 62)"
+    },
+    {
+     "sida": 15,
+     "bild": "2_Presentation/15.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἄνθρωπος människa\nkasus bestämd artikel substantiv (sg.) översättning\nnominativ ὁ ἄνθρωπος människan\ngenitiv τοῦ ἀνθρώπου människans\ndativ τῷ ἀνθρώπῳ till människan\nackusativ τὸν ἄνθρωπον människan\nvokativ (ὦ) ἄνθρωπε o människa!"
+    },
+    {
+     "sida": 16,
+     "bild": "2_Presentation/16.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἄνθρωπος människa\nkasus bestämd artikel substantiv (pl.) översättning\nnominativ οἱ ἄνθρωποι människorna\ngenitiv τῶν ἀνθρώπων människornas\ndativ τοῖς ἀνθρώποις till människorna\nackusativ τοὺς ἀνθρώπους människorna\nvokativ (ὦ) ἄνθρωποι o människor!"
+    },
+    {
+     "sida": 17,
+     "bild": "2_Presentation/17.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἄνθρωπος människan\nkasus best. art. sg. subst. sg. best. art. pl. subst. plural\nnominativ ὁ ἄνθρωπ-ος οἱ ἄνθρωπ-οι\ngenitiv τοῦ ἀνθρώπ-ου τῶν ἀνθρώπ-ων\ndativ τῷ ἀνθρώπ-ῳ τοῖς ἀνθρώπ-οις\nackusativ τὸν ἄνθρωπ-ον τοὺς ἀνθρώπ-ους\nvokativ (ὦ) ἄνθρωπε (ὦ) ἄνθρωπ-οι"
+    },
+    {
+     "sida": 18,
+     "bild": "2_Presentation/18.jpeg",
+     "har_grafik": true,
+     "har_grekiska": true,
+     "text": "Anmärkningar till ὁ ἄνθρωπος\n1. Substantiven i denna grupp slutar i nominativ singular på -ος.\nNominativ är grundformen som man finner i ordböcker, som i Heikel\noch Friedrichsens Grekisk-svensk ordlista till NT."
+    },
+    {
+     "sida": 19,
+     "bild": "2_Presentation/19.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Anmärkningar till ὁ ἄνθρωπος\n2. Den bestämda artikel (jfr. engelskans ’the man’) böjs i stora drag som\nἄνθρωπος:\nkasus best. artikel singular best. artikel plural\nnominativ ὁ ἄνθρωπ-ος οἱ ἄνθρωπ-οι\ngenitiv τοῦ ἀνθρώπ-ου τῶν ἀνθρώπ-ων\ndativ τῷ ἀνθρώπ-ῳ τοῖς ἀνθρώπ-οις\nackusativ τὸν ἄνθρωπ-ον τοὺς ἀνθρώπ-ους\nvokativ (ὦ) ἄνθρωπ-ε (ὦ) ἄνθρωπ-οι"
+    },
+    {
+     "sida": 20,
+     "bild": "2_Presentation/20.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Anmärkningar till ὁ ἄνθρωπος\n3. Notera långdiftongen i ἀνθρώπῳ (dativ singular) med iota subscriptum. \nDetta iota uttalas inte.\n4. Till kasus (nominativ, genitiv, osv.) kommer vi snart."
+    },
+    {
+     "sida": 21,
+     "bild": "2_Presentation/21.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Anmärkningar till ὁ ἄνθρωπος\n5. För reglerna rörande accentens placering, se Blomqvist (§ 19).\n6. Grekiskan har ingen obestämd artikel (jfr. engelskans ’a man’), utan ’en \nmänniska’/’människa’ heter helt enkelt ἄνθρωπος."
+    },
+    {
+     "sida": 22,
+     "bild": "2_Presentation/22.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Vanliga substantiv på -ος i andra deklinationen \nSom ὁ ἄνθρωπος böjs otaliga substantiv, som exempelvis\nὁ λόγος ordet, talet\nὁ οἶκος huset\nὁ ἄγγελος ängeln\nὁ ἀπόστολος aposteln\nὁ θεός Gud (bestämd form till trots!)\nὁ οὐρανός himlen\nὁ κύριος herren\nὁ δοῦλος slaven\nὁ ἀδελφός brodern\nὁ ἄρτος brödet\nὁ καιρός tidpunkten\nὁ καρπός frukten\nὁ λαός folket\nὁ ὀφθαλμός ögat\nὁ τόπος platsen\nὁ φαρισαιός farisén"
+    },
+    {
+     "sida": 23,
+     "bild": "2_Presentation/23.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Formlära: verb\nω-verb i presens (Blomqvist § 144)"
+    },
+    {
+     "sida": 24,
+     "bild": "2_Presentation/24.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "λύω lösa (presens)\nperson verbform översättning\n1:a p. sg. λύ-ω jag löser\n2:a p. sg. λύ-εις du löser\n3:e p. sg. λύ-ει han/hon/det löser\n1:a p. pl. λύ-ομεν vi löser\n2:a p. pl. λύ-ετε ni löser\n3:e p. pl. λύ-ουσι(ν) de löser"
+    },
+    {
+     "sida": 25,
+     "bild": "2_Presentation/25.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Anmärkningar till λύω\n1. Ett verb består av en rot (λυ-) som anger verbets grundbetydelsen. Till\nroten läggs sedan ändelserna -ω, -εις, osv. som anger vilken person som\nutför handlingen (jag löser, du löser, osv.). ’Jag’ och ’du’, osv. finns\nalltså inbakade i verbets form."
+    },
+    {
+     "sida": 26,
+     "bild": "2_Presentation/26.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Anmärkningar till λύω\n2. Verbet har tre former för singular (jag, du, han/hon/det) och tre för\nplural (vi, ni, de). Man talar därför om λύω, ’jag löser’, som första\nperson singular, medan λύομεν ’vi löser’, som första person plural, osv."
+    },
+    {
+     "sida": 27,
+     "bild": "2_Presentation/27.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Anmärkningar till λύω\n3. Tredje person plural har ändelsen ουσι(ν). Det sista ν sätts i regel ut om\nnästa ord börjar på vokal eller om skiljetecken följer.\nβλέπουσιν ἄγγελον (de ser en ängel)\nβλέπουσι τὸν ἄγγελον (de ser ängeln).\nAnledningen är att man vill undvika att vokaler möts (men notera att\ndenna regel in alltid efterlevs!)"
+    },
+    {
+     "sida": 28,
+     "bild": "2_Presentation/28.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "λύω lösa (presens)\nperson grekiska svenska\n1:a p. sg. λύ-ω jag löser\n2:a p. sg. λύ-εις du löser\n3:e p. sg. λύ-ει han/hon/det löser\n1:a p. pl. λύ-ομεν vi löser\n2:a p. pl. λύ-ετε ni löser\n3:e p. pl. λύ-ουσι(ν) de löser"
+    },
+    {
+     "sida": 29,
+     "bild": "2_Presentation/29.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "λύω lösa (presens)\nperson grekiska svenska\n1:a p. sg. λύω jag löser\n2:a p. sg. λύεις du löser\n3:e p. sg. λύει han/hon/det löser\n1:a p. pl. λύομεν vi löser\n2:a p. pl. λύετε ni löser\n3:e p. pl. λύουσι(ν) de löser"
+    },
+    {
+     "sida": 30,
+     "bild": "2_Presentation/30.jpeg",
+     "har_grafik": true,
+     "har_grekiska": true,
+     "text": "Anmärkningar till λύω\n4. Det är formen för 1:a person singular presens som man hittar i\nordböckerna. Det betyder (1) att ni måste omvandla exv. βλέπει till\nβλέπω, och sedan söka i ordboken; (2) att när man finner ett verb som\nβλέπω ’se’ i ordboken så kan man bilda samtliga presensformerna av det\ngenom att lägga till ändelserna -ω, -εις, -ει, -ομεν, -ετε, -ουσι(ν)."
+    },
+    {
+     "sida": 31,
+     "bild": "2_Presentation/31.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Andra vanliga ω-verb i NT\nἀκούω jag hör (jfr. akustik)\nβαπτίζω jag döper (jfr. eng. \n’baptism’)\nἀποστέλλω jag skickar ut (jfr. \napostel)\nλέγω jag säger (jfr. λόγος)\nβλέπω jag ser\nγράφω jag skriver (jfr. grafik, \nkalligrafi)\nἐσθίω jag äter\nεὑρίσκω jag finner (heureka!)\nκηρύσσω jag predikar\nλαμβάνω jag tar\nπαιδεύω jag uppfostrar (jfr. \npedagogik)\nπέμπω jag skickar\nσῴζω jag frälser"
+    },
+    {
+     "sida": 32,
+     "bild": "2_Presentation/32.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tips: studieteknik\nEtt ekonomiskt sätt när man lär sig verb är att memorera ändelserna för presens:\n-ω, -εις, -ει, -ομεν, -ετε, -ουσι(ν)"
+    },
+    {
+     "sida": 33,
+     "bild": "2_Presentation/33.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "4. Kasus och satslära"
+    },
+    {
+     "sida": 34,
+     "bild": "2_Presentation/34.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἄνθρωπος människan\nkasus best. art. sg. subst. sg. best. art. sg. subst. plural\nnominativ ὁ ἄνθρωπ-ος οἱ ἄνθρωπ-οι\ngenitiv τοῦ ἀνθρώπ-ου τῶν ἀνθρώπ-ων\ndativ τῷ ἀνθρώπ-ῳ τοῖς ἀνθρώπ-οις\nackusativ τὸν ἄνθρωπ-ον τοὺς ἀνθρώπ-ους\nvokativ (ὦ) ἄνθρωπε (ὦ) ἄνθρωπ-οι"
+    },
+    {
+     "sida": 35,
+     "bild": "2_Presentation/35.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Kasus\nDe olika formerna som substantivet får när det böjs, dvs. nominativ, genitiv, dativ,\nackusativ och vokativ, är det som kallas för kasusformer.\nKasusformerna visar vilken roll ett substantiv har i en sats. Dessa roller kallas i sin\ntur för satsdelar.\nVi ska nu lära oss att ”ta ut” satsdelar utifrån kasusformerna."
+    },
+    {
+     "sida": 36,
+     "bild": "2_Presentation/36.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus och satslära\nNär vi tar ut satsdelar börjar vi alltid med att fråga oss vilken verbhandlingen är. På\nså vis får vi fram det som kallas för predikatet. Vi talar alltså bara om verb när det\nhandlar om ordklasser. När vi försöker förstå hur ett verb fungerar i en sats, så\nanvänder vi i stället termen predikat.\nὁ ἄνθρωπος βλέπει τὸν ἄγγελον (människan ser ängeln)\nVilken är verbhandlingen?"
+    },
+    {
+     "sida": 37,
+     "bild": "2_Presentation/37.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus och satslära\nNär vi tar ut satsdelar börjar vi alltid med att fråga oss vilken verbhandlingen är. På\nså vis får vi fram det som kallas för predikatet. Vi talar alltså bara om verb när det\nhandlar om ordklasser. När vi försöker förstå hur ett verb fungerar i en sats, så\nanvänder vi i stället termen predikat.\nὁ ἄνθρωπος βλέπει τὸν ἄγγελον (människan ser ängeln)\nVilken är verbhandlingen? Svar: βλέπει, ’ser’. Detta är predikatet."
+    },
+    {
+     "sida": 38,
+     "bild": "2_Presentation/38.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nSubjektet i nominativ: Den, det eller de som utför en verbhandling (predikatet) i en\nmening, kallas för satsens subjekt och står i nominativ.\nὁ ἄνθρωπος βλέπει τὸν ἄγγελον (människan ser ängeln)\nVem eller vad utför verbhandlingen (βλέπει ’se’)?"
+    },
+    {
+     "sida": 39,
+     "bild": "2_Presentation/39.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nSubjektet i nominativ: Den, det eller de som utför en verbhandling (predikatet) i en\nmening, kallas för satsens subjekt och står i nominativ.\nὁ ἄνθρωπος βλέπει τὸν ἄγγελον (människan ser ängeln)\nVem eller vad utför verbhandlingen (βλέπει ’se’)?\nSvar: ’människan’ är den som ’ser’ (dvs. är subjekt till predikatet), alltså står \n’människa’ i nominativ ὁ ἄνθρωπος"
+    },
+    {
+     "sida": 40,
+     "bild": "2_Presentation/40.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἄνθρωπος människan\nkasus best. artikel singular best. artikel plural\nnominativ ὁ ἄνθρωπ-ος οἱ ἄνθρωπ-οι\ngenitiv τοῦ ἀνθρώπ-ου τῶν ἀνθρώπ-ων\ndativ τῷ ἀνθρώπ-ῳ τοῖς ἀνθρώπ-οις\nackusativ τὸν ἄνθρωπ-ον τοὺς ἀνθρώπ-ους\nvokativ (ὦ) ἄνθρωπε (ὦ) ἄνθρωπ-οι"
+    },
+    {
+     "sida": 41,
+     "bild": "2_Presentation/41.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nDirekt objekt i ackusativ: Den, det eller de som direkt är föremål för en\nverbhandling kallas för direkt objekt och står i ackusativ.\nὁ ἄνθρωπος βλέπει τὸν ἄγγελον (människan ser ängeln)\nVem eller vad påverkas av verbhandlingen?"
+    },
+    {
+     "sida": 42,
+     "bild": "2_Presentation/42.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nDirekt objekt i ackusativ: Den, det eller de som direkt är föremål för en\nverbhandling kallas för direkt objekt och står i ackusativ.\nὁ ἄνθρωπος βλέπει τὸν ἄγγελον (människan ser ängeln)\nVem eller vad påverkas av verbhandlingen?\nSvar: ’ängeln’ påverkas (dvs. är direkt objekt till predikatet), alltså står ’ängel’ i \nackusativ τὸν ἄγγελον."
+    },
+    {
+     "sida": 43,
+     "bild": "2_Presentation/43.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἄγγελος budbärare, ängel\nkasus best. artikel singular best. artikel plural\nnominativ ὁ ἄγγελος οἱ ἄγγελοι\ngenitiv τοῦ ἀγγέλου τῶν ἀγγέλων\ndativ τῷ ἀγγέλῳ τοῖς ἀγγέλοις\nackusativ τὸν ἄγγελον τοὺς ἀγγλέους\nvokativ (ὦ) ἄγγελε (ὦ) ἄγγελοι"
+    },
+    {
+     "sida": 44,
+     "bild": "2_Presentation/44.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nIndirekt objekt i dativ: Den, det eller de som indirekt är föremål för en\nverbhandling kallas för indirekt objekt, och står i dativ.\nὁ ἀπόστολος γράφει λόγον τοῖς ἀνθρώποις. (aposteln skriver en berättelse för\nmänniskorna)\nTill/åt/för vem eller vad utförs verbhandlingen?"
+    },
+    {
+     "sida": 45,
+     "bild": "2_Presentation/45.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nIndirekt objekt i dativ: Den, det eller de som indirekt är föremål för en\nverbhandling kallas för indirekt objekt, och står i dativ.\nὁ ἀπόστολος γράφει λόγον τοῖς ἀνθρώποις. (aposteln skriver en berättelse för\nmänniskorna)\nTill/åt/för vem eller vad utförs verbhandlingen?\nSvar: ”människorna” är den som aposteln skriver berättelsen till (dvs. är indirekt\nobjekt), alltså står ἄνθρωπος i sin dativform ἀνθρώποις"
+    },
+    {
+     "sida": 46,
+     "bild": "2_Presentation/46.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἄνθρωπος människa\nkasus best. artikel singular best. artikel plural\nnominativ ὁ ἄνθρωπ-ος οἱ ἄνθρωπ-οι\ngenitiv τοῦ ἀνθρώπ-ου τῶν ἀνθρώπ-ων\ndativ τῷ ἀνθρώπ-ῳ τοῖς ἀνθρώπ-οις\nackusativ τὸν ἄνθρωπ-ον τοὺς ἀνθρώπ-ους\nvokativ (ὦ) ἄνθρωπε (ὦ) ἄνθρωπ-οι"
+    },
+    {
+     "sida": 47,
+     "bild": "2_Presentation/47.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nGenitivattribut i genitiv: Den eller det som fungerar som ägare till något kallas för\ngenitivattribut och står i genitiv. De är ofta en bestämning till ett substantiv som är\nsubjekt, objekt eller indirekt objekt.\nβλέπω τὸν οἶκον τοῦ ἀποστόλου (jag ser apostelns hus)\nTill vem hör någon eller något?"
+    },
+    {
+     "sida": 48,
+     "bild": "2_Presentation/48.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nGenitivattribut i genitiv: Den eller det som fungerar som ägare till något kallas för\ngenitivattribut och står i genitiv. De är ofta en bestämning till ett substantiv som är\nsubjekt, objekt eller indirekt objekt.\nβλέπω τὸν οἶκον τοῦ ἀποστόλου (jag ser apostelns hus)\nTill vem hör någon eller något?\nSvar: huset hör till aposteln, alltså står ἀπόστολος i sin genitivform ἀποστόλου. Det\nhör dock som ett attribut till οἶκος som är direkt objekt."
+    },
+    {
+     "sida": 49,
+     "bild": "2_Presentation/49.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἀπόστολος apostel\nkasus best. artikel singular best. artikel plural\nnominativ ὁ ἀπόστολ-ος οἱ ἀπόστολ-οι\ngenitiv τοῦ ἀποστόλου τῶν ἀποστόλ-ων\ndativ τῷ ἀποστόλ-ῳ τοῖς ἀποστόλοις\nackusativ τὸν ἀπόστολ-ον τοὺς ἀποστόλ-ους\nvokativ (ὦ) ἀπόστολε (ὦ) ἀπόστολ-οι"
+    },
+    {
+     "sida": 50,
+     "bild": "2_Presentation/50.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nVokativ: Den eller det som tilltalas står i vokativ.\nὦ ἄγγελε, βλέπεις τὸν οἶκον τοῦ ἀποστόλου (du, o ängel, ser apostelns hus)\nVem tilltalas?"
+    },
+    {
+     "sida": 51,
+     "bild": "2_Presentation/51.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kasus\nVokativ: Den eller det som tilltalas står i vokativ.\nὦ ἄγγελε, βλέπεις τὸν οἶκον τοῦ ἀποστόλου (du, o ängel, ser apostelns hus)\nVem tilltalas?\nSvar: ängeln tilltalas, alltså står ἄγγελος i sin vokativform ἄγγελε. Notera: ὦ är inte\nen bestämd artikel, utan en interjektion vid vokativer."
+    },
+    {
+     "sida": 52,
+     "bild": "2_Presentation/52.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἄγγελος budbärare, ängel\nkasus best. artikel singular best. artikel plural\nnominativ ὁ ἄγγελ-ος οἱ ἄγγελ-οι\ngenitiv τοῦ ἀγγέλου τῶν ἀγγέλ-ων\ndativ τῷ ἀγγέλ-ῳ τοῖς ἀγγέλ-οις\nackusativ τὸν ἄγγελ-ον τοὺς ἀγγέλ-ους\nvokativ (ὦ) ἄγγελ-ε (ὦ) ἄγγελ-οι"
+    },
+    {
+     "sida": 53,
+     "bild": "2_Presentation/53.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Sammanfattning: kasus\nKasusformerna berättar alltså för oss vilken funktion ett substantiv har i en mening. \nLite förenklat kan man säga att substantiv i:\n• nominativform är subjekt i satsen, dvs. utför verbhandlingen (jag skriver)\n• ackusativform är det som påverkas direkt av verbhandlingen (en dikt)\n• dativform är det som påverkas indirekt av verbhandlingen (till min käresta)\n• genitiv betecknar ägande (hör i regel till subjekt, direkt eller indirekt objekt)\n• vokativ betecknar den som blir tilltalad"
+    },
+    {
+     "sida": 54,
+     "bild": "2_Presentation/54.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Övning\n1. οἱ ἄνθρωποι βλέπουσι τὸν οὐρανόν (människorna ser himlen)\n2. ὁ ἀδελφὸς γράφει λόγον (brodern skriver en berättelse)\nVilken är handlingen? (predikatet)\nVem/vad utför handlingen? (subjektet, står i nominativ)\nVem/vad påverkas av handlingen? (direkt objekt, står i ackusativ)"
+    },
+    {
+     "sida": 55,
+     "bild": "2_Presentation/55.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Breakout rooms (2): satslära\n1. Bestämd vilket ord som är \n• Predikat (verbet) vad sker/vad görs?\n• Subjekt (står i nominativ, utför verbhandlingen) vem/vad handlar?\n• Direkt objekt (står i ackusativ, påverkas direkt av verbhandlingen) vem påverkas \nav handlingen?\n• Indirekt objekt (står i dativ, påverkas indirekt av verbhandlingen) för vem förs en \nhandling?\n2. Översätt till svenska"
+    },
+    {
+     "sida": 56,
+     "bild": "2_Presentation/56.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout rooms (2): satslära\n1. ὁ ἄνθρωπος βλέπει τὸν οἶκον.\n2. τὸν ἄνθρωπον βλέπει ὁ ἄγγελος.\n3. γράφουσι λόγον οἱ δοῦλοι.\n4. ὁ ἀπόστολος γράφει τὸν λόγον τοῖς ἀδελφοῖς."
+    },
+    {
+     "sida": 57,
+     "bild": "2_Presentation/57.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout rooms (2): satslära\n1. ὁ ἄνθρωπος (subjekt) βλέπει (predikat) τὸν οἶκον (direkt objekt).\n2. τὸν ἄνθρωπον (direkt objekt) βλέπει (predikat) ὁ θεός (subjekt).\n3. γράφουσι (predikat) λόγον (objekt) ὁ δοῦλοι (subjekt).\n4. ὁ ἀπόστολος (subjekt) γράφει (predikat) τὸν λόγον (objekt) τοῖς ἀδελφοῖς\n(indirekt objekt)."
+    },
+    {
+     "sida": 58,
+     "bild": "2_Presentation/58.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Sammanfattning\nVad har vi lärt oss idag?\n• långdiftonger, iota subscriptum\n• maskulina substantiv av andra deklinationen: ὁ ἄνθρωπος\n• ω-verb i presens: λύω\n• satsanalys: ord sammanfogas till meningar; substantivets kasusformer visar vilken \nroll ordet har i meningen"
+    },
+    {
+     "sida": 59,
+     "bild": "2_Presentation/59.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Att göra hemma\n1. Reflektion: Vad betyder följande ord? Förklara för er själva!\n• långdiftong\n• iota subscriptum\n• kasus och predikat\n2. Lär er att böja ἄνθρωπος (med artikel) och λύω.\n3. Arbeta med övningsbladet. Notera att andra delen av övningsbladet kan kräva att\nni använder er av gloslistan ”Ord som förekommer fler än 60 ggr i NT”. Båda\ndokumenten finns under planeringar till detta kurstillfälle."
+    },
+    {
+     "sida": 60,
+     "bild": "2_Presentation/60.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Bibelgrekiska \n1:3\nSatslära \nSubstantiv\nAdjektiv \nVerb"
+    }
+   ]
+  },
+  {
+   "kalla": "2__O_vningsblad.pdf",
+   "seminarium": 2,
+   "typ": "ovningsblad",
+   "antal_sidor": 2,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "2__O_vningsblad/1.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "BIBELGREKISKA 1:2\na) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).\n1. βλέπεις\n2. ἀκούετε\n3. λέγουσι(ν)\n4. ἐσθίει\n5. κηρύσσομεν\n6. λαμβάνουσι(ν)\n7. πέμπει\n8. παιδεύεις\n9. γράφει\n10. εὑρίσκουσι(ν)\nἀκούω jag hör \nλέγω jag säger \nβλέπω jag ser\nγράφω jag skriver \nἐσθίω jag äter\nκηρύσσω jag predikar\nλαμβάνω jag tar, jag griper\nπαιδεύω jag uppfostrar \nπέμπω jag skickar\nεὑρίσκω jag finner\nb) Skriv av och läs följande meningar. Ta sedan ut satsdelar (predikat, subjekt, direkt objekt \noch indirekt objekt) och översätt. Notera: inte alla satsdelar behöver finnas med i varje \nexempel!\n1. τὸν οὐρανὸν βλέπετε.\n2. ἀκούει λόγον.\n3. οἱ δοῦλοι λαμβάνουσι τὸν καρπὸν τοῦ κυρίου. \n4. ἀκούει ὁ λαὸς τοὺς λόγους τοῦ ἀποστόλου.\n5. πέμπει τοὺς δούλους τῷ ἀδελφῷ.\n6. ἀκούουσιν οἱ κύριοι τὸν λόγον τοῦ δούλου."
+    },
+    {
+     "sida": 2,
+     "bild": "2__O_vningsblad/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Facit\na)\n1. βλέπεις du ser\n2. ἀκούετε ni hör\n3. λέγουσι(ν) de säger\n4. ἐσθίει han/hon/det äter\n5. κηρύσσομεν vi predikar\n6. λαμβάνουσι de tar, de griper\n7. πέμπει han/hon/det skickar\n8. παιδεύεις du uppfostrar\n9. γράφει han/hon/det skriver\n10. εὑρίσκουσι de finner\nb)\n1. τὸν οὐρανὸν (direkt objekt) βλέπετε (predikat).\nNi ser himlen.\n2. ἀκούει (predikat, inklusive subjekt) λόγον (direkt objekt).\nHon/hon/det hör en berättelse.\n3. οἱ δοῦλοι (subjekt) λαμβάνουσι (predikat) τὸν καρπὸν τοῦ κύριου (direkt objekt). \nSlavarna griper herrens frukt.\n4. ἀκούει (predikat) ὁ λαὸς (subjekt) τοὺς λόγους τοῦ ἀποστόλου (direkt objekt).\nFolket hör orden/berättelserna.\n5. πέμπει (predikat) τοὺς δούλους (direkt objekt) τῷ ἀδελφῷ (indirekt objekt). \nHan/hon/det skickar slavarna till brodern.\n6. ἀκούουσιν (predikat) οἱ κύριοι (subjekt) τὸν λόγον τοῦ δούλου (direkt objekt).\nHerrarna hör slavens berättelse."
+    }
+   ]
+  },
+  {
+   "kalla": "2__Breakout_rooms.pdf",
+   "seminarium": 2,
+   "typ": "breakout",
+   "antal_sidor": 2,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "2__Breakout_rooms/1.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "BIBELGREKISKA I: Seminarium 2. Övningar\nBreakout room (1): läs- och skrivövning, ordkunskap\nUppgift: skriv av de grekiska orden tillsammans med de svenska \növersättningarna och läs dem för varandra.\nἄνθρωπος människa\nβλέπω se\nοἶκος hus\nἄγγελος budbärare, ängel\nγράφω skriva\nἀδελφός bror\nἀπόστολος apostel\nθεός gud\nοὐρανός himmel\nκύριος herre\nδοῦλος slav\nλόγος ord, berättelse\nBreakout room (2): satslära\n1. ὁ ἄνθρωπος βλέπει τὸν οἶκον.\n2. τὸν ἄνθρωπον βλέπει ὁ θεός.\n3. γράφουσι λόγον οἱ δοῦλοι.\n4. ὁ ἀπόστολος γράφει τὸν λόγον τοῖς ἀδελφοῖς.\nUppgifter: \n(a) Bestämd vilket ord (översättningar finns i gloslistan överst i dokumentet)\nsom är:\n• predikat (verbet) vilken är verbhandlingen?\n• subjekt (står i nominativ, utför verbhandlingen) vem/vad handlar?\n• direkt objekt (står i ackusativ, påverkas direkt av verbhandlingen) vem \npåverkas av handlingen?\n• indirekt objekt (står i dativ, påverkas indirekt av verbhandlingen) för vem \ngörs en handling?\n(NOTERA: alla satsdelar behöver inte finnas med i varje mening!)"
+    },
+    {
+     "sida": 2,
+     "bild": "2__Breakout_rooms/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "(b) Översätt till svenska\nFormlära\nSubstantiv efter andra deklinationen\nkasus bestämd artikel singular bestämd artikel plural\nnominativ ὁ ἄνθρωπος οἱ ἄνθρωποι\ngenitiv τοῦ ἀνθρώπου τῶν ἀνθρώπων\ndativ τῷ ἀνθρώπῳ τοῖς ἀνθρώποις\nackusativ τὸν ἄνθρωπον τοὺς ἀνθρώπους\nvokativ (ὦ) ἄνθρωπε (ὦ) ἄνθρωποι\nω-verb i presens\nPerson grekiska svenska\n1:a person singular λύ-ω jag löser\n2:a person singular λύ-εις du löser\n3:e person singular λύ-ει han/hon/det löser\n1:a person plural λύ-ομεν vi löser\n2:a person plural λύ-ετε ni löser\n3:e person plural λύ-ουσι(ν) de löser"
+    }
+   ]
+  },
+  {
+   "kalla": "3__Presentation.pdf",
+   "seminarium": 3,
+   "typ": "presentation",
+   "antal_sidor": 46,
+   "amneskarta": [
+    {
+     "nr": 1,
+     "titel": "Repetition",
+     "start_slide": 3,
+     "slut_slide": 7
+    },
+    {
+     "nr": 2,
+     "titel": "Tillägg till substantiv och verb",
+     "start_slide": 8,
+     "slut_slide": 12
+    },
+    {
+     "nr": 3,
+     "titel": "Neutrala substantiv",
+     "start_slide": 13,
+     "slut_slide": 21
+    },
+    {
+     "nr": 4,
+     "titel": "Adjektiv",
+     "start_slide": 22,
+     "slut_slide": 29
+    },
+    {
+     "nr": 5,
+     "titel": "Kongruens",
+     "start_slide": 30,
+     "slut_slide": 38
+    },
+    {
+     "nr": 6,
+     "titel": "εἰμι vara",
+     "start_slide": 39,
+     "slut_slide": 46
+    }
+   ],
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "3__Presentation/1.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "Bibelgrekiska 1:3\n22 juni 2026; oskar.andersson@su.se"
+    },
+    {
+     "sida": 2,
+     "bild": "3__Presentation/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Bibelgrekiska 1:3\nInnehåll\n1. Repetition\n2. Tillägg till verb och substantiv\n3. Substantiv av andra deklinationen: neutrala \nsubstantiv på -ον\n4. Adjektiv efter andra deklinationen: maskulinum \noch neutrum\n5. Syntax: kongruens\n6. Verbet εἰμι, ’att vara’"
+    },
+    {
+     "sida": 3,
+     "bild": "3__Presentation/3.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "1. Repetition"
+    },
+    {
+     "sida": 4,
+     "bild": "3__Presentation/4.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Repetition: morfologi (6 min)\nTa fram ett papper och skriv hela mönstret för βλέπω och ὁ ἄνθρωπος, helst direkt\nfrån minnet, annars med hjälp av era anteckningar.\n(Morfologi handlar om ordens former)"
+    },
+    {
+     "sida": 5,
+     "bild": "3__Presentation/5.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Repetition: syntax\nFör att göra en satsanalys kan vi ställa följande frågor:\n1. Vilken är verbhandlingen? = predikat (verbet)\n2. Vem/vad handlar? = subjekt (substantivform i nominativ; utför verbhandlingen)\n3. Vem påverkas av handlingen? = direkt objekt (substantivform i ackusativ; den som\npåverkas direkt av verbhandlingen)\n4. För vem utförs en handling? = indirekt objekt (substantivform i dativ; den som\npåverkas indirekt av verbhandlingen)\nὁ ἄνθρωπος (subjekt) βλέπει (predikat) τὸν ἄγγελον (direkt objekt)\n(Syntax: handlar om hur orden sammanfogas till meningar)"
+    },
+    {
+     "sida": 6,
+     "bild": "3__Presentation/6.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Grupprum (1)\nÖvning: Ta ut satsdelarna (subjekt, predikat, direkt och/eller indirekt objekt i\nföljande två meningar) och översätt.\n1. οἱ δοῦλοι βλέπουσι τὸν οἶκον. \n2. σώζουσιν οἱ ἄγγελοι τοὺς ἀδελφούς (σώζω ’rädda’).\n3. ὁ δοῦλος τῷ ἀποστόλῳ λέγει (λέγω ’säga’).\n4. γράφετε τοῖς δούλοις τοὺς λόγους τῶν ἀδελφῶν."
+    },
+    {
+     "sida": 7,
+     "bild": "3__Presentation/7.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Grupprum (1)\nÖvning: Ta ut satsdelarna (subjekt, predikat, direkt och/eller indirekt objekt i\nföljande två meningar) och översätt.\n1. οἱ δοῦλοι (subjekt) βλέπουσι (predikat) τὸν οἶκον (direkt objekt).\n2. σώζουσιν (predikat) οἱ ἄγγελοι (subjekt) τοὺς ἀδελφούς (direkt objekt).\n3. ὁ δοῦλος (subjekt) τῷ ἀποστόλῳ (indirekt objekt) λέγει (predikat).\n4. γράφετε (predikat) τοῖς δούλοις (indirekt objekt) τοὺς λόγους τῶν ἀδελφῶν\n(direkt objekt)."
+    },
+    {
+     "sida": 8,
+     "bild": "3__Presentation/8.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "2. Tillägg till substantiv \noch verb"
+    },
+    {
+     "sida": 9,
+     "bild": "3__Presentation/9.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Formlära: substantiv\nVi tittade förra gången på maskulina substantiv i andra \ndeklinationen, som ὁ ἄνθρωπος, ὁ ἀπόστολος, ὁ θεός, ὁ δοῦλος, \nosv. \nHär kommer följer några tillägg:"
+    },
+    {
+     "sida": 10,
+     "bild": "3__Presentation/10.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personnamn (B § 97)\nNotera att personnamn också ofta står med artikel. \n1. Personnamn som är av grekiskt ursprung böjs.\nὁ Φίλιππος (Filippos)\nὁ οἶκος τοῦ Φιλίππου (Filippos’ hus)"
+    },
+    {
+     "sida": 11,
+     "bild": "3__Presentation/11.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personnamn (B § 97)\n2. Personnamn som är av hebreiskt ursprung böjs däremot i regel inte, i stället\nanvänds bestämd artikel för att ange kasus:\nὁ Ναθαναήλ (Natanael)\nὁ Φίλιππος εὑρίσκει τὸν Ναθαναὴλ καὶ λέγει τῷ Ναθαναήλ (Filippos hittar \nNatanael och säger till Natanael)"
+    },
+    {
+     "sida": 12,
+     "bild": "3__Presentation/12.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Verb med dativ\nNotera att flera vanliga ω-verb kan ta ett indirekt \nobjekt: \n1. γράφω jag skriver (γράφει τῷ ἀποστόλῳ\n’han/hon/det skriver till aposteln’)\n2. πέμπω jag skickar (πέμπω ἐπιστολὴν τῷ ἀδελφῷ \n’jag skickar ett brev till brodern’)\n3. λέγω jag säger (λέγομεν τοῖς δούλοις ’vi säger till \nslavarna’)\n4. πιστεύω jag tror (πιστεύεις τῷ θεῷ ’du tror på \nGud’)"
+    },
+    {
+     "sida": 13,
+     "bild": "3__Presentation/13.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "3. Neutrala substantiv"
+    },
+    {
+     "sida": 14,
+     "bild": "3__Presentation/14.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Formlära: substantiv\nVi tittade förra gången på maskulina substantiv på -ος i andra deklinationen. Idag\ntittar vi på neutrala substantiv på -ον i samma deklination (Blomqvist § 64)."
+    },
+    {
+     "sida": 15,
+     "bild": "3__Presentation/15.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "τὸ ἔργον verk, arbete\nkasus best. artikel subst. sg. best. artikel subst. pl.\nnominativ τὸ ἔργ-ον τὰ ἔργα\ngenitiv τοῦ ἔργ-ου τῶν ἔργ-ων\ndativ τῷ ἔργ-ῳ τοῖς ἔργ-οις\nackusativ τὸ ἔργ-ον τὰ ἔργ-α\nvokativ (ὦ) ἔργ-ον (ὦ) ἔργα"
+    },
+    {
+     "sida": 16,
+     "bild": "3__Presentation/16.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "τὸ ἔργον verk, arbete\nkasus best. artikel subst. sg. best. artikel subst. pl.\nnominativ τὸ ἔργ-ον τὰ ἔργα\ngenitiv τοῦ ἔργ-ου τῶν ἔργ-ων\ndativ τῷ ἔργ-ῳ τοῖς ἔργ-οις\nackusativ τὸ ἔργ-ον τὰ ἔργ-α\nvokativ (ὦ) ἔργ-ον (ὦ) ἔργα"
+    },
+    {
+     "sida": 17,
+     "bild": "3__Presentation/17.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἄνθρωπος människa\nkasus best. artikel subst. sg. best. artikel subst. pl.\nnominativ ὁ ἄνθρωπ-ος οἱ ἄνθρωπ-οι\ngenitiv τοῦ ἀνθρώπ-ου τῶν ἀνθρώπ-ων\ndativ τῷ ἀνθρώπ-ῳ τοῖς ἀνθρώπ-οις\nackusativ τὸν ἄνθρωπ-ον τοὺς ἀνθρώπ-ους\nvokativ (ὦ) ἄνθρωπε (ὦ) ἄνθρωπ-οι"
+    },
+    {
+     "sida": 18,
+     "bild": "3__Presentation/18.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "τὸ ἔργον verk, arbete\nBest. artikel singular Best. artikel plural\nnominativ τὸ ἔργ-ον τὰ ἔργα\ngenitiv τοῦ ἔργ-ου τῶν ἔργ-ων\ndativ τῷ ἔργ-ῳ τοῖς ἔργ-οις\nackusativ τὸ ἔργ-ον τὰ ἔργ-α\nvokativ ὧ ἔργ-ον ὦ ἔργα"
+    },
+    {
+     "sida": 19,
+     "bild": "3__Presentation/19.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Andra vanliga \nneutrala substantiv \nefter 2:a \ndeklinationen i NT\nSom τὸ ἔργον böjs även:\nτὸ εὐαγγέλιον glatt budskap, evangelium\nτὸ ἱερόν tempel\nτὸ τέκνον barn \nτὸ σημεῖον tecken (jfr. semantik)\nτὸ σάββατον sabbat\nτὸ πλοῖον båt"
+    },
+    {
+     "sida": 20,
+     "bild": "3__Presentation/20.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Grupprum (2)\n1. βλέπομεν τὸ σημεῖον τοῦ θεοῦ.\n2. πέμπουσιν οἱ δοῦλοι τὰ πλοῖα. \n3. οἱ ἀδελφοὶ εὑρίσκουσι τὰ εὐαγγέλια.\n4. ὦ ἄγγελε, γράφεις τοὺς λόγους τοῦ εὐαγγελίου τοῖς τέκνοις.\n(Vid behov, se B § 64 för böjningsmönster)"
+    },
+    {
+     "sida": 21,
+     "bild": "3__Presentation/21.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Grupprum (2)\n1. βλέπομεν (predikat+subjekt) τὸ σημεῖον τοῦ θεοῦ (direkt objekt).\n2. πέμπουσιν (predikat) οἱ δοῦλοι (subjekt) τὰ πλοῖα (direkt objekt). \n3. οἱ ἀδελφοὶ (subjekt) εὑρίσκουσι (predikat) τὰ εὐαγγέλια (direkt objekt).\n4. ὦ ἄγγελε, γράφεις (predikat+subjekt) τοὺς λόγους τοῦ εὐαγγελίου (direkt objekt) \nτοῖς τέκνοις (indirekt objekt)."
+    },
+    {
+     "sida": 22,
+     "bild": "3__Presentation/22.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "4. Adjektiv"
+    },
+    {
+     "sida": 23,
+     "bild": "3__Presentation/23.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Formlära: adjektiv\nAdjektiv ger information om substantiv av olika slag (”adjektiven sen oss lär,\nhurudana tingen är”), exempelvis god, djup, etc.\nEn god hustru, den goda hustrun, en djup skog, djupa skogar, osv."
+    },
+    {
+     "sida": 24,
+     "bild": "3__Presentation/24.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Formlära: adjektiv\nἅγιος ’helig’\nὁ ἄνθρωπος ’människan’\nὁ ἅγιος ἄνθρωπος (den heliga människan)\nτοῦ ἁγίου ἀνθρώπου (den heliga människans)\nτῷ ἁγίῳ ἀνθρώπῳ (till den heliga människan)"
+    },
+    {
+     "sida": 25,
+     "bild": "3__Presentation/25.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἅγιος helig, ren\nArtikel Adjektiv Substantiv Artikel Adjektiv Substantiv \nὁ ἅγι-ος ἄνθρωπ-ος οἱ ἅγι-οι ἄνθρωπ-οι\nτοῦ ἁγί-ου ἀνθρώπ-ου τῶν ἁγί-ων ἀνθρώπ-ων\nτῷ ἁγί-ῳ ἀνθρώπ-ῳ τοῖς ἁγί-οις ἀνθρώπ-οις\nτὸν ἅγι-ον ἄνθρωπ-ον τοὺς ἁγί-ους ἀνθρώπ-ους\nὦ ἅγι-ε ἄνθρωπ-ε ὦ ἅγι-οι ἄνθρωπ-οι"
+    },
+    {
+     "sida": 26,
+     "bild": "3__Presentation/26.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἅγιος helig, ren\nArtikel Adjektiv Substantiv Artikel Adjektiv Substantiv \nὁ ἅγι-ος ἄνθρωπ-ος οἱ ἅγι-οι ἄνθρωπ-οι\nτοῦ ἁγί-ου ἀνθρώπ-ου τῶν ἁγί-ων ἀνθρώπ-ων\nτῷ ἁγί-ῳ ἀνθρώπ-ῳ τοῖς ἁγί-οις ἀνθρώπ-οις\nτὸν ἅγι-ον ἄνθρωπ-ον τοὺς ἁγί-ους ἀνθρώπ-ους\nὦ ἅγι-ε ἄνθρωπ-ε ὦ ἅγι-οι ἄνθρωπ-οι"
+    },
+    {
+     "sida": 27,
+     "bild": "3__Presentation/27.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἅγιος helig, ren\nArtikel Adjektiv Substantiv Artikel Adjektiv Substantiv \nτὸ ἅγι-ον ἔργ-ον τὰ ἅγι-α ἔργ-α\nτοῦ ἁγί-ου ἔργ-ου τῶν ἁγί-ων ἔργ-ων\nτῷ ἁγί-ῳ ἔργ-ῳ τοῖς ἁγί-οις ἔργ-οις\nτὸ ἅγι-ον ἔργ-ον τὰ ἅγι-α ἔργ-α\nὦ ἅγι-ον ἔργ-ον ὦ ἅγι-α ἔργ-α"
+    },
+    {
+     "sida": 28,
+     "bild": "3__Presentation/28.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἅγιος helig, ren\nArtikel Adjektiv Substantiv Artikel Adjektiv Substantiv \nτὸ ἅγι-ον ἔργ-ον τὰ ἅγι-α ἔργ-α\nτοῦ ἁγί-ου ἔργ-ου τῶν ἁγί-ων ἔργ-ων\nτῷ ἁγί-ῳ ἔργ-ῳ τοῖς ἁγί-οις ἔργ-οις\nτὸ ἅγι-ον ἔργ-ον τὰ ἅγι-α ἔργ-α\nὦ ἅγι-ον ἔργ-ον ὦ ἅγι-α ἔργ-α"
+    },
+    {
+     "sida": 29,
+     "bild": "3__Presentation/29.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Andra vanliga \nadjektiv i NT\nSom ἅγιος böjs även:\nἀγαθός god (jfr. Agatha)\nπονηρός ond\nκαλός vacker (jfr. kalligrafi)\nμόνος ensam, allena (jfr. μοναχός, en \nsom lever ensam, munk)\nνεκρός avliden (nekropol, av νεκρόπολις)\nπρῶτος först (jfr. proton)"
+    },
+    {
+     "sida": 30,
+     "bild": "3__Presentation/30.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "5. Kongruens"
+    },
+    {
+     "sida": 31,
+     "bild": "3__Presentation/31.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kongruens mellan adjektiv och substantiv\nKongruens (”överensstämmelse”) betyder att substantiv och adjektiv\növerensstämmer med varandra i genus, numerus, och kasus.\nExempel på substantiv och adjektiv i kongruens:\nὁ ἅγιος ἀπόστολος (den helige aposteln)\nSubstantivet ὁ ἀπόστολος är maskulint (=genus), det står i singular (=numerus), det\nstår i nominativ (=kasus). Alltså måste adjektivet ta samma form (ἅγιος) för att vi\nska få kongruens."
+    },
+    {
+     "sida": 32,
+     "bild": "3__Presentation/32.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kongruens: övning 1\nὁ πρῶτ .... ἄνθρωπος (den första πρῶτος människan)\nτὸν καλ .... ἄγγελον βλέπει ὁ υἱός (sonen ser den sköna καλός ängeln)\nτὰ ἅγι .... εὐαγγέλια (de heliga ἅγιος evangelierna)\nοὐ γράφω τοῖς ἁγί .... ἀποστόλοις (jag skriver inte till de heliga ἅγιος apostlarna)"
+    },
+    {
+     "sida": 33,
+     "bild": "3__Presentation/33.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kongruens: övning 1\nὁ πρῶτος ἄνθρωπος (den första människan)\nτὸν καλὸν ἄγγελον βλέπει ὁ υἱός (sonen ser den vackra ängeln)\nτὰ ἅγια εὐαγγέλια (de heliga evangelierna)\nοὐ γράφω τοῖς ἁγίοις ἀποστόλοις (jag skriver inte till de heliga apostlarna)"
+    },
+    {
+     "sida": 34,
+     "bild": "3__Presentation/34.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Översättning\nὁ ἅγιος ἄνθρωπος\nἅγιος ἄνθρωπος\nτοῦ ἁγίου ἀνθρώπου\nτῷ ἁγίῳ ἀνθρώπῳ\nτὸ ἅγιον ἔργον\nτοῦ ἁγίου ἔργου\nden heliga människan\nen helig människa\nden heliga människans\ntill den heliga människan\ndet heliga verket \ndet heliga verkets"
+    },
+    {
+     "sida": 35,
+     "bild": "3__Presentation/35.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Grupprum (3) \n1. ὁ ἅγιος ἄγγελος\n2. ὁ πονηρὸς δοῦλος\n3. τὸ καλὸν εὐαγγέλιον\n4. οἱ πονηροὶ ἄνθρωποι\n5. τῶν καλῶν ἱερῶν\n6. τὸν ἀγαθὸν ἄγγελον\n7. τοῖς ἁγίοις ἀδελφοῖς\n8. τοῦ ἀγαθοῦ θεοῦ\n9. τὰ ἀγαθὰ τέκνα\n10. τὸ πονηρὸν τέκνον\n11. ὁ καλὸς Φίλιππος\n12. τῶν καλῶν ἀδελφῶν\n13. τῷ ἀγαθῷ θεῷ\n14. ὦ καλὲ οὐρανέ"
+    },
+    {
+     "sida": 36,
+     "bild": "3__Presentation/36.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Sammanfattning\nSubstantiv: ὁ ἄνθρωπος och τὸ ἔργον skiljer sig i artikel och ändelser i nominativ\noch ackusativ singular och plural. Men delar samma form av artikel och ändelser i\ngenitiv och dativ singular.\nAdjektiv: De maskulina och neutrala formerna av adjektiv som böjs efter 2:a\ndeklinationen (som ἅγιος) böjs på samma sätt som substantiven. Adjektiven i\ngrekiska måste noggrant överensstämma i numerus, kasus och genus med sitt\nsubstantiv ὁ ἅγιος ἄγγελος (jämför: den god hustrun = den goda hustrun)"
+    },
+    {
+     "sida": 37,
+     "bild": "3__Presentation/37.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Satsanalys: tillägg\nFörra gången analyserade vi satsdelar och tittade speciellt på predikat, subjekt,\nobjekt och indirekt objekt. Men vad gäller för adjektiv?\nAdjektiv hör som attribut till ett substantiv och fungerar då tillsammans med\nsubstantivet som subjekt, objekt eller indirekt objekt.\nὁ υἱός τοῦ Φιλίππου βλέπει τὸν καλὸν ἄγγελον (Filippos’son ser den vackra ängeln)\nHär är hela frasen τὸν καλὸν ἄγγελον direkt objekt."
+    },
+    {
+     "sida": 38,
+     "bild": "3__Presentation/38.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Satsanalys: tillägg\nSubstantiv i genitiv hör som genitivattribut till ett substantiv som och fungerar då\ntillsammans med substantivet som subjekt, objekt eller indirekt objekt.\nὁ υἱός τοῦ Φιλίππου βλέπει τὸν καλὸν ἄγγελον (Filippos’son ser den vackra ängeln)\nHär är hela frasen ὁ υἱός τοῦ Φιλίππου subjekt."
+    },
+    {
+     "sida": 39,
+     "bild": "3__Presentation/39.jpeg",
+     "har_grafik": true,
+     "har_grekiska": true,
+     "text": "6. εἰμι vara"
+    },
+    {
+     "sida": 40,
+     "bild": "3__Presentation/40.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "εἰμι ’vara, finnas’ (presens)\nperson grekiska svenska\n1:a p. sg. εἰμι jag är\n2:a p. sg. εἶ du är\n3:e p. sg. ἐστι(ν) han/hon/det är\n1:a p. pl. ἐσμεν vi är\n2:a p. pl. ἐστε ni är\n3:e p. pl. εἰσι(ν) de är"
+    },
+    {
+     "sida": 41,
+     "bild": "3__Presentation/41.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kongruens 2\nὁ ἄνθρωπός ἐστι πονηρός. (människan är ond)\nτὸ εὐαγγέλιόν ἐστι καλόν. (evangeliet är vackert)\nοἱ ἄνθρωποί εἰσι καλοί. (människorna är vackra)\nÖverkurs: neutrala substantiv i plural tar i attiskan, men inte alltid i NT, ett verb i\ntredje person singular:\nτὰ εὐαγγέλιά ἐστι καλά. (evangelierna är vackra)\nτὰ τέκνα βλέπει τὸν υἱόν. (barnen ser sonen)"
+    },
+    {
+     "sida": 42,
+     "bild": "3__Presentation/42.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Satsanalys: en ny satsdel\nVi har hittills tittat närmare på följande satsdelar: predikat, subjekt, direkt objekt och\nindirekt objekt. När vi har verbet ’vara’ i satsen, så tillkommer en ny satsdel.\nὁ ἄνθρωπός ἐστι πονηρός. (människan är ond)\nτὸ εὐαγγέλιόν ἐστι καλόν. (evangeliet är vackert)\nὁ Ἰησοῦς ἐστιν ὁ υἱὸς τοῦ θεοῦ. (Jesus är Guds son)\nEtt adjektiv eller substantiv som följer vid verbet ”att vara” (εἰμί) kallas för\npredikatsfyllnad. Eftersom verbet ’vara’ i sin roll som predikat egentligen är\ninnehållsfattigt (det kan ersättas med ’=’), så säger man att den informationen som\ntillkommer genom ett adjektiv eller substantiv ’fyller ut’ det; därav termen\n’predikatsfyllnad’."
+    },
+    {
+     "sida": 43,
+     "bild": "3__Presentation/43.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Vad har vi lärt oss idag?\n• Repetition: βλέπω, ὁ ἄνθρωπος, kasus och satsanalys\n• Tillägg till verb och substantiv\n• Substantiv av andra deklinationen: substantiv i neutrum\n• Adjektiv efter andra deklinationen: maskulinum och neutrum\n• Syntax: Kongruens\n• Verb: εἰμι ’att vara’\n• Syntax: Predikatsfyllnad"
+    },
+    {
+     "sida": 44,
+     "bild": "3__Presentation/44.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Viktiga grammatiska termer\n1. Numerus: singular och plural\n2. Kasus: substantivets olika former som visar vilken funktion det har i satsen\n3. Genus: maskulinum, neutrum, (femininum nästa vecka)\n4. Kongruens: ett adjektiv överensstämmer i numerus, kasus, genus med det adjektiv \nsom det är attribut till. \n5. Predikatsfyllnad: den form som följer efter verb som att ’att vara’ (huset är stort, \nbilen är skrot). I grekiskan måste de ha samma numerus, genus och kasus som \nsubjektet (huset, bilen)"
+    },
+    {
+     "sida": 45,
+     "bild": "3__Presentation/45.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Reflektion\nFörklara för dig själv\n• morfologi och syntax\n• kongruens\n• predikatsfyllnad"
+    },
+    {
+     "sida": 46,
+     "bild": "3__Presentation/46.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Innehåll \nBibelgrekiska \n1:4\n1. Första deklinationen (B § 54)\n2. Verbet εἰμι i imperfekt (B § 156)\n3. Satsdel: predikatsfyllnad\n4. Adjektiv efter 1:a deklinationen (B \n§ 99)\n5. Prepositioner\n6. Satsdel: adverbial\n7. Kontraherade verb på -έω i presens \n(§ 148, 146.3)"
+    }
+   ]
+  },
+  {
+   "kalla": "3__O_vningsblad.pdf",
+   "seminarium": 3,
+   "typ": "ovningsblad",
+   "antal_sidor": 4,
+   "amneskarta": [
+    {
+     "nr": 6,
+     "titel": "οἱ πονηροὶ ἄνθρωποι ἀκούουσι τὸ καλὸν εὐαγγέλιον.",
+     "start_slide": 4,
+     "slut_slide": 4
+    }
+   ],
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "3__O_vningsblad/1.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "BIBELGREKISKA 1:3: övningar för självstudium (facit finns på sida 3)\n1. ὁ καλὸς ἀδελφὸς λέγει.\nκαλός vacker\nὁ ἀδελφός bror\nλέγω säga\n2. οἱ πιστοὶ ἀπόστολοι κηρύσσουσι τὸ ἅγιον εὐαγγέλιον.\nπιστός trogen\nκηρύσσω predika\nἅγιος helig\n3. τὰ μικρὰ τέκνα βαπτίζετε.\nτὸ τέκνον barn\nμικρός liten\nβαπτίζω döpa\n4. ἐσθίομεν τὸν ἀγαθὸν ἄρτον.\nἐσθίω äta\nὁ ἄρτος bröd\nἀγαθός god\n5. τὸν υἱὸν ὁ θεὸς πέμπει τοῖς ἀνθρώποις.\nὁ υἱός son"
+    },
+    {
+     "sida": 2,
+     "bild": "3__O_vningsblad/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "πέμπω skicka (konstrueras med dativ för den som man skickar något till)\n6. οἱ πονηροὶ ἄνθρωποι ἀκούουσι τὸ καλὸν εὐαγγέλιον.\nἀκούω höra\nπονηρός ond, fördärvad\nκαλός vacker\n7. τῷ θεῷ πιστεύουσιν.\nπιστεύω tro (konstrueras med dativ för den man tror på)"
+    },
+    {
+     "sida": 3,
+     "bild": "3__O_vningsblad/3.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "FACIT\n1. ὁ καλὸς ἀδελφὸς λέγει.\nDen vackre brodern talar.\nκαλός vacker\nὁ ἀδελφός bror\nλέγω säga\n2. οἱ πιστοὶ ἀπόστολοι κηρύσσουσι τὸ ἅγιον εὐαγγέλιον.\nDe trogna apostlarna predikar det heliga evangeliet.\nπιστός trogen\nκηρύσσω predika\nἅγιος helig\n3. τὰ μικρὰ τέκνα βαπτίζετε.\nNi döper de små barnen.\nτὸ τέκνον barn\nμικρός liten\nβαπτίζω döpa\n4. ἐσθίομεν τὸν ἀγαθὸν ἄρτον.\nVi äter det goda brödet.\nἐσθίω äta\nὁ ἄρτος bröd\nἀγαθός god\n5. τὸν υἱὸν ὁ θεὸς πέμπει τοῖς ἀνθρώποις.\nGud skickar sin son till människorna.\nὁ υἱός son\nπέμπω skicka (konstrueras med dativ för den som man skickar något till)"
+    },
+    {
+     "sida": 4,
+     "bild": "3__O_vningsblad/4.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "6. οἱ πονηροὶ ἄνθρωποι ἀκούουσι τὸ καλὸν εὐαγγέλιον.\nDe onda människorna lyssnar till det vackra evangeliet.\nἀκούω höra\nπονηρός ond, fördärvad\nκαλός vacker\n7. τῷ θεῷ πιστεύουσιν.\nDe tror på Gud.\nπιστεύω tro (konstrueras med dativ för den man tror på)"
+    }
+   ]
+  },
+  {
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "seminarium": 3,
+   "typ": "seminarieovning",
+   "antal_sidor": 2,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "3__Seminarium_O_vningar/1.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "1\nBIBELGREKISKA I: Seminarium 3. Övningar\nBreakout room (1): satslära och översättning\nUppgift: Läs högt, ta ut satsdelar och översätt till svenska\n1. οἱ δοῦλοι βλέπουσι τὸν οἶκον.\n2. σῴζουσιν οἱ ἄγγελοι τοὺς ἀδελφούς.\n3. ὁ δοῦλος τῷ ἀποστόλῳ λέγει.\n4. γράφετε τοῖς δούλοις τοὺς λόγους τῶν ἀδελφῶν.\nAnvänd följande frågor: \n1. vad sker/vad görs? = predikat (verbet) \n2. vem/vad handlar? = subjekt (står i nominativ, utför verbhandlingen) \n3. vem påverkas av handlingen? = direkt objekt (står i ackusativ, påverkas direkt av \nverbhandlingen)\n4. för vem görs en handling? = indirekt objekt (står i dativ, påverkas indirekt av \nverbhandlingen)\nOrdlista:\nὁ δοῦλος ’slav’\nβλέπω ’titta’\nὁ οἶκος ’hus’\nσῴζω ’rädda’\nὁ ἀδελφός ’broder’\nλέγω ’säga’\nγράφω ’skriva’\nὀ λόγος ’ord’\nBreakout room (2)\nUppgift: Läs högt, ta ut satsdelar och översätt till svenska.\n1. βλέπομεν τὸ σημεῖον τοῦ θεοῦ.\n2. πέμπουσιν οἱ δοῦλοι τὰ πλοῖα. \n3. οἱ ἀδελφοὶ εὑρίσκουσι τὰ εὐαγγέλια.\n4. ὦ ἄγγελε, γράφεις τοὺς λόγους τοῦ εὐαγγελίου τοῖς τέκνοις.\nOrdlista:"
+    },
+    {
+     "sida": 2,
+     "bild": "3__Seminarium_O_vningar/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "2\nὁ ἀδελφός ’bror’\nβλέπω ’se’\nὁ δοῦλος ’slav’\nτὸ εὐαγγέλιον ’glatt budskap, evangelium’\nεὑρίσκω ’finna’\nπέμπω ’skicka’\nτὸ πλοῖον ’båt’\nτὸ σημεῖον ’tecken’ (jfr. semantik)\nτὸ τέκνον ’barn’\nBreakout room (3): översättning: adjektiv, substantiv, kasus\nUppgift: Läs högt och översätt med hjälp av gloslistan nedan. Den korrekta \növersättningen kräver att ni kan identifiera vilket kasus det handlar om.\n1. ὁ ἅγιος ἄγγελος\n2. ὁ πονηρὸς δοῦλος\n3. τὸ καλὸν εὐαγγέλιον\n4. οἱ πονηροὶ ἄνθρωποι\n5. τῶν καλῶν ἱερῶν\n6. τὸν ἀγαθὸν ἄγγελον\n7. τοῖς ἁγίοις ἀδελφοῖς\n8. τοῦ ἀγαθοῦ θεοῦ\n9. τὰ ἀγαθὰ τέκνα\n10. τὸ πονηρὸν τέκνον\n11. ὁ καλὸς Φίλιππος\n12. τῶν καλῶν ἀδελφῶν\n13. τῷ ἀγαθῷ θεῷ\n14. ὦ καλὲ οὐρανέ\nOrdlista: \nἅγιος (adj.) ’helig’\nπονηρός (adj.) ’ond’\nκαλός (adj.) ’vacker’\nἀγαθός (adj.) ’god’\nὁ ἄγγελος (subst. mask.) ’ängel, budbärare’\nὁ δοῦλος (subst. mask.) ’slav’\nὁ ἀδελφός (subst. mask.) ’bror’\nὁ οὐρανός (subst. mask.) ’himmel’\nὁ θεός (subst. mask.) ’Gud’\nτὸ εὐαγγέλιον (subst. neutr.) ’evangelium’\nτὸ ἱερόν (subst. neutr.) ’tempel’\nτὸ τέκνον (subst. neutr.) ’barn’"
+    }
+   ]
+  },
+  {
+   "kalla": "4__Presentation.pdf",
+   "seminarium": 4,
+   "typ": "presentation",
+   "antal_sidor": 57,
+   "amneskarta": [
+    {
+     "nr": 1,
+     "titel": "Repetition",
+     "start_slide": 3,
+     "slut_slide": 7
+    },
+    {
+     "nr": 2,
+     "titel": "εἰμι vara, predikatsfyllnad",
+     "start_slide": 8,
+     "slut_slide": 17
+    },
+    {
+     "nr": 3,
+     "titel": "Substantiv: Första deklinationen",
+     "start_slide": 18,
+     "slut_slide": 31
+    },
+    {
+     "nr": 4,
+     "titel": "Adjektiv",
+     "start_slide": 32,
+     "slut_slide": 40
+    },
+    {
+     "nr": 5,
+     "titel": "Prepositioner och adverbial",
+     "start_slide": 41,
+     "slut_slide": 45
+    },
+    {
+     "nr": 7,
+     "titel": "Kontraherade verb på",
+     "start_slide": 46,
+     "slut_slide": 57
+    }
+   ],
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "4__Presentation/1.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "Bibelgrekiska 1:4\n24 juni 2026; oskar.andersson@su.se"
+    },
+    {
+     "sida": 2,
+     "bild": "4__Presentation/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Bibelgrekiska \n1:4\nInnehåll\n1. Repetition: verb och substantiv\n2. Repetition: kongruens\n3. εἰμι: presens och imperfekt\n4. Ny satsdel: predikatsfyllnad\n5. Substantiv: första deklinationen\n6. Adjektiv efter första deklinationen\n7. Ny ordklass: prepositioner\n8. Ny satsdel: adverbial (rum/tid)\n9. Kontraherade verb på –έω"
+    },
+    {
+     "sida": 3,
+     "bild": "4__Presentation/3.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "1. Repetition"
+    },
+    {
+     "sida": 4,
+     "bild": "4__Presentation/4.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (1)\n(a) Ta fram ett papper och skriv, helst direkt från minnet, annars med hjälp av era \nanteckningar, hela mönstret för:\n1. πιστεύω (tro)\n2. τὸ τέκνον (barn)\n(b) Förklara följande termer för en kamrat: morfologi, syntax, kongruens."
+    },
+    {
+     "sida": 5,
+     "bild": "4__Presentation/5.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kongruens mellan adjektiv och substantiv\nKongruens (”överensstämmelse”) betyder exempelvis att substantiv och adjektiv\növerensstämmer med varandra i genus, numerus, och kasus.\nExempel på substantiv och adjektiv i kongruens:\n1. ὁ καλὸς οὐρανός (den vackra himlen)\n2. τὸ καλὸν ἱερόν (det vackra templet)\nSubstantivet ὁ οὐρανός är maskulint (=genus), det står i singular (=numerus), det\nstår i nominativ (=kasus). Alltså måste adjektivet ta samma form (καλός) för att vi\nska få kongruens. Om substantivet är neutralt (τὸ ἱερόν) ändras adjektivets form."
+    },
+    {
+     "sida": 6,
+     "bild": "4__Presentation/6.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kongruens\n1. τὰ … τέκνα (πονηρός onda).\n2. τὸν ἄγγελον βλέπουσιν οἱ … υἱοί (καλός vacker).\n3. τὸ … εὐαγγέλιον (πρῶτος först).\n4. οὐ (inte) γράφει τοῖς … ἀγαθοῖς ἀποστόλοις (ἀγαθός god)."
+    },
+    {
+     "sida": 7,
+     "bild": "4__Presentation/7.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kongruens\n1. τὰ πονηρὰ τέκνα (πονηρός onda).\n2. τὸν ἄγγελον βλέπουσιν οἱ καλοὶ υἱοί (καλός vacker).\n3. τὸ πρῶτον εὐαγγέλιον (πρῶτος först).\n4. οὐ (inte) γράφει τοῖς ἀγαθοῖς ἀποστόλοις (ἀγαθός god)."
+    },
+    {
+     "sida": 8,
+     "bild": "4__Presentation/8.jpeg",
+     "har_grafik": true,
+     "har_grekiska": true,
+     "text": "2. εἰμι vara, \npredikatsfyllnad"
+    },
+    {
+     "sida": 9,
+     "bild": "4__Presentation/9.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "εἰμι ’vara, finnas’ (presens) (B § 156)\nperson grekiska svenska\n1:a p. sg. εἰμι jag är\n2:a p. sg. εἶ du är\n3:e p. sg. ἐστι(ν) han/hon/det är\n1:a p. pl. ἐσμεν vi är\n2:a p. pl. ἐστε ni är\n3:e p. pl. εἰσι(ν) de är"
+    },
+    {
+     "sida": 10,
+     "bild": "4__Presentation/10.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "εἰμι ’vara, finnas’ (imperfekt) (B § 156)\nperson grekiska svenska\n1:a p. sg. ἦν / ἤμην jag var\n2:a p. sg. ἦς / ἦσθα du var\n3:e p. sg. ἦν han/hon/det var\n1:a p. pl. ἦμεν / ἤμεθα vi var\n2:a p. pl. ἦτε ni var\n3:e p. pl. ἦσαν de var"
+    },
+    {
+     "sida": 11,
+     "bild": "4__Presentation/11.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "εἰμι ’vara, finnas’ (imperfekt) (B § 156)\nperson grekiska svenska\n1:a p. sg. ἦν / ἤμην jag var\n2:a p. sg. ἦς / ἦσθα du var\n3:e p. sg. ἦν han/hon/det var\n1:a p. pl. ἦμεν / ἤμεθα vi var\n2:a p. pl. ἦτε ni var\n3:e p. pl. ἦσαν de var"
+    },
+    {
+     "sida": 12,
+     "bild": "4__Presentation/12.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Predikatsfyllnad\nVerbet εἰμι i betydelsen ’att vara’ följs av en predikatsfyllnad (en typ av satsdel).\nPredikatsfyllnaden kan vara ett adjektiv eller ett substantiv.\n1. Himlen är blå.\n2. Solen är varm.\n3. Stockholm är en stad.\nBlå, varm, en stad fyller ut predikatet är (en form av att vara) med information.\nDärför kallar man dem som satsdel för predikatsfyllnad."
+    },
+    {
+     "sida": 13,
+     "bild": "4__Presentation/13.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Predikatsfyllnad\nPredikatsfyllnaden kan vara ett adjektiv. Det står i samma numerus, kasus och\ngenus som substantivet (kongruens).\n1. οἱ δοῦλοί εἰσι πονηροί. (slavarna är onda)\nJfr. οἱ πονηροὶ δοῦλοι. (de onda slavarna)\n2. τὸ εὐαγγέλιόν ἐστι καλόν. (evangeliet är vackert)\nJfr. τὸ καλὸν εὐαγγέλιον. (det vackra evangeliet)"
+    },
+    {
+     "sida": 14,
+     "bild": "4__Presentation/14.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Predikatsfyllnad\nPredikatsfyllnaden kan också vara ett substantiv. Det står åtminstone i samma\nkasus som substantivet (kongruens).\nὁ Ἰησοῦς ἦν ὁ υἱὸς τοῦ θεοῦ. (Jesus var Guds son)\nτὰ τέκνα ἦσαν δοῦλοι. (barnen var slavar)"
+    },
+    {
+     "sida": 15,
+     "bild": "4__Presentation/15.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Neutrala substantiv i plural och verb\nOBS: när det är subjekt vill neutrala substantiv i plural i attiskan, men inte alltid i \nNT, ha ett predikat i tredje person singular: \nτὰ εὐαγγέλιά ἐστι καλά. (evangelierna är vackra)\nτὰ εὐαγγέλιά εἰσι καλά. (evangelierna är vackra)\nτὰ τέκνα πιστεύει τῷ θεῷ. (barnen tror på Gud)\nτὰ τέκνα πιστεύουσι τῷ θεῷ. (barnen tror på Gud)\n(Blomqvist § 223.1)"
+    },
+    {
+     "sida": 16,
+     "bild": "4__Presentation/16.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (2)\n1. ὁ ……… ἀδελφός (gode)\n2. ὁ ἀδελφός ἐστιν ……… (god)\n3. οἱ ἀδελφοὶ ἦσαν ……… (goda)\n4. οἱ ……… δοῦλοι (onda)\n5. ὁ δοῦλος ……… (är) ……… (ond)\n6. ……… (slavarna) ……… (är) ……… (goda)\n7. τὸ ἔργον ……… (var) ……… (vackert)\n8 ……… (verken) ……… (var) ……… (vackra)"
+    },
+    {
+     "sida": 17,
+     "bild": "4__Presentation/17.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (2)\n1. ὁ ἀγαθὸς ἀδελφός (gode)\n2. ὁ ἀδελφός ἐστιν ἀγαθός (god)\n3. οἱ ἀδελφοὶ ἦσαν ἀγαθοί (goda)\n4. οἱ πονηροὶ δοῦλοι (onda)\n5. ὁ δοῦλός ἐστι (är) πονηρός (ond)\n6. οἱ δοῦλοί (slavarna) εἰσιν (är) ἀγαθοί (goda)\n7. τὸ ἔργον ἦν (var) καλόν (vackert)\n8. τὰ ἔργα (verken) ἦν / ἦσαν (var) καλά (vackra)"
+    },
+    {
+     "sida": 18,
+     "bild": "4__Presentation/18.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "3. Substantiv: Första \ndeklinationen"
+    },
+    {
+     "sida": 19,
+     "bild": "4__Presentation/19.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Formlära: substantiv\nVi har hittills tittat på andra deklinationen, och de substantiv som hör till den som är\nmaskulina och neutrala (ὁ ἄνθρωπος, τὸ ἔργον).\nIdag tittar vi på första deklinationen och på den grupp som dominerar den första\ndeklinationen, nämligen feminina substantiv på -α och -η. (B § 53–54)\nDessa delas i sin tur in i tre grupper i koinen:"
+    },
+    {
+     "sida": 20,
+     "bild": "4__Presentation/20.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ ἐκκλησία församling, kyrka\nkasus best. art. subst. sg. best. art. subst. pl.\nnominativ ἡ ἐκκλησί-α αἱ ἐκκλησί-αι\ngenitiv τῆς ἐκκλησί-ας τῶν ἐκκλησι-ῶν\ndativ τῇ ἐκκλησί-ᾳ ταῖς ἐκκλησί-αις\nackusativ τὴν ἐκκλησί-αν τὰς ἐκκλησί-ας\nvokativ (ὦ) ἐκκλησί-α (ὦ) ἐκκλησί-αι"
+    },
+    {
+     "sida": 21,
+     "bild": "4__Presentation/21.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ ἐκκλησία församling, kyrka\nkasus best. art. subst. sg. best. art. subst. pl.\nnominativ ἡ ἐκκλησί-α αἱ ἐκκλησί-αι\ngenitiv τῆς ἐκκλησί-ας τῶν ἐκκλησι-ῶν\ndativ τῇ ἐκκλησί-ᾳ ταῖς ἐκκλησί-αις\nackusativ τὴν ἐκκλησί-αν τὰς ἐκκλησί-ας\nvokativ (ὦ) ἐκκλησί-α (ὦ) ἐκκλησί-αι"
+    },
+    {
+     "sida": 22,
+     "bild": "4__Presentation/22.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Första deklinationen (i)\nAlla feminina substantiv av första deklinationen som har ett ε, ι, ρ före α i nominativ\nsingular har genomgående α i singular:\nSom ἐκκλεσία böjs därför:\nἡ ἡμέρ-α dag\nἡ ἁμαρτί-α synd, felsteg\nἡ θε-ά gudinna"
+    },
+    {
+     "sida": 23,
+     "bild": "4__Presentation/23.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ ἀρχή begynnelse\nkasus best. art. subst. sg. best. art. subst. pl.\nnominativ ἡ ἀρχ-ή αἱ ἀρχ-αί\ngenitiv τῆς ἀρχ-ῆς τῶν ἀρχ-ῶν\ndativ τῇ ἀρχ-ῇ ταῖς ἀρχ-αῖς\nackusativ τὴν ἀρχ-ήν τὰς ἀρχ-ᾶς\nvokativ (ὦ) ἀρχ-ή (ὦ) ἀρχ-αί"
+    },
+    {
+     "sida": 24,
+     "bild": "4__Presentation/24.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ ἀρχή begynnelse\nkasus best. art. subst. sg. best. art. subst. pl.\nnominativ ἡ ἀρχ-ή αἱ ἀρχ-αί\ngenitiv τῆς ἀρχ-ῆς τῶν ἀρχ-ῶν\ndativ τῇ ἀρχ-ῇ ταῖς ἀρχ-αῖς\nackusativ τὴν ἀρχ-ήν τὰς ἀρχ-ᾶς\nvokativ (ὦ) ἀρχ-ή (ὦ) ἀρχ-αί"
+    },
+    {
+     "sida": 25,
+     "bild": "4__Presentation/25.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Första deklinationen (ii)\nAlla feminina substantiv av första deklinationen som i nominativ singular slutar på\nη, har också η genomgående i singular.\nSom ἀρχή böjs därför:\nἡ φωνή röst\nἡ συναγωγή synagoga\nἡ κεφαλή huvud"
+    },
+    {
+     "sida": 26,
+     "bild": "4__Presentation/26.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ θάλασσα hav\nkasus best. art. subst. sg. best. art. subst. pl.\nnominativ ἡ θάλασσ-α αἱ θάλασσ-αι\ngenitiv τῆς θαλάσσ-ης τῶν θαλασσ-ῶν\ndativ τῇ θαλάσσ-ῃ ταῖς θαλάσσ-αις\nackusativ τὴν θάλασσ-αν τὰς θαλάσσ-ας\nvokativ (ὦ) θάλασσ-α (ὦ) θάλασσ-αι"
+    },
+    {
+     "sida": 27,
+     "bild": "4__Presentation/27.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ θάλασσα hav\nkasus best. art. subst. sg. best. art. subst. pl.\nnominativ ἡ θάλασσ-α αἱ θάλασσ-αι\ngenitiv τῆς θαλάσσ-ης τῶν θαλασσ-ῶν\ndativ τῇ θαλάσσ-ῃ ταῖς θαλάσσ-αις\nackusativ τὴν θάλασσ-αν τὰς θαλάσσ-ας\nvokativ (ὦ) θάλασσ-α (ὦ) θάλασσ-αι"
+    },
+    {
+     "sida": 28,
+     "bild": "4__Presentation/28.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Första deklinationen (iii)\nOm ett substantiv slutar på -α i nominativ som inte föregås av ε, ι, eller ρ, så har det \ni genitiv och dativ singular ändelserna -ης -ῃ."
+    },
+    {
+     "sida": 29,
+     "bild": "4__Presentation/29.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Sammanfattning: feminina substantiv av första deklinationen\n(1) Alla feminina substantiv av första deklinationen som i nom. sg. slutar på ett α\nsom föregås av ε, ι, ρ (ἐκκλησία) har -α, -ας, -ᾳ, -αν, -α i singular och -αι, -ῶν, -αις,\n-ας, -αι i plural.\n(2) Alla feminina substantiv av första deklinationen som i nom. sg. slutar på ett η\n(som ἀρχή) har -η, -ης, -ῃ, -ην, -η i singular men -αι, -ῶν, -αις, -ας, -αι i plural.\n(3) Om ett feminint substantiv av första deklinationen i nom. sg. slutar på -α och\nföregås av en annan bokstav än ε, ι, eller ρ (som θάλασσα), så har det -α, -ης, -ῃ, -\nαν, -α i singular och -αι, -ῶν, -αις, -ας, -αι i plural."
+    },
+    {
+     "sida": 30,
+     "bild": "4__Presentation/30.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Andra vanliga feminina ord av 1:a dekl. i NT\nἡ ἐντολή bud, uppdrag\nἡ ἀλήθεια sanning\nἡ βασιλεία kungadöme\nἡ φωνή röst (jfr. fonetik)\nἡ ὥρα tid (jfr. hour)\nἡ εἰρήνη fred \nἡ κεφαλή huvud\nἡ ἀδελφή syster (jfr. ὁ ἀδελφός)\nἡ συναγωγή synagoga\nἡ ψυχή själ (jfr. psykologi)\nἡ γῆ jord (jfr. geografi)\nἡ ζωή liv (jfr. zoologi)\nἡ ἐξουσία makt\nἡ καρδία hjärta (jfr. kardiologi)\nἡ δικαιοσύνη rättvisa\nἡ ἀγάπη kärlek"
+    },
+    {
+     "sida": 31,
+     "bild": "4__Presentation/31.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (3)\n1. λέγει ὁ ἄγγελος τὴν ἀλήθειαν.\n2. ὁ ἀπόστολος κηρύσσει τὸ ἀγαθὸν\nεὐαγγέλιον. \n3. ὁ κύριος πέμπει τῷ κόσμῳ ἄγγελον.\n4. τὸ τέκνον βλέπει τὸ σημεῖον τοῦ \nκυρίου.\n5. ἡ ἀγάπη τὴν ψυχήν σῴζει.\n6. ὁ οὐρανός ἐστιν ἀγαθός.\nÄngeln (s) säger (p) sanningen (d.o.).\nAposteln (s) predikar (p) det heliga \nevangeliet (d.o.).\nHerren (s) skickar (p) en ängel\n(d.o.) till världen (i.d.o.).\nBarnet (s) ser (p) Herrens tecken (d.o.).\nKärleken (s) räddar (p) själen (d.o.).\nHimlen (s) är (p) god (p-f)."
+    },
+    {
+     "sida": 32,
+     "bild": "4__Presentation/32.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "4. Adjektiv"
+    },
+    {
+     "sida": 33,
+     "bild": "4__Presentation/33.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Formlära: adjektiv\nVi har hittills tittat på hur adjektiv böjs om de hör till maskulina eller neutrala\nsubstantiv till den andra deklinationen (ὁ ἅγιος ἄνθρωπος; τὸ ἅγιον ἔργον).\nIdag tittar vi på hur man böjer adjektiv om substantivet är feminint."
+    },
+    {
+     "sida": 34,
+     "bild": "4__Presentation/34.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "adjektiv: ἅγιος helig, ren\nArtikel Adjektiv Substantiv Artikel Adjektiv Substantiv \nὁ ἅγι-ος ἄνθρωπ-ος οἱ ἅγι-οι ἄνθρωπ-οι\nτοῦ ἁγί-ου ἀνθρώπ-ου τῶν ἁγί-ων ἀνθρώπ-ων\nτῷ ἁγί-ῳ ἀνθρώπ-ῳ τοῖς ἁγί-οις ἀνθρώπ-οις\nτὸν ἅγι-ον ἄνθρωπ-ον τοὺς ἁγί-ους ἀνθρώπ-ους\nὦ ἅγι-ε ἄνθρωπ-ε ὦ ἅγι-οι ἄνθρωπ-οι"
+    },
+    {
+     "sida": 35,
+     "bild": "4__Presentation/35.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "adjektiv: ἅγιος helig, ren\nArtikel Adjektiv Substantiv Artikel Adjektiv Substantiv \nτὸ ἅγι-ον ἔργ-ον τὰ ἅγι-α ἔργ-α\nτοῦ ἁγί-ου ἔργ-ου τῶν ἁγί-ων ἔργ-ων\nτῷ ἁγί-ῳ ἔργ-ῳ τοῖς ἁγί-οις ἔργ-οις\nτὸ ἅγι-ον ἔργ-ον τὰ ἅγί-α ἔργ-α\nὦ ἅγι-ον ἔργ-ον ὦ ἅγι-α ἔργ-α"
+    },
+    {
+     "sida": 36,
+     "bild": "4__Presentation/36.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adjektiv efter första deklinationen\nAdjektiv som böjs som feminina substantiv av första deklinationen följer\ngrundreglerna som gäller för substantiven:\n1. Om ett adjektiv slutar på ε, ι, ρ före ändelsen, så har det α i singular.\nTill exempel: ἅγιος\nOm vi tar bort -ος (som är ändelsen för nom. sg. mask.), så får vi ἅγι-. Detta betyder\natt det i nom. sg. fem. heter ἁγί-α, ἁγί-ας, osv."
+    },
+    {
+     "sida": 37,
+     "bild": "4__Presentation/37.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "adjektiv: ἅγιος helig, ren\nArtikel Adjektiv Substantiv Artikel Adjektiv Substantiv \nἡ ἁγί-α ἐκκλησί-α αἱ ἅγι-αι ἐκκλησί-αι\nτῆς ἁγί-ας ἐκκλησί-ας τῶν ἁγί-ων ἐκκλησι-ῶν\nτῇ ἁγί-ᾳ ἐκκλησί-ᾳ ταῖς ἁγί-αις ἐκκλησί-αις\nτὴν ἁγί-αν ἐκκλησί-αν τὰς ἁγί-ας ἐκκλησί-ας\n(ὦ) ἁγί-α ἐκκλησία (ὦ) ἅγι-αι ἐκκλησί-αι"
+    },
+    {
+     "sida": 38,
+     "bild": "4__Presentation/38.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adjektiv efter första deklinationen\n2. Om ett adjektiv slutar på annan bokstav än ε, ι, ρ framför ändelsen, så har det η i\nsingular.\nTill exempel: ἀγαθός\nOm vi tar bort -ος (som är ändelsen för nom. sg. mask.), så får vi ἀγαθ-. Detta\nbetyder att det i nom. sg. fem. heter ἀγαθ-ή."
+    },
+    {
+     "sida": 39,
+     "bild": "4__Presentation/39.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "adjektiv: ἀγαθός god\nArtikel Adjektiv Substantiv Artikel Adjektiv Substantiv \nἡ ἀγαθ-ὴ ἐκκλησί-α αἱ ἀγαθ-αὶ ἐκκλησί-αι\nτῆς ἀγαθ-ῆς ἐκκλησί-ας τῶν ἀγαθ-ῶν ἐκκλησι-ῶν\nτῇ ἀγαθ-ῇ ἐκκλησί-ᾳ ταῖς ἀγαθ-αῖς ἐκκλησί-αις\nτὴν ἀγαθ-ὴν ἐκκλησί-αν τὰς ἀγαθ-ὰς ἐκκλησί-ας\n(ὦ) ἀγαθ-ὴ ἐκκλησία (ὦ) ἀγαθ-αὶ ἐκκλησί-αι"
+    },
+    {
+     "sida": 40,
+     "bild": "4__Presentation/40.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Övning\n1. ἡ ............ (trogna) ἀδελφή.\n2. ἡ ἐντολή ἐστι ............ (rättvist)\nπιστός trogen\nδίκαιος rättvis"
+    },
+    {
+     "sida": 41,
+     "bild": "4__Presentation/41.jpeg",
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "5. Prepositioner och \nadverbial"
+    },
+    {
+     "sida": 42,
+     "bild": "4__Presentation/42.jpeg",
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Ny ordklass: prepositioner\nPrecis som substantiv, adjektiv och verb, så är prepositioner en ordklass.\nPrepositioner står tillsammans med substantiv och visar exempelvis plats, riktning,\nosv.\nSvenska prepositioner är till, från, innan, med, hos osv. De står alltid med ett\nsubstantiv: till Stockholm, innan midsommar, hos min far, osv."
+    },
+    {
+     "sida": 43,
+     "bild": "4__Presentation/43.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Prepositioner i grekiskan\nPrepositioner i grekiskan kräver alltid ett visst kasus:\nἐν i med dativ ἐν τῷ οἴκῳ\n(i huset)\nεἰς till med ackusativ εἰς τὸν οἶκον \n(till huset)\nἐκ/ἐξ ut ur med genitiv ἐκ τοῦ οἴκου \n(ut ur huset)"
+    },
+    {
+     "sida": 44,
+     "bild": "4__Presentation/44.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Ny satsdel: adverbial\nPrepositionsfraser (dvs. prepositioner + substantiv/rektion) fungerar ofta som\nadverbial i satsen. Ett adverbial är en satsdel som berättar exempelvis om när eller\nvar en verbhandling äger rum.\nἐν τῷ οἴκῳ ὁ ἀπόστολος γράφει (i huset skriver aposteln)\nDetta är ett rumsadverbial. Man får fram dem i satsanalysen om man frågar ”var\nskriver aposteln?”. Svar: i huset"
+    },
+    {
+     "sida": 45,
+     "bild": "4__Presentation/45.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tre vanliga mindre ord\nκαί och\nγάρ ty, för, nämligen\nοὐ (οὐκ, οὐχ) ej, inte"
+    },
+    {
+     "sida": 46,
+     "bild": "4__Presentation/46.jpeg",
+     "har_grafik": true,
+     "har_grekiska": true,
+     "text": "7. Kontraherade verb på \n-έω"
+    },
+    {
+     "sida": 47,
+     "bild": "4__Presentation/47.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Formlära: kontraherade verb på -έω\nVerbstammar (delen av ett verb före personändelsen) kan se olika ut: πέμπ-ω,\nπιστεύ-ω, λέγ-ω.\nVerbstammar som slutar på -ε (φιλέ-ω, λαλέ-ω) genomgår så kallad kontraktion med\nändelserna."
+    },
+    {
+     "sida": 48,
+     "bild": "4__Presentation/48.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "φιλέω ’älska, gilla’ (presens)\nperson grekiska svenska\n1:a p. sg. φιλέ-ω jag älskar\n2:a p. sg. φιλέ-εις du älskar\n3:e p. sg. φιλέ-ει han/hon/det älskar\n1:a p. pl. φιλέ-ομεν vi älskar\n2:a p. pl. φιλέ-ετε ni älskar\n3:e p. pl. φιλέ-ουσι(ν) de älskar"
+    },
+    {
+     "sida": 49,
+     "bild": "4__Presentation/49.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "φιλέω ’älska, gilla’ (presens)\nperson grekiska svenska\n1:a p. sg. φιλέ-ω jag älskar\n2:a p. sg. φιλέ-εις du älskar\n3:e p. sg. φιλέ-ει han/hon/det älskar\n1:a p. pl. φιλέ-ομεν vi älskar\n2:a p. pl. φιλέ-ετε ni älskar\n3:e p. pl. φιλέ-ουσι(ν) de älskar"
+    },
+    {
+     "sida": 50,
+     "bild": "4__Presentation/50.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "φιλέω ’älska, gilla’ (presens)\nperson grekiska svenska\n1:a p. sg. φιλῶ jag älskar\n2:a p. sg. φιλεῖς du älskar\n3:e p. sg. φιλεῖ han/hon/det älskar\n1:a p. pl. φιλοῦμεν vi älskar\n2:a p. pl. φιλεῖτε ni älskar\n3:e p. pl. φιλοῦσι(ν) de älskar"
+    },
+    {
+     "sida": 51,
+     "bild": "4__Presentation/51.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "φιλέω ’älska, gilla’ (presens)\nperson grekiska svenska\n1:a p. sg. φιλῶ jag älskar\n2:a p. sg. φιλεῖς du älskar\n3:e p. sg. φιλεῖ han/hon/det älskar\n1:a p. pl. φιλοῦμεν vi älskar\n2:a p. pl. φιλεῖτε ni älskar\n3:e p. pl. φιλοῦσι(ν) de älskar"
+    },
+    {
+     "sida": 52,
+     "bild": "4__Presentation/52.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Kontraktionsreglerna\nε + ε = ει (φιλέ-ει = φιλεῖ)\nε + ο = ου (φιλέ-ομεν = φιλοῦμεν)\nε + lång vokal = lång vokal (φιλέ-ω = φιλῶ)"
+    },
+    {
+     "sida": 53,
+     "bild": "4__Presentation/53.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tips: studieteknik\nEtt ekonomiskt sätt är att lära sig ändelserna för presens:\n-ω, -εις, -ει, -ουμεν, -ειτε, -ουσι(ν)"
+    },
+    {
+     "sida": 54,
+     "bild": "4__Presentation/54.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Andra verb i NT \nsom i presens böjs \nlikt φιλέω\nζητέω söka\nκαλέω kalla\nλαλέω prata\nμαρτυρέω bära vittnesbörd om\nποιέω göra"
+    },
+    {
+     "sida": 55,
+     "bild": "4__Presentation/55.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Övning\n1. ζητοῦμεν τὴν ἀλήθειαν. (ζητέω söka)\nVi söker sanningen\n2. ὁ κύριος τὸν δοῦλον καλεῖ. (καλέω kalla)\nHerren kallar på slaven.\n3. μαρτυρεῖτε τὸν υἱόν τοῦ θεοῦ. (μαρτυρέω vittna om)\nNi vittnar om Guds son."
+    },
+    {
+     "sida": 56,
+     "bild": "4__Presentation/56.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Vad har vi lärt oss idag?\n• Feminina substantiv av första deklinationen: ἡ ἐκκλησία, ἡ ἀρχή, ἡ θάλασσα\n• Adjektiv som böjs som feminina subst. efter första deklinationen\n• εἰμι i imperfekt\n• prepositionerna ἐν, εἰς, ἐκ/ἐξ\n• grammatik: rums- och tidsadverbial\n• kontraherade verb på -έω"
+    },
+    {
+     "sida": 57,
+     "bild": "4__Presentation/57.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Innehåll \nBibelgrekiska \n1:5\n1. Repetition: Substantiv av första och andra \ndeklinationen + bestämd artikel\n2. Repetition: Adjektiv av första och andra \ndeklinationen\n3. Tillägg till substantiv och adjektiv av \nandra deklinationen (B § 57)\n4. Prepositioner\n5. Negationen οὐ\n6. Ny ordklass: pronomen\n7. Personliga pronomen (B § 116.1, 116.2)"
+    }
+   ]
+  },
+  {
+   "kalla": "4__O_vningsblad.pdf",
+   "seminarium": 4,
+   "typ": "ovningsblad",
+   "antal_sidor": 6,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "4__O_vningsblad/1.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "1\nBIBELGREKISKA 1:4 Övningar för självstudium (facit finns på sida 4)\n1. Kongruens mellan adjektiv och substantiv\nUppgift: Sätt in rätt former av adjektivet ἀγαθός -ή -όν1(god) och δίκαιος -α -ον\n(rättvis, rättrådig) i lucktexten nedan och översätt.\n1. ἡ ............ / ............ εἰρήνη\n2. τοῦ ............ / ............ δούλου\n3. τῆς ............ / ............ ἀδελφῆς\n4. ταῖς ............ / ............ ἐντολαῖς\n5. τὴν ............ / ............ ἀγάπην\n6. τῇ ............ / ............ βασιλείᾳ\nἡ εἰρήνη fred\nἡ ἀδελφή syster\nἡ ἐντολή bud, uppdrag\nἡ ἀγάπη kärlek\nἡ βασιλεία rike, kungadöme\n2. Exempelmeningar (inklusive kontraherade verb och prepositioner)\nUppgift: översätt till svenska\n1. ἐσθίει ὁ δίκαιος δοῦλος τὸν ἄρτον τοῦ θεοῦ. \nἐσθίω äta\nὁ ἄρτος bröd\n2. ὁ Ἰησοῦς ποιεῖ καλὰ σημεῖα.\n1 ἀγαθός -ή -όν markerar ändelserna för adjektivet i nominativ singular mask. (ἀγαθός), fem.\n(ἀγαθή), neutr. (ἀγαθόν)."
+    },
+    {
+     "sida": 2,
+     "bild": "4__O_vningsblad/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "2\nὁ Ἰησοῦς Jesus\nποιέω göra\nτὸ σημεῖον tecken, under, underverk\nκαλός -ή -όν skön, vacker\n3. ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.\nπιστεύω tro på (med dativ för det man tror på)\nἡ ἐντολή bud, uppdrag\n4. κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.\nκλέπτω stjäla\nπονηρός -ά -όν ond\nτὸ ἀργύριον pengar\nπτωχός -ή -όν fattig\n5. τηρεῖ καὶ σώζει ὁ Κύριος τὸν κόσμον.\nτηρέω bevaka\nκαί och\nσώζω rädda, beskydda\nὁ κόσμος värld\nὁ Κύριος Herren\n6. λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.\nλαλέω tala"
+    },
+    {
+     "sida": 3,
+     "bild": "4__O_vningsblad/3.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "3\n7. ζητοῦμεν ἐν τῷ ἀγρῷ τοὺς δούλους τοῦ κυρίου.\nζητέω söka\nἐν i (preposition som kräver dativ)\nὁ ἀγρός fält\nὁ κύριος herre, husbonde\n8. οἱ ἀδελφοὶ ἄγουσι τὰ τέκνα εἰς τὸν οἶκον. \nἄγω leda\nὁ οἶκος hus\nεἰς till (preposition som kräver ackusativ)\n9. ζητοῦσιν αἱ ἀδελφαὶ τὴν βασιλείαν τοῦ Θεοῦ· φιλοῦσι γὰρ τὴν ἀλήθειαν.\nτοῦ Θεοῦ· φιλοῦσι: Notera att en hög punkt ( · ) i grekiskan motsvarar kolon ( : ) \neller semikolon ( ; ) i svenskan.\nζητέω söka efter\nἡ ἀδελφή syster\nἡ βασιλεία rike, kungadöme\nφιλέω gilla, älska\nγάρ för, ty\nἡ ἀλήθεια sanning"
+    },
+    {
+     "sida": 4,
+     "bild": "4__O_vningsblad/4.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "4\nFACIT \n1. Kongruens mellan adjektiv och substantiv\nUppgift: Sätt in rätt former av adjektivet ἀγαθός (god) och δίκαιος (rättvis) i \nlucktexten nedan och översätt. \n1. ἡ ἀγαθὴ / δικαία εἰρήνη\n(den goda/rättvisa freden)\n2. τοῦ ἀγαθοῦ / δικαίου δούλου\n(den gode/rättvise slavens)\n3. τῆς ἀγαθῆς / δικαίας ἀδελφῆς\n(den goda/rättvisa systerns)\n4. ταῖς ἀγαθαῖς / δικαίαις ἐντολαῖς\n(till/åt/för de goda/rättvisa buden)\n5. τὴν ἀγαθὴν / δικαίαν ἀγάπην\n(den goda/rättvisa kärleken)\n6. τῇ ἀγαθῇ / δικαίᾳ βασιλείᾳ\n(till/åt/för det goda/rättvisa kungadömet)\n2. Exempelmeningar (inklusive kontraherade verb och prepositioner)\nUppgift: översätt till svenska\n1. ἐσθίει ὁ δίκαιος δοῦλος τὸν ἄρτον τοῦ θεοῦ. \nDen rättvise slaven äter Guds bröd.\nἐσθίω äta\nὁ ἄρτος bröd"
+    },
+    {
+     "sida": 5,
+     "bild": "4__O_vningsblad/5.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "5\n2. ὁ Ἰησοῦς ποιεῖ καλὰ σημεῖα.\nJesus gör sköna under(verk).\nὁ Ἰησοῦς Jesus\nποιέω göra\nτὸ σημεῖον tecken, under, underverk\nκαλός -ή -όν skön, vacker\n3. ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.\nDu, o broder, tror på änglarnas vackra bud.\nπιστεύω tro på (med dativ för det man tror på)\nἡ ἐντολή bud, uppdrag\n4. κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.\nDe onda barnen stjäl de fattiga slavarnas pengar. \nκλέπτω stjäla\nπονηρός -ά -όν ond\nτὸ ἀργύριον pengar\nπτωχός -ή -όν fattig\n5. τηρεῖ καὶ σώζει ὁ Κύριος τὸν κόσμον.\nHerren bevakar och beskyddar världen.\nτηρέω bevaka\nσώζω rädda, beskydda\nὁ κόσμος värld\nὁ Κύριος Herren\n6. λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.\nÄnglarna talar Guds ord.\nλαλέω tala"
+    },
+    {
+     "sida": 6,
+     "bild": "4__O_vningsblad/6.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "6\n7. ζητοῦμεν ἐν τῷ ἀγρῷ τοὺς δούλους τοῦ κυρίου.\nVi söker husbondens slavar på fältet.\nζητέω söka\nὁ δοῦλος slav, tjänare\nἐν i (preposition som kräver dativ)\nὁ ἀγρός fält\nὁ κύριος herre, husbonde\n8. οἱ ἀδελφοὶ ἄγουσι τὰ τέκνα εἰς τὸν οἶκον. \nBröderna leder barnen till huset. \nἄγω leda\nὁ οἶκος hus\nεἰς till (preposition som kräver tar ackusativ)\n9. ζητοῦσιν αἱ ἀδελφαὶ τὴν βασιλείαν τοῦ Θεοῦ· φιλοῦσι γὰρ τὴν ἀλήθειαν.\nSystrarna söker Guds rike; ty de älskar sanningen. \nτοῦ Θεοῦ· φιλοῦσι: Notera att en hög punkt ( · ) i grekiskan motsvarar kolon ( : ) \neller semikolon ( ; ) i svenskan\nζητέω söka efter\nἡ ἀδελφή syster\nἡ βασιλεία rike, kungadöme\nφιλέω gilla, älska\nγάρ för, ty\nἡ ἀλήθεια sanning"
+    }
+   ]
+  },
+  {
+   "kalla": "4__Breakout_rooms.pdf",
+   "seminarium": 4,
+   "typ": "breakout",
+   "antal_sidor": 3,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "4__Breakout_rooms/1.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "BIBELGREKISKA I: Seminarium 4. Övningar\nBreakout room (1): morfologi\nUppgifter: \n(a) Ta fram ett papper och skriv, helst direkt från minnet, annars med hjälp av era \nanteckningar, hela mönstret för:\n1. πιστεύω (tro)\n2. τὸ τέκνον (barn)\n(b) Förklara följande termer för dig själv eller en kamrat: morfologi, syntax, \nkongruens.\nBreakout room (2): kongruens\nUppgift: Läs högt, fyll i rätt form av ordet inom parentes och översätt\n1. ὁ ……… ἀδελφός (gode)\n2. ὁ ἀδελφός ἐστιν ……… (god)\n3. οἱ ἀδελφοὶ ἦσαν ……… (goda)\n4. οἱ ……… δοῦλοι (onda)\n5. ὁ δοῦλος ……… (är) ……… (ond)\n6. ……… (slavarna) ……… (är) ……… (goda)\n7. τὸ ἔργον ……… (var) ……… (vackert)\n8 ……… (verken) ……… (var) ……… (vackra)\nὁ ἀδελφός bror\nἀγαθός god\nπονηρός ond\nκαλός vacker"
+    },
+    {
+     "sida": 2,
+     "bild": "4__Breakout_rooms/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "τὸ ἔργον verk\nPresens och imperfekt av εἰμι\nperson presens svenska imperfekt svenska\n1:a p. sg.\n2:a p. sg.\n3:e p. sg.\n1:a p. pl.\n2:a p. pl.\n3:e p. pl.\nεἰμι\nεἶ\nἐστι(ν)\nἐσμεν\nἐστε\nεἰσι(ν)\njag är\ndu är\nhan/hon/det är\nvi är\nni är\nde är\nἦν / ἤμην\nἦς / ἦσθα\nἦν\nἦμεν / ἤμεθα\nἦτε\nἦσαν\njag var\ndu var\nhan/hon/det var\nvi var\nni var \nde var\nBreakout room (3): substantiv av första och andra deklinationen\nUppgift: Identifiera satsdelar och översätt till svenska. \n1. λέγει ὁ ἄγγελος τὴν ἀλήθειαν.\n2. ὁ ἀπόστολος κηρύσσει τὸ ἀγαθὸν εὐαγγέλιον. \n3. ὁ κύριος πέμπει τῷ κόσμῳ ἄγγελον.\n4. τὸ τέκνον βλέπει τὸ σημεῖον τοῦ κυρίου.\n5. ἡ ἀγάπη τὴν ψυχήν σῴζει.\n6. ὁ οὐρανός ἐστιν ἀγαθός.\nOrdlista:\nκηρύσσω predika\nἡ ἀλήθεια, -ας sanning\nὁ κύριος, -ου herre\nὁ κόσμος, -ου värld\nτὸ τέκνον, -ου barn\nτὸ σημεῖον, -ου tecken\nἡ ψυχή, -ῆς själ\nἡ ἀγάπη, -ης kärlek\nσῴζω rädda"
+    },
+    {
+     "sida": 3,
+     "bild": "4__Breakout_rooms/3.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Regler för ändelserna i första deklinationen:\n1. Alla feminina substantiv av första deklinationen som i nom. sg. slutar på \nett α som föregås av ε, ι, ρ (ἐκκλησία) har -α, -ας, -ᾳ, -αν, -α i singular \noch -αι, -ῶν, -αις, -ας, -αι i plural.\n2. Alla feminina substantiv av första deklinationen som i nom. sg. slutar på \nett η (som ἀρχή) har -η, -ης, -ῃ, -ην, -η i singular men -αι, -ῶν, -αις, -ας, -\nαι i plural.\n3. Om ett feminint substantiv av första deklinationen i nom. sg. slutar på -α \noch föregås av en annan bokstav än ε, ι, eller ρ (som θάλασσα), så har \ndet -α, -ης, -ῃ, -αν, -α i singular och -αι, -ῶν, -αις, -ας, -αι i plural. \nFör tabeller, se Blomqvist § 53"
+    }
+   ]
+  },
+  {
+   "kalla": "Ord_som_fo_rekommer_fler_a_n_60_ggr_i_NT.pdf",
+   "seminarium": null,
+   "typ": "frekvenslista",
+   "antal_sidor": 5,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": "Ord_som_fo_rekommer_fler_a_n_60_ggr_i_NT/1.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Ord som fo rekommer > 60 ggr i NT\nἀγαθός -ή -όν adj. god\nἀγαπάω verb älska\nἀγάπη (ἡ) substantiv kärlek\nἄγγελος (ὁ) substantiv budbärare (Guds budbärare = ängel)\nἅγιος -α –ον adj. helig, vördnadsvärd\nἀδελφός (ὁ), ἀδελφή (ἡ) substantiv bror, syster\nαἷμα (τό) substantiv blod\nαἴρω verb ta upp, lyfta upp, höja\nαἰτέω verb bedja, begära, kräva\nαἰών -ῶνος (ὁ) substantiv evighet\nαἰώνιος -ον adj. evig\nἀκολουθέω verb följa\nἀκούω verb höra, lyssna\nἀλήθεια (ἡ) substantiv sanning\nἀλλά partikel utan, men, dock\nἀλλήλων pronominaladj varandra, den ena – den andra\n(dat. ἀλλήλοις, ἀλλήλαις, ack. ἀλλήλους, ἀλλήλας, ἄλληλα)\nἄλλος -η –ον pronominaladj annan, annat\nἁμαρτία (ἡ) substantiv synd (”misstag” i klassisk grekiska)\nἀμήν partikel amen, sannerligen (hebreiska)\nἄν partikel ”modalpartikel” som inte går att översätta\nἀναβαίνω verb stiga upp, gå upp\nἀνήρ, ἀνδρός (ὁ) substantiv man\nἄνθρωπος (ὁ) substantiv människa\nἀνίστημι verb resa upp, låta uppstå, resa sig, uppträda\nἀνοίγω verb öppna\nἀπέρχομαι verb gå bort, avlägsna, bege sig\nἀπό preposition + gen. från, av\nἀποθνῄσκω verb dö\nἀποκρίνομαι verb svara\nἀποκτείνω verb döda\nἀπόλλυμι verb gå miste om, förlora, förgöra\nἀποστέλλω verb sända ut, avsända, skicka\nἀπόστολος (ὁ) substantiv utsänd, sändebud, apostel\nἄρτος (ὁ) substantiv bröd\nἀρχιερεύς (ὁ) substantiv överstepräst\nἄρχω verb börja, vara härskare över\nαὐτός αὐτή αὐτό pronomen han hon den/det\nβάλλω verb kasta, lägga, sätta\nβαπτίζω verb döpa (av βάπτω indoppa)\nβασιλεία (ἡ) substantiv rike\nβασιλεύς (ὁ) substantiv kung\nβλέπω verb se, ha syn, titta\nγάρ partikel ty, för, ju\nγεννάω verb föda, avla, framkalla\nγῆ (ἡ) substantiv jord\nγίνομαι verb bli, födas, uppstå, befinna sig \nγινώσκω verb känna, veta, märka, förstå, inse\nγραμματεύς (ὁ) substantiv skrivare, sekreterare, skriftlärd"
+    },
+    {
+     "sida": 2,
+     "bild": "Ord_som_fo_rekommer_fler_a_n_60_ggr_i_NT/2.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "γράφω verb skriva, rita\nγυνή γυναικός (ἡ) substantiv kvinna\nδαιμόνιον (τό) substantiv gudomlighet, ond ande\nδέ partikel och, men\nδεῖ opers. verb med ack.+ infin. man måste, det åligger\nδιά preposition + gen. genom, + ack. på grund av\nδιδάσκω verb undervisa, lära\nδίδωμι verb ge\nδίκαιος -α –ον adj. rättvis, rättfärdig\nδικαιοσύνη (ἡ) substantiv rättvisa, rättfärdighet\nδόξα (ἡ) substantiv ära, anseende, heder; glans, sken\nδοῦλος (ὁ) substantiv tjänare, slav\nδύναμαι verb kunna, förmå\nδύναμις (ἡ) substantiv förmåga, makt, kraft\nδύο (dat. pl. δυσί) räkneord två\nδώδεκα räkneord tolv\nἐάν (εἰ ἄν) partikel om (om än)\nἑαυτοῦ (ἑαυτῆς ἑαυτοῦ) pronomen sig själv\nἐγείρω verb väcka, låta stå upp\nἐγώ pronomen jag\nἔθνος (τό) substantiv folkstam, folk, hednafolk\nεἰ partikel om\nεἶδον verb se (jag såg)\nεἰμί verb vara (jag är)\nεἶπον verb jag sade\nεἰρήνη (ἡ) substantiv fred\nεἰς preposition in i, i \nεἷς (ἑνός) μία ἕν räkneord en, ett (kan användas som indefinit någon)\nεἰσέρχομαι verb gå in, inträda, komma in\nἐκ, ἐξ preposition + gen. ur, ut ur, från av\nἕκαστος -η –ον pronominaladj. varje, var och en\nἐκβάλλω verb kasta ut,, förkasta, låta gå, rycka ut\nἐκεῖ adverb där\nἐκεῖνος -η –ο demonstr.pron. den där\nἐκκλησία (ἡ) substantiv församling\nἐμός -ή -όν pronominaladj. min, mitt\nἐν preposition i, med\nἐντολή (ἡ) substantiv bud, budord\nἐνώπιον adverb inför (adj. ἐνώπιος)\nἐξέρχομαι verb gå ut, gå bort, komma ut, utgå\nἐξουσία (ἡ) substantiv rätt, rättighet, fullmakt, myndighet\nἐπί preposition + gen., dat., ack. på, över, vid, mot\nἑπτά räkneord sju\nἔργον (τό) substantiv verk, gärning\nἔρχομαι verb gå, komma\nἐσθίω verb äta\nἕτερος -α –ον pronominaladj. annan, annat, övrig\nἔτι partikel ännu, fortfarande\nεὐαγγέλιον (τό) substantiv glatt budskap, evangelium\nεὐθύς, εὐθέως adverb rakt, genast (som adj. = rak, jämn)\nεὑρίσκω verb finna, hitta, uppfinna, påträffa\nἔχω verb ha, hålla, äga, ha att = kunna\nἕως partikel till dess, förrän"
+    },
+    {
+     "sida": 3,
+     "bild": "Ord_som_fo_rekommer_fler_a_n_60_ggr_i_NT/3.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ζάω verb leva\nζητέω verb söka, sträva efter, undersöka, forska\nζωή (ἡ) substantiv liv\nἤ partikel eller\nἦλθον verb jag kom, jag gick\nἡμεῖς pronomen vi\nἡμέρα (ἡ) substantiv dag\nθάλασσα (ἡ) substantiv hav, sjö\nθάνατος (ὁ) substantiv död, dödsfara, dödsstraff\nθέλημα (τό) substantiv vilja, lust\nθέλω verb vilja, önska\nθεός (ὁ) substantiv gud\nἴδιος -α –ον pronominaladj egen, eget\nἰδού interjektion se! (imperativ av εἶδον)\nἱερόν (τό) substantiv tempel, helgedom\nἵνα partikel för att\nἵστημι verb ställa, hålla upprätt, ställa sig, bestå, fastställa\nκάθημαι verb sitta, sätta sig\nκαθώς partikel som, sådan som, allt eftersom\nκαί partikel och, också\nκαιρός (ὁ) substantiv tid, tidpunkt\nκαλέω verb kalla (pass. heta)\nκαλός -ή -όν\n1 adj. fin, skön, vacker\nκαρδία (ἡ) substantiv hjärta\nκαρπός (ὁ) substantiv frukt\nκατά preposition + gen. utför, mot, ack. enligt\nκαταβαίνω verb stiga ned, gå ned, komma ned\nκεφαλή (ἡ) substantiv huvud\nκόσμος (ὁ) substantiv prydnad, värld, världsordning, världsalltet, \nκρίνω verb döma, bedöma, bestämma\nκύριος (ὁ) substantiv herre, härskare\nλαλέω verb prata, tala\nλαμβάνω verb ta, ta emot, få \nλαός (ὁ) substantiv folk\nλέγω verb tala / plocka, samla\nλόγος (ὁ) substantiv ord, tal, (uttryckt) tanke, berättelse, beräkning\nμαθητής (ὁ) substantiv lärjunge\nμᾶλλον adverb mer, snarare\nμαρτυρέω verb vittna, intyga\nμέγας μεγάλη μέγα adj. stor, stark\nμέλλω hjälpverb ”kommer att” (uttrycker futurum)\nμένω verb stanna, bli kvar, vistas, förbliva\nμετά preposition + gen. med + ack. efter\nμή negation inte (vid imperativ, konjunktiv)\nμηδείς (jfr εἷς) pronominaladj ingen\nμήτηρ μητρός (ἡ) substantiv mor\nμόνος -η –ον adj ensam, allena\nνεκρός -ά -όν adj. död, avliden, dödlig\nνόμος (ὁ) substantiv lag, sed, ordning, förordning\nνῦν adverb nu\nνύξ νυκτός ἡ substantiv natt\n \n1 Det vanliga adjektivet som är motsatsen till gott är κακός -ή -όν men detta förekommer färre än 60 ggr i NT."
+    },
+    {
+     "sida": 4,
+     "bild": "Ord_som_fo_rekommer_fler_a_n_60_ggr_i_NT/4.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἡ τό artikel den, det\nὁδός (ἡ) substantiv väg, färd\nοἶδα verb veta (jag vet, eg. jag har sett)\nοἶκος (ὁ) = ἡ οἰκία substantiv hus\nὅλος -η –ον adj. hel\nὄνομα (τό) substantiv namn\nὅπου pronominaladverb där (som)\nὁράω verb se (jag ser)\nὄρος (τό) substantiv berg\nὅς ἥ ὅ rel.pronomen som, vilken, vilket\nὅσος -η –ον pronominaladj så stor som, så många som (pl.)\nὅστις rel.pronomen den som\nὅταν pronominaladv. när (som helst)\nὅτε pronominaladv. när\nὅτι rel.pronomen/partikel det som, att\nοὐ negation inte\nοὐδέ negation + partikel och inte, inte heller\nοὐδείς (jfr εἷς) pronominaladj ingen\nοὖν partikel alltså\nοὐρανός (ὁ) substantiv himmel\nοὔτε ... οὔτε negation + partikel varken ... eller\nοὗτος, αὕτη, τοῦτο demonstr.pron. denne, denna, detta\nοὕτως (οὕτω) pronominaladv. på så sätt, på detta sätt, sålunda, så\nὀφθαλμός (ὁ) substantiv öga\nὄχλος (ὁ) substantiv folkhop\nπάλιν adverb igen, åter, tillbaka\nπάντες (pl. av πᾶς) pronominaladj alla\nπαρά preposition + gen. från +dat. hos, vid + ack. bredvid, utöver\nπαραδίδωμι verb överlämna, uppge\nπαρακαλέω verb tillkalla, förmana, uppmuntra\nπᾶς (gen. παντός) πᾶσα πᾶν pronominaladj var och en, all\nπατήρ πατρός (ὁ) substantiv far\nπέμπω verb skicka\nπερί preposition + gen. om, angående, + ack. kring\nπεριπατέω verb gå omkring, vandra \nπίνω verb dricka\nπίπτω verb falla\nπιστεύω verb tro (på), lita på, sätta tilltro till,\nπίστις (ἡ) substantiv tro, förtroende, tillit\nπληρόω verb fylla\nπλοῖον (τό) substantiv båt\nπνεῦμα (τό) substantiv ande\nποιέω verb göra, förfärdiga, handla\nπόλις (ἡ) substantiv stad, stat\nπολλοί (pl. av πολύς) adj. många\nπολύς πολλή πολύ adj. mycket\nπονηρός -ά -όν adj. dålig, ond\nπορεύομαι verb färdas, resa, bege sig, gå\nποῦς ποδός (ὁ) substantiv fot\nπρεσβύτερος (ὁ) substantiv äldst (eg. äldre man, kompar. av πρεσβύς)\nπρός preposition + gen. på (ngns sida), + dat. vid, + ack. till, hos\nπροσέρχομαι verb gå / komma till, träda fram\nπροσεύχομαι verb be (till)"
+    },
+    {
+     "sida": 5,
+     "bild": "Ord_som_fo_rekommer_fler_a_n_60_ggr_i_NT/5.jpeg",
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "πρόσωπον (τό) substantiv ansikte, själva personen\nπροφήτης (ὁ) substantiv profet\nπρῶτος -η –ον adj. först\nπῦρ πυρός (τό) substantiv eld\nπῶς interrogativt adv. hur\nσάρξ σαρκός (ἡ) substantiv kött, kropp\nσημεῖον (τό) substantiv tecken\nστόμα (τό) substantiv mun\nσύ pronomen du\nσύν preposition + dat. med, jämte\nσυναγωγή (ἡ) substantiv samlingställe, synagog\nσῴζω verb rädda, hjälpa, bevara\nσῶμα (τό) substantiv kropp\nτε partikel och (vidhängd/enklitisk ptk, binder satsdelar)\nτέκνον (τό) substantiv barn\nτηρέω verb iaktta, bevaka, bevara\nτίθημι verb ställa, lägga, sätta\nτίς, τί interrogativt pronomen vem (vilken) vad (vilket)\nτις, τι indefinit pronomen någon, något\nτόπος (ὁ) substantiv plats, ställe, ort\nτότε adverb då, därpå\nτρεῖς (neutr. τρία) räkneord tre\nὕδωρ, ὕδατος (τό) substantiv vatten\nυἱός (ὁ) substantiv son\nὑμεῖς pronomen ni\nὑπάγω verb gå (föra) bort, gå\nὑπέρ preposition + gen. över, för, i st f, + ack. över, mer än\nὑπό preposition + gen. av, genom, + ack. under\nφαρισαῖος (ὁ) substantiv farisé\nφοβέομαι verb frukta\nφωνή (ἡ) substantiv röst, ljud\nφῶς φωτός (τό) substantiv ljus\nχαίρω verb gläjda sig, vara glad, må väl\nχάρις -ιτος (ἡ), ack. χάριν substantiv nåd, gunst, tack\nχείρ, χειρός (ἡ) substantiv hand\nΧριστός (ὁ) substantiv Kristus (messias)\nψυχή (ἡ) substantiv själ\nὧδε pronominaladverb härvid, hit, här, så här\nὥρα (ἡ) substantiv tid, stund, timme, tidpunkt\nὡς pronominaladverb / partikel såsom m.m.\nὥστε partikel så att, att, därför"
+    }
+   ]
+  }
+ ],
+ "glosor": [
+  {
+   "lemma": "ἀκούω",
+   "artikel": null,
+   "glosa": "jag hör",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 427,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "λέγω",
+   "artikel": null,
+   "glosa": "jag säger",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 2345,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "βλέπω",
+   "artikel": null,
+   "glosa": "jag ser",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 133,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "γράφω",
+   "artikel": null,
+   "glosa": "jag skriver",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 190,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ἐσθίω",
+   "artikel": null,
+   "glosa": "jag äter",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 157,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "κηρύσσω",
+   "artikel": null,
+   "glosa": "jag predikar",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 61,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "λαμβάνω",
+   "artikel": null,
+   "glosa": "jag tar, jag griper",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 258,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "παιδεύω",
+   "artikel": null,
+   "glosa": "jag uppfostrar",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 13,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "πέμπω",
+   "artikel": null,
+   "glosa": "jag skickar",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 79,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "εὑρίσκω",
+   "artikel": null,
+   "glosa": "jag finner",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 176,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ἄνθρωπος",
+   "artikel": null,
+   "glosa": "människa",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 550,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "βλέπω",
+   "artikel": null,
+   "glosa": "se",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 133,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "οἶκος",
+   "artikel": null,
+   "glosa": "hus",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 112,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "ἄγγελος",
+   "artikel": null,
+   "glosa": "budbärare, ängel",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 175,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "γράφω",
+   "artikel": null,
+   "glosa": "skriva",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 190,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ἀδελφός",
+   "artikel": null,
+   "glosa": "bror",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 342,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ἀπόστολος",
+   "artikel": null,
+   "glosa": "apostel",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 79,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "θεός",
+   "artikel": null,
+   "glosa": "gud",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 1307,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "οὐρανός",
+   "artikel": null,
+   "glosa": "himmel",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 273,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "κύριος",
+   "artikel": null,
+   "glosa": "herre",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 713,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "δοῦλος",
+   "artikel": null,
+   "glosa": "slav",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 126,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "λόγος",
+   "artikel": null,
+   "glosa": "ord, berättelse",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 330,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 2,
+     "kalla": "2__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "καλός",
+   "artikel": null,
+   "glosa": "vacker",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 101,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 4
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "λέγω",
+   "artikel": null,
+   "glosa": "säga",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 2345,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "πιστός",
+   "artikel": null,
+   "glosa": "trogen",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 67,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "κηρύσσω",
+   "artikel": null,
+   "glosa": "predika",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 61,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__Breakout_rooms.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "ἅγιος",
+   "artikel": null,
+   "glosa": "helig",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 233,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "τέκνον",
+   "artikel": "τό",
+   "glosa": "barn",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 99,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "μικρός",
+   "artikel": null,
+   "glosa": "liten",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 46,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "βαπτίζω",
+   "artikel": null,
+   "glosa": "döpa",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 77,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "ἐσθίω",
+   "artikel": null,
+   "glosa": "äta",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 157,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 4
+    }
+   ]
+  },
+  {
+   "lemma": "ἄρτος",
+   "artikel": "ὁ",
+   "glosa": "bröd",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 97,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 4
+    }
+   ]
+  },
+  {
+   "lemma": "ἀγαθός",
+   "artikel": null,
+   "glosa": "god",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 101,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "υἱός",
+   "artikel": "ὁ",
+   "glosa": "son",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 375,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "ἀκούω",
+   "artikel": null,
+   "glosa": "höra",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 427,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 4
+    }
+   ]
+  },
+  {
+   "lemma": "πονηρός",
+   "artikel": null,
+   "glosa": "ond, fördärvad",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 78,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 4
+    }
+   ]
+  },
+  {
+   "lemma": "πιστεύω",
+   "artikel": null,
+   "glosa": "tro (konstrueras med dativ för den man tror på)",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 241,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 3,
+     "kalla": "3__O_vningsblad.pdf",
+     "sida": 4
+    }
+   ]
+  },
+  {
+   "lemma": "βλέπω",
+   "artikel": null,
+   "glosa": "titta",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 133,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "σῴζω",
+   "artikel": null,
+   "glosa": "rädda",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 106,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__Breakout_rooms.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "ἀδελφός",
+   "artikel": "ὁ",
+   "glosa": "broder",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 342,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "εὐαγγέλιον",
+   "artikel": "τό",
+   "glosa": "glatt budskap, evangelium",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 75,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "εὑρίσκω",
+   "artikel": null,
+   "glosa": "finna",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 176,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "πέμπω",
+   "artikel": null,
+   "glosa": "skicka",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 79,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "πλοῖον",
+   "artikel": "τό",
+   "glosa": "båt",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 67,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "σημεῖον",
+   "artikel": "τό",
+   "glosa": "tecken (jfr. semantik)",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 77,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "πονηρός",
+   "artikel": null,
+   "glosa": "ond",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 78,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ἄγγελος",
+   "artikel": "ὁ",
+   "glosa": "ängel, budbärare",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 175,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "θεός",
+   "artikel": "ὁ",
+   "glosa": "Gud",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 1307,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "εὐαγγέλιον",
+   "artikel": "τό",
+   "glosa": "evangelium",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 75,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "ἱερόν",
+   "artikel": "τό",
+   "glosa": "tempel",
+   "ordklass": null,
+   "nt_lemma": false,
+   "nt_frekvens": null,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 3,
+     "kalla": "3__Seminarium_O_vningar.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "εἰρήνη",
+   "artikel": "ἡ",
+   "glosa": "fred",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 91,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ἀδελφή",
+   "artikel": "ἡ",
+   "glosa": "syster",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 25,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "ἐντολή",
+   "artikel": "ἡ",
+   "glosa": "bud, uppdrag",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 66,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "ἀγάπη",
+   "artikel": "ἡ",
+   "glosa": "kärlek",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 116,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "βασιλεία",
+   "artikel": "ἡ",
+   "glosa": "rike, kungadöme",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 162,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 1
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "Ἰησοῦς",
+   "artikel": "ὁ",
+   "glosa": "Jesus",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 906,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "ποιέω",
+   "artikel": null,
+   "glosa": "göra",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 568,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "σημεῖον",
+   "artikel": "τό",
+   "glosa": "tecken, under, underverk",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 77,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "πιστεύω",
+   "artikel": null,
+   "glosa": "tro på (med dativ för det man tror på)",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 241,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "κλέπτω",
+   "artikel": null,
+   "glosa": "stjäla",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 13,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "ἀργύριον",
+   "artikel": "τό",
+   "glosa": "pengar",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 20,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "τηρέω",
+   "artikel": null,
+   "glosa": "bevaka",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 71,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "καί",
+   "artikel": null,
+   "glosa": "och",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 8973,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "σώζω",
+   "artikel": null,
+   "glosa": "rädda, beskydda",
+   "ordklass": null,
+   "nt_lemma": false,
+   "nt_frekvens": null,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "κόσμος",
+   "artikel": "ὁ",
+   "glosa": "värld",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 185,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "Κύριος",
+   "artikel": "ὁ",
+   "glosa": "Herren",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": null,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "λαλέω",
+   "artikel": null,
+   "glosa": "tala",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 297,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
+    }
+   ]
+  },
+  {
+   "lemma": "ζητέω",
+   "artikel": null,
+   "glosa": "söka",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 117,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "ἐν",
+   "artikel": null,
+   "glosa": "i (preposition som kräver dativ)",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 2733,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "ἀγρός",
+   "artikel": "ὁ",
+   "glosa": "fält",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 36,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "κύριος",
+   "artikel": "ὁ",
+   "glosa": "herre, husbonde",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 713,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "ἄγω",
+   "artikel": null,
+   "glosa": "leda",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 68,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "εἰς",
+   "artikel": null,
+   "glosa": "till (preposition som kräver ackusativ)",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 1754,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "ζητέω",
+   "artikel": null,
+   "glosa": "söka efter",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 117,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "φιλέω",
+   "artikel": null,
+   "glosa": "gilla, älska",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 25,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "γάρ",
+   "artikel": null,
+   "glosa": "för, ty",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 1039,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "ἀλήθεια",
+   "artikel": "ἡ",
+   "glosa": "sanning",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 109,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 3
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "δοῦλος",
+   "artikel": "ὁ",
+   "glosa": "slav, tjänare",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 126,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "εἰς",
+   "artikel": null,
+   "glosa": "till (preposition som kräver tar ackusativ)",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 1754,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 6
+    }
+   ]
+  },
+  {
+   "lemma": "ἔργον",
+   "artikel": "τό",
+   "glosa": "verk",
+   "ordklass": null,
+   "nt_lemma": true,
+   "nt_frekvens": 169,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 4,
+     "kalla": "4__Breakout_rooms.pdf",
+     "sida": 2
+    }
+   ]
+  }
+ ],
+ "satser": [
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "βλέπεις",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ἀκούετε",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "λέγουσι(ν)",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ἐσθίει",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "κηρύσσομεν",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "λαμβάνουσι(ν)",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "πέμπει",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "παιδεύεις",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "γράφει",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "εὑρίσκουσι(ν)",
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "τὸν οὐρανὸν βλέπετε.",
+   "instruktion": "och indirekt objekt) och översätt. Notera: inte alla satsdelar behöver finnas med i varje",
+   "oversattning": "Ni ser himlen.",
+   "satsdelar": [
+    {
+     "ord": "τὸν οὐρανὸν",
+     "del": "direkt objekt"
+    },
+    {
+     "ord": "βλέπετε",
+     "del": "predikat"
+    }
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ἀκούει λόγον.",
+   "instruktion": "och indirekt objekt) och översätt. Notera: inte alla satsdelar behöver finnas med i varje",
+   "oversattning": "Hon/hon/det hör en berättelse.",
+   "satsdelar": [
+    {
+     "ord": "ἀκούει",
+     "del": "predikat, inklusive subjekt"
+    },
+    {
+     "ord": "λόγον",
+     "del": "direkt objekt"
+    }
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "οἱ δοῦλοι λαμβάνουσι τὸν καρπὸν τοῦ κυρίου.",
+   "instruktion": "och indirekt objekt) och översätt. Notera: inte alla satsdelar behöver finnas med i varje",
+   "avvikelse_ref": [
+    {
+     "facit_har": "κύριου",
+     "korrekt": "κυρίου",
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 2,
+     "not": "Facit på angiven sida har fel accent; denna övningsmening (uppgiftssidan) är korrekt."
+    }
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ἀκούει ὁ λαὸς τοὺς λόγους τοῦ ἀποστόλου.",
+   "instruktion": "och indirekt objekt) och översätt. Notera: inte alla satsdelar behöver finnas med i varje",
+   "oversattning": "Folket hör orden/berättelserna.",
+   "satsdelar": [
+    {
+     "ord": "ἀκούει",
+     "del": "predikat"
+    },
+    {
+     "ord": "ὁ λαὸς",
+     "del": "subjekt"
+    },
+    {
+     "ord": "τοὺς λόγους τοῦ ἀποστόλου",
+     "del": "direkt objekt"
+    }
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "πέμπει τοὺς δούλους τῷ ἀδελφῷ.",
+   "instruktion": "och indirekt objekt) och översätt. Notera: inte alla satsdelar behöver finnas med i varje",
+   "oversattning": "Han/hon/det skickar slavarna till brodern.",
+   "satsdelar": [
+    {
+     "ord": "πέμπει",
+     "del": "predikat"
+    },
+    {
+     "ord": "τοὺς δούλους",
+     "del": "direkt objekt"
+    },
+    {
+     "ord": "τῷ ἀδελφῷ",
+     "del": "indirekt objekt"
+    }
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ἀκούουσιν οἱ κύριοι τὸν λόγον τοῦ δούλου.",
+   "instruktion": "och indirekt objekt) och översätt. Notera: inte alla satsdelar behöver finnas med i varje",
+   "oversattning": "Herrarna hör slavens berättelse.",
+   "satsdelar": [
+    {
+     "ord": "ἀκούουσιν",
+     "del": "predikat"
+    },
+    {
+     "ord": "οἱ κύριοι",
+     "del": "subjekt"
+    },
+    {
+     "ord": "τὸν λόγον τοῦ δούλου",
+     "del": "direkt objekt"
+    }
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ὁ ἄνθρωπος βλέπει τὸν οἶκον.",
+   "instruktion": "översättningarna och läs dem för varandra."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "τὸν ἄνθρωπον βλέπει ὁ θεός.",
+   "instruktion": "översättningarna och läs dem för varandra."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "γράφουσι λόγον οἱ δοῦλοι.",
+   "instruktion": "översättningarna och läs dem för varandra."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ὁ ἀπόστολος γράφει τὸν λόγον τοῖς ἀδελφοῖς.",
+   "instruktion": "översättningarna och läs dem för varandra.",
+   "oversattning": "Uppgifter:"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__O_vningsblad.pdf",
+   "sida": 2,
+   "grekiska": "οἱ πονηροὶ ἄνθρωποι ἀκούουσι τὸ καλὸν εὐαγγέλιον.",
+   "instruktion": null,
+   "oversattning": "De onda människorna lyssnar till det vackra evangeliet."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__O_vningsblad.pdf",
+   "sida": 2,
+   "grekiska": "τῷ θεῷ πιστεύουσιν.",
+   "instruktion": null,
+   "oversattning": "De tror på Gud."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 1,
+   "grekiska": "οἱ δοῦλοι βλέπουσι τὸν οἶκον.",
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 1,
+   "grekiska": "σῴζουσιν οἱ ἄγγελοι τοὺς ἀδελφούς.",
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 1,
+   "grekiska": "ὁ δοῦλος τῷ ἀποστόλῳ λέγει.",
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 1,
+   "grekiska": "γράφετε τοῖς δούλοις τοὺς λόγους τῶν ἀδελφῶν.",
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska",
+   "oversattning": "Använd följande frågor:"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 1,
+   "grekiska": "βλέπομεν τὸ σημεῖον τοῦ θεοῦ.",
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 1,
+   "grekiska": "πέμπουσιν οἱ δοῦλοι τὰ πλοῖα.",
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 1,
+   "grekiska": "οἱ ἀδελφοὶ εὑρίσκουσι τὰ εὐαγγέλια.",
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 1,
+   "grekiska": "ὦ ἄγγελε, γράφεις τοὺς λόγους τοῦ εὐαγγελίου τοῖς τέκνοις.",
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska.",
+   "oversattning": "Ordlista:"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "ὁ ἅγιος ἄγγελος",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "ὁ πονηρὸς δοῦλος",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "τὸ καλὸν εὐαγγέλιον",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "οἱ πονηροὶ ἄνθρωποι",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "τῶν καλῶν ἱερῶν",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "τὸν ἀγαθὸν ἄγγελον",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "τοῖς ἁγίοις ἀδελφοῖς",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "τοῦ ἀγαθοῦ θεοῦ",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "τὰ ἀγαθὰ τέκνα",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "τὸ πονηρὸν τέκνον",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "ὁ καλὸς Φίλιππος",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "τῶν καλῶν ἀδελφῶν",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "τῷ ἀγαθῷ θεῷ",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Seminarium_O_vningar.pdf",
+   "sida": 2,
+   "grekiska": "ὦ καλὲ οὐρανέ",
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "Ordlista:"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 2,
+   "grekiska": "ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.",
+   "instruktion": null,
+   "oversattning": "Du, o broder, tror på änglarnas vackra bud."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 2,
+   "grekiska": "κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.",
+   "instruktion": null,
+   "oversattning": "De onda barnen stjäl de fattiga slavarnas pengar."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 2,
+   "grekiska": "τηρεῖ καὶ σώζει ὁ Κύριος τὸν κόσμον.",
+   "instruktion": null,
+   "oversattning": "Herren bevakar och beskyddar världen."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 2,
+   "grekiska": "λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.",
+   "instruktion": null,
+   "oversattning": "Änglarna talar Guds ord."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 3,
+   "grekiska": "ζητοῦμεν ἐν τῷ ἀγρῷ τοὺς δούλους τοῦ κυρίου.",
+   "instruktion": null,
+   "oversattning": "Vi söker husbondens slavar på fältet."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 3,
+   "grekiska": "οἱ ἀδελφοὶ ἄγουσι τὰ τέκνα εἰς τὸν οἶκον.",
+   "instruktion": null,
+   "oversattning": "Bröderna leder barnen till huset."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 3,
+   "grekiska": "ζητοῦσιν αἱ ἀδελφαὶ τὴν βασιλείαν τοῦ Θεοῦ· φιλοῦσι γὰρ τὴν ἀλήθειαν.",
+   "instruktion": null,
+   "oversattning": "Systrarna söker Guds rike; ty de älskar sanningen."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 5,
+   "grekiska": "ὁ Ἰησοῦς ποιεῖ καλὰ σημεῖα.",
+   "instruktion": null,
+   "oversattning": "Jesus gör sköna under(verk)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "πιστεύω (tro)",
+   "instruktion": null,
+   "satsdelar": [
+    {
+     "ord": "πιστεύω",
+     "del": "tro"
+    }
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "τὸ τέκνον (barn)",
+   "instruktion": null,
+   "oversattning": "(b) Förklara följande termer för dig själv eller en kamrat: morfologi, syntax,",
+   "satsdelar": [
+    {
+     "ord": "τὸ τέκνον",
+     "del": "barn"
+    }
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "λέγει ὁ ἄγγελος τὴν ἀλήθειαν.",
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ὁ ἀπόστολος κηρύσσει τὸ ἀγαθὸν εὐαγγέλιον.",
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ὁ κύριος πέμπει τῷ κόσμῳ ἄγγελον.",
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "τὸ τέκνον βλέπει τὸ σημεῖον τοῦ κυρίου.",
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ἡ ἀγάπη τὴν ψυχήν σῴζει.",
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ὁ οὐρανός ἐστιν ἀγαθός.",
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska.",
+   "oversattning": "Ordlista:"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 3,
+   "grekiska": "Om ett feminint substantiv av första deklinationen i nom. sg. slutar på -α",
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+  }
+ ],
+ "verb": [
+  {
+   "lemma": "λύω",
+   "glosa": "lösa",
+   "klass": "omega",
+   "stam": "λύ",
+   "seminarium": 2,
+   "attesterade_former": [],
+   "former_kompletta": false,
+   "not": "Inga former belagda i seminarierna; generera ur mallparadigm + verifiera per verb.",
+   "nt_frekvens": 42,
+   "se_paradigm": "par-verb-omega-presens"
+  },
+  {
+   "lemma": "βλέπω",
+   "glosa": "se",
+   "klass": "omega",
+   "stam": "βλέπ",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 2,
+     "tal": "sg",
+     "form": "βλέπεις",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 133
+  },
+  {
+   "lemma": "ἀκούω",
+   "glosa": "höra",
+   "klass": "omega",
+   "stam": "ἀκού",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 2,
+     "tal": "pl",
+     "form": "ἀκούετε",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 427
+  },
+  {
+   "lemma": "λέγω",
+   "glosa": "säga",
+   "klass": "omega",
+   "stam": "λέγ",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "pl",
+     "form": "λέγουσι(ν)",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 2345
+  },
+  {
+   "lemma": "γράφω",
+   "glosa": "skriva",
+   "klass": "omega",
+   "stam": "γράφ",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "sg",
+     "form": "γράφει",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 190
+  },
+  {
+   "lemma": "ἐσθίω",
+   "glosa": "äta",
+   "klass": "omega",
+   "stam": "ἐσθί",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "sg",
+     "form": "ἐσθίει",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 157
+  },
+  {
+   "lemma": "κηρύσσω",
+   "glosa": "predika",
+   "klass": "omega",
+   "stam": "κηρύσσ",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 1,
+     "tal": "pl",
+     "form": "κηρύσσομεν",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 61
+  },
+  {
+   "lemma": "λαμβάνω",
+   "glosa": "ta, gripa",
+   "klass": "omega",
+   "stam": "λαμβάν",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "pl",
+     "form": "λαμβάνουσι(ν)",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 258
+  },
+  {
+   "lemma": "παιδεύω",
+   "glosa": "uppfostra",
+   "klass": "omega",
+   "stam": "παιδεύ",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 2,
+     "tal": "sg",
+     "form": "παιδεύεις",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 13
+  },
+  {
+   "lemma": "πέμπω",
+   "glosa": "skicka",
+   "klass": "omega",
+   "stam": "πέμπ",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "sg",
+     "form": "πέμπει",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 79
+  },
+  {
+   "lemma": "εὑρίσκω",
+   "glosa": "finna",
+   "klass": "omega",
+   "stam": "εὑρίσκ",
+   "seminarium": 2,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "pl",
+     "form": "εὑρίσκουσι(ν)",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 176
+  },
+  {
+   "lemma": "πιστεύω",
+   "glosa": "tro (på)",
+   "klass": "omega",
+   "stam": "πιστεύ",
+   "seminarium": 2,
+   "attesterade_former": [],
+   "former_kompletta": false,
+   "not": "Inga former belagda i seminarierna; generera ur mallparadigm + verifiera per verb.",
+   "nt_frekvens": 241
+  },
+  {
+   "lemma": "βαπτίζω",
+   "glosa": "döpa",
+   "klass": "omega",
+   "stam": "βαπτίζ",
+   "seminarium": 2,
+   "attesterade_former": [],
+   "former_kompletta": false,
+   "not": "Inga former belagda i seminarierna; generera ur mallparadigm + verifiera per verb.",
+   "nt_frekvens": 77
+  },
+  {
+   "lemma": "σῴζω",
+   "glosa": "rädda",
+   "klass": "omega",
+   "stam": "σῴζ",
+   "seminarium": 2,
+   "attesterade_former": [],
+   "former_kompletta": false,
+   "not": "Inga former belagda i seminarierna; generera ur mallparadigm + verifiera per verb.",
+   "nt_frekvens": 106
+  },
+  {
+   "lemma": "κλέπτω",
+   "glosa": "stjäla",
+   "klass": "omega",
+   "stam": "κλέπτ",
+   "seminarium": 2,
+   "attesterade_former": [],
+   "former_kompletta": false,
+   "not": "Inga former belagda i seminarierna; generera ur mallparadigm + verifiera per verb.",
+   "nt_frekvens": 13
+  },
+  {
+   "lemma": "ἄγω",
+   "glosa": "leda",
+   "klass": "omega",
+   "stam": "ἄγ",
+   "seminarium": 2,
+   "attesterade_former": [],
+   "former_kompletta": false,
+   "not": "Inga former belagda i seminarierna; generera ur mallparadigm + verifiera per verb.",
+   "nt_frekvens": 68
+  },
+  {
+   "lemma": "φιλέω",
+   "glosa": "älska, gilla",
+   "klass": "kontrakt_e",
+   "stam": "φιλ",
+   "seminarium": 4,
+   "attesterade_former": [
+    {
+     "person": 1,
+     "tal": "sg",
+     "form": "φιλῶ",
+     "kalla": "seminarieövning"
+    },
+    {
+     "person": 2,
+     "tal": "sg",
+     "form": "φιλεῖς",
+     "kalla": "seminarieövning"
+    },
+    {
+     "person": 3,
+     "tal": "sg",
+     "form": "φιλεῖ",
+     "kalla": "seminarieövning"
+    },
+    {
+     "person": 1,
+     "tal": "pl",
+     "form": "φιλοῦμεν",
+     "kalla": "seminarieövning"
+    },
+    {
+     "person": 2,
+     "tal": "pl",
+     "form": "φιλεῖτε",
+     "kalla": "seminarieövning"
+    },
+    {
+     "person": 3,
+     "tal": "pl",
+     "form": "φιλοῦσι(ν)",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 25,
+   "se_paradigm": "par-verb-kontrakt-e"
+  },
+  {
+   "lemma": "ζητέω",
+   "glosa": "söka",
+   "klass": "kontrakt_e",
+   "stam": "ζητ",
+   "seminarium": 4,
+   "attesterade_former": [
+    {
+     "person": 1,
+     "tal": "pl",
+     "form": "ζητοῦμεν",
+     "kalla": "seminarieövning"
+    },
+    {
+     "person": 3,
+     "tal": "pl",
+     "form": "ζητοῦσι(ν)",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 117
+  },
+  {
+   "lemma": "καλέω",
+   "glosa": "kalla",
+   "klass": "kontrakt_e",
+   "stam": "καλ",
+   "seminarium": 4,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "sg",
+     "form": "καλεῖ",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 148
+  },
+  {
+   "lemma": "λαλέω",
+   "glosa": "tala",
+   "klass": "kontrakt_e",
+   "stam": "λαλ",
+   "seminarium": 4,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "pl",
+     "form": "λαλοῦσι(ν)",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 297
+  },
+  {
+   "lemma": "μαρτυρέω",
+   "glosa": "vittna om",
+   "klass": "kontrakt_e",
+   "stam": "μαρτυρ",
+   "seminarium": 4,
+   "attesterade_former": [
+    {
+     "person": 2,
+     "tal": "pl",
+     "form": "μαρτυρεῖτε",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 76
+  },
+  {
+   "lemma": "ποιέω",
+   "glosa": "göra",
+   "klass": "kontrakt_e",
+   "stam": "ποι",
+   "seminarium": 4,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "sg",
+     "form": "ποιεῖ",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 568
+  },
+  {
+   "lemma": "τηρέω",
+   "glosa": "bevaka, bevara",
+   "klass": "kontrakt_e",
+   "stam": "τηρ",
+   "seminarium": 4,
+   "attesterade_former": [
+    {
+     "person": 3,
+     "tal": "sg",
+     "form": "τηρεῖ",
+     "kalla": "seminarieövning"
+    }
+   ],
+   "former_kompletta": false,
+   "not": null,
+   "nt_frekvens": 71
+  },
+  {
+   "lemma": "εἰμί",
+   "glosa": "vara",
+   "klass": "oregelbunden",
+   "stam": null,
+   "seminarium": 4,
+   "attesterade_former": [],
+   "former_kompletta": true,
+   "se_paradigm": "par-verb-eimi",
+   "not": "Fullständigt paradigm (presens+imperfekt) i paradigm-sektionen.",
+   "nt_frekvens": 2456
+  }
+ ],
+ "kongruens": [
+  {
+   "nr": 1,
+   "substantiv": "εἰρήνη",
+   "fras": "ἡ __ εἰρήνη",
+   "kasus": "nominativ",
+   "genus": "femininum",
+   "numerus": "singular",
+   "adjektiv": [
+    {
+     "lemma": "ἀγαθός",
+     "form": "ἀγαθή"
+    },
+    {
+     "lemma": "δίκαιος",
+     "form": "δικαία"
+    }
+   ],
+   "oversattning": "den goda/rättvisa freden",
+   "typ": "kongruens",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 4,
+   "bild": "4__O_vningsblad/4.jpeg"
+  },
+  {
+   "nr": 2,
+   "substantiv": "δοῦλος",
+   "fras": "τοῦ __ δούλου",
+   "kasus": "genitiv",
+   "genus": "maskulinum",
+   "numerus": "singular",
+   "adjektiv": [
+    {
+     "lemma": "ἀγαθός",
+     "form": "ἀγαθοῦ"
+    },
+    {
+     "lemma": "δίκαιος",
+     "form": "δικαίου"
+    }
+   ],
+   "oversattning": "den gode/rättvise slavens",
+   "typ": "kongruens",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 4,
+   "bild": "4__O_vningsblad/4.jpeg"
+  },
+  {
+   "nr": 3,
+   "substantiv": "ἀδελφή",
+   "fras": "τῆς __ ἀδελφῆς",
+   "kasus": "genitiv",
+   "genus": "femininum",
+   "numerus": "singular",
+   "adjektiv": [
+    {
+     "lemma": "ἀγαθός",
+     "form": "ἀγαθῆς"
+    },
+    {
+     "lemma": "δίκαιος",
+     "form": "δικαίας"
+    }
+   ],
+   "oversattning": "den goda/rättvisa systerns",
+   "typ": "kongruens",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 4,
+   "bild": "4__O_vningsblad/4.jpeg"
+  },
+  {
+   "nr": 4,
+   "substantiv": "ἐντολή",
+   "fras": "ταῖς __ ἐντολαῖς",
+   "kasus": "dativ",
+   "genus": "femininum",
+   "numerus": "plural",
+   "adjektiv": [
+    {
+     "lemma": "ἀγαθός",
+     "form": "ἀγαθαῖς"
+    },
+    {
+     "lemma": "δίκαιος",
+     "form": "δικαίαις"
+    }
+   ],
+   "oversattning": "till/åt/för de goda/rättvisa buden",
+   "typ": "kongruens",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 4,
+   "bild": "4__O_vningsblad/4.jpeg"
+  },
+  {
+   "nr": 5,
+   "substantiv": "ἀγάπη",
+   "fras": "τὴν __ ἀγάπην",
+   "kasus": "ackusativ",
+   "genus": "femininum",
+   "numerus": "singular",
+   "adjektiv": [
+    {
+     "lemma": "ἀγαθός",
+     "form": "ἀγαθήν"
+    },
+    {
+     "lemma": "δίκαιος",
+     "form": "δικαίαν"
+    }
+   ],
+   "oversattning": "den goda/rättvisa kärleken",
+   "typ": "kongruens",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 4,
+   "bild": "4__O_vningsblad/4.jpeg"
+  },
+  {
+   "nr": 6,
+   "substantiv": "βασιλεία",
+   "fras": "τῇ __ βασιλείᾳ",
+   "kasus": "dativ",
+   "genus": "femininum",
+   "numerus": "singular",
+   "adjektiv": [
+    {
+     "lemma": "ἀγαθός",
+     "form": "ἀγαθῇ"
+    },
+    {
+     "lemma": "δίκαιος",
+     "form": "δικαίᾳ"
+    }
+   ],
+   "oversattning": "till/åt/för det goda/rättvisa kungadömet",
+   "typ": "kongruens",
+   "seminarium": 4,
+   "kalla": "4__O_vningsblad.pdf",
+   "sida": 4,
+   "bild": "4__O_vningsblad/4.jpeg"
+  }
+ ],
+ "paradigm": [
+  {
+   "id": "par-subst-2dekl-mask",
+   "typ": "paradigm",
+   "kategori": "substantiv",
+   "seminarium": 2,
+   "rubrik": "Andra deklinationen, maskulinum (-ος)",
+   "exempel_lemma": "ἄνθρωπος",
+   "glosa": "människa",
+   "kalla": "2__Breakout_rooms.pdf",
+   "sida": 2,
+   "bild": "2__Breakout_rooms/2.jpeg",
+   "ocksa_i": [
+    "2_Presentation.pdf s33-59",
+    "3__Presentation.pdf",
+    "4__Presentation.pdf"
+   ],
+   "tacks_av_master": "ord.json",
+   "former": {
+    "nom": {
+     "sg": "ἄνθρωπος",
+     "pl": "ἄνθρωποι"
+    },
+    "gen": {
+     "sg": "ἀνθρώπου",
+     "pl": "ἀνθρώπων"
+    },
+    "dat": {
+     "sg": "ἀνθρώπῳ",
+     "pl": "ἀνθρώποις"
+    },
+    "ack": {
+     "sg": "ἄνθρωπον",
+     "pl": "ἀνθρώπους"
+    },
+    "vok": {
+     "sg": "ἄνθρωπε",
+     "pl": "ἄνθρωποι"
+    }
+   },
+   "not": "Vokativ sg (ὦ) ἄνθρωπε, vok pl = nom pl. Former ur ord.json (verifierade mot MorphGNT/LSJ/facit)."
+  },
+  {
+   "id": "par-subst-1dekl-regler",
+   "typ": "paradigm",
+   "kategori": "substantiv",
+   "seminarium": 4,
+   "rubrik": "Första deklinationen — ändelseregler (feminina)",
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 3,
+   "bild": "4__Breakout_rooms/3.jpeg",
+   "referens": "Blomqvist § 53",
+   "tacks_av_master": null,
+   "regler": [
+    {
+     "villkor": "nom.sg. -α efter ε, ι, ρ (ἐκκλησία)",
+     "singular": [
+      "-α",
+      "-ας",
+      "-ᾳ",
+      "-αν",
+      "-α"
+     ],
+     "plural": [
+      "-αι",
+      "-ῶν",
+      "-αις",
+      "-ας",
+      "-αι"
+     ]
+    },
+    {
+     "villkor": "nom.sg. -η (ἀρχή)",
+     "singular": [
+      "-η",
+      "-ης",
+      "-ῃ",
+      "-ην",
+      "-η"
+     ],
+     "plural": [
+      "-αι",
+      "-ῶν",
+      "-αις",
+      "-ας",
+      "-αι"
+     ]
+    },
+    {
+     "villkor": "nom.sg. -α efter annan bokstav än ε, ι, ρ (θάλασσα)",
+     "singular": [
+      "-α",
+      "-ης",
+      "-ῃ",
+      "-αν",
+      "-α"
+     ],
+     "plural": [
+      "-αι",
+      "-ῶν",
+      "-αις",
+      "-ας",
+      "-αι"
+     ]
+    }
+   ],
+   "not": "Kasusordning nom,gen,dat,ack,vok. Gen.pl alltid -ῶν (perispomenon) för substantiv. Verifierad mot facit och Smyth."
+  },
+  {
+   "id": "par-verb-omega-presens",
+   "typ": "paradigm",
+   "kategori": "verb",
+   "seminarium": 2,
+   "rubrik": "ω-verb, presens aktiv indikativ",
+   "exempel_lemma": "λύω",
+   "glosa": "lösa",
+   "kalla": "2__Breakout_rooms.pdf",
+   "sida": 2,
+   "bild": "2__Breakout_rooms/2.jpeg",
+   "tacks_av_master": null,
+   "andelser": {
+    "1sg": "-ω",
+    "2sg": "-εις",
+    "3sg": "-ει",
+    "1pl": "-ομεν",
+    "2pl": "-ετε",
+    "3pl": "-ουσι(ν)"
+   },
+   "betoning": "recessiv (så långt tillbaka som ultiman tillåter)",
+   "former": {
+    "1sg": {
+     "grekiska": "λύω",
+     "svenska": "jag löser"
+    },
+    "2sg": {
+     "grekiska": "λύεις",
+     "svenska": "du löser"
+    },
+    "3sg": {
+     "grekiska": "λύει",
+     "svenska": "han/hon/det löser"
+    },
+    "1pl": {
+     "grekiska": "λύομεν",
+     "svenska": "vi löser"
+    },
+    "2pl": {
+     "grekiska": "λύετε",
+     "svenska": "ni löser"
+    },
+    "3pl": {
+     "grekiska": "λύουσι(ν)",
+     "svenska": "de löser"
+    }
+   },
+   "not": "Stam + ändelse. Rörligt ν i 3pl. Verifierad mot Smyth."
+  },
+  {
+   "id": "par-verb-kontrakt-e",
+   "typ": "paradigm",
+   "kategori": "verb",
+   "seminarium": 4,
+   "rubrik": "Kontraherade verb på -έω, presens aktiv indikativ",
+   "exempel_lemma": "φιλέω",
+   "glosa": "älska, gilla",
+   "kalla": "4__Presentation.pdf",
+   "sida": 50,
+   "bild": "4__Presentation.pdf/50.jpeg",
+   "tacks_av_master": null,
+   "andelser_kontraherade": {
+    "1sg": "-ῶ",
+    "2sg": "-εῖς",
+    "3sg": "-εῖ",
+    "1pl": "-οῦμεν",
+    "2pl": "-εῖτε",
+    "3pl": "-οῦσι(ν)"
+   },
+   "kontraktionsregler": [
+    "ε + ε = ει (φιλέ-ει → φιλεῖ)",
+    "ε + ο = ου (φιλέ-ομεν → φιλοῦμεν)",
+    "ε + lång vokal = lång vokal (φιλέ-ω → φιλῶ)"
+   ],
+   "former_oboja": {
+    "1sg": "φιλέ-ω",
+    "2sg": "φιλέ-εις",
+    "3sg": "φιλέ-ει",
+    "1pl": "φιλέ-ομεν",
+    "2pl": "φιλέ-ετε",
+    "3pl": "φιλέ-ουσι(ν)"
+   },
+   "former": {
+    "1sg": {
+     "grekiska": "φιλῶ",
+     "svenska": "jag älskar"
+    },
+    "2sg": {
+     "grekiska": "φιλεῖς",
+     "svenska": "du älskar"
+    },
+    "3sg": {
+     "grekiska": "φιλεῖ",
+     "svenska": "han/hon/det älskar"
+    },
+    "1pl": {
+     "grekiska": "φιλοῦμεν",
+     "svenska": "vi älskar"
+    },
+    "2pl": {
+     "grekiska": "φιλεῖτε",
+     "svenska": "ni älskar"
+    },
+    "3pl": {
+     "grekiska": "φιλοῦσι(ν)",
+     "svenska": "de älskar"
+    }
+   },
+   "not": "Betoningen faller på kontraktionsstavelsen (cirkumflex). Verifierad mot 4_Presentation s47-52 och Smyth."
+  },
+  {
+   "id": "par-verb-eimi",
+   "typ": "paradigm",
+   "kategori": "verb",
+   "seminarium": 4,
+   "rubrik": "εἰμί (vara) — presens och imperfekt indikativ",
+   "exempel_lemma": "εἰμί",
+   "glosa": "vara",
+   "kalla": "4__Breakout_rooms.pdf",
+   "sida": 2,
+   "bild": "4__Breakout_rooms/2.jpeg",
+   "ocksa_i": [
+    "3__Presentation.pdf s39+",
+    "4__Presentation.pdf s8+"
+   ],
+   "tacks_av_master": null,
+   "former": {
+    "1sg": {
+     "presens": "εἰμί",
+     "imperfekt": [
+      "ἤμην",
+      "ἦν"
+     ],
+     "svenska": "jag är / jag var"
+    },
+    "2sg": {
+     "presens": "εἶ",
+     "imperfekt": [
+      "ἦς",
+      "ἦσθα"
+     ],
+     "svenska": "du är / du var"
+    },
+    "3sg": {
+     "presens": "ἐστί(ν)",
+     "imperfekt": [
+      "ἦν"
+     ],
+     "svenska": "han/hon/det är / var"
+    },
+    "1pl": {
+     "presens": "ἐσμέν",
+     "imperfekt": [
+      "ἦμεν",
+      "ἤμεθα"
+     ],
+     "svenska": "vi är / vi var"
+    },
+    "2pl": {
+     "presens": "ἐστέ",
+     "imperfekt": [
+      "ἦτε"
+     ],
+     "svenska": "ni är / ni var"
+    },
+    "3pl": {
+     "presens": "εἰσί(ν)",
+     "imperfekt": [
+      "ἦσαν"
+     ],
+     "svenska": "de är / de var"
+    }
+   },
+   "not": "Enklitiskt i presens (utom 2sg εἶ); accentuering=uppslagsform. Imperfekt har belagda varianter. Verifierad mot Smyth."
+  }
+ ]
+}
