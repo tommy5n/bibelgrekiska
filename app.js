@@ -1,6 +1,20 @@
 // Bibelgrekiska — skal: hash-router + hubb.
 // Alla spel är nu portade som vy-moduler (vyer/*.js), laddade on demand.
 
+// Versionsstämpel: ärvs från hur app.js laddades (app.js?v=NN i index.html),
+// så en enda bump där slår igenom även på vy-importerna nedan. Ingen SW.
+const V = new URL(import.meta.url).searchParams.get("v") || "";
+const vv = V ? `?v=${V}` : "";
+
+// Städa bort en ev. gammal service worker från tidigare versioner — appen
+// använder ingen SW längre, och en kvarhängande SW skulle servera stale kod.
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.getRegistrations()
+    .then((rs) => rs.forEach((r) => r.unregister())).catch(() => {});
+  if (self.caches) caches.keys()
+    .then((ks) => ks.forEach((k) => caches.delete(k))).catch(() => {});
+}
+
 const SPEL = [
   {
     nr: 1,
@@ -53,14 +67,14 @@ const SPEL = [
 ];
 
 const ROUTES = {
-  "/alfabet": () => import("./vyer/alfabet.js"),
-  "/glosor": () => import("./vyer/glosor.js"),
-  "/kasus": () => import("./vyer/kasus.js"),
-  "/satsanalys": () => import("./vyer/satsanalys.js"),
-  "/kongruens": () => import("./vyer/kongruens.js"),
-  "/lasordning": () => import("./vyer/lasordning.js"),
-  "/andelser": () => import("./vyer/andelser.js"),
-  "/verb": () => import("./vyer/verb.js"),
+  "/alfabet": () => import(`./vyer/alfabet.js${vv}`),
+  "/glosor": () => import(`./vyer/glosor.js${vv}`),
+  "/kasus": () => import(`./vyer/kasus.js${vv}`),
+  "/satsanalys": () => import(`./vyer/satsanalys.js${vv}`),
+  "/kongruens": () => import(`./vyer/kongruens.js${vv}`),
+  "/lasordning": () => import(`./vyer/lasordning.js${vv}`),
+  "/andelser": () => import(`./vyer/andelser.js${vv}`),
+  "/verb": () => import(`./vyer/verb.js${vv}`),
 };
 
 let current = null;
