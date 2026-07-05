@@ -100,6 +100,7 @@ const STYLE = `
 .vy-verb .quickrow{ display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.5rem; }
 .vy-verb .chip{ font-family:"Spectral",serif; font-size:var(--fs-2xs); padding:.3rem .7rem;
   border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink); cursor:pointer; }
+.vy-verb .chip[aria-pressed="true"]{ border-color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); color:var(--gold); }
 .vy-verb .grid{ display:flex; flex-wrap:wrap; gap:.4rem; }
 .vy-verb .toggle{ font-family:"Spectral",serif; font-size:var(--fs-2xs); padding:.35rem .7rem;
   border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
@@ -162,9 +163,9 @@ const MARKUP = `<div class="vy vy-verb">
     <div>
       <h2>Person &amp; numerus</h2>
       <div class="quickrow">
-        <button class="chip" data-pn-all>alla</button>
-        <button class="chip" data-pn-sg>singular</button>
-        <button class="chip" data-pn-pl>plural</button>
+        <button class="chip" data-pn="all">alla</button>
+        <button class="chip" data-pn="sg">singular</button>
+        <button class="chip" data-pn="pl">plural</button>
       </div>
       <div class="grid" id="grid-pn"></div>
     </div>
@@ -193,15 +194,18 @@ export function render(root){
   const $ = id => document.getElementById(id);
   const pick = a => a[Math.floor(Math.random()*a.length)];
   const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
-  const harTempus  = v => !!v.former[state.tempus];
+  const harTempus  = v => state.tempus==="alla" ? Object.keys(v.former).some(t=>TEMPUS[t]) : !!v.former[state.tempus];
+  const tempusFor  = v => state.tempus!=="alla" ? state.tempus : pick(Object.keys(v.former).filter(t=>TEMPUS[t]));
   const aktivaVerb = () => { const v = verb.filter(o => state.valdaVerb.has(o.lemma) && harTempus(o)); return v.length ? v : verb.filter(harTempus); };
   const aktivaPN   = () => { const p = PN_ORDNING.filter(k => state.valdaPN.has(k)); return p.length ? p : PN_ORDNING; };
+  const setEq = (a, b) => a.size === b.size && [...a].every(x => b.has(x));
+  const PN_GRUPPER = { all:PN_ORDNING, sg:["1sg","2sg","3sg"], pl:["1pl","2pl","3pl"] };
 
   function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({
     mode:state.mode, tempus:state.tempus, valdaVerb:[...state.valdaVerb], valdaPN:[...state.valdaPN], best:state.best })); }catch(e){} }
   function ladda(){ try{ const r = JSON.parse(localStorage.getItem(LAGER)); if(!r) return;
     if(r.mode) state.mode = r.mode;
-    if(r.tempus && TEMPUS[r.tempus]) state.tempus = r.tempus;
+    if(r.tempus && (TEMPUS[r.tempus] || r.tempus==="alla")) state.tempus = r.tempus;
     if(Array.isArray(r.valdaVerb)) state.valdaVerb = new Set(r.valdaVerb.filter(l => verb.some(v=>v.lemma===l)));
     if(Array.isArray(r.valdaPN))   state.valdaPN   = new Set(r.valdaPN.filter(k => PN_ORDNING.includes(k)));
     if(typeof r.best === "number") state.best = r.best;
@@ -223,13 +227,13 @@ export function render(root){
   }
 
   function newQuestion(){
-    const vs = aktivaVerb(), ps = aktivaPN(), t = state.tempus;
-    let v, k, sig, n=0;
-    do { v = pick(vs); k = pick(ps); sig = v.lemma+"|"+k; } while(sig === state.forra && ++n < 30);
+    const vs = aktivaVerb(), ps = aktivaPN();
+    let v, k, t, sig, n=0;
+    do { v = pick(vs); k = pick(ps); t = tempusFor(v); sig = v.lemma+"|"+k+"|"+t; } while(sig === state.forra && ++n < 30);
     state.forra = sig;
     const rätta = new Set(accepterade(v, t, k));
     state.card = {
-      lemma: v.lemma, glosa: v.glosa, pn: k,
+      lemma: v.lemma, glosa: v.glosa, pn: k, tempus: t,
       form: v.former[t][k], varianter: variantformer(v, t, k), rätta,
       optioner: state.mode === "flerval" ? byggOptioner(v, t, rätta) : null,
     };
@@ -241,7 +245,8 @@ export function render(root){
     const c = state.card;
     $("prompt").textContent = c.lemma;
     $("glosa").textContent = c.glosa;
-    $("target").innerHTML = "→ <b>" + PN[c.pn].namn + "</b> (" + PN[c.pn].pron + ")";
+    const tp = state.tempus==="alla" ? "<b>" + TEMPUS[c.tempus] + "</b> · " : "";
+    $("target").innerHTML = "→ " + tp + "<b>" + PN[c.pn].namn + "</b> (" + PN[c.pn].pron + ")";
     $("streak").textContent = state.streak;
     $("best").textContent = state.best;
 
@@ -262,7 +267,7 @@ export function render(root){
   function visaSvar(){
     const c = state.card;
     $("svar").textContent = c.form;
-    let label = c.lemma + " · " + PN[c.pn].namn;
+    let label = c.lemma + (state.tempus==="alla" ? " · " + TEMPUS[c.tempus] : "") + " · " + PN[c.pn].namn;
     if(c.varianter.length) label += " · äv. " + c.varianter.join(", ");
     $("svarlabel").textContent = label;
     $("reveal").classList.remove("hidden");
@@ -285,9 +290,9 @@ export function render(root){
 
   function byggGridTempus(){
     const g = $("grid-tempus"); g.innerHTML = "";
-    TEMPUS_ORDNING.forEach(t => {
+    [...TEMPUS_ORDNING, "alla"].forEach(t => {
       const b = document.createElement("button");
-      b.className="toggle"; b.textContent=TEMPUS[t];
+      b.className="toggle"; b.textContent = t==="alla" ? "alla" : TEMPUS[t];
       b.setAttribute("aria-pressed", state.tempus===t);
       b.onclick = () => { state.tempus=t; byggGridTempus(); byggGridVerb(); uppdateraSub(); spara(); newQuestion(); };
       g.appendChild(b);
@@ -303,9 +308,10 @@ export function render(root){
       if(!finns) b.setAttribute("aria-label", v.lemma + " (saknar " + TEMPUS[state.tempus] + ")");
       b.setAttribute("aria-pressed", finns && state.valdaVerb.has(v.lemma));
       b.onclick = () => { state.valdaVerb.has(v.lemma)?state.valdaVerb.delete(v.lemma):state.valdaVerb.add(v.lemma);
-        b.setAttribute("aria-pressed", state.valdaVerb.has(v.lemma)); spara(); newQuestion(); };
+        b.setAttribute("aria-pressed", state.valdaVerb.has(v.lemma)); uppdateraVerbChips(); spara(); newQuestion(); };
       g.appendChild(b);
     });
+    uppdateraVerbChips();
   }
   function byggGridPN(){
     const g = $("grid-pn"); g.innerHTML = "";
@@ -314,13 +320,21 @@ export function render(root){
       b.className="toggle"; b.textContent=PN[k].pron; b.setAttribute("aria-label", PN[k].namn);
       b.setAttribute("aria-pressed", state.valdaPN.has(k));
       b.onclick = () => { state.valdaPN.has(k)?state.valdaPN.delete(k):state.valdaPN.add(k);
-        b.setAttribute("aria-pressed", state.valdaPN.has(k)); spara(); newQuestion(); };
+        b.setAttribute("aria-pressed", state.valdaPN.has(k)); uppdateraPNChips(); spara(); newQuestion(); };
       g.appendChild(b);
     });
+    uppdateraPNChips();
   }
   function uppdateraLäge(){ $("mode-vand").setAttribute("aria-pressed", state.mode==="vand");
     $("mode-flerval").setAttribute("aria-pressed", state.mode==="flerval"); }
-  function uppdateraSub(){ $("sub").textContent = "Uppslagsform + person och numerus. Ge den rätta " + TEMPUS[state.tempus] + "formen."; }
+  function uppdateraSub(){ $("sub").textContent = state.tempus==="alla"
+    ? "Uppslagsform + tempus, person och numerus. Ge den rätta formen."
+    : "Uppslagsform + person och numerus. Ge den rätta " + TEMPUS[state.tempus] + "formen."; }
+  // Guldram på den kvickvals-chip vars grupp exakt motsvarar nuvarande urval (annars ingen).
+  function uppdateraVerbChips(){ document.querySelectorAll("[data-lek]").forEach(b =>
+    b.setAttribute("aria-pressed", setEq(state.valdaVerb, new Set(LEKAR[b.dataset.lek] || [])))); }
+  function uppdateraPNChips(){ document.querySelectorAll("[data-pn]").forEach(b =>
+    b.setAttribute("aria-pressed", setEq(state.valdaPN, new Set(PN_GRUPPER[b.dataset.pn] || [])))); }
 
   $("mode-vand").onclick    = () => { state.mode="vand"; uppdateraLäge(); spara(); newQuestion(); };
   $("mode-flerval").onclick = () => { state.mode="flerval"; uppdateraLäge(); spara(); newQuestion(); };
@@ -333,9 +347,8 @@ export function render(root){
 
   document.querySelectorAll("[data-lek]").forEach(b => b.onclick = () => {
     state.valdaVerb = new Set(LEKAR[b.dataset.lek] || []); byggGridVerb(); spara(); newQuestion(); });
-  document.querySelector("[data-pn-all]").onclick = () => { state.valdaPN=new Set(PN_ORDNING); byggGridPN(); spara(); newQuestion(); };
-  document.querySelector("[data-pn-sg]").onclick  = () => { state.valdaPN=new Set(["1sg","2sg","3sg"]); byggGridPN(); spara(); newQuestion(); };
-  document.querySelector("[data-pn-pl]").onclick  = () => { state.valdaPN=new Set(["1pl","2pl","3pl"]); byggGridPN(); spara(); newQuestion(); };
+  document.querySelectorAll("[data-pn]").forEach(b => b.onclick = () => {
+    state.valdaPN = new Set(PN_GRUPPER[b.dataset.pn] || PN_ORDNING); byggGridPN(); spara(); newQuestion(); });
 
   __vh = e => {
     if(e.code==="Space" && state.mode==="vand" && !state.besvarad){ e.preventDefault(); state.besvarad=true; render2(); }
