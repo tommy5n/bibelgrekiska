@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+
+# Kör vid push till main, eller manuellt via "Run workflow"-knappen i Actions.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Rättigheter som actions/deploy-pages behöver.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# En omsprungen deploy AVBRYTS rent (cancelled) i stället för att bli röd failure.
+# Den senaste utrullningen vinner alltid.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        # Statisk sajt: ladda upp hela repo-roten som den serveras idag.
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
