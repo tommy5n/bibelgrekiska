@@ -97,12 +97,6 @@ body {
 .app-bar .hem:hover {
   text-decoration: underline;
 }
-.app-bar .wordmark {
-  font-weight: 600;
-  color: var(--ink-soft);
-  font-size: var(--fs-sm);
-  letter-spacing: 0.02em;
-}
 #vy {
   max-width: 640px;
   margin: 0 auto;
