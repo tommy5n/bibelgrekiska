@@ -1,6 +1,6 @@
 {
  "_om": "Lexikon for bibelgrekiska kasus-spel. Andra deklinationens substantiv: maskulina (-ος) och neutrala (-ον). Alla former verifierade mot seminariets facit, NT-attestationer (MorphGNT) och LSJ.",
- "_genererad": "2026-06-27",
+ "_genererad": "2026-07-07",
  "_falt": {
   "glosaGen": "Svensk genitiv (explicit dar -s-regeln inte racker, t.ex. Kristus -> Kristi)",
   "accenttyp": "oxyton | paroxyton | proparoxyton | properispomenon",
@@ -15,7 +15,9 @@
   "sem2": "Seminarium 2 (deklinationslektion)",
   "ovriga": "Hogfrekventa NT-ord (>60 ggr), ej i seminarielistorna",
   "oxytona": "Accent pa sista stavelsen -> cirkumflex i genitiv/dativ",
-  "neutrum": "Andra deklinationens neutrala substantiv (-ον), seminarium 3"
+  "neutrum": "Andra deklinationens neutrala substantiv (-ον), seminarium 3",
+  "feminina2dekl": "Andra deklinationens feminina substantiv (-ος men feminint genus): ἡ νόσος, ἡ ὁδός, ἡ ἔρημος, ἡ παρθένος (seminarium 5)",
+  "maskulina1dekl": "Första deklinationens maskulina substantiv (-ης/-ας): ὁ μαθητής, ὁ προφήτης, ὁ νεανίας, ὁ οἰκοδεσπότης (seminarium 5)"
  },
  "ord": [
   {
@@ -2021,6 +2023,511 @@
     }
    },
    "glosaGenPl": "havs, sjöars"
+  },
+  {
+   "lemma": "νόσος",
+   "glosa": "sjukdom",
+   "glosaGen": "sjukdoms",
+   "glosaPl": "sjukdomar",
+   "genus": "femininum",
+   "deklination": 2,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "feminina2dekl"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "νόσος",
+     "pl": "νόσοι"
+    },
+    "gen": {
+     "sg": "νόσου",
+     "pl": "νόσων"
+    },
+    "dat": {
+     "sg": "νόσῳ",
+     "pl": "νόσοις"
+    },
+    "ack": {
+     "sg": "νόσον",
+     "pl": "νόσους"
+    },
+    "vok": {
+     "sg": "νόσε",
+     "pl": "νόσοι"
+    }
+   },
+   "not": "Andra deklinationen men feminint genus (ἡ νόσος). Böjs som maskulint -ος-substantiv; genus syns på artikeln."
+  },
+  {
+   "lemma": "ὁδός",
+   "glosa": "väg",
+   "glosaGen": "vägs",
+   "glosaPl": "vägar",
+   "genus": "femininum",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "feminina2dekl",
+    "oxytona"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "ὁδός",
+     "pl": "ὁδοί"
+    },
+    "gen": {
+     "sg": "ὁδοῦ",
+     "pl": "ὁδῶν"
+    },
+    "dat": {
+     "sg": "ὁδῷ",
+     "pl": "ὁδοῖς"
+    },
+    "ack": {
+     "sg": "ὁδόν",
+     "pl": "ὁδούς"
+    },
+    "vok": {
+     "sg": "ὁδέ",
+     "pl": "ὁδοί"
+    }
+   },
+   "not": "Andra deklinationen, feminint genus (ἡ ὁδός). Oxyton → cirkumflex i gen/dat."
+  },
+  {
+   "lemma": "ἔρημος",
+   "glosa": "öken",
+   "glosaGen": "öknens",
+   "glosaPl": "öknar",
+   "genus": "femininum",
+   "deklination": 2,
+   "accenttyp": "proparoxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "feminina2dekl"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "ἔρημος",
+     "pl": "ἔρημοι"
+    },
+    "gen": {
+     "sg": "ἐρήμου",
+     "pl": "ἐρήμων"
+    },
+    "dat": {
+     "sg": "ἐρήμῳ",
+     "pl": "ἐρήμοις"
+    },
+    "ack": {
+     "sg": "ἔρημον",
+     "pl": "ἐρήμους"
+    },
+    "vok": {
+     "sg": "ἔρημε",
+     "pl": "ἔρημοι"
+    }
+   },
+   "not": "Substantiverat adjektiv (ἡ ἔρημος, \"öken\"); andra deklinationen, feminint genus."
+  },
+  {
+   "lemma": "παρθένος",
+   "glosa": "flicka, jungfru",
+   "glosaGen": "flickas",
+   "glosaPl": "flickor",
+   "genus": "femininum",
+   "deklination": 2,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "feminina2dekl"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "παρθένος",
+     "pl": "παρθένοι"
+    },
+    "gen": {
+     "sg": "παρθένου",
+     "pl": "παρθένων"
+    },
+    "dat": {
+     "sg": "παρθένῳ",
+     "pl": "παρθένοις"
+    },
+    "ack": {
+     "sg": "παρθένον",
+     "pl": "παρθένους"
+    },
+    "vok": {
+     "sg": "παρθένε",
+     "pl": "παρθένοι"
+    }
+   },
+   "not": "Andra deklinationen, feminint genus (ἡ παρθένος). (B § 60.2)"
+  },
+  {
+   "lemma": "μαθητής",
+   "glosa": "lärjunge, elev",
+   "glosaGen": "lärjunges",
+   "glosaPl": "lärjungar",
+   "genus": "maskulinum",
+   "deklination": 1,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "maskulina1dekl",
+    "oxytona"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "μαθητής",
+     "pl": "μαθηταί"
+    },
+    "gen": {
+     "sg": "μαθητοῦ",
+     "pl": "μαθητῶν"
+    },
+    "dat": {
+     "sg": "μαθητῇ",
+     "pl": "μαθηταῖς"
+    },
+    "ack": {
+     "sg": "μαθητήν",
+     "pl": "μαθητάς"
+    },
+    "vok": {
+     "sg": "μαθητά",
+     "pl": "μαθηταί"
+    }
+   },
+   "not": "Första deklinationen, maskulint genus, η-typ (B § 57). Verifierad mot seminariets tabell."
+  },
+  {
+   "lemma": "προφήτης",
+   "glosa": "profet",
+   "glosaGen": "profets",
+   "glosaPl": "profeter",
+   "genus": "maskulinum",
+   "deklination": 1,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "maskulina1dekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "προφήτης",
+     "pl": "προφῆται"
+    },
+    "gen": {
+     "sg": "προφήτου",
+     "pl": "προφητῶν"
+    },
+    "dat": {
+     "sg": "προφήτῃ",
+     "pl": "προφήταις"
+    },
+    "ack": {
+     "sg": "προφήτην",
+     "pl": "προφήτας"
+    },
+    "vok": {
+     "sg": "προφῆτα",
+     "pl": "προφῆται"
+    }
+   },
+   "not": "Första deklinationen, maskulint genus, η-typ (B § 57). Vokativ προφῆτα belagd i övningsblad 5:5."
+  },
+  {
+   "lemma": "νεανίας",
+   "glosa": "yngling",
+   "glosaGen": "ynglings",
+   "glosaPl": "ynglingar",
+   "genus": "maskulinum",
+   "deklination": 1,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "maskulina1dekl"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "νεανίας",
+     "pl": "νεανίαι"
+    },
+    "gen": {
+     "sg": "νεανίου",
+     "pl": "νεανιῶν"
+    },
+    "dat": {
+     "sg": "νεανίᾳ",
+     "pl": "νεανίαις"
+    },
+    "ack": {
+     "sg": "νεανίαν",
+     "pl": "νεανίας"
+    },
+    "vok": {
+     "sg": "νεανία",
+     "pl": "νεανίαι"
+    }
+   },
+   "not": "Första deklinationen, maskulint genus, α-typ (gen sg -ου) (B § 57)."
+  },
+  {
+   "lemma": "οἰκοδεσπότης",
+   "glosa": "husbonde",
+   "glosaGen": "husbondes",
+   "glosaPl": "husbönder",
+   "genus": "maskulinum",
+   "deklination": 1,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "maskulina1dekl"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "οἰκοδεσπότης",
+     "pl": "οἰκοδεσπόται"
+    },
+    "gen": {
+     "sg": "οἰκοδεσπότου",
+     "pl": "οἰκοδεσποτῶν"
+    },
+    "dat": {
+     "sg": "οἰκοδεσπότῃ",
+     "pl": "οἰκοδεσπόταις"
+    },
+    "ack": {
+     "sg": "οἰκοδεσπότην",
+     "pl": "οἰκοδεσπότας"
+    },
+    "vok": {
+     "sg": "οἰκοδέσποτα",
+     "pl": "οἰκοδεσπόται"
+    }
+   },
+   "not": "Första deklinationen, maskulint genus, η-typ (B § 57). Vokativ recessiv (οἰκοδέσποτα), som δεσπότης → δέσποτα."
+  },
+  {
+   "lemma": "κώμη",
+   "glosa": "by",
+   "glosaGen": "bys",
+   "glosaPl": "byar",
+   "genus": "femininum",
+   "deklination": 1,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "feminina"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "κώμη",
+     "pl": "κῶμαι"
+    },
+    "gen": {
+     "sg": "κώμης",
+     "pl": "κωμῶν"
+    },
+    "dat": {
+     "sg": "κώμῃ",
+     "pl": "κώμαις"
+    },
+    "ack": {
+     "sg": "κώμην",
+     "pl": "κώμας"
+    },
+    "vok": {
+     "sg": "κώμη",
+     "pl": "κῶμαι"
+    }
+   }
+  },
+  {
+   "lemma": "δόξα",
+   "glosa": "härlighet",
+   "glosaGen": "härlighets",
+   "glosaPl": "härligheter",
+   "genus": "femininum",
+   "deklination": 1,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "feminina"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "δόξα",
+     "pl": "δόξαι"
+    },
+    "gen": {
+     "sg": "δόξης",
+     "pl": "δοξῶν"
+    },
+    "dat": {
+     "sg": "δόξῃ",
+     "pl": "δόξαις"
+    },
+    "ack": {
+     "sg": "δόξαν",
+     "pl": "δόξας"
+    },
+    "vok": {
+     "sg": "δόξα",
+     "pl": "δόξαι"
+    }
+   },
+   "not": "Första deklinationen, α efter σ (ej ε/ι/ρ) → blandtyp: -α/-ης/-ῃ/-αν/-α i singular (som θάλασσα)."
+  },
+  {
+   "lemma": "λίθος",
+   "glosa": "sten",
+   "glosaGen": "stens",
+   "glosaPl": "stenar",
+   "genus": "maskulinum",
+   "deklination": 2,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "ovriga"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "λίθος",
+     "pl": "λίθοι"
+    },
+    "gen": {
+     "sg": "λίθου",
+     "pl": "λίθων"
+    },
+    "dat": {
+     "sg": "λίθῳ",
+     "pl": "λίθοις"
+    },
+    "ack": {
+     "sg": "λίθον",
+     "pl": "λίθους"
+    },
+    "vok": {
+     "sg": "λίθε",
+     "pl": "λίθοι"
+    }
+   }
+  },
+  {
+   "lemma": "δαιμόνιον",
+   "glosa": "demon",
+   "glosaGen": "demons",
+   "glosaPl": "demoner",
+   "genus": "neutrum",
+   "deklination": 2,
+   "accenttyp": "proparoxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "neutrum"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "δαιμόνιον",
+     "pl": "δαιμόνια"
+    },
+    "gen": {
+     "sg": "δαιμονίου",
+     "pl": "δαιμονίων"
+    },
+    "dat": {
+     "sg": "δαιμονίῳ",
+     "pl": "δαιμονίοις"
+    },
+    "ack": {
+     "sg": "δαιμόνιον",
+     "pl": "δαιμόνια"
+    },
+    "vok": {
+     "sg": "δαιμόνιον",
+     "pl": "δαιμόνια"
+    }
+   }
+  },
+  {
+   "lemma": "φίλος",
+   "glosa": "vän",
+   "glosaGen": "väns",
+   "glosaPl": "vänner",
+   "genus": "maskulinum",
+   "deklination": 2,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "ovriga"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "φίλος",
+     "pl": "φίλοι"
+    },
+    "gen": {
+     "sg": "φίλου",
+     "pl": "φίλων"
+    },
+    "dat": {
+     "sg": "φίλῳ",
+     "pl": "φίλοις"
+    },
+    "ack": {
+     "sg": "φίλον",
+     "pl": "φίλους"
+    },
+    "vok": {
+     "sg": "φίλε",
+     "pl": "φίλοι"
+    }
+   }
   }
  ]
 }

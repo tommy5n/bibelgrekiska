@@ -1,6 +1,6 @@
 {
  "_om": "Seminariearkiv för Bibelgrekiska I (SU 2026). Extraherat ur seminariernas PDF:er (zip-arkiv med JPEG + textsidecar per sida). 'index' är det trogna arkivet (ämneskarta + full sidtext + bildsökväg). 'glosor', 'satser', 'verb', 'kongruens' och 'paradigm' är strukturerade vyer för att mata spelen. Masterfilerna (ord.json, glosor.json, adjektiv.json, nt-lemman.json) är sanningskälla; denna fil dubblerar dem inte utan pekar via 'tacks_av_master'/'i_glosor_master'. Verb-sektionen är avsiktligt formad efter ord.json så den kan lyftas till en framtida verb.json-master.",
- "_genererad": "2026-07-04",
+ "_genererad": "2026-07-07",
  "_verifiering": "Grekiska former kommer ur PDF:ernas textlager (rent, ej OCR). Övningsformer korskördes mot ord.json/adjektiv.json (grav→akut- och versalnormaliserat); enda äkta avvikelsen var ett facit-typo (κύριου→κυρίου). Vid diff gäller offentlig/vettad grekiska (nt-lemman/MorphGNT, LSJ, Smyth); avvikelser flaggas, skrivs ej över. Verbparadigm auto-genereras EJ — mallparadigm (λύω, φιλέω, εἰμί) och belagda övningsformer lagras verifierade; övriga verbformer ska genereras + verifieras per verb när verbspelet byggs (accenter är inte mekaniska).",
  "_avvikelser": [
   {
@@ -9,6 +9,22 @@
    "not": "Genitiv av κύριος. Lång ultima (-ου) tvingar accenten till penultima → κυρίου; uppgiftssidan (s.1) har rätt form. Verifierad mot nt-lemman och accentregel (Smyth).",
    "facit_har": "κύριου",
    "kalla": "2__O_vningsblad.pdf",
+   "sida": 2
+  },
+  {
+   "korrekt": "σῴζω / σῴζεις",
+   "typ": "ortografi",
+   "not": "Övningsblad 5 skriver σώζεις utan iota subscriptum; standardformen har ζῳ (σῴζω).",
+   "facit_har": "σώζεις",
+   "kalla": "5__O_vningsblad.pdf",
+   "sida": 1
+  },
+  {
+   "korrekt": "De tror inte på oss (ἡμῖν)",
+   "typ": "översättningsfel",
+   "not": "Breakout 3:5 facit översätter ἡμῖν med 'på er'; ἡμῖν är dativ pl 1:a person = 'på oss'.",
+   "facit_har": "De tror ej på er",
+   "kalla": "5__Breakout_rooms.pdf",
    "sida": 2
   }
  ],
@@ -98,6 +114,36 @@
    "seminarium": null,
    "typ": "frekvenslista",
    "antal_sidor": 5
+  },
+  {
+   "kalla": "5__Presentation.pdf",
+   "seminarium": 5,
+   "typ": "presentation",
+   "antal_sidor": 69
+  },
+  {
+   "kalla": "5__O_vningsblad.pdf",
+   "seminarium": 5,
+   "typ": "ovningsblad",
+   "antal_sidor": 6
+  },
+  {
+   "kalla": "5__Breakout_rooms.pdf",
+   "seminarium": 5,
+   "typ": "breakout",
+   "antal_sidor": 2
+  },
+  {
+   "kalla": "5__Paragrafer.pdf",
+   "seminarium": 5,
+   "typ": "paragrafer",
+   "antal_sidor": 1
+  },
+  {
+   "kalla": "5__Kursoversikt.pdf",
+   "seminarium": 5,
+   "typ": "kursoversikt",
+   "antal_sidor": 1
   }
  ],
  "index": [
@@ -1914,6 +1960,648 @@
      "text": "πρόσωπον (τό) substantiv ansikte, själva personen\nπροφήτης (ὁ) substantiv profet\nπρῶτος -η –ον adj. först\nπῦρ πυρός (τό) substantiv eld\nπῶς interrogativt adv. hur\nσάρξ σαρκός (ἡ) substantiv kött, kropp\nσημεῖον (τό) substantiv tecken\nστόμα (τό) substantiv mun\nσύ pronomen du\nσύν preposition + dat. med, jämte\nσυναγωγή (ἡ) substantiv samlingställe, synagog\nσῴζω verb rädda, hjälpa, bevara\nσῶμα (τό) substantiv kropp\nτε partikel och (vidhängd/enklitisk ptk, binder satsdelar)\nτέκνον (τό) substantiv barn\nτηρέω verb iaktta, bevaka, bevara\nτίθημι verb ställa, lägga, sätta\nτίς, τί interrogativt pronomen vem (vilken) vad (vilket)\nτις, τι indefinit pronomen någon, något\nτόπος (ὁ) substantiv plats, ställe, ort\nτότε adverb då, därpå\nτρεῖς (neutr. τρία) räkneord tre\nὕδωρ, ὕδατος (τό) substantiv vatten\nυἱός (ὁ) substantiv son\nὑμεῖς pronomen ni\nὑπάγω verb gå (föra) bort, gå\nὑπέρ preposition + gen. över, för, i st f, + ack. över, mer än\nὑπό preposition + gen. av, genom, + ack. under\nφαρισαῖος (ὁ) substantiv farisé\nφοβέομαι verb frukta\nφωνή (ἡ) substantiv röst, ljud\nφῶς φωτός (τό) substantiv ljus\nχαίρω verb gläjda sig, vara glad, må väl\nχάρις -ιτος (ἡ), ack. χάριν substantiv nåd, gunst, tack\nχείρ, χειρός (ἡ) substantiv hand\nΧριστός (ὁ) substantiv Kristus (messias)\nψυχή (ἡ) substantiv själ\nὧδε pronominaladverb härvid, hit, här, så här\nὥρα (ἡ) substantiv tid, stund, timme, tidpunkt\nὡς pronominaladverb / partikel såsom m.m.\nὥστε partikel så att, att, därför"
     }
    ]
+  },
+  {
+   "kalla": "5__Presentation.pdf",
+   "seminarium": 5,
+   "typ": "presentation",
+   "antal_sidor": 69,
+   "amneskarta": [
+    {
+     "nr": 1,
+     "titel": "Den bestämda artikeln",
+     "start_slide": 4,
+     "slut_slide": 13
+    },
+    {
+     "nr": 2,
+     "titel": "Substantiv: första och andra deklinationen",
+     "start_slide": 14,
+     "slut_slide": 22
+    },
+    {
+     "nr": 3,
+     "titel": "Adjektiv efter första och andra deklinationen",
+     "start_slide": 23,
+     "slut_slide": 29
+    },
+    {
+     "nr": 4,
+     "titel": "Tillägg till substantiv och adjektiv",
+     "start_slide": 30,
+     "slut_slide": 41
+    },
+    {
+     "nr": 5,
+     "titel": "Prepositioner",
+     "start_slide": 42,
+     "slut_slide": 48
+    },
+    {
+     "nr": 6,
+     "titel": "Negationen οὐ",
+     "start_slide": 49,
+     "slut_slide": 56
+    },
+    {
+     "nr": 7,
+     "titel": "Pronomen: personliga pronomen ἐγώ, σύ",
+     "start_slide": 57,
+     "slut_slide": 67
+    }
+   ],
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Bibelgrekiska 1:5\n7 juli 2026: oskar.andersson@su.se"
+    },
+    {
+     "sida": 2,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Innehåll: \nBibelgrekiska 1:5\n1. Repetition: substantiv av första och andra \ndeklinationen\n2. Repetition: adjektiv av första och andra \ndeklinationen\n3. Tillägg till substantiv och adjektiv \n4. Prepositioner\n5. Negationen οὐ\n6. Ordklass: pronomen\n7. Personliga pronomen i grekiskan: ἐγώ, σύ"
+    },
+    {
+     "sida": 3,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Vad har vi lärt \noss hittills?\n• Den bestämda artikeln i alla former (B § 51)\n• Substantiv: Första deklinationen och andra \ndeklinationen (§ 54)\n• Adjektiv som böjs efter första och andra \ndeklinationen (§ 99)"
+    },
+    {
+     "sida": 4,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "1. Den bestämda artikeln"
+    },
+    {
+     "sida": 5,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Den bestämda artikeln (B § 51)\nmask. sg. fem. sg. neutr. sg. mask. pl. fem. pl. neutr. pl.\nnom. ὁ ἡ τό οἱ αἱ τά\ngen. τοῦ τῆς τοῦ τῶν τῶν τῶν\ndat. τῷ τῇ τῷ τοῖς ταῖς τοῖς\nack. τόν τήν τό τούς τάς τά"
+    },
+    {
+     "sida": 6,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Den bestämda artikeln\nMönster i ändelserna:\n1. τῶν alltid genitiv plural, oavsett genus \nτῶν ἀδελφῶν\nτῶν ἔργων\nτῶν ἐκκλησιῶν"
+    },
+    {
+     "sida": 7,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Den bestämda artikeln\nmask. sg. fem. sg. neutr. sg. mask. pl. fem. pl. neutr. pl.\nnom. ὁ ἡ τό οἱ αἱ τά\ngen. τοῦ τῆς τοῦ τῶν τῶν τῶν\ndat. τῷ τῇ τῷ τοῖς ταῖς τοῖς\nack. τόν τήν τό τούς τάς τά"
+    },
+    {
+     "sida": 8,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Den bestämda artikeln\nMönster i ändelserna\n2. τοῖς alltid dativ pl. mask./neutr. (τοῖς ἀδελφοῖς)\n3. ταῖς alltid dativ pl. fem. (ταῖς ἐντολαῖς)"
+    },
+    {
+     "sida": 9,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Den bestämda artikeln\nmask. sg. fem. sg. neutr. sg. mask. pl. fem. pl. neutr. pl.\nnom. ὁ ἡ τό οἱ αἱ τά\ngen. τοῦ τῆς τοῦ τῶν τῶν τῶν\ndat. τῷ τῇ τῷ τοῖς ταῖς τοῖς\nack. τόν τήν τό τούς τάς τά"
+    },
+    {
+     "sida": 10,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Den bestämda artikeln\nMönster i ändelserna\n4. τόν alltid ack. mask. sg. (τὸν οἶκον)\n5. τήν alltid ack. fem. sg. (τὴν ἐντολήν)"
+    },
+    {
+     "sida": 11,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Den bestämda artikeln\nmask. sg. fem. sg. neutr. sg. mask. pl. fem. pl. neutr. pl.\nnom. ὁ ἡ τό οἱ αἱ τά\ngen. τοῦ τῆς τοῦ τῶν τῶν τῶν\ndat. τῷ τῇ τῷ τοῖς ταῖς τοῖς\nack. τόν τήν τό τούς τάς τά"
+    },
+    {
+     "sida": 12,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Den bestämda artikeln\nMönster i ändelserna\n6. τῷ (iota subscriptum) alltid dat. mask. sg. (τῷ οἴκῳ)\n7. τῇ (iota subscriptum) alltid dat. fem. sg. (τῇ ἐκκλεσίᾳ)"
+    },
+    {
+     "sida": 13,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Den bestämda artikeln\nmask. sg. fem. sg. neutr. sg. mask. pl. fem. pl. neutr. pl.\nnom. ὁ ἡ τό οἱ αἱ τά\ngen. τοῦ τῆς τοῦ τῶν τῶν τῶν\ndat. τῷ τῇ τῷ τοῖς ταῖς τοῖς\nack. τόν τήν τό τούς τάς τά"
+    },
+    {
+     "sida": 14,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "2. Substantiv: första (B §\n53-54) och andra \ndeklinationen § 61-64)"
+    },
+    {
+     "sida": 15,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Sammanfattning\n1:a gruppen: Alla feminina substantiv av första deklinationen som i nom. sg. slutar\npå ett α som föregås av ε, ι, ρ (ἐκκλησία) har -α, -ας, -ᾳ, -αν, -α i singular och -αι, -\nῶν, -αις, -ας, -αι i plural."
+    },
+    {
+     "sida": 16,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ ἐκκλησία kyrka\nkasus best. art. subst. sg. best. art. subst. pl.\nnominativ ἡ ἐκκλησί-α αἱ ἐκκλησί-αι\ngenitiv τῆς ἐκκλησί-ας τῶν ἐκκλησι-ῶν\ndativ τῇ ἐκκλησί-ᾳ ταῖς ἐκκλησί-αις\nackusativ τὴν ἐκκλησί-αν τὰς ἐκκλησί-ας\nvokativ (ὦ) ἐκκλησί-α (ὦ) ἐκκλησί-αι"
+    },
+    {
+     "sida": 17,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Sammanfattning\n2:a gruppen: Alla feminina substantiv av första deklinationen som i nom. sg. slutar\npå ett η (som ἀρχή) har -η, -ης, -ῃ, -ην, -η i singular men -αι, -ῶν, -αις, -ας, -αι i\nplural."
+    },
+    {
+     "sida": 18,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ ἀρχή begynnelse\nkasus best. art. subst. sg. best. art. subst. pl.\nnominativ ἡ ἀρχ-ή αἱ ἀρχ-αί\ngenitiv τῆς ἀρχ-ῆς τῶν ἀρχ-ῶν\ndativ τῇ ἀρχ-ῇ ταῖς ἀρχ-αῖς\nackusativ τὴν ἀρχ-ήν τὰς ἀρχ-ᾶς\nvokativ (ὦ) ἀρχ-ή (ὦ) ἀρχ-αί"
+    },
+    {
+     "sida": 19,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Sammanfattning\n3:e gruppen: Om ett feminint substantiv av första deklinationen i nom. sg. slutar på\n-α och föregås av en annan bokstav än ε, ι, eller ρ (som θάλασσα), så har det -α, -\nης, -ῃ, -αν, -α i singular och -αι, -ῶν, -αις, -ας, -αι i plural."
+    },
+    {
+     "sida": 20,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ θάλασσα hav\nkasus best. art. subst. sg. best. art. subst. pl.\nnominativ ἡ θάλασσ-α αἱ θάλασσ-αι\ngenitiv τῆς θαλάσσ-ης τῶν θαλασσ-ῶν\ndativ τῇ θαλάσσ-ῃ ταῖς θαλάσσ-αις\nackusativ τὴν θάλασσ-αν τὰς θαλάσσ-ας\nvokativ (ὦ) θάλασσ-α (ὦ) θάλασσ-αι"
+    },
+    {
+     "sida": 21,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ ἄνθρωπος människan\nkasus best. art. sg. subst. sg. best. art. sg. subst. plural\nnominativ ὁ ἄνθρωπ-ος οἱ ἄνθρωπ-οι\ngenitiv τοῦ ἀνθρώπ-ου τῶν ἀνθρώπ-ων\ndativ τῷ ἀνθρώπ-ῳ τοῖς ἀνθρώπ-οις\nackusativ τὸν ἄνθρωπ-ον τοὺς ἀνθρώπ-ους\nvokativ (ὦ) ἄνθρωπε (ὦ) ἄνθρωπ-οι"
+    },
+    {
+     "sida": 22,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "τὸ ἔργον verk, arbete\nkasus best. artikel subst. sg. best. artikel subst. pl.\nnominativ τὸ ἔργ-ον τὰ ἔργα\ngenitiv τοῦ ἔργ-ου τῶν ἔργ-ων\ndativ τῷ ἔργ-ῳ τοῖς ἔργ-οις\nackusativ τὸ ἔργ-ον τὰ ἔργ-α\nvokativ (ὦ) ἔργ-ον (ὦ) ἔργα"
+    },
+    {
+     "sida": 23,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "3. Adjektiv: efter 1:a och \n2:a deklinationen (B §\n99)"
+    },
+    {
+     "sida": 24,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adjektiv efter första och andra deklinationen\nmask. sg. fem. sg. neutr. sg.\nnominativ ἀγαθός ἀγαθή ἀγαθόν\ngenitiv ἀγαθοῦ ἀγαθῆς ἀγαθοῦ\ndativ ἀγαθῷ ἀγαθῇ ἀγαθῷ\nackusativ ἀγαθόν ἀγαθήν ἀγαθόν\nvokativ ἀγαθέ ἀγαθή ἀγαθόν"
+    },
+    {
+     "sida": 25,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adjektiv efter första och andra deklinationen\nmask. sg. fem. sg. neutr. sg.\nnominativ ἀγαθός ἀγαθή ἀγαθόν\ngenitiv ἀγαθοῦ ἀγαθῆς ἀγαθοῦ\ndativ ἀγαθῷ ἀγαθῇ ἀγαθῷ\nackusativ ἀγαθόν ἀγαθήν ἀγαθόν\nvokativ ἀγαθέ ἀγαθή ἀγαθόν"
+    },
+    {
+     "sida": 26,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adjektiv efter första och andra deklinationen\nmask. pl. fem. pl. neutr. pl.\nnominativ ἀγαθοί ἀγαθαί ἀγαθά\ngenitiv ἀγαθῶν ἀγαθῶν ἀγαθῶν\ndativ ἀγαθοῖς ἀγαθαῖς ἀγαθοῖς\nackusativ ἀγαθούς ἀγαθάς ἀγαθά\nvokativ ἀγαθοί ἀγαθαί ἀγαθά"
+    },
+    {
+     "sida": 27,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adjektiv efter första och andra deklinationen\nmask. sg. fem. sg. neutr. sg.\nnominativ δίκαιος δικαία δίκαιον\ngenitiv δικαίου δικαίας δικαίου\ndativ δικαίῳ δικαίᾳ δικαίῳ\nackusativ δίκαιον δικαίαν δίκαιον\nvokativ δίκαιε δίκαια δίκαιον"
+    },
+    {
+     "sida": 28,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adjektiv efter första och andra deklinationen\nmask. sg. fem. sg. neutr. sg.\nnominativ δίκαιος δικαία δίκαιον\ngenitiv δικαίου δικαίας δικαίου\ndativ δικαίῳ δικαίᾳ δικαίῳ\nackusativ δίκαιον δικαίαν δίκαιον\nvokativ δίκαιε δίκαια δίκαιον"
+    },
+    {
+     "sida": 29,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adjektiv efter första och andra deklinationen\nmask. pl. fem. pl. neutr. pl.\nnominativ δίκαιοι δίκαιαι δίκαια\ngenitiv δικαίων δικαίων δικαίων\ndativ δικαίοις δικαίαις δικαίοις\nackusativ δικαίους δικαίας δίκαια\nvokativ δίκαιοι δίκαιαι δίκαια"
+    },
+    {
+     "sida": 30,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "4. Tillägg till substantiv \noch adjektiv"
+    },
+    {
+     "sida": 31,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tillägg till 2:a deklinationen (ἄνθρωπος, ἔργον)\nDe flesta substantiv efter andra deklinationen är maskulina eller neutrala till\ngenus. Det finns ett fåtal undantag som dock är rätt vanliga ord i NT. Dessa böjs\nsom andra deklinationens maskulina substantiv, men är feminina till genus, vilket vi\nmärker på artikeln. Ett exempel är ἡ νόσος (sjukdom)\n(Blomqvist § 60)"
+    },
+    {
+     "sida": 32,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ νόσος sjukdom\nbest. artikel singular best. artikel plural\nnominativ ἡ νόσ-ος αἱ νόσ-οι\ngenitiv τῆς νόσ-ου τῶν νόσ-ων\ndativ τῇ νόσ-ῳ ταῖς νόσ-οις\nackusativ τὴν νόσ-ον τὰς νόσ-ους\nvokativ (ὦ) νόσ-ε (ὦ) νόσ-οι"
+    },
+    {
+     "sida": 33,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Substantiv\nSom ἡ νόσος (sjukdom) böjs:\nἡ ὁδός (väg; jfr. metod)\nἡ ἔρημος (öken, jfr. eremit)\nἡ παρθένος (jungfru, ogift flicka, jfr. Athena \nParthenos)"
+    },
+    {
+     "sida": 34,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡ πονηρὰ νόσος (den onda sjukdomen)\nἡ μακρὰ ὁδός (den långa vägen)"
+    },
+    {
+     "sida": 35,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tillägg till 1:a deklinationen (ἐκκλησία, ἄρχη)\nDe flesta substantiv efter första deklinationen är feminina till genus. Det finns\ndock också maskulina substantiv (inga neutrala!). Skillnaden från föregående\nexempel är att de också har avvikande form. Ett exempel är ὁ μαθητής ’lärjunge’\n(B § 56-58)"
+    },
+    {
+     "sida": 36,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ μαθητής lärjunge, elev (B § 57)\nbest. artikel singular best. artikel plural\nnominativ ὁ μαθητ-ής οἱ μαθητ-αί\ngenitiv τοῦ μαθητ-οῦ τῶν μαθητ-ῶν\ndativ τῷ μαθητ-ῇ τοῖς μαθητ-αῖς\nackusativ τὸν μαθητ-ήν τοὺς μαθητ-άς\nvokativ ὦ μαθητ-ά ὦ μαθητ-αί"
+    },
+    {
+     "sida": 37,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὁ μαθητής lärjunge, elev (B § 57)\nbest. artikel singular best. artikel plural\nnominativ ὁ μαθητ-ής οἱ μαθητ-αί\ngenitiv τοῦ μαθητ-οῦ τῶν μαθητ-ῶν\ndativ τῷ μαθητ-ῇ τοῖς μαθητ-αῖς\nackusativ τὸν μαθητ-ήν τοὺς μαθητ-άς\nvokativ ὦ μαθητ-ά ὦ μαθητ-αί"
+    },
+    {
+     "sida": 38,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Substantiv\nSom ὁ μαθητής (lärjunge) böjs:\nὁ προφήτης (profet)\n(Det finns även substantiv av denna typ som har\nα i singular istället för η, som ὁ νεανίας ’yngling’\n(B § 57)."
+    },
+    {
+     "sida": 39,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tillägg till substantiv av 1:a och 2:a dekl.\nSammanfattning:\n1:a deklinationen: feminina substantiv som ἡ ἀρχή, men även maskulina\nsubstantiv, som ὁ μαθητής (’lärjunge’), vilka har en speciell form.\n2:a deklinationen: maskulina och neutrala substantiv, men även några enstaka\nsubstantiv som är feminina (ἡ ὁδός ’väg’, ἡ νόσος ’sjukdom’). Dessa har samma\nform som de maskulina och visar genus exv. genom bestämd artikel."
+    },
+    {
+     "sida": 40,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tillägg till adjektiv: ”adjektiv med två slut”\nAdjektiv efter första och andra deklinationen har vanligtvis tre ändelser, dvs. tre\nolika former för maskulinum, femininum och neutrum (ἅγιος ἁγία ἅγιον)\nMen det finns även några adjektiv där den maskulina formen också används för\nfeminina substantiv (”adjektiv med två slut”), som αἰώνιος αἰώνιος αἰώνιον (B §\n101)\nI gloslistan skiljer de sig på följande vis:\nἀγαθός -ή -όν (god)\nαἰώνιος -ον (evig)"
+    },
+    {
+     "sida": 41,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tillägg till adjektiv: substantiverade adjektiv\nAdjektiv kan substantiveras genom att de förses med bestämd artikel:\nπτωχός -η -ον fattig ὁ πτωχός tiggaren (den fattige), ἡ πτωχή tiggerskan\nπλούσιος -α -ον rik ὁ πλούσιος rikemannen (den rike), ἡ πλουσία rikekvinnan\nἁμαρτωλός -η -ον syndig ὁ ἁμαρτωλός syndaren (den syndige), ἡ ἁμαρτωλή \nsynderskan\n(B § 224.5)"
+    },
+    {
+     "sida": 42,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "5. Prepositioner"
+    },
+    {
+     "sida": 43,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Prepositioner\nPrecis som substantiv, adjektiv och verb, så är prepositioner en ordklass.\nPrepositioner står tillsammans med substantiv och visar exempelvis plats, riktning,\nosv.\nSvenska prepositioner är ’till’, ’från’, ’innan’, ’med’, ’hos’ osv. De står alltid med ett\nsubstantiv: ’till Stockholm’, ’innan midsommar’, ’hos min far’, osv.\n(B § 240.1, 6, 7)"
+    },
+    {
+     "sida": 44,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Prepositioner i grekiskan\nPrepositioner i grekiskan kräver alltid ett visst kasus.\nἐν i med dativ ἐν τῷ οἴκῳ\n(i huset)\nεἰς till med ackusativ εἰς τὸν οἶκον \n(till huset)\nἐκ/ἐξ ut ur med genitiv ἐκ τοῦ οἴκου \n(ut ur huset)"
+    },
+    {
+     "sida": 45,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Vanliga prepositioner i NT\nἐν + dat. i\nεἰς + ack. in i\nπρός + gen. på (ngns sida), + dat. vid, + \nack. till, hos\nἐκ, ἐξ + gen. ur, ut ur\nἀπό  + gen. från, av\nδιά + gen. genom, + ack. på grund av\nἐπί + gen. på, över, dat. vid, ack. mot\nμετά + gen. med + ack. efter\nσύν + dat. med, jämte\nκατά + gen. utför, mot, ack. enligt\nπαρά + gen. från + dat. hos, vid + ack. \nbredvid\nπερί + gen. om, angående, + ack. kring\nὑπέρ + gen. över, för, i st. f., + ack. över, \nmer än\nὑπό + gen. under, av, genom, + ack. in \nunder"
+    },
+    {
+     "sida": 46,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (1)\n1. εἰς τὴν θάλασσαν\n2. ἐκ τῆς κώμης\n3. ἐν τῇ ἐρήμῳ\n4. ἐπὶ τῆς γῆς\n5. ὑπὸ τῶν λίθων\n6. σὺν τοῖς ἁμαρτωλοῖς \n7. μετὰ τῶν ἁμαρτωλῶν\n8. διὰ τὴν νόσον\n9. λέγει πρὸς τὸν μαθητήν\n10. λέγει τῷ μαθητῇ"
+    },
+    {
+     "sida": 47,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (1)\n1. εἰς τὴν θάλασσαν\n2. ἐκ τῆς κώμης\n3. ἐν τῇ ἐρήμῳ\n4. ἐπὶ τῆς γῆς\n5. ὑπὸ τῶν λίθων\n6. σὺν τοῖς ἁμαρτωλοῖς \n7. μετὰ τῶν ἁμαρτωλῶν\n8. διὰ τὴν νόσον\n9. λέγει πρὸς τὸν μαθητήν\n10. λέγει τῷ μαθητῇ\n1. in i/till havet\n2. ut ur byn\n3. i öknen\n4. på jorden\n5. under stenarna\n6. med syndarna\n7. med syndarna\n8. på grund av sjukdomen\n9. hon säger till lärjungen\n10. hon säger till lärjungen"
+    },
+    {
+     "sida": 48,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tillägg till prepositioner\nNotera att substantivet som följer på en preposition inte alltid har bestämd artikel i\ngrekiskan där vi skulle ha det i svenskan.\nἐν ἀρχῇ i begynnelsen\nἐν ἀγρῷ på fältet"
+    },
+    {
+     "sida": 49,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "6. Negationer"
+    },
+    {
+     "sida": 50,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Negationer i grekiskan\nGrekiskan har två negationer: οὐ och μή (Blomqvist § 298.1)\nIdag övar vi på οὐ"
+    },
+    {
+     "sida": 51,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Negation (’inte, icke, ej’) i grekiskan\nDen vanliga negationen i grekiskan är οὐ, men den förändrar sin form lite beroende \npå vilket ord som följer:\nοὐ före konsonant. οὐ βλέπουσι τὸν θεόν.\nοὐκ före spiritus lenis: οὐκ ἐσθίετε τὸν ἄρτον \nοὐχ före spiritus asper: οὐχ εὑρίσκομεν τὸν ἀδελφόν.\n(Blomqvist § 298.1)"
+    },
+    {
+     "sida": 52,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (2)\na) Välj rätt form av οὐ\nb) Översätt meningarna (använd vid behov gloslistan ’Ord som förekommer mer\nän 60 ggr i NT’) och negera dem genom att sätta in rätt form av οὐ före\npredikatet."
+    },
+    {
+     "sida": 53,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (2)\n(a)\nοἱ φίλοι …….. πιστεύουσιν.\nοἱ φίλοι …….. ἀκούουσιν.\nοἱ φίλοι …….. ἁμαρτάνουσιν."
+    },
+    {
+     "sida": 54,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (2)\n(a)\nοἱ φίλοι οὐ πιστεύουσιν.\nοἱ φίλοι οὐκ ἀκούουσιν.\nοἱ φίλοι οὐχ ἁμαρτάνουσιν."
+    },
+    {
+     "sida": 55,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (2)\n(b)\nἐν ἀρχῇ ποιεῖ ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν. (GT 1 Mosebok 1.1)\nἐσμὲν τέκνα θεοῦ. (NT Romarbrevet 8:16)\nἐν ἀρχῇ ἦν ὁ λόγος. (NT Johannesevangeliet 1:1)"
+    },
+    {
+     "sida": 56,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (2)\n(b)\nἐν ἀρχῇ (οὐ) ποιεῖ ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν. (GT 1 Mosebok 1.1)\n(οὐκ) ἐσμὲν τέκνα θεοῦ. (NT Romarbrevet 8:16)\nἐν ἀρχῇ (οὐκ) ἦν ὁ λόγος. (NT Johannesevangeliet 1:1)"
+    },
+    {
+     "sida": 57,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "7. Pronomen"
+    },
+    {
+     "sida": 58,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Ny ordklass: pronomen\nPronomen i svenskan är ord som ’jag’, ’du’, ’han’, ’hon’, ’denne’, ’detta’, osv.\nPronomen ersätter substantiv (pro-nomen: ’i stället för substantiv’).\n”Markus går till skolan. På vägen ser han sin kusin. Henne har han inte träffat på\nlänge. Han stannar därför för att hälsa på henne.”\n’Han’ ersätter ’Markus’, ’henne’ ersätter ’kusin’. Pronomen gör det alltså bland\nannat möjligt att undvika att upprepa substantiv."
+    },
+    {
+     "sida": 59,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Pronomen\nPrecis som substantiv, så har också pronomen kasusformer i grekiskan och olika\nformer för singular och plural.\nVi börjar med personliga pronomen, alltså ’jag’, ’du’, osv."
+    },
+    {
+     "sida": 60,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personliga pronomen (B § 116.1)\nSingular Första person Andra person\nnominativ ἐγώ jag σύ du\ngenitiv ἐμοῦ, μου min σοῦ, σου din\ndativ ἐμοί, μοι till mig σοί, σοι till dig\nackusativ ἐμέ, με mig σέ, σε dig\nPlural Första person Andra person\nnominativ ἡμεῖς vi ὑμεῖς ni\ngenitiv ἡμῶν vår ὑμῶν er\ndativ ἡμῖν till oss ὑμῖν till er\nackusativ ἡμᾶς oss ὑμᾶς er"
+    },
+    {
+     "sida": 61,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personliga pronomen: ἐγώ jag, σύ du\nsingular Första person Andra person\nnominativ ἐγώ jag σύ du\ngenitiv ἐμοῦ, μου min σοῦ, σου din\ndativ ἐμοί, μοι till mig σοί, σοι till dig\nackusativ ἐμέ, με mig σέ, σε dig"
+    },
+    {
+     "sida": 62,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Betonade former av ἐγώ, σύ\n1. De betonade formerna sätts ut efter prepositioner:\nπρὸς ἐμέ (till/hos mig)\n2. De betonade formerna används också för emfas, exv. i motsatser:\nἐγὼ μὲν λέγω, σὺ δὲ ἀκούεις (jag talar och du lyssnar)"
+    },
+    {
+     "sida": 63,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personliga pronomen\nsingular Första person Andra person\nnominativ ἐγώ jag σύ du\ngenitiv ἐμοῦ, μου min σοῦ, σου din\ndativ ἐμοί, μοι till mig σοί, σοι till dig\nackusativ ἐμέ, με mig σέ, σε dig"
+    },
+    {
+     "sida": 64,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Οbetonade former av ἐγώ, σύ\nDe obetonade formerna används i övriga fall, det vill säga när det varken handlar\nom betoning eller om en preposition:\nκηρύσσομέν σοι (vi predikar för dig)\nπιστεύετέ μοι (ni tror på mig)\nβλέπομέν σε (vi ser dig)\nNotera: nominativ singular har ingen obetonad form, eftersom den rena verbformen\n(βλέπω ’jag ser’) används för ett obetonat ’jag’."
+    },
+    {
+     "sida": 65,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personliga pronomen: ἡμεῖς vi, ὑμεῖς ni\nplural första person andra person\nnominativ ἡμεῖς vi ὑμεῖς ni\ngenitiv ἡμῶν vår ὑμῶν er\ndativ ἡμῖν till oss ὑμῖν till er\nackusativ ἡμᾶς oss ὑμᾶς er"
+    },
+    {
+     "sida": 66,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (3)\nÖversätt till svenska (se B § 116.1 för formerna)\n1. ζητοῦμεν ὑμᾶς. \n2. κηρύσσουσιν ὑμῖν.\n3. φιλεῖ σε. \n4. λέγει περὶ σοῦ. \n5. οὐ πιστεύουσιν ἡμῖν. \n6. λαλεῖς μοι."
+    },
+    {
+     "sida": 67,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (3)\nÖversätt till svenska (se B § 116.1 för formerna)\n1. ζητοῦμεν ὑμᾶς. Vi söker er\n2. κηρύσσουσιν ὑμῖν. De predikar för er\n3. φιλεῖ σε. Han/hon gillar dig\n4. λέγει περὶ σοῦ. Han talar om dig\n5. οὐ πιστεύουσιν ἡμῖν. De tror ej på er.\n6. λαλεῖς μοι. Du talar med mig"
+    },
+    {
+     "sida": 68,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Avslutning\nVad har vi gjort idag?\n• Repeterat substantiv och adjektiv\n• Övat på prepositioner\n• Övat på negationen οὐ\n• Personliga pronomen (ἐγώ, σύ, αὐτοῦ, etc.)"
+    },
+    {
+     "sida": 69,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Innehåll \nBibelgrekiska 1:6\n1. Personliga pronomen (§ 116)\n2. Demonstrativa pronomen (§ 120: 3,4)\n3. Interrogativa pronomen (§ 122)\n4. Interrogativa adverb (§ 124: s. 82, vänstra \nspalten)\n5. Futurum av verb på -ω och -έω (§ 165:a)\n6. Futurum av εἰμι (§ 171)"
+    }
+   ],
+   "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)"
+  },
+  {
+   "kalla": "5__O_vningsblad.pdf",
+   "seminarium": 5,
+   "typ": "ovningsblad",
+   "antal_sidor": 6,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "1 \n \nBIBELGREKISKA 1:5 Översättningsmeningar för självstudium (facit \nfinns på sida 4) \n \n \n1. ἄγουσιν οἱ δοῦλοι τὰς παρθένους ἐκ τοῦ οἴκου εἰς τὴν κώμην, ὁ δἐ \nοἰκοδεσπότης τηρεῖ τὰ τέκνα σὺν τοῖς νεανίαις πρὸ τοῦ ἱεροῦ. \n \n \n \nἄγω leda \nὁ δοῦλος slav \nἡ παρθένος flicka (B § 60.2) \nἐκ + gen. ur ut, ur, från \nεἰς + ack. till \nἡ κώμη by \nδέ men, och (står i regel på andra plats i en mening, därför hamnar det här mellan bestämd \nartikel och substantiv) \nὁ οἰκοδεσπότης husbonde (B § 57) \nτηρέω övervaka \nὁ νεανίας yngling (B § 57) \nσύν + dat. med, tillsammans med  \nπρό + gen. framför (rum), före (tid) \nτοῦ ἱεροῦ - använd er av gloslistan ’Ord som förekommer mer än 60 ggr i NT’ för att slå upp \ndetta ord. \n \n \n2. ἐν τῇ ἐκκλησίᾳ βλέπομεν τὴν δόξαν τοῦ θεοῦ· μαρτυροῦσι γὰρ οἱ ἀδελφοὶ τῇ \nδικαιοσύνῃ καὶ τῇ ἀληθείᾳ. \n \n \n \nἐν + dat. i \nἡ ἐκκλησία kyrka \nβλέπω se \nἡ δόξα härlighet \nὁ ἀδελφός bror \nμαρτυρέω bära vittnesbörd om (+ dat. för det man vittnar om) \nἡ δικαιοσύνη rättvisa \nκαί och \nτῇ ἀληθείᾳ - använd er av gloslistan ’Ord som förekommer mer än 60 ggr i NT’ för att slå upp \ndetta ord. \nNotera att en hög punkt ( · ) i grekiskan motsvarar kolon ( : ) eller semikolon ( ; ) i svenskan \n \n \n3. καλεῖτε τοὺς νεανίας πρὸ τοῦ σαββάτου, καὶ αἰτοῦσιν ἄρτον τοῖς τέκνοις."
+    },
+    {
+     "sida": 2,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "2 \n \nκαλεῖτε - använd er av gloslistan ’Ord som förekommer mer än 60 ggr i NT’ för att slå upp \ndetta ord. \nὁ νεανίας yngling (B § 57) \nπρό + gen. framför (rum), före (tid) \nκαί och \nαἰτέω be om (med dativ för den man ber om någonting för) \nτὸ τέκνον barn \n \n \n4. ὦ Κύριε, σώζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν \nδαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου. \n \n \n \nὁ Κύριος Herren \nσώζω rädda \nὁ κόσμος världen \nἐκ + gen. ur ut, ur, från \nἡ ἐξουσία makt \nτὸ δαιμόνιον demon \nπιστεύω tro (med ren dativ/εἰς + ack. för den man tror på) \nοὖν alltså (står alltid på andra plats) \nἡ ἀλήθεια sanning \n \n \n5. οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ \nτηρεῖ τὰς ἐντολὰς τοῦ θεοῦ. \n \n \n \nθεραπεύω hela \nἡ παρθένος jungfru \nἡ νόσος sjukdom (B § 60) \nὁ προφήτης profet (B § 57) \nἀλλά men, utan \nτηρέω bevara, här följa \nἡ ἐντολή bud \n \n \n6. κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι \nκαὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου. \n \n \n \nκηρύσσω predika (med dat. för den man predikar för) \nὁ υἱός τοῦ ἀνθρώπου Människosonen \nτὸ πλοῖον båt"
+    },
+    {
+     "sida": 3,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "3 \n \nὁ μαθητής lärjunge \nἀκούω höra \nγράφω skriva \nὁ λόγος ord \nὁ οἰκοδεσπότης husbonde"
+    },
+    {
+     "sida": 4,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "4 \n \nFACIT \n \n1. ἄγουσιν οἱ δοῦλοι τὰς παρθένους ἐκ τοῦ οἴκου εἰς τὴν κώμην, ὁ δἐ \nοἰκοδεσπότης τηρεῖ τὰ τέκνα σὺν τοῖς νεανίαις πρὸ τοῦ ἱεροῦ. \n \nSlavarna leder flickorna från huset till byn, men husbonden övervakar barnen \ntillsammans med ynglingarna framför templet.  \n \n \nἄγω leda \nὁ δοῦλος slav \nἡ παρθένος flicka (B § 60.2) \nἐκ + gen. ur ut, ur, från \nεἰς + ack. till \nἡ κώμη by \nδέ men, och (står i regel på andra plats i en mening, därför hamnar det här mellan bestämd \nartikel och substantiv) \nὁ οἰκοδεσπότης husbonde (B § 57) \nτηρέω övervaka \nὁ νεανίας yngling (B § 57) \nσύν + dat. med, tillsammans med  \nπρό + gen. framför (rum), före (tid) \nτὸ ἱερόν tempel \n \n \n \n2. ἐν τῇ ἐκκλησίᾳ βλέπομεν τὴν δόξαν τοῦ θεοῦ· μαρτυροῦσι γὰρ οἱ ἀδελφοὶ τῇ \nδικαιοσύνῃ καὶ τῇ ἀληθείᾳ. \n \nI kyrkan ser vi Guds härlighet; ty bröderna avlägger vittnesmål om rättvisan och \nsanningen. \n \nἐν + dat. i \nἡ ἐκκλησία kyrka \nβλέπω se \nἡ δόξα härlighet \nὁ ἀδελφός bror \nμαρτυρέω bära vittnesbörd om (+ dat. för det man vittnar om) \nἡ δικαιοσύνη rättvisa \nκαί och \nἡ ἀλήθεια sanning \nNotera att en hög punkt ( · ) i grekiskan motsvarar kolon ( : ) eller semikolon ( ; ) i svenskan \n \n \n3. καλεῖτε τοὺς νεανίας πρὸ τοῦ σαββάτου, καὶ αἰτοῦσιν ἄρτον τοὶς τέκνοις."
+    },
+    {
+     "sida": 5,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "5 \n \nNi kallar på ynglingarna före sabbaten, och de ber om bröd åt barnen. \n \nκαλέω kalla \nὁ νεανίας yngling (B § 57) \nπρό + gen. framför (rum), före (tid) \nκαί och \nαἰτέω be om (med dativ för den man ber om någonting för) \nτὸ τέκνον barn \n \n \n4. ὦ Κύριε, σώζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν \nδαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου. \n \nO Herre, du räddar världen och människorna från demonernas makt; alltså tror \nvi på evangeliets sanning. \n \nὁ Κύριος Herren \nσώζω rädda \nὁ κόσμος världen \nἐκ + gen. ur ut, ur, från \nἡ ἐξουσία makt \nτὸ δαιμόνιον demon \nπιστεύω tro (med ren dativ/εἰς + ack. för den man tror på) \nοὖν alltså (står alltid på andra plats) \nἡ ἀλήθεια sanning \n \n \n5. οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ \nτηρεῖ τὰς ἐντολὰς τοῦ θεοῦ. \n \nFlickan helar inte sjukdomarna, o profet, men hon älskar barnen och följer Guds \nbud. \n \nθεραπεύω hela \nἡ παρθένος jungfru \nἡ νόσος sjukdom (B § 60) \nὁ προφήτης profet (B § 57) \nἀλλά men, utan \nτηρέω bevara, här följa \nἡ ἐντολή bud \n \n \n6. κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι \nκαὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου."
+    },
+    {
+     "sida": 6,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "6 \n \nMänniskosonen predikar till lärjungarna från båten, och de lyssnar och skriver \n(=antecknar) orden för husbondens barn. \n \nκηρύσσω predika (med dat. för den man predikar för) \nὁ υἱός τοῦ ἀνθρώπου Människosonen \nτὸ πλοῖον båt \nὁ μαθητής lärjunge \nἀκούω höra \nγράφω skriva \nὁ λόγος ord \nὁ οἰκοδεσπότης husbonde"
+    }
+   ],
+   "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)"
+  },
+  {
+   "kalla": "5__Breakout_rooms.pdf",
+   "seminarium": 5,
+   "typ": "breakout",
+   "antal_sidor": 2,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "BIBELGREKISKA I: Seminarium 5. Övningar \n \nBreakout room (1): prepositioner \n \nUppgift: Översätt till svenska \n \n1. εἰς τὴν θάλασσαν \n2. ἐκ τῆς κώμης \n3. ἐν τῇ ἐρήμῳ \n4. ἐπὶ τῆς γῆς \n5. ὑπὸ τῶν λίθων \n6. σὺν τοῖς ἁμαρτωλοῖς  \n7. μετὰ τῶν ἁμαρτωλῶν \n8. διὰ τὴν νόσον \n9. λέγει πρὸς τὸν μαθητήν \n10. λέγει τῷ μαθητῇ \n \nOrdlista \n \nἡ θάλασσα hav \nἡ κώμη by \nἡ ἔρημος öken \nἡ γῆ jord \nὁ λίθος sten \nὁ μαθητής lärjunge (se B § 57 för böjningsmönster efter ναύτης) \nὁ ἁμαρτωλός syndare \nἡ νόσος sjukdom \n \nἀπό  + gen. från, av \nδιά + gen. genom, + ack. på grund av \nεἰς  + ack. in i, i \nἐκ, ἐξ + gen. ur, ut ur  \nἐν + dat. i \nἐπί + gen., på, över, + dat., vid, + ack. mot \nκατά + gen., utför, mot, + ack. enligt \nμετά + gen. med + ack. efter \nπαρά + gen. från + dat. hos, vid + ack. bredvid \nπερί + gen. om, angående, + ack. kring \nπρός + gen. på (ngns sida), + dat. vid, + ack. hos, till \nσύν + dat. med, jämte \nὑπέρ + gen. över, för, i stället för, + ack. över, mer än \nὑπό + gen. av, genom, + ack. under"
+    },
+    {
+     "sida": 2,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "(2) Breakout room: negationen οὐ \n \na) Uppgift: sätt in rätt former av negationen οὐ (οὐκ, οὐχ) \n \n1. οἱ φίλοι …….. πιστεύουσιν. \n2. οἱ φίλοι …….. ἀκούουσιν. \n3. οἱ φίλοι …….. ἁμαρτάνουσιν. \n \n \nὁ φίλος vän \nἀκούω höra \nπιστεύω tro \nἁμαρτάνω synda \n \n \nb) Uppgift: Översätt följande (lätt anpassade) meningar till svenska och negera \ndem sedan genom att placera in rätt form av οὐ (οὐκ, οὐχ) före verbet: \n \n1. ἐν ἀρχῇ ποιεῖ ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν. (GT 1 Mosebok 1.1) \n2. ἐσμὲν τέκνα θεοῦ. (NT Romarbrevet 8:16) \n3. ἐν ἀρχῇ ἦν ὁ λόγος. (NT Johannesevangeliet 1:1) \n \n \n \n(3) Breakout room: personliga pronomen i 1:a och 2:a person \n \nUppgift: översätt till svenska.  \n \n1. ζητοῦμεν ὑμᾶς.  \n2. κηρύσσουσιν ὑμῖν.  \n3. φιλεῖ σε.  \n4. λέγει περὶ σοῦ.  \n5. οὐ πιστεύουσιν ἡμῖν.  \n6. λαλεῖς μοι.  \n \nζητέω söka \nφιλέω gilla, älska \nλαλέω tala (med dativ för den man talar med)"
+    }
+   ],
+   "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)"
+  },
+  {
+   "kalla": "5__Paragrafer.pdf",
+   "seminarium": 5,
+   "typ": "paragrafer",
+   "antal_sidor": 1,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Paragrafer ur Blomqvists och Jastrups Grekisk grammatik för Övningsblad 5"
+    }
+   ],
+   "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)"
+  },
+  {
+   "kalla": "5__Kursoversikt.pdf",
+   "seminarium": 5,
+   "typ": "kursplan",
+   "antal_sidor": 1,
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "oskar.andersson@su.se  \n \nBIBELGREKISKA 1:1-5 \n \n \nI. Alfabet och uttal  \n \n1.1 alfabetet (Blomqvist § 12)  \n \n1.2 diftonger (§ 16:1–2)  \n \n1.3 ng-ljud (§ 15:2)  \n \n1.4 diakritiska tecken (spiritus asper/lenis §§ 18, 20; accenter, § 19)  \n \n1.5 iota subscriptum/adscriptum (§ 16:2)  \n \nII. Morfologi  \n \n2.1 Bestämd artikel (§ 51)  \n \n2.2 Substantiv av första deklinationen (ἡ ἐκκλησία, ἡ ἀρχή, ἡ θάλασσα) och andra \ndeklinationen (ὁ ἄνθρωπος, τὸ ἔργον) (§§ 53–54, 61–64)  \nSamt: (1) personnamn (grekiska/hebreiska) (§ 97:1, 5), (2) tillägg: maskulina substantiv i \nförsta deklinationen (ὁ μαθητής) (§§ 56–58) feminina substantiv i andra deklinationen (ἡ \nνόσος) (§ 60)  \n \n2.3 Adjektiv av första och andra deklinationen (ἀγαθός ἀγαθή ἀγαθόν, δίκαιος δικαία \nδίκαιον) (§ 99)  \nSamt: (1) ”adjektiv med två slut” (§ 101); (2) substantiverade adjektiv (§ 224:5)  \n \n2.4 ω-verb i presens (inklusive kontraherade verb på -έω) (§ 146:3; 148)  \n \n2.5 εἰμι i presens och imperfekt (§ 156)  \n \n2.6 Negationen οὐ och dess varianter (§ 298:1)  \n \n2.7 Personliga pronomen (jag, du, min, din, osv.) (§ 116:1)  \n \nIII. Syntax  \n \n3.1 Satsanalys: subjekt, predikat, direkt objekt, indirekt objekt, predikatsfyllnad, rums- och \ntidsadverbial (se presentationerna till kurstillfälle 2-4)  \n \n3.2 Kongruens (adjektiv, predikatsfyllnad, även neutrala substantiv i plural) (§ 223:1)  \n \n3.3 Hur prepositioner fungerar tillsammans med substantiv (§ 240:1, 6, 7)  \n \nIV. Övrigt  \n \nKunna navigera i en ordlista/ordbok."
+    }
+   ],
+   "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)"
   }
  ],
  "glosor": [
@@ -4135,6 +4823,269 @@
    "sida": 3,
    "grekiska": "Om ett feminint substantiv av första deklinationen i nom. sg. slutar på -α",
    "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ἄγουσιν οἱ δοῦλοι τὰς παρθένους ἐκ τοῦ οἴκου εἰς τὴν κώμην, ὁ δὲ οἰκοδεσπότης τηρεῖ τὰ τέκνα σὺν τοῖς νεανίαις πρὸ τοῦ ἱεροῦ.",
+   "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 1)",
+   "oversattning": "Slavarna leder flickorna från huset till byn, men husbonden övervakar barnen tillsammans med ynglingarna framför templet."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ἐν τῇ ἐκκλησίᾳ βλέπομεν τὴν δόξαν τοῦ θεοῦ· μαρτυροῦσι γὰρ οἱ ἀδελφοὶ τῇ δικαιοσύνῃ καὶ τῇ ἀληθείᾳ.",
+   "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 2)",
+   "oversattning": "I kyrkan ser vi Guds härlighet; ty bröderna avlägger vittnesmål om rättvisan och sanningen."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "καλεῖτε τοὺς νεανίας πρὸ τοῦ σαββάτου, καὶ αἰτοῦσιν ἄρτον τοῖς τέκνοις.",
+   "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 3)",
+   "oversattning": "Ni kallar på ynglingarna före sabbaten, och de ber om bröd åt barnen."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ὦ Κύριε, σώζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν δαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου.",
+   "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 4)",
+   "oversattning": "O Herre, du räddar världen och människorna från demonernas makt; alltså tror vi på evangeliets sanning.",
+   "avvikelse": "Övningsbladet skriver σώζεις; masterformen (glosor.json/verb.json) är σῴζω (iota subscriptum)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ τηρεῖ τὰς ἐντολὰς τοῦ θεοῦ.",
+   "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 5)",
+   "oversattning": "Flickan helar inte sjukdomarna, o profet, men hon älskar barnen och följer Guds bud."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι καὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου.",
+   "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 6)",
+   "oversattning": "Människosonen predikar till lärjungarna från båten, och de lyssnar och skriver (antecknar) orden för husbondens barn."
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "εἰς τὴν θάλασσαν",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "in i/till havet"
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ἐκ τῆς κώμης",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "ut ur byn"
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ἐν τῇ ἐρήμῳ",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "i öknen"
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ἐπὶ τῆς γῆς",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "på jorden"
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ὑπὸ τῶν λίθων",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "under stenarna"
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "σὺν τοῖς ἁμαρτωλοῖς",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "med syndarna"
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "μετὰ τῶν ἁμαρτωλῶν",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "med syndarna"
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "διὰ τὴν νόσον",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "på grund av sjukdomen"
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "λέγει πρὸς τὸν μαθητήν",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "hon säger till lärjungen"
+  },
+  {
+   "typ": "fras",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "λέγει τῷ μαθητῇ",
+   "instruktion": "Breakout 1: översätt prepositionsfrasen.",
+   "oversattning": "hon säger till lärjungen"
+  },
+  {
+   "typ": "negation",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "οἱ φίλοι __ πιστεύουσιν.",
+   "instruktion": "Breakout 2a: sätt in rätt form av οὐ (οὐ/οὐκ/οὐχ).",
+   "oversattning": "Vännerna tror inte.",
+   "facit_form": "οἱ φίλοι οὐ πιστεύουσιν."
+  },
+  {
+   "typ": "negation",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "οἱ φίλοι __ ἀκούουσιν.",
+   "instruktion": "Breakout 2a: sätt in rätt form av οὐ (οὐ/οὐκ/οὐχ).",
+   "oversattning": "Vännerna hör inte.",
+   "facit_form": "οἱ φίλοι οὐκ ἀκούουσιν."
+  },
+  {
+   "typ": "negation",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "οἱ φίλοι __ ἁμαρτάνουσιν.",
+   "instruktion": "Breakout 2a: sätt in rätt form av οὐ (οὐ/οὐκ/οὐχ).",
+   "oversattning": "Vännerna syndar inte.",
+   "facit_form": "οἱ φίλοι οὐχ ἁμαρτάνουσιν."
+  },
+  {
+   "typ": "negation",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ἐν ἀρχῇ ποιεῖ ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν.",
+   "instruktion": "Breakout 2b: översätt och negera med rätt form av οὐ.",
+   "oversattning": "I begynnelsen skapar Gud himlen och jorden.",
+   "negerad": "ἐν ἀρχῇ οὐ ποιεῖ ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν.",
+   "bibelreferens": "GT 1 Mosebok 1:1"
+  },
+  {
+   "typ": "negation",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ἐσμὲν τέκνα θεοῦ.",
+   "instruktion": "Breakout 2b: översätt och negera med rätt form av οὐ.",
+   "oversattning": "Vi är Guds barn.",
+   "negerad": "οὐκ ἐσμὲν τέκνα θεοῦ.",
+   "bibelreferens": "NT Romarbrevet 8:16"
+  },
+  {
+   "typ": "negation",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ἐν ἀρχῇ ἦν ὁ λόγος.",
+   "instruktion": "Breakout 2b: översätt och negera med rätt form av οὐ.",
+   "oversattning": "I begynnelsen var Ordet.",
+   "negerad": "ἐν ἀρχῇ οὐκ ἦν ὁ λόγος.",
+   "bibelreferens": "NT Johannesevangeliet 1:1"
+  },
+  {
+   "typ": "pronomen",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ζητοῦμεν ὑμᾶς.",
+   "instruktion": "Breakout 3: översätt (personliga pronomen).",
+   "oversattning": "Vi söker er."
+  },
+  {
+   "typ": "pronomen",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "κηρύσσουσιν ὑμῖν.",
+   "instruktion": "Breakout 3: översätt (personliga pronomen).",
+   "oversattning": "De predikar för er."
+  },
+  {
+   "typ": "pronomen",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "φιλεῖ σε.",
+   "instruktion": "Breakout 3: översätt (personliga pronomen).",
+   "oversattning": "Han/hon gillar dig."
+  },
+  {
+   "typ": "pronomen",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "λέγει περὶ σοῦ.",
+   "instruktion": "Breakout 3: översätt (personliga pronomen).",
+   "oversattning": "Han talar om dig."
+  },
+  {
+   "typ": "pronomen",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "οὐ πιστεύουσιν ἡμῖν.",
+   "instruktion": "Breakout 3: översätt (personliga pronomen).",
+   "oversattning": "De tror inte på oss.",
+   "avvikelse": "Facit s. 67 översätter 'på er', men ἡμῖν = oss (dativ pl 1:a person)."
+  },
+  {
+   "typ": "pronomen",
+   "seminarium": 5,
+   "kalla": "5__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "λαλεῖς μοι.",
+   "instruktion": "Breakout 3: översätt (personliga pronomen).",
+   "oversattning": "Du talar med mig."
   }
  ],
  "verb": [
@@ -4705,6 +5656,48 @@
    "kalla": "4__O_vningsblad.pdf",
    "sida": 4,
    "bild": "4__O_vningsblad/4.jpeg"
+  },
+  {
+   "nr": 7,
+   "substantiv": "νόσος",
+   "fras": "ἡ __ νόσος",
+   "kasus": "nominativ",
+   "genus": "femininum",
+   "numerus": "singular",
+   "adjektiv": [
+    {
+     "lemma": "πονηρός",
+     "form": "πονηρά"
+    }
+   ],
+   "oversattning": "den onda sjukdomen",
+   "typ": "kongruens",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 34,
+   "bild": null,
+   "not": "Adjektivet står i femininum trots att νόσος böjs som ett maskulint -ος-substantiv (2:a dekl. feminint)."
+  },
+  {
+   "nr": 8,
+   "substantiv": "ὁδός",
+   "fras": "ἡ __ ὁδός",
+   "kasus": "nominativ",
+   "genus": "femininum",
+   "numerus": "singular",
+   "adjektiv": [
+    {
+     "lemma": "μακρός",
+     "form": "μακρά"
+    }
+   ],
+   "oversattning": "den långa vägen",
+   "typ": "kongruens",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 34,
+   "bild": null,
+   "not": "Feminin kongruens med 2:a deklinationens feminina substantiv ὁδός."
   }
  ],
  "paradigm": [
@@ -4989,6 +5982,263 @@
     }
    },
    "not": "Enklitiskt i presens (utom 2sg εἶ); accentuering=uppslagsform. Imperfekt har belagda varianter. Verifierad mot Smyth."
+  },
+  {
+   "id": "par-subst-2dekl-fem",
+   "typ": "paradigm",
+   "kategori": "substantiv",
+   "seminarium": 5,
+   "rubrik": "Andra deklinationen — feminina substantiv (-ος)",
+   "kalla": "5__Presentation.pdf",
+   "sida": 31,
+   "bild": null,
+   "referens": "Blomqvist § 60",
+   "tacks_av_master": "json/ord.json (νόσος, ὁδός, ἔρημος, παρθένος)",
+   "regler": [
+    {
+     "villkor": "Böjs exakt som maskulint -ος (ἄνθρωπος), men feminint genus — syns på artikeln ἡ.",
+     "singular": [
+      "-ος",
+      "-ου",
+      "-ῳ",
+      "-ον",
+      "-ε"
+     ],
+     "plural": [
+      "-οι",
+      "-ων",
+      "-οις",
+      "-ους",
+      "-οι"
+     ]
+    }
+   ],
+   "not": "Vanliga NT-ord: ἡ ὁδός (väg), ἡ νόσος (sjukdom), ἡ ἔρημος (öken), ἡ παρθένος (jungfru). Kongruens: adjektiv i femininum (ἡ πονηρὰ νόσος)."
+  },
+  {
+   "id": "par-subst-1dekl-mask",
+   "typ": "paradigm",
+   "kategori": "substantiv",
+   "seminarium": 5,
+   "rubrik": "Första deklinationen — maskulina substantiv (-ης/-ας)",
+   "kalla": "5__Presentation.pdf",
+   "sida": 36,
+   "bild": null,
+   "referens": "Blomqvist § 56-58",
+   "tacks_av_master": "json/ord.json (μαθητής, προφήτης, νεανίας, οἰκοδεσπότης)",
+   "regler": [
+    {
+     "villkor": "η-typ (μαθητής, προφήτης)",
+     "singular": [
+      "-ης",
+      "-ου",
+      "-ῃ",
+      "-ην",
+      "-α"
+     ],
+     "plural": [
+      "-αι",
+      "-ῶν",
+      "-αις",
+      "-ας",
+      "-αι"
+     ]
+    },
+    {
+     "villkor": "α-typ (νεανίας)",
+     "singular": [
+      "-ας",
+      "-ου",
+      "-ᾳ",
+      "-αν",
+      "-α"
+     ],
+     "plural": [
+      "-αι",
+      "-ῶν",
+      "-αις",
+      "-ας",
+      "-αι"
+     ]
+    }
+   ],
+   "not": "Maskulint genus (ὁ), men första deklinationens ändelser. Gen.sg -ου (avviker från feminina -ης/-ας). Gen.pl alltid -ῶν. Kasusordning nom,gen,dat,ack,vok."
+  },
+  {
+   "id": "par-prepositioner",
+   "typ": "referens",
+   "kategori": "preposition",
+   "seminarium": 5,
+   "rubrik": "Prepositioner och kasus",
+   "kalla": "5__Presentation.pdf",
+   "sida": 45,
+   "bild": null,
+   "referens": "Blomqvist § 240:1,6,7",
+   "tacks_av_master": null,
+   "prepositioner": [
+    {
+     "prep": "ἐν",
+     "kasus": [
+      "dativ"
+     ],
+     "betydelse": "i"
+    },
+    {
+     "prep": "εἰς",
+     "kasus": [
+      "ackusativ"
+     ],
+     "betydelse": "in i, till"
+    },
+    {
+     "prep": "ἐκ/ἐξ",
+     "kasus": [
+      "genitiv"
+     ],
+     "betydelse": "ur, ut ur"
+    },
+    {
+     "prep": "ἀπό",
+     "kasus": [
+      "genitiv"
+     ],
+     "betydelse": "från, av"
+    },
+    {
+     "prep": "πρό",
+     "kasus": [
+      "genitiv"
+     ],
+     "betydelse": "framför (rum), före (tid)"
+    },
+    {
+     "prep": "διά",
+     "kasus": [
+      "genitiv",
+      "ackusativ"
+     ],
+     "betydelse": "gen: genom; ack: på grund av"
+    },
+    {
+     "prep": "ἐπί",
+     "kasus": [
+      "genitiv",
+      "dativ",
+      "ackusativ"
+     ],
+     "betydelse": "gen: på, över; dat: vid; ack: mot"
+    },
+    {
+     "prep": "μετά",
+     "kasus": [
+      "genitiv",
+      "ackusativ"
+     ],
+     "betydelse": "gen: med; ack: efter"
+    },
+    {
+     "prep": "σύν",
+     "kasus": [
+      "dativ"
+     ],
+     "betydelse": "med, jämte"
+    },
+    {
+     "prep": "κατά",
+     "kasus": [
+      "genitiv",
+      "ackusativ"
+     ],
+     "betydelse": "gen: utför, mot; ack: enligt"
+    },
+    {
+     "prep": "παρά",
+     "kasus": [
+      "genitiv",
+      "dativ",
+      "ackusativ"
+     ],
+     "betydelse": "gen: från; dat: hos, vid; ack: bredvid"
+    },
+    {
+     "prep": "περί",
+     "kasus": [
+      "genitiv",
+      "ackusativ"
+     ],
+     "betydelse": "gen: om, angående; ack: kring"
+    },
+    {
+     "prep": "πρός",
+     "kasus": [
+      "genitiv",
+      "dativ",
+      "ackusativ"
+     ],
+     "betydelse": "gen: på (ngns sida); dat: vid; ack: till, hos"
+    },
+    {
+     "prep": "ὑπέρ",
+     "kasus": [
+      "genitiv",
+      "ackusativ"
+     ],
+     "betydelse": "gen: över, för, i stället för; ack: över, mer än"
+    },
+    {
+     "prep": "ὑπό",
+     "kasus": [
+      "genitiv",
+      "ackusativ"
+     ],
+     "betydelse": "gen: av, genom; ack: in under"
+    }
+   ],
+   "not": "Prepositionen styr sitt substantivs kasus. Substantiv efter preposition tar inte alltid bestämd artikel i grekiskan (ἐν ἀρχῇ 'i begynnelsen')."
+  },
+  {
+   "id": "par-negation-ou",
+   "typ": "regel",
+   "kategori": "negation",
+   "seminarium": 5,
+   "rubrik": "Negationen οὐ (sandhi)",
+   "kalla": "5__Presentation.pdf",
+   "sida": 51,
+   "bild": null,
+   "referens": "Blomqvist § 298:1",
+   "tacks_av_master": null,
+   "regler": [
+    {
+     "villkor": "före konsonant",
+     "form": "οὐ",
+     "exempel": "οὐ βλέπουσι τὸν θεόν"
+    },
+    {
+     "villkor": "före vokal med spiritus lenis",
+     "form": "οὐκ",
+     "exempel": "οὐκ ἐσθίετε τὸν ἄρτον"
+    },
+    {
+     "villkor": "före vokal med spiritus asper",
+     "form": "οὐχ",
+     "exempel": "οὐχ εὑρίσκομεν τὸν ἀδελφόν"
+    }
+   ],
+   "not": "Grekiskan har två negationer: οὐ (indikativ) och μή. Seminarium 5 övar οὐ. Negationen placeras före predikatet."
+  },
+  {
+   "id": "par-pron-personliga",
+   "typ": "paradigm",
+   "kategori": "pronomen",
+   "seminarium": 5,
+   "rubrik": "Personliga pronomen, 1:a och 2:a person",
+   "kalla": "5__Presentation.pdf",
+   "sida": 60,
+   "bild": null,
+   "referens": "Blomqvist § 116:1",
+   "tacks_av_master": "json/pronomen.json (ἐγώ, σύ)",
+   "not": "Betonade former (ἐμοῦ, ἐμοί, ἐμέ) efter preposition och vid emfas; obetonade/enklitiska (μου, μοι, με) i övriga fall. Nominativ har ingen obetonad form. Fullständigt paradigm i pronomen.json."
   }
- ]
+ ],
+ "_kallor_not": "Seminarium 5 extraherades ur PDF (rent textlager), ej ur zip-arkiv med JPEG-sidecar; därför bild=null för seminarium-5-poster."
 }
