@@ -32,7 +32,7 @@ const MARKUP = `<div class="vy vy-kongruens">
 
 <div class="picker">
   <button class="picker-toggle" id="picker-toggle" aria-expanded="false">
-    <span>Inställningar</span><span class="chev">▾</span>
+    <span>Anpassa övningen</span><span class="chev">▾</span>
   </button>
   <div class="picker-body hidden" id="picker-body">
     <div class="picker-section">

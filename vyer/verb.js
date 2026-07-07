@@ -91,21 +91,8 @@ const STYLE = `
 .vy-verb .mode{ font-family:"Spectral",serif; font-size:var(--fs-sm); padding:.35rem .9rem;
   border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
 .vy-verb .mode[aria-pressed="true"]{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
-.vy-verb .picker{ margin-top:1.4rem; }
-.vy-verb .picker-toggle{ font-family:"Spectral",serif; background:none; border:none; color:var(--gold);
-  cursor:pointer; font-size:var(--fs-sm); display:flex; align-items:center; gap:.3rem; }
-.vy-verb .picker-body{ margin-top:.7rem; display:flex; flex-direction:column; gap:1rem; }
-.vy-verb h2{ font-family:"Spectral",serif; font-size:var(--fs-sm); color:var(--ink-soft);
-  text-transform:uppercase; letter-spacing:.05em; margin:0 0 .4rem; }
-.vy-verb .quickrow{ display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.5rem; }
-.vy-verb .chip{ font-family:"Spectral",serif; font-size:var(--fs-2xs); padding:.3rem .7rem;
-  border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink); cursor:pointer; }
-.vy-verb .chip[aria-pressed="true"]{ border-color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); color:var(--gold); }
-.vy-verb .grid{ display:flex; flex-wrap:wrap; gap:.4rem; }
-.vy-verb .toggle{ font-family:"Spectral",serif; font-size:var(--fs-2xs); padding:.35rem .7rem;
-  border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
-.vy-verb .toggle[aria-pressed="true"]{ background:var(--gold); color:#fff; border-color:var(--gold); }
-.vy-verb .toggle:disabled{ opacity:.4; cursor:default; }
+/* Picker (.picker/.picker-toggle/.chip/.toggle m.fl.) stylas nu av den delade
+   komponenten i app.css — inga vy-lokala regler här. */
 .vy-verb footer{ margin-top:1.4rem; font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; }
 `;
 

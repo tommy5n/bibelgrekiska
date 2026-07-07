@@ -20,7 +20,7 @@ const MARKUP = `<div class="vy vy-glosor">
 
 <div class="picker">
   <button class="picker-toggle" id="picker-toggle" aria-expanded="false">
-    <span>Urval <span class="count" id="picker-count"></span></span>
+    <span>Anpassa övningen <span class="count" id="picker-count"></span></span>
     <span class="chev">▾</span>
   </button>
   <div class="picker-body" id="picker-body" hidden>
