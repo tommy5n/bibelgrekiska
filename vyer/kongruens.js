@@ -62,6 +62,16 @@ const MARKUP = `<div class="vy vy-kongruens">
       </div>
       <div class="hint">Neutrumhögen ger nom = ack-fällan: ändelsen avgör inte rollen.</div>
     </div>
+    <div class="picker-section">
+      <h2>Seminarium</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-sem-all>alla</button>
+        <button class="chip" data-sem-none>inga</button>
+      </div>
+      <div class="grid" id="grid-sem"></div>
+      <div class="hint">Vilka substantiv (per seminarium) som dyker upp. Sem 5: feminin kongruens med 2:a-dekl feminina (ἡ μακρὰ ὁδός).</div>
+    </div>
     <div class="picker-section" id="sek-kasus">
       <h2>Kasus</h2>
       <button class="toggle" id="tg-vok" aria-pressed="false">Inkludera vokativ</button>
@@ -93,102 +103,135 @@ export function render(root){
   root.innerHTML = MARKUP;
 
 const ADJEKTIV = [
-  {lemma:"ἀγαθός", glosa:"god", accenttyp:"oxyton", kortlek:"oxytona",
+  {lemma:"ἀγαθός", glosa:"god", accenttyp:"oxyton", kortlek:"oxytona", sem:[3, 4],
    m:{nom:["ἀγαθός","ἀγαθοί"], gen:["ἀγαθοῦ","ἀγαθῶν"], dat:["ἀγαθῷ","ἀγαθοῖς"], ack:["ἀγαθόν","ἀγαθούς"], vok:["ἀγαθέ","ἀγαθοί"]},
    f:{nom:["ἀγαθή","ἀγαθαί"], gen:["ἀγαθῆς","ἀγαθῶν"], dat:["ἀγαθῇ","ἀγαθαῖς"], ack:["ἀγαθήν","ἀγαθάς"], vok:["ἀγαθή","ἀγαθαί"]},
    n:{nom:["ἀγαθόν","ἀγαθά"], gen:["ἀγαθοῦ","ἀγαθῶν"], dat:["ἀγαθῷ","ἀγαθοῖς"], ack:["ἀγαθόν","ἀγαθά"], vok:["ἀγαθόν","ἀγαθά"]}},
-  {lemma:"πονηρός", glosa:"ond, fördärvad", accenttyp:"oxyton", kortlek:"oxytona",
+  {lemma:"πονηρός", glosa:"ond, fördärvad", accenttyp:"oxyton", kortlek:"oxytona", sem:[3, 4],
    m:{nom:["πονηρός","πονηροί"], gen:["πονηροῦ","πονηρῶν"], dat:["πονηρῷ","πονηροῖς"], ack:["πονηρόν","πονηρούς"], vok:["πονηρέ","πονηροί"]},
    f:{nom:["πονηρά","πονηραί"], gen:["πονηρᾶς","πονηρῶν"], dat:["πονηρᾷ","πονηραῖς"], ack:["πονηράν","πονηράς"], vok:["πονηρά","πονηραί"]},
    n:{nom:["πονηρόν","πονηρά"], gen:["πονηροῦ","πονηρῶν"], dat:["πονηρῷ","πονηροῖς"], ack:["πονηρόν","πονηρά"], vok:["πονηρόν","πονηρά"]}},
-  {lemma:"καλός", glosa:"vacker, god", accenttyp:"oxyton", kortlek:"oxytona",
+  {lemma:"καλός", glosa:"vacker, god", accenttyp:"oxyton", kortlek:"oxytona", sem:[3, 4],
    m:{nom:["καλός","καλοί"], gen:["καλοῦ","καλῶν"], dat:["καλῷ","καλοῖς"], ack:["καλόν","καλούς"], vok:["καλέ","καλοί"]},
    f:{nom:["καλή","καλαί"], gen:["καλῆς","καλῶν"], dat:["καλῇ","καλαῖς"], ack:["καλήν","καλάς"], vok:["καλή","καλαί"]},
    n:{nom:["καλόν","καλά"], gen:["καλοῦ","καλῶν"], dat:["καλῷ","καλοῖς"], ack:["καλόν","καλά"], vok:["καλόν","καλά"]}},
-  {lemma:"νεκρός", glosa:"död", accenttyp:"oxyton", kortlek:"oxytona",
+  {lemma:"νεκρός", glosa:"död", accenttyp:"oxyton", kortlek:"oxytona", sem:[3],
    m:{nom:["νεκρός","νεκροί"], gen:["νεκροῦ","νεκρῶν"], dat:["νεκρῷ","νεκροῖς"], ack:["νεκρόν","νεκρούς"], vok:["νεκρέ","νεκροί"]},
    f:{nom:["νεκρά","νεκραί"], gen:["νεκρᾶς","νεκρῶν"], dat:["νεκρᾷ","νεκραῖς"], ack:["νεκράν","νεκράς"], vok:["νεκρά","νεκραί"]},
    n:{nom:["νεκρόν","νεκρά"], gen:["νεκροῦ","νεκρῶν"], dat:["νεκρῷ","νεκροῖς"], ack:["νεκρόν","νεκρά"], vok:["νεκρόν","νεκρά"]}},
-  {lemma:"πιστός", glosa:"trogen, troende", accenttyp:"oxyton", kortlek:"oxytona",
+  {lemma:"πιστός", glosa:"trogen, troende", accenttyp:"oxyton", kortlek:"oxytona", sem:[3],
    m:{nom:["πιστός","πιστοί"], gen:["πιστοῦ","πιστῶν"], dat:["πιστῷ","πιστοῖς"], ack:["πιστόν","πιστούς"], vok:["πιστέ","πιστοί"]},
    f:{nom:["πιστή","πισταί"], gen:["πιστῆς","πιστῶν"], dat:["πιστῇ","πισταῖς"], ack:["πιστήν","πιστάς"], vok:["πιστή","πισταί"]},
    n:{nom:["πιστόν","πιστά"], gen:["πιστοῦ","πιστῶν"], dat:["πιστῷ","πιστοῖς"], ack:["πιστόν","πιστά"], vok:["πιστόν","πιστά"]}},
-  {lemma:"μικρός", glosa:"liten", accenttyp:"oxyton", kortlek:"oxytona",
+  {lemma:"μικρός", glosa:"liten", accenttyp:"oxyton", kortlek:"oxytona", sem:[3],
    m:{nom:["μικρός","μικροί"], gen:["μικροῦ","μικρῶν"], dat:["μικρῷ","μικροῖς"], ack:["μικρόν","μικρούς"], vok:["μικρέ","μικροί"]},
    f:{nom:["μικρά","μικραί"], gen:["μικρᾶς","μικρῶν"], dat:["μικρᾷ","μικραῖς"], ack:["μικράν","μικράς"], vok:["μικρά","μικραί"]},
    n:{nom:["μικρόν","μικρά"], gen:["μικροῦ","μικρῶν"], dat:["μικρῷ","μικροῖς"], ack:["μικρόν","μικρά"], vok:["μικρόν","μικρά"]}},
-  {lemma:"ἅγιος", glosa:"helig, ren", accenttyp:"proparoxyton", kortlek:"ovriga",
+  {lemma:"ἅγιος", glosa:"helig, ren", accenttyp:"proparoxyton", kortlek:"ovriga", sem:[3],
    m:{nom:["ἅγιος","ἅγιοι"], gen:["ἁγίου","ἁγίων"], dat:["ἁγίῳ","ἁγίοις"], ack:["ἅγιον","ἁγίους"], vok:["ἅγιε","ἅγιοι"]},
    f:{nom:["ἁγία","ἅγιαι"], gen:["ἁγίας","ἁγίων"], dat:["ἁγίᾳ","ἁγίαις"], ack:["ἁγίαν","ἁγίας"], vok:["ἁγία","ἅγιαι"]},
    n:{nom:["ἅγιον","ἅγια"], gen:["ἁγίου","ἁγίων"], dat:["ἁγίῳ","ἁγίοις"], ack:["ἅγιον","ἅγια"], vok:["ἅγιον","ἅγια"]}},
-  {lemma:"μόνος", glosa:"ensam, allena", accenttyp:"paroxyton", kortlek:"ovriga",
+  {lemma:"μόνος", glosa:"ensam, allena", accenttyp:"paroxyton", kortlek:"ovriga", sem:[3],
    m:{nom:["μόνος","μόνοι"], gen:["μόνου","μόνων"], dat:["μόνῳ","μόνοις"], ack:["μόνον","μόνους"], vok:["μόνε","μόνοι"]},
    f:{nom:["μόνη","μόναι"], gen:["μόνης","μόνων"], dat:["μόνῃ","μόναις"], ack:["μόνην","μόνας"], vok:["μόνη","μόναι"]},
    n:{nom:["μόνον","μόνα"], gen:["μόνου","μόνων"], dat:["μόνῳ","μόνοις"], ack:["μόνον","μόνα"], vok:["μόνον","μόνα"]}},
-  {lemma:"πρῶτος", glosa:"först, främst", accenttyp:"properispomenon", kortlek:"ovriga",
+  {lemma:"πρῶτος", glosa:"först, främst", accenttyp:"properispomenon", kortlek:"ovriga", sem:[3],
    m:{nom:["πρῶτος","πρῶτοι"], gen:["πρώτου","πρώτων"], dat:["πρώτῳ","πρώτοις"], ack:["πρῶτον","πρώτους"], vok:["πρῶτε","πρῶτοι"]},
    f:{nom:["πρώτη","πρῶται"], gen:["πρώτης","πρώτων"], dat:["πρώτῃ","πρώταις"], ack:["πρώτην","πρώτας"], vok:["πρώτη","πρῶται"]},
    n:{nom:["πρῶτον","πρῶτα"], gen:["πρώτου","πρώτων"], dat:["πρώτῳ","πρώτοις"], ack:["πρῶτον","πρῶτα"], vok:["πρῶτον","πρῶτα"]}},
-  {lemma:"δίκαιος", glosa:"rättvis, rättfärdig", accenttyp:"proparoxyton", kortlek:"ovriga",
+  {lemma:"δίκαιος", glosa:"rättvis, rättfärdig", accenttyp:"proparoxyton", kortlek:"ovriga", sem:[4],
    m:{nom:["δίκαιος","δίκαιοι"], gen:["δικαίου","δικαίων"], dat:["δικαίῳ","δικαίοις"], ack:["δίκαιον","δικαίους"], vok:["δίκαιε","δίκαιοι"]},
    f:{nom:["δικαία","δίκαιαι"], gen:["δικαίας","δικαίων"], dat:["δικαίᾳ","δικαίαις"], ack:["δικαίαν","δικαίας"], vok:["δικαία","δίκαιαι"]},
    n:{nom:["δίκαιον","δίκαια"], gen:["δικαίου","δικαίων"], dat:["δικαίῳ","δικαίοις"], ack:["δίκαιον","δίκαια"], vok:["δίκαιον","δίκαια"]}},
+  {lemma:"μακρός", glosa:"lång", accenttyp:"oxyton", kortlek:"oxytona", sem:[5],
+   m:{nom:["μακρός","μακροί"], gen:["μακροῦ","μακρῶν"], dat:["μακρῷ","μακροῖς"], ack:["μακρόν","μακρούς"], vok:["μακρέ","μακροί"]},
+   f:{nom:["μακρά","μακραί"], gen:["μακρᾶς","μακρῶν"], dat:["μακρᾷ","μακραῖς"], ack:["μακράν","μακράς"], vok:["μακρά","μακραί"]},
+   n:{nom:["μακρόν","μακρά"], gen:["μακροῦ","μακρῶν"], dat:["μακρῷ","μακροῖς"], ack:["μακρόν","μακρά"], vok:["μακρόν","μακρά"]}},
+  {lemma:"πτωχός", glosa:"fattig", accenttyp:"oxyton", kortlek:"oxytona", sem:[5],
+   m:{nom:["πτωχός","πτωχοί"], gen:["πτωχοῦ","πτωχῶν"], dat:["πτωχῷ","πτωχοῖς"], ack:["πτωχόν","πτωχούς"], vok:["πτωχέ","πτωχοί"]},
+   f:{nom:["πτωχή","πτωχαί"], gen:["πτωχῆς","πτωχῶν"], dat:["πτωχῇ","πτωχαῖς"], ack:["πτωχήν","πτωχάς"], vok:["πτωχή","πτωχαί"]},
+   n:{nom:["πτωχόν","πτωχά"], gen:["πτωχοῦ","πτωχῶν"], dat:["πτωχῷ","πτωχοῖς"], ack:["πτωχόν","πτωχά"], vok:["πτωχόν","πτωχά"]}},
+  {lemma:"ἁμαρτωλός", glosa:"syndig", accenttyp:"oxyton", kortlek:"oxytona", sem:[5],
+   m:{nom:["ἁμαρτωλός","ἁμαρτωλοί"], gen:["ἁμαρτωλοῦ","ἁμαρτωλῶν"], dat:["ἁμαρτωλῷ","ἁμαρτωλοῖς"], ack:["ἁμαρτωλόν","ἁμαρτωλούς"], vok:["ἁμαρτωλέ","ἁμαρτωλοί"]},
+   f:{nom:["ἁμαρτωλή","ἁμαρτωλαί"], gen:["ἁμαρτωλῆς","ἁμαρτωλῶν"], dat:["ἁμαρτωλῇ","ἁμαρτωλαῖς"], ack:["ἁμαρτωλήν","ἁμαρτωλάς"], vok:["ἁμαρτωλή","ἁμαρτωλαί"]},
+   n:{nom:["ἁμαρτωλόν","ἁμαρτωλά"], gen:["ἁμαρτωλοῦ","ἁμαρτωλῶν"], dat:["ἁμαρτωλῷ","ἁμαρτωλοῖς"], ack:["ἁμαρτωλόν","ἁμαρτωλά"], vok:["ἁμαρτωλόν","ἁμαρτωλά"]}},
+  {lemma:"πλούσιος", glosa:"rik", accenttyp:"proparoxyton", kortlek:"ovriga", sem:[5],
+   m:{nom:["πλούσιος","πλούσιοι"], gen:["πλουσίου","πλουσίων"], dat:["πλουσίῳ","πλουσίοις"], ack:["πλούσιον","πλουσίους"], vok:["πλούσιε","πλούσιοι"]},
+   f:{nom:["πλουσία","πλούσιαι"], gen:["πλουσίας","πλουσίων"], dat:["πλουσίᾳ","πλουσίαις"], ack:["πλουσίαν","πλουσίας"], vok:["πλουσία","πλούσιαι"]},
+   n:{nom:["πλούσιον","πλούσια"], gen:["πλουσίου","πλουσίων"], dat:["πλουσίῳ","πλουσίοις"], ack:["πλούσιον","πλούσια"], vok:["πλούσιον","πλούσια"]}},
+  {lemma:"αἰώνιος", glosa:"evig", accenttyp:"proparoxyton", kortlek:"ovriga", sem:[5],
+   m:{nom:["αἰώνιος","αἰώνιοι"], gen:["αἰωνίου","αἰωνίων"], dat:["αἰωνίῳ","αἰωνίοις"], ack:["αἰώνιον","αἰωνίους"], vok:["αἰώνιε","αἰώνιοι"]},
+   f:{nom:["αἰώνιος","αἰώνιοι"], gen:["αἰωνίου","αἰωνίων"], dat:["αἰωνίῳ","αἰωνίοις"], ack:["αἰώνιον","αἰωνίους"], vok:["αἰώνιε","αἰώνιοι"]},
+   n:{nom:["αἰώνιον","αἰώνια"], gen:["αἰωνίου","αἰωνίων"], dat:["αἰωνίῳ","αἰωνίοις"], ack:["αἰώνιον","αἰώνια"], vok:["αἰώνιον","αἰώνια"]}}
 ];
 
 const SUBSTANTIV = [
-  {lemma:"ἄνθρωπος", glosa:"människa", genus:"m", accenttyp:"proparoxyton", former:{nom:["ἄνθρωπος","ἄνθρωποι"], gen:["ἀνθρώπου","ἀνθρώπων"], dat:["ἀνθρώπῳ","ἀνθρώποις"], ack:["ἄνθρωπον","ἀνθρώπους"], vok:["ἄνθρωπε","ἄνθρωποι"]}},
-  {lemma:"λόγος", glosa:"ord, berättelse", genus:"m", accenttyp:"paroxyton", former:{nom:["λόγος","λόγοι"], gen:["λόγου","λόγων"], dat:["λόγῳ","λόγοις"], ack:["λόγον","λόγους"], vok:["λόγε","λόγοι"]}},
-  {lemma:"οἶκος", glosa:"hus", genus:"m", accenttyp:"properispomenon", former:{nom:["οἶκος","οἶκοι"], gen:["οἴκου","οἴκων"], dat:["οἴκῳ","οἴκοις"], ack:["οἶκον","οἴκους"], vok:["οἶκε","οἶκοι"]}},
-  {lemma:"κύριος", glosa:"herre", genus:"m", accenttyp:"proparoxyton", former:{nom:["κύριος","κύριοι"], gen:["κυρίου","κυρίων"], dat:["κυρίῳ","κυρίοις"], ack:["κύριον","κυρίους"], vok:["κύριε","κύριοι"]}},
-  {lemma:"θεός", glosa:"gud", genus:"m", accenttyp:"oxyton", former:{nom:["θεός","θεοί"], gen:["θεοῦ","θεῶν"], dat:["θεῷ","θεοῖς"], ack:["θεόν","θεούς"], vok:["θεέ","θεοί"]}},
-  {lemma:"ἀπόστολος", glosa:"apostel", genus:"m", accenttyp:"proparoxyton", former:{nom:["ἀπόστολος","ἀπόστολοι"], gen:["ἀποστόλου","ἀποστόλων"], dat:["ἀποστόλῳ","ἀποστόλοις"], ack:["ἀπόστολον","ἀποστόλους"], vok:["ἀπόστολε","ἀπόστολοι"]}},
-  {lemma:"ἄγγελος", glosa:"budbärare, ängel", genus:"m", accenttyp:"proparoxyton", former:{nom:["ἄγγελος","ἄγγελοι"], gen:["ἀγγέλου","ἀγγέλων"], dat:["ἀγγέλῳ","ἀγγέλοις"], ack:["ἄγγελον","ἀγγέλους"], vok:["ἄγγελε","ἄγγελοι"]}},
-  {lemma:"δοῦλος", glosa:"slav", genus:"m", accenttyp:"properispomenon", former:{nom:["δοῦλος","δοῦλοι"], gen:["δούλου","δούλων"], dat:["δούλῳ","δούλοις"], ack:["δοῦλον","δούλους"], vok:["δοῦλε","δοῦλοι"]}},
-  {lemma:"ἀδελφός", glosa:"bror", genus:"m", accenttyp:"oxyton", former:{nom:["ἀδελφός","ἀδελφοί"], gen:["ἀδελφοῦ","ἀδελφῶν"], dat:["ἀδελφῷ","ἀδελφοῖς"], ack:["ἀδελφόν","ἀδελφούς"], vok:["ἀδελφέ","ἀδελφοί"]}},
-  {lemma:"ἄρτος", glosa:"bröd", genus:"m", accenttyp:"paroxyton", former:{nom:["ἄρτος","ἄρτοι"], gen:["ἄρτου","ἄρτων"], dat:["ἄρτῳ","ἄρτοις"], ack:["ἄρτον","ἄρτους"], vok:["ἄρτε","ἄρτοι"]}},
-  {lemma:"θάνατος", glosa:"död", genus:"m", accenttyp:"proparoxyton", former:{nom:["θάνατος","θάνατοι"], gen:["θανάτου","θανάτων"], dat:["θανάτῳ","θανάτοις"], ack:["θάνατον","θανάτους"], vok:["θάνατε","θάνατοι"]}},
-  {lemma:"καιρός", glosa:"tid", genus:"m", accenttyp:"oxyton", former:{nom:["καιρός","καιροί"], gen:["καιροῦ","καιρῶν"], dat:["καιρῷ","καιροῖς"], ack:["καιρόν","καιρούς"], vok:["καιρέ","καιροί"]}},
-  {lemma:"καρπός", glosa:"frukt", genus:"m", accenttyp:"oxyton", former:{nom:["καρπός","καρποί"], gen:["καρποῦ","καρπῶν"], dat:["καρπῷ","καρποῖς"], ack:["καρπόν","καρπούς"], vok:["καρπέ","καρποί"]}},
-  {lemma:"κόσμος", glosa:"värld", genus:"m", accenttyp:"paroxyton", former:{nom:["κόσμος","κόσμοι"], gen:["κόσμου","κόσμων"], dat:["κόσμῳ","κόσμοις"], ack:["κόσμον","κόσμους"], vok:["κόσμε","κόσμοι"]}},
-  {lemma:"λαός", glosa:"folk", genus:"m", accenttyp:"oxyton", former:{nom:["λαός","λαοί"], gen:["λαοῦ","λαῶν"], dat:["λαῷ","λαοῖς"], ack:["λαόν","λαούς"], vok:["λαέ","λαοί"]}},
-  {lemma:"νόμος", glosa:"lag", genus:"m", accenttyp:"paroxyton", former:{nom:["νόμος","νόμοι"], gen:["νόμου","νόμων"], dat:["νόμῳ","νόμοις"], ack:["νόμον","νόμους"], vok:["νόμε","νόμοι"]}},
-  {lemma:"οὐρανός", glosa:"himmel", genus:"m", accenttyp:"oxyton", former:{nom:["οὐρανός","οὐρανοί"], gen:["οὐρανοῦ","οὐρανῶν"], dat:["οὐρανῷ","οὐρανοῖς"], ack:["οὐρανόν","οὐρανούς"], vok:["οὐρανέ","οὐρανοί"]}},
-  {lemma:"ὀφθαλμός", glosa:"öga", genus:"m", accenttyp:"oxyton", former:{nom:["ὀφθαλμός","ὀφθαλμοί"], gen:["ὀφθαλμοῦ","ὀφθαλμῶν"], dat:["ὀφθαλμῷ","ὀφθαλμοῖς"], ack:["ὀφθαλμόν","ὀφθαλμούς"], vok:["ὀφθαλμέ","ὀφθαλμοί"]}},
-  {lemma:"ὄχλος", glosa:"folkhop", genus:"m", accenttyp:"paroxyton", former:{nom:["ὄχλος","ὄχλοι"], gen:["ὄχλου","ὄχλων"], dat:["ὄχλῳ","ὄχλοις"], ack:["ὄχλον","ὄχλους"], vok:["ὄχλε","ὄχλοι"]}},
-  {lemma:"τόπος", glosa:"plats", genus:"m", accenttyp:"paroxyton", former:{nom:["τόπος","τόποι"], gen:["τόπου","τόπων"], dat:["τόπῳ","τόποις"], ack:["τόπον","τόπους"], vok:["τόπε","τόποι"]}},
-  {lemma:"υἱός", glosa:"son", genus:"m", accenttyp:"oxyton", former:{nom:["υἱός","υἱοί"], gen:["υἱοῦ","υἱῶν"], dat:["υἱῷ","υἱοῖς"], ack:["υἱόν","υἱούς"], vok:["υἱέ","υἱοί"]}},
-  {lemma:"Φαρισαῖος", glosa:"farisé", genus:"m", accenttyp:"properispomenon", former:{nom:["Φαρισαῖος","Φαρισαῖοι"], gen:["Φαρισαίου","Φαρισαίων"], dat:["Φαρισαίῳ","Φαρισαίοις"], ack:["Φαρισαῖον","Φαρισαίους"], vok:["Φαρισαῖε","Φαρισαῖοι"]}},
-  {lemma:"Χριστός", glosa:"Kristus", genus:"m", accenttyp:"oxyton", former:{nom:["Χριστός","Χριστοί"], gen:["Χριστοῦ","Χριστῶν"], dat:["Χριστῷ","Χριστοῖς"], ack:["Χριστόν","Χριστούς"], vok:["Χριστέ","Χριστοί"]}},
-  {lemma:"διάβολος", glosa:"djävul", genus:"m", accenttyp:"proparoxyton", former:{nom:["διάβολος","διάβολοι"], gen:["διαβόλου","διαβόλων"], dat:["διαβόλῳ","διαβόλοις"], ack:["διάβολον","διαβόλους"], vok:["διάβολε","διάβολοι"]}},
-  {lemma:"παράδεισος", glosa:"paradis", genus:"m", accenttyp:"proparoxyton", former:{nom:["παράδεισος","παράδεισοι"], gen:["παραδείσου","παραδείσων"], dat:["παραδείσῳ","παραδείσοις"], ack:["παράδεισον","παραδείσους"], vok:["παράδεισε","παράδεισοι"]}},
-  {lemma:"κατάλογος", glosa:"förteckning", genus:"m", accenttyp:"proparoxyton", former:{nom:["κατάλογος","κατάλογοι"], gen:["καταλόγου","καταλόγων"], dat:["καταλόγῳ","καταλόγοις"], ack:["κατάλογον","καταλόγους"], vok:["κατάλογε","κατάλογοι"]}},
-  {lemma:"ἔργον", glosa:"verk, arbete", genus:"n", accenttyp:"paroxyton", former:{nom:["ἔργον","ἔργα"], gen:["ἔργου","ἔργων"], dat:["ἔργῳ","ἔργοις"], ack:["ἔργον","ἔργα"], vok:["ἔργον","ἔργα"]}},
-  {lemma:"τέκνον", glosa:"barn", genus:"n", accenttyp:"paroxyton", former:{nom:["τέκνον","τέκνα"], gen:["τέκνου","τέκνων"], dat:["τέκνῳ","τέκνοις"], ack:["τέκνον","τέκνα"], vok:["τέκνον","τέκνα"]}},
-  {lemma:"εὐαγγέλιον", glosa:"evangelium, glatt budskap", genus:"n", accenttyp:"proparoxyton", former:{nom:["εὐαγγέλιον","εὐαγγέλια"], gen:["εὐαγγελίου","εὐαγγελίων"], dat:["εὐαγγελίῳ","εὐαγγελίοις"], ack:["εὐαγγέλιον","εὐαγγέλια"], vok:["εὐαγγέλιον","εὐαγγέλια"]}},
-  {lemma:"ἱερόν", glosa:"tempel", genus:"n", accenttyp:"oxyton", former:{nom:["ἱερόν","ἱερά"], gen:["ἱεροῦ","ἱερῶν"], dat:["ἱερῷ","ἱεροῖς"], ack:["ἱερόν","ἱερά"], vok:["ἱερόν","ἱερά"]}},
-  {lemma:"σημεῖον", glosa:"tecken", genus:"n", accenttyp:"properispomenon", former:{nom:["σημεῖον","σημεῖα"], gen:["σημείου","σημείων"], dat:["σημείῳ","σημείοις"], ack:["σημεῖον","σημεῖα"], vok:["σημεῖον","σημεῖα"]}},
-  {lemma:"πλοῖον", glosa:"båt, skepp", genus:"n", accenttyp:"properispomenon", former:{nom:["πλοῖον","πλοῖα"], gen:["πλοίου","πλοίων"], dat:["πλοίῳ","πλοίοις"], ack:["πλοῖον","πλοῖα"], vok:["πλοῖον","πλοῖα"]}},
-  {lemma:"σάββατον", glosa:"sabbat", genus:"n", accenttyp:"proparoxyton", former:{nom:["σάββατον","σάββατα"], gen:["σαββάτου","σαββάτων"], dat:["σαββάτῳ","σαββάτοις"], ack:["σάββατον","σάββατα"], vok:["σάββατον","σάββατα"]}},
-  {lemma:"ἀρχή", glosa:"begynnelse", genus:"f", accenttyp:"oxyton", former:{nom:["ἀρχή","ἀρχαί"], gen:["ἀρχῆς","ἀρχῶν"], dat:["ἀρχῇ","ἀρχαῖς"], ack:["ἀρχήν","ἀρχάς"], vok:["ἀρχή","ἀρχαί"]}},
-  {lemma:"φωνή", glosa:"röst", genus:"f", accenttyp:"oxyton", former:{nom:["φωνή","φωναί"], gen:["φωνῆς","φωνῶν"], dat:["φωνῇ","φωναῖς"], ack:["φωνήν","φωνάς"], vok:["φωνή","φωναί"]}},
-  {lemma:"ψυχή", glosa:"själ", genus:"f", accenttyp:"oxyton", former:{nom:["ψυχή","ψυχαί"], gen:["ψυχῆς","ψυχῶν"], dat:["ψυχῇ","ψυχαῖς"], ack:["ψυχήν","ψυχάς"], vok:["ψυχή","ψυχαί"]}},
-  {lemma:"ζωή", glosa:"liv", genus:"f", accenttyp:"oxyton", former:{nom:["ζωή","ζωαί"], gen:["ζωῆς","ζωῶν"], dat:["ζωῇ","ζωαῖς"], ack:["ζωήν","ζωάς"], vok:["ζωή","ζωαί"]}},
-  {lemma:"ἐντολή", glosa:"bud, uppdrag", genus:"f", accenttyp:"oxyton", former:{nom:["ἐντολή","ἐντολαί"], gen:["ἐντολῆς","ἐντολῶν"], dat:["ἐντολῇ","ἐντολαῖς"], ack:["ἐντολήν","ἐντολάς"], vok:["ἐντολή","ἐντολαί"]}},
-  {lemma:"ἀδελφή", glosa:"syster", genus:"f", accenttyp:"oxyton", former:{nom:["ἀδελφή","ἀδελφαί"], gen:["ἀδελφῆς","ἀδελφῶν"], dat:["ἀδελφῇ","ἀδελφαῖς"], ack:["ἀδελφήν","ἀδελφάς"], vok:["ἀδελφή","ἀδελφαί"]}},
-  {lemma:"κεφαλή", glosa:"huvud", genus:"f", accenttyp:"oxyton", former:{nom:["κεφαλή","κεφαλαί"], gen:["κεφαλῆς","κεφαλῶν"], dat:["κεφαλῇ","κεφαλαῖς"], ack:["κεφαλήν","κεφαλάς"], vok:["κεφαλή","κεφαλαί"]}},
-  {lemma:"συναγωγή", glosa:"synagoga", genus:"f", accenttyp:"oxyton", former:{nom:["συναγωγή","συναγωγαί"], gen:["συναγωγῆς","συναγωγῶν"], dat:["συναγωγῇ","συναγωγαῖς"], ack:["συναγωγήν","συναγωγάς"], vok:["συναγωγή","συναγωγαί"]}},
-  {lemma:"ἀγάπη", glosa:"kärlek", genus:"f", accenttyp:"paroxyton", former:{nom:["ἀγάπη","ἀγάπαι"], gen:["ἀγάπης","ἀγαπῶν"], dat:["ἀγάπῃ","ἀγάπαις"], ack:["ἀγάπην","ἀγάπας"], vok:["ἀγάπη","ἀγάπαι"]}},
-  {lemma:"εἰρήνη", glosa:"fred", genus:"f", accenttyp:"paroxyton", former:{nom:["εἰρήνη","εἰρῆναι"], gen:["εἰρήνης","εἰρηνῶν"], dat:["εἰρήνῃ","εἰρήναις"], ack:["εἰρήνην","εἰρήνας"], vok:["εἰρήνη","εἰρῆναι"]}},
-  {lemma:"δικαιοσύνη", glosa:"rättfärdighet, rättvisa", genus:"f", accenttyp:"paroxyton", former:{nom:["δικαιοσύνη","δικαιοσύναι"], gen:["δικαιοσύνης","δικαιοσυνῶν"], dat:["δικαιοσύνῃ","δικαιοσύναις"], ack:["δικαιοσύνην","δικαιοσύνας"], vok:["δικαιοσύνη","δικαιοσύναι"]}},
-  {lemma:"ἐκκλησία", glosa:"församling, kyrka", genus:"f", accenttyp:"paroxyton", former:{nom:["ἐκκλησία","ἐκκλησίαι"], gen:["ἐκκλησίας","ἐκκλησιῶν"], dat:["ἐκκλησίᾳ","ἐκκλησίαις"], ack:["ἐκκλησίαν","ἐκκλησίας"], vok:["ἐκκλησία","ἐκκλησίαι"]}},
-  {lemma:"ἡμέρα", glosa:"dag", genus:"f", accenttyp:"paroxyton", former:{nom:["ἡμέρα","ἡμέραι"], gen:["ἡμέρας","ἡμερῶν"], dat:["ἡμέρᾳ","ἡμέραις"], ack:["ἡμέραν","ἡμέρας"], vok:["ἡμέρα","ἡμέραι"]}},
-  {lemma:"ἁμαρτία", glosa:"synd, felsteg", genus:"f", accenttyp:"paroxyton", former:{nom:["ἁμαρτία","ἁμαρτίαι"], gen:["ἁμαρτίας","ἁμαρτιῶν"], dat:["ἁμαρτίᾳ","ἁμαρτίαις"], ack:["ἁμαρτίαν","ἁμαρτίας"], vok:["ἁμαρτία","ἁμαρτίαι"]}},
-  {lemma:"ἐξουσία", glosa:"makt", genus:"f", accenttyp:"paroxyton", former:{nom:["ἐξουσία","ἐξουσίαι"], gen:["ἐξουσίας","ἐξουσιῶν"], dat:["ἐξουσίᾳ","ἐξουσίαις"], ack:["ἐξουσίαν","ἐξουσίας"], vok:["ἐξουσία","ἐξουσίαι"]}},
-  {lemma:"καρδία", glosa:"hjärta", genus:"f", accenttyp:"paroxyton", former:{nom:["καρδία","καρδίαι"], gen:["καρδίας","καρδιῶν"], dat:["καρδίᾳ","καρδίαις"], ack:["καρδίαν","καρδίας"], vok:["καρδία","καρδίαι"]}},
-  {lemma:"βασιλεία", glosa:"rike, kungadöme", genus:"f", accenttyp:"paroxyton", former:{nom:["βασιλεία","βασιλεῖαι"], gen:["βασιλείας","βασιλειῶν"], dat:["βασιλείᾳ","βασιλείαις"], ack:["βασιλείαν","βασιλείας"], vok:["βασιλεία","βασιλεῖαι"]}},
-  {lemma:"ὥρα", glosa:"stund, timme", genus:"f", accenttyp:"paroxyton", former:{nom:["ὥρα","ὧραι"], gen:["ὥρας","ὡρῶν"], dat:["ὥρᾳ","ὥραις"], ack:["ὥραν","ὥρας"], vok:["ὥρα","ὧραι"]}},
-  {lemma:"ἀλήθεια", glosa:"sanning", genus:"f", accenttyp:"proparoxyton", former:{nom:["ἀλήθεια","ἀλήθειαι"], gen:["ἀληθείας","ἀληθειῶν"], dat:["ἀληθείᾳ","ἀληθείαις"], ack:["ἀλήθειαν","ἀληθείας"], vok:["ἀλήθεια","ἀλήθειαι"]}},
-  {lemma:"θάλασσα", glosa:"hav, sjö", genus:"f", accenttyp:"proparoxyton", former:{nom:["θάλασσα","θάλασσαι"], gen:["θαλάσσης","θαλασσῶν"], dat:["θαλάσσῃ","θαλάσσαις"], ack:["θάλασσαν","θαλάσσας"], vok:["θάλασσα","θάλασσαι"]}},
+  {lemma:"ἄνθρωπος", glosa:"människa", genus:"m", accenttyp:"proparoxyton", sem:[2], former:{nom:["ἄνθρωπος","ἄνθρωποι"], gen:["ἀνθρώπου","ἀνθρώπων"], dat:["ἀνθρώπῳ","ἀνθρώποις"], ack:["ἄνθρωπον","ἀνθρώπους"], vok:["ἄνθρωπε","ἄνθρωποι"]}},
+  {lemma:"λόγος", glosa:"ord, berättelse", genus:"m", accenttyp:"paroxyton", sem:[2], former:{nom:["λόγος","λόγοι"], gen:["λόγου","λόγων"], dat:["λόγῳ","λόγοις"], ack:["λόγον","λόγους"], vok:["λόγε","λόγοι"]}},
+  {lemma:"οἶκος", glosa:"hus", genus:"m", accenttyp:"properispomenon", sem:[2], former:{nom:["οἶκος","οἶκοι"], gen:["οἴκου","οἴκων"], dat:["οἴκῳ","οἴκοις"], ack:["οἶκον","οἴκους"], vok:["οἶκε","οἶκοι"]}},
+  {lemma:"κύριος", glosa:"herre", genus:"m", accenttyp:"proparoxyton", sem:[2], former:{nom:["κύριος","κύριοι"], gen:["κυρίου","κυρίων"], dat:["κυρίῳ","κυρίοις"], ack:["κύριον","κυρίους"], vok:["κύριε","κύριοι"]}},
+  {lemma:"θεός", glosa:"gud", genus:"m", accenttyp:"oxyton", sem:[1, 2], former:{nom:["θεός","θεοί"], gen:["θεοῦ","θεῶν"], dat:["θεῷ","θεοῖς"], ack:["θεόν","θεούς"], vok:["θεέ","θεοί"]}},
+  {lemma:"ἀπόστολος", glosa:"apostel", genus:"m", accenttyp:"proparoxyton", sem:[2], former:{nom:["ἀπόστολος","ἀπόστολοι"], gen:["ἀποστόλου","ἀποστόλων"], dat:["ἀποστόλῳ","ἀποστόλοις"], ack:["ἀπόστολον","ἀποστόλους"], vok:["ἀπόστολε","ἀπόστολοι"]}},
+  {lemma:"ἄγγελος", glosa:"budbärare, ängel", genus:"m", accenttyp:"proparoxyton", sem:[1, 2], former:{nom:["ἄγγελος","ἄγγελοι"], gen:["ἀγγέλου","ἀγγέλων"], dat:["ἀγγέλῳ","ἀγγέλοις"], ack:["ἄγγελον","ἀγγέλους"], vok:["ἄγγελε","ἄγγελοι"]}},
+  {lemma:"δοῦλος", glosa:"slav", genus:"m", accenttyp:"properispomenon", sem:[2], former:{nom:["δοῦλος","δοῦλοι"], gen:["δούλου","δούλων"], dat:["δούλῳ","δούλοις"], ack:["δοῦλον","δούλους"], vok:["δοῦλε","δοῦλοι"]}},
+  {lemma:"ἀδελφός", glosa:"bror", genus:"m", accenttyp:"oxyton", sem:[2], former:{nom:["ἀδελφός","ἀδελφοί"], gen:["ἀδελφοῦ","ἀδελφῶν"], dat:["ἀδελφῷ","ἀδελφοῖς"], ack:["ἀδελφόν","ἀδελφούς"], vok:["ἀδελφέ","ἀδελφοί"]}},
+  {lemma:"ἄρτος", glosa:"bröd", genus:"m", accenttyp:"paroxyton", sem:[], former:{nom:["ἄρτος","ἄρτοι"], gen:["ἄρτου","ἄρτων"], dat:["ἄρτῳ","ἄρτοις"], ack:["ἄρτον","ἄρτους"], vok:["ἄρτε","ἄρτοι"]}},
+  {lemma:"θάνατος", glosa:"död", genus:"m", accenttyp:"proparoxyton", sem:[], former:{nom:["θάνατος","θάνατοι"], gen:["θανάτου","θανάτων"], dat:["θανάτῳ","θανάτοις"], ack:["θάνατον","θανάτους"], vok:["θάνατε","θάνατοι"]}},
+  {lemma:"καιρός", glosa:"tid", genus:"m", accenttyp:"oxyton", sem:[], former:{nom:["καιρός","καιροί"], gen:["καιροῦ","καιρῶν"], dat:["καιρῷ","καιροῖς"], ack:["καιρόν","καιρούς"], vok:["καιρέ","καιροί"]}},
+  {lemma:"καρπός", glosa:"frukt", genus:"m", accenttyp:"oxyton", sem:[], former:{nom:["καρπός","καρποί"], gen:["καρποῦ","καρπῶν"], dat:["καρπῷ","καρποῖς"], ack:["καρπόν","καρπούς"], vok:["καρπέ","καρποί"]}},
+  {lemma:"κόσμος", glosa:"värld", genus:"m", accenttyp:"paroxyton", sem:[], former:{nom:["κόσμος","κόσμοι"], gen:["κόσμου","κόσμων"], dat:["κόσμῳ","κόσμοις"], ack:["κόσμον","κόσμους"], vok:["κόσμε","κόσμοι"]}},
+  {lemma:"λαός", glosa:"folk", genus:"m", accenttyp:"oxyton", sem:[], former:{nom:["λαός","λαοί"], gen:["λαοῦ","λαῶν"], dat:["λαῷ","λαοῖς"], ack:["λαόν","λαούς"], vok:["λαέ","λαοί"]}},
+  {lemma:"νόμος", glosa:"lag", genus:"m", accenttyp:"paroxyton", sem:[], former:{nom:["νόμος","νόμοι"], gen:["νόμου","νόμων"], dat:["νόμῳ","νόμοις"], ack:["νόμον","νόμους"], vok:["νόμε","νόμοι"]}},
+  {lemma:"οὐρανός", glosa:"himmel", genus:"m", accenttyp:"oxyton", sem:[2], former:{nom:["οὐρανός","οὐρανοί"], gen:["οὐρανοῦ","οὐρανῶν"], dat:["οὐρανῷ","οὐρανοῖς"], ack:["οὐρανόν","οὐρανούς"], vok:["οὐρανέ","οὐρανοί"]}},
+  {lemma:"ὀφθαλμός", glosa:"öga", genus:"m", accenttyp:"oxyton", sem:[], former:{nom:["ὀφθαλμός","ὀφθαλμοί"], gen:["ὀφθαλμοῦ","ὀφθαλμῶν"], dat:["ὀφθαλμῷ","ὀφθαλμοῖς"], ack:["ὀφθαλμόν","ὀφθαλμούς"], vok:["ὀφθαλμέ","ὀφθαλμοί"]}},
+  {lemma:"ὄχλος", glosa:"folkhop", genus:"m", accenttyp:"paroxyton", sem:[], former:{nom:["ὄχλος","ὄχλοι"], gen:["ὄχλου","ὄχλων"], dat:["ὄχλῳ","ὄχλοις"], ack:["ὄχλον","ὄχλους"], vok:["ὄχλε","ὄχλοι"]}},
+  {lemma:"τόπος", glosa:"plats", genus:"m", accenttyp:"paroxyton", sem:[], former:{nom:["τόπος","τόποι"], gen:["τόπου","τόπων"], dat:["τόπῳ","τόποις"], ack:["τόπον","τόπους"], vok:["τόπε","τόποι"]}},
+  {lemma:"υἱός", glosa:"son", genus:"m", accenttyp:"oxyton", sem:[1], former:{nom:["υἱός","υἱοί"], gen:["υἱοῦ","υἱῶν"], dat:["υἱῷ","υἱοῖς"], ack:["υἱόν","υἱούς"], vok:["υἱέ","υἱοί"]}},
+  {lemma:"Φαρισαῖος", glosa:"farisé", genus:"m", accenttyp:"properispomenon", sem:[], former:{nom:["Φαρισαῖος","Φαρισαῖοι"], gen:["Φαρισαίου","Φαρισαίων"], dat:["Φαρισαίῳ","Φαρισαίοις"], ack:["Φαρισαῖον","Φαρισαίους"], vok:["Φαρισαῖε","Φαρισαῖοι"]}},
+  {lemma:"Χριστός", glosa:"Kristus", genus:"m", accenttyp:"oxyton", sem:[], former:{nom:["Χριστός","Χριστοί"], gen:["Χριστοῦ","Χριστῶν"], dat:["Χριστῷ","Χριστοῖς"], ack:["Χριστόν","Χριστούς"], vok:["Χριστέ","Χριστοί"]}},
+  {lemma:"διάβολος", glosa:"djävul", genus:"m", accenttyp:"proparoxyton", sem:[1], former:{nom:["διάβολος","διάβολοι"], gen:["διαβόλου","διαβόλων"], dat:["διαβόλῳ","διαβόλοις"], ack:["διάβολον","διαβόλους"], vok:["διάβολε","διάβολοι"]}},
+  {lemma:"παράδεισος", glosa:"paradis", genus:"m", accenttyp:"proparoxyton", sem:[1], former:{nom:["παράδεισος","παράδεισοι"], gen:["παραδείσου","παραδείσων"], dat:["παραδείσῳ","παραδείσοις"], ack:["παράδεισον","παραδείσους"], vok:["παράδεισε","παράδεισοι"]}},
+  {lemma:"κατάλογος", glosa:"förteckning", genus:"m", accenttyp:"proparoxyton", sem:[1], former:{nom:["κατάλογος","κατάλογοι"], gen:["καταλόγου","καταλόγων"], dat:["καταλόγῳ","καταλόγοις"], ack:["κατάλογον","καταλόγους"], vok:["κατάλογε","κατάλογοι"]}},
+  {lemma:"ἔργον", glosa:"verk, arbete", genus:"n", accenttyp:"paroxyton", sem:[3], former:{nom:["ἔργον","ἔργα"], gen:["ἔργου","ἔργων"], dat:["ἔργῳ","ἔργοις"], ack:["ἔργον","ἔργα"], vok:["ἔργον","ἔργα"]}},
+  {lemma:"τέκνον", glosa:"barn", genus:"n", accenttyp:"paroxyton", sem:[3], former:{nom:["τέκνον","τέκνα"], gen:["τέκνου","τέκνων"], dat:["τέκνῳ","τέκνοις"], ack:["τέκνον","τέκνα"], vok:["τέκνον","τέκνα"]}},
+  {lemma:"εὐαγγέλιον", glosa:"evangelium, glatt budskap", genus:"n", accenttyp:"proparoxyton", sem:[3], former:{nom:["εὐαγγέλιον","εὐαγγέλια"], gen:["εὐαγγελίου","εὐαγγελίων"], dat:["εὐαγγελίῳ","εὐαγγελίοις"], ack:["εὐαγγέλιον","εὐαγγέλια"], vok:["εὐαγγέλιον","εὐαγγέλια"]}},
+  {lemma:"ἱερόν", glosa:"tempel", genus:"n", accenttyp:"oxyton", sem:[3], former:{nom:["ἱερόν","ἱερά"], gen:["ἱεροῦ","ἱερῶν"], dat:["ἱερῷ","ἱεροῖς"], ack:["ἱερόν","ἱερά"], vok:["ἱερόν","ἱερά"]}},
+  {lemma:"σημεῖον", glosa:"tecken", genus:"n", accenttyp:"properispomenon", sem:[3], former:{nom:["σημεῖον","σημεῖα"], gen:["σημείου","σημείων"], dat:["σημείῳ","σημείοις"], ack:["σημεῖον","σημεῖα"], vok:["σημεῖον","σημεῖα"]}},
+  {lemma:"πλοῖον", glosa:"båt, skepp", genus:"n", accenttyp:"properispomenon", sem:[3], former:{nom:["πλοῖον","πλοῖα"], gen:["πλοίου","πλοίων"], dat:["πλοίῳ","πλοίοις"], ack:["πλοῖον","πλοῖα"], vok:["πλοῖον","πλοῖα"]}},
+  {lemma:"σάββατον", glosa:"sabbat", genus:"n", accenttyp:"proparoxyton", sem:[3], former:{nom:["σάββατον","σάββατα"], gen:["σαββάτου","σαββάτων"], dat:["σαββάτῳ","σαββάτοις"], ack:["σάββατον","σάββατα"], vok:["σάββατον","σάββατα"]}},
+  {lemma:"ἀρχή", glosa:"begynnelse", genus:"f", accenttyp:"oxyton", sem:[4], former:{nom:["ἀρχή","ἀρχαί"], gen:["ἀρχῆς","ἀρχῶν"], dat:["ἀρχῇ","ἀρχαῖς"], ack:["ἀρχήν","ἀρχάς"], vok:["ἀρχή","ἀρχαί"]}},
+  {lemma:"φωνή", glosa:"röst", genus:"f", accenttyp:"oxyton", sem:[], former:{nom:["φωνή","φωναί"], gen:["φωνῆς","φωνῶν"], dat:["φωνῇ","φωναῖς"], ack:["φωνήν","φωνάς"], vok:["φωνή","φωναί"]}},
+  {lemma:"ψυχή", glosa:"själ", genus:"f", accenttyp:"oxyton", sem:[4], former:{nom:["ψυχή","ψυχαί"], gen:["ψυχῆς","ψυχῶν"], dat:["ψυχῇ","ψυχαῖς"], ack:["ψυχήν","ψυχάς"], vok:["ψυχή","ψυχαί"]}},
+  {lemma:"ζωή", glosa:"liv", genus:"f", accenttyp:"oxyton", sem:[], former:{nom:["ζωή","ζωαί"], gen:["ζωῆς","ζωῶν"], dat:["ζωῇ","ζωαῖς"], ack:["ζωήν","ζωάς"], vok:["ζωή","ζωαί"]}},
+  {lemma:"ἐντολή", glosa:"bud, uppdrag", genus:"f", accenttyp:"oxyton", sem:[4], former:{nom:["ἐντολή","ἐντολαί"], gen:["ἐντολῆς","ἐντολῶν"], dat:["ἐντολῇ","ἐντολαῖς"], ack:["ἐντολήν","ἐντολάς"], vok:["ἐντολή","ἐντολαί"]}},
+  {lemma:"ἀδελφή", glosa:"syster", genus:"f", accenttyp:"oxyton", sem:[4], former:{nom:["ἀδελφή","ἀδελφαί"], gen:["ἀδελφῆς","ἀδελφῶν"], dat:["ἀδελφῇ","ἀδελφαῖς"], ack:["ἀδελφήν","ἀδελφάς"], vok:["ἀδελφή","ἀδελφαί"]}},
+  {lemma:"κεφαλή", glosa:"huvud", genus:"f", accenttyp:"oxyton", sem:[], former:{nom:["κεφαλή","κεφαλαί"], gen:["κεφαλῆς","κεφαλῶν"], dat:["κεφαλῇ","κεφαλαῖς"], ack:["κεφαλήν","κεφαλάς"], vok:["κεφαλή","κεφαλαί"]}},
+  {lemma:"συναγωγή", glosa:"synagoga", genus:"f", accenttyp:"oxyton", sem:[], former:{nom:["συναγωγή","συναγωγαί"], gen:["συναγωγῆς","συναγωγῶν"], dat:["συναγωγῇ","συναγωγαῖς"], ack:["συναγωγήν","συναγωγάς"], vok:["συναγωγή","συναγωγαί"]}},
+  {lemma:"ἀγάπη", glosa:"kärlek", genus:"f", accenttyp:"paroxyton", sem:[4], former:{nom:["ἀγάπη","ἀγάπαι"], gen:["ἀγάπης","ἀγαπῶν"], dat:["ἀγάπῃ","ἀγάπαις"], ack:["ἀγάπην","ἀγάπας"], vok:["ἀγάπη","ἀγάπαι"]}},
+  {lemma:"εἰρήνη", glosa:"fred", genus:"f", accenttyp:"paroxyton", sem:[4], former:{nom:["εἰρήνη","εἰρῆναι"], gen:["εἰρήνης","εἰρηνῶν"], dat:["εἰρήνῃ","εἰρήναις"], ack:["εἰρήνην","εἰρήνας"], vok:["εἰρήνη","εἰρῆναι"]}},
+  {lemma:"δικαιοσύνη", glosa:"rättfärdighet, rättvisa", genus:"f", accenttyp:"paroxyton", sem:[], former:{nom:["δικαιοσύνη","δικαιοσύναι"], gen:["δικαιοσύνης","δικαιοσυνῶν"], dat:["δικαιοσύνῃ","δικαιοσύναις"], ack:["δικαιοσύνην","δικαιοσύνας"], vok:["δικαιοσύνη","δικαιοσύναι"]}},
+  {lemma:"ἐκκλησία", glosa:"församling, kyrka", genus:"f", accenttyp:"paroxyton", sem:[], former:{nom:["ἐκκλησία","ἐκκλησίαι"], gen:["ἐκκλησίας","ἐκκλησιῶν"], dat:["ἐκκλησίᾳ","ἐκκλησίαις"], ack:["ἐκκλησίαν","ἐκκλησίας"], vok:["ἐκκλησία","ἐκκλησίαι"]}},
+  {lemma:"ἡμέρα", glosa:"dag", genus:"f", accenttyp:"paroxyton", sem:[], former:{nom:["ἡμέρα","ἡμέραι"], gen:["ἡμέρας","ἡμερῶν"], dat:["ἡμέρᾳ","ἡμέραις"], ack:["ἡμέραν","ἡμέρας"], vok:["ἡμέρα","ἡμέραι"]}},
+  {lemma:"ἁμαρτία", glosa:"synd, felsteg", genus:"f", accenttyp:"paroxyton", sem:[], former:{nom:["ἁμαρτία","ἁμαρτίαι"], gen:["ἁμαρτίας","ἁμαρτιῶν"], dat:["ἁμαρτίᾳ","ἁμαρτίαις"], ack:["ἁμαρτίαν","ἁμαρτίας"], vok:["ἁμαρτία","ἁμαρτίαι"]}},
+  {lemma:"ἐξουσία", glosa:"makt", genus:"f", accenttyp:"paroxyton", sem:[], former:{nom:["ἐξουσία","ἐξουσίαι"], gen:["ἐξουσίας","ἐξουσιῶν"], dat:["ἐξουσίᾳ","ἐξουσίαις"], ack:["ἐξουσίαν","ἐξουσίας"], vok:["ἐξουσία","ἐξουσίαι"]}},
+  {lemma:"καρδία", glosa:"hjärta", genus:"f", accenttyp:"paroxyton", sem:[], former:{nom:["καρδία","καρδίαι"], gen:["καρδίας","καρδιῶν"], dat:["καρδίᾳ","καρδίαις"], ack:["καρδίαν","καρδίας"], vok:["καρδία","καρδίαι"]}},
+  {lemma:"βασιλεία", glosa:"rike, kungadöme", genus:"f", accenttyp:"paroxyton", sem:[4], former:{nom:["βασιλεία","βασιλεῖαι"], gen:["βασιλείας","βασιλειῶν"], dat:["βασιλείᾳ","βασιλείαις"], ack:["βασιλείαν","βασιλείας"], vok:["βασιλεία","βασιλεῖαι"]}},
+  {lemma:"ὥρα", glosa:"stund, timme", genus:"f", accenttyp:"paroxyton", sem:[], former:{nom:["ὥρα","ὧραι"], gen:["ὥρας","ὡρῶν"], dat:["ὥρᾳ","ὥραις"], ack:["ὥραν","ὥρας"], vok:["ὥρα","ὧραι"]}},
+  {lemma:"ἀλήθεια", glosa:"sanning", genus:"f", accenttyp:"proparoxyton", sem:[4], former:{nom:["ἀλήθεια","ἀλήθειαι"], gen:["ἀληθείας","ἀληθειῶν"], dat:["ἀληθείᾳ","ἀληθείαις"], ack:["ἀλήθειαν","ἀληθείας"], vok:["ἀλήθεια","ἀλήθειαι"]}},
+  {lemma:"θάλασσα", glosa:"hav, sjö", genus:"f", accenttyp:"proparoxyton", sem:[], former:{nom:["θάλασσα","θάλασσαι"], gen:["θαλάσσης","θαλασσῶν"], dat:["θαλάσσῃ","θαλάσσαις"], ack:["θάλασσαν","θαλάσσας"], vok:["θάλασσα","θάλασσαι"]}},
+  {lemma:"νόσος", glosa:"sjukdom", genus:"f", accenttyp:"paroxyton", sem:[5], former:{nom:["νόσος","νόσοι"], gen:["νόσου","νόσων"], dat:["νόσῳ","νόσοις"], ack:["νόσον","νόσους"], vok:["νόσε","νόσοι"]}},
+  {lemma:"ὁδός", glosa:"väg", genus:"f", accenttyp:"oxyton", sem:[5], former:{nom:["ὁδός","ὁδοί"], gen:["ὁδοῦ","ὁδῶν"], dat:["ὁδῷ","ὁδοῖς"], ack:["ὁδόν","ὁδούς"], vok:["ὁδέ","ὁδοί"]}},
+  {lemma:"ἔρημος", glosa:"öken", genus:"f", accenttyp:"proparoxyton", sem:[5], former:{nom:["ἔρημος","ἔρημοι"], gen:["ἐρήμου","ἐρήμων"], dat:["ἐρήμῳ","ἐρήμοις"], ack:["ἔρημον","ἐρήμους"], vok:["ἔρημε","ἔρημοι"]}},
+  {lemma:"παρθένος", glosa:"flicka, jungfru", genus:"f", accenttyp:"paroxyton", sem:[5], former:{nom:["παρθένος","παρθένοι"], gen:["παρθένου","παρθένων"], dat:["παρθένῳ","παρθένοις"], ack:["παρθένον","παρθένους"], vok:["παρθένε","παρθένοι"]}},
+  {lemma:"μαθητής", glosa:"lärjunge, elev", genus:"m", accenttyp:"oxyton", sem:[5], former:{nom:["μαθητής","μαθηταί"], gen:["μαθητοῦ","μαθητῶν"], dat:["μαθητῇ","μαθηταῖς"], ack:["μαθητήν","μαθητάς"], vok:["μαθητά","μαθηταί"]}},
+  {lemma:"προφήτης", glosa:"profet", genus:"m", accenttyp:"paroxyton", sem:[5], former:{nom:["προφήτης","προφῆται"], gen:["προφήτου","προφητῶν"], dat:["προφήτῃ","προφήταις"], ack:["προφήτην","προφήτας"], vok:["προφῆτα","προφῆται"]}},
+  {lemma:"νεανίας", glosa:"yngling", genus:"m", accenttyp:"paroxyton", sem:[5], former:{nom:["νεανίας","νεανίαι"], gen:["νεανίου","νεανιῶν"], dat:["νεανίᾳ","νεανίαις"], ack:["νεανίαν","νεανίας"], vok:["νεανία","νεανίαι"]}},
+  {lemma:"οἰκοδεσπότης", glosa:"husbonde", genus:"m", accenttyp:"paroxyton", sem:[5], former:{nom:["οἰκοδεσπότης","οἰκοδεσπόται"], gen:["οἰκοδεσπότου","οἰκοδεσποτῶν"], dat:["οἰκοδεσπότῃ","οἰκοδεσπόταις"], ack:["οἰκοδεσπότην","οἰκοδεσπότας"], vok:["οἰκοδέσποτα","οἰκοδεσπόται"]}},
+  {lemma:"κώμη", glosa:"by", genus:"f", accenttyp:"paroxyton", sem:[5], former:{nom:["κώμη","κῶμαι"], gen:["κώμης","κωμῶν"], dat:["κώμῃ","κώμαις"], ack:["κώμην","κώμας"], vok:["κώμη","κῶμαι"]}},
+  {lemma:"δόξα", glosa:"härlighet", genus:"f", accenttyp:"paroxyton", sem:[5], former:{nom:["δόξα","δόξαι"], gen:["δόξης","δοξῶν"], dat:["δόξῃ","δόξαις"], ack:["δόξαν","δόξας"], vok:["δόξα","δόξαι"]}},
+  {lemma:"λίθος", glosa:"sten", genus:"m", accenttyp:"paroxyton", sem:[5], former:{nom:["λίθος","λίθοι"], gen:["λίθου","λίθων"], dat:["λίθῳ","λίθοις"], ack:["λίθον","λίθους"], vok:["λίθε","λίθοι"]}},
+  {lemma:"δαιμόνιον", glosa:"demon", genus:"n", accenttyp:"proparoxyton", sem:[5], former:{nom:["δαιμόνιον","δαιμόνια"], gen:["δαιμονίου","δαιμονίων"], dat:["δαιμονίῳ","δαιμονίοις"], ack:["δαιμόνιον","δαιμόνια"], vok:["δαιμόνιον","δαιμόνια"]}},
+  {lemma:"φίλος", glosa:"vän", genus:"m", accenttyp:"paroxyton", sem:[5], former:{nom:["φίλος","φίλοι"], gen:["φίλου","φίλων"], dat:["φίλῳ","φίλοις"], ack:["φίλον","φίλους"], vok:["φίλε","φίλοι"]}}
 ];
 
 const ARTIKEL = {
@@ -218,10 +261,17 @@ const ACC_NOT = {
   properispomenon:"Properispomenon: cirkumflexen blir akut när ändelsen blir lång (t.ex. πρώτου).",
 };
 
+/* Seminarie-axel: varje substantiv bär sem:[…] ur ord.json. 0 = "Övriga"
+   (otaggade högfrekventa NT-ord). Skalar till fler seminarier. */
+const SEMINARIER = [...new Set(SUBSTANTIV.flatMap(s => s.sem))].sort((a,b) => a - b);
+const HAR_OVRIGA = SUBSTANTIV.some(s => s.sem.length === 0);
+const SEM_VARDEN = [...SEMINARIER, ...(HAR_OVRIGA ? [0] : [])];
+const semNamn = s => s === 0 ? "Övriga" : "Sem " + s;
+
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
 const LAGER = "grekiska-kongruens-v1";
 const state = {
-  adjDeck:"alla", substSet:"alla", vokativ:false,
+  adjDeck:"alla", substSet:"alla", valdaSem:new Set(SEM_VARDEN), vokativ:false,
   konstruktion:"attributiv", tempus:"blandat", verblucka:false,
   streak:0, best:0,
   subst:null, adj:null, kasus:null, num:null, genus:null,
@@ -240,7 +290,7 @@ const state = {
 function spara(){
   try{
     localStorage.setItem(LAGER, JSON.stringify({
-      adjDeck:state.adjDeck, substSet:state.substSet, vokativ:state.vokativ,
+      adjDeck:state.adjDeck, substSet:state.substSet, valdaSem:[...state.valdaSem], vokativ:state.vokativ,
       konstruktion:state.konstruktion, tempus:state.tempus, verblucka:state.verblucka,
       best:state.best,
     }));
@@ -251,6 +301,8 @@ function ladda(){
     const r = JSON.parse(localStorage.getItem(LAGER)); if(!r) return;
     if(r.adjDeck)  state.adjDeck  = r.adjDeck;
     if(r.substSet) state.substSet = r.substSet;
+    if(Array.isArray(r.valdaSem)) state.valdaSem = new Set(r.valdaSem.filter(s => SEM_VARDEN.includes(s)));
+    if(!state.valdaSem.size) state.valdaSem = new Set(SEM_VARDEN);
     if(typeof r.vokativ === "boolean") state.vokativ = r.vokativ;
     if(r.konstruktion==="attributiv"||r.konstruktion==="predikativ") state.konstruktion=r.konstruktion;
     if(["pres","impf","blandat"].includes(r.tempus)) state.tempus=r.tempus;
@@ -264,9 +316,12 @@ function aktivaAdj(){
   const p = ADJEKTIV.filter(a => state.adjDeck==="alla" || a.kortlek===state.adjDeck);
   return p.length ? p : ADJEKTIV.slice();
 }
+const semMatch = s => s.sem.length ? s.sem.some(x => state.valdaSem.has(x)) : state.valdaSem.has(0);
 function aktivaSubst(){
-  const p = SUBSTANTIV.filter(s => state.substSet==="alla" || s.genus===state.substSet);
-  return p.length ? p : SUBSTANTIV.slice();
+  const p = SUBSTANTIV.filter(s => (state.substSet==="alla" || s.genus===state.substSet) && semMatch(s));
+  if(p.length) return p;
+  const bySem = SUBSTANTIV.filter(semMatch);
+  return bySem.length ? bySem : SUBSTANTIV.slice();
 }
 
 /* ── NYTT KORT ───────────────────────────────────────────────────────────
@@ -473,6 +528,19 @@ function bindSeg(id, getter, setter){
     setter(b.dataset.v); segVal(g, getter()); spara(); newQuestion();
   });
 }
+function byggGridSem(){
+  const g = $("grid-sem"); g.innerHTML = "";
+  SEM_VARDEN.forEach(s => {
+    const b = document.createElement("button");
+    b.className = "toggle"; b.textContent = semNamn(s);
+    b.setAttribute("aria-pressed", String(state.valdaSem.has(s)));
+    b.onclick = () => {
+      state.valdaSem.has(s) ? state.valdaSem.delete(s) : state.valdaSem.add(s);
+      b.setAttribute("aria-pressed", String(state.valdaSem.has(s))); spara(); newQuestion();
+    };
+    g.appendChild(b);
+  });
+}
 
 /* visar rätt inställningssektioner för aktuell konstruktion */
 function syncPickerSynlighet(){
@@ -514,6 +582,10 @@ function init(){
     $("tg-verblucka").setAttribute("aria-pressed", String(state.verblucka));
     spara(); newQuestion();
   });
+
+  byggGridSem();
+  document.querySelector("[data-sem-all]").addEventListener("click", () => { state.valdaSem = new Set(SEM_VARDEN); byggGridSem(); spara(); newQuestion(); });
+  document.querySelector("[data-sem-none]").addEventListener("click", () => { state.valdaSem = new Set(); byggGridSem(); spara(); newQuestion(); });
 
   $("btn-next").addEventListener("click", newQuestion);
   $("btn-visa").addEventListener("click", visaSvar);
