@@ -139,7 +139,7 @@ const MARKUP = `<div class="vy vy-verb">
 </div>
 
 <div class="picker">
-  <button class="picker-toggle" id="picker-toggle" aria-expanded="false"><span>Anpassa övningen</span><span>▾</span></button>
+  <button class="picker-toggle" id="picker-toggle" aria-expanded="false"><span>Anpassa övningen <span class="count" id="verb-count"></span></span><span>▾</span></button>
   <div class="picker-body hidden" id="picker-body">
     <div>
       <h2>Seminarium</h2>
@@ -202,11 +202,13 @@ export function render(root){
   const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
   const harTempus  = v => state.tempus==="alla" ? Object.keys(v.former).some(t=>TEMPUS[t]) : !!v.former[state.tempus];
   const tempusFor  = v => state.tempus!=="alla" ? state.tempus : pick(Object.keys(v.former).filter(t=>TEMPUS[t]));
-  const semMatch   = o => o.sem.some(s => state.valdaSem.has(s));
-  const aktivaVerb = () => {
-    const v = verb.filter(o => state.valdaVerb.has(o.lemma) && semMatch(o) && harTempus(o));
+  const semMatch    = o => o.sem.some(s => state.valdaSem.has(s));
+  // Seminarie-urvalet styr vilka verb som visas i rutnätet; verbrutnätet finjusterar.
+  const synligaVerb = () => { const v = verb.filter(semMatch); return v.length ? v : verb; };
+  const aktivaVerb  = () => {
+    const v = synligaVerb().filter(o => state.valdaVerb.has(o.lemma) && harTempus(o));
     if(v.length) return v;
-    const bs = verb.filter(o => semMatch(o) && harTempus(o));
+    const bs = synligaVerb().filter(harTempus);
     return bs.length ? bs : verb.filter(harTempus);
   };
   const aktivaPN   = () => { const p = PN_ORDNING.filter(k => state.valdaPN.has(k)); return p.length ? p : PN_ORDNING; };
@@ -240,7 +242,9 @@ export function render(root){
     return shuffle([rätt, ...shuffle(distraktorer).slice(0,3)]);
   }
 
+  function uppdateraAntal(){ const el = $("verb-count"); if(el) el.textContent = "(" + aktivaVerb().length + " verb)"; }
   function newQuestion(){
+    uppdateraAntal();
     const vs = aktivaVerb(), ps = aktivaPN();
     let v, k, t, sig, n=0;
     do { v = pick(vs); k = pick(ps); t = tempusFor(v); sig = v.lemma+"|"+k+"|"+t; } while(sig === state.forra && ++n < 30);
@@ -314,7 +318,7 @@ export function render(root){
   }
   function byggGridVerb(){
     const g = $("grid-verb"); g.innerHTML = "";
-    verb.forEach(v => {
+    synligaVerb().forEach(v => {                       // visar bara verb i valda seminarier
       const b = document.createElement("button");
       b.className="toggle"; b.textContent=v.lemma;
       const finns = harTempus(v);

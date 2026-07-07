@@ -47,7 +47,7 @@ const MARKUP = `<div class="vy vy-andelser">
 
 <div class="picker">
   <button class="picker-toggle" id="picker-toggle" aria-expanded="false">
-    <span>Anpassa övningen</span><span class="chev">▾</span>
+    <span>Anpassa övningen <span class="count" id="ord-count"></span></span><span class="chev">▾</span>
   </button>
   <div class="picker-body hidden" id="picker-body">
 
@@ -346,11 +346,11 @@ const state = {
   selArt: null, selEnd: null, forraKort: null,
 };
 
+// Seminarie-urvalet styr vilka ord som visas i rutnätet; ordrutnätet finjusterar.
+function synligaOrd(){ const p = ord.filter(semMatch); return p.length ? p : ord; }
 function aktivaOrd(){
-  const v = ord.filter(o => state.valdaOrd.has(o.lemma) && semMatch(o));
-  if(v.length) return v;
-  const bySem = ord.filter(semMatch);
-  return bySem.length ? bySem : ord;
+  const v = synligaOrd().filter(o => state.valdaOrd.has(o.lemma));
+  return v.length ? v : synligaOrd();
 }
 function aktivaKasus(){ const v = KASUS_ORDNING.filter(k => state.valdaKasus.has(k)); return v.length ? v : KASUS_ORDNING; }
 
@@ -375,8 +375,10 @@ function ladda(){
 }
 
 /* ── KORTLOGIK ───────────────────────────────────────────────────────── */
+function uppdateraAntal(){ const el = $("ord-count"); if(el) el.textContent = "(" + aktivaOrd().length + " ord)"; }
 function newQuestion(){
   const ordLista = aktivaOrd(), kasusLista = aktivaKasus();
+  uppdateraAntal();
   let o, k, n, sig, forsok = 0;
   do {
     o = pick(ordLista); k = pick(kasusLista);
@@ -489,14 +491,14 @@ function byggGridSem(){
     b.setAttribute("aria-pressed", state.valdaSem.has(s));
     b.onclick = () => {
       state.valdaSem.has(s) ? state.valdaSem.delete(s) : state.valdaSem.add(s);
-      b.setAttribute("aria-pressed", state.valdaSem.has(s)); spara(); newQuestion();
+      b.setAttribute("aria-pressed", state.valdaSem.has(s)); byggGridOrd(); spara(); newQuestion();
     };
     g.appendChild(b);
   });
 }
 function byggGridOrd(){
   const g = $("grid-ord"); g.innerHTML = "";
-  ord.forEach(o => {
+  synligaOrd().forEach(o => {                        // visar bara ord i valda seminarier
     const b = document.createElement("button");
     b.className = "toggle"; b.textContent = o.lemma;
     b.setAttribute("aria-pressed", state.valdaOrd.has(o.lemma));
@@ -545,8 +547,8 @@ document.querySelector("[data-ord-clear]").onclick = () => { state.valdaOrd = ne
 document.querySelectorAll("[data-deck]").forEach(b => {
   b.onclick = () => { state.valdaOrd = new Set(KORTLEKAR[b.dataset.deck] || []); byggGridOrd(); spara(); newQuestion(); };
 });
-document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEM_VARDEN); byggGridSem(); spara(); newQuestion(); };
-document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); spara(); newQuestion(); };
+document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEM_VARDEN); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };
+document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };
 document.querySelector("[data-kasus-all]").onclick   = () => { state.valdaKasus = new Set(KASUS_ORDNING); byggGridKasus(); spara(); newQuestion(); };
 document.querySelector("[data-kasus-core]").onclick  = () => { state.valdaKasus = new Set(["nom","gen","dat","ack"]); byggGridKasus(); spara(); newQuestion(); };
 document.querySelector("[data-kasus-clear]").onclick = () => { state.valdaKasus = new Set(); byggGridKasus(); spara(); newQuestion(); };

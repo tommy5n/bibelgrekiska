@@ -46,7 +46,7 @@ const MARKUP = `<div class="vy vy-kasus">
 
 <div class="picker">
   <button class="picker-toggle" id="picker-toggle" aria-expanded="false">
-    <span>Anpassa övningen</span><span class="chev">▾</span>
+    <span>Anpassa övningen <span class="count" id="ord-count"></span></span><span class="chev">▾</span>
   </button>
   <div class="picker-body hidden" id="picker-body">
 
@@ -302,11 +302,16 @@ function shuffle(arr){                            // Fisher-Yates
   for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
   return a;
 }
+// Seminarie-urvalet styr VILKA ord som visas i rutnätet (synliga); ordrutnätet
+// finjusterar bland dem. Så när man väljer ett seminarium ser man direkt dess ord
+// markerade i rutnätet.
+function synligaOrd(){
+  const p = ord.filter(semMatch);
+  return p.length ? p : ord;                     // tomt seminarie-urval = alla
+}
 function aktivaOrd(){
-  const valda = ord.filter(o => state.valdaOrd.has(o.lemma) && semMatch(o));
-  if(valda.length) return valda;
-  const bySem = ord.filter(semMatch);            // tomt ord-urval = alla i valda seminarier
-  return bySem.length ? bySem : ord;             // tomt seminarie-urval = alla
+  const valda = synligaOrd().filter(o => state.valdaOrd.has(o.lemma));
+  return valda.length ? valda : synligaOrd();    // tomt ord-urval = alla synliga
 }
 function aktivaKasus(){
   const valda = KASUS_ORDNING.filter(k => state.valdaKasus.has(k));
@@ -369,9 +374,14 @@ function glosaMedKasus(w, k, n){
   return bas;                                                   // nom, ack
 }
 
+function uppdateraAntal(){
+  const n = aktivaOrd().length;
+  const el = $("ord-count"); if(el) el.textContent = "(" + n + " ord)";
+}
 function newQuestion(){
   const ordLista   = aktivaOrd();
   const kasusLista = aktivaKasus();
+  uppdateraAntal();
 
   // Dra kort, men undvik exakt samma kort (ord+kasus+numerus) två ggr i rad.
   // Taket skyddar mot loop när bara ett kort är möjligt — då finns inget annat.
@@ -491,7 +501,7 @@ function svaraFlerval(k){
 /* ── UI-BYGGE ────────────────────────────────────────────────────────── */
 function byggGridOrd(){
   const g = $("grid-ord"); g.innerHTML = "";
-  ord.forEach(o => {
+  synligaOrd().forEach(o => {                        // visar bara ord i valda seminarier
     const b = document.createElement("button");
     b.className = "toggle"; b.textContent = o.lemma;
     b.setAttribute("aria-pressed", state.valdaOrd.has(o.lemma));
@@ -529,6 +539,7 @@ function byggGridSem(){
     b.onclick = () => {
       state.valdaSem.has(s) ? state.valdaSem.delete(s) : state.valdaSem.add(s);
       b.setAttribute("aria-pressed", state.valdaSem.has(s));
+      byggGridOrd();                                 // rutnätet visar nu de valda seminariernas ord
       spara(); newQuestion();
     };
     g.appendChild(b);
@@ -563,8 +574,8 @@ document.querySelector("[data-ord-clear]").onclick = () => { state.valdaOrd = ne
 document.querySelectorAll("[data-deck]").forEach(b => {
   b.onclick = () => { state.valdaOrd = new Set(KORTLEKAR[b.dataset.deck] || []); byggGridOrd(); spara(); newQuestion(); };
 });
-document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEM_VARDEN); byggGridSem(); spara(); newQuestion(); };
-document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); spara(); newQuestion(); };
+document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEM_VARDEN); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };
+document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };
 document.querySelector("[data-kasus-all]").onclick   = () => { state.valdaKasus = new Set(KASUS_ORDNING); byggGridKasus(); spara(); newQuestion(); };
 document.querySelector("[data-kasus-core]").onclick  = () => { state.valdaKasus = new Set(["nom","ack","dat"]); byggGridKasus(); spara(); newQuestion(); };
 document.querySelector("[data-kasus-clear]").onclick = () => { state.valdaKasus = new Set(); byggGridKasus(); spara(); newQuestion(); };
