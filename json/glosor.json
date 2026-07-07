@@ -1,6 +1,6 @@
 {
  "_om": "Glosor fran kursens NT-frekvenslista (>60 ggr). Grekisk form, frekvens och genus avstamda mot nt-lemman.json (MorphGNT). Svenska glosor och ordklass fran kursen. Utokad med seminarium-taggning (seminarium 1-4) och ord fran seminariernas ordlistor (kalla=seminarium-ordlista, kan ligga under 60-gransen).",
- "_genererad": "2026-06-27",
+ "_genererad": "2026-07-07",
  "_falt": {
   "frekvens": "NT-forekomster (nt-lemman.json)",
   "frekvensVisning": "Visnings-/sorteringsfrekvens for status=form-poster utan egen korpusfrekvens; arvd fran moderlemmat (frekvensArvdFran).",
@@ -8,7 +8,7 @@
   "genus": "m/f/n for substantiv",
   "harParadigm": "true om ordet ocksa har fullt paradigm i ord.json",
   "status": "exakt = exakt traff mot facit | rattad = form justerad mot utgavan | form = bojningsform av annat lemma",
-  "seminarium": "Lista over seminarier (2-4) dar ordet forekommer i ovningsbladens/breakout-rummens ordlistor. [] = ej i nagot seminariedack.",
+  "seminarium": "Lista over seminarier (2-5) dar ordet forekommer i ovningsbladens/breakout-rummens ordlistor. [] = ej i nagot seminariedack.",
   "kalla": "seminarium-ordlista = tillagt fran ett seminariums ordlista (ej fran >60-frekvenslistan); saknar falt = ursprunglig >60-lista."
  },
  "_statistik": {
@@ -92,11 +92,12 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 101,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3,
-    4
+    4,
+    5
    ]
   },
   {
@@ -115,7 +116,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 116,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     4
@@ -140,7 +141,7 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 233,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3
@@ -157,7 +158,8 @@
    "seminarium": [
     2,
     3,
-    4
+    4,
+    5
    ]
   },
   {
@@ -188,7 +190,9 @@
    "frekvens": 70,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "αἰών",
@@ -206,9 +210,11 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 69,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ἀκολουθέω",
@@ -230,7 +236,8 @@
    "status": "exakt",
    "seminarium": [
     2,
-    3
+    3,
+    5
    ]
   },
   {
@@ -239,10 +246,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 109,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -253,7 +261,9 @@
    "frekvens": 638,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ἀλλήλων",
@@ -281,7 +291,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 172,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": []
   },
@@ -334,7 +344,8 @@
    "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    2
+    2,
+    5
    ]
   },
   {
@@ -375,7 +386,9 @@
    "frekvens": 644,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ἀποθνῄσκω",
@@ -449,7 +462,8 @@
    "status": "exakt",
    "seminarium": [
     3,
-    4
+    4,
+    5
    ]
   },
   {
@@ -510,7 +524,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 162,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     4
@@ -536,7 +550,8 @@
    "status": "exakt",
    "seminarium": [
     2,
-    3
+    3,
+    5
    ]
   },
   {
@@ -548,7 +563,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -569,7 +585,9 @@
    "frekvens": 248,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "γίνομαι",
@@ -611,7 +629,8 @@
    "status": "exakt",
    "seminarium": [
     2,
-    3
+    3,
+    5
    ]
   },
   {
@@ -630,9 +649,11 @@
    "ordklass": "substantiv",
    "genus": "n",
    "frekvens": 63,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "δέ",
@@ -642,7 +663,9 @@
    "frekvens": 2766,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "δεῖ",
@@ -665,7 +688,9 @@
    "frekvens": 666,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "διδάσκω",
@@ -693,10 +718,11 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 79,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -705,9 +731,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 91,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "δόξα",
@@ -715,9 +743,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 165,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "δοῦλος",
@@ -730,7 +760,8 @@
    "seminarium": [
     2,
     3,
-    4
+    4,
+    5
    ]
   },
   {
@@ -811,7 +842,9 @@
    "frekvens": 2572,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ἔθνος",
@@ -855,7 +888,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -877,7 +911,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 91,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     4
@@ -892,7 +926,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -923,7 +958,9 @@
    "frekvens": 913,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ἕκαστος",
@@ -971,9 +1008,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 114,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ἐμός",
@@ -994,7 +1033,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -1003,10 +1043,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 66,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -1035,9 +1076,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 102,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ἐπί",
@@ -1047,7 +1090,9 @@
    "frekvens": 885,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ἑπτά",
@@ -1065,10 +1110,11 @@
    "ordklass": "substantiv",
    "genus": "n",
    "frekvens": 169,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -1121,10 +1167,11 @@
    "ordklass": "substantiv",
    "genus": "n",
    "frekvens": 75,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    3
+    3,
+    5
    ]
   },
   {
@@ -1188,7 +1235,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -1197,7 +1245,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 135,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": []
   },
@@ -1235,7 +1283,9 @@
    "harParadigm": false,
    "status": "form",
    "anteckning": "nom. pl.; lemma ἐγώ",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ἡμέρα",
@@ -1243,7 +1293,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 389,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": []
   },
@@ -1253,9 +1303,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 90,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "θάνατος",
@@ -1297,7 +1349,8 @@
    "status": "exakt",
    "seminarium": [
     2,
-    3
+    3,
+    5
    ]
   },
   {
@@ -1328,11 +1381,12 @@
    "frekvens": null,
    "frekvensVisning": 73,
    "frekvensArvdFran": "ἱερός",
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "form",
    "anteckning": "subst. 'tempel'; under adj. ἱερός",
    "seminarium": [
-    3
+    3,
+    5
    ]
   },
   {
@@ -1384,7 +1438,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -1405,7 +1460,9 @@
    "frekvens": 148,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "καλός",
@@ -1413,7 +1470,7 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 101,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3,
@@ -1426,7 +1483,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 156,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": []
   },
@@ -1448,7 +1505,9 @@
    "frekvens": 469,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "καταβαίνω",
@@ -1466,7 +1525,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 75,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": []
   },
@@ -1479,7 +1538,8 @@
    "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -1502,7 +1562,8 @@
    "status": "exakt",
    "seminarium": [
     2,
-    4
+    4,
+    5
    ]
   },
   {
@@ -1514,7 +1575,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -1549,7 +1611,8 @@
    "status": "exakt",
    "seminarium": [
     2,
-    3
+    3,
+    5
    ]
   },
   {
@@ -1562,7 +1625,8 @@
    "status": "exakt",
    "seminarium": [
     2,
-    3
+    3,
+    5
    ]
   },
   {
@@ -1571,9 +1635,11 @@
    "ordklass": "substantiv",
    "genus": "m",
    "frekvens": 262,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "μᾶλλον",
@@ -1593,7 +1659,9 @@
    "frekvens": 76,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "μέγας",
@@ -1633,7 +1701,9 @@
    "frekvens": 470,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "μή",
@@ -1671,7 +1741,7 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 110,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3
@@ -1683,7 +1753,7 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 128,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3
@@ -1735,9 +1805,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 101,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "οἶδα",
@@ -1760,7 +1832,8 @@
    "seminarium": [
     2,
     3,
-    4
+    4,
+    5
    ]
   },
   {
@@ -1881,7 +1954,9 @@
    "frekvens": 1605,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "οὐδέ",
@@ -1911,7 +1986,9 @@
    "frekvens": 494,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "οὐρανός",
@@ -1923,7 +2000,8 @@
    "status": "exakt",
    "seminarium": [
     2,
-    3
+    3,
+    5
    ]
   },
   {
@@ -1995,7 +2073,9 @@
    "frekvens": 193,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "παραδίδωμι",
@@ -2058,7 +2138,9 @@
    "frekvens": 332,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "περιπατέω",
@@ -2100,7 +2182,8 @@
    "status": "exakt",
    "seminarium": [
     3,
-    4
+    4,
+    5
    ]
   },
   {
@@ -2129,10 +2212,11 @@
    "ordklass": "substantiv",
    "genus": "n",
    "frekvens": 67,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    3
+    3,
+    5
    ]
   },
   {
@@ -2154,7 +2238,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -2183,11 +2268,12 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 78,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3,
-    4
+    4,
+    5
    ]
   },
   {
@@ -2229,7 +2315,9 @@
    "frekvens": 696,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "προσέρχομαι",
@@ -2267,9 +2355,11 @@
    "ordklass": "substantiv",
    "genus": "m",
    "frekvens": 144,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "πρῶτος",
@@ -2277,7 +2367,7 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 153,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3
@@ -2319,7 +2409,7 @@
    "ordklass": "substantiv",
    "genus": "n",
    "frekvens": 77,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3,
@@ -2344,7 +2434,9 @@
    "frekvens": 2894,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "σύν",
@@ -2354,7 +2446,9 @@
    "frekvens": 129,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "συναγωγή",
@@ -2362,7 +2456,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 56,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": []
   },
@@ -2376,7 +2470,8 @@
    "status": "exakt",
    "seminarium": [
     3,
-    4
+    4,
+    5
    ]
   },
   {
@@ -2406,11 +2501,12 @@
    "ordklass": "substantiv",
    "genus": "n",
    "frekvens": 99,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3,
-    4
+    4,
+    5
    ]
   },
   {
@@ -2422,7 +2518,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -2504,7 +2601,8 @@
    "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    3
+    3,
+    5
    ]
   },
   {
@@ -2518,7 +2616,9 @@
    "harParadigm": false,
    "status": "form",
    "anteckning": "nom. pl.; lemma σύ",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ὑπάγω",
@@ -2538,7 +2638,9 @@
    "frekvens": 150,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "ὑπό",
@@ -2548,7 +2650,9 @@
    "frekvens": 220,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "Φαρισαῖος",
@@ -2577,9 +2681,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 139,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    5
+   ]
   },
   {
    "lemma": "φῶς",
@@ -2637,10 +2743,11 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 102,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ]
   },
   {
@@ -2659,7 +2766,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 106,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": []
   },
@@ -2694,7 +2801,8 @@
    "seminarium": [
     2,
     3,
-    4
+    4,
+    5
    ],
    "kalla": "seminarium-ordlista"
   },
@@ -2730,7 +2838,7 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 46,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3
@@ -2756,7 +2864,7 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 67,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     3
@@ -2769,10 +2877,11 @@
    "ordklass": "adjektiv",
    "genus": null,
    "frekvens": 34,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kalla": "seminarium-ordlista"
   },
@@ -2785,7 +2894,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kalla": "seminarium-ordlista"
   },
@@ -2808,7 +2918,7 @@
    "ordklass": "substantiv",
    "genus": "f",
    "frekvens": 25,
-   "harParadigm": false,
+   "harParadigm": true,
    "status": "exakt",
    "seminarium": [
     4
@@ -2837,7 +2947,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kalla": "seminarium-ordlista"
   },
@@ -2851,6 +2962,227 @@
    "status": "exakt",
    "seminarium": [
     4
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "θεραπεύω",
+   "glosa": "hela, bota",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 43,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ἁμαρτάνω",
+   "glosa": "synda",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 42,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "κώμη",
+   "glosa": "by",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 27,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "λίθος",
+   "glosa": "sten",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 58,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "νόσος",
+   "glosa": "sjukdom",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 11,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "νεανίας",
+   "glosa": "yngling",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 4,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "οἰκοδεσπότης",
+   "glosa": "husbonde",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 12,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "παρθένος",
+   "glosa": "flicka, jungfru",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 15,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ἔρημος",
+   "glosa": "öken",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 48,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "φίλος",
+   "glosa": "vän",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 29,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ἀρχή",
+   "glosa": "begynnelse",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 55,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "σάββατον",
+   "glosa": "sabbat",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 68,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "μακρός",
+   "glosa": "lång",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 11,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "πλούσιος",
+   "glosa": "rik",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 28,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ἁμαρτωλός",
+   "glosa": "syndig",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 47,
+   "harParadigm": true,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "πρό",
+   "glosa": "framför (rum), före (tid)",
+   "ordklass": "preposition",
+   "genus": null,
+   "frekvens": 47,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    5
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ὦ",
+   "glosa": "o! (vokativpartikel)",
+   "ordklass": "interjektion",
+   "genus": null,
+   "frekvens": 17,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    5
    ],
    "kalla": "seminarium-ordlista"
   }

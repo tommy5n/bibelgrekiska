@@ -1,6 +1,6 @@
 {
  "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope hittills (kursens första hälft): presens indikativ aktiv för ω-verb. Kontraherade verb och εἰμί samt fler tempus tillkommer.",
- "_genererad": "2026-07-04",
+ "_genererad": "2026-07-07",
  "_nycklar": {
   "_forklaring": "Formnyckel = 'tempus.modus.diates'. Person/numerus = '1sg'..'3pl'. Kortformer för konsekvens med ord.json; långformer nedan.",
   "tempus": {
@@ -72,7 +72,8 @@
  "_kortlekar": {
   "sem2": "ω-verb, presens ind. aktiv",
   "sem4": "kontraherade -έω, presens ind. aktiv (εἰμί tillkommer)",
-  "eimi": "εἰμί (vara) — presens + imperfekt"
+  "eimi": "εἰμί (vara) — presens + imperfekt",
+  "sem5": "Seminarium 5-verb (prepositions-/negations-/pronomenövningarna)"
  },
  "_falt": {
   "lemma": "Uppslagsform (1sg pres ind akt).",
@@ -119,7 +120,8 @@
    "klass": "omega",
    "stam": "βλέπ",
    "seminarium": [
-    2
+    2,
+    5
    ],
    "kortlekar": [
     "sem2"
@@ -146,7 +148,8 @@
    "klass": "omega",
    "stam": "ἀκού",
    "seminarium": [
-    2
+    2,
+    5
    ],
    "kortlekar": [
     "sem2"
@@ -173,7 +176,8 @@
    "klass": "omega",
    "stam": "λέγ",
    "seminarium": [
-    2
+    2,
+    5
    ],
    "kortlekar": [
     "sem2"
@@ -200,7 +204,8 @@
    "klass": "omega",
    "stam": "γράφ",
    "seminarium": [
-    2
+    2,
+    5
    ],
    "kortlekar": [
     "sem2"
@@ -254,7 +259,8 @@
    "klass": "omega",
    "stam": "κηρύσσ",
    "seminarium": [
-    2
+    2,
+    5
    ],
    "kortlekar": [
     "sem2"
@@ -389,7 +395,8 @@
    "klass": "omega",
    "stam": "πιστεύ",
    "seminarium": [
-    2
+    2,
+    5
    ],
    "kortlekar": [
     "sem2"
@@ -439,7 +446,8 @@
    "klass": "omega",
    "stam": "σῴζ",
    "seminarium": [
-    2
+    2,
+    5
    ],
    "kortlekar": [
     "sem2"
@@ -489,7 +497,8 @@
    "klass": "omega",
    "stam": "ἄγ",
    "seminarium": [
-    2
+    2,
+    5
    ],
    "kortlekar": [
     "sem2"
@@ -514,7 +523,8 @@
    "klass": "kontrakt_e",
    "stam": "φιλ",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kortlekar": [
     "sem4"
@@ -546,7 +556,8 @@
    "klass": "kontrakt_e",
    "stam": "ζητ",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kortlekar": [
     "sem4"
@@ -574,7 +585,8 @@
    "klass": "kontrakt_e",
    "stam": "καλ",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kortlekar": [
     "sem4"
@@ -601,7 +613,8 @@
    "klass": "kontrakt_e",
    "stam": "λαλ",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kortlekar": [
     "sem4"
@@ -628,7 +641,8 @@
    "klass": "kontrakt_e",
    "stam": "μαρτυρ",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kortlekar": [
     "sem4"
@@ -655,7 +669,8 @@
    "klass": "kontrakt_e",
    "stam": "ποι",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kortlekar": [
     "sem4"
@@ -682,7 +697,8 @@
    "klass": "kontrakt_e",
    "stam": "τηρ",
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kortlekar": [
     "sem4"
@@ -709,7 +725,8 @@
    "klass": "oregelbunden",
    "stam": null,
    "seminarium": [
-    4
+    4,
+    5
    ],
    "kortlekar": [
     "sem4",
@@ -760,6 +777,87 @@
    ],
    "verifierad": true,
    "not": "Enklitiskt i presens (utom 2sg εἶ); accentuering = uppslagsform. Imperfekt har belagda varianter (se 'varianter')."
+  },
+  {
+   "lemma": "αἰτέω",
+   "glosa": "be om",
+   "klass": "kontrakt_e",
+   "stam": "αἰτ",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "sem5"
+   ],
+   "nt_frekvens": 70,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "αἰτῶ",
+     "2sg": "αἰτεῖς",
+     "3sg": "αἰτεῖ",
+     "1pl": "αἰτοῦμεν",
+     "2pl": "αἰτεῖτε",
+     "3pl": "αἰτοῦσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3pl"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "θεραπεύω",
+   "glosa": "hela, bota",
+   "klass": "omega",
+   "stam": "θεραπευ",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "sem5"
+   ],
+   "nt_frekvens": 43,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "θεραπεύω",
+     "2sg": "θεραπεύεις",
+     "3sg": "θεραπεύει",
+     "1pl": "θεραπεύομεν",
+     "2pl": "θεραπεύετε",
+     "3pl": "θεραπεύουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3sg"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "ἁμαρτάνω",
+   "glosa": "synda",
+   "klass": "omega",
+   "stam": "ἁμαρταν",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "sem5"
+   ],
+   "nt_frekvens": 42,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "ἁμαρτάνω",
+     "2sg": "ἁμαρτάνεις",
+     "3sg": "ἁμαρτάνει",
+     "1pl": "ἁμαρτάνομεν",
+     "2pl": "ἁμαρτάνετε",
+     "3pl": "ἁμαρτάνουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "3pl"
+   ],
+   "verifierad": true
   }
  ]
 }

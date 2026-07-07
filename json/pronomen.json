@@ -1,0 +1,173 @@
+{
+ "_om": "Pronomen for bibelgrekiska pronomenspel. Sanningskalla, verifierad mot seminariernas facit/tabeller, MorphGNT och Smyth. Additiv struktur: 'bojningsmodell' avgor formernas form sa att framtida pronomentyper (demonstrativa, interrogativa, relativa) far plats utan schemaandring. Scope hittills (seminarium 5): personliga pronomen 1:a och 2:a person (egō, sy).",
+ "_genererad": "2026-07-07",
+ "_nycklar": {
+  "typ": {
+   "personligt": "Personligt pronomen (jag, du, vi, ni)",
+   "possessivt": "Possessivt (min, din)",
+   "demonstrativt": "Demonstrativt (denne, denna, detta)",
+   "interrogativt": "Interrogativt (vem? vad?)",
+   "relativt": "Relativt (som, vilken)"
+  },
+  "bojningsmodell": {
+   "person": "Bojs efter person + numerus, utan genus. former: numerus (sg/pl) -> kasus -> {betonad, obetonad}.",
+   "genus": "Bojs efter genus + kasus + numerus (som adjektiv). former: genus (m/f/n) -> kasus -> {sg, pl}. Anvands for demonstrativa/interrogativa/relativa."
+  },
+  "kasus": {
+   "nom": "nominativ",
+   "gen": "genitiv",
+   "dat": "dativ",
+   "ack": "ackusativ"
+  },
+  "numerus": {
+   "sg": "singular",
+   "pl": "plural"
+  },
+  "former_betoning": {
+   "betonad": "Emfatisk/sjalvstandig form; satts efter prepositioner och vid emfas/motsats (pros eme).",
+   "obetonad": "Enklitisk form i ovriga fall (pisteuete moi). null = saknas (t.ex. nominativ, samt plural som ej har enklitisk sarform)."
+  }
+ },
+ "_falt": {
+  "lemma": "Uppslagsform (nom sg for person-modell).",
+  "glosa": "Svensk grundbetydelse.",
+  "typ": "Se _nycklar.typ.",
+  "person": "1/2/3 for personliga pronomen; utelamnat annars.",
+  "bojningsmodell": "person | genus (se _nycklar).",
+  "seminarium": "Seminarier dar pronomenet infors.",
+  "ntFrekvens": "Forekomster i NT (nt-lemman.json).",
+  "former": "Bojda former; form beror pa bojningsmodell.",
+  "glosa_kasus": "Svensk oversattning per numerus/kasus (for oversattningsspel)."
+ },
+ "pronomen": [
+  {
+   "lemma": "ἐγώ",
+   "glosa": "jag",
+   "typ": "personligt",
+   "person": 1,
+   "bojningsmodell": "person",
+   "seminarium": [
+    5
+   ],
+   "ntFrekvens": 2572,
+   "former": {
+    "sg": {
+     "nom": {
+      "betonad": "ἐγώ",
+      "obetonad": null
+     },
+     "gen": {
+      "betonad": "ἐμοῦ",
+      "obetonad": "μου"
+     },
+     "dat": {
+      "betonad": "ἐμοί",
+      "obetonad": "μοι"
+     },
+     "ack": {
+      "betonad": "ἐμέ",
+      "obetonad": "με"
+     }
+    },
+    "pl": {
+     "nom": {
+      "betonad": "ἡμεῖς",
+      "obetonad": null
+     },
+     "gen": {
+      "betonad": "ἡμῶν",
+      "obetonad": null
+     },
+     "dat": {
+      "betonad": "ἡμῖν",
+      "obetonad": null
+     },
+     "ack": {
+      "betonad": "ἡμᾶς",
+      "obetonad": null
+     }
+    }
+   },
+   "glosa_kasus": {
+    "sg": {
+     "nom": "jag",
+     "gen": "min",
+     "dat": "till mig",
+     "ack": "mig"
+    },
+    "pl": {
+     "nom": "vi",
+     "gen": "vår",
+     "dat": "till oss",
+     "ack": "oss"
+    }
+   },
+   "not": "Nominativ saknar obetonad form: den rena verbformen (βλέπω) uttrycker obetonat 'jag'. Pluralen (ἡμεῖς) har ingen enklitisk sarform."
+  },
+  {
+   "lemma": "σύ",
+   "glosa": "du",
+   "typ": "personligt",
+   "person": 2,
+   "bojningsmodell": "person",
+   "seminarium": [
+    5
+   ],
+   "ntFrekvens": 2894,
+   "former": {
+    "sg": {
+     "nom": {
+      "betonad": "σύ",
+      "obetonad": null
+     },
+     "gen": {
+      "betonad": "σοῦ",
+      "obetonad": "σου"
+     },
+     "dat": {
+      "betonad": "σοί",
+      "obetonad": "σοι"
+     },
+     "ack": {
+      "betonad": "σέ",
+      "obetonad": "σε"
+     }
+    },
+    "pl": {
+     "nom": {
+      "betonad": "ὑμεῖς",
+      "obetonad": null
+     },
+     "gen": {
+      "betonad": "ὑμῶν",
+      "obetonad": null
+     },
+     "dat": {
+      "betonad": "ὑμῖν",
+      "obetonad": null
+     },
+     "ack": {
+      "betonad": "ὑμᾶς",
+      "obetonad": null
+     }
+    }
+   },
+   "glosa_kasus": {
+    "sg": {
+     "nom": "du",
+     "gen": "din",
+     "dat": "till dig",
+     "ack": "dig"
+    },
+    "pl": {
+     "nom": "ni",
+     "gen": "er",
+     "dat": "till er",
+     "ack": "er"
+    }
+   },
+   "not": "Pluralen (ὑμεῖς) har ingen enklitisk sarform."
+  }
+ ],
+ "_framtida": "Demonstrativa (οὗτος/ἐκεῖνος, B § 120) och interrogativa (τίς/τί, B § 122) tillkommer i seminarium 6. De bojs efter genus → satt bojningsmodell='genus' och lagg former som m/f/n -> kasus -> {sg, pl}, som adjektiv.json."
+}

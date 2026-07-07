@@ -1,15 +1,17 @@
 {
  "_om": "Andra deklinationens adjektiv (2-1-2: maskulinum -ος, neutrum -ον, femininum 1:a deklinationen) for bibelgrekiska kongruens-spel. Femininformerna tillkom i seminarium 4 och ingar nu fullstandigt. Former verifierade mot seminariets facit, NT-attestationer (MorphGNT) och LSJ. Feminin gen.pl foljer maskulinums accent (ἁγίων), inte substantivens -ῶν.",
- "_genererad": "2026-06-27",
+ "_genererad": "2026-07-07",
  "_falt": {
   "former": "former.m, former.n och former.f -> kasus (nom/gen/dat/ack/vok) -> numerus (sg/pl). Femininum ar 1:a deklinationen (alfa-typ efter ε/ι/ρ, annars eta-typ).",
   "accenttyp": "oxyton | paroxyton | proparoxyton | properispomenon — styr om accenten flyttar i bojningen",
   "kortlekar": "oxytona (cirkumflex i gen/dat) | ovriga (forskjutande eller fast accent)",
-  "ntFrekvensOver60": "true om lemmat forekommer >60 ggr i NT"
+  "ntFrekvensOver60": "true om lemmat forekommer >60 ggr i NT",
+  "slut": "2 om adjektivet har \"två slut\" (maskulinformen gäller även femininum); annars utelämnat (=3 slut)."
  },
  "_kortlekar": {
   "oxytona": "Oxytona adjektiv (ἀγαθός-typ): cirkumflex i genitiv/dativ",
-  "ovriga": "Adjektiv med fast eller forskjutande stamaccent (ἅγιος, μόνος, πρῶτος)"
+  "ovriga": "Adjektiv med fast eller forskjutande stamaccent (ἅγιος, μόνος, πρῶτος)",
+  "tva_slut": "Adjektiv med två slut (maskulinum = femininum): αἰώνιος -ον (seminarium 5, B § 101)"
  },
  "adjektiv": [
   {
@@ -834,6 +836,422 @@
      }
     }
    }
+  },
+  {
+   "lemma": "μακρός",
+   "glosa": "lång",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "oxytona"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "μακρός",
+      "pl": "μακροί"
+     },
+     "gen": {
+      "sg": "μακροῦ",
+      "pl": "μακρῶν"
+     },
+     "dat": {
+      "sg": "μακρῷ",
+      "pl": "μακροῖς"
+     },
+     "ack": {
+      "sg": "μακρόν",
+      "pl": "μακρούς"
+     },
+     "vok": {
+      "sg": "μακρέ",
+      "pl": "μακροί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "μακρόν",
+      "pl": "μακρά"
+     },
+     "gen": {
+      "sg": "μακροῦ",
+      "pl": "μακρῶν"
+     },
+     "dat": {
+      "sg": "μακρῷ",
+      "pl": "μακροῖς"
+     },
+     "ack": {
+      "sg": "μακρόν",
+      "pl": "μακρά"
+     },
+     "vok": {
+      "sg": "μακρόν",
+      "pl": "μακρά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "μακρά",
+      "pl": "μακραί"
+     },
+     "gen": {
+      "sg": "μακρᾶς",
+      "pl": "μακρῶν"
+     },
+     "dat": {
+      "sg": "μακρᾷ",
+      "pl": "μακραῖς"
+     },
+     "ack": {
+      "sg": "μακράν",
+      "pl": "μακράς"
+     },
+     "vok": {
+      "sg": "μακρά",
+      "pl": "μακραί"
+     }
+    }
+   }
+  },
+  {
+   "lemma": "πτωχός",
+   "glosa": "fattig",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "oxytona"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "πτωχός",
+      "pl": "πτωχοί"
+     },
+     "gen": {
+      "sg": "πτωχοῦ",
+      "pl": "πτωχῶν"
+     },
+     "dat": {
+      "sg": "πτωχῷ",
+      "pl": "πτωχοῖς"
+     },
+     "ack": {
+      "sg": "πτωχόν",
+      "pl": "πτωχούς"
+     },
+     "vok": {
+      "sg": "πτωχέ",
+      "pl": "πτωχοί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "πτωχόν",
+      "pl": "πτωχά"
+     },
+     "gen": {
+      "sg": "πτωχοῦ",
+      "pl": "πτωχῶν"
+     },
+     "dat": {
+      "sg": "πτωχῷ",
+      "pl": "πτωχοῖς"
+     },
+     "ack": {
+      "sg": "πτωχόν",
+      "pl": "πτωχά"
+     },
+     "vok": {
+      "sg": "πτωχόν",
+      "pl": "πτωχά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "πτωχή",
+      "pl": "πτωχαί"
+     },
+     "gen": {
+      "sg": "πτωχῆς",
+      "pl": "πτωχῶν"
+     },
+     "dat": {
+      "sg": "πτωχῇ",
+      "pl": "πτωχαῖς"
+     },
+     "ack": {
+      "sg": "πτωχήν",
+      "pl": "πτωχάς"
+     },
+     "vok": {
+      "sg": "πτωχή",
+      "pl": "πτωχαί"
+     }
+    }
+   },
+   "not": "Substantiveras ofta: ὁ πτωχός \"tiggaren\", ἡ πτωχή \"tiggerskan\"."
+  },
+  {
+   "lemma": "ἁμαρτωλός",
+   "glosa": "syndig",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "oxytona"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "ἁμαρτωλός",
+      "pl": "ἁμαρτωλοί"
+     },
+     "gen": {
+      "sg": "ἁμαρτωλοῦ",
+      "pl": "ἁμαρτωλῶν"
+     },
+     "dat": {
+      "sg": "ἁμαρτωλῷ",
+      "pl": "ἁμαρτωλοῖς"
+     },
+     "ack": {
+      "sg": "ἁμαρτωλόν",
+      "pl": "ἁμαρτωλούς"
+     },
+     "vok": {
+      "sg": "ἁμαρτωλέ",
+      "pl": "ἁμαρτωλοί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "ἁμαρτωλόν",
+      "pl": "ἁμαρτωλά"
+     },
+     "gen": {
+      "sg": "ἁμαρτωλοῦ",
+      "pl": "ἁμαρτωλῶν"
+     },
+     "dat": {
+      "sg": "ἁμαρτωλῷ",
+      "pl": "ἁμαρτωλοῖς"
+     },
+     "ack": {
+      "sg": "ἁμαρτωλόν",
+      "pl": "ἁμαρτωλά"
+     },
+     "vok": {
+      "sg": "ἁμαρτωλόν",
+      "pl": "ἁμαρτωλά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "ἁμαρτωλή",
+      "pl": "ἁμαρτωλαί"
+     },
+     "gen": {
+      "sg": "ἁμαρτωλῆς",
+      "pl": "ἁμαρτωλῶν"
+     },
+     "dat": {
+      "sg": "ἁμαρτωλῇ",
+      "pl": "ἁμαρτωλαῖς"
+     },
+     "ack": {
+      "sg": "ἁμαρτωλήν",
+      "pl": "ἁμαρτωλάς"
+     },
+     "vok": {
+      "sg": "ἁμαρτωλή",
+      "pl": "ἁμαρτωλαί"
+     }
+    }
+   },
+   "not": "Substantiveras ofta: ὁ ἁμαρτωλός \"syndaren\", ἡ ἁμαρτωλή \"synderskan\"."
+  },
+  {
+   "lemma": "πλούσιος",
+   "glosa": "rik",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "proparoxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "ovriga"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "πλούσιος",
+      "pl": "πλούσιοι"
+     },
+     "gen": {
+      "sg": "πλουσίου",
+      "pl": "πλουσίων"
+     },
+     "dat": {
+      "sg": "πλουσίῳ",
+      "pl": "πλουσίοις"
+     },
+     "ack": {
+      "sg": "πλούσιον",
+      "pl": "πλουσίους"
+     },
+     "vok": {
+      "sg": "πλούσιε",
+      "pl": "πλούσιοι"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "πλούσιον",
+      "pl": "πλούσια"
+     },
+     "gen": {
+      "sg": "πλουσίου",
+      "pl": "πλουσίων"
+     },
+     "dat": {
+      "sg": "πλουσίῳ",
+      "pl": "πλουσίοις"
+     },
+     "ack": {
+      "sg": "πλούσιον",
+      "pl": "πλούσια"
+     },
+     "vok": {
+      "sg": "πλούσιον",
+      "pl": "πλούσια"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "πλουσία",
+      "pl": "πλούσιαι"
+     },
+     "gen": {
+      "sg": "πλουσίας",
+      "pl": "πλουσίων"
+     },
+     "dat": {
+      "sg": "πλουσίᾳ",
+      "pl": "πλουσίαις"
+     },
+     "ack": {
+      "sg": "πλουσίαν",
+      "pl": "πλουσίας"
+     },
+     "vok": {
+      "sg": "πλουσία",
+      "pl": "πλούσιαι"
+     }
+    }
+   },
+   "not": "Substantiveras ofta: ὁ πλούσιος \"rikemannen\", ἡ πλουσία \"rikekvinnan\"."
+  },
+  {
+   "lemma": "αἰώνιος",
+   "glosa": "evig",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "proparoxyton",
+   "seminarium": [
+    5
+   ],
+   "kortlekar": [
+    "ovriga",
+    "tva_slut"
+   ],
+   "ntFrekvensOver60": true,
+   "slut": 2,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "αἰώνιος",
+      "pl": "αἰώνιοι"
+     },
+     "gen": {
+      "sg": "αἰωνίου",
+      "pl": "αἰωνίων"
+     },
+     "dat": {
+      "sg": "αἰωνίῳ",
+      "pl": "αἰωνίοις"
+     },
+     "ack": {
+      "sg": "αἰώνιον",
+      "pl": "αἰωνίους"
+     },
+     "vok": {
+      "sg": "αἰώνιε",
+      "pl": "αἰώνιοι"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "αἰώνιον",
+      "pl": "αἰώνια"
+     },
+     "gen": {
+      "sg": "αἰωνίου",
+      "pl": "αἰωνίων"
+     },
+     "dat": {
+      "sg": "αἰωνίῳ",
+      "pl": "αἰωνίοις"
+     },
+     "ack": {
+      "sg": "αἰώνιον",
+      "pl": "αἰώνια"
+     },
+     "vok": {
+      "sg": "αἰώνιον",
+      "pl": "αἰώνια"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "αἰώνιος",
+      "pl": "αἰώνιοι"
+     },
+     "gen": {
+      "sg": "αἰωνίου",
+      "pl": "αἰωνίων"
+     },
+     "dat": {
+      "sg": "αἰωνίῳ",
+      "pl": "αἰωνίοις"
+     },
+     "ack": {
+      "sg": "αἰώνιον",
+      "pl": "αἰωνίους"
+     },
+     "vok": {
+      "sg": "αἰώνιε",
+      "pl": "αἰώνιοι"
+     }
+    }
+   },
+   "not": "\"Adjektiv med två slut\" (B § 101): den maskulina formen används även för femininum. Uppslagsform αἰώνιος -ον."
   }
  ]
 }
