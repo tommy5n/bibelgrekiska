@@ -64,6 +64,12 @@ const SPEL = [
     desc: "Presens: ω-verb, kontraherade & εἰμί",
     route: "#/verb",
   },
+  {
+    nr: 9,
+    namn: "Pronomen",
+    desc: "Personliga pronomen: ἐγώ, σύ",
+    route: "#/pronomen",
+  },
 ];
 
 const ROUTES = {
@@ -75,6 +81,7 @@ const ROUTES = {
   "/lasordning": () => import(`./vyer/lasordning.js${vv}`),
   "/andelser": () => import(`./vyer/andelser.js${vv}`),
   "/verb": () => import(`./vyer/verb.js${vv}`),
+  "/pronomen": () => import(`./vyer/pronomen.js${vv}`),
 };
 
 let current = null;
