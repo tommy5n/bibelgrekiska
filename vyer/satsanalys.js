@@ -54,6 +54,7 @@ const MARKUP = `<div class="vy vy-satsanalys">
         <button class="chip" data-niva-clear>rensa</button>
         <button class="chip" data-deck-sem2>Seminarium 2 (facit)</button>
         <button class="chip" data-deck-sem4>Seminarium 4 (εἰμί impf + adverbial)</button>
+        <button class="chip" data-deck-sem5>Seminarium 5 (prepositioner, negation, pronomen)</button>
       </div>
       <div class="grid" id="grid-niva"></div>
     </div>
@@ -112,6 +113,7 @@ const NIVAER = {
   4:"Indirekt objekt", 5:"Genitivattribut", 6:"Vokativ",
   7:"Predikatsfyllnad (εἰμί)", 8:"εἰμί i imperfekt (var)",
   9:"Adverbial (prepositionsfras)",
+  10:"Prepositioner (sem 5)", 11:"Negationen οὐ (sem 5)", 12:"Personliga pronomen (sem 5)",
 };
 
 /* ── MENINGSBANK ──────────────────────────────────────────────────────
@@ -291,6 +293,24 @@ const SATSER = [
       {t:"ὁ Ἰησοῦς",roll:"subj"},{t:"ποιεῖ",roll:"pred"},{t:"καλὰ σημεῖα",roll:"do"} ]},
   { id:"f05", niva:5, kalla:"kurs", ref:"Övningsblad 6", sv:"Änglarna talar Guds ord.", chunks:[
       {t:"λαλοῦσιν",roll:"pred"},{t:"οἱ ἄγγελοι",roll:"subj"},{t:"τοὺς λόγους",roll:"do"},{t:"τοῦ θεοῦ",roll:"gen"} ]},
+
+  /* ══ SEMINARIUM 5 — prepositioner, negation, personliga pronomen ══ */
+  { id:"s5p1", niva:10, kalla:"kurs", ref:"Övningsblad 5:1", sv:"Slavarna leder flickorna till byn.", chunks:[
+      {t:"ἄγουσιν",roll:"pred"},{t:"οἱ δοῦλοι",roll:"subj"},{t:"τὰς παρθένους",roll:"do"},{t:"εἰς τὴν κώμην",roll:"adv"} ]},
+  { id:"s5p2", niva:10, kalla:"kurs", ref:"Presentation 5 s.34", sv:"Husbonden övervakar barnen framför templet.", chunks:[
+      {t:"ὁ οἰκοδεσπότης",roll:"subj"},{t:"τηρεῖ",roll:"pred"},{t:"τὰ τέκνα",roll:"do"},{t:"πρὸ τοῦ ἱεροῦ",roll:"adv"} ]},
+  { id:"s5p3", niva:10, kalla:"kurs", ref:"Övningsblad 5:2", sv:"I kyrkan ser vi Guds härlighet.", subjI:"vi", chunks:[
+      {t:"ἐν τῇ ἐκκλησίᾳ",roll:"adv"},{t:"βλέπομεν",roll:"pred"},{t:"τὴν δόξαν",roll:"do"},{t:"τοῦ θεοῦ",roll:"gen"} ]},
+  { id:"s5n1", niva:11, kalla:"kurs", ref:"Breakout 5:2a", sv:"Vännerna tror inte.", chunks:[
+      {t:"οἱ φίλοι",roll:"subj"},{t:"οὐ πιστεύουσιν",roll:"pred"} ]},
+  { id:"s5n2", niva:11, kalla:"kurs", ref:"Övningsblad 5:5", sv:"Flickan helar inte sjukdomarna.", chunks:[
+      {t:"οὐ θεραπεύει",roll:"pred"},{t:"ἡ παρθένος",roll:"subj"},{t:"τὰς νόσους",roll:"do"} ]},
+  { id:"s5r1", niva:12, kalla:"kurs", ref:"Breakout 5:3", sv:"Vi söker er.", subjI:"vi", chunks:[
+      {t:"ζητοῦμεν",roll:"pred"},{t:"ὑμᾶς",roll:"do"} ]},
+  { id:"s5r2", niva:12, kalla:"kurs", ref:"Breakout 5:3", sv:"De predikar för er.", chunks:[
+      {t:"κηρύσσουσιν",roll:"pred"},{t:"ὑμῖν",roll:"io"} ]},
+  { id:"s5r3", niva:12, kalla:"kurs", ref:"Breakout 5:3", sv:"Han talar om dig.", subjI:"han/hon/det", chunks:[
+      {t:"λέγει",roll:"pred"},{t:"περὶ σοῦ",roll:"adv"} ]},
 ];
 
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
@@ -609,6 +629,10 @@ document.querySelector("[data-deck-sem2]").onclick  = () => {
 };
 document.querySelector("[data-deck-sem4]").onclick  = () => {
   state.valdaNivaer = new Set([8,9]); state.kalla = "kurs";     // εἰμί imperfekt + adverbial
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+};
+document.querySelector("[data-deck-sem5]").onclick  = () => {
+  state.valdaNivaer = new Set([10,11,12]); state.kalla = "kurs";  // prepositioner, negation, pronomen
   byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
 };
 document.querySelectorAll("#seg-kalla button").forEach(b =>
