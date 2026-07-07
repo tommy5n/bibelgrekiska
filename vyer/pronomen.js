@@ -88,16 +88,8 @@ const STYLE = `
 .vy-pron .mode{ font-family:"Spectral",serif; font-size:var(--fs-sm); padding:.35rem .9rem;
   border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
 .vy-pron .mode[aria-pressed="true"]{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
-.vy-pron .picker{ margin-top:1.4rem; }
-.vy-pron .picker-toggle{ font-family:"Spectral",serif; background:none; border:none; color:var(--gold);
-  cursor:pointer; font-size:var(--fs-sm); display:flex; align-items:center; gap:.3rem; }
-.vy-pron .picker-body{ margin-top:.7rem; display:flex; flex-direction:column; gap:1rem; }
-.vy-pron h2{ font-family:"Spectral",serif; font-size:var(--fs-sm); color:var(--ink-soft);
-  text-transform:uppercase; letter-spacing:.05em; margin:0 0 .4rem; }
-.vy-pron .grid{ display:flex; flex-wrap:wrap; gap:.4rem; }
-.vy-pron .toggle{ font-family:"Spectral",serif; font-size:var(--fs-2xs); padding:.35rem .7rem;
-  border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
-.vy-pron .toggle[aria-pressed="true"]{ background:var(--gold); color:#fff; border-color:var(--gold); }
+/* Picker (.picker/.picker-toggle/.toggle m.fl.) stylas nu av den delade
+   komponenten i app.css — inga vy-lokala regler här. */
 .vy-pron footer{ margin-top:1.4rem; font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; }
 `;
 

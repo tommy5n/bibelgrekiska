@@ -12,30 +12,33 @@ export function teardown(){
 /* ── DATA — snapshot av verb.json. Former nycklas per tempus (pres, impf …);
    varianter håller godtagbara dubbelformer per tempus/person. ───────────── */
 const verb = [
-  { lemma:"λύω", glosa:"lösa", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"λύω", "2sg":"λύεις", "3sg":"λύει", "1pl":"λύομεν", "2pl":"λύετε", "3pl":"λύουσι(ν)"} } },
-  { lemma:"βλέπω", glosa:"se", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"βλέπω", "2sg":"βλέπεις", "3sg":"βλέπει", "1pl":"βλέπομεν", "2pl":"βλέπετε", "3pl":"βλέπουσι(ν)"} } },
-  { lemma:"ἀκούω", glosa:"höra", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"ἀκούω", "2sg":"ἀκούεις", "3sg":"ἀκούει", "1pl":"ἀκούομεν", "2pl":"ἀκούετε", "3pl":"ἀκούουσι(ν)"} } },
-  { lemma:"λέγω", glosa:"säga", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"λέγω", "2sg":"λέγεις", "3sg":"λέγει", "1pl":"λέγομεν", "2pl":"λέγετε", "3pl":"λέγουσι(ν)"} } },
-  { lemma:"γράφω", glosa:"skriva", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"γράφω", "2sg":"γράφεις", "3sg":"γράφει", "1pl":"γράφομεν", "2pl":"γράφετε", "3pl":"γράφουσι(ν)"} } },
-  { lemma:"ἐσθίω", glosa:"äta", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"ἐσθίω", "2sg":"ἐσθίεις", "3sg":"ἐσθίει", "1pl":"ἐσθίομεν", "2pl":"ἐσθίετε", "3pl":"ἐσθίουσι(ν)"} } },
-  { lemma:"κηρύσσω", glosa:"predika", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"κηρύσσω", "2sg":"κηρύσσεις", "3sg":"κηρύσσει", "1pl":"κηρύσσομεν", "2pl":"κηρύσσετε", "3pl":"κηρύσσουσι(ν)"} } },
-  { lemma:"λαμβάνω", glosa:"ta, gripa", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"λαμβάνω", "2sg":"λαμβάνεις", "3sg":"λαμβάνει", "1pl":"λαμβάνομεν", "2pl":"λαμβάνετε", "3pl":"λαμβάνουσι(ν)"} } },
-  { lemma:"παιδεύω", glosa:"uppfostra", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"παιδεύω", "2sg":"παιδεύεις", "3sg":"παιδεύει", "1pl":"παιδεύομεν", "2pl":"παιδεύετε", "3pl":"παιδεύουσι(ν)"} } },
-  { lemma:"πέμπω", glosa:"skicka", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"πέμπω", "2sg":"πέμπεις", "3sg":"πέμπει", "1pl":"πέμπομεν", "2pl":"πέμπετε", "3pl":"πέμπουσι(ν)"} } },
-  { lemma:"εὑρίσκω", glosa:"finna", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"εὑρίσκω", "2sg":"εὑρίσκεις", "3sg":"εὑρίσκει", "1pl":"εὑρίσκομεν", "2pl":"εὑρίσκετε", "3pl":"εὑρίσκουσι(ν)"} } },
-  { lemma:"πιστεύω", glosa:"tro (på)", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"πιστεύω", "2sg":"πιστεύεις", "3sg":"πιστεύει", "1pl":"πιστεύομεν", "2pl":"πιστεύετε", "3pl":"πιστεύουσι(ν)"} } },
-  { lemma:"βαπτίζω", glosa:"döpa", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"βαπτίζω", "2sg":"βαπτίζεις", "3sg":"βαπτίζει", "1pl":"βαπτίζομεν", "2pl":"βαπτίζετε", "3pl":"βαπτίζουσι(ν)"} } },
-  { lemma:"σῴζω", glosa:"rädda", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"σῴζω", "2sg":"σῴζεις", "3sg":"σῴζει", "1pl":"σῴζομεν", "2pl":"σῴζετε", "3pl":"σῴζουσι(ν)"} } },
-  { lemma:"κλέπτω", glosa:"stjäla", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"κλέπτω", "2sg":"κλέπτεις", "3sg":"κλέπτει", "1pl":"κλέπτομεν", "2pl":"κλέπτετε", "3pl":"κλέπτουσι(ν)"} } },
-  { lemma:"ἄγω", glosa:"leda", klass:"omega", kortlekar:["sem2"], former:{ pres:{"1sg":"ἄγω", "2sg":"ἄγεις", "3sg":"ἄγει", "1pl":"ἄγομεν", "2pl":"ἄγετε", "3pl":"ἄγουσι(ν)"} } },
-  { lemma:"φιλέω", glosa:"älska, gilla", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"φιλῶ", "2sg":"φιλεῖς", "3sg":"φιλεῖ", "1pl":"φιλοῦμεν", "2pl":"φιλεῖτε", "3pl":"φιλοῦσι(ν)"} } },
-  { lemma:"ζητέω", glosa:"söka", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"ζητῶ", "2sg":"ζητεῖς", "3sg":"ζητεῖ", "1pl":"ζητοῦμεν", "2pl":"ζητεῖτε", "3pl":"ζητοῦσι(ν)"} } },
-  { lemma:"καλέω", glosa:"kalla", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"καλῶ", "2sg":"καλεῖς", "3sg":"καλεῖ", "1pl":"καλοῦμεν", "2pl":"καλεῖτε", "3pl":"καλοῦσι(ν)"} } },
-  { lemma:"λαλέω", glosa:"tala", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"λαλῶ", "2sg":"λαλεῖς", "3sg":"λαλεῖ", "1pl":"λαλοῦμεν", "2pl":"λαλεῖτε", "3pl":"λαλοῦσι(ν)"} } },
-  { lemma:"μαρτυρέω", glosa:"vittna om", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"μαρτυρῶ", "2sg":"μαρτυρεῖς", "3sg":"μαρτυρεῖ", "1pl":"μαρτυροῦμεν", "2pl":"μαρτυρεῖτε", "3pl":"μαρτυροῦσι(ν)"} } },
-  { lemma:"ποιέω", glosa:"göra", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"ποιῶ", "2sg":"ποιεῖς", "3sg":"ποιεῖ", "1pl":"ποιοῦμεν", "2pl":"ποιεῖτε", "3pl":"ποιοῦσι(ν)"} } },
-  { lemma:"τηρέω", glosa:"bevaka, bevara", klass:"kontrakt_e", kortlekar:["sem4"], former:{ pres:{"1sg":"τηρῶ", "2sg":"τηρεῖς", "3sg":"τηρεῖ", "1pl":"τηροῦμεν", "2pl":"τηρεῖτε", "3pl":"τηροῦσι(ν)"} } },
-  { lemma:"εἰμί", glosa:"vara", klass:"oregelbunden", kortlekar:["sem4","eimi"], former:{ pres:{"1sg":"εἰμί", "2sg":"εἶ", "3sg":"ἐστί(ν)", "1pl":"ἐσμέν", "2pl":"ἐστέ", "3pl":"εἰσί(ν)"}, impf:{"1sg":"ἤμην", "2sg":"ἦς", "3sg":"ἦν", "1pl":"ἦμεν", "2pl":"ἦτε", "3pl":"ἦσαν"} }, varianter:{ impf:{"1sg":["ἦν"], "2sg":["ἦσθα"], "1pl":["ἤμεθα"]} } }
+  { lemma:"λύω", glosa:"lösa", klass:"omega", kortlekar:["sem2"], sem:[2], former:{ pres:{"1sg":"λύω", "2sg":"λύεις", "3sg":"λύει", "1pl":"λύομεν", "2pl":"λύετε", "3pl":"λύουσι(ν)"} } },
+  { lemma:"βλέπω", glosa:"se", klass:"omega", kortlekar:["sem2"], sem:[2, 5], former:{ pres:{"1sg":"βλέπω", "2sg":"βλέπεις", "3sg":"βλέπει", "1pl":"βλέπομεν", "2pl":"βλέπετε", "3pl":"βλέπουσι(ν)"} } },
+  { lemma:"ἀκούω", glosa:"höra", klass:"omega", kortlekar:["sem2"], sem:[2, 5], former:{ pres:{"1sg":"ἀκούω", "2sg":"ἀκούεις", "3sg":"ἀκούει", "1pl":"ἀκούομεν", "2pl":"ἀκούετε", "3pl":"ἀκούουσι(ν)"} } },
+  { lemma:"λέγω", glosa:"säga", klass:"omega", kortlekar:["sem2"], sem:[2, 5], former:{ pres:{"1sg":"λέγω", "2sg":"λέγεις", "3sg":"λέγει", "1pl":"λέγομεν", "2pl":"λέγετε", "3pl":"λέγουσι(ν)"} } },
+  { lemma:"γράφω", glosa:"skriva", klass:"omega", kortlekar:["sem2"], sem:[2, 5], former:{ pres:{"1sg":"γράφω", "2sg":"γράφεις", "3sg":"γράφει", "1pl":"γράφομεν", "2pl":"γράφετε", "3pl":"γράφουσι(ν)"} } },
+  { lemma:"ἐσθίω", glosa:"äta", klass:"omega", kortlekar:["sem2"], sem:[2], former:{ pres:{"1sg":"ἐσθίω", "2sg":"ἐσθίεις", "3sg":"ἐσθίει", "1pl":"ἐσθίομεν", "2pl":"ἐσθίετε", "3pl":"ἐσθίουσι(ν)"} } },
+  { lemma:"κηρύσσω", glosa:"predika", klass:"omega", kortlekar:["sem2"], sem:[2, 5], former:{ pres:{"1sg":"κηρύσσω", "2sg":"κηρύσσεις", "3sg":"κηρύσσει", "1pl":"κηρύσσομεν", "2pl":"κηρύσσετε", "3pl":"κηρύσσουσι(ν)"} } },
+  { lemma:"λαμβάνω", glosa:"ta, gripa", klass:"omega", kortlekar:["sem2"], sem:[2], former:{ pres:{"1sg":"λαμβάνω", "2sg":"λαμβάνεις", "3sg":"λαμβάνει", "1pl":"λαμβάνομεν", "2pl":"λαμβάνετε", "3pl":"λαμβάνουσι(ν)"} } },
+  { lemma:"παιδεύω", glosa:"uppfostra", klass:"omega", kortlekar:["sem2"], sem:[2], former:{ pres:{"1sg":"παιδεύω", "2sg":"παιδεύεις", "3sg":"παιδεύει", "1pl":"παιδεύομεν", "2pl":"παιδεύετε", "3pl":"παιδεύουσι(ν)"} } },
+  { lemma:"πέμπω", glosa:"skicka", klass:"omega", kortlekar:["sem2"], sem:[2], former:{ pres:{"1sg":"πέμπω", "2sg":"πέμπεις", "3sg":"πέμπει", "1pl":"πέμπομεν", "2pl":"πέμπετε", "3pl":"πέμπουσι(ν)"} } },
+  { lemma:"εὑρίσκω", glosa:"finna", klass:"omega", kortlekar:["sem2"], sem:[2], former:{ pres:{"1sg":"εὑρίσκω", "2sg":"εὑρίσκεις", "3sg":"εὑρίσκει", "1pl":"εὑρίσκομεν", "2pl":"εὑρίσκετε", "3pl":"εὑρίσκουσι(ν)"} } },
+  { lemma:"πιστεύω", glosa:"tro (på)", klass:"omega", kortlekar:["sem2"], sem:[2, 5], former:{ pres:{"1sg":"πιστεύω", "2sg":"πιστεύεις", "3sg":"πιστεύει", "1pl":"πιστεύομεν", "2pl":"πιστεύετε", "3pl":"πιστεύουσι(ν)"} } },
+  { lemma:"βαπτίζω", glosa:"döpa", klass:"omega", kortlekar:["sem2"], sem:[2], former:{ pres:{"1sg":"βαπτίζω", "2sg":"βαπτίζεις", "3sg":"βαπτίζει", "1pl":"βαπτίζομεν", "2pl":"βαπτίζετε", "3pl":"βαπτίζουσι(ν)"} } },
+  { lemma:"σῴζω", glosa:"rädda", klass:"omega", kortlekar:["sem2"], sem:[2, 5], former:{ pres:{"1sg":"σῴζω", "2sg":"σῴζεις", "3sg":"σῴζει", "1pl":"σῴζομεν", "2pl":"σῴζετε", "3pl":"σῴζουσι(ν)"} } },
+  { lemma:"κλέπτω", glosa:"stjäla", klass:"omega", kortlekar:["sem2"], sem:[2], former:{ pres:{"1sg":"κλέπτω", "2sg":"κλέπτεις", "3sg":"κλέπτει", "1pl":"κλέπτομεν", "2pl":"κλέπτετε", "3pl":"κλέπτουσι(ν)"} } },
+  { lemma:"ἄγω", glosa:"leda", klass:"omega", kortlekar:["sem2"], sem:[2, 5], former:{ pres:{"1sg":"ἄγω", "2sg":"ἄγεις", "3sg":"ἄγει", "1pl":"ἄγομεν", "2pl":"ἄγετε", "3pl":"ἄγουσι(ν)"} } },
+  { lemma:"φιλέω", glosa:"älska, gilla", klass:"kontrakt_e", kortlekar:["sem4"], sem:[4, 5], former:{ pres:{"1sg":"φιλῶ", "2sg":"φιλεῖς", "3sg":"φιλεῖ", "1pl":"φιλοῦμεν", "2pl":"φιλεῖτε", "3pl":"φιλοῦσι(ν)"} } },
+  { lemma:"ζητέω", glosa:"söka", klass:"kontrakt_e", kortlekar:["sem4"], sem:[4, 5], former:{ pres:{"1sg":"ζητῶ", "2sg":"ζητεῖς", "3sg":"ζητεῖ", "1pl":"ζητοῦμεν", "2pl":"ζητεῖτε", "3pl":"ζητοῦσι(ν)"} } },
+  { lemma:"καλέω", glosa:"kalla", klass:"kontrakt_e", kortlekar:["sem4"], sem:[4, 5], former:{ pres:{"1sg":"καλῶ", "2sg":"καλεῖς", "3sg":"καλεῖ", "1pl":"καλοῦμεν", "2pl":"καλεῖτε", "3pl":"καλοῦσι(ν)"} } },
+  { lemma:"λαλέω", glosa:"tala", klass:"kontrakt_e", kortlekar:["sem4"], sem:[4, 5], former:{ pres:{"1sg":"λαλῶ", "2sg":"λαλεῖς", "3sg":"λαλεῖ", "1pl":"λαλοῦμεν", "2pl":"λαλεῖτε", "3pl":"λαλοῦσι(ν)"} } },
+  { lemma:"μαρτυρέω", glosa:"vittna om", klass:"kontrakt_e", kortlekar:["sem4"], sem:[4, 5], former:{ pres:{"1sg":"μαρτυρῶ", "2sg":"μαρτυρεῖς", "3sg":"μαρτυρεῖ", "1pl":"μαρτυροῦμεν", "2pl":"μαρτυρεῖτε", "3pl":"μαρτυροῦσι(ν)"} } },
+  { lemma:"ποιέω", glosa:"göra", klass:"kontrakt_e", kortlekar:["sem4"], sem:[4, 5], former:{ pres:{"1sg":"ποιῶ", "2sg":"ποιεῖς", "3sg":"ποιεῖ", "1pl":"ποιοῦμεν", "2pl":"ποιεῖτε", "3pl":"ποιοῦσι(ν)"} } },
+  { lemma:"τηρέω", glosa:"bevaka, bevara", klass:"kontrakt_e", kortlekar:["sem4"], sem:[4, 5], former:{ pres:{"1sg":"τηρῶ", "2sg":"τηρεῖς", "3sg":"τηρεῖ", "1pl":"τηροῦμεν", "2pl":"τηρεῖτε", "3pl":"τηροῦσι(ν)"} } },
+  { lemma:"εἰμί", glosa:"vara", klass:"oregelbunden", kortlekar:["sem4","eimi"], sem:[4, 5], former:{ pres:{"1sg":"εἰμί", "2sg":"εἶ", "3sg":"ἐστί(ν)", "1pl":"ἐσμέν", "2pl":"ἐστέ", "3pl":"εἰσί(ν)"}, impf:{"1sg":"ἤμην", "2sg":"ἦς", "3sg":"ἦν", "1pl":"ἦμεν", "2pl":"ἦτε", "3pl":"ἦσαν"} }, varianter:{ impf:{"1sg":["ἦν"], "2sg":["ἦσθα"], "1pl":["ἤμεθα"]} } },
+  { lemma:"αἰτέω", glosa:"be om", klass:"kontrakt_e", kortlekar:["sem5"], sem:[5], former:{ pres:{"1sg":"αἰτῶ", "2sg":"αἰτεῖς", "3sg":"αἰτεῖ", "1pl":"αἰτοῦμεν", "2pl":"αἰτεῖτε", "3pl":"αἰτοῦσι(ν)"} } },
+  { lemma:"θεραπεύω", glosa:"hela, bota", klass:"omega", kortlekar:["sem5"], sem:[5], former:{ pres:{"1sg":"θεραπεύω", "2sg":"θεραπεύεις", "3sg":"θεραπεύει", "1pl":"θεραπεύομεν", "2pl":"θεραπεύετε", "3pl":"θεραπεύουσι(ν)"} } },
+  { lemma:"ἁμαρτάνω", glosa:"synda", klass:"omega", kortlekar:["sem5"], sem:[5], former:{ pres:{"1sg":"ἁμαρτάνω", "2sg":"ἁμαρτάνεις", "3sg":"ἁμαρτάνει", "1pl":"ἁμαρτάνομεν", "2pl":"ἁμαρτάνετε", "3pl":"ἁμαρτάνουσι(ν)"} } }
 ];
 
 /* Tempus: nyckel → svensk etikett (standard: presens). */
@@ -59,6 +62,11 @@ const LEKAR = {
   sem4:  verb.filter(v => v.kortlekar.includes("sem4")).map(v => v.lemma),
   eimi:  verb.filter(v => v.kortlekar.includes("eimi")).map(v => v.lemma),
 };
+
+/* Seminarie-axel: varje verb bär sem:[…] ur verb.json. Skalar till fler
+   seminarier — chipsen radbryts. */
+const SEMINARIER = [...new Set(verb.flatMap(v => v.sem))].sort((a,b) => a - b);
+const semNamn = s => "Sem " + s;
 
 const STYLE = `
 .vy-verb .stage{ display:flex; flex-direction:column; align-items:center; gap:1rem; margin-top:1rem; }
@@ -91,21 +99,8 @@ const STYLE = `
 .vy-verb .mode{ font-family:"Spectral",serif; font-size:var(--fs-sm); padding:.35rem .9rem;
   border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
 .vy-verb .mode[aria-pressed="true"]{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
-.vy-verb .picker{ margin-top:1.4rem; }
-.vy-verb .picker-toggle{ font-family:"Spectral",serif; background:none; border:none; color:var(--gold);
-  cursor:pointer; font-size:var(--fs-sm); display:flex; align-items:center; gap:.3rem; }
-.vy-verb .picker-body{ margin-top:.7rem; display:flex; flex-direction:column; gap:1rem; }
-.vy-verb h2{ font-family:"Spectral",serif; font-size:var(--fs-sm); color:var(--ink-soft);
-  text-transform:uppercase; letter-spacing:.05em; margin:0 0 .4rem; }
-.vy-verb .quickrow{ display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.5rem; }
-.vy-verb .chip{ font-family:"Spectral",serif; font-size:var(--fs-2xs); padding:.3rem .7rem;
-  border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink); cursor:pointer; }
-.vy-verb .chip[aria-pressed="true"]{ border-color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); color:var(--gold); }
-.vy-verb .grid{ display:flex; flex-wrap:wrap; gap:.4rem; }
-.vy-verb .toggle{ font-family:"Spectral",serif; font-size:var(--fs-2xs); padding:.35rem .7rem;
-  border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
-.vy-verb .toggle[aria-pressed="true"]{ background:var(--gold); color:#fff; border-color:var(--gold); }
-.vy-verb .toggle:disabled{ opacity:.4; cursor:default; }
+/* Picker (.picker/.picker-toggle/.chip/.toggle m.fl.) stylas nu av den delade
+   komponenten i app.css — inga vy-lokala regler här. */
 .vy-verb footer{ margin-top:1.4rem; font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; }
 `;
 
@@ -144,8 +139,17 @@ const MARKUP = `<div class="vy vy-verb">
 </div>
 
 <div class="picker">
-  <button class="picker-toggle" id="picker-toggle" aria-expanded="false"><span>Anpassa övningen</span><span>▾</span></button>
+  <button class="picker-toggle" id="picker-toggle" aria-expanded="false"><span>Anpassa övningen <span class="count" id="verb-count"></span></span><span>▾</span></button>
   <div class="picker-body hidden" id="picker-body">
+    <div>
+      <h2>Seminarium</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-sem-all>alla</button>
+        <button class="chip" data-sem-none>inga</button>
+      </div>
+      <div class="grid" id="grid-sem"></div>
+    </div>
     <div>
       <h2>Tempus</h2>
       <div class="grid" id="grid-tempus"></div>
@@ -153,9 +157,10 @@ const MARKUP = `<div class="vy vy-verb">
     <div>
       <h2>Verb</h2>
       <div class="quickrow">
+        <span class="quicklabel">Klass:</span>
         <button class="chip" data-lek="alla">alla</button>
-        <button class="chip" data-lek="sem2">ω-verb (sem 2)</button>
-        <button class="chip" data-lek="sem4">kontraherade (sem 4)</button>
+        <button class="chip" data-lek="sem2">ω-verb</button>
+        <button class="chip" data-lek="sem4">kontraherade</button>
         <button class="chip" data-lek="eimi">εἰμί</button>
       </div>
       <div class="grid" id="grid-verb"></div>
@@ -187,6 +192,7 @@ export function render(root){
     mode: "vand",
     tempus: "pres",
     valdaVerb: new Set(verb.map(v => v.lemma)),
+    valdaSem: new Set(SEMINARIER),
     valdaPN: new Set(PN_ORDNING),
     streak: 0, best: 0, card: null, besvarad: false, valt: null, forra: null,
   };
@@ -196,18 +202,28 @@ export function render(root){
   const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
   const harTempus  = v => state.tempus==="alla" ? Object.keys(v.former).some(t=>TEMPUS[t]) : !!v.former[state.tempus];
   const tempusFor  = v => state.tempus!=="alla" ? state.tempus : pick(Object.keys(v.former).filter(t=>TEMPUS[t]));
-  const aktivaVerb = () => { const v = verb.filter(o => state.valdaVerb.has(o.lemma) && harTempus(o)); return v.length ? v : verb.filter(harTempus); };
+  const semMatch    = o => o.sem.some(s => state.valdaSem.has(s));
+  // Seminarie-urvalet styr vilka verb som visas i rutnätet; verbrutnätet finjusterar.
+  const synligaVerb = () => { const v = verb.filter(semMatch); return v.length ? v : verb; };
+  const aktivaVerb  = () => {
+    const v = synligaVerb().filter(o => state.valdaVerb.has(o.lemma) && harTempus(o));
+    if(v.length) return v;
+    const bs = synligaVerb().filter(harTempus);
+    return bs.length ? bs : verb.filter(harTempus);
+  };
   const aktivaPN   = () => { const p = PN_ORDNING.filter(k => state.valdaPN.has(k)); return p.length ? p : PN_ORDNING; };
   const setEq = (a, b) => a.size === b.size && [...a].every(x => b.has(x));
   const PN_GRUPPER = { all:PN_ORDNING, sg:["1sg","2sg","3sg"], pl:["1pl","2pl","3pl"] };
 
   function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({
-    mode:state.mode, tempus:state.tempus, valdaVerb:[...state.valdaVerb], valdaPN:[...state.valdaPN], best:state.best })); }catch(e){} }
+    mode:state.mode, tempus:state.tempus, valdaVerb:[...state.valdaVerb], valdaSem:[...state.valdaSem], valdaPN:[...state.valdaPN], best:state.best })); }catch(e){} }
   function ladda(){ try{ const r = JSON.parse(localStorage.getItem(LAGER)); if(!r) return;
     if(r.mode) state.mode = r.mode;
     if(r.tempus && (TEMPUS[r.tempus] || r.tempus==="alla")) state.tempus = r.tempus;
     if(Array.isArray(r.valdaVerb)) state.valdaVerb = new Set(r.valdaVerb.filter(l => verb.some(v=>v.lemma===l)));
+    if(Array.isArray(r.valdaSem))  state.valdaSem  = new Set(r.valdaSem.filter(s => SEMINARIER.includes(s)));
     if(Array.isArray(r.valdaPN))   state.valdaPN   = new Set(r.valdaPN.filter(k => PN_ORDNING.includes(k)));
+    if(!state.valdaSem.size) state.valdaSem = new Set(SEMINARIER);
     if(typeof r.best === "number") state.best = r.best;
   }catch(e){} }
 
@@ -226,7 +242,9 @@ export function render(root){
     return shuffle([rätt, ...shuffle(distraktorer).slice(0,3)]);
   }
 
+  function uppdateraAntal(){ const el = $("verb-count"); if(el) el.textContent = "(" + aktivaVerb().length + " verb)"; }
   function newQuestion(){
+    uppdateraAntal();
     const vs = aktivaVerb(), ps = aktivaPN();
     let v, k, t, sig, n=0;
     do { v = pick(vs); k = pick(ps); t = tempusFor(v); sig = v.lemma+"|"+k+"|"+t; } while(sig === state.forra && ++n < 30);
@@ -300,7 +318,7 @@ export function render(root){
   }
   function byggGridVerb(){
     const g = $("grid-verb"); g.innerHTML = "";
-    verb.forEach(v => {
+    synligaVerb().forEach(v => {                       // visar bara verb i valda seminarier
       const b = document.createElement("button");
       b.className="toggle"; b.textContent=v.lemma;
       const finns = harTempus(v);
@@ -312,6 +330,17 @@ export function render(root){
       g.appendChild(b);
     });
     uppdateraVerbChips();
+  }
+  function byggGridSem(){
+    const g = $("grid-sem"); g.innerHTML = "";
+    SEMINARIER.forEach(s => {
+      const b = document.createElement("button");
+      b.className="toggle"; b.textContent=semNamn(s);
+      b.setAttribute("aria-pressed", state.valdaSem.has(s));
+      b.onclick = () => { state.valdaSem.has(s)?state.valdaSem.delete(s):state.valdaSem.add(s);
+        b.setAttribute("aria-pressed", state.valdaSem.has(s)); byggGridVerb(); spara(); newQuestion(); };
+      g.appendChild(b);
+    });
   }
   function byggGridPN(){
     const g = $("grid-pn"); g.innerHTML = "";
@@ -349,6 +378,8 @@ export function render(root){
     state.valdaVerb = new Set(LEKAR[b.dataset.lek] || []); byggGridVerb(); spara(); newQuestion(); });
   document.querySelectorAll("[data-pn]").forEach(b => b.onclick = () => {
     state.valdaPN = new Set(PN_GRUPPER[b.dataset.pn] || PN_ORDNING); byggGridPN(); spara(); newQuestion(); });
+  document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEMINARIER); byggGridSem(); byggGridVerb(); spara(); newQuestion(); };
+  document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); byggGridVerb(); spara(); newQuestion(); };
 
   __vh = e => {
     if(e.code==="Space" && state.mode==="vand" && !state.besvarad){ e.preventDefault(); state.besvarad=true; render2(); }
@@ -358,5 +389,5 @@ export function render(root){
   };
   document.addEventListener("keydown", __vh);
 
-  ladda(); uppdateraLäge(); byggGridTempus(); byggGridVerb(); byggGridPN(); uppdateraSub(); newQuestion();
+  ladda(); uppdateraLäge(); byggGridSem(); byggGridTempus(); byggGridVerb(); byggGridPN(); uppdateraSub(); newQuestion();
 }

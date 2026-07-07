@@ -438,65 +438,91 @@ body {
   padding: 0.05rem 0.35rem;
   border-radius: 4px;
 }
-.vy-alfabet .picker {
+
+/* ── Delad picker-komponent (spelinställningar) ──────────────────────────────
+   En enhetlig "Anpassa övningen"-panel för alla vyer: stor tryckyta, full
+   bredd på mobil, och valt tillstånd = svart (ej guld). Ankras på .picker så
+   den bara påverkar inställningspanelen. Vy-lokala .picker-*/.chip/.toggle-
+   regler ersätts successivt av dessa (ta bort dem i vyn för att falla hit). */
+.picker { width: min(440px, 100%); margin: 1.6rem auto 0; }
+.picker-toggle {
   width: 100%;
-  max-width: 440px;
-  order: 2;
-  margin: 1.25rem 0 0;
-  animation: rise__alfabet 0.6s ease both;
-}
-.vy-alfabet .picker-toggle {
-  width: 100%;
-  font-family: "Spectral", serif;
-  font-size: 0.95rem;
+  font-family: inherit;
+  font-size: var(--fs-lg);
   color: var(--ink-soft);
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  padding: 0.85rem 1.1rem;
+  min-height: 2.9rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: 0.2s;
 }
-.vy-alfabet .picker-toggle:hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
-.vy-alfabet .picker-toggle .chev {
-  transition: transform 0.25s ease;
-}
-.vy-alfabet .picker-toggle[aria-expanded="true"] .chev {
-  transform: rotate(180deg);
-}
-.vy-alfabet .picker-body {
+.picker-toggle:hover { border-color: var(--gold); color: var(--ink); }
+.picker-toggle .count { font-style: italic; }
+.picker-toggle .chev { transition: transform 0.25s ease; margin-left: 0.5rem; }
+.picker-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+.picker-body {
   margin-top: 0.7rem;
   padding: 1rem;
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 10px;
-}
-.vy-alfabet .quickrow {
+  border-radius: 12px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.9rem;
+  flex-direction: column;
+  gap: 1.1rem;
 }
-.vy-alfabet .chip {
-  font-family: "Spectral", serif;
-  font-size: 0.82rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
+.picker-body h2, .picker h2 {
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+.picker .quickrow { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.7rem; align-items: center; }
+.picker .quicklabel { font-size: var(--fs-2xs); color: var(--ink-soft); margin-right: 0.15rem; }
+.picker .grid { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.picker .chip, .picker .toggle {
+  font-family: inherit;
   border: 1px solid var(--line);
-  background: var(--paper);
+  background: var(--paper-2);
   color: var(--ink-soft);
   cursor: pointer;
   transition: 0.15s;
 }
-.vy-alfabet .chip:hover {
+.picker .chip { font-size: var(--fs-2xs); padding: 0.3rem 0.7rem; border-radius: 999px; }
+.picker .toggle { font-size: var(--fs-md); padding: 0.4rem 0.8rem; border-radius: 8px; }
+.picker .chip:hover, .picker .toggle:hover:not(:disabled) { border-color: var(--gold); color: var(--ink); }
+.picker .chip[aria-pressed="true"], .picker .toggle[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+/* Valt (svart) chip/toggle vid hover: behåll vit text. Utan detta vinner
+   .toggle:hover:not(:disabled) — :not(:disabled) ger regeln extra specificitet
+   — och färgar texten mörk mot svart bakgrund så den försvinner. */
+.picker .chip[aria-pressed="true"]:hover, .picker .toggle[aria-pressed="true"]:hover {
+  background: var(--ink);
+  color: var(--paper);
   border-color: var(--gold);
-  color: var(--ink);
+}
+.picker .toggle:disabled { opacity: 0.4; cursor: default; }
+.picker .toggle .n { opacity: 0.6; font-size: var(--fs-xs); margin-left: 0.3rem; }
+@media (max-width: 480px) {
+  .picker { width: 100%; }
+  .picker-toggle { font-size: var(--fs-xl); padding: 1rem 1.1rem; }
+}
+
+.vy-alfabet .picker {
+  width: 100%;
+  max-width: 440px;
+  order: 2;
+  margin: 1.25rem 0 0;
+  animation: rise__alfabet 0.6s ease both;
 }
 .vy-alfabet .grid {
   display: grid;
@@ -870,79 +896,8 @@ body {
   margin-top: 1.6rem;
   animation: rise__glosor 0.6s ease both;
 }
-.vy-glosor .picker-toggle {
-  width: 100%;
-  font-family: inherit;
-  font-size: var(--fs-lg);
-  color: var(--ink-soft);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: 0.2s;
-}
-.vy-glosor .picker-toggle:hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
 .vy-glosor .picker-toggle .count {
   font-style: italic;
-}
-.vy-glosor .picker-toggle .chev {
-  transition: transform 0.25s ease;
-  margin-left: 0.5rem;
-}
-.vy-glosor .picker-toggle[aria-expanded="true"] .chev {
-  transform: rotate(180deg);
-}
-.vy-glosor .picker-body {
-  margin-top: 0.7rem;
-  padding: 1rem;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-.vy-glosor .picker-body h2 {
-  font-size: var(--fs-2xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  font-weight: 600;
-  margin: 0.2rem 0 0.5rem;
-}
-.vy-glosor .picker-section + .picker-section {
-  margin-top: 1.1rem;
-}
-.vy-glosor .quickrow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.7rem;
-  align-items: center;
-}
-.vy-glosor .quicklabel {
-  font-size: var(--fs-2xs);
-  color: var(--ink-soft);
-  margin-right: 0.15rem;
-}
-.vy-glosor .chip {
-  font-family: inherit;
-  font-size: var(--fs-2xs);
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--paper-2);
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: 0.15s;
-}
-.vy-glosor .chip:hover {
-  border-color: var(--gold);
-  color: var(--ink);
 }
 .vy-glosor .grid {
   display: flex;
@@ -1245,76 +1200,6 @@ body {
   width: min(440px, 100%);
   margin-top: 1.6rem;
   animation: rise__kasus 0.6s ease both;
-}
-.vy-kasus .picker-toggle {
-  width: 100%;
-  font-family: inherit;
-  font-size: var(--fs-lg);
-  color: var(--ink-soft);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: 0.2s;
-}
-.vy-kasus .picker-toggle:hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
-.vy-kasus .picker-toggle .chev {
-  transition: transform 0.25s ease;
-}
-.vy-kasus .picker-toggle[aria-expanded="true"] .chev {
-  transform: rotate(180deg);
-}
-.vy-kasus .picker-body {
-  margin-top: 0.7rem;
-  padding: 1rem;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-.vy-kasus .picker-body h2 {
-  font-size: var(--fs-2xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  font-weight: 600;
-  margin: 0.2rem 0 0.5rem;
-}
-.vy-kasus .picker-section + .picker-section {
-  margin-top: 1.1rem;
-}
-.vy-kasus .quickrow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.7rem;
-}
-.vy-kasus .quicklabel {
-  align-self: center;
-  font-size: var(--fs-2xs);
-  color: var(--ink-soft);
-  margin-right: 0.15rem;
-}
-.vy-kasus .chip {
-  font-family: inherit;
-  font-size: var(--fs-2xs);
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--paper-2);
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: 0.15s;
-}
-.vy-kasus .chip:hover {
-  border-color: var(--gold);
-  color: var(--ink);
 }
 .vy-kasus .grid {
   display: flex;
@@ -1787,76 +1672,6 @@ body {
   margin-top: 1.6rem;
   animation: rise__satsanalys 0.6s ease both;
 }
-.vy-satsanalys .picker-toggle {
-  width: 100%;
-  font-family: inherit;
-  font-size: var(--fs-4xl);
-  color: var(--ink-soft);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: 0.2s;
-}
-.vy-satsanalys .picker-toggle:hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
-.vy-satsanalys .picker-toggle .chev {
-  transition: transform 0.25s ease;
-}
-.vy-satsanalys .picker-toggle[aria-expanded="true"] .chev {
-  transform: rotate(180deg);
-}
-.vy-satsanalys .picker-body {
-  margin-top: 0.7rem;
-  padding: 1rem;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-.vy-satsanalys .picker-body h2 {
-  font-size: var(--fs-md);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  font-weight: 600;
-  margin: 0.2rem 0 0.5rem;
-}
-.vy-satsanalys .picker-section + .picker-section {
-  margin-top: 1.1rem;
-}
-.vy-satsanalys .quickrow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.7rem;
-}
-.vy-satsanalys .quicklabel {
-  align-self: center;
-  font-size: var(--fs-md);
-  color: var(--ink-soft);
-  margin-right: 0.15rem;
-}
-.vy-satsanalys .chip {
-  font-family: inherit;
-  font-size: var(--fs-md);
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--paper-2);
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: 0.15s;
-}
-.vy-satsanalys .chip:hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
 .vy-satsanalys .grid {
   display: flex;
   flex-wrap: wrap;
@@ -2209,49 +2024,6 @@ body {
   width: min(560px, 100%);
   margin-top: 1.6rem;
   animation: rise__kongruens 0.6s ease both;
-}
-.vy-kongruens .picker-toggle {
-  width: 100%;
-  font-family: inherit;
-  font-size: var(--fs-lg);
-  color: var(--ink-soft);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: 0.2s;
-}
-.vy-kongruens .picker-toggle:hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
-.vy-kongruens .picker-toggle .chev {
-  transition: transform 0.25s ease;
-}
-.vy-kongruens .picker-toggle[aria-expanded="true"] .chev {
-  transform: rotate(180deg);
-}
-.vy-kongruens .picker-body {
-  margin-top: 0.7rem;
-  padding: 1rem;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-.vy-kongruens .picker-section + .picker-section {
-  margin-top: 1.1rem;
-}
-.vy-kongruens .picker-section h2 {
-  font-size: var(--fs-2xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  font-weight: 600;
-  margin: 0.2rem 0 0.5rem;
 }
 .vy-kongruens .seg {
   display: inline-flex;
@@ -2907,76 +2679,6 @@ body {
   width: min(440px, 100%);
   margin-top: 1.6rem;
   animation: rise__andelser 0.6s ease both;
-}
-.vy-andelser .picker-toggle {
-  width: 100%;
-  font-family: inherit;
-  font-size: var(--fs-lg);
-  color: var(--ink-soft);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0.6rem 1rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: 0.2s;
-}
-.vy-andelser .picker-toggle:hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
-.vy-andelser .picker-toggle .chev {
-  transition: transform 0.25s ease;
-}
-.vy-andelser .picker-toggle[aria-expanded="true"] .chev {
-  transform: rotate(180deg);
-}
-.vy-andelser .picker-body {
-  margin-top: 0.7rem;
-  padding: 1rem;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-.vy-andelser .picker-body h2 {
-  font-size: var(--fs-2xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  font-weight: 600;
-  margin: 0.2rem 0 0.5rem;
-}
-.vy-andelser .picker-section + .picker-section {
-  margin-top: 1.1rem;
-}
-.vy-andelser .quickrow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 0.7rem;
-}
-.vy-andelser .quicklabel {
-  align-self: center;
-  font-size: var(--fs-2xs);
-  color: var(--ink-soft);
-  margin-right: 0.15rem;
-}
-.vy-andelser .chip {
-  font-family: inherit;
-  font-size: var(--fs-2xs);
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--paper-2);
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: 0.15s;
-}
-.vy-andelser .chip:hover {
-  border-color: var(--gold);
-  color: var(--ink);
 }
 .vy-andelser .grid {
   display: flex;
