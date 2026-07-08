@@ -91,6 +91,9 @@ const STYLE = `
 /* Picker (.picker/.picker-toggle/.toggle m.fl.) stylas nu av den delade
    komponenten i app.css — inga vy-lokala regler här. */
 .vy-pron footer{ margin-top:1.4rem; font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; }
+.vy-pron footer a{ color:var(--gold); text-decoration:none; }
+.vy-pron footer a:hover{ text-decoration:underline; }
+.vy-pron .gr-lank{ margin-top:.6rem; }
 `;
 
 const MARKUP = `<div class="vy vy-pron">
@@ -150,7 +153,8 @@ const MARKUP = `<div class="vy vy-pron">
   </div>
 </div>
 
-<footer>Betonade former (ἐμοῦ, ἐμοί, ἐμέ) står efter preposition och vid emfas; obetonade/enklitiska (μου, μοι, με) i övriga fall. Nominativ och pluralen saknar obetonad särform.</footer>
+<footer>Betonade former (ἐμοῦ, ἐμοί, ἐμέ) står efter preposition och vid emfas; obetonade/enklitiska (μου, μοι, με) i övriga fall. Nominativ och pluralen saknar obetonad särform.
+<div class="gr-lank"><a href="grammatikreferens.html#pronomen">§ Personliga pronomen i grammatikreferensen →</a></div></footer>
 </div>`;
 
 export function render(root){

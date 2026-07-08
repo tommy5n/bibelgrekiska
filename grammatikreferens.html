@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#a8842c" />
     <link rel="apple-touch-icon" href="appletouchicon.png" />
     <!-- Ärver Cardo/Spectral-fonter och :root-temat från appen -->
-    <link rel="stylesheet" href="app.css?v=4" />
+    <link rel="stylesheet" href="app.css?v=8" />
     <style>
       /* ── Grammatikreferens — egen, namnrymdad layout (.gr-*) ───────── */
       body { background: var(--paper); }
@@ -174,6 +174,8 @@
           <li><a href="#verb-omega">ω-verb, presens</a></li>
           <li><a href="#verb-kontrakt">Kontraherade -έω</a></li>
           <li><a href="#verb-eimi">εἰμί (vara)</a></li>
+          <li class="group"><span>Pronomen</span></li>
+          <li><a href="#pronomen">Personliga pronomen</a></li>
           <li class="group"><span>Syntax</span></li>
           <li><a href="#prepositioner">Prepositioner</a></li>
           <li><a href="#satsanalys">Satsanalys</a></li>
@@ -454,6 +456,42 @@
             </table>
           </div>
           <div class="gr-rule"><b>Predikatsfyllnad:</b> εἰμί binder ihop subjekt och en beskrivning som står i nominativ — <span class="gr-grek">ὁ λόγος ἀγαθός ἐστιν</span> ”ordet är gott”.</div>
+        </section>
+
+        <!-- ══ Personliga pronomen ══ -->
+        <section class="gr-card" id="pronomen" style="--accent:#8a5a86">
+          <h3>Personliga pronomen <span class="ex">ἐγώ, σύ · jag, du</span> <span class="sem">Sem 5</span></h3>
+          <p class="note">1:a och 2:a person. Varje form finns i en <b>betonad</b> och (i singular gen/dat/ack) en <b>enklitisk</b> variant. Enklitiskan hänger sig fonetiskt på föregående ord.</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>1:a person — jag / vi</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Sg betonad</th><th>Sg enklit.</th><th>Plural</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἐγώ</td><td class="gr-el">—</td><td class="gr-el">ἡμεῖς</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἐμοῦ</td><td class="gr-el">μου</td><td class="gr-el">ἡμῶν</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἐμοί</td><td class="gr-el">μοι</td><td class="gr-el">ἡμῖν</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἐμέ</td><td class="gr-el">με</td><td class="gr-el">ἡμᾶς</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>2:a person — du / ni</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Sg betonad</th><th>Sg enklit.</th><th>Plural</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">σύ</td><td class="gr-el">—</td><td class="gr-el">ὑμεῖς</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">σοῦ</td><td class="gr-el">σου</td><td class="gr-el">ὑμῶν</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">σοί</td><td class="gr-el">σοι</td><td class="gr-el">ὑμῖν</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">σέ</td><td class="gr-el">σε</td><td class="gr-el">ὑμᾶς</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule">
+            <b>Betonad eller enklitisk?</b>
+            <ul>
+              <li><b>Betonad</b> efter preposition (<span class="gr-grek">πρὸς ἐμέ</span>) och vid emfas eller motsats (<span class="gr-grek">ἐγὼ μὲν λέγω, σὺ δὲ ἀκούεις</span> — "jag talar, men du lyssnar").</li>
+              <li><b>Enklitisk</b> i övriga fall (<span class="gr-grek">πιστεύετέ μοι</span> "ni tror på mig", <span class="gr-grek">βλέπομέν σε</span> "vi ser dig").</li>
+              <li>Nominativ saknar enklitisk form — verbändelsen bär det obetonade subjektet (<span class="gr-grek">βλέπω</span> = "jag ser"). Pluralen har ingen särskild enklitisk form.</li>
+            </ul>
+          </div>
         </section>
 
         <!-- ══ Prepositioner ══ -->
