@@ -1,2 +1,4 @@
 *.pages
 .DS_Store
+# Genereras manuellt (Skriv ut → Spara som PDF) ur grammatikreferens-utskrift.html
+grammatikreferens.pdf

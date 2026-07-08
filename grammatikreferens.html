@@ -23,6 +23,8 @@
       .gr-bar .hem { color: var(--gold); text-decoration: none; font-weight: 600; font-size: var(--fs-sm); }
       .gr-bar .hem:hover { text-decoration: underline; }
       .gr-bar .wordmark { font-weight: 600; color: var(--ink-soft); font-size: var(--fs-sm); letter-spacing: 0.02em; }
+      .gr-bar .utskrift { margin-left: auto; color: var(--gold); text-decoration: none; font-weight: 600; font-size: var(--fs-sm); white-space: nowrap; }
+      .gr-bar .utskrift:hover { text-decoration: underline; }
 
       .gr-layout {
         display: grid;
@@ -152,6 +154,7 @@
     <header class="gr-bar">
       <a class="hem" href="index.html">← Spel</a>
       <span class="wordmark">Bibelgrekiska · Grammatikreferens</span>
+      <a class="utskrift" href="grammatikreferens-utskrift.html">🖨 Utskriftsversion</a>
     </header>
 
     <div class="gr-layout">
@@ -167,6 +170,8 @@
           <li><a href="#subst-mask">2:a dekl. maskulinum (-ος)</a></li>
           <li><a href="#subst-neut">2:a dekl. neutrum (-ον)</a></li>
           <li><a href="#subst-fem">1:a dekl. femininum</a></li>
+          <li><a href="#subst-fem2">2:a dekl. feminina (-ος)</a></li>
+          <li><a href="#subst-mask1">1:a dekl. maskulina (-ης/-ας)</a></li>
           <li class="group"><span>Adjektiv</span></li>
           <li><a href="#adjektiv">Adjektiv 2-1-2</a></li>
           <li><a href="#kongruens">Kongruens-exempel</a></li>
@@ -178,6 +183,7 @@
           <li><a href="#pronomen">Personliga pronomen</a></li>
           <li class="group"><span>Syntax</span></li>
           <li><a href="#prepositioner">Prepositioner</a></li>
+          <li><a href="#negation">Negationen οὐ</a></li>
           <li><a href="#satsanalys">Satsanalys</a></li>
         </ul>
       </aside>
@@ -343,6 +349,57 @@
           </div>
         </section>
 
+        <!-- ══ Substantiv 2 dekl feminina ══ -->
+        <section class="gr-card" id="subst-fem2" style="--accent:#8a5a86">
+          <h3>2:a deklinationen, feminina <span class="ex">ὁδός · väg</span> <span class="sem">Sem 5</span></h3>
+          <p class="note">Ett fåtal <b>feminina</b> substantiv böjs som maskulina <b>-ος</b>-ord. Bara artikeln <span class="gr-grek">ἡ</span> avslöjar genus.</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>ὁδός</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ὁδός</td><td class="gr-el">ὁδοί</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ὁδοῦ</td><td class="gr-el">ὁδῶν</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ὁδῷ</td><td class="gr-el">ὁδοῖς</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ὁδόν</td><td class="gr-el">ὁδούς</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ὁδέ</td><td class="gr-el">ὁδοί</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule">Ändelserna är maskulinums (<span class="gr-grek">-ος, -ου, -ῳ, -ον</span>), men genus är feminint → artikel och adjektiv i femininum: <span class="gr-grek">ἡ μακρὰ ὁδός</span> "den långa vägen". Jfr <span class="gr-grek">ἡ νόσος</span> (sjukdom), <span class="gr-grek">ἡ ἔρημος</span> (öken), <span class="gr-grek">ἡ παρθένος</span> (flicka).</div>
+        </section>
+
+        <!-- ══ Substantiv 1 dekl maskulina ══ -->
+        <section class="gr-card" id="subst-mask1" style="--accent:#b0642f">
+          <h3>1:a deklinationen, maskulina <span class="ex">μαθητής · lärjunge</span> <span class="sem">Sem 5</span></h3>
+          <p class="note">Maskulina substantiv i första deklinationen. Artikeln är <span class="gr-grek">ὁ</span>; ändelserna är feminina utom genitiv singular (<b>-ου</b>).</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>μαθητής (η-typ)</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">μαθητής</td><td class="gr-el">μαθηταί</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">μαθητοῦ</td><td class="gr-el">μαθητῶν</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">μαθητῇ</td><td class="gr-el">μαθηταῖς</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">μαθητήν</td><td class="gr-el">μαθητάς</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">μαθητά</td><td class="gr-el">μαθηταί</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>νεανίας (α-typ)</caption>
+              <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
+              <tbody>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">νεανίας</td><td class="gr-el">νεανίαι</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">νεανίου</td><td class="gr-el">νεανιῶν</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">νεανίᾳ</td><td class="gr-el">νεανίαις</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">νεανίαν</td><td class="gr-el">νεανίας</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">νεανία</td><td class="gr-el">νεανίαι</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule">Genitiv singular på <b>-ου</b> (som maskulinum i 2:a dekl.), gen.pl alltid <span class="gr-grek">-ῶν</span>. Jfr <span class="gr-grek">ὁ προφήτης</span> (profet), <span class="gr-grek">ὁ οἰκοδεσπότης</span> (husbonde). α-typen (<span class="gr-grek">νεανίας</span>) har -ας i nom och -ου i gen.</div>
+        </section>
+
         <!-- ══ Adjektiv 2-1-2 ══ -->
         <section class="gr-card" id="adjektiv" style="--accent:#3f7a4f">
           <h3>Adjektiv 2-1-2 <span class="ex">ἀγαθός, -ή, -όν · god</span> <span class="sem">Sem 3–4</span></h3>
@@ -367,6 +424,7 @@
           </table>
           <div class="gr-rule">
             Oxytona adjektiv (<span class="gr-grek">ἀγαθός</span>-typ) har cirkumflex i genitiv och dativ. Feminin gen.pl följer maskulinums accent (<span class="gr-grek">ἀγαθῶν</span>), inte substantivens. Jfr <span class="gr-grek">πονηρός, δίκαιος, ἅγιος, πρῶτος</span>.
+            <br /><b>Två slut (Sem 5):</b> vissa adjektiv har bara två former — den maskulina används även för femininum: <span class="gr-grek">αἰώνιος, αἰώνιον</span> "evig". <b>Substantiverade:</b> adjektiv med artikel blir substantiv: <span class="gr-grek">ὁ πτωχός</span> "den fattige/tiggaren", <span class="gr-grek">ὁ ἁμαρτωλός</span> "syndaren".
           </div>
         </section>
 
@@ -496,22 +554,49 @@
 
         <!-- ══ Prepositioner ══ -->
         <section class="gr-card" id="prepositioner" style="--accent:#8a5a86">
-          <h3>Prepositioner <span class="sem">Sem 4</span></h3>
-          <p class="note">En preposition kräver alltid ett bestämt kasus. Frasen räknas i satsanalysen som <b>ett</b> adverbial.</p>
+          <h3>Prepositioner <span class="sem">Sem 4–5</span></h3>
+          <p class="note">En preposition kräver alltid ett bestämt kasus. Frasen räknas i satsanalysen som <b>ett</b> adverbial. Många prepositioner tar olika kasus med olika betydelse.</p>
           <table class="gr" style="width:100%">
-            <thead><tr><th>Preposition</th><th>Kasus</th><th>Betydelse</th><th>Exempel</th></tr></thead>
+            <thead><tr><th>Prep.</th><th>Kasus</th><th>Betydelse</th></tr></thead>
             <tbody>
-              <tr class="k-dat"><td class="gr-el">ἐν</td><td>dativ</td><td>i</td><td class="gr-grek">ἐν τῷ οἴκῳ &nbsp;— i huset</td></tr>
-              <tr class="k-ack"><td class="gr-el">εἰς</td><td>ackusativ</td><td>till, in i</td><td class="gr-grek">εἰς τὸν οἶκον &nbsp;— till huset</td></tr>
-              <tr class="k-gen"><td class="gr-el">ἐκ / ἐξ</td><td>genitiv</td><td>ut ur</td><td class="gr-grek">ἐκ τοῦ οἴκου &nbsp;— ut ur huset</td></tr>
+              <tr class="k-dat"><td class="gr-el">ἐν</td><td>dativ</td><td>i</td></tr>
+              <tr class="k-dat"><td class="gr-el">σύν</td><td>dativ</td><td>med, jämte</td></tr>
+              <tr class="k-ack"><td class="gr-el">εἰς</td><td>ackusativ</td><td>in i, till</td></tr>
+              <tr class="k-gen"><td class="gr-el">ἐκ / ἐξ</td><td>genitiv</td><td>ur, ut ur</td></tr>
+              <tr class="k-gen"><td class="gr-el">ἀπό</td><td>genitiv</td><td>från, av</td></tr>
+              <tr class="k-gen"><td class="gr-el">πρό</td><td>genitiv</td><td>framför (rum), före (tid)</td></tr>
+              <tr><td class="gr-el">διά</td><td>gen · ack</td><td>gen: genom · ack: på grund av</td></tr>
+              <tr><td class="gr-el">μετά</td><td>gen · ack</td><td>gen: med · ack: efter</td></tr>
+              <tr><td class="gr-el">περί</td><td>gen · ack</td><td>gen: om, angående · ack: kring</td></tr>
+              <tr><td class="gr-el">κατά</td><td>gen · ack</td><td>gen: utför, mot · ack: enligt</td></tr>
+              <tr><td class="gr-el">ὑπέρ</td><td>gen · ack</td><td>gen: för, över · ack: mer än</td></tr>
+              <tr><td class="gr-el">ὑπό</td><td>gen · ack</td><td>gen: av, genom · ack: in under</td></tr>
+              <tr><td class="gr-el">ἐπί</td><td>gen · dat · ack</td><td>på, över · vid · mot</td></tr>
+              <tr><td class="gr-el">παρά</td><td>gen · dat · ack</td><td>från · hos, vid · bredvid</td></tr>
+              <tr><td class="gr-el">πρός</td><td>gen · dat · ack</td><td>på (ngns sida) · vid · till, hos</td></tr>
             </tbody>
           </table>
-          <div class="gr-rule"><span class="gr-grek">ἐξ</span> används framför vokal. Vissa prepositioner (<span class="gr-grek">διά</span> m.fl.) tar olika kasus med olika betydelse.</div>
+          <div class="gr-rule"><span class="gr-grek">ἐξ</span> används framför vokal (annars <span class="gr-grek">ἐκ</span>). Exempel: <span class="gr-grek">ἐν τῷ οἴκῳ</span> "i huset", <span class="gr-grek">εἰς τὴν κώμην</span> "in i byn", <span class="gr-grek">μετὰ τῶν ἀδελφῶν</span> "med bröderna". Substantivet efter en preposition tar inte alltid bestämd artikel: <span class="gr-grek">ἐν ἀρχῇ</span> "i begynnelsen".</div>
+        </section>
+
+        <!-- ══ Negationen οὐ ══ -->
+        <section class="gr-card" id="negation" style="--accent:#4a6a8a">
+          <h3>Negationen οὐ <span class="sem">Sem 5</span></h3>
+          <p class="note">Grekiskan har två negationer: <span class="gr-grek">οὐ</span> (i indikativ) och <span class="gr-grek">μή</span>. Negationen står före predikatet och byter form efter nästa ljud.</p>
+          <table class="gr" style="width:100%">
+            <thead><tr><th>Form</th><th>Före</th><th>Exempel</th></tr></thead>
+            <tbody>
+              <tr><td class="gr-el">οὐ</td><td>konsonant</td><td class="gr-grek">οὐ βλέπουσι τὸν θεόν</td></tr>
+              <tr><td class="gr-el">οὐκ</td><td>vokal med spiritus lenis</td><td class="gr-grek">οὐκ ἐσθίετε τὸν ἄρτον</td></tr>
+              <tr><td class="gr-el">οὐχ</td><td>vokal med spiritus asper</td><td class="gr-grek">οὐχ εὑρίσκομεν τὸν ἀδελφόν</td></tr>
+            </tbody>
+          </table>
+          <div class="gr-rule">Formen styrs av ordet <b>efter</b> negationen: <span class="gr-grek">οὐκ</span> före mjuk anda, <span class="gr-grek">οὐχ</span> före sträv anda (h-ljud).</div>
         </section>
 
         <!-- ══ Satsanalys ══ -->
         <section class="gr-card" id="satsanalys" style="--accent:#a8842c">
-          <h3>Satsanalys <span class="sem">Sem 2–4</span></h3>
+          <h3>Satsanalys <span class="sem">Sem 2–5</span></h3>
           <p class="note">Analysera uppifrån: först predikatet (verbhandlingen), sedan subjektet, direkt och indirekt objekt. Kasus avslöjar rollen — inte ordföljden.</p>
           <table class="gr" style="width:100%">
             <thead><tr><th>Satsdel</th><th>Kasus</th><th>Frågar</th></tr></thead>
