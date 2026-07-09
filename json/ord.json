@@ -2528,6 +2528,157 @@
      "pl": "φίλοι"
     }
    }
+  },
+  {
+   "lemma": "διδάσκαλος",
+   "glosa": "lärare",
+   "glosaGen": "lärares",
+   "genus": "maskulinum",
+   "deklination": 2,
+   "accenttyp": "proparoxyton",
+   "seminarium": [
+    6
+   ],
+   "kortlekar": [],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "διδάσκαλος",
+     "pl": "διδάσκαλοι"
+    },
+    "gen": {
+     "sg": "διδασκάλου",
+     "pl": "διδασκάλων"
+    },
+    "dat": {
+     "sg": "διδασκάλῳ",
+     "pl": "διδασκάλοις"
+    },
+    "ack": {
+     "sg": "διδάσκαλον",
+     "pl": "διδασκάλους"
+    },
+    "vok": {
+     "sg": "διδάσκαλε",
+     "pl": "διδάσκαλοι"
+    }
+   },
+   "glosaPl": "lärare"
+  },
+  {
+   "lemma": "οἶνος",
+   "glosa": "vin",
+   "glosaGen": "vins",
+   "genus": "maskulinum",
+   "deklination": 2,
+   "accenttyp": "properispomenon",
+   "seminarium": [
+    6
+   ],
+   "kortlekar": [],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "οἶνος",
+     "pl": "οἶνοι"
+    },
+    "gen": {
+     "sg": "οἴνου",
+     "pl": "οἴνων"
+    },
+    "dat": {
+     "sg": "οἴνῳ",
+     "pl": "οἴνοις"
+    },
+    "ack": {
+     "sg": "οἶνον",
+     "pl": "οἴνους"
+    },
+    "vok": {
+     "sg": "οἶνε",
+     "pl": "οἶνοι"
+    }
+   },
+   "glosaPl": "viner"
+  },
+  {
+   "lemma": "βαπτιστής",
+   "glosa": "döpare",
+   "glosaGen": "döpares",
+   "genus": "maskulinum",
+   "deklination": 1,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    6
+   ],
+   "kortlekar": [
+    "maskulina1dekl",
+    "oxytona"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "βαπτιστής",
+     "pl": "βαπτισταί"
+    },
+    "gen": {
+     "sg": "βαπτιστοῦ",
+     "pl": "βαπτιστῶν"
+    },
+    "dat": {
+     "sg": "βαπτιστῇ",
+     "pl": "βαπτισταῖς"
+    },
+    "ack": {
+     "sg": "βαπτιστήν",
+     "pl": "βαπτιστάς"
+    },
+    "vok": {
+     "sg": "βαπτιστά",
+     "pl": "βαπτισταί"
+    }
+   },
+   "glosaPl": "döpare",
+   "not": "Första deklinationen, maskulint genus, η-typ (B § 57), som ὁ μαθητής."
+  },
+  {
+   "lemma": "παραβολή",
+   "glosa": "liknelse, parabel",
+   "glosaGen": "liknelses",
+   "genus": "femininum",
+   "deklination": 1,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    6
+   ],
+   "kortlekar": [
+    "oxytona",
+    "feminina"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "παραβολή",
+     "pl": "παραβολαί"
+    },
+    "gen": {
+     "sg": "παραβολῆς",
+     "pl": "παραβολῶν"
+    },
+    "dat": {
+     "sg": "παραβολῇ",
+     "pl": "παραβολαῖς"
+    },
+    "ack": {
+     "sg": "παραβολήν",
+     "pl": "παραβολάς"
+    },
+    "vok": {
+     "sg": "παραβολή",
+     "pl": "παραβολαί"
+    }
+   },
+   "glosaPl": "liknelser"
   }
  ]
 }

@@ -1,5 +1,5 @@
 {
- "_om": "Pronomen for bibelgrekiska pronomenspel. Sanningskalla, verifierad mot seminariernas facit/tabeller, MorphGNT och Smyth. Additiv struktur: 'bojningsmodell' avgor formernas form sa att framtida pronomentyper (demonstrativa, interrogativa, relativa) far plats utan schemaandring. Scope hittills (seminarium 5): personliga pronomen 1:a och 2:a person (egō, sy).",
+ "_om": "Pronomen for bibelgrekiska pronomenspel. Sanningskalla, verifierad mot seminariernas facit/tabeller, MorphGNT och Smyth. Additiv struktur: 'bojningsmodell' avgor formernas form. Scope: seminarium 5 (personliga 1:a/2:a person ego, sy) samt seminarium 6 (3:e person autos, demonstrativa houtos/ekeinos, interrogativa tis/ti).",
  "_genererad": "2026-07-07",
  "_nycklar": {
   "typ": {
@@ -37,7 +37,7 @@
   "seminarium": "Seminarier dar pronomenet infors.",
   "ntFrekvens": "Forekomster i NT (nt-lemman.json).",
   "former": "Bojda former; form beror pa bojningsmodell.",
-  "glosa_kasus": "Svensk oversattning per numerus/kasus (for oversattningsspel)."
+  "glosa_kasus": "Svensk oversattning per numerus/kasus (for oversattningsspel). Foljer bojningsmodell: person -> numerus->kasus; genus -> genus->numerus->kasus."
  },
  "pronomen": [
   {
@@ -167,7 +167,456 @@
     }
    },
    "not": "Pluralen (ὑμεῖς) har ingen enklitisk sarform."
+  },
+  {
+   "lemma": "αὐτός",
+   "glosa": "han, hon, det (hans, honom, henne, dess, deras)",
+   "typ": "personligt",
+   "person": 3,
+   "bojningsmodell": "genus",
+   "seminarium": [
+    6
+   ],
+   "ntFrekvens": 5546,
+   "referens": "Blomqvist § 116:2",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "αὐτός",
+      "pl": "αὐτοί"
+     },
+     "gen": {
+      "sg": "αὐτοῦ",
+      "pl": "αὐτῶν"
+     },
+     "dat": {
+      "sg": "αὐτῷ",
+      "pl": "αὐτοῖς"
+     },
+     "ack": {
+      "sg": "αὐτόν",
+      "pl": "αὐτούς"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "αὐτή",
+      "pl": "αὐταί"
+     },
+     "gen": {
+      "sg": "αὐτῆς",
+      "pl": "αὐτῶν"
+     },
+     "dat": {
+      "sg": "αὐτῇ",
+      "pl": "αὐταῖς"
+     },
+     "ack": {
+      "sg": "αὐτήν",
+      "pl": "αὐτάς"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "αὐτό",
+      "pl": "αὐτά"
+     },
+     "gen": {
+      "sg": "αὐτοῦ",
+      "pl": "αὐτῶν"
+     },
+     "dat": {
+      "sg": "αὐτῷ",
+      "pl": "αὐτοῖς"
+     },
+     "ack": {
+      "sg": "αὐτό",
+      "pl": "αὐτά"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "han (själv)",
+      "gen": "hans",
+      "dat": "till honom",
+      "ack": "honom"
+     },
+     "pl": {
+      "nom": "de (själva)",
+      "gen": "deras",
+      "dat": "till dem",
+      "ack": "dem"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "hon (själv)",
+      "gen": "hennes",
+      "dat": "till henne",
+      "ack": "henne"
+     },
+     "pl": {
+      "nom": "de (själva)",
+      "gen": "deras",
+      "dat": "till dem",
+      "ack": "dem"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "det (självt)",
+      "gen": "dess",
+      "dat": "till det",
+      "ack": "det"
+     },
+     "pl": {
+      "nom": "de (själva)",
+      "gen": "deras",
+      "dat": "till dem",
+      "ack": "dem"
+     }
+    }
+   },
+   "not": "Böjs som ett 2-1-2-adjektiv utom neutrum sg som slutar på -ο (ej -ον). I gen/dat/ack ett obetonat 'hans/honom/henne/dess/deras' — står även efter prepositioner. Ett betonat 'han/hon/det (själv)' i nominativ uttrycks hellre med demonstrativa οὗτος/ἐκεῖνος."
+  },
+  {
+   "lemma": "οὗτος",
+   "glosa": "denne, denna, detta (den här)",
+   "typ": "demonstrativt",
+   "bojningsmodell": "genus",
+   "seminarium": [
+    6
+   ],
+   "ntFrekvens": 1385,
+   "referens": "Blomqvist § 120:3",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "οὗτος",
+      "pl": "οὗτοι"
+     },
+     "gen": {
+      "sg": "τούτου",
+      "pl": "τούτων"
+     },
+     "dat": {
+      "sg": "τούτῳ",
+      "pl": "τούτοις"
+     },
+     "ack": {
+      "sg": "τοῦτον",
+      "pl": "τούτους"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "αὕτη",
+      "pl": "αὗται"
+     },
+     "gen": {
+      "sg": "ταύτης",
+      "pl": "τούτων"
+     },
+     "dat": {
+      "sg": "ταύτῃ",
+      "pl": "ταύταις"
+     },
+     "ack": {
+      "sg": "ταύτην",
+      "pl": "ταύτας"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "τοῦτο",
+      "pl": "ταῦτα"
+     },
+     "gen": {
+      "sg": "τούτου",
+      "pl": "τούτων"
+     },
+     "dat": {
+      "sg": "τούτῳ",
+      "pl": "τούτοις"
+     },
+     "ack": {
+      "sg": "τοῦτο",
+      "pl": "ταῦτα"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "denne",
+      "gen": "dennes",
+      "dat": "till denne",
+      "ack": "denne"
+     },
+     "pl": {
+      "nom": "dessa",
+      "gen": "dessas",
+      "dat": "till dessa",
+      "ack": "dessa"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "denna",
+      "gen": "dennas",
+      "dat": "till denna",
+      "ack": "denna"
+     },
+     "pl": {
+      "nom": "dessa",
+      "gen": "dessas",
+      "dat": "till dessa",
+      "ack": "dessa"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "detta",
+      "gen": "dettas",
+      "dat": "till detta",
+      "ack": "detta"
+     },
+     "pl": {
+      "nom": "dessa (detta)",
+      "gen": "dessas",
+      "dat": "till dessa",
+      "ack": "dessa"
+     }
+    }
+   },
+   "not": "Pekar ut det som ligger nära talaren i tid/rum. Böjs med -ου-/-αυ-vokal som följer stavelsens genus (τούτου men ταύτης). Neutrum sg -ο (ej -ον). Kan stå självständigt ('denne är en profet') eller förenat med artikel ('οὗτος ὁ προφήτης')."
+  },
+  {
+   "lemma": "ἐκεῖνος",
+   "glosa": "den där, det där",
+   "typ": "demonstrativt",
+   "bojningsmodell": "genus",
+   "seminarium": [
+    6
+   ],
+   "ntFrekvens": 242,
+   "referens": "Blomqvist § 120:4",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "ἐκεῖνος",
+      "pl": "ἐκεῖνοι"
+     },
+     "gen": {
+      "sg": "ἐκείνου",
+      "pl": "ἐκείνων"
+     },
+     "dat": {
+      "sg": "ἐκείνῳ",
+      "pl": "ἐκείνοις"
+     },
+     "ack": {
+      "sg": "ἐκεῖνον",
+      "pl": "ἐκείνους"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "ἐκείνη",
+      "pl": "ἐκεῖναι"
+     },
+     "gen": {
+      "sg": "ἐκείνης",
+      "pl": "ἐκείνων"
+     },
+     "dat": {
+      "sg": "ἐκείνῃ",
+      "pl": "ἐκείναις"
+     },
+     "ack": {
+      "sg": "ἐκείνην",
+      "pl": "ἐκείνας"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "ἐκεῖνο",
+      "pl": "ἐκεῖνα"
+     },
+     "gen": {
+      "sg": "ἐκείνου",
+      "pl": "ἐκείνων"
+     },
+     "dat": {
+      "sg": "ἐκείνῳ",
+      "pl": "ἐκείνοις"
+     },
+     "ack": {
+      "sg": "ἐκεῖνο",
+      "pl": "ἐκεῖνα"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "den där",
+      "gen": "den därs",
+      "dat": "till den där",
+      "ack": "den där"
+     },
+     "pl": {
+      "nom": "de där",
+      "gen": "de därs",
+      "dat": "till de där",
+      "ack": "de där"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "den där",
+      "gen": "den därs",
+      "dat": "till den där",
+      "ack": "den där"
+     },
+     "pl": {
+      "nom": "de där",
+      "gen": "de därs",
+      "dat": "till de där",
+      "ack": "de där"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "det där",
+      "gen": "det därs",
+      "dat": "till det där",
+      "ack": "det där"
+     },
+     "pl": {
+      "nom": "de där",
+      "gen": "de därs",
+      "dat": "till de där",
+      "ack": "de där"
+     }
+    }
+   },
+   "not": "Pekar ut det som ligger längre bort från talaren. Böjs som ett 2-1-2-adjektiv (som αὐτός); neutrum sg -ο (ej -ον)."
+  },
+  {
+   "lemma": "τίς",
+   "glosa": "vem?, vad?, vilken?",
+   "typ": "interrogativt",
+   "bojningsmodell": "genus",
+   "seminarium": [
+    6
+   ],
+   "ntFrekvens": 554,
+   "referens": "Blomqvist § 122",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "τίς",
+      "pl": "τίνες"
+     },
+     "gen": {
+      "sg": "τίνος",
+      "pl": "τίνων"
+     },
+     "dat": {
+      "sg": "τίνι",
+      "pl": "τίσι(ν)"
+     },
+     "ack": {
+      "sg": "τίνα",
+      "pl": "τίνας"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "τίς",
+      "pl": "τίνες"
+     },
+     "gen": {
+      "sg": "τίνος",
+      "pl": "τίνων"
+     },
+     "dat": {
+      "sg": "τίνι",
+      "pl": "τίσι(ν)"
+     },
+     "ack": {
+      "sg": "τίνα",
+      "pl": "τίνας"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "τί",
+      "pl": "τίνα"
+     },
+     "gen": {
+      "sg": "τίνος",
+      "pl": "τίνων"
+     },
+     "dat": {
+      "sg": "τίνι",
+      "pl": "τίσι(ν)"
+     },
+     "ack": {
+      "sg": "τί",
+      "pl": "τίνα"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "vem?",
+      "gen": "vems?",
+      "dat": "till vem?",
+      "ack": "vem?"
+     },
+     "pl": {
+      "nom": "vilka?",
+      "gen": "vilkas?",
+      "dat": "till vilka?",
+      "ack": "vilka?"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "vem?",
+      "gen": "vems?",
+      "dat": "till vem?",
+      "ack": "vem?"
+     },
+     "pl": {
+      "nom": "vilka?",
+      "gen": "vilkas?",
+      "dat": "till vilka?",
+      "ack": "vilka?"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "vad?",
+      "gen": "vilkens?",
+      "dat": "till vilken?",
+      "ack": "vad?"
+     },
+     "pl": {
+      "nom": "vilka?",
+      "gen": "vilkas?",
+      "dat": "till vilka?",
+      "ack": "vilka?"
+     }
+    }
+   },
+   "not": "Maskulinum och femininum har samma former; endast neutrum skiljer sig (nom/ack τί, τίνα). Böjs efter tredje deklinationen (ännu ej systematiskt behandlad). Alltid akut accent på τί (skiljs från enklitiskt τις 'någon'). Kan stå självständigt (τίς; vem?) eller förenat (τίς ἄνθρωπος; vilken människa?). Frågan avslutas med semikolon (·/;)."
   }
  ],
- "_framtida": "Demonstrativa (οὗτος/ἐκεῖνος, B § 120) och interrogativa (τίς/τί, B § 122) tillkommer i seminarium 6. De bojs efter genus → satt bojningsmodell='genus' och lagg former som m/f/n -> kasus -> {sg, pl}, som adjektiv.json."
+ "_framtida": "Nasta pronomentyper (possessiva B § 119, indefinita B § 123.1, relativa) tillkommer i senare seminarier. Genus-modellen (m/f/n -> kasus -> {sg,pl}) racker for dem. pas pasa pan (B § 108, seminarium 6) ligger som paradigm i seminarier.json (blandad 3:e+1:a deklination), inte har."
 }

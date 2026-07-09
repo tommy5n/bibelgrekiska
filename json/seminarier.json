@@ -2602,6 +2602,612 @@
     }
    ],
    "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)"
+  },
+  {
+   "kalla": "6__Presentation.pdf",
+   "seminarium": 6,
+   "typ": "presentation",
+   "antal_sidor": 65,
+   "amneskarta": [
+    {
+     "nr": 1,
+     "titel": "Repetition och tillägg: personliga pronomen (ἐγώ, σύ, αὐτός)",
+     "start_slide": 3,
+     "slut_slide": 26
+    },
+    {
+     "nr": 2,
+     "titel": "Demonstrativa pronomen (οὗτος, ἐκεῖνος)",
+     "start_slide": 27,
+     "slut_slide": 30
+    },
+    {
+     "nr": 3,
+     "titel": "Interrogativa pronomen och adverb (τίς, ποῦ)",
+     "start_slide": 31,
+     "slut_slide": 39
+    },
+    {
+     "nr": 4,
+     "titel": "πᾶς πᾶσα πᾶν (hel, varje, alla)",
+     "start_slide": 40,
+     "slut_slide": 44
+    },
+    {
+     "nr": 5,
+     "titel": "Adverb: ny ordklass",
+     "start_slide": 45,
+     "slut_slide": 48
+    },
+    {
+     "nr": 6,
+     "titel": "Futurum: nytt tempus",
+     "start_slide": 49,
+     "slut_slide": 63
+    }
+   ],
+   "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)",
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "Bibelgrekiska 1:6\n9 juli 2026 oskar.andersson@su.se"
+    },
+    {
+     "sida": 2,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Innehåll: \nBibelgrekiska 1:6\n1. Repetition och tillägg: personliga pronomen\n2. Demonstrativa pronomen\n3. Interrogativa pronomen och adverb\n4. πᾶς πᾶσα πᾶν hel, varje, alla\n5. Adverb: ny ordklass\n6. Futurum: nytt tempus"
+    },
+    {
+     "sida": 3,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "1. Personliga pronomen"
+    },
+    {
+     "sida": 4,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personliga pronomen (B § 116.1)\nSingular — Första person / Andra person\nnominativ: ἐγώ jag / σύ du\ngenitiv: ἐμοῦ, μου min / σοῦ, σου din\ndativ: ἐμοί, μοι till mig / σοί, σοι till dig\nackusativ: ἐμέ, με mig / σέ, σε dig\nPlural — Första person / Andra person\nnominativ: ἡμεῖς vi / ὑμεῖς ni\ngenitiv: ἡμῶν vår / ὑμῶν er\ndativ: ἡμῖν till oss / ὑμῖν till er\nackusativ: ἡμᾶς oss / ὑμᾶς er"
+    },
+    {
+     "sida": 5,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personliga pronomen\nFörsta och andra person singular har två former, en betonad och en obetonad. De betonade formerna har accenttecken, de obetonade inte."
+    },
+    {
+     "sida": 6,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personliga pronomen (a): betonade former\nsingular — Första person / Andra person\nnominativ: ἐγώ jag / σύ du\ngenitiv: ἐμοῦ, μου min / σοῦ, σου din\ndativ: ἐμοί, μοι till mig / σοί, σοι till dig\nackusativ: ἐμέ, με mig / σέ, σε dig"
+    },
+    {
+     "sida": 7,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personliga pronomen (b): obetonade former\nsingular — Första person / Andra person\nnominativ: ἐγώ jag / σύ du\ngenitiv: ἐμοῦ, μου min / σοῦ, σου din\ndativ: ἐμοί, μοι till mig / σοί, σοι till dig\nackusativ: ἐμέ, με mig / σέ, σε dig"
+    },
+    {
+     "sida": 8,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Betonade former av ἐγώ, σύ\n1. De betonade formerna sätts ut efter prepositioner:\nπρὸς ἐμέ (till mig), περὶ σοῦ (om dig)\n2. De betonade formerna används också för emfas, exv. i motsatser:\nἐγὼ μὲν λέγω, σὺ δὲ ἀκούεις (jag talar och du lyssnar)"
+    },
+    {
+     "sida": 9,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Obetonade former av ἐγώ, σύ\nDe obetonade formerna (=utan accenttecken) används i övriga fall för genitiv, dativ och ackusativ. Det vill säga när det varken handlar om en preposition eller om emfas:\nκηρύσσομέν σοι (vi predikar för dig)\nπιστεύετέ μοι (ni tror på mig)\nβλέπομέν σε (vi ser dig)\nὁ υἱός μου (min son)"
+    },
+    {
+     "sida": 10,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Obetonade former av ἐγώ, σύ\nNominativ singular har ingen obetonad form. För ett obetonat 'jag', 'du' används bara den rena verbformen, eftersom ju personändelsen -ω, -εις ger ett obetonat 'jag', 'du':\nκηρύσσω (jag predikar)\nπιστεύεις (du tror)"
+    },
+    {
+     "sida": 11,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Obetonade former av ἐγώ, σύ\nNominativ singular har ingen obetonad form. För ett obetonat 'jag', 'du' används bara den rena verbformen, eftersom ju personändelsen -ω, -εις ger ett obetonat 'jag', 'du':\nκηρύσσω (jag predikar)\nπιστεύεις (du tror)"
+    },
+    {
+     "sida": 12,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Personliga pronomen: ἡμεῖς 'vi', ὑμεῖς 'ni'\nplural — första person / andra person\nnominativ: ἡμεῖς vi / ὑμεῖς ni\ngenitiv: ἡμῶν vår / ὑμῶν er\ndativ: ἡμῖν till oss / ὑμῖν till er\nackusativ: ἡμᾶς oss / ὑμᾶς er"
+    },
+    {
+     "sida": 13,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡμεῖς 'vi', ὑμεῖς 'ni'\nFör första och andra person plural finns inga obetonade alternativ (kvar). Här används samma form för genitiv, dativ och ackusativ oavsett om det handlar om en preposition, betoning eller icke-betoning:\n1. πρὸς ἡμᾶς (till oss)\n2. κηρύσσομεν ὑμῖν (vi predikar för er)\n3. βλέπομεν ὑμᾶς (vi ser er)"
+    },
+    {
+     "sida": 14,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἡμεῖς 'vi', ὑμεῖς 'ni'\nDäremot är nominativ singular (ἡμεῖς) alltid betonad, eftersom ju personändelsen ensam (-ομεν, -ετε) alltid ger ett obetonat 'vi', 'ni'.\n1. λέγομεν (vi talar)\n2. ἀκούετε (ni hör)\n3. ἡμεῖς μὲν λέγομεν, ὑμεῖς δὲ ἀκούετε (vi talar och ni lyssnar)"
+    },
+    {
+     "sida": 15,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "αὐτός αὐτή αὐτό 'han, hon, det'\nFör 'hans, honom, hennes, henne, deras, dem' används böjda former av αὐτός αὐτή αὐτό.\nMorfologi: om ni kan böja adjektiv efter första och andra deklinationerna, så kan ni också böja αὐτός. Det är bara neutrum singular som slutar på -ο istället för på -ον. (B § 116.2)"
+    },
+    {
+     "sida": 16,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "αὐτός αὐτή αὐτό 'han, hon, det'\nSingular — maskulinum / femininum / neutrum\nnominativ: αὐτός själv, samme / αὐτή själv, samma / αὐτό själv, samma\ngenitiv: αὐτοῦ hans / αὐτῆς hennes / αὐτοῦ dess\ndativ: αὐτῷ till honom / αὐτῇ till henne / αὐτῷ till det\nackusativ: αὐτόν honom / αὐτήν henne / αὐτό det\nPlural — maskulinum / femininum / neutrum\nnominativ: αὐτοί / αὐταί / αὐτά (själva, samma)\ngenitiv: αὐτῶν deras (alla genus)\ndativ: αὐτοῖς / αὐταῖς / αὐτοῖς till dem\nackusativ: αὐτούς / αὐτάς / αὐτά dem"
+    },
+    {
+     "sida": 17,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "αὐτός αὐτή αὐτό 'han, hon, det'\nEtt självständigt αὐτός αὐτή αὐτό i genitiv, dativ och ackusativ motsvarar ett obetonat 'hans, till honom, honom, hon, hennes, till henne, dess, till det, det', osv.\n1. βλέπομεν αὐτόν (vi ser honom)\n2. κηρύσσομεν αὐτῇ (vi predikar för henne)\n3. λέγομεν αὐτοῖς / πρὸς αὐτούς (vi säger till dem)\nβλέπει (han/hon ser). Notera att verbändelsen räcker för obetonat subjekt.\nOBS. dessa former står även efter prepositioner"
+    },
+    {
+     "sida": 18,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Demonstrativa pronomen\nHur uttrycker man då 'han, hon, det, de' om man vill ha ett subjekt som är betonat? Då använder man nominativformen av ett av två andra pronomen:\n• οὗτος 'denne, den här'\n• ἐκεῖνος 'den där'.\nPrecis som αὐτός så har de ändelser som adjektiven efter 1:a och 2:a deklinationerna. Endast neutrum singular skiljer sig (-ο ej -ον)"
+    },
+    {
+     "sida": 19,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "οὗτος, αὕτη, τοῦτο 'denne, denna, detta'\nSingular — maskulinum / femininum / neutrum\nnominativ: οὗτος denne / αὕτη denna / τοῦτο detta\ngenitiv: τούτου / ταύτης / τούτου\ndativ: τούτῳ / ταύτῃ / τούτῳ\nackusativ: τοῦτον / ταύτην / τοῦτο\nPlural — maskulinum / femininum / neutrum\nnominativ: οὗτοι / αὗται / ταῦτα (dessa)\ngenitiv: τούτων (alla genus)\ndativ: τούτοις / ταύταις / τούτοις\nackusativ: τούτους / ταύτας / ταῦτα"
+    },
+    {
+     "sida": 20,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ἐκεῖνος ἐκείνη ἐκεῖνο 'den där, det där'\nSingular — maskulinum / femininum / neutrum\nnominativ: ἐκεῖνος / ἐκείνη / ἐκεῖνο\ngenitiv: ἐκείνου / ἐκείνης / ἐκείνου\ndativ: ἐκείνῳ / ἐκείνῃ / ἐκείνῳ\nackusativ: ἐκεῖνον / ἐκείνην / ἐκεῖνο\nPlural — maskulinum / femininum / neutrum\nnominativ: ἐκεῖνοι / ἐκεῖναι / ἐκεῖνα\ngenitiv: ἐκείνων (alla genus)\ndativ: ἐκείνοις / ἐκείναις / ἐκείνοις\nackusativ: ἐκείνους / ἐκείνας / ἐκεῖνα"
+    },
+    {
+     "sida": 21,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Två demonstrativa pronomen\nDessa pronomina kallas demonstrativa (från latinets demonstrare 'visa') eftersom de pekar ut någon i tiden/rummet i relation till talaren.\nοὗτος αὕτη τοῦτο denne, den här (ligger närmare)\nἐκεῖνος ἐκείνη ἐκεῖνο den där (ligger längre bort)\n(Blomqvist § 120:3, 4)"
+    },
+    {
+     "sida": 22,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tabell: betonade/obetonade personliga pronomen i sg.\nsg. — 1:a p. betonad (för emfas, efter prepositioner) / 1:a p. obetonad / 2:a p. betonad (för emfas, prepositioner) / 2:a p. obetonad / 3:e p. betonad (för emfas) / 3:e p. obetonad (obs: även vid prepositioner)\nnom./vok.: ἐγώ jag / (ren verbform) / σύ du / (ren verbform) / οὗτος, ἐκεῖνος osv. denne / (ren verbform)\ngen.: ἐμοῦ min / μου min / σοῦ din / σου din / τούτου, ἐκείνου / αὐτοῦ hans\ndat.: ἐμοί åt mig / μοι åt mig / σοί åt dig / σοι åt dig / τούτῳ, ἐκείνῳ / αὐτῷ åt honom\nack.: ἐμέ mig / με mig / σέ dig / σε dig / τοῦτον, ἐκεῖνον / αὐτόν honom"
+    },
+    {
+     "sida": 23,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tabell: betonade/obetonade personliga pronomen i pl.\nPl. — 1:a p. pl. (betonad/obetonad) / 2:a p. pl. (betonad/obetonad) / 3 p. pl. (betonad) / 3 p. pl. (obetonad)\nnom./vok.: ἡμεῖς vi / ὑμεῖς ni / οὗτοι, ἐκεῖνοι de här / (ren verbform)\ngen.: ἡμῶν vår / ὑμῶν er / τούτων, ἐκείνων osv. / αὐτῶν deras\ndat.: ἡμῖν åt oss / ὑμῖν åt er / τούτοις, ἐκείνοις / αὐτοῖς åt dem\nack.: ἡμᾶς oss / ὑμᾶς er / τούτους, ἐκείνους / αὐτούς dem\nNotera att översättningarna är FÖRENKLINGAR och främst ska exemplifiera bruket vid direkt/indirekt objekt och inte fungerar vid prepositioner, osv.!\nλέγετε περὶ ἐμοῦ ni talar om mig, λαλῶ ὑμῖν jag talar med er"
+    },
+    {
+     "sida": 24,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (1)\n1. βαπτίζω σε\n2. βαπτίζεις με\n3. ὁ ἀδελφὸς αὐτῆς\n4. ἡ ἀδελφὴ ἡμῶν\n5. αὕτη βαπτίζει αὐτούς\n6. λέγω περὶ σοῦ\n7. λέγεις ἡμῖν/πρὸς ἡμᾶς\n8. οὗτος λέγει περὶ αὐτῆς\n9. Ὁ Ἰησοῦς ζητεῖ τοὺς μαθητὰς καὶ εὑρίσκει αὐτοὺς ἐν τῇ ἐρήμῳ καὶ λέγει αὐτοῖς· εἰρήνη ὑμῖν.\n10. ἐξάγουσιν αὐτὸν καὶ φέρουσιν αὐτὸν ἐπὶ τὸν τοῦ θανάτου τόπον."
+    },
+    {
+     "sida": 25,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (1) — facit\n1. βαπτίζω σε — Jag döper dig\n2. βαπτίζεις με — Du döper mig\n3. ὁ ἀδελφὸς αὐτῆς — Hennes bror\n4. ἡ ἀδελφὴ ἡμῶν — Vår syster\n5. αὕτη βαπτίζει αὐτούς — Hon döper dem\n6. λέγω περὶ σοῦ — Jag talar om dig\n7. λέγεις ἡμῖν/πρὸς ἡμᾶς — Du säger till oss\n8. οὗτος λέγει περὶ αὐτῆς — Han talar om henne"
+    },
+    {
+     "sida": 26,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (1) — facit\n9. Ὁ Ἰησοῦς ζητεῖ τοὺς μαθητὰς καὶ εὑρίσκει αὐτοὺς ἐν τῇ ἐρήμῳ καὶ λέγει αὐτοῖς· εἰρήνη ὑμῖν. — Jesus söker lärjungarna och finner dem i öknen och säger till dem: 'frid över er' (frid till er).\n10. ἐξάγουσιν αὐτὸν καὶ φέρουσιν αὐτὸν ἐπὶ τὸν τοῦ θανάτου τόπον. — De leder ut honom och för honom mot dödens plats."
+    },
+    {
+     "sida": 27,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "2. Demonstrativa pronomen"
+    },
+    {
+     "sida": 28,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Två demonstrativa pronomen (§ 120:3, 4)\nDemonstrativa pronomina kan användas självständigt/substantiviskt (1) och förenat/adjektiviskt (2):\n1. οὗτός ἐστι προφήτης (denne är en profet)\n2. δίκαιος καὶ ἅγιός ἐστιν οὗτος ὁ προφήτης (rättrådig och helig är denne profet)"
+    },
+    {
+     "sida": 29,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Två demonstrativa pronomen\n1. Självständigt\nNär οὗτος eller ἐκεῖνος står i nominativ och självständigt/substantiviskt, fungerar det som en betonad form av 'han/hon/det' samt markerar relation i tid och rum till talaren.\nοὗτός ἐστι προφήτης (han/denne är en profet)"
+    },
+    {
+     "sida": 30,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Två demonstrativa pronomen\n2. Förenat\nNär former av οὗτος och ἐκεῖνος står tillsammans med ett substantiv hjälper de till att placera substantivet i förhållande till den som talar i tid/rum:\nοὗτος ὁ προφήτης (den här [dvs. nära mig] profeten)\nἐκεῖνος ὁ προφήτης (den där [dvs. längre bort från mig] profeten)"
+    },
+    {
+     "sida": 31,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "3. Interrogativa pronomen och adverb"
+    },
+    {
+     "sida": 32,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Interrogativa pronomen (§ 122)\nFrågepronomen, eller interrogativa pronomen, används för att introducera en fråga: Vem är du? Vad gör du? Vilka kompisar träffade du igår? Vems är jackan? Osv."
+    },
+    {
+     "sida": 33,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Interrogativa pronomen: τίς τίνος\nmask. sg. / fem. sg. / neutr. sg.\nnominativ: τίς vem? / τίς / τί vad?\ngenitiv: τίνος vems? / τίνος / τίνος vilkens?\ndativ: τίνι till vem? / τίνι / τίνι till vilken?\nackusativ: τίνα vem? / τίνα / τί vad?"
+    },
+    {
+     "sida": 34,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Interrogativa pronomen: τίς τίνος\nmask. pl. / fem. pl. / neutr. pl.\nnominativ: τίνες vilka? / τίνες / τίνα vilka?\ngenitiv: τίνων vilkas? / τίνων / τίνων vilkas?\ndativ: τίσι(ν) till vilka? / τίσι(ν) / τίσι(ν) till vilka?\nackusativ: τίνας vilka? / τίνας / τίνα vilka?"
+    },
+    {
+     "sida": 35,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "τίς τίνος: anmärkningar\n1. τίς τίνος kan stå självständigt (τίς vem?) eller förenat med ett substantiv (τίς ἄνθρωπος vilken människa?)\n2. Grekiskan har inte samma frågetecken som germanska och romanska språk. I stället använder man sig av semikolon.\nτίς ἐστιν; vem är det?\nτί ἐστίν; vad är det?\nτίς ἄνθρωπος λέγει; vilken människa pratar?\nτίνας παρθένους βλέπομεν; vilka flickor ser vi?"
+    },
+    {
+     "sida": 36,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Skiljetecken (B § 23)\nPunkt och komma används som på svenska.\nHög punkt · motsvarar kolon ( : ) eller semikolon ( ; )\nSemikolon ( ; ) motsvarar frågetecken ( ? )"
+    },
+    {
+     "sida": 37,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Interrogativa adverb (§ 124, s. 82)\nFörutom interrogativa pronomen, finns också interrogativa adverb:\nποῦ; var?\nποῖ; vart?\nπόθεν; varifrån?\nπότε; när?"
+    },
+    {
+     "sida": 38,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (2)\n1. τίς ἐστιν;\n2. τίνος ὁ οἶκός ἐστιν;\n3. τίνα οἶνον πίνεις;\n4. ποῦ ἐστε;\n5. τί ποιεῖς;\n6. τίσι λαλεῖτε;"
+    },
+    {
+     "sida": 39,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Gruppövning (2) — facit\n1. τίς ἐστιν; — Vem är det?\n2. τίνος ὁ οἶκός ἐστιν; — Vems är huset?\n3. τίνα οἶνον πίνεις; — Vilket vin dricker du? (förenat!)\n4. ποῦ ἐστε; — Var är ni?\n5. τί ποιεῖς; — Vad gör du?\n6. τίσι λαλεῖτε; — Med vilka talar ni?"
+    },
+    {
+     "sida": 40,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": true,
+     "text": "4. Adjektiv/pronomen πᾶς"
+    },
+    {
+     "sida": 41,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "πᾶς πᾶσα πᾶν 'varje, hel' (sg.)\nmask. sg. / fem. sg. / neutr. sg.\nnominativ: πᾶς / πᾶσα / πᾶν\ngenitiv: παντός / πάσης / παντός\ndativ: παντί / πάσῃ / παντί\nackusativ: πάντα / πᾶσαν / πᾶν\nvokativ: πᾶς / πᾶσα / πᾶν"
+    },
+    {
+     "sida": 42,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "πᾶς πᾶσα πᾶν 'alla' (pl.)\nmask. pl. / fem. pl. / neutr. pl.\nnominativ: πάντες / πᾶσαι / πάντα\ngenitiv: πάντων / πασῶν / πάντων\ndativ: πᾶσιν / πᾶσαις / πᾶσιν\nackusativ: πάντας / πάσας / πάντα\nvokativ: πάντες / πᾶσαι / πάντα"
+    },
+    {
+     "sida": 43,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Bruket av πᾶς πᾶσα πᾶν\nExempel i singular:\nπᾶς ἄνθρωπος varje människa\nπᾶσα Ἱεροσόλυμα hela Jerusalem\nExempel i plural:\nπάντες ἄνθρωποι alla människor"
+    },
+    {
+     "sida": 44,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Sammanfattning: Pronomen\n1. Personliga pronomen: ἐγώ, σύ, οὗτος/ἐκεῖνος (αὐτοῦ, osv.), ἡμεῖς, ὑμεῖς, οὗτοι/ἐκεῖνοι (αὐτῶν. osv.)\n2. Demonstrativa pronomen pekar ut om någon/något är nära eller fjärran talaren: οὗτος αὕτη τοῦτο (den här), ἐκεῖνος ἐκείνη ἐκεῖνο (den där)\n3. Interrogativa pronomen inleder frågor: τίς τίνος, ποῦ, osv.\n4. πᾶς πᾶσα πᾶν: varje, (hela, alla)"
+    },
+    {
+     "sida": 45,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "5. Ny ordklass: Adverb"
+    },
+    {
+     "sida": 46,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Vad är adverb?\nAdverb är en ordklass som ger extra information om adjektiv och verb:\n'Hon sjunger vackert.' (adverb till verbet sjunger)\n'Han är mycket vacker.' (adverb till adjektivet vacker)\n(Adverb bör noggrant skiljas från adjektiv som ger information om substantiv och pronomen, men notera att adverb ofta bildas från adjektiv och ibland ser ut som adjektiv, jfr. mycket vacker, mycket frukt)."
+    },
+    {
+     "sida": 47,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adverb i koine-grekiskan (B. § 113)\nI koine-grekiskan bildas regelbundna adverb genom att man ersätter ändelsen för genitiv maskulinum plural av ett adjektiv med ändelsen -ως, till exempel:\nκακός ond => κακ-ῶν ondas => κακ-ῶς ont\nκακῶς πάσχω (jag lider ont [dvs. jag lider svårt])"
+    },
+    {
+     "sida": 48,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Adverb i koine-grekiskan\nMånga adverb är oregelbundna (B. § 114:2).\nἀγαθός 'god', har adverbet εὖ 'gott, bra' (som för övrigt dyker upp som första led i många ordformer, som i substantivet εὐ-αγγέλιον)."
+    },
+    {
+     "sida": 49,
+     "bild": null,
+     "har_grafik": true,
+     "har_grekiska": false,
+     "text": "6. Nytt tempus: futurum"
+    },
+    {
+     "sida": 50,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "λύω lösa (presens)\n1:a p. sg. λύ-ω jag löser\n2:a p. sg. λύ-εις du löser\n3:e p. sg. λύ-ει han/hon/det löser\n1:a p. pl. λύ-ομεν vi löser\n2:a p. pl. λύ-ετε ni löser\n3:e p. pl. λύ-ουσι(ν) de löser"
+    },
+    {
+     "sida": 51,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "λύω lösa (futurum)\n1:a p. sg. λύ-σ-ω jag ska lösa\n2:a p. sg. λύ-σ-εις du ska lösa\n3:e p. sg. λύ-σ-ει han/hon ska lösa\n1:a p. pl. λύ-σ-ομεν vi ska lösa\n2:a p. pl. λύ-σ-ετε ni ska lösa\n3:e p. pl. λύ-σ-ουσι(ν) de ska lösa"
+    },
+    {
+     "sida": 52,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Anmärkningar till λύσω (futurum till λύω)\nFuturum av ω-verb bildas med inskott av -σ- mellan stam och ändelse."
+    },
+    {
+     "sida": 53,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "λύω lösa (futurum)\n1:a p. sg. λύσω jag ska lösa\n2:a p. sg. λύσεις du ska lösa\n3:e p. sg. λύσει han/hon ska lösa\n1:a p. pl. λύσομεν vi ska lösa\n2:a p. pl. λύσετε ni ska lösa\n3:e p. pl. λύσουσι(ν) de ska lösa"
+    },
+    {
+     "sida": 54,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "φιλέω 'älska, gilla' (presens, oböjt)\n1:a p. sg. φιλέ-ω jag älskar\n2:a p. sg. φιλέ-εις du älskar\n3:e p. sg. φιλέ-ει han/hon/det älskar\n1:a p. pl. φιλέ-ομεν vi älskar\n2:a p. pl. φιλέ-ετε ni älskar\n3:e p. pl. φιλέ-ουσι(ν) de älskar"
+    },
+    {
+     "sida": 55,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "φιλέω 'älska, gilla' (presens, kontraherad)\n1:a p. sg. φιλῶ jag älskar\n2:a p. sg. φιλεῖς du älskar\n3:e p. sg. φιλεῖ han/hon/det älskar\n1:a p. pl. φιλοῦμεν vi älskar\n2:a p. pl. φιλεῖτε ni älskar\n3:e p. pl. φιλοῦσι(ν) de älskar"
+    },
+    {
+     "sida": 56,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "φιλέω 'älska, gilla' (futurum, oböjt)\n1:a p. sg. φιλέ-σω jag ska älska\n2:a p. sg. φιλέ-σεις du ska älska\n3:e p. sg. φιλέ-σει han ska älska\n1:a p. pl. φιλέ-σομεν vi ska älska\n2:a p. pl. φιλέ-σετε ni ska älska\n3:e p. pl. φιλέ-σουσι(ν) de ska älska"
+    },
+    {
+     "sida": 57,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "φιλέω 'älska, gilla' (futurum, förlängt ε→η)\n1:a p. sg. φιλή-σω jag ska älska\n2:a p. sg. φιλή-σεις du ska älska\n3:e p. sg. φιλή-σει han ska älska\n1:a p. pl. φιλή-σομεν vi ska älska\n2:a p. pl. φιλή-σετε ni ska älska\n3:e p. pl. φιλή-σουσι(ν) de ska älska"
+    },
+    {
+     "sida": 58,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "φιλέω 'älska, gilla' (futurum)\n1:a p. sg. φιλήσω jag ska älska\n2:a p. sg. φιλήσεις du ska älska\n3:e p. sg. φιλήσει han ska älska\n1:a p. pl. φιλήσομεν vi ska älska\n2:a p. pl. φιλήσετε ni ska älska\n3:e p. pl. φιλήσουσι(ν) de ska älska"
+    },
+    {
+     "sida": 59,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Anmärkningar till φιλήσω (futurum till φιλέω)\n1. Futurum av kontraherade ω-verb bildas också med inskott av -σ- mellan stam och ändelse.\n2. Sigmat upphäver det vokalmöte som finns i presens, vilket gör att vanlig kontraktion inte äger rum. I stället förlängs vokalen ε när den föregås av σ till ett η. Resultatet blir alltså φιλήσω (< φιλέσω)."
+    },
+    {
+     "sida": 60,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": false,
+     "text": "Breakout room (3): futurum\nÖversätt meningarna till svenska."
+    },
+    {
+     "sida": 61,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout room (3): futurum\n1. οἱ μαθηταὶ πιστεύσουσιν — Lärjungarna ska tro.\n2. πιστεύσω τῷ θεῷ. — Jag ska tro på Gud.\n3. ὁ κύριος λαλήσει σοι. — Herren ska tala med dig.\n4. παιδεύεις τὸ τέκνον. — Du uppfostrar barnet.\n5. οἱ ἄγγελοι λαλήσουσιν αὐτῷ. — Änglarna ska tala med honom.\n6. οἱ ἀπόστολοι παιδεύσουσι τοὺς μαθητάς. — Apostlarna ska undervisa lärjungarna."
+    },
+    {
+     "sida": 62,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Breakout room (3): futurum\n7. ἡ ἀδελφὴ πιστεύσει. — Systern ska tro.\n8. οὐ λαλοῦμεν τὴν ἀλήθειαν. — Vi säger inte sanningen.\n9. τὸ τέκνον πιστεύσει. — Barnet ska tro.\n10. παιδεύσετε τοὺς μαθητάς. — Ni ska undervisa lärjungarna.\n11. ὁ προφήτης λαλεῖ. — Profeten talar.\n12. οἱ ἀδελφοὶ πιστεύσουσι εἰς τὸν κυρίον. — Bröderna ska tro på Herren."
+    },
+    {
+     "sida": 63,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "εἰμι 'vara, finnas' (futurum)\n1:a p. sg. ἔσομαι jag ska vara\n2:a p. sg. ἔσῃ du ska vara\n3:e p. sg. ἔσται han ska vara\n1:a p. pl. ἐσόμεθα vi ska vara\n2:a p. pl. ἔσεσθε ni ska vara\n3:e p. pl. ἔσονται de ska vara"
+    },
+    {
+     "sida": 64,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Avslutning — Vad har vi gjort idag?\n1. Pronomen: personliga, demonstrativa, interrogativa (τίς τίνος). Interrogativa adverb (ποῦ, etc).\n2. πᾶς πᾶσα πᾶν\n3. Adverb\n4. Futurum av ω-verb (λύσω) och έω-verb (φιλήσω), futurum av εἰμι: ἔσομαι"
+    },
+    {
+     "sida": 65,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Innehåll Bibelgrekiska 1:7\n1. Futurum (§ 165)\n2. Infinitiv\n3. Två adjektiv: μέγας, πολύς (§ 108)\n4. Possessiva pronomen (§ 119, 246)\n5. Indefinita pronomen (B § 123.1, § 248:1a)\n6. Tredje deklinationen: ὁ ἡγεμών\n7. Presens imperativ (B § 265:2)\n8. Imperfekt"
+    }
+   ]
+  },
+  {
+   "kalla": "6__O_vningsblad.pdf",
+   "seminarium": 6,
+   "typ": "ovningsblad",
+   "antal_sidor": 6,
+   "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)",
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "BIBELGREKISKA 1:6 Översättningsmeningar för självstudium (facit finns på sida 4)\nVänligen notera:\n(a) Glosor ges i huvudsak för ord som inte finns i gloslistan 'Ord som förekommer mer än 60 ggr i NT' (se Athena).\n(b) Meningarna är i vissa fall lätt modifierade.\n(c) Översättningarna i facit är ordagranna och överensstämmer därför inte alltid med exempelvis Bibel 2000.\n1. ἐγείρουσιν αὐτὸν καὶ λέγουσιν αὐτῷ, ὦ Διδάσκαλε […] (Mark 4:38) — ὁ διδάσκαλος lärare\n2. οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής· (Matt 14:2) — οὗτος denne; ὁ βαπτιστής döpare; apposition B § 217\n3. φωνὴ ἐκ τῶν οὐρανῶν λέγει· Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός (Matt 3:17) — ἀγαπητός -ή -όν älskad, kär\n4. Ἰωάννης ὁ βαπτιστὴς ἀποστέλλει ἡμᾶς πρὸς σέ. (Luk 7:20)\n5. ταῦτα λέγεις καὶ ἡμᾶς ὑβρίζεις. (Luk 11:45) — ταῦτα form av οὗτος αὕτη τοῦτο 'dessa (ting)'/'detta'"
+    },
+    {
+     "sida": 2,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "ὑβρίζω förolämpa (jfr. hybris)\n6. τίς ἐστιν οὗτος; (Matt 21:10)\n7. οἱ δὲ ὄχλοι λέγουσιν· Οὗτός ἐστιν ὁ προφήτης Ἰησοῦς ὁ ἀπὸ Ναζαρὲθ τῆς Γαλιλαίας. (Matt 21:11) — δέ och, men; τῆς Γαλιλαίας genitiv 'i …'\n8. οἱ δὲ Φαρισαῖοι ἀκούουσι καὶ λέγουσιν· οὗτος οὐκ ἐκβάλλει τὰ δαιμόνια (Matt 12:24)\n9. πάντες δὲ ὑμεῖς ἀδελφοί ἐστε (Matt 23:8) — πάντες form av πᾶς πᾶσα πᾶν; ἐστε form av εἰμί\n10. λέγει δὲ ὁ Πέτρος, Κύριε, πρὸς ἡμᾶς τὴν παραβολὴν ταύτην λέγεις ἢ καὶ πρὸς πάντας; (Luk 12:41) — ἡ παραβολή liknelse; ταύτην form av οὗτος; ἢ καὶ eller också; πάντας form av πᾶς"
+    },
+    {
+     "sida": 3,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "11. καὶ μετὰ ἡμέρας ἓξ παραλαμβάνει ὁ Ἰησοῦς τὸν Πέτρον καὶ τὸν Ἰάκωβον καὶ τὸν Ἰωάννην, καὶ ἀναφέρει αὐτοὺς εἰς ὄρος ὑψηλόν. (Mark 9:2) — ἕξ sex; παραλαμβάνω ta med sig; ἀναφέρω föra upp; τὸ ὄρος berg (tredje deklinationen, ej behandlad; samma form i ack. och nom.); ὑψηλός hög\n12. Κύριον τὸν θεόν σου προσκυνήσεις καὶ αὐτῷ μόνῳ λατρεύσεις. (Matt 4:10) — Κύριος Herren (bestämd form trots avsaknad av artikel); apposition B § 217; προσκυνέω tillbedja; λατρεύω tjäna (med dativ)"
+    },
+    {
+     "sida": 4,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "FACIT\n1. ἐγείρουσιν αὐτὸν καὶ λέγουσιν αὐτῷ, ὦ Διδάσκαλε […] — De väcker honom och säger till honom, o lärare!\n2. οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής· — Denne är Johannes Döparen.\n3. φωνὴ ἐκ τῶν οὐρανῶν λέγει· Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός — En röst ur himlen säger: Denne är min älskade son.\n4. Ἰωάννης ὁ βαπτιστὴς ἀποστέλλει ἡμᾶς πρὸς σέ. — Johannes Döparen skickar oss till dig.\n5. ταῦτα λέγεις καὶ ἡμᾶς ὑβρίζεις. — Du säger detta och förolämpar oss.\n6. τίς ἐστιν οὗτος; — Vem är denne?"
+    },
+    {
+     "sida": 5,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "FACIT (forts.)\n7. οἱ δὲ ὄχλοι λέγουσιν· Οὗτός ἐστιν ὁ προφήτης Ἰησοῦς ὁ ἀπὸ Ναζαρὲθ τῆς Γαλιλαίας. — Folkhoparna säger: Denne är profeten Jesus från Nasaret i Galileen.\n8. οἱ δὲ Φαρισαῖοι ἀκούουσι καὶ λέγουσιν· Οὗτος οὐκ ἐκβάλλει τὰ δαιμόνια — Och fariséerna hör och säger: Denne fördriver inte onda andar.\n9. πάντες δὲ ὑμεῖς ἀδελφοί ἐστε — Och alla ni är bröder.\n10. λέγει δὲ ὁ Πέτρος, Κύριε, πρὸς ἡμᾶς τὴν παραβολὴν ταύτην λέγεις ἢ καὶ πρὸς πάντας; — Och Petrus säger, Herre, säger du denna liknelse till oss eller också till alla?\n11. καὶ μετὰ ἡμέρας ἓξ παραλαμβάνει ὁ Ἰησοῦς τὸν Πέτρον καὶ τὸν Ἰάκωβον καὶ τὸν Ἰωάννην, καὶ ἀναφέρει αὐτοὺς εἰς ὄρος ὑψηλόν."
+    },
+    {
+     "sida": 6,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "FACIT (forts.)\n11. (forts.) — Och efter sex dagar tog Jesus med sig Petrus och Jakob och Johannes och för dem upp till ett högt berg.\n12. Κύριον τὸν θεόν σου προσκυνήσεις καὶ αὐτῷ μόνῳ λατρεύσεις. — Du ska tillbedja Herren, din Gud, och tjäna honom allena."
+    }
+   ]
+  },
+  {
+   "kalla": "6__Breakout_rooms.pdf",
+   "seminarium": 6,
+   "typ": "breakout",
+   "antal_sidor": 2,
+   "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)",
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "BIBELGREKISKA I: Seminarium 6. Övningar\nBreakout room (1): Personliga pronomen — Översätt meningarna till svenska\n1. βαπτίζω σε\n2. βαπτίζεις με\n3. ὁ ἀδελφὸς αὐτῆς\n4. ἡ ἀδελφὴ ἡμῶν\n5. αὕτη βαπτίζει αὐτούς\n6. λέγω περὶ σοῦ\n7. λέγεις ἡμῖν / πρὸς ἡμᾶς\n8. οὗτος λέγει περὶ αὐτῆς\n9. Ὁ Ἰησοῦς ζητεῖ τοὺς μαθητὰς καὶ εὑρίσκει αὐτοὺς ἐν τῇ ἐρήμῳ καὶ λέγει αὐτοῖς· εἰρήνη ὑμῖν.\n10. ἐξάγουσιν αὐτὸν καὶ φέρουσιν αὐτὸν ἐπὶ τὸν τοῦ θανάτου τόπον.\nOrdlista: βαπτίζω döpa; λέγω tala, säga; ζητέω söka; εὑρίσκω finna; ἡ ἐρήμος öken; ἡ εἰρήνη fred; ἐξάγω leda ut, föra ut; φέρω föra; ὁ θάνατος döden; ὁ τόπος plats\nBreakout room (2): Interrogativa pronomina — Översätt till svenska\n1. τίς ἐστιν;\n2. τίνος ὁ οἶκός ἐστιν;\n3. τίνα οἶνον πίνεις; (ὁ οἶνος vin, πίνω dricka)\n4. ποῦ ἐστε;\n5. τί ποιεῖς;\n6. τίσι λάλεῖτε; (λαλέω tala, med dativ)"
+    },
+    {
+     "sida": 2,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Ordlista: τίς τίνος; vem, vad (självständigt)? vilken/vilket (förenat)? (B § 122:1); ποῦ; var? ποῖ; vart? πόθεν; varifrån? πότε; när?\nBreakout room (3): Futurum — Översätt till svenska.\n1. οἱ μαθηταὶ πιστεύσουσιν\n2. πιστεύσω τῷ θεῷ.\n3. ὁ κύριος λαλήσει σοι.\n4. παιδεύεις τὸ τέκνον.\n5. οἱ ἄγγελοι λαλήσουσιν αὐτῷ.\n6. οἱ ἀπόστολοι παιδεύσουσι τοὺς μαθητάς.\n7. ἡ ἀδελφὴ πιστεύσει.\n8. οὐ λαλοῦμεν τὴν ἀλήθειαν.\n9. τὸ τέκνον πιστεύσει.\n10. παιδεύσετε τοὺς μαθητάς.\n11. ὁ προφήτης λαλεῖ.\n12. οἱ ἀδελφοὶ πιστεύσουσι εἰς τὸν κυρίον.\nOrdlista: πιστεύω tro, lita på (med dativ); παιδεύω undervisa, uppfostra; λαλέω tala, säga; ὁ μαθητής lärjunge; ὁ ἄγγελος ängel; ὁ ἀπόστολος apostel; ὁ προφήτης profet; τὸ τέκνον barn; ἡ ἀλήθεια sanning\nRegler för bildningen av futurum med sigma (σ): Sigma placeras före personändelsen: λύσω, λύσεις osv. Vid kontraherade verb (-έω) förlängs ε till η: φιλήσω, φιλήσεις."
+    }
+   ]
+  },
+  {
+   "kalla": "6__Pronomen.pdf",
+   "seminarium": 6,
+   "typ": "tabellblad",
+   "antal_sidor": 3,
+   "kalla_format": "pdf (ingen JPEG-sidecar; bild=null)",
+   "sidor": [
+    {
+     "sida": 1,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tabell: betonade/obetonade personliga pronomen i sg.\nsg. — 1:a p. betonad (för emfas, efter prepositioner) / 1:a p. obetonad / 2:a p. betonad (för emfas, prepositioner) / 2:a p. obetonad / 3:e p. betonad (för emfas) / 3:e p. obetonad (obs: även vid prepositioner)\nnom./vok.: ἐγώ jag / (ren verbform) / σύ du / (ren verbform) / οὗτος, ἐκεῖνος osv. denne / (ren verbform)\ngen.: ἐμοῦ min / μου min / σοῦ din / σου din / τούτου, ἐκείνου / αὐτοῦ hans\ndat.: ἐμοί åt mig / μοι åt mig / σοί åt dig / σοι åt dig / τούτῳ, ἐκείνῳ / αὐτῷ åt honom\nack.: ἐμέ mig / με mig / σέ dig / σε dig / τοῦτον, ἐκεῖνον / αὐτόν honom"
+    },
+    {
+     "sida": 2,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Tabell: betonade/obetonade personliga pronomen i pl.\nPl. — 1:a p. pl. (betonad/obetonad) / 2:a p. pl. (betonad/obetonad) / 3 p. pl. (betonad) / 3 p. pl. (obetonad)\nnom./vok.: ἡμεῖς vi / ὑμεῖς ni / οὗτοι, ἐκεῖνοι de här / (ren verbform)\ngen.: ἡμῶν vår / ὑμῶν er / τούτων, ἐκείνων osv. / αὐτῶν deras\ndat.: ἡμῖν åt oss / ὑμῖν åt er / τούτοις, ἐκείνοις / αὐτοῖς åt dem\nack.: ἡμᾶς oss / ὑμᾶς er / τούτους, ἐκείνους / αὐτούς dem\nNotera att översättningarna är FÖRENKLINGAR och främst ska exemplifiera bruket vid direkt/indirekt objekt och inte fungerar vid prepositioner, osv.!\nλέγετε περὶ ἐμοῦ ni talar om mig, λαλῶ ὑμῖν jag talar med er"
+    },
+    {
+     "sida": 3,
+     "bild": null,
+     "har_grafik": false,
+     "har_grekiska": true,
+     "text": "Interrogativa pronomen: τίς τίνος\nmask. sg. / fem. sg. / neutr. sg.\nnominativ: τίς vem? / τίς / τί vad?\ngenitiv: τίνος vems? / τίνος / τίνος vilkens?\ndativ: τίνι till vem? / τίνι / τίνι till vilken?\nackusativ: τίνα vem? / τίνα / τί vad?\nmask. pl. / fem. pl. / neutr. pl.\nnominativ: τίνες vilka? / τίνες / τίνα vilka?\ngenitiv: τίνων vilkas? / τίνων / τίνων vilkas?\ndativ: τίσι(ν) till vilka? / τίσι(ν) / τίσι(ν) till vilka?\nackusativ: τίνας vilka? / τίνας / τίνα vilka?"
+    }
+   ]
   }
  ],
  "glosor": [
@@ -4229,6 +4835,310 @@
      "sida": 2
     }
    ]
+  },
+  {
+   "lemma": "διδάσκαλος",
+   "artikel": "ὁ",
+   "glosa": "lärare",
+   "ordklass": "substantiv",
+   "nt_lemma": true,
+   "nt_frekvens": 58,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "βαπτιστής",
+   "artikel": "ὁ",
+   "glosa": "döpare",
+   "ordklass": "substantiv",
+   "nt_lemma": true,
+   "nt_frekvens": 12,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "οἶνος",
+   "artikel": "ὁ",
+   "glosa": "vin",
+   "ordklass": "substantiv",
+   "nt_lemma": true,
+   "nt_frekvens": 34,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "παραβολή",
+   "artikel": "ἡ",
+   "glosa": "liknelse, parabel",
+   "ordklass": "substantiv",
+   "nt_lemma": true,
+   "nt_frekvens": 50,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "ὄρος",
+   "artikel": "τό",
+   "glosa": "berg (3:e deklinationen, ej systematiskt behandlad)",
+   "ordklass": "substantiv",
+   "nt_lemma": true,
+   "nt_frekvens": 62,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "ἀγαπητός",
+   "artikel": null,
+   "glosa": "älskad, kär (-ή -όν)",
+   "ordklass": "adjektiv",
+   "nt_lemma": true,
+   "nt_frekvens": 61,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ὑψηλός",
+   "artikel": null,
+   "glosa": "hög",
+   "ordklass": "adjektiv",
+   "nt_lemma": true,
+   "nt_frekvens": 11,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "προσκυνέω",
+   "artikel": null,
+   "glosa": "tillbedja",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 60,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "λατρεύω",
+   "artikel": null,
+   "glosa": "tjäna (med dativ)",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 21,
+   "i_glosor_master": true,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "πίνω",
+   "artikel": null,
+   "glosa": "dricka",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 72,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ἐξάγω",
+   "artikel": null,
+   "glosa": "leda ut, föra ut",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 12,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "φέρω",
+   "artikel": null,
+   "glosa": "föra, bära",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 66,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__Breakout_rooms.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ὑβρίζω",
+   "artikel": null,
+   "glosa": "förolämpa (jfr. hybris)",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 5,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "παραλαμβάνω",
+   "artikel": null,
+   "glosa": "ta med sig",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 49,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "ἀναφέρω",
+   "artikel": null,
+   "glosa": "föra upp",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 10,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
+  },
+  {
+   "lemma": "ἐγείρω",
+   "artikel": null,
+   "glosa": "väcka, resa upp",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 143,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 1
+    }
+   ]
+  },
+  {
+   "lemma": "ἐκβάλλω",
+   "artikel": null,
+   "glosa": "driva ut, kasta ut",
+   "ordklass": "verb",
+   "nt_lemma": true,
+   "nt_frekvens": 81,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "δέ",
+   "artikel": null,
+   "glosa": "och, men (postpositiv)",
+   "ordklass": "partikel",
+   "nt_lemma": true,
+   "nt_frekvens": 2766,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 2
+    }
+   ]
+  },
+  {
+   "lemma": "ἕξ",
+   "artikel": null,
+   "glosa": "sex",
+   "ordklass": "räkneord",
+   "nt_lemma": true,
+   "nt_frekvens": 13,
+   "i_glosor_master": false,
+   "forekomster": [
+    {
+     "seminarium": 6,
+     "kalla": "6__O_vningsblad.pdf",
+     "sida": 3
+    }
+   ]
   }
  ],
  "satser": [
@@ -5086,6 +5996,366 @@
    "grekiska": "λαλεῖς μοι.",
    "instruktion": "Breakout 3: översätt (personliga pronomen).",
    "oversattning": "Du talar med mig."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "βαπτίζω σε",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 1)",
+   "oversattning": "Jag döper dig"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "βαπτίζεις με",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 2)",
+   "oversattning": "Du döper mig"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ὁ ἀδελφὸς αὐτῆς",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 3)",
+   "oversattning": "Hennes bror"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ἡ ἀδελφὴ ἡμῶν",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 4)",
+   "oversattning": "Vår syster"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "αὕτη βαπτίζει αὐτούς",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 5)",
+   "oversattning": "Hon döper dem"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "λέγω περὶ σοῦ",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 6)",
+   "oversattning": "Jag talar om dig"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "λέγεις ἡμῖν / πρὸς ἡμᾶς",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 7)",
+   "oversattning": "Du säger till oss"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "οὗτος λέγει περὶ αὐτῆς",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 8)",
+   "oversattning": "Han talar om henne"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "Ὁ Ἰησοῦς ζητεῖ τοὺς μαθητὰς καὶ εὑρίσκει αὐτοὺς ἐν τῇ ἐρήμῳ καὶ λέγει αὐτοῖς· εἰρήνη ὑμῖν.",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 9)",
+   "oversattning": "Jesus söker lärjungarna och finner dem i öknen och säger till dem: 'frid över er' (frid till er)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ἐξάγουσιν αὐτὸν καὶ φέρουσιν αὐτὸν ἐπὶ τὸν τοῦ θανάτου τόπον.",
+   "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 10)",
+   "oversattning": "De leder ut honom och för honom mot dödens plats."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "τίς ἐστιν;",
+   "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 1)",
+   "oversattning": "Vem är det?"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "τίνος ὁ οἶκός ἐστιν;",
+   "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 2)",
+   "oversattning": "Vems är huset?"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "τίνα οἶνον πίνεις;",
+   "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 3)",
+   "oversattning": "Vilket vin dricker du? (förenat)"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "ποῦ ἐστε;",
+   "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 4)",
+   "oversattning": "Var är ni?"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "τί ποιεῖς;",
+   "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 5)",
+   "oversattning": "Vad gör du?"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 1,
+   "grekiska": "τίσι λαλεῖτε;",
+   "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 6)",
+   "oversattning": "Med vilka talar ni?"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "οἱ μαθηταὶ πιστεύσουσιν",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 1)",
+   "oversattning": "Lärjungarna ska tro."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "πιστεύσω τῷ θεῷ.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 2)",
+   "oversattning": "Jag ska tro på Gud."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ὁ κύριος λαλήσει σοι.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 3)",
+   "oversattning": "Herren ska tala med dig."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "παιδεύεις τὸ τέκνον.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 4)",
+   "oversattning": "Du uppfostrar barnet."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "οἱ ἄγγελοι λαλήσουσιν αὐτῷ.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 5)",
+   "oversattning": "Änglarna ska tala med honom."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "οἱ ἀπόστολοι παιδεύσουσι τοὺς μαθητάς.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 6)",
+   "oversattning": "Apostlarna ska undervisa lärjungarna."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ἡ ἀδελφὴ πιστεύσει.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 7)",
+   "oversattning": "Systern ska tro."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "οὐ λαλοῦμεν τὴν ἀλήθειαν.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 8)",
+   "oversattning": "Vi säger inte sanningen."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "τὸ τέκνον πιστεύσει.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 9)",
+   "oversattning": "Barnet ska tro."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "παιδεύσετε τοὺς μαθητάς.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 10)",
+   "oversattning": "Ni ska undervisa lärjungarna."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "ὁ προφήτης λαλεῖ.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 11)",
+   "oversattning": "Profeten talar."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Breakout_rooms.pdf",
+   "sida": 2,
+   "grekiska": "οἱ ἀδελφοὶ πιστεύσουσι εἰς τὸν κυρίον.",
+   "instruktion": "Breakout 3: översätt (futurum). (mening 12)",
+   "oversattning": "Bröderna ska tro på Herren."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ἐγείρουσιν αὐτὸν καὶ λέγουσιν αὐτῷ, ὦ Διδάσκαλε […]",
+   "instruktion": "Översättningsmening för självstudium (Mark 4:38, facit s. 4). (mening 1)",
+   "oversattning": "De väcker honom och säger till honom, o lärare!"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής·",
+   "instruktion": "Översättningsmening för självstudium (Matt 14:2, facit s. 4). (mening 2)",
+   "oversattning": "Denne är Johannes Döparen."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "φωνὴ ἐκ τῶν οὐρανῶν λέγει· Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός",
+   "instruktion": "Översättningsmening för självstudium (Matt 3:17, facit s. 4). (mening 3)",
+   "oversattning": "En röst ur himlen säger: Denne är min älskade son."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "Ἰωάννης ὁ βαπτιστὴς ἀποστέλλει ἡμᾶς πρὸς σέ.",
+   "instruktion": "Översättningsmening för självstudium (Luk 7:20, facit s. 4). (mening 4)",
+   "oversattning": "Johannes Döparen skickar oss till dig."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ταῦτα λέγεις καὶ ἡμᾶς ὑβρίζεις.",
+   "instruktion": "Översättningsmening för självstudium (Luk 11:45, facit s. 4). (mening 5)",
+   "oversattning": "Du säger detta och förolämpar oss."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "τίς ἐστιν οὗτος;",
+   "instruktion": "Översättningsmening för självstudium (Matt 21:10, facit s. 4). (mening 6)",
+   "oversattning": "Vem är denne?"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "οἱ δὲ ὄχλοι λέγουσιν· Οὗτός ἐστιν ὁ προφήτης Ἰησοῦς ὁ ἀπὸ Ναζαρὲθ τῆς Γαλιλαίας.",
+   "instruktion": "Översättningsmening för självstudium (Matt 21:11, facit s. 4). (mening 7)",
+   "oversattning": "Folkhoparna säger: Denne är profeten Jesus från Nasaret i Galileen."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "οἱ δὲ Φαρισαῖοι ἀκούουσι καὶ λέγουσιν· Οὗτος οὐκ ἐκβάλλει τὰ δαιμόνια",
+   "instruktion": "Översättningsmening för självstudium (Matt 12:24, facit s. 4). (mening 8)",
+   "oversattning": "Och fariséerna hör och säger: Denne fördriver inte onda andar."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "πάντες δὲ ὑμεῖς ἀδελφοί ἐστε",
+   "instruktion": "Översättningsmening för självstudium (Matt 23:8, facit s. 4). (mening 9)",
+   "oversattning": "Och alla ni är bröder."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "λέγει δὲ ὁ Πέτρος, Κύριε, πρὸς ἡμᾶς τὴν παραβολὴν ταύτην λέγεις ἢ καὶ πρὸς πάντας;",
+   "instruktion": "Översättningsmening för självstudium (Luk 12:41, facit s. 4). (mening 10)",
+   "oversattning": "Och Petrus säger, Herre, säger du denna liknelse till oss eller också till alla?"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "καὶ μετὰ ἡμέρας ἓξ παραλαμβάνει ὁ Ἰησοῦς τὸν Πέτρον καὶ τὸν Ἰάκωβον καὶ τὸν Ἰωάννην, καὶ ἀναφέρει αὐτοὺς εἰς ὄρος ὑψηλόν.",
+   "instruktion": "Översättningsmening för självstudium (Mark 9:2, facit s. 4). (mening 11)",
+   "oversattning": "Och efter sex dagar tog Jesus med sig Petrus och Jakob och Johannes och för dem upp till ett högt berg."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "Κύριον τὸν θεόν σου προσκυνήσεις καὶ αὐτῷ μόνῳ λατρεύσεις.",
+   "instruktion": "Översättningsmening för självstudium (Matt 4:10, facit s. 4). (mening 12)",
+   "oversattning": "Du ska tillbedja Herren, din Gud, och tjäna honom allena."
   }
  ],
  "verb": [
@@ -6238,6 +7508,335 @@
    "referens": "Blomqvist § 116:1",
    "tacks_av_master": "json/pronomen.json (ἐγώ, σύ)",
    "not": "Betonade former (ἐμοῦ, ἐμοί, ἐμέ) efter preposition och vid emfas; obetonade/enklitiska (μου, μοι, με) i övriga fall. Nominativ har ingen obetonad form. Fullständigt paradigm i pronomen.json."
+  },
+  {
+   "id": "par-verb-omega-futurum",
+   "typ": "paradigm",
+   "kategori": "verb",
+   "seminarium": 6,
+   "rubrik": "ω-verb, futurum aktiv indikativ",
+   "exempel_lemma": "λύω",
+   "glosa": "lösa",
+   "kalla": "6__Presentation.pdf",
+   "sida": 53,
+   "bild": null,
+   "tacks_av_master": "json/verb.json (λύω fut.ind.akt)",
+   "andelser": {
+    "1sg": "-σω",
+    "2sg": "-σεις",
+    "3sg": "-σει",
+    "1pl": "-σομεν",
+    "2pl": "-σετε",
+    "3pl": "-σουσι(ν)"
+   },
+   "betoning": "recessiv",
+   "former": {
+    "1sg": {
+     "grekiska": "λύσω",
+     "svenska": "jag ska lösa"
+    },
+    "2sg": {
+     "grekiska": "λύσεις",
+     "svenska": "du ska lösa"
+    },
+    "3sg": {
+     "grekiska": "λύσει",
+     "svenska": "han/hon ska lösa"
+    },
+    "1pl": {
+     "grekiska": "λύσομεν",
+     "svenska": "vi ska lösa"
+    },
+    "2pl": {
+     "grekiska": "λύσετε",
+     "svenska": "ni ska lösa"
+    },
+    "3pl": {
+     "grekiska": "λύσουσι(ν)",
+     "svenska": "de ska lösa"
+    }
+   },
+   "not": "Futurum av ω-verb bildas med inskott av -σ- mellan stam och ändelse (λύ-σ-ω). Ändelserna är desamma som i presens. Rörligt ν i 3pl. Verifierad mot Smyth."
+  },
+  {
+   "id": "par-verb-kontrakt-e-futurum",
+   "typ": "paradigm",
+   "kategori": "verb",
+   "seminarium": 6,
+   "rubrik": "Kontraherade verb på -έω, futurum aktiv indikativ",
+   "exempel_lemma": "φιλέω",
+   "glosa": "älska, gilla",
+   "kalla": "6__Presentation.pdf",
+   "sida": 58,
+   "bild": null,
+   "tacks_av_master": "json/verb.json (φιλέω fut.ind.akt)",
+   "andelser": {
+    "1sg": "-ήσω",
+    "2sg": "-ήσεις",
+    "3sg": "-ήσει",
+    "1pl": "-ήσομεν",
+    "2pl": "-ήσετε",
+    "3pl": "-ήσουσι(ν)"
+   },
+   "regel": "Sigmat upphäver vokalmötet så att presenskontraktionen uteblir; stamvokalen ε förlängs i stället till η framför σ (φιλέσω → φιλήσω).",
+   "former": {
+    "1sg": {
+     "grekiska": "φιλήσω",
+     "svenska": "jag ska älska"
+    },
+    "2sg": {
+     "grekiska": "φιλήσεις",
+     "svenska": "du ska älska"
+    },
+    "3sg": {
+     "grekiska": "φιλήσει",
+     "svenska": "han ska älska"
+    },
+    "1pl": {
+     "grekiska": "φιλήσομεν",
+     "svenska": "vi ska älska"
+    },
+    "2pl": {
+     "grekiska": "φιλήσετε",
+     "svenska": "ni ska älska"
+    },
+    "3pl": {
+     "grekiska": "φιλήσουσι(ν)",
+     "svenska": "de ska älska"
+    }
+   },
+   "not": "Futurum av kontraherade -έω-verb bildas också med inskott av -σ-, men ε → η framför σ. Resultatet blir φιλήσω (< φιλέσω). Verifierad mot 6_Presentation s54-59 och Smyth."
+  },
+  {
+   "id": "par-verb-eimi-futurum",
+   "typ": "paradigm",
+   "kategori": "verb",
+   "seminarium": 6,
+   "rubrik": "εἰμί (vara) — futurum indikativ (medium/deponent)",
+   "exempel_lemma": "εἰμί",
+   "glosa": "vara, finnas",
+   "kalla": "6__Presentation.pdf",
+   "sida": 63,
+   "bild": null,
+   "tacks_av_master": "json/verb.json (εἰμί fut.ind.med)",
+   "former": {
+    "1sg": {
+     "grekiska": "ἔσομαι",
+     "svenska": "jag ska vara"
+    },
+    "2sg": {
+     "grekiska": "ἔσῃ",
+     "svenska": "du ska vara"
+    },
+    "3sg": {
+     "grekiska": "ἔσται",
+     "svenska": "han ska vara"
+    },
+    "1pl": {
+     "grekiska": "ἐσόμεθα",
+     "svenska": "vi ska vara"
+    },
+    "2pl": {
+     "grekiska": "ἔσεσθε",
+     "svenska": "ni ska vara"
+    },
+    "3pl": {
+     "grekiska": "ἔσονται",
+     "svenska": "de ska vara"
+    }
+   },
+   "not": "εἰμί har deponent futurum: aktiv betydelse men medium-ändelser (-ομαι, -ῃ, -εται, -ομεθα, -εσθε, -ονται) på stammen ἐσ-. Verifierad mot Smyth."
+  },
+  {
+   "id": "par-adverb-bildning",
+   "typ": "paradigm",
+   "kategori": "adverb",
+   "seminarium": 6,
+   "rubrik": "Adverbbildning i koine-grekiskan",
+   "kalla": "6__Presentation.pdf",
+   "sida": 47,
+   "bild": null,
+   "tacks_av_master": null,
+   "referens": "Blomqvist § 113 (regelbundna), § 114:2 (oregelbundna)",
+   "regel": "Regelbundna adverb bildas genom att adjektivets ändelse för genitiv maskulinum plural (-ων) byts mot -ως.",
+   "exempel": [
+    {
+     "adjektiv": "κακός",
+     "glosa_adj": "ond",
+     "gen_pl": "κακῶν",
+     "adverb": "κακῶς",
+     "glosa_adverb": "ont, illa",
+     "mening": "κακῶς πάσχω (jag lider ont, dvs. jag lider svårt)"
+    },
+    {
+     "adjektiv": "ἀγαθός",
+     "glosa_adj": "god",
+     "adverb": "εὖ",
+     "glosa_adverb": "gott, bra",
+     "oregelbundet": true,
+     "not": "εὖ dyker upp som första led i många ord, t.ex. εὐ-αγγέλιον."
+    }
+   ],
+   "not": "Adverb ger extra information om verb och adjektiv (jfr. 'sjunger vackert', 'mycket vacker'), till skillnad från adjektiv som bestämmer substantiv/pronomen. Ny ordklass i seminarium 6."
+  },
+  {
+   "id": "par-adj-pas",
+   "typ": "paradigm",
+   "kategori": "adjektiv",
+   "seminarium": 6,
+   "rubrik": "πᾶς πᾶσα πᾶν (hel, varje, alla)",
+   "exempel_lemma": "πᾶς",
+   "glosa": "hel, varje, alla",
+   "kalla": "6__Presentation.pdf",
+   "sida": 41,
+   "bild": null,
+   "tacks_av_master": null,
+   "referens": "Blomqvist § 108",
+   "deklinationsmix": "Maskulinum och neutrum följer tredje deklinationen (stam παντ-), femininum första deklinationen (πᾶσα, gen πάσης).",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "πᾶς",
+      "pl": "πάντες"
+     },
+     "gen": {
+      "sg": "παντός",
+      "pl": "πάντων"
+     },
+     "dat": {
+      "sg": "παντί",
+      "pl": "πᾶσιν"
+     },
+     "ack": {
+      "sg": "πάντα",
+      "pl": "πάντας"
+     },
+     "vok": {
+      "sg": "πᾶς",
+      "pl": "πάντες"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "πᾶσα",
+      "pl": "πᾶσαι"
+     },
+     "gen": {
+      "sg": "πάσης",
+      "pl": "πασῶν"
+     },
+     "dat": {
+      "sg": "πάσῃ",
+      "pl": "πᾶσαις"
+     },
+     "ack": {
+      "sg": "πᾶσαν",
+      "pl": "πάσας"
+     },
+     "vok": {
+      "sg": "πᾶσα",
+      "pl": "πᾶσαι"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "πᾶν",
+      "pl": "πάντα"
+     },
+     "gen": {
+      "sg": "παντός",
+      "pl": "πάντων"
+     },
+     "dat": {
+      "sg": "παντί",
+      "pl": "πᾶσιν"
+     },
+     "ack": {
+      "sg": "πᾶν",
+      "pl": "πάντα"
+     },
+     "vok": {
+      "sg": "πᾶν",
+      "pl": "πάντα"
+     }
+    }
+   },
+   "bruk": [
+    "πᾶς ἄνθρωπος — varje människa (sg.)",
+    "πᾶσα Ἱεροσόλυμα — hela Jerusalem (sg.)",
+    "πάντες ἄνθρωποι — alla människor (pl.)"
+   ],
+   "not": "Adjektiv/pronomen. Singular = 'hel, varje'; plural = 'alla'. Blandad böjning (3:e dekl. m/n, 1:a dekl. f). Verifierad mot 6_Presentation s41-42 och Smyth."
+  },
+  {
+   "id": "par-pron-demonstrativa",
+   "typ": "paradigm",
+   "kategori": "pronomen",
+   "seminarium": 6,
+   "rubrik": "Demonstrativa pronomen: οὗτος (den här) och ἐκεῖνος (den där)",
+   "kalla": "6__Presentation.pdf",
+   "sida": 19,
+   "bild": null,
+   "referens": "Blomqvist § 120:3, 4",
+   "tacks_av_master": "json/pronomen.json (οὗτος, ἐκεῖνος)",
+   "not": "Böjs som 2-1-2-adjektiv (m/n 2:a dekl., f 1:a dekl.); endast neutrum sg slutar på -ο (ej -ον). οὗτος pekar ut det nära talaren, ἐκεῖνος det längre bort. Kan stå självständigt ('οὗτός ἐστι προφήτης') eller förenat med artikel ('οὗτος ὁ προφήτης'). Fullständiga paradigm i pronomen.json."
+  },
+  {
+   "id": "par-pron-interrogativa",
+   "typ": "paradigm",
+   "kategori": "pronomen",
+   "seminarium": 6,
+   "rubrik": "Interrogativa pronomen: τίς τί (vem? vad?)",
+   "kalla": "6__Presentation.pdf",
+   "sida": 33,
+   "bild": null,
+   "referens": "Blomqvist § 122",
+   "tacks_av_master": "json/pronomen.json (τίς)",
+   "not": "Tredje deklinationen (stam τιν-). Maskulinum = femininum; endast neutrum skiljer sig (τί, τίνα). Alltid akut accent på τί (skiljer från enklitiskt τις 'någon'). Fråga avslutas med semikolon. Kan stå självständigt (τίς;) eller förenat (τίς ἄνθρωπος;). Fullständigt paradigm i pronomen.json."
+  },
+  {
+   "id": "par-adverb-interrogativa",
+   "typ": "paradigm",
+   "kategori": "adverb",
+   "seminarium": 6,
+   "rubrik": "Interrogativa adverb",
+   "kalla": "6__Presentation.pdf",
+   "sida": 37,
+   "bild": null,
+   "tacks_av_master": null,
+   "referens": "Blomqvist § 124 (s. 82)",
+   "former": [
+    {
+     "grekiska": "ποῦ",
+     "svenska": "var?"
+    },
+    {
+     "grekiska": "ποῖ",
+     "svenska": "vart?"
+    },
+    {
+     "grekiska": "πόθεν",
+     "svenska": "varifrån?"
+    },
+    {
+     "grekiska": "πότε",
+     "svenska": "när?"
+    }
+   ],
+   "not": "Oböjliga frågeord (adverb). Fråga avslutas med semikolon."
+  },
+  {
+   "id": "par-pron-autos",
+   "typ": "paradigm",
+   "kategori": "pronomen",
+   "seminarium": 6,
+   "rubrik": "αὐτός αὐτή αὐτό (3:e person: hans, honom, henne, dess, deras)",
+   "kalla": "6__Presentation.pdf",
+   "sida": 16,
+   "bild": null,
+   "referens": "Blomqvist § 116:2",
+   "tacks_av_master": "json/pronomen.json (αὐτός)",
+   "not": "Böjs som 2-1-2-adjektiv utom neutrum sg -ο (ej -ον). I gen/dat/ack ett obetonat 'hans/honom/henne/dess/deras' — står även efter prepositioner. Nominativ betyder 'själv/samme'. För betonat subjekt-'han/hon/det' används i stället demonstrativa οὗτος/ἐκεῖνος. Fullständigt paradigm i pronomen.json."
   }
  ],
  "_kallor_not": "Seminarium 5 extraherades ur PDF (rent textlager), ej ur zip-arkiv med JPEG-sidecar; därför bild=null för seminarium-5-poster."

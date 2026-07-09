@@ -1,5 +1,5 @@
 {
- "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope hittills (kursens första hälft): presens indikativ aktiv för ω-verb. Kontraherade verb och εἰμί samt fler tempus tillkommer.",
+ "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope hittills (kursens första hälft): presens indikativ aktiv för ω-verb. Kontraherade verb och εἰμί samt fler tempus tillkommer. Seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι).",
  "_genererad": "2026-07-07",
  "_nycklar": {
   "_forklaring": "Formnyckel = 'tempus.modus.diates'. Person/numerus = '1sg'..'3pl'. Kortformer för konsekvens med ord.json; långformer nedan.",
@@ -35,7 +35,7 @@
  },
  "_klasser": {
   "omega": {
-   "beskrivning": "Tematiska ω-verb. Ändelse på stammen, recessiv betoning.",
+   "beskrivning": "Tematiska ω-verb. Ändelse på stammen, recessiv betoning. Futurum bildas med inskott av -σ- mellan stam och ändelse (λύ-σ-ω).",
    "andelser": {
     "pres.ind.akt": {
      "1sg": "-ω",
@@ -44,11 +44,19 @@
      "1pl": "-ομεν",
      "2pl": "-ετε",
      "3pl": "-ουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "-σω",
+     "2sg": "-σεις",
+     "3sg": "-σει",
+     "1pl": "-σομεν",
+     "2pl": "-σετε",
+     "3pl": "-σουσι(ν)"
     }
    }
   },
   "kontrakt_e": {
-   "beskrivning": "Stam på -ε, kontraherar med ändelsen; betoning på kontraktionsstavelsen (cirkumflex).",
+   "beskrivning": "Stam på -ε, kontraherar med ändelsen i presens; betoning på kontraktionsstavelsen (cirkumflex). I futurum upphäver -σ- kontraktionen och ε förlängs till η (φιλέ→φιλή-σω).",
    "andelser": {
     "pres.ind.akt": {
      "1sg": "-ῶ",
@@ -57,6 +65,14 @@
      "1pl": "-οῦμεν",
      "2pl": "-εῖτε",
      "3pl": "-οῦσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "-ησω",
+     "2sg": "-ησεις",
+     "3sg": "-ησει",
+     "1pl": "-ησομεν",
+     "2pl": "-ησετε",
+     "3pl": "-ησουσι(ν)"
     }
    },
    "kontraktionsregler": [
@@ -66,14 +82,15 @@
    ]
   },
   "oregelbunden": {
-   "beskrivning": "Egna paradigm (εἰμί)."
+   "beskrivning": "Egna paradigm (εἰμί; futurum medium ἔσομαι)."
   }
  },
  "_kortlekar": {
   "sem2": "ω-verb, presens ind. aktiv",
   "sem4": "kontraherade -έω, presens ind. aktiv (εἰμί tillkommer)",
   "eimi": "εἰμί (vara) — presens + imperfekt",
-  "sem5": "Seminarium 5-verb (prepositions-/negations-/pronomenövningarna)"
+  "sem5": "Seminarium 5-verb (prepositions-/negations-/pronomenövningarna)",
+  "sem6": "Seminarium 6: futurum (ω-verb λύσω, -έω-verb φιλήσω, εἰμί ἔσομαι)"
  },
  "_falt": {
   "lemma": "Uppslagsform (1sg pres ind akt).",
@@ -83,7 +100,7 @@
   "seminarium": "Seminarier där ordet införs.",
   "kortlekar": "Vilka speldäck ordet ingår i.",
   "nt_frekvens": "Förekomster i NT (nt-lemman.json).",
-  "former": "Böjda former, nyklade 'tempus.modus.diates' -> {person_numerus: form}.",
+  "former": "Böjda former, nyklade 'tempus.modus.diates' -> {person_numerus: form}. Presens (pres.ind.akt), imperfekt (impf.ind.akt) och futurum (fut.ind.akt; εἰμί: fut.ind.med).",
   "belagda_former": "Personnycklar vars form är direkt belagd (facit) i seminarierna — extra tillit.",
   "verifierad": "true först när formerna är samverifierade; false = mönstergenererad, väntar bekräftelse."
  },
@@ -95,10 +112,12 @@
    "klass": "omega",
    "stam": "λύ",
    "seminarium": [
-    2
+    2,
+    6
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem6"
    ],
    "nt_frekvens": 42,
    "former": {
@@ -109,9 +128,24 @@
      "1pl": "λύομεν",
      "2pl": "λύετε",
      "3pl": "λύουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "λύσω",
+     "2sg": "λύσεις",
+     "3sg": "λύσει",
+     "1pl": "λύσομεν",
+     "2pl": "λύσετε",
+     "3pl": "λύσουσι(ν)"
     }
    },
-   "belagda_former": [],
+   "belagda_former": [
+    "fut.ind.akt.1pl",
+    "fut.ind.akt.1sg",
+    "fut.ind.akt.2pl",
+    "fut.ind.akt.2sg",
+    "fut.ind.akt.3pl",
+    "fut.ind.akt.3sg"
+   ],
    "verifierad": true
   },
   {
@@ -149,10 +183,12 @@
    "stam": "ἀκού",
    "seminarium": [
     2,
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem6"
    ],
    "nt_frekvens": 427,
    "former": {
@@ -163,6 +199,14 @@
      "1pl": "ἀκούομεν",
      "2pl": "ἀκούετε",
      "3pl": "ἀκούουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "ἀκούσω",
+     "2sg": "ἀκούσεις",
+     "3sg": "ἀκούσει",
+     "1pl": "ἀκούσομεν",
+     "2pl": "ἀκούσετε",
+     "3pl": "ἀκούσουσι(ν)"
     }
    },
    "belagda_former": [
@@ -314,10 +358,12 @@
    "klass": "omega",
    "stam": "παιδεύ",
    "seminarium": [
-    2
+    2,
+    6
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem6"
    ],
    "nt_frekvens": 13,
    "former": {
@@ -328,10 +374,20 @@
      "1pl": "παιδεύομεν",
      "2pl": "παιδεύετε",
      "3pl": "παιδεύουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "παιδεύσω",
+     "2sg": "παιδεύσεις",
+     "3sg": "παιδεύσει",
+     "1pl": "παιδεύσομεν",
+     "2pl": "παιδεύσετε",
+     "3pl": "παιδεύσουσι(ν)"
     }
    },
    "belagda_former": [
-    "2sg"
+    "2sg",
+    "fut.ind.akt.2pl",
+    "fut.ind.akt.3pl"
    ],
    "verifierad": true
   },
@@ -396,10 +452,12 @@
    "stam": "πιστεύ",
    "seminarium": [
     2,
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem6"
    ],
    "nt_frekvens": 241,
    "former": {
@@ -410,9 +468,21 @@
      "1pl": "πιστεύομεν",
      "2pl": "πιστεύετε",
      "3pl": "πιστεύουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "πιστεύσω",
+     "2sg": "πιστεύσεις",
+     "3sg": "πιστεύσει",
+     "1pl": "πιστεύσομεν",
+     "2pl": "πιστεύσετε",
+     "3pl": "πιστεύσουσι(ν)"
     }
    },
-   "belagda_former": [],
+   "belagda_former": [
+    "fut.ind.akt.1sg",
+    "fut.ind.akt.3pl",
+    "fut.ind.akt.3sg"
+   ],
    "verifierad": true
   },
   {
@@ -524,10 +594,12 @@
    "stam": "φιλ",
    "seminarium": [
     4,
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem4"
+    "sem4",
+    "sem6"
    ],
    "nt_frekvens": 25,
    "former": {
@@ -538,15 +610,29 @@
      "1pl": "φιλοῦμεν",
      "2pl": "φιλεῖτε",
      "3pl": "φιλοῦσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "φιλήσω",
+     "2sg": "φιλήσεις",
+     "3sg": "φιλήσει",
+     "1pl": "φιλήσομεν",
+     "2pl": "φιλήσετε",
+     "3pl": "φιλήσουσι(ν)"
     }
    },
    "belagda_former": [
-    "1sg",
-    "2sg",
-    "3sg",
     "1pl",
+    "1sg",
     "2pl",
-    "3pl"
+    "2sg",
+    "3pl",
+    "3sg",
+    "fut.ind.akt.1pl",
+    "fut.ind.akt.1sg",
+    "fut.ind.akt.2pl",
+    "fut.ind.akt.2sg",
+    "fut.ind.akt.3pl",
+    "fut.ind.akt.3sg"
    ],
    "verifierad": true
   },
@@ -557,10 +643,12 @@
    "stam": "ζητ",
    "seminarium": [
     4,
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem4"
+    "sem4",
+    "sem6"
    ],
    "nt_frekvens": 117,
    "former": {
@@ -571,6 +659,14 @@
      "1pl": "ζητοῦμεν",
      "2pl": "ζητεῖτε",
      "3pl": "ζητοῦσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "ζητήσω",
+     "2sg": "ζητήσεις",
+     "3sg": "ζητήσει",
+     "1pl": "ζητήσομεν",
+     "2pl": "ζητήσετε",
+     "3pl": "ζητήσουσι(ν)"
     }
    },
    "belagda_former": [
@@ -614,10 +710,12 @@
    "stam": "λαλ",
    "seminarium": [
     4,
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem4"
+    "sem4",
+    "sem6"
    ],
    "nt_frekvens": 297,
    "former": {
@@ -628,10 +726,20 @@
      "1pl": "λαλοῦμεν",
      "2pl": "λαλεῖτε",
      "3pl": "λαλοῦσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "λαλήσω",
+     "2sg": "λαλήσεις",
+     "3sg": "λαλήσει",
+     "1pl": "λαλήσομεν",
+     "2pl": "λαλήσετε",
+     "3pl": "λαλήσουσι(ν)"
     }
    },
    "belagda_former": [
-    "3pl"
+    "3pl",
+    "fut.ind.akt.3pl",
+    "fut.ind.akt.3sg"
    ],
    "verifierad": true
   },
@@ -642,10 +750,12 @@
    "stam": "μαρτυρ",
    "seminarium": [
     4,
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem4"
+    "sem4",
+    "sem6"
    ],
    "nt_frekvens": 76,
    "former": {
@@ -656,6 +766,14 @@
      "1pl": "μαρτυροῦμεν",
      "2pl": "μαρτυρεῖτε",
      "3pl": "μαρτυροῦσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "μαρτυρήσω",
+     "2sg": "μαρτυρήσεις",
+     "3sg": "μαρτυρήσει",
+     "1pl": "μαρτυρήσομεν",
+     "2pl": "μαρτυρήσετε",
+     "3pl": "μαρτυρήσουσι(ν)"
     }
    },
    "belagda_former": [
@@ -670,10 +788,12 @@
    "stam": "ποι",
    "seminarium": [
     4,
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem4"
+    "sem4",
+    "sem6"
    ],
    "nt_frekvens": 568,
    "former": {
@@ -684,6 +804,14 @@
      "1pl": "ποιοῦμεν",
      "2pl": "ποιεῖτε",
      "3pl": "ποιοῦσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "ποιήσω",
+     "2sg": "ποιήσεις",
+     "3sg": "ποιήσει",
+     "1pl": "ποιήσομεν",
+     "2pl": "ποιήσετε",
+     "3pl": "ποιήσουσι(ν)"
     }
    },
    "belagda_former": [
@@ -698,10 +826,12 @@
    "stam": "τηρ",
    "seminarium": [
     4,
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem4"
+    "sem4",
+    "sem6"
    ],
    "nt_frekvens": 71,
    "former": {
@@ -712,6 +842,14 @@
      "1pl": "τηροῦμεν",
      "2pl": "τηρεῖτε",
      "3pl": "τηροῦσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "τηρήσω",
+     "2sg": "τηρήσεις",
+     "3sg": "τηρήσει",
+     "1pl": "τηρήσομεν",
+     "2pl": "τηρήσετε",
+     "3pl": "τηρήσουσι(ν)"
     }
    },
    "belagda_former": [
@@ -726,11 +864,13 @@
    "stam": null,
    "seminarium": [
     4,
-    5
+    5,
+    6
    ],
    "kortlekar": [
     "sem4",
-    "eimi"
+    "eimi",
+    "sem6"
    ],
    "nt_frekvens": 2456,
    "former": {
@@ -749,6 +889,14 @@
      "1pl": "ἦμεν",
      "2pl": "ἦτε",
      "3pl": "ἦσαν"
+    },
+    "fut.ind.med": {
+     "1sg": "ἔσομαι",
+     "2sg": "ἔσῃ",
+     "3sg": "ἔσται",
+     "1pl": "ἐσόμεθα",
+     "2pl": "ἔσεσθε",
+     "3pl": "ἔσονται"
     }
    },
    "varianter": {
@@ -768,12 +916,18 @@
     }
    },
    "belagda_former": [
-    "1sg",
-    "2sg",
-    "3sg",
     "1pl",
+    "1sg",
     "2pl",
-    "3pl"
+    "2sg",
+    "3pl",
+    "3sg",
+    "fut.ind.med.1pl",
+    "fut.ind.med.1sg",
+    "fut.ind.med.2pl",
+    "fut.ind.med.2sg",
+    "fut.ind.med.3pl",
+    "fut.ind.med.3sg"
    ],
    "verifierad": true,
    "not": "Enklitiskt i presens (utom 2sg εἶ); accentuering = uppslagsform. Imperfekt har belagda varianter (se 'varianter')."
@@ -784,10 +938,12 @@
    "klass": "kontrakt_e",
    "stam": "αἰτ",
    "seminarium": [
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem5"
+    "sem5",
+    "sem6"
    ],
    "nt_frekvens": 70,
    "former": {
@@ -798,6 +954,14 @@
      "1pl": "αἰτοῦμεν",
      "2pl": "αἰτεῖτε",
      "3pl": "αἰτοῦσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "αἰτήσω",
+     "2sg": "αἰτήσεις",
+     "3sg": "αἰτήσει",
+     "1pl": "αἰτήσομεν",
+     "2pl": "αἰτήσετε",
+     "3pl": "αἰτήσουσι(ν)"
     }
    },
    "belagda_former": [
@@ -811,10 +975,12 @@
    "klass": "omega",
    "stam": "θεραπευ",
    "seminarium": [
-    5
+    5,
+    6
    ],
    "kortlekar": [
-    "sem5"
+    "sem5",
+    "sem6"
    ],
    "nt_frekvens": 43,
    "former": {
@@ -825,6 +991,14 @@
      "1pl": "θεραπεύομεν",
      "2pl": "θεραπεύετε",
      "3pl": "θεραπεύουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "θεραπεύσω",
+     "2sg": "θεραπεύσεις",
+     "3sg": "θεραπεύσει",
+     "1pl": "θεραπεύσομεν",
+     "2pl": "θεραπεύσετε",
+     "3pl": "θεραπεύσουσι(ν)"
     }
    },
    "belagda_former": [
@@ -856,6 +1030,76 @@
    },
    "belagda_former": [
     "3pl"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "λατρεύω",
+   "glosa": "tjäna (med dativ)",
+   "klass": "omega",
+   "stam": "λατρεύ",
+   "seminarium": [
+    6
+   ],
+   "kortlekar": [
+    "sem6"
+   ],
+   "nt_frekvens": 21,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "λατρεύω",
+     "2sg": "λατρεύεις",
+     "3sg": "λατρεύει",
+     "1pl": "λατρεύομεν",
+     "2pl": "λατρεύετε",
+     "3pl": "λατρεύουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "λατρεύσω",
+     "2sg": "λατρεύσεις",
+     "3sg": "λατρεύσει",
+     "1pl": "λατρεύσομεν",
+     "2pl": "λατρεύσετε",
+     "3pl": "λατρεύσουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "fut.ind.akt.2sg"
+   ],
+   "verifierad": true
+  },
+  {
+   "lemma": "προσκυνέω",
+   "glosa": "tillbedja",
+   "klass": "kontrakt_e",
+   "stam": "προσκυνέ",
+   "seminarium": [
+    6
+   ],
+   "kortlekar": [
+    "sem6"
+   ],
+   "nt_frekvens": 60,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "προσκυνῶ",
+     "2sg": "προσκυνεῖς",
+     "3sg": "προσκυνεῖ",
+     "1pl": "προσκυνοῦμεν",
+     "2pl": "προσκυνεῖτε",
+     "3pl": "προσκυνοῦσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "προσκυνήσω",
+     "2sg": "προσκυνήσεις",
+     "3sg": "προσκυνήσει",
+     "1pl": "προσκυνήσομεν",
+     "2pl": "προσκυνήσετε",
+     "3pl": "προσκυνήσουσι(ν)"
+    }
+   },
+   "belagda_former": [
+    "fut.ind.akt.2sg"
    ],
    "verifierad": true
   }

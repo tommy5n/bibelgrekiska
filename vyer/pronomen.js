@@ -1,12 +1,9 @@
-// Vy: Pronomen — personliga pronomen (ἐγώ, σύ) i 1:a och 2:a person.
+// Vy: Pronomen — personliga (ἐγώ, σύ), 3:e person + demonstrativa + interrogativa.
 // Snapshot av pronomen.json (mastern). Formerna är verifierade — ej genererade här.
-// Övar person + numerus + kasus samt den betonade/obetonade (enklitiska) distinktionen.
+// Två frågemodeller styrda av 'modell':
+//   person  (ἐγώ, σύ): person + numerus + kasus + betoning (betonad/enklitisk).
+//   genus   (αὐτός, οὗτος, ἐκεῖνος, τίς): genus + kasus + numerus, böjs som adjektiv.
 // Självförsörjande: injicerar egen .vy-pron-stil (designvariabler från app.css) och städar i teardown.
-//
-// Byggd för att växa: 'modell' avgör frågelogiken. Idag finns bara personliga
-// pronomen (modell="person"). Demonstrativa/interrogativa (modell="genus",
-// B § 120/122) böjs efter genus som adjektiv och läggs till i pronomen.json +
-// en genus-gren i newQuestion() när seminarium 6 kommer.
 let __ph = null;
 
 export function teardown(){
@@ -15,24 +12,28 @@ export function teardown(){
   if(s) s.remove();
 }
 
-/* ── DATA — snapshot av pronomen.json (personliga pronomen).
-   former[numerus][kasus] = [betonad, obetonad]; obetonad=null där särform saknas
-   (nominativ, samt hela pluralen). sv = svensk översättning per kasus. ───────── */
+/* ── DATA — snapshot av pronomen.json. Regenereras ur mastern vid ändring.
+   person: former[num][kas] = [betonad, obetonad]; obetonad=null där särform saknas.
+   genus:  former[genus][kas] = {sg, pl}; sv[genus][num][kas] = svensk översättning. ─── */
 const pronomen = [
-  { lemma:"ἐγώ", glosa:"jag", person:1, modell:"person",
-    former:{
-      sg:{ nom:["ἐγώ",null], gen:["ἐμοῦ","μου"], dat:["ἐμοί","μοι"], ack:["ἐμέ","με"] },
-      pl:{ nom:["ἡμεῖς",null], gen:["ἡμῶν",null], dat:["ἡμῖν",null], ack:["ἡμᾶς",null] },
-    },
-    sv:{ sg:{ nom:"jag", gen:"min", dat:"till mig", ack:"mig" },
-         pl:{ nom:"vi",  gen:"vår", dat:"till oss", ack:"oss" } } },
-  { lemma:"σύ", glosa:"du", person:2, modell:"person",
-    former:{
-      sg:{ nom:["σύ",null], gen:["σοῦ","σου"], dat:["σοί","σοι"], ack:["σέ","σε"] },
-      pl:{ nom:["ὑμεῖς",null], gen:["ὑμῶν",null], dat:["ὑμῖν",null], ack:["ὑμᾶς",null] },
-    },
-    sv:{ sg:{ nom:"du", gen:"din", dat:"till dig", ack:"dig" },
-         pl:{ nom:"ni", gen:"er",  dat:"till er",  ack:"er" } } },
+  { lemma:"ἐγώ", glosa:"jag", modell:"person", sem:[5],
+    former:{ sg:{ nom:["ἐγώ",null], gen:["ἐμοῦ","μου"], dat:["ἐμοί","μοι"], ack:["ἐμέ","με"] }, pl:{ nom:["ἡμεῖς",null], gen:["ἡμῶν",null], dat:["ἡμῖν",null], ack:["ἡμᾶς",null] } },
+    sv:{ sg:{ nom:"jag", gen:"min", dat:"till mig", ack:"mig" }, pl:{ nom:"vi", gen:"vår", dat:"till oss", ack:"oss" } } },
+  { lemma:"σύ", glosa:"du", modell:"person", sem:[5],
+    former:{ sg:{ nom:["σύ",null], gen:["σοῦ","σου"], dat:["σοί","σοι"], ack:["σέ","σε"] }, pl:{ nom:["ὑμεῖς",null], gen:["ὑμῶν",null], dat:["ὑμῖν",null], ack:["ὑμᾶς",null] } },
+    sv:{ sg:{ nom:"du", gen:"din", dat:"till dig", ack:"dig" }, pl:{ nom:"ni", gen:"er", dat:"till er", ack:"er" } } },
+  { lemma:"αὐτός", glosa:"han, hon, det", modell:"genus", sem:[6],
+    former:{ m:{ nom:{sg:"αὐτός",pl:"αὐτοί"}, gen:{sg:"αὐτοῦ",pl:"αὐτῶν"}, dat:{sg:"αὐτῷ",pl:"αὐτοῖς"}, ack:{sg:"αὐτόν",pl:"αὐτούς"} }, f:{ nom:{sg:"αὐτή",pl:"αὐταί"}, gen:{sg:"αὐτῆς",pl:"αὐτῶν"}, dat:{sg:"αὐτῇ",pl:"αὐταῖς"}, ack:{sg:"αὐτήν",pl:"αὐτάς"} }, n:{ nom:{sg:"αὐτό",pl:"αὐτά"}, gen:{sg:"αὐτοῦ",pl:"αὐτῶν"}, dat:{sg:"αὐτῷ",pl:"αὐτοῖς"}, ack:{sg:"αὐτό",pl:"αὐτά"} } },
+    sv:{ m:{ sg:{nom:"han (själv)", gen:"hans", dat:"till honom", ack:"honom"}, pl:{nom:"de (själva)", gen:"deras", dat:"till dem", ack:"dem"} }, f:{ sg:{nom:"hon (själv)", gen:"hennes", dat:"till henne", ack:"henne"}, pl:{nom:"de (själva)", gen:"deras", dat:"till dem", ack:"dem"} }, n:{ sg:{nom:"det (självt)", gen:"dess", dat:"till det", ack:"det"}, pl:{nom:"de (själva)", gen:"deras", dat:"till dem", ack:"dem"} } } },
+  { lemma:"οὗτος", glosa:"denne, denna, detta", modell:"genus", sem:[6],
+    former:{ m:{ nom:{sg:"οὗτος",pl:"οὗτοι"}, gen:{sg:"τούτου",pl:"τούτων"}, dat:{sg:"τούτῳ",pl:"τούτοις"}, ack:{sg:"τοῦτον",pl:"τούτους"} }, f:{ nom:{sg:"αὕτη",pl:"αὗται"}, gen:{sg:"ταύτης",pl:"τούτων"}, dat:{sg:"ταύτῃ",pl:"ταύταις"}, ack:{sg:"ταύτην",pl:"ταύτας"} }, n:{ nom:{sg:"τοῦτο",pl:"ταῦτα"}, gen:{sg:"τούτου",pl:"τούτων"}, dat:{sg:"τούτῳ",pl:"τούτοις"}, ack:{sg:"τοῦτο",pl:"ταῦτα"} } },
+    sv:{ m:{ sg:{nom:"denne", gen:"dennes", dat:"till denne", ack:"denne"}, pl:{nom:"dessa", gen:"dessas", dat:"till dessa", ack:"dessa"} }, f:{ sg:{nom:"denna", gen:"dennas", dat:"till denna", ack:"denna"}, pl:{nom:"dessa", gen:"dessas", dat:"till dessa", ack:"dessa"} }, n:{ sg:{nom:"detta", gen:"dettas", dat:"till detta", ack:"detta"}, pl:{nom:"dessa (detta)", gen:"dessas", dat:"till dessa", ack:"dessa"} } } },
+  { lemma:"ἐκεῖνος", glosa:"den där", modell:"genus", sem:[6],
+    former:{ m:{ nom:{sg:"ἐκεῖνος",pl:"ἐκεῖνοι"}, gen:{sg:"ἐκείνου",pl:"ἐκείνων"}, dat:{sg:"ἐκείνῳ",pl:"ἐκείνοις"}, ack:{sg:"ἐκεῖνον",pl:"ἐκείνους"} }, f:{ nom:{sg:"ἐκείνη",pl:"ἐκεῖναι"}, gen:{sg:"ἐκείνης",pl:"ἐκείνων"}, dat:{sg:"ἐκείνῃ",pl:"ἐκείναις"}, ack:{sg:"ἐκείνην",pl:"ἐκείνας"} }, n:{ nom:{sg:"ἐκεῖνο",pl:"ἐκεῖνα"}, gen:{sg:"ἐκείνου",pl:"ἐκείνων"}, dat:{sg:"ἐκείνῳ",pl:"ἐκείνοις"}, ack:{sg:"ἐκεῖνο",pl:"ἐκεῖνα"} } },
+    sv:{ m:{ sg:{nom:"den där", gen:"den därs", dat:"till den där", ack:"den där"}, pl:{nom:"de där", gen:"de därs", dat:"till de där", ack:"de där"} }, f:{ sg:{nom:"den där", gen:"den därs", dat:"till den där", ack:"den där"}, pl:{nom:"de där", gen:"de därs", dat:"till de där", ack:"de där"} }, n:{ sg:{nom:"det där", gen:"det därs", dat:"till det där", ack:"det där"}, pl:{nom:"de där", gen:"de därs", dat:"till de där", ack:"de där"} } } },
+  { lemma:"τίς", glosa:"vem?, vad?", modell:"genus", sem:[6],
+    former:{ m:{ nom:{sg:"τίς",pl:"τίνες"}, gen:{sg:"τίνος",pl:"τίνων"}, dat:{sg:"τίνι",pl:"τίσι(ν)"}, ack:{sg:"τίνα",pl:"τίνας"} }, f:{ nom:{sg:"τίς",pl:"τίνες"}, gen:{sg:"τίνος",pl:"τίνων"}, dat:{sg:"τίνι",pl:"τίσι(ν)"}, ack:{sg:"τίνα",pl:"τίνας"} }, n:{ nom:{sg:"τί",pl:"τίνα"}, gen:{sg:"τίνος",pl:"τίνων"}, dat:{sg:"τίνι",pl:"τίσι(ν)"}, ack:{sg:"τί",pl:"τίνα"} } },
+    sv:{ m:{ sg:{nom:"vem?", gen:"vems?", dat:"till vem?", ack:"vem?"}, pl:{nom:"vilka?", gen:"vilkas?", dat:"till vilka?", ack:"vilka?"} }, f:{ sg:{nom:"vem?", gen:"vems?", dat:"till vem?", ack:"vem?"}, pl:{nom:"vilka?", gen:"vilkas?", dat:"till vilka?", ack:"vilka?"} }, n:{ sg:{nom:"vad?", gen:"vilkens?", dat:"till vilken?", ack:"vad?"}, pl:{nom:"vilka?", gen:"vilkas?", dat:"till vilka?", ack:"vilka?"} } } },
 ];
 
 const KASUS = { nom:"nominativ", gen:"genitiv", dat:"dativ", ack:"ackusativ" };
@@ -41,19 +42,36 @@ const NUM = { sg:"singular", pl:"plural" };
 const NUM_ORDNING = ["sg","pl"];
 const BET = { betonad:"betonad", obetonad:"obetonad" };
 const BET_ORDNING = ["betonad","obetonad"];
+const GENUS = { m:"maskulinum", f:"femininum", n:"neutrum" };
+const GENUS_ORDNING = ["m","f","n"];
 
-// Alla giltiga kort = kombinationer (pronomen × numerus × kasus × betoning)
-// där en form faktiskt finns (obetonad saknas i nominativ och i pluralen).
-function alla_kombos(){
+/* Seminarie-axel: varje pronomen bär sem:[…] ur pronomen.json. */
+const SEMINARIER = [...new Set(pronomen.flatMap(p => p.sem))].sort((a,b) => a - b);
+const semNamn = s => "Sem " + s;
+
+const prom = l => pronomen.find(p => p.lemma === l);
+
+// Alla giltiga kort ur en pronomenlista. Person-pronomen ger betonings-kort där
+// formen finns (obetonad saknas i nominativ och hela pluralen); genus-pronomen
+// ger genus-kort (m/f/n × kasus × numerus).
+function kombosFor(list){
   const out = [];
-  pronomen.forEach(p => NUM_ORDNING.forEach(num => KASUS_ORDNING.forEach(kas => BET_ORDNING.forEach(bet => {
-    const form = formen(p, num, kas, bet);
-    if(form) out.push({ lemma:p.lemma, num, kas, bet, form });
-  }))));
+  list.forEach(p => {
+    if(p.modell === "person"){
+      NUM_ORDNING.forEach(num => KASUS_ORDNING.forEach(kas => BET_ORDNING.forEach(bet => {
+        const form = p.former[num][kas][bet === "betonad" ? 0 : 1];
+        if(form) out.push({ lemma:p.lemma, modell:"person", num, kas, bet, genus:null, form });
+      })));
+    } else {
+      GENUS_ORDNING.forEach(g => KASUS_ORDNING.forEach(kas => NUM_ORDNING.forEach(num => {
+        const form = p.former[g][kas][num];
+        if(form) out.push({ lemma:p.lemma, modell:"genus", num, kas, bet:null, genus:g, form });
+      })));
+    }
+  });
   return out;
 }
-const formen = (p, num, kas, bet) => p.former[num][kas][bet==="betonad" ? 0 : 1];
-const prom   = l => pronomen.find(p => p.lemma === l);
+const alla_kombos = () => kombosFor(pronomen);
 
 const STYLE = `
 .vy-pron .stage{ display:flex; flex-direction:column; align-items:center; gap:1rem; margin-top:1rem; }
@@ -66,6 +84,7 @@ const STYLE = `
 .vy-pron .target b{ color:var(--ink); }
 .vy-pron .bet{ font-family:"Spectral",serif; font-size:var(--fs-sm); margin-top:.3rem; color:var(--ink-soft); }
 .vy-pron .bet.enklit{ color:var(--gold); }
+.vy-pron .bet.hidden{ display:none !important; }
 .vy-pron .reveal{ margin-top:1rem; border-top:1px dashed var(--line); padding-top:1rem; }
 .vy-pron .svar{ font-family:"Cardo",serif; font-size:var(--fs-3xl); color:var(--ink); }
 .vy-pron .svarlabel{ font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-sm); margin-top:.2rem; }
@@ -88,8 +107,8 @@ const STYLE = `
 .vy-pron .mode{ font-family:"Spectral",serif; font-size:var(--fs-sm); padding:.35rem .9rem;
   border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
 .vy-pron .mode[aria-pressed="true"]{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
-/* Picker (.picker/.picker-toggle/.toggle m.fl.) stylas nu av den delade
-   komponenten i app.css — inga vy-lokala regler här. */
+/* Picker (.picker/.picker-toggle/.toggle/.chip/.quickrow m.fl.) stylas av den
+   delade komponenten i app.css — inga vy-lokala regler här. */
 .vy-pron footer{ margin-top:1.4rem; font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; }
 .vy-pron footer a{ color:var(--gold); text-decoration:none; }
 .vy-pron footer a:hover{ text-decoration:underline; }
@@ -98,8 +117,8 @@ const STYLE = `
 
 const MARKUP = `<div class="vy vy-pron">
 <header>
-  <h1>Grekiska — personliga pronomen</h1>
-  <div class="sub" id="sub">Person, numerus och kasus + betoning. Ge den rätta formen.</div>
+  <h1>Grekiska — pronomen</h1>
+  <div class="sub" id="sub">Personliga, demonstrativa och interrogativa pronomen. Ge den rätta formen.</div>
 </header>
 
 <div class="modes" role="group" aria-label="Spelläge">
@@ -135,6 +154,15 @@ const MARKUP = `<div class="vy vy-pron">
   <button class="picker-toggle" id="picker-toggle" aria-expanded="false"><span>Anpassa övningen</span><span>▾</span></button>
   <div class="picker-body hidden" id="picker-body">
     <div>
+      <h2>Seminarium</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-sem-all>alla</button>
+        <button class="chip" data-sem-none>inga</button>
+      </div>
+      <div class="grid" id="grid-sem"></div>
+    </div>
+    <div>
       <h2>Pronomen</h2>
       <div class="grid" id="grid-pron"></div>
     </div>
@@ -146,15 +174,19 @@ const MARKUP = `<div class="vy vy-pron">
       <h2>Kasus</h2>
       <div class="grid" id="grid-kas"></div>
     </div>
-    <div>
-      <h2>Betoning</h2>
+    <div id="sec-bet">
+      <h2>Betoning <span class="quicklabel">(ἐγώ, σύ)</span></h2>
       <div class="grid" id="grid-bet"></div>
+    </div>
+    <div id="sec-genus">
+      <h2>Genus <span class="quicklabel">(αὐτός, οὗτος, ἐκεῖνος, τίς)</span></h2>
+      <div class="grid" id="grid-genus"></div>
     </div>
   </div>
 </div>
 
-<footer>Betonade former (ἐμοῦ, ἐμοί, ἐμέ) står efter preposition och vid emfas; obetonade/enklitiska (μου, μοι, με) i övriga fall. Nominativ och pluralen saknar obetonad särform.
-<div class="gr-lank"><a href="grammatikreferens.html#pronomen">§ Personliga pronomen i grammatikreferensen →</a></div></footer>
+<footer>Personliga pronomen (ἐγώ, σύ) har en <b>betonad</b> form (efter preposition, vid emfas) och en <b>obetonad/enklitisk</b> (i övriga fall); nominativ och pluralen saknar enklitisk särform. <b>αὐτός, οὗτος, ἐκεῖνος</b> och <b>τίς</b> böjs efter genus som adjektiv (neutrum sg på -ο).
+<div class="gr-lank"><a href="grammatikreferens.html#pronomen">§ Pronomen i grammatikreferensen →</a></div></footer>
 </div>`;
 
 export function render(root){
@@ -167,10 +199,12 @@ export function render(root){
   const LAGER = "grekiska-pronomenspel";
   const state = {
     mode: "vand",
-    valdaPron: new Set(pronomen.map(p => p.lemma)),
-    valdaNum:  new Set(NUM_ORDNING),
-    valdaKas:  new Set(KASUS_ORDNING),
-    valdaBet:  new Set(BET_ORDNING),
+    valdaSem:   new Set(SEMINARIER),
+    valdaPron:  new Set(pronomen.map(p => p.lemma)),
+    valdaNum:   new Set(NUM_ORDNING),
+    valdaKas:   new Set(KASUS_ORDNING),
+    valdaBet:   new Set(BET_ORDNING),
+    valdaGenus: new Set(GENUS_ORDNING),
     streak: 0, best: 0, card: null, besvarad: false, valt: null, forra: null,
   };
 
@@ -178,34 +212,48 @@ export function render(root){
   const pick = a => a[Math.floor(Math.random()*a.length)];
   const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 
-  // Aktiva kort = giltiga kombinationer som matchar alla valda dimensioner.
-  // Faller tillbaka på hela mängden om ett urval råkar bli tomt.
+  // Pronomen synliga i valda seminarier (faller tillbaka på alla om urvalet blir tomt).
+  const synligaPron = () => { const l = pronomen.filter(p => p.sem.some(s => state.valdaSem.has(s))); return l.length ? l : pronomen; };
+  // Aktiva pronomen = synliga ∩ valda (med fallback).
+  function aktivPron(){
+    const syn = synligaPron();
+    const v = syn.filter(p => state.valdaPron.has(p.lemma));
+    return v.length ? v : syn;
+  }
+
+  // Aktiva kort = giltiga kombinationer från aktiva pronomen som matchar valda
+  // dimensioner (betoning gäller person-, genus gäller genus-pronomen).
   function aktivaKombos(){
-    const k = alla_kombos().filter(c =>
-      state.valdaPron.has(c.lemma) && state.valdaNum.has(c.num) &&
-      state.valdaKas.has(c.kas) && state.valdaBet.has(c.bet));
-    return k.length ? k : alla_kombos();
+    const list = aktivPron();
+    const k = kombosFor(list).filter(c =>
+      state.valdaNum.has(c.num) && state.valdaKas.has(c.kas) &&
+      (c.modell === "person" ? state.valdaBet.has(c.bet) : state.valdaGenus.has(c.genus)));
+    return k.length ? k : kombosFor(list);
   }
 
   function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({
-    mode:state.mode, valdaPron:[...state.valdaPron], valdaNum:[...state.valdaNum],
-    valdaKas:[...state.valdaKas], valdaBet:[...state.valdaBet], best:state.best })); }catch(e){} }
+    mode:state.mode, valdaSem:[...state.valdaSem], valdaPron:[...state.valdaPron], valdaNum:[...state.valdaNum],
+    valdaKas:[...state.valdaKas], valdaBet:[...state.valdaBet], valdaGenus:[...state.valdaGenus], best:state.best })); }catch(e){} }
   function ladda(){ try{ const r = JSON.parse(localStorage.getItem(LAGER)); if(!r) return;
     if(r.mode) state.mode = r.mode;
-    if(Array.isArray(r.valdaPron)) state.valdaPron = new Set(r.valdaPron.filter(l => pronomen.some(p=>p.lemma===l)));
-    if(Array.isArray(r.valdaNum))  state.valdaNum  = new Set(r.valdaNum.filter(k => NUM_ORDNING.includes(k)));
-    if(Array.isArray(r.valdaKas))  state.valdaKas  = new Set(r.valdaKas.filter(k => KASUS_ORDNING.includes(k)));
-    if(Array.isArray(r.valdaBet))  state.valdaBet  = new Set(r.valdaBet.filter(k => BET_ORDNING.includes(k)));
+    if(Array.isArray(r.valdaSem))   state.valdaSem   = new Set(r.valdaSem.filter(s => SEMINARIER.includes(s)));
+    if(Array.isArray(r.valdaPron))  state.valdaPron  = new Set(r.valdaPron.filter(l => pronomen.some(p=>p.lemma===l)));
+    if(Array.isArray(r.valdaNum))   state.valdaNum   = new Set(r.valdaNum.filter(k => NUM_ORDNING.includes(k)));
+    if(Array.isArray(r.valdaKas))   state.valdaKas   = new Set(r.valdaKas.filter(k => KASUS_ORDNING.includes(k)));
+    if(Array.isArray(r.valdaBet))   state.valdaBet   = new Set(r.valdaBet.filter(k => BET_ORDNING.includes(k)));
+    if(Array.isArray(r.valdaGenus)) state.valdaGenus = new Set(r.valdaGenus.filter(k => GENUS_ORDNING.includes(k)));
     if(typeof r.best === "number") state.best = r.best;
     // skydda mot tomma urval från gammalt sparat läge
-    if(!state.valdaPron.size) state.valdaPron = new Set(pronomen.map(p=>p.lemma));
-    if(!state.valdaNum.size)  state.valdaNum  = new Set(NUM_ORDNING);
-    if(!state.valdaKas.size)  state.valdaKas  = new Set(KASUS_ORDNING);
-    if(!state.valdaBet.size)  state.valdaBet  = new Set(BET_ORDNING);
+    if(!state.valdaSem.size)   state.valdaSem   = new Set(SEMINARIER);
+    if(!state.valdaPron.size)  state.valdaPron  = new Set(pronomen.map(p=>p.lemma));
+    if(!state.valdaNum.size)   state.valdaNum   = new Set(NUM_ORDNING);
+    if(!state.valdaKas.size)   state.valdaKas   = new Set(KASUS_ORDNING);
+    if(!state.valdaBet.size)   state.valdaBet   = new Set(BET_ORDNING);
+    if(!state.valdaGenus.size) state.valdaGenus = new Set(GENUS_ORDNING);
   }catch(e){} }
 
-  // Distraktorer = andra former ur SAMMA pronomens paradigm (så ändelserna tränas,
-  // inte gissning). Fyll på från det andra pronomenet om paradigmet inte räcker till 4.
+  // Distraktorer = andra former ur SAMMA pronomens paradigm (så böjningen tränas,
+  // inte gissning). Fyll på från övriga pronomen om paradigmet inte räcker till 4.
   function byggOptioner(c){
     const egna = alla_kombos().filter(x => x.lemma === c.lemma && x.form !== c.form).map(x => x.form);
     let pool = [...new Set(egna)];
@@ -216,14 +264,16 @@ export function render(root){
     return shuffle([c.form, ...shuffle(pool).slice(0,3)]);
   }
 
+  function svFor(p, c){ return c.modell === "person" ? p.sv[c.num][c.kas] : p.sv[c.genus][c.num][c.kas]; }
+
   function newQuestion(){
     const ks = aktivaKombos();
     let c, sig, n=0;
-    do { c = pick(ks); sig = c.lemma+"|"+c.num+"|"+c.kas+"|"+c.bet; } while(sig === state.forra && ++n < 30);
+    do { c = pick(ks); sig = c.lemma+"|"+c.num+"|"+c.kas+"|"+(c.bet||c.genus); } while(sig === state.forra && ++n < 30);
     state.forra = sig;
     const p = prom(c.lemma);
     state.card = {
-      ...c, glosa: p.glosa, sv: p.sv[c.num][c.kas],
+      ...c, glosa: p.glosa, sv: svFor(p, c),
       optioner: state.mode === "flerval" ? byggOptioner(c) : null,
     };
     state.besvarad = false; state.valt = null;
@@ -234,10 +284,17 @@ export function render(root){
     const c = state.card;
     $("prompt").textContent = c.lemma;
     $("glosa").textContent = c.glosa;
-    $("target").innerHTML = "→ <b>" + KASUS[c.kas] + " " + NUM[c.num] + "</b> (" + c.sv + ")";
-    const enklit = c.bet === "obetonad";
-    $("betlabel").textContent = enklit ? "obetonad (enklitisk) form" : "betonad form";
-    $("betlabel").classList.toggle("enklit", enklit);
+    const led = c.modell === "genus" ? GENUS[c.genus] + " " : "";
+    $("target").innerHTML = "→ <b>" + led + KASUS[c.kas] + " " + NUM[c.num] + "</b> (" + c.sv + ")";
+    const betEl = $("betlabel");
+    if(c.modell === "person"){
+      const enklit = c.bet === "obetonad";
+      betEl.textContent = enklit ? "obetonad (enklitisk) form" : "betonad form";
+      betEl.classList.toggle("enklit", enklit);
+      betEl.classList.remove("hidden");
+    } else {
+      betEl.classList.add("hidden");
+    }
     $("streak").textContent = state.streak;
     $("best").textContent = state.best;
 
@@ -258,7 +315,10 @@ export function render(root){
   function visaSvar(){
     const c = state.card;
     $("svar").textContent = c.form;
-    $("svarlabel").textContent = c.lemma + " · " + KASUS[c.kas] + " " + NUM[c.num] + " · " + BET[c.bet];
+    const svag = c.modell === "person"
+      ? c.lemma + " · " + KASUS[c.kas] + " " + NUM[c.num] + " · " + BET[c.bet]
+      : c.lemma + " · " + GENUS[c.genus] + " " + KASUS[c.kas] + " " + NUM[c.num];
+    $("svarlabel").textContent = svag;
     $("reveal").classList.remove("hidden");
   }
   function renderOptioner(){
@@ -291,11 +351,50 @@ export function render(root){
       g.appendChild(b);
     });
   }
+  // Pronomen-griden visar bara pronomen i valda seminarier.
+  function byggGridPron(){
+    const g = $("grid-pron"); g.innerHTML = "";
+    synligaPron().forEach(p => {
+      const b = document.createElement("button");
+      b.className="toggle"; b.textContent = p.lemma + " (" + p.glosa + ")";
+      b.setAttribute("aria-pressed", state.valdaPron.has(p.lemma));
+      b.onclick = () => {
+        if(state.valdaPron.has(p.lemma)){ if(state.valdaPron.size>1) state.valdaPron.delete(p.lemma); }
+        else state.valdaPron.add(p.lemma);
+        b.setAttribute("aria-pressed", state.valdaPron.has(p.lemma));
+        uppdateraSektioner(); spara(); newQuestion();
+      };
+      g.appendChild(b);
+    });
+  }
+  function byggGridSem(){
+    const g = $("grid-sem"); g.innerHTML = "";
+    SEMINARIER.forEach(s => {
+      const b = document.createElement("button");
+      b.className="toggle"; b.textContent = semNamn(s);
+      b.setAttribute("aria-pressed", state.valdaSem.has(s));
+      b.onclick = () => {
+        if(state.valdaSem.has(s)){ if(state.valdaSem.size>1) state.valdaSem.delete(s); } else state.valdaSem.add(s);
+        b.setAttribute("aria-pressed", state.valdaSem.has(s));
+        byggGridPron(); uppdateraSektioner(); spara(); newQuestion();
+      };
+      g.appendChild(b);
+    });
+  }
+  // Visa Betoning-/Genus-sektionen bara när aktiva pronomen använder dimensionen.
+  function uppdateraSektioner(){
+    const mods = new Set(aktivPron().map(p => p.modell));
+    $("sec-bet").classList.toggle("hidden", !mods.has("person"));
+    $("sec-genus").classList.toggle("hidden", !mods.has("genus"));
+  }
   function byggPickers(){
-    byggGrid("grid-pron", pronomen.map(p=>p.lemma), l => l + " (" + prom(l).glosa + ")", state.valdaPron);
+    byggGridSem();
+    byggGridPron();
     byggGrid("grid-num", NUM_ORDNING, k => NUM[k], state.valdaNum);
     byggGrid("grid-kas", KASUS_ORDNING, k => KASUS[k], state.valdaKas);
     byggGrid("grid-bet", BET_ORDNING, k => BET[k], state.valdaBet);
+    byggGrid("grid-genus", GENUS_ORDNING, k => GENUS[k], state.valdaGenus);
+    uppdateraSektioner();
   }
 
   function uppdateraLäge(){ $("mode-vand").setAttribute("aria-pressed", state.mode==="vand");
@@ -309,6 +408,8 @@ export function render(root){
   $("btn-next").onclick     = () => newQuestion();
   $("picker-toggle").onclick = () => { const o = $("picker-toggle").getAttribute("aria-expanded")==="true";
     $("picker-toggle").setAttribute("aria-expanded", !o); $("picker-body").classList.toggle("hidden", o); };
+  document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEMINARIER); byggGridSem(); byggGridPron(); uppdateraSektioner(); spara(); newQuestion(); };
+  document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); byggGridPron(); uppdateraSektioner(); spara(); newQuestion(); };
 
   __ph = e => {
     if(e.code==="Space" && state.mode==="vand" && !state.besvarad){ e.preventDefault(); state.besvarad=true; render2(); }
