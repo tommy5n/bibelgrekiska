@@ -1,5 +1,5 @@
 {
- "_om": "Lexikon for bibelgrekiska kasus-spel. Andra deklinationens substantiv: maskulina (-ος) och neutrala (-ον). Alla former verifierade mot seminariets facit, NT-attestationer (MorphGNT) och LSJ.",
+ "_om": "Lexikon for bibelgrekiska kasus-spel. Substantiv efter 1:a, 2:a och 3:e deklinationen (1:a/2:a ar andelsebaserade; 3:e ar stambaserad, seminarium 7). Alla former verifierade mot seminariets facit, NT-attestationer (MorphGNT), LSJ och Blomqvist § 68-96.",
  "_genererad": "2026-07-07",
  "_falt": {
   "glosaGen": "Svensk genitiv (explicit dar -s-regeln inte racker, t.ex. Kristus -> Kristi)",
@@ -8,7 +8,10 @@
   "kortlekar": "Fordefinierade urval: sem1, sem2, ovriga, oxytona",
   "ntFrekvensOver60": "true om ordet forekommer >60 ggr i NT (annars seminarium 1-lasord)",
   "glosaPl": "Svensk plural (nom/ack); kan ej genereras mekaniskt",
-  "glosaGenPl": "Svensk genitiv plural (explicit dar -s-regeln eller flerords-glosor inte racker)"
+  "glosaGenPl": "Svensk genitiv plural (explicit dar -s-regeln eller flerords-glosor inte racker)",
+  "deklination": "1 | 2 | 3 (3:e deklinationen ar stambaserad — se 'stam' och _tredjeklasser)",
+  "stam": "Genitivstammen for 3:e deklinationen (t.ex. ἡγεμον-, σαρκ-, πολ-); utelamnat for 1:a/2:a dekl.",
+  "tredjeklass": "Undertyp av 3:e deklinationen (se _tredjeklasser); utelamnat for 1:a/2:a dekl."
  },
  "_kortlekar": {
   "sem1": "Seminarium 1 (lasovning)",
@@ -17,7 +20,8 @@
   "oxytona": "Accent pa sista stavelsen -> cirkumflex i genitiv/dativ",
   "neutrum": "Andra deklinationens neutrala substantiv (-ον), seminarium 3",
   "feminina2dekl": "Andra deklinationens feminina substantiv (-ος men feminint genus): ἡ νόσος, ἡ ὁδός, ἡ ἔρημος, ἡ παρθένος (seminarium 5)",
-  "maskulina1dekl": "Första deklinationens maskulina substantiv (-ης/-ας): ὁ μαθητής, ὁ προφήτης, ὁ νεανίας, ὁ οἰκοδεσπότης (seminarium 5)"
+  "maskulina1dekl": "Första deklinationens maskulina substantiv (-ης/-ας): ὁ μαθητής, ὁ προφήτης, ὁ νεανίας, ὁ οἰκοδεσπότης (seminarium 5)",
+  "tredjedekl": "Tredje deklinationens substantiv (stambaserade), seminarium 7. UNDANTAS andelsespelet (som harleder paradigm ur genus) — anvands bara dar explicita former lases (kasus, kongruens)."
  },
  "ord": [
   {
@@ -2679,6 +2683,62 @@
     }
    },
    "glosaPl": "liknelser"
+  },
+  {
+   "lemma": "ἡγεμών",
+   "glosa": "ståthållare, landshövding",
+   "glosaGen": "ståthållares",
+   "genus": "maskulinum",
+   "deklination": 3,
+   "stam": "ἡγεμον-",
+   "tredjeklass": "nasal",
+   "accenttyp": "oxyton",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "ἡγεμών",
+     "pl": "ἡγεμόνες"
+    },
+    "gen": {
+     "sg": "ἡγεμόνος",
+     "pl": "ἡγεμόνων"
+    },
+    "dat": {
+     "sg": "ἡγεμόνι",
+     "pl": "ἡγεμόσι(ν)"
+    },
+    "ack": {
+     "sg": "ἡγεμόνα",
+     "pl": "ἡγεμόνας"
+    },
+    "vok": {
+     "sg": "ἡγεμών",
+     "pl": "ἡγεμόνες"
+    }
+   },
+   "glosaPl": "ståthållare",
+   "not": "Nasalstam ἡγεμον- (B § 76-77): nom förlänger ο→ω (ἡγεμών), vok = nom. Dat pl ἡγεμόσι(ν): ν faller framför σ. Persistent accent på -μο-/-μω-."
   }
- ]
+ ],
+ "_tredjeklasser": {
+  "_om": "Undertyper av tredje deklinationen (Blomqvist § 68-96). Formerna byggs pa genitivstammen (faltet 'stam'), inte harledda ur genus som 1:a/2:a dekl. Darfor ska deklination==3 UNDANTAS andelsespelet och bara anvandas dar explicita former lases.",
+  "_betoning": "Persistent accent — ligger kvar pa nominativens stavelse sa langt reglerna tillater; enstaviga stammar betonar andelsen i gen/dat (§70). Formerna lagras explicit per ord.",
+  "nasal": "Nasalstam -ν: ἡγεμών ἡγεμόνος, ποιμήν ποιμένος, αἰών αἰῶνος (§76-77).",
+  "klusil": "Klusilstam (labial/velar/dental): σάρξ σαρκός, νύξ νυκτός, ἐλπίς ἐλπίδος, χάρις χάριτος (§71-73).",
+  "nt-neutrum": "Neutrum pa -μα/-ματος: πνεῦμα, ὄνομα, σῶμα (§72:2).",
+  "ntstam": "Stam pa -ντ: γέρων γέροντος, ἄρχων ἄρχοντος (§74-75).",
+  "liquida": "Liquidastam utan avljud: σωτήρ, πῦρ πυρός, χείρ χειρός (§78-79).",
+  "liquida-avljud": "Liquidastam med avljud: πατήρ πατρός, μήτηρ, ἀνήρ ἀνδρός (§80-81).",
+  "sigma-neutrum": "Sigmastam -εσ, neutra pa -ος/-ους: γένος γένους (§82-83).",
+  "vokal": "Vokalstam -υ/-ι: ἰχθῦς (§86-87).",
+  "polis": "Halvvokalstam -ι, gen -εως: πόλις πόλεως (§88-89).",
+  "basileus": "Halvvokalstam -ευ, gen -εως: βασιλεύς βασιλέως (§92-93).",
+  "_scope": "In-scope for kursen (NT-hogfrekvent): nasal, klusil, nt-neutrum, sigma-neutrum, liquida, liquida-avljud, polis, basileus. Reference-only (klassiskt/sallsynt), laggs EJ in: γραῦς/ναῦς/βοῦς (§94), πειθώ/Λητώ (§90), τριήρης (§82), ῥήτωρ/ἀνδριάς/γίγας m.fl. Piloten ἡγεμών (nasal) inlagd 2026-07-10."
+ }
 }

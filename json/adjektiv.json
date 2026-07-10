@@ -6,12 +6,14 @@
   "accenttyp": "oxyton | paroxyton | proparoxyton | properispomenon — styr om accenten flyttar i bojningen",
   "kortlekar": "oxytona (cirkumflex i gen/dat) | ovriga (forskjutande eller fast accent)",
   "ntFrekvensOver60": "true om lemmat forekommer >60 ggr i NT",
-  "slut": "2 om adjektivet har \"två slut\" (maskulinformen gäller även femininum); annars utelämnat (=3 slut)."
+  "slut": "2 om adjektivet har \"två slut\" (maskulinformen gäller även femininum); annars utelämnat (=3 slut).",
+  "oregelbunden": "true om adjektivet blandar deklinationer och inte kan härledas ur 2-1-2-mönstret (μέγας, πολύς, B § 108). Formerna lagras explicit; ska undantas paradigmhärledande spel."
  },
  "_kortlekar": {
   "oxytona": "Oxytona adjektiv (ἀγαθός-typ): cirkumflex i genitiv/dativ",
   "ovriga": "Adjektiv med fast eller forskjutande stamaccent (ἅγιος, μόνος, πρῶτος)",
-  "tva_slut": "Adjektiv med två slut (maskulinum = femininum): αἰώνιος -ον (seminarium 5, B § 101)"
+  "tva_slut": "Adjektiv med två slut (maskulinum = femininum): αἰώνιος -ον (seminarium 5, B § 101)",
+  "oregelbundna": "Adjektiv efter tre deklinationer (μέγας, πολύς; B § 108): 2-1-2 med korta 3:e-dekl-former i mask./neutr. nom/ack sg. UNDANTAS ändelse-/paradigmhärledande spel (former lagras explicit). Jfr πᾶς som ligger som paradigm i seminarier.json."
  },
  "adjektiv": [
   {
@@ -1416,6 +1418,174 @@
      }
     }
    }
+  },
+  {
+   "lemma": "μέγας",
+   "glosa": "stor",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "oregelbundna"
+   ],
+   "ntFrekvensOver60": true,
+   "oregelbunden": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "μέγας",
+      "pl": "μεγάλοι"
+     },
+     "gen": {
+      "sg": "μεγάλου",
+      "pl": "μεγάλων"
+     },
+     "dat": {
+      "sg": "μεγάλῳ",
+      "pl": "μεγάλοις"
+     },
+     "ack": {
+      "sg": "μέγαν",
+      "pl": "μεγάλους"
+     },
+     "vok": {
+      "sg": "μέγας",
+      "pl": "μεγάλοι"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "μέγα",
+      "pl": "μεγάλα"
+     },
+     "gen": {
+      "sg": "μεγάλου",
+      "pl": "μεγάλων"
+     },
+     "dat": {
+      "sg": "μεγάλῳ",
+      "pl": "μεγάλοις"
+     },
+     "ack": {
+      "sg": "μέγα",
+      "pl": "μεγάλα"
+     },
+     "vok": {
+      "sg": "μέγα",
+      "pl": "μεγάλα"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "μεγάλη",
+      "pl": "μεγάλαι"
+     },
+     "gen": {
+      "sg": "μεγάλης",
+      "pl": "μεγάλων"
+     },
+     "dat": {
+      "sg": "μεγάλῃ",
+      "pl": "μεγάλαις"
+     },
+     "ack": {
+      "sg": "μεγάλην",
+      "pl": "μεγάλας"
+     },
+     "vok": {
+      "sg": "μεγάλη",
+      "pl": "μεγάλαι"
+     }
+    }
+   },
+   "not": "Adjektiv efter tre deklinationer (B § 108): mask./neutr. nom/ack(/vok) sg är korta 3:e-dekl-former (μέγας, μέγα, μέγαν) på stammen μεγα-; övriga former 2-1-2 på stammen μεγαλ- (fem 1:a dekl., mask/neutr obliqua 2:a dekl.)."
+  },
+  {
+   "lemma": "πολύς",
+   "glosa": "mycken (pl. många)",
+   "ordklass": "adjektiv",
+   "deklination": 2,
+   "accenttyp": "oxyton",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "oregelbundna"
+   ],
+   "ntFrekvensOver60": true,
+   "oregelbunden": true,
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "πολύς",
+      "pl": "πολλοί"
+     },
+     "gen": {
+      "sg": "πολλοῦ",
+      "pl": "πολλῶν"
+     },
+     "dat": {
+      "sg": "πολλῷ",
+      "pl": "πολλοῖς"
+     },
+     "ack": {
+      "sg": "πολύν",
+      "pl": "πολλούς"
+     },
+     "vok": {
+      "sg": "πολύς",
+      "pl": "πολλοί"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "πολύ",
+      "pl": "πολλά"
+     },
+     "gen": {
+      "sg": "πολλοῦ",
+      "pl": "πολλῶν"
+     },
+     "dat": {
+      "sg": "πολλῷ",
+      "pl": "πολλοῖς"
+     },
+     "ack": {
+      "sg": "πολύ",
+      "pl": "πολλά"
+     },
+     "vok": {
+      "sg": "πολύ",
+      "pl": "πολλά"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "πολλή",
+      "pl": "πολλαί"
+     },
+     "gen": {
+      "sg": "πολλῆς",
+      "pl": "πολλῶν"
+     },
+     "dat": {
+      "sg": "πολλῇ",
+      "pl": "πολλαῖς"
+     },
+     "ack": {
+      "sg": "πολλήν",
+      "pl": "πολλάς"
+     },
+     "vok": {
+      "sg": "πολλή",
+      "pl": "πολλαί"
+     }
+    }
+   },
+   "not": "Adjektiv efter tre deklinationer (B § 108): mask./neutr. nom/ack(/vok) sg är korta 3:e-dekl-former (πολύς, πολύ, πολύν) på stammen πολυ-; övriga former 2-1-2 på stammen πολλ- (fem 1:a dekl., mask/neutr obliqua 2:a dekl.)."
   }
  ]
 }

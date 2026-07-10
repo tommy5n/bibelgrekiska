@@ -1,5 +1,5 @@
 {
- "_om": "Pronomen for bibelgrekiska pronomenspel. Sanningskalla, verifierad mot seminariernas facit/tabeller, MorphGNT och Smyth. Additiv struktur: 'bojningsmodell' avgor formernas form. Scope: seminarium 5 (personliga 1:a/2:a person ego, sy) samt seminarium 6 (3:e person autos, demonstrativa houtos/ekeinos, interrogativa tis/ti).",
+ "_om": "Pronomen for bibelgrekiska pronomenspel. Sanningskalla, verifierad mot seminariernas facit/tabeller, MorphGNT och Smyth. Additiv struktur: 'bojningsmodell' avgor formernas form. Scope: seminarium 5 (personliga 1:a/2:a person ego, sy) samt seminarium 6 (3:e person autos, demonstrativa houtos/ekeinos, interrogativa tis/ti). Seminarium 7 tillför possessiva (ἐμός, σός, ἡμέτερος, ὑμέτερος, B § 119) och indefinit τις (B § 123).",
  "_genererad": "2026-07-07",
  "_nycklar": {
   "typ": {
@@ -7,7 +7,8 @@
    "possessivt": "Possessivt (min, din)",
    "demonstrativt": "Demonstrativt (denne, denna, detta)",
    "interrogativt": "Interrogativt (vem? vad?)",
-   "relativt": "Relativt (som, vilken)"
+   "relativt": "Relativt (som, vilken)",
+   "indefinit": "Indefinit (någon, något; enklitiskt τις)"
   },
   "bojningsmodell": {
    "person": "Bojs efter person + numerus, utan genus. former: numerus (sg/pl) -> kasus -> {betonad, obetonad}.",
@@ -616,7 +617,567 @@
     }
    },
    "not": "Maskulinum och femininum har samma former; endast neutrum skiljer sig (nom/ack τί, τίνα). Böjs efter tredje deklinationen (ännu ej systematiskt behandlad). Alltid akut accent på τί (skiljs från enklitiskt τις 'någon'). Kan stå självständigt (τίς; vem?) eller förenat (τίς ἄνθρωπος; vilken människa?). Frågan avslutas med semikolon (·/;)."
+  },
+  {
+   "lemma": "ἐμός",
+   "glosa": "min, mitt, mina",
+   "typ": "possessivt",
+   "bojningsmodell": "genus",
+   "seminarium": [
+    7
+   ],
+   "ntFrekvens": 76,
+   "referens": "Blomqvist § 119",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "ἐμός",
+      "pl": "ἐμοί"
+     },
+     "gen": {
+      "sg": "ἐμοῦ",
+      "pl": "ἐμῶν"
+     },
+     "dat": {
+      "sg": "ἐμῷ",
+      "pl": "ἐμοῖς"
+     },
+     "ack": {
+      "sg": "ἐμόν",
+      "pl": "ἐμούς"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "ἐμή",
+      "pl": "ἐμαί"
+     },
+     "gen": {
+      "sg": "ἐμῆς",
+      "pl": "ἐμῶν"
+     },
+     "dat": {
+      "sg": "ἐμῇ",
+      "pl": "ἐμαῖς"
+     },
+     "ack": {
+      "sg": "ἐμήν",
+      "pl": "ἐμάς"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "ἐμόν",
+      "pl": "ἐμά"
+     },
+     "gen": {
+      "sg": "ἐμοῦ",
+      "pl": "ἐμῶν"
+     },
+     "dat": {
+      "sg": "ἐμῷ",
+      "pl": "ἐμοῖς"
+     },
+     "ack": {
+      "sg": "ἐμόν",
+      "pl": "ἐμά"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "min",
+      "gen": "min",
+      "dat": "min",
+      "ack": "min"
+     },
+     "pl": {
+      "nom": "mina",
+      "gen": "mina",
+      "dat": "mina",
+      "ack": "mina"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "min",
+      "gen": "min",
+      "dat": "min",
+      "ack": "min"
+     },
+     "pl": {
+      "nom": "mina",
+      "gen": "mina",
+      "dat": "mina",
+      "ack": "mina"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "mitt",
+      "gen": "mitt",
+      "dat": "mitt",
+      "ack": "mitt"
+     },
+     "pl": {
+      "nom": "mina",
+      "gen": "mina",
+      "dat": "mina",
+      "ack": "mina"
+     }
+    }
+   },
+   "not": "Possessivt pronomen, böjs som ett oxytont 2-1-2-adjektiv (som ἀγαθός). I NT ovanligt — oftast används personliga/reflexiva pronomen i genitiv (μου) i stället (B § 119)."
+  },
+  {
+   "lemma": "σός",
+   "glosa": "din, ditt, dina",
+   "typ": "possessivt",
+   "bojningsmodell": "genus",
+   "seminarium": [
+    7
+   ],
+   "ntFrekvens": 25,
+   "referens": "Blomqvist § 119",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "σός",
+      "pl": "σοί"
+     },
+     "gen": {
+      "sg": "σοῦ",
+      "pl": "σῶν"
+     },
+     "dat": {
+      "sg": "σῷ",
+      "pl": "σοῖς"
+     },
+     "ack": {
+      "sg": "σόν",
+      "pl": "σούς"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "σή",
+      "pl": "σαί"
+     },
+     "gen": {
+      "sg": "σῆς",
+      "pl": "σῶν"
+     },
+     "dat": {
+      "sg": "σῇ",
+      "pl": "σαῖς"
+     },
+     "ack": {
+      "sg": "σήν",
+      "pl": "σάς"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "σόν",
+      "pl": "σά"
+     },
+     "gen": {
+      "sg": "σοῦ",
+      "pl": "σῶν"
+     },
+     "dat": {
+      "sg": "σῷ",
+      "pl": "σοῖς"
+     },
+     "ack": {
+      "sg": "σόν",
+      "pl": "σά"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "din",
+      "gen": "din",
+      "dat": "din",
+      "ack": "din"
+     },
+     "pl": {
+      "nom": "dina",
+      "gen": "dina",
+      "dat": "dina",
+      "ack": "dina"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "din",
+      "gen": "din",
+      "dat": "din",
+      "ack": "din"
+     },
+     "pl": {
+      "nom": "dina",
+      "gen": "dina",
+      "dat": "dina",
+      "ack": "dina"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "ditt",
+      "gen": "ditt",
+      "dat": "ditt",
+      "ack": "ditt"
+     },
+     "pl": {
+      "nom": "dina",
+      "gen": "dina",
+      "dat": "dina",
+      "ack": "dina"
+     }
+    }
+   },
+   "not": "Possessivt pronomen, böjs som ett oxytont 2-1-2-adjektiv. I NT oftast σου (personligt genitiv) i stället."
+  },
+  {
+   "lemma": "ἡμέτερος",
+   "glosa": "vår, vårt, våra",
+   "typ": "possessivt",
+   "bojningsmodell": "genus",
+   "seminarium": [
+    7
+   ],
+   "ntFrekvens": 7,
+   "referens": "Blomqvist § 119",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "ἡμέτερος",
+      "pl": "ἡμέτεροι"
+     },
+     "gen": {
+      "sg": "ἡμετέρου",
+      "pl": "ἡμετέρων"
+     },
+     "dat": {
+      "sg": "ἡμετέρῳ",
+      "pl": "ἡμετέροις"
+     },
+     "ack": {
+      "sg": "ἡμέτερον",
+      "pl": "ἡμετέρους"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "ἡμετέρα",
+      "pl": "ἡμέτεραι"
+     },
+     "gen": {
+      "sg": "ἡμετέρας",
+      "pl": "ἡμετέρων"
+     },
+     "dat": {
+      "sg": "ἡμετέρᾳ",
+      "pl": "ἡμετέραις"
+     },
+     "ack": {
+      "sg": "ἡμετέραν",
+      "pl": "ἡμετέρας"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "ἡμέτερον",
+      "pl": "ἡμέτερα"
+     },
+     "gen": {
+      "sg": "ἡμετέρου",
+      "pl": "ἡμετέρων"
+     },
+     "dat": {
+      "sg": "ἡμετέρῳ",
+      "pl": "ἡμετέροις"
+     },
+     "ack": {
+      "sg": "ἡμέτερον",
+      "pl": "ἡμέτερα"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "vår",
+      "gen": "vår",
+      "dat": "vår",
+      "ack": "vår"
+     },
+     "pl": {
+      "nom": "våra",
+      "gen": "våra",
+      "dat": "våra",
+      "ack": "våra"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "vår",
+      "gen": "vår",
+      "dat": "vår",
+      "ack": "vår"
+     },
+     "pl": {
+      "nom": "våra",
+      "gen": "våra",
+      "dat": "våra",
+      "ack": "våra"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "vårt",
+      "gen": "vårt",
+      "dat": "vårt",
+      "ack": "vårt"
+     },
+     "pl": {
+      "nom": "våra",
+      "gen": "våra",
+      "dat": "våra",
+      "ack": "våra"
+     }
+    }
+   },
+   "not": "Possessivt pronomen (1:a person plural), böjs som 2-1-2-adjektiv på -τερος. Accenten flyttar från antepenultima (ἡμέτερος) till penultima när ändelsen är lång (ἡμετέρου). Ovanligt i NT."
+  },
+  {
+   "lemma": "ὑμέτερος",
+   "glosa": "er, ert, era",
+   "typ": "possessivt",
+   "bojningsmodell": "genus",
+   "seminarium": [
+    7
+   ],
+   "ntFrekvens": 11,
+   "referens": "Blomqvist § 119",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "ὑμέτερος",
+      "pl": "ὑμέτεροι"
+     },
+     "gen": {
+      "sg": "ὑμετέρου",
+      "pl": "ὑμετέρων"
+     },
+     "dat": {
+      "sg": "ὑμετέρῳ",
+      "pl": "ὑμετέροις"
+     },
+     "ack": {
+      "sg": "ὑμέτερον",
+      "pl": "ὑμετέρους"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "ὑμετέρα",
+      "pl": "ὑμέτεραι"
+     },
+     "gen": {
+      "sg": "ὑμετέρας",
+      "pl": "ὑμετέρων"
+     },
+     "dat": {
+      "sg": "ὑμετέρᾳ",
+      "pl": "ὑμετέραις"
+     },
+     "ack": {
+      "sg": "ὑμετέραν",
+      "pl": "ὑμετέρας"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "ὑμέτερον",
+      "pl": "ὑμέτερα"
+     },
+     "gen": {
+      "sg": "ὑμετέρου",
+      "pl": "ὑμετέρων"
+     },
+     "dat": {
+      "sg": "ὑμετέρῳ",
+      "pl": "ὑμετέροις"
+     },
+     "ack": {
+      "sg": "ὑμέτερον",
+      "pl": "ὑμέτερα"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "er",
+      "gen": "er",
+      "dat": "er",
+      "ack": "er"
+     },
+     "pl": {
+      "nom": "era",
+      "gen": "era",
+      "dat": "era",
+      "ack": "era"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "er",
+      "gen": "er",
+      "dat": "er",
+      "ack": "er"
+     },
+     "pl": {
+      "nom": "era",
+      "gen": "era",
+      "dat": "era",
+      "ack": "era"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "ert",
+      "gen": "ert",
+      "dat": "ert",
+      "ack": "ert"
+     },
+     "pl": {
+      "nom": "era",
+      "gen": "era",
+      "dat": "era",
+      "ack": "era"
+     }
+    }
+   },
+   "not": "Possessivt pronomen (2:a person plural), böjs som 2-1-2-adjektiv på -τερος (som ἡμέτερος). Ovanligt i NT."
+  },
+  {
+   "lemma": "τις",
+   "glosa": "någon, något",
+   "typ": "indefinit",
+   "bojningsmodell": "genus",
+   "seminarium": [
+    7
+   ],
+   "ntFrekvens": 530,
+   "referens": "Blomqvist § 123",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "τις",
+      "pl": "τινές"
+     },
+     "gen": {
+      "sg": "τινός",
+      "pl": "τινῶν"
+     },
+     "dat": {
+      "sg": "τινί",
+      "pl": "τισί(ν)"
+     },
+     "ack": {
+      "sg": "τινά",
+      "pl": "τινάς"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "τις",
+      "pl": "τινές"
+     },
+     "gen": {
+      "sg": "τινός",
+      "pl": "τινῶν"
+     },
+     "dat": {
+      "sg": "τινί",
+      "pl": "τισί(ν)"
+     },
+     "ack": {
+      "sg": "τινά",
+      "pl": "τινάς"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "τι",
+      "pl": "τινά"
+     },
+     "gen": {
+      "sg": "τινός",
+      "pl": "τινῶν"
+     },
+     "dat": {
+      "sg": "τινί",
+      "pl": "τισί(ν)"
+     },
+     "ack": {
+      "sg": "τι",
+      "pl": "τινά"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "någon",
+      "gen": "någons",
+      "dat": "åt någon",
+      "ack": "någon"
+     },
+     "pl": {
+      "nom": "några",
+      "gen": "någras",
+      "dat": "åt några",
+      "ack": "några"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "någon",
+      "gen": "någons",
+      "dat": "åt någon",
+      "ack": "någon"
+     },
+     "pl": {
+      "nom": "några",
+      "gen": "någras",
+      "dat": "åt några",
+      "ack": "några"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "något",
+      "gen": "någots",
+      "dat": "åt något",
+      "ack": "något"
+     },
+     "pl": {
+      "nom": "några",
+      "gen": "någras",
+      "dat": "åt några",
+      "ack": "några"
+     }
+    }
+   },
+   "not": "Indefinit pronomen, ENKLITISKT: samma former som interrogativa τίς men obetonat — accenten (när den finns) ligger på andra stavelsen (τινός, τινί, τινά), inte på τί. Neutrum pl har biformen ἄττα. Skiljs från τίς (§122) enbart genom accent/betoning."
   }
  ],
- "_framtida": "Nasta pronomentyper (possessiva B § 119, indefinita B § 123.1, relativa) tillkommer i senare seminarier. Genus-modellen (m/f/n -> kasus -> {sg,pl}) racker for dem. pas pasa pan (B § 108, seminarium 6) ligger som paradigm i seminarier.json (blandad 3:e+1:a deklination), inte har."
+ "_framtida": "Ännu ej inlagda (väntar på att kursen tar upp dem): reflexiva (ἐμαυτοῦ/σεαυτοῦ/ἑαυτοῦ, § 117), reciprokt (ἀλλήλων, § 118), relativa (ὅς/ὅστις, § 121), demonstrativt ὅδε (§ 120:2), οὐδείς/μηδείς (§ 123:2) samt pronominaladjektiv/-adverb (§ 124). Flera är NT-högfrekventa (ὅς ~1400, ἑαυτοῦ ~320, οὐδείς ~230). πᾶς πᾶσα πᾶν ligger som paradigm i seminarier.json (blandad 3:e+1:a deklination), inte här."
 }

@@ -1,5 +1,5 @@
 {
- "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope hittills (kursens första hälft): presens indikativ aktiv för ω-verb. Kontraherade verb och εἰμί samt fler tempus tillkommer. Seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι).",
+ "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope hittills (kursens första hälft): presens indikativ aktiv för ω-verb. Kontraherade verb och εἰμί samt fler tempus tillkommer. Seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι). Seminarium 7 tillför presens aktiv infinitiv (pres.inf.akt: λύειν, φιλεῖν, εἶναι) — härledd och korsverifierad; syntaxen (B § 266-271) hör till grammatikreferensen. Presens aktiv imperativ (pres.imp.akt) tillkommer i seminarium 7 (härledd + korsverifierad; syntaxen B § 265 hör till grammatikreferensen).",
  "_genererad": "2026-07-07",
  "_nycklar": {
   "_forklaring": "Formnyckel = 'tempus.modus.diates'. Person/numerus = '1sg'..'3pl'. Kortformer för konsekvens med ord.json; långformer nedan.",
@@ -52,6 +52,24 @@
      "1pl": "-σομεν",
      "2pl": "-σετε",
      "3pl": "-σουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "-ειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "-ε",
+     "3sg": "-έτω",
+     "2pl": "-ετε",
+     "3pl": "-έτωσαν (koine; klass. -όντων)"
+    },
+    "impf.ind.akt": {
+     "1sg": "-ον",
+     "2sg": "-ες",
+     "3sg": "-ε(ν)",
+     "1pl": "-ομεν",
+     "2pl": "-ετε",
+     "3pl": "-ον",
+     "augment": "ἐ- före konsonant; vokal förlängs (ἀ/ε→η, αι→ῃ, ευ→ηυ); sammansatta får inre augment"
     }
    }
   },
@@ -73,6 +91,24 @@
      "1pl": "-ησομεν",
      "2pl": "-ησετε",
      "3pl": "-ησουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "-εῖν (kontraherat ε+ειν)"
+    },
+    "pres.imp.akt": {
+     "2sg": "-ει (< -εε)",
+     "3sg": "-είτω",
+     "2pl": "-εῖτε",
+     "3pl": "-είτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "-ουν",
+     "2sg": "-εις",
+     "3sg": "-ει",
+     "1pl": "-οῦμεν",
+     "2pl": "-εῖτε",
+     "3pl": "-ουν",
+     "not": "kontraherat (ε+ο→ου, ε+ε→ει); samma augmentregler"
     }
    },
    "kontraktionsregler": [
@@ -100,9 +136,10 @@
   "seminarium": "Seminarier där ordet införs.",
   "kortlekar": "Vilka speldäck ordet ingår i.",
   "nt_frekvens": "Förekomster i NT (nt-lemman.json).",
-  "former": "Böjda former, nyklade 'tempus.modus.diates' -> {person_numerus: form}. Presens (pres.ind.akt), imperfekt (impf.ind.akt) och futurum (fut.ind.akt; εἰμί: fut.ind.med).",
+  "former": "Böjda former, nyklade 'tempus.modus.diates' -> {person_numerus: form}. Presens/imperfekt/futurum indikativ (pres.ind.akt, impf.ind.akt, fut.ind.akt; εἰμί fut.ind.med). Infinitiv (modus 'inf') saknar person/numerus och lagras som pres.inf.akt -> {\"inf\": form} (λύειν, φιλεῖν, εἶναι). Spel som itererar person_numerus måste hantera 'inf'-nyckeln särskilt. Imperativ (modus 'imp') saknar 1:a person och lagras som pres.imp.akt -> {2sg,3sg,2pl,3pl} (λῦε, λυέτω, λύετε, λυέτωσαν). 3pl-ändelsen är koine -έτωσαν (klassiskt -όντων: λυόντων). εἰμί: ἴσθι/ἔστω/ἔστε/ἔστωσαν. Imperfekt (impf.ind.akt) har augment + sekundära ändelser; ω -ον/-ες/-ε(ν)/-ομεν/-ετε/-ον, kontrakt -ουν/-εις/-ει/-οῦμεν/-εῖτε/-ουν. Augmentet är oregelbundet (ἐ- vs vokalförlängning vs inre augment) → formerna lagras explicit.",
   "belagda_former": "Personnycklar vars form är direkt belagd (facit) i seminarierna — extra tillit.",
-  "verifierad": "true först när formerna är samverifierade; false = mönstergenererad, väntar bekräftelse."
+  "verifierad": "true först när formerna är samverifierade; false = mönstergenererad, väntar bekräftelse.",
+  "futurumklass": "vokal|diftong|sigma|labial|velar|dental — stambildningsklass för futurum (se _futurumklasser, Blomqvist § 165-166). Utelämnat för verb utan futurum."
  },
  "_verifiering": "ω-däcket och kontrakt-däcket (-έω) är samverifierade: alla former genererades ur verifierade mönster (ω: stam+ändelse, recessiv accent; -έω: stam+kontraherad ändelse, cirkumflex på kontraktionsstavelsen) och matchar samtliga facit-belagda former (10 ω + 13 kontrakt) utan avvikelse. Auto-generering görs EJ för verb med accentkomplikationer utanför dessa mönster — de verifieras per verb.",
  "verb": [
@@ -136,6 +173,23 @@
      "1pl": "λύσομεν",
      "2pl": "λύσετε",
      "3pl": "λύσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "λύειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "λῦε",
+     "3sg": "λυέτω",
+     "2pl": "λύετε",
+     "3pl": "λυέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔλυον",
+     "2sg": "ἔλυες",
+     "3sg": "ἔλυε(ν)",
+     "1pl": "ἐλύομεν",
+     "2pl": "ἐλύετε",
+     "3pl": "ἔλυον"
     }
    },
    "belagda_former": [
@@ -146,7 +200,8 @@
     "fut.ind.akt.3pl",
     "fut.ind.akt.3sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "vokal"
   },
   {
    "lemma": "βλέπω",
@@ -169,12 +224,38 @@
      "1pl": "βλέπομεν",
      "2pl": "βλέπετε",
      "3pl": "βλέπουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "βλέψω",
+     "2sg": "βλέψεις",
+     "3sg": "βλέψει",
+     "1pl": "βλέψομεν",
+     "2pl": "βλέψετε",
+     "3pl": "βλέψουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "βλέπειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "βλέπε",
+     "3sg": "βλεπέτω",
+     "2pl": "βλέπετε",
+     "3pl": "βλεπέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔβλεπον",
+     "2sg": "ἔβλεπες",
+     "3sg": "ἔβλεπε(ν)",
+     "1pl": "ἐβλέπομεν",
+     "2pl": "ἐβλέπετε",
+     "3pl": "ἔβλεπον"
     }
    },
    "belagda_former": [
     "2sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "labial"
   },
   {
    "lemma": "ἀκούω",
@@ -207,12 +288,30 @@
      "1pl": "ἀκούσομεν",
      "2pl": "ἀκούσετε",
      "3pl": "ἀκούσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "ἀκούειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "ἄκουε",
+     "3sg": "ἀκουέτω",
+     "2pl": "ἀκούετε",
+     "3pl": "ἀκουέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἤκουον",
+     "2sg": "ἤκουες",
+     "3sg": "ἤκουε(ν)",
+     "1pl": "ἠκούομεν",
+     "2pl": "ἠκούετε",
+     "3pl": "ἤκουον"
     }
    },
    "belagda_former": [
     "2pl"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "sigma"
   },
   {
    "lemma": "λέγω",
@@ -235,6 +334,23 @@
      "1pl": "λέγομεν",
      "2pl": "λέγετε",
      "3pl": "λέγουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "λέγειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "λέγε",
+     "3sg": "λεγέτω",
+     "2pl": "λέγετε",
+     "3pl": "λεγέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔλεγον",
+     "2sg": "ἔλεγες",
+     "3sg": "ἔλεγε(ν)",
+     "1pl": "ἐλέγομεν",
+     "2pl": "ἐλέγετε",
+     "3pl": "ἔλεγον"
     }
    },
    "belagda_former": [
@@ -263,12 +379,38 @@
      "1pl": "γράφομεν",
      "2pl": "γράφετε",
      "3pl": "γράφουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "γράψω",
+     "2sg": "γράψεις",
+     "3sg": "γράψει",
+     "1pl": "γράψομεν",
+     "2pl": "γράψετε",
+     "3pl": "γράψουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "γράφειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "γράφε",
+     "3sg": "γραφέτω",
+     "2pl": "γράφετε",
+     "3pl": "γραφέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔγραφον",
+     "2sg": "ἔγραφες",
+     "3sg": "ἔγραφε(ν)",
+     "1pl": "ἐγράφομεν",
+     "2pl": "ἐγράφετε",
+     "3pl": "ἔγραφον"
     }
    },
    "belagda_former": [
     "3sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "labial"
   },
   {
    "lemma": "ἐσθίω",
@@ -290,6 +432,23 @@
      "1pl": "ἐσθίομεν",
      "2pl": "ἐσθίετε",
      "3pl": "ἐσθίουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "ἐσθίειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "ἔσθιε",
+     "3sg": "ἐσθιέτω",
+     "2pl": "ἐσθίετε",
+     "3pl": "ἐσθιέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἤσθιον",
+     "2sg": "ἤσθιες",
+     "3sg": "ἤσθιε(ν)",
+     "1pl": "ἠσθίομεν",
+     "2pl": "ἠσθίετε",
+     "3pl": "ἤσθιον"
     }
    },
    "belagda_former": [
@@ -318,12 +477,38 @@
      "1pl": "κηρύσσομεν",
      "2pl": "κηρύσσετε",
      "3pl": "κηρύσσουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "κηρύξω",
+     "2sg": "κηρύξεις",
+     "3sg": "κηρύξει",
+     "1pl": "κηρύξομεν",
+     "2pl": "κηρύξετε",
+     "3pl": "κηρύξουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "κηρύσσειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "κήρυσσε",
+     "3sg": "κηρυσσέτω",
+     "2pl": "κηρύσσετε",
+     "3pl": "κηρυσσέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐκήρυσσον",
+     "2sg": "ἐκήρυσσες",
+     "3sg": "ἐκήρυσσε(ν)",
+     "1pl": "ἐκηρύσσομεν",
+     "2pl": "ἐκηρύσσετε",
+     "3pl": "ἐκήρυσσον"
     }
    },
    "belagda_former": [
     "1pl"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "velar"
   },
   {
    "lemma": "λαμβάνω",
@@ -345,12 +530,39 @@
      "1pl": "λαμβάνομεν",
      "2pl": "λαμβάνετε",
      "3pl": "λαμβάνουσι(ν)"
+    },
+    "fut.ind.med": {
+     "1sg": "λήμψομαι",
+     "2sg": "λήμψῃ",
+     "3sg": "λήμψεται",
+     "1pl": "λημψόμεθα",
+     "2pl": "λήμψεσθε",
+     "3pl": "λήμψονται"
+    },
+    "pres.inf.akt": {
+     "inf": "λαμβάνειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "λάμβανε",
+     "3sg": "λαμβανέτω",
+     "2pl": "λαμβάνετε",
+     "3pl": "λαμβανέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐλάμβανον",
+     "2sg": "ἐλάμβανες",
+     "3sg": "ἐλάμβανε(ν)",
+     "1pl": "ἐλαμβάνομεν",
+     "2pl": "ἐλαμβάνετε",
+     "3pl": "ἐλάμβανον"
     }
    },
    "belagda_former": [
     "3pl"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "labial",
+   "not": "Deponent futurum med koineformens inskjutna μ: λήμψομαι (klassiskt λήψομαι, B § 165d)."
   },
   {
    "lemma": "παιδεύω",
@@ -382,6 +594,23 @@
      "1pl": "παιδεύσομεν",
      "2pl": "παιδεύσετε",
      "3pl": "παιδεύσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "παιδεύειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "παίδευε",
+     "3sg": "παιδευέτω",
+     "2pl": "παιδεύετε",
+     "3pl": "παιδευέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐπαίδευον",
+     "2sg": "ἐπαίδευες",
+     "3sg": "ἐπαίδευε(ν)",
+     "1pl": "ἐπαιδεύομεν",
+     "2pl": "ἐπαιδεύετε",
+     "3pl": "ἐπαίδευον"
     }
    },
    "belagda_former": [
@@ -389,7 +618,8 @@
     "fut.ind.akt.2pl",
     "fut.ind.akt.3pl"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "diftong"
   },
   {
    "lemma": "πέμπω",
@@ -411,12 +641,38 @@
      "1pl": "πέμπομεν",
      "2pl": "πέμπετε",
      "3pl": "πέμπουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "πέμψω",
+     "2sg": "πέμψεις",
+     "3sg": "πέμψει",
+     "1pl": "πέμψομεν",
+     "2pl": "πέμψετε",
+     "3pl": "πέμψουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "πέμπειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "πέμπε",
+     "3sg": "πεμπέτω",
+     "2pl": "πέμπετε",
+     "3pl": "πεμπέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔπεμπον",
+     "2sg": "ἔπεμπες",
+     "3sg": "ἔπεμπε(ν)",
+     "1pl": "ἐπέμπομεν",
+     "2pl": "ἐπέμπετε",
+     "3pl": "ἔπεμπον"
     }
    },
    "belagda_former": [
     "3sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "labial"
   },
   {
    "lemma": "εὑρίσκω",
@@ -438,12 +694,30 @@
      "1pl": "εὑρίσκομεν",
      "2pl": "εὑρίσκετε",
      "3pl": "εὑρίσκουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "εὑρίσκειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "εὕρισκε",
+     "3sg": "εὑρισκέτω",
+     "2pl": "εὑρίσκετε",
+     "3pl": "εὑρισκέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ηὕρισκον",
+     "2sg": "ηὕρισκες",
+     "3sg": "ηὕρισκε(ν)",
+     "1pl": "ηὑρίσκομεν",
+     "2pl": "ηὑρίσκετε",
+     "3pl": "ηὕρισκον"
     }
    },
    "belagda_former": [
     "3pl"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "not": "Imperfekt med förlängt diftong-augment ηὕρισκον; i koine ofta oaugmenterat εὕρισκον."
   },
   {
    "lemma": "πιστεύω",
@@ -476,6 +750,23 @@
      "1pl": "πιστεύσομεν",
      "2pl": "πιστεύσετε",
      "3pl": "πιστεύσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "πιστεύειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "πίστευε",
+     "3sg": "πιστευέτω",
+     "2pl": "πιστεύετε",
+     "3pl": "πιστευέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐπίστευον",
+     "2sg": "ἐπίστευες",
+     "3sg": "ἐπίστευε(ν)",
+     "1pl": "ἐπιστεύομεν",
+     "2pl": "ἐπιστεύετε",
+     "3pl": "ἐπίστευον"
     }
    },
    "belagda_former": [
@@ -483,7 +774,8 @@
     "fut.ind.akt.3pl",
     "fut.ind.akt.3sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "diftong"
   },
   {
    "lemma": "βαπτίζω",
@@ -505,10 +797,37 @@
      "1pl": "βαπτίζομεν",
      "2pl": "βαπτίζετε",
      "3pl": "βαπτίζουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "βαπτίσω",
+     "2sg": "βαπτίσεις",
+     "3sg": "βαπτίσει",
+     "1pl": "βαπτίσομεν",
+     "2pl": "βαπτίσετε",
+     "3pl": "βαπτίσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "βαπτίζειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "βάπτιζε",
+     "3sg": "βαπτιζέτω",
+     "2pl": "βαπτίζετε",
+     "3pl": "βαπτιζέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐβάπτιζον",
+     "2sg": "ἐβάπτιζες",
+     "3sg": "ἐβάπτιζε(ν)",
+     "1pl": "ἐβαπτίζομεν",
+     "2pl": "ἐβαπτίζετε",
+     "3pl": "ἐβάπτιζον"
     }
    },
    "belagda_former": [],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "dental",
+   "not": "Verb på -ίζω: koine futurum -ίσω (βαπτίσω); klassiskt kontraherat βαπτιῶ (B § 166b)."
   },
   {
    "lemma": "σῴζω",
@@ -531,10 +850,37 @@
      "1pl": "σῴζομεν",
      "2pl": "σῴζετε",
      "3pl": "σῴζουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "σώσω",
+     "2sg": "σώσεις",
+     "3sg": "σώσει",
+     "1pl": "σώσομεν",
+     "2pl": "σώσετε",
+     "3pl": "σώσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "σῴζειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "σῷζε",
+     "3sg": "σῳζέτω",
+     "2pl": "σῴζετε",
+     "3pl": "σῳζέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔσῳζον",
+     "2sg": "ἔσῳζες",
+     "3sg": "ἔσῳζε(ν)",
+     "1pl": "ἐσῴζομεν",
+     "2pl": "ἐσῴζετε",
+     "3pl": "ἔσῳζον"
     }
    },
    "belagda_former": [],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "dental",
+   "not": "Dentalstam (σωδ-): dentalen faller framför σ → σώσω (B § 165f)."
   },
   {
    "lemma": "κλέπτω",
@@ -556,10 +902,36 @@
      "1pl": "κλέπτομεν",
      "2pl": "κλέπτετε",
      "3pl": "κλέπτουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "κλέψω",
+     "2sg": "κλέψεις",
+     "3sg": "κλέψει",
+     "1pl": "κλέψομεν",
+     "2pl": "κλέψετε",
+     "3pl": "κλέψουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "κλέπτειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "κλέπτε",
+     "3sg": "κλεπτέτω",
+     "2pl": "κλέπτετε",
+     "3pl": "κλεπτέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔκλεπτον",
+     "2sg": "ἔκλεπτες",
+     "3sg": "ἔκλεπτε(ν)",
+     "1pl": "ἐκλέπτομεν",
+     "2pl": "ἐκλέπτετε",
+     "3pl": "ἔκλεπτον"
     }
    },
    "belagda_former": [],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "labial"
   },
   {
    "lemma": "ἄγω",
@@ -582,10 +954,36 @@
      "1pl": "ἄγομεν",
      "2pl": "ἄγετε",
      "3pl": "ἄγουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "ἄξω",
+     "2sg": "ἄξεις",
+     "3sg": "ἄξει",
+     "1pl": "ἄξομεν",
+     "2pl": "ἄξετε",
+     "3pl": "ἄξουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "ἄγειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "ἄγε",
+     "3sg": "ἀγέτω",
+     "2pl": "ἄγετε",
+     "3pl": "ἀγέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἦγον",
+     "2sg": "ἦγες",
+     "3sg": "ἦγε(ν)",
+     "1pl": "ἤγομεν",
+     "2pl": "ἤγετε",
+     "3pl": "ἦγον"
     }
    },
    "belagda_former": [],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "velar"
   },
   {
    "lemma": "φιλέω",
@@ -618,6 +1016,23 @@
      "1pl": "φιλήσομεν",
      "2pl": "φιλήσετε",
      "3pl": "φιλήσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "φιλεῖν"
+    },
+    "pres.imp.akt": {
+     "2sg": "φίλει",
+     "3sg": "φιλείτω",
+     "2pl": "φιλεῖτε",
+     "3pl": "φιλείτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐφίλουν",
+     "2sg": "ἐφίλεις",
+     "3sg": "ἐφίλει",
+     "1pl": "ἐφιλοῦμεν",
+     "2pl": "ἐφιλεῖτε",
+     "3pl": "ἐφίλουν"
     }
    },
    "belagda_former": [
@@ -634,7 +1049,8 @@
     "fut.ind.akt.3pl",
     "fut.ind.akt.3sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "vokal"
   },
   {
    "lemma": "ζητέω",
@@ -667,13 +1083,31 @@
      "1pl": "ζητήσομεν",
      "2pl": "ζητήσετε",
      "3pl": "ζητήσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "ζητεῖν"
+    },
+    "pres.imp.akt": {
+     "2sg": "ζήτει",
+     "3sg": "ζητείτω",
+     "2pl": "ζητεῖτε",
+     "3pl": "ζητείτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐζήτουν",
+     "2sg": "ἐζήτεις",
+     "3sg": "ἐζήτει",
+     "1pl": "ἐζητοῦμεν",
+     "2pl": "ἐζητεῖτε",
+     "3pl": "ἐζήτουν"
     }
    },
    "belagda_former": [
     "1pl",
     "3pl"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "vokal"
   },
   {
    "lemma": "καλέω",
@@ -696,6 +1130,23 @@
      "1pl": "καλοῦμεν",
      "2pl": "καλεῖτε",
      "3pl": "καλοῦσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "καλεῖν"
+    },
+    "pres.imp.akt": {
+     "2sg": "κάλει",
+     "3sg": "καλείτω",
+     "2pl": "καλεῖτε",
+     "3pl": "καλείτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐκάλουν",
+     "2sg": "ἐκάλεις",
+     "3sg": "ἐκάλει",
+     "1pl": "ἐκαλοῦμεν",
+     "2pl": "ἐκαλεῖτε",
+     "3pl": "ἐκάλουν"
     }
    },
    "belagda_former": [
@@ -734,6 +1185,23 @@
      "1pl": "λαλήσομεν",
      "2pl": "λαλήσετε",
      "3pl": "λαλήσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "λαλεῖν"
+    },
+    "pres.imp.akt": {
+     "2sg": "λάλει",
+     "3sg": "λαλείτω",
+     "2pl": "λαλεῖτε",
+     "3pl": "λαλείτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐλάλουν",
+     "2sg": "ἐλάλεις",
+     "3sg": "ἐλάλει",
+     "1pl": "ἐλαλοῦμεν",
+     "2pl": "ἐλαλεῖτε",
+     "3pl": "ἐλάλουν"
     }
    },
    "belagda_former": [
@@ -741,7 +1209,8 @@
     "fut.ind.akt.3pl",
     "fut.ind.akt.3sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "vokal"
   },
   {
    "lemma": "μαρτυρέω",
@@ -774,12 +1243,30 @@
      "1pl": "μαρτυρήσομεν",
      "2pl": "μαρτυρήσετε",
      "3pl": "μαρτυρήσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "μαρτυρεῖν"
+    },
+    "pres.imp.akt": {
+     "2sg": "μαρτύρει",
+     "3sg": "μαρτυρείτω",
+     "2pl": "μαρτυρεῖτε",
+     "3pl": "μαρτυρείτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐμαρτύρουν",
+     "2sg": "ἐμαρτύρεις",
+     "3sg": "ἐμαρτύρει",
+     "1pl": "ἐμαρτυροῦμεν",
+     "2pl": "ἐμαρτυρεῖτε",
+     "3pl": "ἐμαρτύρουν"
     }
    },
    "belagda_former": [
     "2pl"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "vokal"
   },
   {
    "lemma": "ποιέω",
@@ -812,12 +1299,30 @@
      "1pl": "ποιήσομεν",
      "2pl": "ποιήσετε",
      "3pl": "ποιήσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "ποιεῖν"
+    },
+    "pres.imp.akt": {
+     "2sg": "ποίει",
+     "3sg": "ποιείτω",
+     "2pl": "ποιεῖτε",
+     "3pl": "ποιείτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐποίουν",
+     "2sg": "ἐποίεις",
+     "3sg": "ἐποίει",
+     "1pl": "ἐποιοῦμεν",
+     "2pl": "ἐποιεῖτε",
+     "3pl": "ἐποίουν"
     }
    },
    "belagda_former": [
     "3sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "vokal"
   },
   {
    "lemma": "τηρέω",
@@ -850,12 +1355,30 @@
      "1pl": "τηρήσομεν",
      "2pl": "τηρήσετε",
      "3pl": "τηρήσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "τηρεῖν"
+    },
+    "pres.imp.akt": {
+     "2sg": "τήρει",
+     "3sg": "τηρείτω",
+     "2pl": "τηρεῖτε",
+     "3pl": "τηρείτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐτήρουν",
+     "2sg": "ἐτήρεις",
+     "3sg": "ἐτήρει",
+     "1pl": "ἐτηροῦμεν",
+     "2pl": "ἐτηρεῖτε",
+     "3pl": "ἐτήρουν"
     }
    },
    "belagda_former": [
     "3sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "vokal"
   },
   {
    "lemma": "εἰμί",
@@ -897,6 +1420,15 @@
      "1pl": "ἐσόμεθα",
      "2pl": "ἔσεσθε",
      "3pl": "ἔσονται"
+    },
+    "pres.inf.akt": {
+     "inf": "εἶναι"
+    },
+    "pres.imp.akt": {
+     "2sg": "ἴσθι",
+     "3sg": "ἔστω",
+     "2pl": "ἔστε",
+     "3pl": "ἔστωσαν"
     }
    },
    "varianter": {
@@ -930,7 +1462,8 @@
     "fut.ind.med.3sg"
    ],
    "verifierad": true,
-   "not": "Enklitiskt i presens (utom 2sg εἶ); accentuering = uppslagsform. Imperfekt har belagda varianter (se 'varianter')."
+   "not": "Enklitiskt i presens (utom 2sg εἶ); accentuering = uppslagsform. Imperfekt har belagda varianter (se 'varianter').",
+   "futurumklass": "sigma"
   },
   {
    "lemma": "αἰτέω",
@@ -962,12 +1495,30 @@
      "1pl": "αἰτήσομεν",
      "2pl": "αἰτήσετε",
      "3pl": "αἰτήσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "αἰτεῖν"
+    },
+    "pres.imp.akt": {
+     "2sg": "αἴτει",
+     "3sg": "αἰτείτω",
+     "2pl": "αἰτεῖτε",
+     "3pl": "αἰτείτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ᾔτουν",
+     "2sg": "ᾔτεις",
+     "3sg": "ᾔτει",
+     "1pl": "ᾐτοῦμεν",
+     "2pl": "ᾐτεῖτε",
+     "3pl": "ᾔτουν"
     }
    },
    "belagda_former": [
     "3pl"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "vokal"
   },
   {
    "lemma": "θεραπεύω",
@@ -999,12 +1550,30 @@
      "1pl": "θεραπεύσομεν",
      "2pl": "θεραπεύσετε",
      "3pl": "θεραπεύσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "θεραπεύειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "θεράπευε",
+     "3sg": "θεραπευέτω",
+     "2pl": "θεραπεύετε",
+     "3pl": "θεραπευέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐθεράπευον",
+     "2sg": "ἐθεράπευες",
+     "3sg": "ἐθεράπευε(ν)",
+     "1pl": "ἐθεραπεύομεν",
+     "2pl": "ἐθεραπεύετε",
+     "3pl": "ἐθεράπευον"
     }
    },
    "belagda_former": [
     "3sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "diftong"
   },
   {
    "lemma": "ἁμαρτάνω",
@@ -1026,6 +1595,23 @@
      "1pl": "ἁμαρτάνομεν",
      "2pl": "ἁμαρτάνετε",
      "3pl": "ἁμαρτάνουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "ἁμαρτάνειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "ἁμάρτανε",
+     "3sg": "ἁμαρτανέτω",
+     "2pl": "ἁμαρτάνετε",
+     "3pl": "ἁμαρτανέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἡμάρτανον",
+     "2sg": "ἡμάρτανες",
+     "3sg": "ἡμάρτανε(ν)",
+     "1pl": "ἡμαρτάνομεν",
+     "2pl": "ἡμαρτάνετε",
+     "3pl": "ἡμάρτανον"
     }
    },
    "belagda_former": [
@@ -1061,12 +1647,30 @@
      "1pl": "λατρεύσομεν",
      "2pl": "λατρεύσετε",
      "3pl": "λατρεύσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "λατρεύειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "λάτρευε",
+     "3sg": "λατρευέτω",
+     "2pl": "λατρεύετε",
+     "3pl": "λατρευέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐλάτρευον",
+     "2sg": "ἐλάτρευες",
+     "3sg": "ἐλάτρευε(ν)",
+     "1pl": "ἐλατρεύομεν",
+     "2pl": "ἐλατρεύετε",
+     "3pl": "ἐλάτρευον"
     }
    },
    "belagda_former": [
     "fut.ind.akt.2sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "diftong"
   },
   {
    "lemma": "προσκυνέω",
@@ -1096,12 +1700,42 @@
      "1pl": "προσκυνήσομεν",
      "2pl": "προσκυνήσετε",
      "3pl": "προσκυνήσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "προσκυνεῖν"
+    },
+    "pres.imp.akt": {
+     "2sg": "προσκύνει",
+     "3sg": "προσκυνείτω",
+     "2pl": "προσκυνεῖτε",
+     "3pl": "προσκυνείτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "προσεκύνουν",
+     "2sg": "προσεκύνεις",
+     "3sg": "προσεκύνει",
+     "1pl": "προσεκυνοῦμεν",
+     "2pl": "προσεκυνεῖτε",
+     "3pl": "προσεκύνουν"
     }
    },
    "belagda_former": [
     "fut.ind.akt.2sg"
    ],
-   "verifierad": true
+   "verifierad": true,
+   "futurumklass": "vokal",
+   "not": "Imperfekt har inre augment (προσ-ε-): προσεκύνουν."
   }
- ]
+ ],
+ "_futurumklasser": {
+  "_om": "Klassificering av futurum aktiv/medium-stambildning efter verbrotens slut (Blomqvist § 165-166). Styr framtida grammatikreferens/spel.",
+  "vokal": "Rot på vokal; vokalen förlängs framför σ (ᾱ→η utom efter ε/ι/ρ; -έω→-ήσω). Ex: ἀγαπάω→ἀγαπήσω, φιλέω→φιλήσω.",
+  "diftong": "Rot på diftong/vokal+halvvokal; oförändrad framför σ. Ex: παιδεύω→παιδεύσω.",
+  "sigma": "Rot på -σ; faller framför suffix-σ. Ex: ἀκούω→ἀκούσω, εἰμί→ἔσομαι.",
+  "labial": "Rot på labial klusil (π/β/φ); + σ = ψ. Ex: γράφω→γράψω, λαμβάνω→λήμψομαι.",
+  "velar": "Rot på velar klusil (κ/γ/χ); + σ = ξ. Ex: κηρύσσω→κηρύξω, ἄγω→ἄξω.",
+  "dental": "Rot på dental klusil (τ/δ/θ); faller framför σ. -ίζω-verb får koine -ίσω. Ex: βαπτίζω→βαπτίσω, σῴζω→σώσω.",
+  "kontraherat": "Futurum atticum: liquida/nasal-rot (λ/ρ/ν/μ) → kontraherat -ῶ (B § 166a). Berör inga nuvarande verb.",
+  "suppletiv": "Futurum från annan rot (λέγω→ἐρῶ, ἐσθίω→φάγομαι). Ej upplagt än."
+ }
 }
