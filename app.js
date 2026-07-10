@@ -25,7 +25,7 @@ const SPEL = [
   {
     nr: 2,
     namn: "Glosor",
-    desc: "Vokabulär från seminarium 2–4",
+    desc: "Vokabulär från seminarierna",
     route: "#/glosor",
   },
   {
@@ -48,9 +48,9 @@ const SPEL = [
   },
   {
     nr: 6,
-    namn: "Läsordning",
-    desc: "Träna ordföljden i läsning",
-    route: "#/lasordning",
+    namn: "Studieguide",
+    desc: "Kursöversikt seminarium för seminarium — begrepp, fällor och var du övar",
+    route: "#/studieguide",
   },
   {
     nr: 7,
@@ -78,7 +78,7 @@ const ROUTES = {
   "/kasus": () => import(`./vyer/kasus.js${vv}`),
   "/satsanalys": () => import(`./vyer/satsanalys.js${vv}`),
   "/kongruens": () => import(`./vyer/kongruens.js${vv}`),
-  "/lasordning": () => import(`./vyer/lasordning.js${vv}`),
+  "/studieguide": () => import(`./vyer/studieguide.js${vv}`),
   "/andelser": () => import(`./vyer/andelser.js${vv}`),
   "/verb": () => import(`./vyer/verb.js${vv}`),
   "/pronomen": () => import(`./vyer/pronomen.js${vv}`),

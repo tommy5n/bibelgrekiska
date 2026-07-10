@@ -2105,8 +2105,8 @@ body {
   border-color: var(--gold);
 }
 
-/* ═══ vy: lasordning ═══ */
-.vy-lasordning {
+/* ═══ vy: studieguide ═══ */
+.vy-studieguide {
   --fs-3xs: 0.82rem;
   --fs-2xs: 0.88rem;
   --fs-xs: 0.92rem;
@@ -2126,13 +2126,13 @@ body {
   --line: #e3d9c6;
   --gold: #a8842c;
   --gold-soft: #cdb069;
-  --done: #3f7a4f;
-  --done-bg: #eef4ea;
+  --warn: #9a5b2a;
+  --warn-bg: #f7ede0;
 }
-.vy-lasordning * {
+.vy-studieguide * {
   box-sizing: border-box;
 }
-.vy-lasordning {
+.vy-studieguide {
   margin: 0;
   min-height: 100vh;
   background: var(--paper);
@@ -2141,11 +2141,14 @@ body {
   line-height: 1.6;
   padding: 2.2rem 1rem 4rem;
 }
-.vy-lasordning .wrap {
+.vy-studieguide .wrap {
   max-width: 720px;
   margin: 0 auto;
 }
-@keyframes rise__lasordning {
+.vy-studieguide .grek {
+  font-style: normal;
+}
+@keyframes rise__studieguide {
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -2155,70 +2158,37 @@ body {
     transform: none;
   }
 }
-.vy-lasordning header {
+.vy-studieguide header {
   text-align: center;
   margin-bottom: 1.5rem;
-  animation: rise__lasordning 0.6s ease both;
+  animation: rise__studieguide 0.6s ease both;
 }
-.vy-lasordning h1 {
+.vy-studieguide h1 {
   font-size: var(--fs-4xl);
   font-weight: 600;
   margin: 0 0 0.3rem;
 }
-.vy-lasordning .sub {
+.vy-studieguide .sub {
   color: var(--ink-soft);
   font-size: var(--fs-2xl);
   font-style: italic;
 }
-.vy-lasordning .progress {
-  margin: 1.4rem 0 1.8rem;
-  animation: rise__lasordning 0.6s ease both;
-}
-.vy-lasordning .bar {
-  height: 8px;
-  background: var(--paper-2);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  overflow: hidden;
-}
-.vy-lasordning .bar-fill {
-  height: 100%;
-  width: 0;
-  background: var(--gold);
-  transition: width 0.35s ease;
-}
-.vy-lasordning .progress-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-top: 0.5rem;
-}
-.vy-lasordning .progress-row .label {
-  color: var(--ink-soft);
-  font-size: var(--fs-lg);
-}
-.vy-lasordning .reset {
-  font-family: inherit;
-  font-size: var(--fs-xs);
-  color: var(--ink-soft);
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 0;
-}
-.vy-lasordning .reset:hover {
-  color: var(--gold);
-}
-.vy-lasordning .princip {
+
+/* intro-rutor */
+.vy-studieguide .guide-info,
+.vy-studieguide .principer {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1.1rem 1.3rem;
-  margin-bottom: 2rem;
-  animation: rise__lasordning 0.6s ease both;
+  margin-bottom: 1.4rem;
+  animation: rise__studieguide 0.6s ease both;
 }
-.vy-lasordning .princip h2 {
+.vy-studieguide .principer {
+  margin-bottom: 2.4rem;
+}
+.vy-studieguide .guide-info h2,
+.vy-studieguide .principer h2 {
   font-size: var(--fs-2xs);
   text-transform: uppercase;
   letter-spacing: 0.09em;
@@ -2226,17 +2196,39 @@ body {
   font-weight: 600;
   margin: 0 0 0.6rem;
 }
-.vy-lasordning .princip p {
-  margin: 0.35rem 0;
+.vy-studieguide .guide-info p {
+  margin: 0;
 }
-.vy-lasordning .princip b {
+.vy-studieguide .princip-item {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+}
+.vy-studieguide .princip-item + .princip-item {
+  border-top: 1px dashed var(--line);
+}
+.vy-studieguide .pnum {
+  flex: 0 0 auto;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--paper-2);
+  border: 1.5px solid var(--gold-soft);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 600;
+  font-size: var(--fs-sm);
 }
-.vy-lasordning .stege {
+
+/* tidslinje */
+.vy-studieguide .stege {
   position: relative;
   padding-left: 2.6rem;
 }
-.vy-lasordning .stege::before {
+.vy-studieguide .stege::before {
   content: "";
   position: absolute;
   left: 1rem;
@@ -2245,12 +2237,15 @@ body {
   width: 2px;
   background: var(--line);
 }
-.vy-lasordning .steg {
+.vy-studieguide .steg {
   position: relative;
-  margin-bottom: 2.2rem;
-  animation: rise__lasordning 0.5s ease both;
+  margin-bottom: 2.6rem;
+  animation: rise__studieguide 0.5s ease both;
 }
-.vy-lasordning .nod {
+.vy-studieguide .steg.kommande {
+  opacity: 0.92;
+}
+.vy-studieguide .nod {
   position: absolute;
   left: -2.6rem;
   top: -0.1rem;
@@ -2267,112 +2262,163 @@ body {
   font-size: var(--fs-2xl);
   z-index: 1;
 }
-.vy-lasordning .steg-titel {
+.vy-studieguide .nod-kommande {
+  border-style: dashed;
+  border-color: var(--gold-soft);
+  color: var(--gold-soft);
+}
+.vy-studieguide .steg-titel {
   font-size: var(--fs-3xl);
   font-weight: 600;
   margin: 0 0 0.1rem;
 }
-.vy-lasordning .steg-tema {
+.vy-studieguide .badge {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: var(--fs-3xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--gold-soft);
+  border: 1px solid var(--gold-soft);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  margin-left: 0.3rem;
+}
+.vy-studieguide .steg-tema {
   color: var(--ink-soft);
   font-style: italic;
   font-size: var(--fs-xl);
   margin: 0 0 0.9rem;
 }
-.vy-lasordning .block {
+
+/* innehållsblock */
+.vy-studieguide .block {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 0.5rem 0.9rem;
+  padding: 0.7rem 1rem;
   margin-bottom: 0.6rem;
 }
-.vy-lasordning .tag {
-  display: inline-block;
+.vy-studieguide .tag {
+  display: block;
   font-size: var(--fs-3xs);
   text-transform: uppercase;
   letter-spacing: 0.09em;
   font-weight: 600;
   color: var(--ink-soft);
-  margin-right: 0.5rem;
-  min-width: 3.3rem;
+  margin-bottom: 0.4rem;
 }
-.vy-lasordning .rad {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
-  padding: 0.45rem 0;
+.vy-studieguide .nytt ul {
+  margin: 0;
+  padding-left: 1.1rem;
 }
-.vy-lasordning .rad + .rad {
+.vy-studieguide .nytt li {
+  margin: 0.12rem 0;
+}
+.vy-studieguide .begrepp-item + .begrepp-item {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
   border-top: 1px dashed var(--line);
 }
-.vy-lasordning .box {
-  flex: 0 0 auto;
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-top: 0.18rem;
-  border-radius: 5px;
-  border: 1.5px solid var(--gold-soft);
-  background: var(--paper);
-  cursor: pointer;
-  position: relative;
-  transition: 0.15s;
-}
-.vy-lasordning .box:hover {
-  border-color: var(--gold);
-}
-.vy-lasordning .box.klar {
-  background: var(--done-bg);
-  border-color: var(--done);
-}
-.vy-lasordning .box.klar::after {
-  content: "✓";
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--done);
-  font-size: var(--fs-sm);
-  font-weight: 700;
-}
-.vy-lasordning .radtext {
-  flex: 1;
-}
-.vy-lasordning .rad.avklarad .radtext {
-  color: var(--ink-soft);
-}
-.vy-lasordning .rad.avklarad .radtext .spel {
-  opacity: 0.6;
-}
-.vy-lasordning .num {
-  color: var(--gold);
+.vy-studieguide .begrepp .rubrik {
   font-weight: 600;
-  margin-right: 0.35rem;
+  margin: 0 0 0.15rem;
 }
-.vy-lasordning .spel {
+.vy-studieguide .begrepp p {
+  margin: 0;
+}
+.vy-studieguide .begrepp p + p {
+  margin-top: 0.15rem;
+}
+
+/* fällor */
+.vy-studieguide .fallor {
+  background: var(--warn-bg);
+  border-color: #e8d3ba;
+}
+.vy-studieguide .fallor .tag {
+  color: var(--warn);
+}
+.vy-studieguide .fallor ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+.vy-studieguide .fallor li {
+  margin: 0.12rem 0;
+}
+
+/* öva */
+.vy-studieguide .ova-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.vy-studieguide .ova-rad {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+}
+.vy-studieguide a.spel {
   display: inline-block;
   background: var(--paper-2);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.05rem 0.6rem;
+  padding: 0.05rem 0.7rem;
   font-weight: 600;
-  font-size: var(--fs-xl);
+  font-size: var(--fs-lg);
+  color: var(--gold);
+  text-decoration: none;
+  transition: 0.15s;
 }
-.vy-lasordning .filter {
+.vy-studieguide a.spel:hover {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+.vy-studieguide .filter {
   font-size: var(--fs-xs);
   color: var(--ink-soft);
   font-style: italic;
-  margin-left: 0.35rem;
 }
-.vy-lasordning .vad {
+.vy-studieguide .vad {
   color: var(--ink-soft);
-  font-size: var(--fs-xl);
+  font-size: var(--fs-lg);
+  flex: 1 1 12rem;
 }
-.vy-lasordning .vad::before {
+.vy-studieguide .vad::before {
   content: "— ";
 }
-.vy-lasordning .mal {
+
+/* slå upp */
+.vy-studieguide .slaupp {
+  padding: 0.2rem 0.2rem 0;
+  margin-bottom: 0.6rem;
+}
+.vy-studieguide .slaupp .tag {
+  display: inline;
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+}
+.vy-studieguide .slaupp .lankar a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-soft);
+  font-size: var(--fs-lg);
+  white-space: nowrap;
+}
+.vy-studieguide .slaupp .lankar a:hover {
+  border-color: var(--gold);
+}
+.vy-studieguide .slaupp .lankar a + a {
+  margin-left: 0.7rem;
+}
+
+/* mål */
+.vy-studieguide .mal {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   gap: 0.5rem;
   margin-top: 0.7rem;
   padding: 0.5rem 0.9rem;
@@ -2380,47 +2426,16 @@ body {
   border-left: 3px solid var(--gold);
   border-radius: 0 8px 8px 0;
 }
-.vy-lasordning .mal .tag {
+.vy-studieguide .mal .tag {
+  display: inline;
   color: var(--gold);
+  margin-bottom: 0;
+  flex: 0 0 auto;
 }
-.vy-lasordning .mal span:last-child {
+.vy-studieguide .mal span:last-child {
   flex: 1;
 }
-.vy-lasordning .vanor {
-  margin-top: 1.5rem;
-  background: linear-gradient(180deg, #fbf4e2, #f6edd7);
-  border: 1px solid var(--gold-soft);
-  border-radius: 14px;
-  padding: 1.2rem 1.3rem;
-  animation: rise__lasordning 0.6s ease both;
-}
-.vy-lasordning .vanor h2 {
-  font-size: var(--fs-2xs);
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--gold);
-  font-weight: 600;
-  margin: 0 0 0.3rem;
-}
-.vy-lasordning .vanor .undertext {
-  color: var(--ink-soft);
-  font-style: italic;
-  font-size: var(--fs-md);
-  margin: 0 0 0.8rem;
-}
-.vy-lasordning .vana {
-  display: flex;
-  gap: 0.6rem;
-  padding: 0.45rem 0;
-}
-.vy-lasordning .vana + .vana {
-  border-top: 1px dashed var(--gold-soft);
-}
-.vy-lasordning .vana b {
-  font-weight: 600;
-  white-space: nowrap;
-}
-.vy-lasordning footer {
+.vy-studieguide footer {
   margin-top: 2rem;
   padding-top: 1.2rem;
   border-top: 1px solid var(--line);
@@ -2428,26 +2443,6 @@ body {
   font-style: italic;
   font-size: var(--fs-xl);
   text-align: center;
-}
-.vy-lasordning .site-foot {
-  margin: 2.4rem 0 0.5rem;
-  text-align: center;
-}
-.vy-lasordning .site-foot a {
-  font-family: inherit;
-  color: var(--ink-soft);
-  font-style: italic;
-  font-size: 0.95rem;
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 0.12rem;
-  transition:
-    color 0.15s,
-    border-color 0.15s;
-}
-.vy-lasordning .site-foot a:hover {
-  color: var(--gold);
-  border-color: var(--gold);
 }
 
 /* ═══ vy: andelser ═══ */
