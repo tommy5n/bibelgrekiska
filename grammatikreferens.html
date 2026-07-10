@@ -166,6 +166,7 @@
           <li class="group"><span>Grunder</span></li>
           <li><a href="#artikel">Bestämd artikel</a></li>
           <li><a href="#kasus">Kasus &amp; satsdelar</a></li>
+          <li><a href="#accenter">Accenter &amp; enklitika</a></li>
           <li class="group"><span>Substantiv</span></li>
           <li><a href="#subst-mask">2:a dekl. maskulinum (-ος)</a></li>
           <li><a href="#subst-neut">2:a dekl. neutrum (-ον)</a></li>
@@ -254,6 +255,44 @@
               <tr class="k-vok"><th class="kasus">vokativ</th><td>tilltal</td><td>vem tilltalas?</td><td><span class="gr-grek">ὦ</span> är en interjektion, inte en artikel.</td></tr>
             </tbody>
           </table>
+        </section>
+
+<!-- ══ Accenter & enklitika ══ -->
+        <section class="gr-card" id="accenter" style="--accent:#8a6d3b">
+          <h3>Accenter &amp; enklitika <span class="sem">Sem 1–3</span></h3>
+          <p class="note">Tre accenttecken visar var betoningen ligger. De kan bara stå på någon av de <b>tre sista stavelserna</b>, och en cirkumflex kräver dessutom en lång vokal eller diftong.</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>De tre tecknen</caption>
+              <thead><tr><th>Tecken</th><th>Namn</th><th>Exempel</th></tr></thead>
+              <tbody>
+                <tr><td class="gr-el">ά</td><td>akut</td><td class="gr-grek">λόγος</td></tr>
+                <tr><td class="gr-el">ὰ</td><td>grav</td><td class="gr-grek">τὸν λόγον</td></tr>
+                <tr><td class="gr-el">ᾶ</td><td>cirkumflex</td><td class="gr-grek">δῶρον</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>Stavelsernas namn</caption>
+              <thead><tr><th>Stavelse</th><th>Läge</th></tr></thead>
+              <tbody>
+                <tr><td>ultima</td><td>sista</td></tr>
+                <tr><td>penultima</td><td>näst sista</td></tr>
+                <tr><td>antepenultima</td><td>tredje från slutet</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule">
+            <b>Var hamnar cirkumflexen?</b> Den kan bara stå på en lång vokal eller diftong.
+            <ul>
+              <li>På <b>näst sista stavelsen</b> (penultima): är den lång och betonad <i>och</i> sista stavelsen kort → <b>cirkumflex</b>. Det långa ω/ου/α bär då tecknet: <span class="gr-grek">δῶρον, οὗτος, πρῶτος, γλῶσσα</span>.</li>
+              <li>Blir sista stavelsen lång flyttas accenten till <b>akut</b>: <span class="gr-grek">δῶρον → δώρου</span>, <span class="gr-grek">γλῶσσα → γλώσσης</span>. Därför växlar accenten inom ett och samma ords böjning.</li>
+              <li>På <b>sista stavelsen</b> kan cirkumflex stå om den är lång: genitiv plural <span class="gr-grek">-ῶν</span>, kontraherat <span class="gr-grek">φιλῶ</span>.</li>
+            </ul>
+            <b>Graven</b> är en akut som på sista stavelsen ”böjs ner” framför ett följande ord: <span class="gr-grek">ἀγαθός</span> → <span class="gr-grek">ἀγαθὸς ἄνθρωπος</span>.
+            <br /><b>Positionstermer:</b> oxytonon (akut på ultima, <span class="gr-grek">ἀγαθός</span>) · paroxytonon (akut på penultima, <span class="gr-grek">λόγος</span>) · proparoxytonon (akut på antepenultima, <span class="gr-grek">ἄνθρωπος</span>) · perispomenon (cirkumflex på ultima, <span class="gr-grek">ἀγαθῶν</span>) · properispomenon (cirkumflex på penultima, <span class="gr-grek">δῶρον</span>).
+            <br /><b>Recessiv vs. fast betoning:</b> <b>verb</b> har recessiv accent — så långt tillbaka som sista stavelsens längd tillåter (<span class="gr-grek">λύομεν, ἀκούω</span>). <b>Substantiv och adjektiv</b> har fast accent — den sitter kvar där nominativ har den, så långt reglerna medger, och tvingas framåt när ultima blir lång (<span class="gr-grek">ἄνθρωπος → ἀνθρώπου</span>).
+            <br /><b>Enklitika</b> är småord som lutar sig mot föregående ord och normalt tappar sin egen accent: presens av <span class="gr-grek">εἰμί</span> (utom <span class="gr-grek">εἶ</span>), de obetonade pronomenformerna <span class="gr-grek">μου, μοι, με</span> och det obestämda <span class="gr-grek">τις, τι</span>. Värdordet kan då få en extra akut: <span class="gr-grek">ἄνθρωπός τις</span> ”en viss människa”.
+          </div>
         </section>
 
         <!-- ══ Substantiv 2 dekl mask ══ -->
@@ -649,7 +688,7 @@
               <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">αὐτόν</td><td class="gr-el">αὐτούς</td><td class="gr-el">αὐτό</td><td class="gr-el">αὐτά</td><td class="gr-el">αὐτήν</td><td class="gr-el">αὐτάς</td></tr>
             </tbody>
           </table>
-          <div class="gr-rule">Exempel: <span class="gr-grek">βλέπομεν αὐτόν</span> ”vi ser honom”, <span class="gr-grek">κηρύσσομεν αὐτῇ</span> ”vi predikar för henne”, <span class="gr-grek">λέγομεν αὐτοῖς / πρὸς αὐτούς</span> ”vi säger till dem”. För ett <b>betonat</b> subjekt-”han/hon/det” används i stället de demonstrativa <span class="gr-grek">οὗτος</span> och <span class="gr-grek">ἐκεῖνος</span>.</div>
+          <div class="gr-rule">Exempel: <span class="gr-grek">βλέπομεν αὐτόν</span> ”vi ser honom”, <span class="gr-grek">κηρύσσομεν αὐτῇ</span> ”vi predikar för henne”, <span class="gr-grek">λέγομεν αὐτοῖς / πρὸς αὐτούς</span> ”vi säger till dem”. <b>Nominativens ställning:</b> med artikel = ”samme” (<span class="gr-grek">ὁ αὐτὸς λόγος</span>, attributiv), utan artikel bredvid ett bestämt substantiv = ”själv” (<span class="gr-grek">αὐτὸς ὁ λόγος</span> ”ordet självt”, predikativ). För ett <b>betonat</b> subjekt-”han/hon/det” används i stället de demonstrativa <span class="gr-grek">οὗτος</span> och <span class="gr-grek">ἐκεῖνος</span>.</div>
         </section>
 
         <!-- ══ Demonstrativa pronomen ══ -->
@@ -722,7 +761,7 @@
               <tr><td>Oregelbundet</td><td>eget adverb</td><td class="gr-grek">ἀγαθός → εὖ (gott, bra)</td></tr>
             </tbody>
           </table>
-          <div class="gr-rule">Exempel: <span class="gr-grek">κακῶς πάσχω</span> ”jag lider svårt (illa)”. Det oregelbundna <span class="gr-grek">εὖ</span> dyker upp som första led i många ord, t.ex. <span class="gr-grek">εὐ-αγγέλιον</span> ”glädjebudskap”. (B § 113–114)</div>
+          <div class="gr-rule">Exempel: <span class="gr-grek">κακῶς πάσχω</span> ”jag lider svårt (illa)”. Det oregelbundna <span class="gr-grek">εὖ</span> dyker upp som första led i många ord, t.ex. <span class="gr-grek">εὐ-αγγέλιον</span> ”glädjebudskap”.</div>
         </section>
 
         <!-- ══ Prepositioner ══ -->
@@ -749,7 +788,7 @@
               <tr><td class="gr-el">πρός</td><td>gen · dat · ack</td><td>på (ngns sida) · vid · till, hos</td></tr>
             </tbody>
           </table>
-          <div class="gr-rule"><span class="gr-grek">ἐξ</span> används framför vokal (annars <span class="gr-grek">ἐκ</span>). Exempel: <span class="gr-grek">ἐν τῷ οἴκῳ</span> "i huset", <span class="gr-grek">εἰς τὴν κώμην</span> "in i byn", <span class="gr-grek">μετὰ τῶν ἀδελφῶν</span> "med bröderna". Substantivet efter en preposition tar inte alltid bestämd artikel: <span class="gr-grek">ἐν ἀρχῇ</span> "i begynnelsen".</div>
+          <div class="gr-rule"><span class="gr-grek">ἐξ</span> används framför vokal (annars <span class="gr-grek">ἐκ</span>). De flesta prepositioner på vokal <b>elideras</b> framför ett vokalljud (<span class="gr-grek">ἀπ' αὐτοῦ, δι' αὐτῶν, κατ' οἶκον</span>); framför sträv anda aspireras konsonanten (<span class="gr-grek">ἀφ' ἡμῶν, μεθ' ὑμῶν, καθ' ἡμέραν, ὑφ' ὑμῶν</span>). Exempel: <span class="gr-grek">ἐν τῷ οἴκῳ</span> "i huset", <span class="gr-grek">εἰς τὴν κώμην</span> "in i byn", <span class="gr-grek">μετὰ τῶν ἀδελφῶν</span> "med bröderna". Substantivet efter en preposition tar inte alltid bestämd artikel: <span class="gr-grek">ἐν ἀρχῇ</span> "i begynnelsen".</div>
         </section>
 
         <!-- ══ Negationen οὐ ══ -->
