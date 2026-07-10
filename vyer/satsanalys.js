@@ -55,6 +55,7 @@ const MARKUP = `<div class="vy vy-satsanalys">
         <button class="chip" data-deck-sem2>Seminarium 2 (facit)</button>
         <button class="chip" data-deck-sem4>Seminarium 4 (εἰμί impf + adverbial)</button>
         <button class="chip" data-deck-sem5>Seminarium 5 (prepositioner, negation, pronomen)</button>
+        <button class="chip" data-deck-sem6>Seminarium 6 (pronomen, futurum)</button>
       </div>
       <div class="grid" id="grid-niva"></div>
     </div>
@@ -114,6 +115,8 @@ const NIVAER = {
   7:"Predikatsfyllnad (εἰμί)", 8:"εἰμί i imperfekt (var)",
   9:"Adverbial (prepositionsfras)",
   10:"Prepositioner (sem 5)", 11:"Negationen οὐ (sem 5)", 12:"Personliga pronomen (sem 5)",
+  13:"3:e person & demonstrativa pronomen (sem 6)", 14:"Interrogativa pronomen (sem 6)",
+  15:"Futurum (sem 6)",
 };
 
 /* ── MENINGSBANK ──────────────────────────────────────────────────────
@@ -311,6 +314,30 @@ const SATSER = [
       {t:"κηρύσσουσιν",roll:"pred"},{t:"ὑμῖν",roll:"io"} ]},
   { id:"s5r3", niva:12, kalla:"kurs", ref:"Breakout 5:3", sv:"Han talar om dig.", subjI:"han/hon/det", chunks:[
       {t:"λέγει",roll:"pred"},{t:"περὶ σοῦ",roll:"adv"} ]},
+
+  /* ══ SEMINARIUM 6 — 3:e person/demonstrativa/interrogativa pronomen, futurum ══ */
+  { id:"s6a1", niva:13, kalla:"kurs", ref:"Breakout 6:1:1", sv:"Jag döper dig.", subjI:"jag", chunks:[
+      {t:"βαπτίζω",roll:"pred"},{t:"σε",roll:"do"} ]},
+  { id:"s6a2", niva:13, kalla:"kurs", ref:"Breakout 6:1:5", sv:"Hon döper dem.", chunks:[
+      {t:"αὕτη",roll:"subj"},{t:"βαπτίζει",roll:"pred"},{t:"αὐτούς",roll:"do"} ]},
+  { id:"s6a3", niva:13, kalla:"kurs", ref:"Breakout 6:1:8", sv:"Han talar om henne.", chunks:[
+      {t:"οὗτος",roll:"subj"},{t:"λέγει",roll:"pred"},{t:"περὶ αὐτῆς",roll:"adv"} ]},
+  { id:"s6a4", niva:13, kalla:"kurs", ref:"Breakout 6:1:9 (förkortad)", sv:"Jesus söker lärjungarna.", chunks:[
+      {t:"ὁ Ἰησοῦς",roll:"subj"},{t:"ζητεῖ",roll:"pred"},{t:"τοὺς μαθητάς",roll:"do"} ]},
+  { id:"s6i1", niva:14, kalla:"kurs", ref:"Breakout 6:2:1", sv:"Vem är det?", chunks:[
+      {t:"τίς",roll:"subj"},{t:"ἐστιν",roll:"pred"} ]},
+  { id:"s6i2", niva:14, kalla:"kurs", ref:"Breakout 6:2:3", sv:"Vilket vin dricker du?", subjI:"du", chunks:[
+      {t:"τίνα οἶνον",roll:"do"},{t:"πίνεις",roll:"pred"} ]},
+  { id:"s6i3", niva:14, kalla:"kurs", ref:"Breakout 6:2:5", sv:"Vad gör du?", subjI:"du", chunks:[
+      {t:"τί",roll:"do"},{t:"ποιεῖς",roll:"pred"} ]},
+  { id:"s6f1", niva:15, kalla:"kurs", ref:"Breakout 6:3:1", sv:"Lärjungarna ska tro.", chunks:[
+      {t:"οἱ μαθηταὶ",roll:"subj"},{t:"πιστεύσουσιν",roll:"pred"} ]},
+  { id:"s6f2", niva:15, kalla:"kurs", ref:"Breakout 6:3:2", sv:"Jag ska tro på Gud.", subjI:"jag", chunks:[
+      {t:"πιστεύσω",roll:"pred"},{t:"τῷ θεῷ",roll:"io"} ]},
+  { id:"s6f3", niva:15, kalla:"kurs", ref:"Breakout 6:3:3", sv:"Herren ska tala med dig.", chunks:[
+      {t:"ὁ κύριος",roll:"subj"},{t:"λαλήσει",roll:"pred"},{t:"σοι",roll:"io"} ]},
+  { id:"s6f4", niva:15, kalla:"kurs", ref:"Breakout 6:3:6", sv:"Apostlarna ska undervisa lärjungarna.", chunks:[
+      {t:"οἱ ἀπόστολοι",roll:"subj"},{t:"παιδεύσουσι",roll:"pred"},{t:"τοὺς μαθητάς",roll:"do"} ]},
 ];
 
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
@@ -633,6 +660,10 @@ document.querySelector("[data-deck-sem4]").onclick  = () => {
 };
 document.querySelector("[data-deck-sem5]").onclick  = () => {
   state.valdaNivaer = new Set([10,11,12]); state.kalla = "kurs";  // prepositioner, negation, pronomen
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+};
+document.querySelector("[data-deck-sem6]").onclick  = () => {
+  state.valdaNivaer = new Set([13,14,15]); state.kalla = "kurs";  // pronomen (3:e/dem/interr), futurum
   byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
 };
 document.querySelectorAll("#seg-kalla button").forEach(b =>
