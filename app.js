@@ -18,39 +18,39 @@ if ("serviceWorker" in navigator) {
 const SPEL = [
   {
     nr: 1,
+    namn: "Studieguide",
+    desc: "Kursöversikt seminarium för seminarium — begrepp, fällor och var du övar",
+    route: "#/studieguide",
+  },
+  {
+    nr: 2,
     namn: "Alfabetet",
     desc: "Bokstäver, namn och ljud",
     route: "#/alfabet",
   },
   {
-    nr: 2,
+    nr: 3,
     namn: "Glosor",
     desc: "Vokabulär från seminarierna",
     route: "#/glosor",
   },
   {
-    nr: 3,
+    nr: 4,
     namn: "Kasusigenkänning",
     desc: "Genus, kasus och bestämd artikel",
     route: "#/kasus",
   },
   {
-    nr: 4,
+    nr: 5,
     namn: "Satsanalys",
     desc: "Identifiera satsdelarna",
     route: "#/satsanalys",
   },
   {
-    nr: 5,
+    nr: 6,
     namn: "Kongruens",
     desc: "Adjektivens böjning och överensstämmelse",
     route: "#/kongruens",
-  },
-  {
-    nr: 6,
-    namn: "Studieguide",
-    desc: "Kursöversikt seminarium för seminarium — begrepp, fällor och var du övar",
-    route: "#/studieguide",
   },
   {
     nr: 7,
