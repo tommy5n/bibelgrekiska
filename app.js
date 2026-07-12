@@ -100,6 +100,13 @@ function renderHub(root) {
     <h1>Bibelgrekiska</h1>
     <p class="sub">Interaktiva övningar för Bibelgrekiska I.</p>
     <div class="hub-grid">${kort}
+      <a class="hub-card" href="seminarieovningar.html">
+        <span class="num">✎</span>
+        <span class="body">
+          <span class="name">Seminarieövningar</span>
+          <span class="desc">Alla uppgifter och breakout-rum med facit, kommentarer och fällor</span>
+        </span>
+      </a>
       <a class="hub-card" href="grammatikreferens.html">
         <span class="num">§</span>
         <span class="body">

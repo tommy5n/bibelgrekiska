@@ -31,7 +31,7 @@
  "_falt": {
   "index": "Per arkiv: kalla, seminarium, typ, antal_sidor, amneskarta (sektioner med slide-intervall), sidor (sida, bild, har_grafik, har_grekiska, text).",
   "glosa": "lemma, artikel, glosa (sv), ordklass, nt_lemma, nt_frekvens, i_glosor_master, forekomster[].",
-  "sats": "grekiska, instruktion, oversattning (om facit), satsdelar[] (om annoterat), diffar[]/avvikelse_ref, kalla/sida.",
+  "sats": "grekiska, instruktion, oversattning (om facit), satsdelar[] (om annoterat), diffar[]/avvikelse_ref, kalla/sida, kommentar (💡 förklarande), falla (⚠︎ varning för fälla), ovningsgrupp, uteslut (ovningsgrupp = sektionsnyckel; uteslut = misextraherad, hoppas).",
   "verb": "lemma, glosa, klass (omega/kontrakt_e/oregelbunden), stam, seminarium, nt_frekvens, attesterade_former[] (verifierade ur seminarier), former_kompletta (bool), se_paradigm (mallreferens). Master-formad för framtida verb.json.",
   "kongruens": "substantiv, fras (med __ för adjektivluckan), kasus/genus/numerus, adjektiv[] (lemma+kongruent form), oversattning. För kongruensspelet.",
   "paradigm": "mallar & regler för böjning (subst/adj/verb): former/andelser/regler; tacks_av_master pekar på masterfil om formerna redan finns där."
@@ -5148,7 +5148,9 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "βλέπεις",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "du ser",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5156,7 +5158,9 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "ἀκούετε",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "ni hör",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5164,7 +5168,10 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "λέγουσι(ν)",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "de säger",
+   "kommentar": "Slut-ν i λέγουσι(ν) är rörligt (ν ephelkystikon): det skrivs ut före vokal eller vid satsslut, annars kan det utelämnas. Ändelsen -ουσι(ν) = 3:e person plural.",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5172,7 +5179,9 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "ἐσθίει",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "han/hon äter",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5180,7 +5189,9 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "κηρύσσομεν",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "vi predikar",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5188,7 +5199,9 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "λαμβάνουσι(ν)",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "de tar (emot)",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5196,7 +5209,9 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "πέμπει",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "han/hon sänder",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5204,7 +5219,9 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "παιδεύεις",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "du fostrar",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5212,7 +5229,9 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "γράφει",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "han/hon skriver",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5220,7 +5239,9 @@
    "kalla": "2__O_vningsblad.pdf",
    "sida": 1,
    "grekiska": "εὑρίσκουσι(ν)",
-   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan)."
+   "instruktion": "a) Skriv av och läs följande verbformer, översätt dem sedan till svenska (se gloslista nedan).",
+   "oversattning": "de finner",
+   "ovningsgrupp": "verbformer"
   },
   {
    "typ": "sats",
@@ -5239,7 +5260,8 @@
      "ord": "βλέπετε",
      "del": "predikat"
     }
-   ]
+   ],
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5258,7 +5280,8 @@
      "ord": "λόγον",
      "del": "direkt objekt"
     }
-   ]
+   ],
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5275,7 +5298,9 @@
      "sida": 2,
      "not": "Facit på angiven sida har fel accent; denna övningsmening (uppgiftssidan) är korrekt."
     }
-   ]
+   ],
+   "oversattning": "Slavarna tar emot herrens frukt.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5298,7 +5323,8 @@
      "ord": "τοὺς λόγους τοῦ ἀποστόλου",
      "del": "direkt objekt"
     }
-   ]
+   ],
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5321,7 +5347,8 @@
      "ord": "τῷ ἀδελφῷ",
      "del": "indirekt objekt"
     }
-   ]
+   ],
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5344,7 +5371,8 @@
      "ord": "τὸν λόγον τοῦ δούλου",
      "del": "direkt objekt"
     }
-   ]
+   ],
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5352,7 +5380,9 @@
    "kalla": "2__Breakout_rooms.pdf",
    "sida": 1,
    "grekiska": "ὁ ἄνθρωπος βλέπει τὸν οἶκον.",
-   "instruktion": "översättningarna och läs dem för varandra."
+   "instruktion": "översättningarna och läs dem för varandra.",
+   "oversattning": "Människan ser huset.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5360,7 +5390,10 @@
    "kalla": "2__Breakout_rooms.pdf",
    "sida": 1,
    "grekiska": "τὸν ἄνθρωπον βλέπει ὁ θεός.",
-   "instruktion": "översättningarna och läs dem för varandra."
+   "instruktion": "översättningarna och läs dem för varandra.",
+   "oversattning": "Gud ser människan.",
+   "falla": "Ordföljden lurar: objektet τὸν ἄνθρωπον (ackusativ) står först och subjektet ὁ θεός (nominativ) sist. Kasus — inte ordföljden — avgör satsdelen: ’Gud ser människan’, inte tvärtom.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5368,7 +5401,10 @@
    "kalla": "2__Breakout_rooms.pdf",
    "sida": 1,
    "grekiska": "γράφουσι λόγον οἱ δοῦλοι.",
-   "instruktion": "översättningarna och läs dem för varandra."
+   "instruktion": "översättningarna och läs dem för varandra.",
+   "oversattning": "Slavarna skriver en berättelse.",
+   "kommentar": "λόγον saknar artikel → ’en berättelse/ett ord’. Verbet står först och subjektet οἱ δοῦλοι sist — vanlig grekisk ordföljd.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5377,7 +5413,8 @@
    "sida": 1,
    "grekiska": "ὁ ἀπόστολος γράφει τὸν λόγον τοῖς ἀδελφοῖς.",
    "instruktion": "översättningarna och läs dem för varandra.",
-   "oversattning": "Uppgifter:"
+   "oversattning": "Aposteln skriver ordet till bröderna.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5386,7 +5423,8 @@
    "sida": 2,
    "grekiska": "οἱ πονηροὶ ἄνθρωποι ἀκούουσι τὸ καλὸν εὐαγγέλιον.",
    "instruktion": null,
-   "oversattning": "De onda människorna lyssnar till det vackra evangeliet."
+   "oversattning": "De onda människorna lyssnar till det vackra evangeliet.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5395,7 +5433,8 @@
    "sida": 2,
    "grekiska": "τῷ θεῷ πιστεύουσιν.",
    "instruktion": null,
-   "oversattning": "De tror på Gud."
+   "oversattning": "De tror på Gud.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5403,7 +5442,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 1,
    "grekiska": "οἱ δοῦλοι βλέπουσι τὸν οἶκον.",
-   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska"
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska",
+   "oversattning": "Slavarna ser huset.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5411,7 +5452,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 1,
    "grekiska": "σῴζουσιν οἱ ἄγγελοι τοὺς ἀδελφούς.",
-   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska"
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska",
+   "oversattning": "Änglarna räddar bröderna.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5419,7 +5462,10 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 1,
    "grekiska": "ὁ δοῦλος τῷ ἀποστόλῳ λέγει.",
-   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska"
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska",
+   "oversattning": "Slaven talar till aposteln.",
+   "kommentar": "τῷ ἀποστόλῳ är dativ = indirekt objekt. λέγω tar dativ för den man talar till: ’till aposteln’.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5428,7 +5474,8 @@
    "sida": 1,
    "grekiska": "γράφετε τοῖς δούλοις τοὺς λόγους τῶν ἀδελφῶν.",
    "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska",
-   "oversattning": "Använd följande frågor:"
+   "oversattning": "Ni skriver brödernas ord till slavarna.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5436,7 +5483,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 1,
    "grekiska": "βλέπομεν τὸ σημεῖον τοῦ θεοῦ.",
-   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska."
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska.",
+   "oversattning": "Vi ser Guds tecken.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5444,7 +5493,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 1,
    "grekiska": "πέμπουσιν οἱ δοῦλοι τὰ πλοῖα.",
-   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska."
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska.",
+   "oversattning": "Slavarna sänder båtarna.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5452,7 +5503,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 1,
    "grekiska": "οἱ ἀδελφοὶ εὑρίσκουσι τὰ εὐαγγέλια.",
-   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska."
+   "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska.",
+   "oversattning": "Bröderna finner evangelierna.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5461,7 +5514,8 @@
    "sida": 1,
    "grekiska": "ὦ ἄγγελε, γράφεις τοὺς λόγους τοῦ εὐαγγελίου τοῖς τέκνοις.",
    "instruktion": "Uppgift: Läs högt, ta ut satsdelar och översätt till svenska.",
-   "oversattning": "Ordlista:"
+   "oversattning": "O ängel, du skriver evangeliets ord till barnen.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5469,7 +5523,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "ὁ ἅγιος ἄγγελος",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "den helige ängeln",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5477,7 +5533,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "ὁ πονηρὸς δοῦλος",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "den onde slaven",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5485,7 +5543,10 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "τὸ καλὸν εὐαγγέλιον",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "det goda evangeliet",
+   "falla": "Neutrum: nominativ och ackusativ ser likadana ut. Formen ensam avslöjar inte om frasen är subjekt eller objekt.",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5493,7 +5554,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "οἱ πονηροὶ ἄνθρωποι",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "de onda människorna",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5501,7 +5564,10 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "τῶν καλῶν ἱερῶν",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "de vackra templens",
+   "kommentar": "Genitiv pluralis på -ων ser likadan ut för alla tre genus och båda deklinationerna — en av grekiskans mest tvetydiga former.",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5509,7 +5575,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "τὸν ἀγαθὸν ἄγγελον",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "den gode ängeln",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5517,7 +5585,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "τοῖς ἁγίοις ἀδελφοῖς",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "åt de heliga bröderna",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5525,7 +5595,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "τοῦ ἀγαθοῦ θεοῦ",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "den gode Gudens",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5533,7 +5605,10 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "τὰ ἀγαθὰ τέκνα",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "de goda barnen",
+   "falla": "Neutrum har samma form i nominativ och ackusativ: τὰ ἀγαθὰ τέκνα kan vara både subjekt och objekt (’de goda barnen’). Bara sammanhanget avgör kasus.",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5541,7 +5616,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "τὸ πονηρὸν τέκνον",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "det onda barnet",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5549,7 +5626,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "ὁ καλὸς Φίλιππος",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "den gode Filippos",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5557,7 +5636,9 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "τῶν καλῶν ἀδελφῶν",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "de goda brödernas",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5565,7 +5646,10 @@
    "kalla": "3__Seminarium_O_vningar.pdf",
    "sida": 2,
    "grekiska": "τῷ ἀγαθῷ θεῷ",
-   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om."
+   "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
+   "oversattning": "åt den gode Guden",
+   "kommentar": "Dativ singularis; iota subscriptum (ῳ) är kännetecknet. Utan preposition betyder dativen ’åt/för den gode Guden’.",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5574,7 +5658,9 @@
    "sida": 2,
    "grekiska": "ὦ καλὲ οὐρανέ",
    "instruktion": "översättningen kräver att ni kan identifiera vilket kasus det handlar om.",
-   "oversattning": "Ordlista:"
+   "oversattning": "O sköna himmel!",
+   "falla": "Vokativ (tilltal): ändelsen -ε på både adjektiv (καλέ) och substantiv (οὐρανέ), inlett av ὦ. Vokativ saknar artikel.",
+   "ovningsgrupp": "substantivfraser"
   },
   {
    "typ": "sats",
@@ -5583,7 +5669,8 @@
    "sida": 2,
    "grekiska": "ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.",
    "instruktion": null,
-   "oversattning": "Du, o broder, tror på änglarnas vackra bud."
+   "oversattning": "Du, o broder, tror på änglarnas vackra bud.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5592,7 +5679,8 @@
    "sida": 2,
    "grekiska": "κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.",
    "instruktion": null,
-   "oversattning": "De onda barnen stjäl de fattiga slavarnas pengar."
+   "oversattning": "De onda barnen stjäl de fattiga slavarnas pengar.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5601,7 +5689,8 @@
    "sida": 2,
    "grekiska": "τηρεῖ καὶ σώζει ὁ Κύριος τὸν κόσμον.",
    "instruktion": null,
-   "oversattning": "Herren bevakar och beskyddar världen."
+   "oversattning": "Herren bevakar och beskyddar världen.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5610,7 +5699,8 @@
    "sida": 2,
    "grekiska": "λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.",
    "instruktion": null,
-   "oversattning": "Änglarna talar Guds ord."
+   "oversattning": "Änglarna talar Guds ord.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5619,7 +5709,8 @@
    "sida": 3,
    "grekiska": "ζητοῦμεν ἐν τῷ ἀγρῷ τοὺς δούλους τοῦ κυρίου.",
    "instruktion": null,
-   "oversattning": "Vi söker husbondens slavar på fältet."
+   "oversattning": "Vi söker husbondens slavar på fältet.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5628,7 +5719,8 @@
    "sida": 3,
    "grekiska": "οἱ ἀδελφοὶ ἄγουσι τὰ τέκνα εἰς τὸν οἶκον.",
    "instruktion": null,
-   "oversattning": "Bröderna leder barnen till huset."
+   "oversattning": "Bröderna leder barnen till huset.",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5637,7 +5729,9 @@
    "sida": 3,
    "grekiska": "ζητοῦσιν αἱ ἀδελφαὶ τὴν βασιλείαν τοῦ Θεοῦ· φιλοῦσι γὰρ τὴν ἀλήθειαν.",
    "instruktion": null,
-   "oversattning": "Systrarna söker Guds rike; ty de älskar sanningen."
+   "oversattning": "Systrarna söker Guds rike; ty de älskar sanningen.",
+   "kommentar": "γάρ (’ty/för’) är postpositivt och står som satsens andra ord; det inleder en förklaring till det föregående. ζητοῦσιν/φιλοῦσι är kontraherade verb (-έω).",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5646,7 +5740,8 @@
    "sida": 5,
    "grekiska": "ὁ Ἰησοῦς ποιεῖ καλὰ σημεῖα.",
    "instruktion": null,
-   "oversattning": "Jesus gör sköna under(verk)."
+   "oversattning": "Jesus gör sköna under(verk).",
+   "ovningsgrupp": "satser"
   },
   {
    "typ": "sats",
@@ -5660,7 +5755,9 @@
      "ord": "πιστεύω",
      "del": "tro"
     }
-   ]
+   ],
+   "uteslut": true,
+   "uteslut_skal": "Glosrad ur breakout-uppgift (b), ej översättningsmening."
   },
   {
    "typ": "sats",
@@ -5675,7 +5772,9 @@
      "ord": "τὸ τέκνον",
      "del": "barn"
     }
-   ]
+   ],
+   "uteslut": true,
+   "uteslut_skal": "Glosrad ur breakout-uppgift (b), ej översättningsmening."
   },
   {
    "typ": "sats",
@@ -5683,7 +5782,9 @@
    "kalla": "4__Breakout_rooms.pdf",
    "sida": 2,
    "grekiska": "λέγει ὁ ἄγγελος τὴν ἀλήθειαν.",
-   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska.",
+   "oversattning": "Ängeln säger sanningen.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5691,7 +5792,9 @@
    "kalla": "4__Breakout_rooms.pdf",
    "sida": 2,
    "grekiska": "ὁ ἀπόστολος κηρύσσει τὸ ἀγαθὸν εὐαγγέλιον.",
-   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska.",
+   "oversattning": "Aposteln predikar det goda evangeliet.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5699,7 +5802,10 @@
    "kalla": "4__Breakout_rooms.pdf",
    "sida": 2,
    "grekiska": "ὁ κύριος πέμπει τῷ κόσμῳ ἄγγελον.",
-   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska.",
+   "oversattning": "Herren sänder en ängel till världen.",
+   "kommentar": "τῷ κόσμῳ (dativ) = indirekt objekt ’till/åt världen’; ἄγγελον (ackusativ) = direkt objekt. Dativen ensam räcker för ’till’ — ingen preposition.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5707,7 +5813,9 @@
    "kalla": "4__Breakout_rooms.pdf",
    "sida": 2,
    "grekiska": "τὸ τέκνον βλέπει τὸ σημεῖον τοῦ κυρίου.",
-   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska.",
+   "oversattning": "Barnet ser herrens tecken.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5715,7 +5823,10 @@
    "kalla": "4__Breakout_rooms.pdf",
    "sida": 2,
    "grekiska": "ἡ ἀγάπη τὴν ψυχήν σῴζει.",
-   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska.",
+   "oversattning": "Kärleken räddar själen.",
+   "falla": "Verbet σῴζει står sist. Subjekt är ἡ ἀγάπη (nominativ), objekt τὴν ψυχήν (ackusativ): ’Kärleken räddar själen’. Låt kasus, inte ordningen, styra.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5724,7 +5835,8 @@
    "sida": 2,
    "grekiska": "ὁ οὐρανός ἐστιν ἀγαθός.",
    "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska.",
-   "oversattning": "Ordlista:"
+   "oversattning": "Himlen är god.",
+   "ovningsgrupp": "breakout"
   },
   {
    "typ": "sats",
@@ -5732,7 +5844,9 @@
    "kalla": "4__Breakout_rooms.pdf",
    "sida": 3,
    "grekiska": "Om ett feminint substantiv av första deklinationen i nom. sg. slutar på -α",
-   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska."
+   "instruktion": "Uppgift: Identifiera satsdelar och översätt till svenska.",
+   "uteslut": true,
+   "uteslut_skal": "Regeltextfragment ur PDF:en, ej övningsmening."
   },
   {
    "typ": "sats",
@@ -5741,7 +5855,8 @@
    "sida": 1,
    "grekiska": "ἄγουσιν οἱ δοῦλοι τὰς παρθένους ἐκ τοῦ οἴκου εἰς τὴν κώμην, ὁ δὲ οἰκοδεσπότης τηρεῖ τὰ τέκνα σὺν τοῖς νεανίαις πρὸ τοῦ ἱεροῦ.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 1)",
-   "oversattning": "Slavarna leder flickorna från huset till byn, men husbonden övervakar barnen tillsammans med ynglingarna framför templet."
+   "oversattning": "Slavarna leder flickorna från huset till byn, men husbonden övervakar barnen tillsammans med ynglingarna framför templet.",
+   "ovningsgrupp": "sjalvstudium"
   },
   {
    "typ": "sats",
@@ -5750,7 +5865,8 @@
    "sida": 1,
    "grekiska": "ἐν τῇ ἐκκλησίᾳ βλέπομεν τὴν δόξαν τοῦ θεοῦ· μαρτυροῦσι γὰρ οἱ ἀδελφοὶ τῇ δικαιοσύνῃ καὶ τῇ ἀληθείᾳ.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 2)",
-   "oversattning": "I kyrkan ser vi Guds härlighet; ty bröderna avlägger vittnesmål om rättvisan och sanningen."
+   "oversattning": "I kyrkan ser vi Guds härlighet; ty bröderna avlägger vittnesmål om rättvisan och sanningen.",
+   "ovningsgrupp": "sjalvstudium"
   },
   {
    "typ": "sats",
@@ -5759,7 +5875,8 @@
    "sida": 1,
    "grekiska": "καλεῖτε τοὺς νεανίας πρὸ τοῦ σαββάτου, καὶ αἰτοῦσιν ἄρτον τοῖς τέκνοις.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 3)",
-   "oversattning": "Ni kallar på ynglingarna före sabbaten, och de ber om bröd åt barnen."
+   "oversattning": "Ni kallar på ynglingarna före sabbaten, och de ber om bröd åt barnen.",
+   "ovningsgrupp": "sjalvstudium"
   },
   {
    "typ": "sats",
@@ -5769,7 +5886,8 @@
    "grekiska": "ὦ Κύριε, σώζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν δαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 4)",
    "oversattning": "O Herre, du räddar världen och människorna från demonernas makt; alltså tror vi på evangeliets sanning.",
-   "avvikelse": "Övningsbladet skriver σώζεις; masterformen (glosor.json/verb.json) är σῴζω (iota subscriptum)."
+   "avvikelse": "Övningsbladet skriver σώζεις; masterformen (glosor.json/verb.json) är σῴζω (iota subscriptum).",
+   "ovningsgrupp": "sjalvstudium"
   },
   {
    "typ": "sats",
@@ -5778,7 +5896,8 @@
    "sida": 1,
    "grekiska": "οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ τηρεῖ τὰς ἐντολὰς τοῦ θεοῦ.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 5)",
-   "oversattning": "Flickan helar inte sjukdomarna, o profet, men hon älskar barnen och följer Guds bud."
+   "oversattning": "Flickan helar inte sjukdomarna, o profet, men hon älskar barnen och följer Guds bud.",
+   "ovningsgrupp": "sjalvstudium"
   },
   {
    "typ": "sats",
@@ -5787,7 +5906,8 @@
    "sida": 1,
    "grekiska": "κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι καὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 6)",
-   "oversattning": "Människosonen predikar till lärjungarna från båten, och de lyssnar och skriver (antecknar) orden för husbondens barn."
+   "oversattning": "Människosonen predikar till lärjungarna från båten, och de lyssnar och skriver (antecknar) orden för husbondens barn.",
+   "ovningsgrupp": "sjalvstudium"
   },
   {
    "typ": "fras",
@@ -5796,7 +5916,8 @@
    "sida": 1,
    "grekiska": "εἰς τὴν θάλασσαν",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "in i/till havet"
+   "oversattning": "in i/till havet",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "fras",
@@ -5805,7 +5926,8 @@
    "sida": 1,
    "grekiska": "ἐκ τῆς κώμης",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "ut ur byn"
+   "oversattning": "ut ur byn",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "fras",
@@ -5814,7 +5936,8 @@
    "sida": 1,
    "grekiska": "ἐν τῇ ἐρήμῳ",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "i öknen"
+   "oversattning": "i öknen",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "fras",
@@ -5823,7 +5946,8 @@
    "sida": 1,
    "grekiska": "ἐπὶ τῆς γῆς",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "på jorden"
+   "oversattning": "på jorden",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "fras",
@@ -5832,7 +5956,8 @@
    "sida": 1,
    "grekiska": "ὑπὸ τῶν λίθων",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "under stenarna"
+   "oversattning": "under stenarna",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "fras",
@@ -5841,7 +5966,8 @@
    "sida": 1,
    "grekiska": "σὺν τοῖς ἁμαρτωλοῖς",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "med syndarna"
+   "oversattning": "med syndarna",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "fras",
@@ -5850,7 +5976,9 @@
    "sida": 1,
    "grekiska": "μετὰ τῶν ἁμαρτωλῶν",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "med syndarna"
+   "oversattning": "med syndarna",
+   "kommentar": "Både μετά (+ genitiv) och σύν (+ dativ) översätts ’med’. I koine är μετά det vanliga; σύν betonar sällskap.",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "fras",
@@ -5859,7 +5987,8 @@
    "sida": 1,
    "grekiska": "διὰ τὴν νόσον",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "på grund av sjukdomen"
+   "oversattning": "på grund av sjukdomen",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "fras",
@@ -5868,7 +5997,8 @@
    "sida": 1,
    "grekiska": "λέγει πρὸς τὸν μαθητήν",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "hon säger till lärjungen"
+   "oversattning": "hon säger till lärjungen",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "fras",
@@ -5877,7 +6007,8 @@
    "sida": 1,
    "grekiska": "λέγει τῷ μαθητῇ",
    "instruktion": "Breakout 1: översätt prepositionsfrasen.",
-   "oversattning": "hon säger till lärjungen"
+   "oversattning": "hon säger till lärjungen",
+   "ovningsgrupp": "prepositionsfraser"
   },
   {
    "typ": "negation",
@@ -5887,7 +6018,9 @@
    "grekiska": "οἱ φίλοι __ πιστεύουσιν.",
    "instruktion": "Breakout 2a: sätt in rätt form av οὐ (οὐ/οὐκ/οὐχ).",
    "oversattning": "Vännerna tror inte.",
-   "facit_form": "οἱ φίλοι οὐ πιστεύουσιν."
+   "facit_form": "οἱ φίλοι οὐ πιστεύουσιν.",
+   "kommentar": "Tre former av samma negation: οὐ före konsonant, οὐκ före vokal med mjuk anda, οὐχ före vokal med sträv anda (h-ljud). Ljudet efter avgör.",
+   "ovningsgrupp": "negation"
   },
   {
    "typ": "negation",
@@ -5897,7 +6030,8 @@
    "grekiska": "οἱ φίλοι __ ἀκούουσιν.",
    "instruktion": "Breakout 2a: sätt in rätt form av οὐ (οὐ/οὐκ/οὐχ).",
    "oversattning": "Vännerna hör inte.",
-   "facit_form": "οἱ φίλοι οὐκ ἀκούουσιν."
+   "facit_form": "οἱ φίλοι οὐκ ἀκούουσιν.",
+   "ovningsgrupp": "negation"
   },
   {
    "typ": "negation",
@@ -5907,7 +6041,8 @@
    "grekiska": "οἱ φίλοι __ ἁμαρτάνουσιν.",
    "instruktion": "Breakout 2a: sätt in rätt form av οὐ (οὐ/οὐκ/οὐχ).",
    "oversattning": "Vännerna syndar inte.",
-   "facit_form": "οἱ φίλοι οὐχ ἁμαρτάνουσιν."
+   "facit_form": "οἱ φίλοι οὐχ ἁμαρτάνουσιν.",
+   "ovningsgrupp": "negation"
   },
   {
    "typ": "negation",
@@ -5918,7 +6053,8 @@
    "instruktion": "Breakout 2b: översätt och negera med rätt form av οὐ.",
    "oversattning": "I begynnelsen skapar Gud himlen och jorden.",
    "negerad": "ἐν ἀρχῇ οὐ ποιεῖ ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν.",
-   "bibelreferens": "GT 1 Mosebok 1:1"
+   "bibelreferens": "GT 1 Mosebok 1:1",
+   "ovningsgrupp": "negation"
   },
   {
    "typ": "negation",
@@ -5929,7 +6065,8 @@
    "instruktion": "Breakout 2b: översätt och negera med rätt form av οὐ.",
    "oversattning": "Vi är Guds barn.",
    "negerad": "οὐκ ἐσμὲν τέκνα θεοῦ.",
-   "bibelreferens": "NT Romarbrevet 8:16"
+   "bibelreferens": "NT Romarbrevet 8:16",
+   "ovningsgrupp": "negation"
   },
   {
    "typ": "negation",
@@ -5940,7 +6077,9 @@
    "instruktion": "Breakout 2b: översätt och negera med rätt form av οὐ.",
    "oversattning": "I begynnelsen var Ordet.",
    "negerad": "ἐν ἀρχῇ οὐκ ἦν ὁ λόγος.",
-   "bibelreferens": "NT Johannesevangeliet 1:1"
+   "bibelreferens": "NT Johannesevangeliet 1:1",
+   "kommentar": "ἦν = imperfekt av εἰμί (’var’). Negationen blir οὐκ eftersom ἦν börjar på vokal med mjuk anda.",
+   "ovningsgrupp": "negation"
   },
   {
    "typ": "pronomen",
@@ -5949,7 +6088,8 @@
    "sida": 2,
    "grekiska": "ζητοῦμεν ὑμᾶς.",
    "instruktion": "Breakout 3: översätt (personliga pronomen).",
-   "oversattning": "Vi söker er."
+   "oversattning": "Vi söker er.",
+   "ovningsgrupp": "pronomen"
   },
   {
    "typ": "pronomen",
@@ -5958,7 +6098,8 @@
    "sida": 2,
    "grekiska": "κηρύσσουσιν ὑμῖν.",
    "instruktion": "Breakout 3: översätt (personliga pronomen).",
-   "oversattning": "De predikar för er."
+   "oversattning": "De predikar för er.",
+   "ovningsgrupp": "pronomen"
   },
   {
    "typ": "pronomen",
@@ -5967,7 +6108,8 @@
    "sida": 2,
    "grekiska": "φιλεῖ σε.",
    "instruktion": "Breakout 3: översätt (personliga pronomen).",
-   "oversattning": "Han/hon gillar dig."
+   "oversattning": "Han/hon gillar dig.",
+   "ovningsgrupp": "pronomen"
   },
   {
    "typ": "pronomen",
@@ -5976,7 +6118,8 @@
    "sida": 2,
    "grekiska": "λέγει περὶ σοῦ.",
    "instruktion": "Breakout 3: översätt (personliga pronomen).",
-   "oversattning": "Han talar om dig."
+   "oversattning": "Han talar om dig.",
+   "ovningsgrupp": "pronomen"
   },
   {
    "typ": "pronomen",
@@ -5986,7 +6129,9 @@
    "grekiska": "οὐ πιστεύουσιν ἡμῖν.",
    "instruktion": "Breakout 3: översätt (personliga pronomen).",
    "oversattning": "De tror inte på oss.",
-   "avvikelse": "Facit s. 67 översätter 'på er', men ἡμῖν = oss (dativ pl 1:a person)."
+   "avvikelse": "Facit s. 67 översätter 'på er', men ἡμῖν = oss (dativ pl 1:a person).",
+   "kommentar": "πιστεύω konstrueras med dativ (ἡμῖν) = ’tro på oss’.",
+   "ovningsgrupp": "pronomen"
   },
   {
    "typ": "pronomen",
@@ -5995,7 +6140,8 @@
    "sida": 2,
    "grekiska": "λαλεῖς μοι.",
    "instruktion": "Breakout 3: översätt (personliga pronomen).",
-   "oversattning": "Du talar med mig."
+   "oversattning": "Du talar med mig.",
+   "ovningsgrupp": "pronomen"
   },
   {
    "typ": "sats",
@@ -6004,7 +6150,8 @@
    "sida": 1,
    "grekiska": "βαπτίζω σε",
    "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 1)",
-   "oversattning": "Jag döper dig"
+   "oversattning": "Jag döper dig",
+   "falla": "σε är den obetonade (enklitiska) formen av σύ i ackusativ. Den kan inte inleda satsen eller stå efter preposition — där krävs den betonade σέ."
   },
   {
    "typ": "sats",
@@ -6022,7 +6169,8 @@
    "sida": 1,
    "grekiska": "ὁ ἀδελφὸς αὐτῆς",
    "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 3)",
-   "oversattning": "Hennes bror"
+   "oversattning": "Hennes bror",
+   "kommentar": "Genitiven αὐτῆς efter huvudordet uttrycker ägande: ’hennes bror’. αὐτός i genitiv fungerar som possessivt ’hans/hennes/deras’."
   },
   {
    "typ": "sats",
@@ -6040,7 +6188,8 @@
    "sida": 1,
    "grekiska": "αὕτη βαπτίζει αὐτούς",
    "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 5)",
-   "oversattning": "Hon döper dem"
+   "oversattning": "Hon döper dem",
+   "falla": "αὕτη (spiritus asper + akut) är det demonstrativa ’hon/denna’ — inte det personliga αὐτή ’hon’ och inte dativen αὐτῇ. Spiritus och accent avgör betydelsen."
   },
   {
    "typ": "sats",
@@ -6049,7 +6198,8 @@
    "sida": 1,
    "grekiska": "λέγω περὶ σοῦ",
    "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 6)",
-   "oversattning": "Jag talar om dig"
+   "oversattning": "Jag talar om dig",
+   "kommentar": "Efter preposition används den betonade formen σοῦ, inte den enklitiska σου."
   },
   {
    "typ": "sats",
@@ -6058,7 +6208,8 @@
    "sida": 1,
    "grekiska": "λέγεις ἡμῖν / πρὸς ἡμᾶς",
    "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 7)",
-   "oversattning": "Du säger till oss"
+   "oversattning": "Du säger till oss",
+   "kommentar": "Mottagaren kan uttryckas med ren dativ (ἡμῖν) eller med πρός + ackusativ (πρὸς ἡμᾶς) — båda betyder ’till oss’."
   },
   {
    "typ": "sats",
@@ -6067,7 +6218,8 @@
    "sida": 1,
    "grekiska": "οὗτος λέγει περὶ αὐτῆς",
    "instruktion": "Breakout 1: översätt (personliga pronomen). (mening 8)",
-   "oversattning": "Han talar om henne"
+   "oversattning": "Han talar om henne",
+   "falla": "Samma form αὐτῆς som i ’ὁ ἀδελφὸς αὐτῆς’, men här styrd av prepositionen περί: ’om henne’ (objekt), inte possessivt ’hennes’. Placeringen avgör rollen."
   },
   {
    "typ": "sats",
@@ -6094,7 +6246,8 @@
    "sida": 1,
    "grekiska": "τίς ἐστιν;",
    "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 1)",
-   "oversattning": "Vem är det?"
+   "oversattning": "Vem är det?",
+   "falla": "τίς med akut accent = frågande ’vem?’. Det enklitiska τις (utan egen accent) betyder ’någon’. Interrogativa τίς behåller alltid akut på första stavelsen."
   },
   {
    "typ": "sats",
@@ -6112,7 +6265,8 @@
    "sida": 1,
    "grekiska": "τίνα οἶνον πίνεις;",
    "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 3)",
-   "oversattning": "Vilket vin dricker du? (förenat)"
+   "oversattning": "Vilket vin dricker du? (förenat)",
+   "kommentar": "Här står τίνα attributivt till οἶνον: ’vilket vin?’. τίς/τί kan användas både självständigt (’vad?’) och attributivt (’vilken?’)."
   },
   {
    "typ": "sats",
@@ -6139,7 +6293,8 @@
    "sida": 1,
    "grekiska": "τίσι λαλεῖτε;",
    "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 6)",
-   "oversattning": "Med vilka talar ni?"
+   "oversattning": "Med vilka talar ni?",
+   "kommentar": "τίσι(ν) är dativ plural. λαλέω konstrueras med dativ: ’till/med vilka talar ni?’."
   },
   {
    "typ": "sats",
@@ -6148,7 +6303,8 @@
    "sida": 2,
    "grekiska": "οἱ μαθηταὶ πιστεύσουσιν",
    "instruktion": "Breakout 3: översätt (futurum). (mening 1)",
-   "oversattning": "Lärjungarna ska tro."
+   "oversattning": "Lärjungarna ska tro.",
+   "kommentar": "Futurum bildas med tempustecknet σ mellan stam och ändelse: πιστεύ-σ-ουσιν. Personändelserna är desamma som i presens."
   },
   {
    "typ": "sats",
@@ -6166,7 +6322,8 @@
    "sida": 2,
    "grekiska": "ὁ κύριος λαλήσει σοι.",
    "instruktion": "Breakout 3: översätt (futurum). (mening 3)",
-   "oversattning": "Herren ska tala med dig."
+   "oversattning": "Herren ska tala med dig.",
+   "kommentar": "λαλέω är kontraktverb: stamvokalen ε förlängs till η före σ → λαλήσει (jfr φιλέω → φιλήσω)."
   },
   {
    "typ": "sats",
@@ -6175,7 +6332,8 @@
    "sida": 2,
    "grekiska": "παιδεύεις τὸ τέκνον.",
    "instruktion": "Breakout 3: översätt (futurum). (mening 4)",
-   "oversattning": "Du uppfostrar barnet."
+   "oversattning": "Du uppfostrar barnet.",
+   "falla": "Fälla bland futurumövningarna: detta är PRESENS (παιδεύεις, utan σ) = ’du uppfostrar’, inte ’du ska uppfostra’. Leta alltid efter σ före ändelsen."
   },
   {
    "typ": "sats",
@@ -6211,7 +6369,8 @@
    "sida": 2,
    "grekiska": "οὐ λαλοῦμεν τὴν ἀλήθειαν.",
    "instruktion": "Breakout 3: översätt (futurum). (mening 8)",
-   "oversattning": "Vi säger inte sanningen."
+   "oversattning": "Vi säger inte sanningen.",
+   "falla": "Också presens (kontraherat λαλοῦμεν), inte futurum. Med negationen οὐ: ’vi säger inte’."
   },
   {
    "typ": "sats",
@@ -6238,7 +6397,8 @@
    "sida": 2,
    "grekiska": "ὁ προφήτης λαλεῖ.",
    "instruktion": "Breakout 3: översätt (futurum). (mening 11)",
-   "oversattning": "Profeten talar."
+   "oversattning": "Profeten talar.",
+   "falla": "Presens (λαλεῖ), inte futurum λαλήσει. Ingen σ = ingen framtid."
   },
   {
    "typ": "sats",
@@ -6247,7 +6407,9 @@
    "sida": 2,
    "grekiska": "οἱ ἀδελφοὶ πιστεύσουσι εἰς τὸν κυρίον.",
    "instruktion": "Breakout 3: översätt (futurum). (mening 12)",
-   "oversattning": "Bröderna ska tro på Herren."
+   "oversattning": "Bröderna ska tro på Herren.",
+   "kommentar": "πιστεύω εἰς + ackusativ = ’tro på’. Med ren dativ (πιστεύσω τῷ θεῷ, mening 2) blir betydelsen snarare ’sätta tilltro till’.",
+   "avvikelse": "Övningsbladet skriver τὸν κυρίον; korrekt accent enligt mastern (κύριος) är τὸν κύριον."
   },
   {
    "typ": "sats",
@@ -6265,7 +6427,8 @@
    "sida": 1,
    "grekiska": "οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής·",
    "instruktion": "Översättningsmening för självstudium (Matt 14:2, facit s. 4). (mening 2)",
-   "oversattning": "Denne är Johannes Döparen."
+   "oversattning": "Denne är Johannes Döparen.",
+   "kommentar": "οὗτός bär två accenter därför att det enklitiska ἐστιν skjuter tillbaka sin accent på föregående ord. Grundformen är οὗτος."
   },
   {
    "typ": "sats",
@@ -6274,7 +6437,8 @@
    "sida": 1,
    "grekiska": "φωνὴ ἐκ τῶν οὐρανῶν λέγει· Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός",
    "instruktion": "Översättningsmening för självstudium (Matt 3:17, facit s. 4). (mening 3)",
-   "oversattning": "En röst ur himlen säger: Denne är min älskade son."
+   "oversattning": "En röst ur himlen säger: Denne är min älskade son.",
+   "kommentar": "Attributivt adjektiv i efterställd ställning upprepar artikeln: ὁ υἱός μου ὁ ἀγαπητός = ’min älskade son’ (ordagrant ’sonen min, den älskade’)."
   },
   {
    "typ": "sats",
@@ -6328,7 +6492,8 @@
    "sida": 1,
    "grekiska": "πάντες δὲ ὑμεῖς ἀδελφοί ἐστε",
    "instruktion": "Översättningsmening för självstudium (Matt 23:8, facit s. 4). (mening 9)",
-   "oversattning": "Och alla ni är bröder."
+   "oversattning": "Och alla ni är bröder.",
+   "kommentar": "πάντες är nom. pl. mask. av πᾶς ’all/alla’. δέ är postpositivt och står alltid som satsens andra ord."
   },
   {
    "typ": "sats",
@@ -6355,7 +6520,8 @@
    "sida": 1,
    "grekiska": "Κύριον τὸν θεόν σου προσκυνήσεις καὶ αὐτῷ μόνῳ λατρεύσεις.",
    "instruktion": "Översättningsmening för självstudium (Matt 4:10, facit s. 4). (mening 12)",
-   "oversattning": "Du ska tillbedja Herren, din Gud, och tjäna honom allena."
+   "oversattning": "Du ska tillbedja Herren, din Gud, och tjäna honom allena.",
+   "falla": "Futurum med budkraft: ’du SKA tillbe’ (ett bud, inte en förutsägelse) — vanligt i GT-citat. Notera rektionen: προσκυνέω + ackusativ (Κύριον), men λατρεύω + dativ (αὐτῷ μόνῳ)."
   }
  ],
  "verb": [

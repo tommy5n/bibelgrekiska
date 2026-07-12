@@ -1,0 +1,1286 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Seminarieövningar · Bibelgrekiska</title>
+    <meta name="theme-color" content="#a8842c" />
+    <link rel="apple-touch-icon" href="appletouchicon.png" />
+    <!-- Ärver Cardo/Spectral-fonter och :root-temat från appen -->
+    <link rel="stylesheet" href="app.css?v=8" />
+    <style>
+      /* ── Delad grammatikreferens-layout (.gr-*) ─────────────────── */
+      body { background: var(--paper); }
+      .gr-bar {
+        position: sticky; top: 0; z-index: 20;
+        display: flex; align-items: center; gap: 1rem;
+        padding: 0.7rem 1.4rem;
+        background: color-mix(in srgb, var(--paper) 88%, transparent);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
+      .gr-bar .hem { color: var(--gold); text-decoration: none; font-weight: 600; font-size: var(--fs-sm); }
+      .gr-bar .hem:hover { text-decoration: underline; }
+      .gr-bar .wordmark { font-weight: 600; color: var(--ink-soft); font-size: var(--fs-sm); letter-spacing: 0.02em; }
+      .gr-bar .utskrift { margin-left: auto; color: var(--gold); text-decoration: none; font-weight: 600; font-size: var(--fs-sm); white-space: nowrap; }
+      .gr-bar .utskrift:hover { text-decoration: underline; }
+      .gr-layout {
+        display: grid; grid-template-columns: 240px minmax(0, 1fr);
+        gap: 2.5rem; max-width: 1180px; margin: 0 auto; padding: 1.6rem 1.6rem 5rem;
+      }
+      .gr-toc {
+        position: sticky; top: 4rem; align-self: start;
+        max-height: calc(100vh - 5rem); overflow-y: auto; font-size: var(--fs-2xs);
+      }
+      .gr-toc h2 {
+        font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em;
+        color: var(--ink-soft); font-weight: 600; margin: 0 0 0.6rem;
+      }
+      .gr-actions { display: flex; gap: 0.5rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+      .gr-actions button {
+        flex: 1; padding: 0.4rem 0.5rem; border: 1px solid var(--line); border-radius: 9px;
+        background: var(--card); color: var(--ink); font-family: inherit;
+        font-size: var(--fs-3xs); font-weight: 600; cursor: pointer; white-space: nowrap;
+      }
+      .gr-actions button:hover { border-color: var(--gold); color: var(--gold); }
+      .gr-filter {
+        width: 100%; padding: 0.5rem 0.7rem; margin-bottom: 0.8rem;
+        border: 1px solid var(--line); border-radius: 9px;
+        background: var(--card); color: var(--ink); font-family: inherit; font-size: var(--fs-2xs);
+      }
+      .gr-filter:focus { outline: none; border-color: var(--gold); }
+      .gr-toc ul { list-style: none; margin: 0; padding: 0; }
+      .gr-toc li.group { margin-top: 0.8rem; }
+      .gr-toc li.group > span {
+        display: block; font-weight: 700; color: var(--ink);
+        font-size: var(--fs-3xs); margin-bottom: 0.15rem;
+      }
+      .gr-toc a {
+        display: block; padding: 0.28rem 0.6rem; border-radius: 7px;
+        color: var(--ink-soft); text-decoration: none; border-left: 3px solid transparent;
+      }
+      .gr-toc a:hover { background: var(--card); color: var(--ink); }
+      .gr-toc a.active { color: var(--gold); border-left-color: var(--gold); font-weight: 600; }
+      .gr-toc a.hidden { display: none; }
+      .gr-main { min-width: 0; }
+      .gr-main > .lead { margin: 0 0 1.8rem; color: var(--ink-soft); max-width: 60ch; font-size: var(--fs-lg); }
+      .gr-card {
+        background: var(--card); border: 1px solid var(--line);
+        border-left: 4px solid var(--accent, var(--gold)); border-radius: 14px;
+        padding: 1.3rem 1.5rem 1.5rem; margin-bottom: 1.5rem; scroll-margin-top: 4.5rem;
+      }
+      .gr-card.dim { opacity: 0.28; }
+      .gr-card > h3 {
+        margin: 0 0 0.2rem; font-size: var(--fs-2xl); color: var(--ink);
+        display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+      }
+      .gr-card > .note { color: var(--ink-soft); font-size: var(--fs-xs); margin: 0.1rem 0 1rem; }
+      .gr-card .sem {
+        font-size: var(--fs-3xs); color: var(--ink-soft); border: 1px solid var(--line);
+        border-radius: 999px; padding: 0.05rem 0.55rem; font-weight: 600; white-space: nowrap;
+      }
+      .gr-grek { font-size: var(--fs-lg); }
+
+      /* ── Övnings-namespace (.ov-*) ──────────────────────────────── */
+      .ov-tema { font-size: var(--fs-md); color: var(--accent, var(--gold)); font-weight: 600; }
+      .ov-list { list-style: none; margin: 0; padding: 0; counter-reset: none; }
+      .ov-item {
+        display: grid; grid-template-columns: 1.7rem 1fr auto; align-items: baseline;
+        gap: 0.3rem 0.7rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);
+      }
+      .ov-item:last-child { border-bottom: none; }
+      .ov-num {
+        grid-row: 1; grid-column: 1; color: var(--ink-soft); font-size: var(--fs-xs);
+        font-weight: 600; text-align: right; font-variant-numeric: tabular-nums;
+      }
+      .ov-grek { grid-row: 1; grid-column: 2; color: var(--ink); line-height: 1.5; }
+      .ov-toggle {
+        grid-row: 1; grid-column: 3; justify-self: end; white-space: nowrap;
+        border: 1px solid var(--line); border-radius: 999px; background: var(--paper-2);
+        color: var(--ink-soft); font-family: inherit; font-size: var(--fs-3xs); font-weight: 600;
+        padding: 0.2rem 0.7rem; cursor: pointer;
+      }
+      .ov-toggle:hover { border-color: var(--gold); color: var(--gold); }
+      .ov-toggle[aria-expanded="true"] { background: transparent; color: var(--gold); border-color: var(--gold); }
+      .ov-facit {
+        grid-row: 2; grid-column: 2 / 4; margin: 0.15rem 0 0.1rem;
+        padding: 0.7rem 0.9rem; background: var(--paper-2); border-radius: 10px;
+        font-size: var(--fs-sm); display: flex; flex-direction: column; gap: 0.5rem;
+      }
+      .ov-facit[hidden] { display: none; }
+      .ov-sv { color: var(--ink); font-size: var(--fs-md); }
+      .ov-lbl { color: var(--ink-soft); font-size: var(--fs-xs); font-weight: 600; }
+      .ov-tag { font-weight: 700; font-size: var(--fs-2xs); margin-right: 0.3rem; white-space: nowrap; }
+      .ov-falla { color: var(--ink); border-left: 3px solid #b0642f; padding-left: 0.6rem; }
+      .ov-falla .ov-tag { color: #b0642f; }
+      .ov-komm { color: var(--ink-soft); border-left: 3px solid var(--line); padding-left: 0.6rem; }
+      .ov-meta { color: var(--ink-soft); font-size: var(--fs-2xs); }
+
+      @media (max-width: 900px) {
+        .gr-layout { grid-template-columns: 1fr; }
+        .gr-toc { position: static; max-height: none; margin-bottom: 1rem; }
+        .ov-item { grid-template-columns: 1.4rem 1fr; }
+        .ov-toggle { grid-row: 2; grid-column: 2; justify-self: start; margin-top: 0.2rem; }
+        .ov-facit { grid-column: 1 / 3; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="gr-bar">
+      <a class="hem" href="index.html">← Spel</a>
+      <span class="wordmark">Bibelgrekiska · Seminarieövningar</span>
+      <a class="utskrift" href="grammatikreferens.html">📘 Grammatikreferens</a>
+    </header>
+
+    <div class="gr-layout">
+      <aside class="gr-toc">
+        <h2>Innehåll</h2>
+        <div class="gr-actions">
+          <button id="visa-alla" type="button">Visa alla facit</button>
+          <button id="dolj-alla" type="button">Dölj alla</button>
+        </div>
+        <input class="gr-filter" type="search" placeholder="Filtrera…" aria-label="Filtrera avsnitt" />
+        <ul id="toc">
+          <li class="group"><span>Seminarium 2</span></li>
+          <li><a href="#sem2-verbformer">Verbformer</a></li>
+          <li><a href="#sem2-satser">Satser</a></li>
+          <li><a href="#sem2-breakout">Breakout</a></li>
+          <li class="group"><span>Seminarium 3</span></li>
+          <li><a href="#sem3-satser">Satser</a></li>
+          <li><a href="#sem3-substantivfraser">Substantivfraser</a></li>
+          <li class="group"><span>Seminarium 4</span></li>
+          <li><a href="#sem4-satser">Satser</a></li>
+          <li><a href="#sem4-breakout">Breakout</a></li>
+          <li class="group"><span>Seminarium 5</span></li>
+          <li><a href="#sem5-sjalvstudium">Självstudium</a></li>
+          <li><a href="#sem5-prepositionsfraser">Prepositionsfraser</a></li>
+          <li><a href="#sem5-negation">Negationen οὐ</a></li>
+          <li><a href="#sem5-pronomen">Personliga pronomen</a></li>
+          <li class="group"><span>Seminarium 6</span></li>
+          <li><a href="#sem6-breakout-1">Personliga &amp; possessiva pronomen</a></li>
+          <li><a href="#sem6-breakout-2">Interrogativa pronomen</a></li>
+          <li><a href="#sem6-breakout-3">Futurum</a></li>
+          <li><a href="#sem6-sjalvstudium">Självstudium</a></li>
+        </ul>
+      </aside>
+
+      <main class="gr-main">
+        <p class="lead">
+          Övningar och breakout-uppgifter ur seminarierna i Bibelgrekiska I, med
+          facit, förklarande kommentarer och varningar för vanliga fällor. Klicka
+          <b>Visa facit</b> för att pröva dig själv först.
+        </p>
+
+        <section class="gr-card ov-card" id="sem2-verbformer" style="--accent:#3f7a4f">
+          <h3>Verbformer <span class="ov-tema">Presens indikativ</span> <span class="sem">Sem 2</span></h3>
+          <p class="note">Skriv av, läs högt och översätt. Personändelsen avslöjar vem som handlar — subjektet behöver inte skrivas ut.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">βλέπεις</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">du ser</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">ἀκούετε</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">ni hör</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">λέγουσι(ν)</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">de säger</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Slut-ν i λέγουσι(ν) är rörligt (ν ephelkystikon): det skrivs ut före vokal eller vid satsslut, annars kan det utelämnas. Ändelsen -ουσι(ν) = 3:e person plural.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">ἐσθίει</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">han/hon äter</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">κηρύσσομεν</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">vi predikar</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">λαμβάνουσι(ν)</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">de tar (emot)</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">7</span><div class="ov-grek gr-grek">πέμπει</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">han/hon sänder</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">8</span><div class="ov-grek gr-grek">παιδεύεις</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">du fostrar</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">9</span><div class="ov-grek gr-grek">γράφει</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">han/hon skriver</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">10</span><div class="ov-grek gr-grek">εὑρίσκουσι(ν)</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">de finner</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem2-satser" style="--accent:#a8842c">
+          <h3>Satser <span class="ov-tema">Satsdelar &amp; översättning</span> <span class="sem">Sem 2</span></h3>
+          <p class="note">Läs högt, ta ut satsdelar och översätt. Kasus — inte ordföljden — avgör vilken satsdel ett ord är.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">τὸν οὐρανὸν βλέπετε.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Ni ser himlen.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">ἀκούει λόγον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Hon/hon/det hör en berättelse.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">οἱ δοῦλοι λαμβάνουσι τὸν καρπὸν τοῦ κυρίου.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Slavarna tar emot herrens frukt.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">ἀκούει ὁ λαὸς τοὺς λόγους τοῦ ἀποστόλου.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Folket hör orden/berättelserna.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">πέμπει τοὺς δούλους τῷ ἀδελφῷ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Han/hon/det skickar slavarna till brodern.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">ἀκούουσιν οἱ κύριοι τὸν λόγον τοῦ δούλου.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Herrarna hör slavens berättelse.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem2-breakout" style="--accent:#3f7a4f">
+          <h3>Breakout <span class="ov-tema">Satsdelar &amp; översättning</span> <span class="sem">Sem 2</span></h3>
+          <p class="note">Identifiera satsdelar och översätt till svenska; läs meningarna för varandra.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">ὁ ἄνθρωπος βλέπει τὸν οἶκον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Människan ser huset.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">τὸν ἄνθρωπον βλέπει ὁ θεός.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Gud ser människan.</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Ordföljden lurar: objektet τὸν ἄνθρωπον (ackusativ) står först och subjektet ὁ θεός (nominativ) sist. Kasus — inte ordföljden — avgör satsdelen: ’Gud ser människan’, inte tvärtom.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">γράφουσι λόγον οἱ δοῦλοι.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Slavarna skriver en berättelse.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> λόγον saknar artikel → ’en berättelse/ett ord’. Verbet står först och subjektet οἱ δοῦλοι sist — vanlig grekisk ordföljd.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">ὁ ἀπόστολος γράφει τὸν λόγον τοῖς ἀδελφοῖς.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Aposteln skriver ordet till bröderna.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem3-satser" style="--accent:#a8842c">
+          <h3>Satser <span class="ov-tema">Satsdelar &amp; översättning</span> <span class="sem">Sem 3</span></h3>
+          <p class="note">Läs högt, ta ut satsdelar och översätt. Kasus — inte ordföljden — avgör vilken satsdel ett ord är.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">οἱ πονηροὶ ἄνθρωποι ἀκούουσι τὸ καλὸν εὐαγγέλιον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">De onda människorna lyssnar till det vackra evangeliet.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">τῷ θεῷ πιστεύουσιν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">De tror på Gud.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">οἱ δοῦλοι βλέπουσι τὸν οἶκον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Slavarna ser huset.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">σῴζουσιν οἱ ἄγγελοι τοὺς ἀδελφούς.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Änglarna räddar bröderna.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">ὁ δοῦλος τῷ ἀποστόλῳ λέγει.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Slaven talar till aposteln.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> τῷ ἀποστόλῳ är dativ = indirekt objekt. λέγω tar dativ för den man talar till: ’till aposteln’.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">γράφετε τοῖς δούλοις τοὺς λόγους τῶν ἀδελφῶν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Ni skriver brödernas ord till slavarna.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">7</span><div class="ov-grek gr-grek">βλέπομεν τὸ σημεῖον τοῦ θεοῦ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vi ser Guds tecken.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">8</span><div class="ov-grek gr-grek">πέμπουσιν οἱ δοῦλοι τὰ πλοῖα.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Slavarna sänder båtarna.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">9</span><div class="ov-grek gr-grek">οἱ ἀδελφοὶ εὑρίσκουσι τὰ εὐαγγέλια.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Bröderna finner evangelierna.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">10</span><div class="ov-grek gr-grek">ὦ ἄγγελε, γράφεις τοὺς λόγους τοῦ εὐαγγελίου τοῖς τέκνοις.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">O ängel, du skriver evangeliets ord till barnen.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem3-substantivfraser" style="--accent:#4a6a8a">
+          <h3>Substantivfraser <span class="ov-tema">Bestäm kasus</span> <span class="sem">Sem 3</span></h3>
+          <p class="note">Bestäm kasus, genus och numerus och översätt. Flera former är tvetydiga och avgörs bara av sammanhanget.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">ὁ ἅγιος ἄγγελος</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">den helige ängeln</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">ὁ πονηρὸς δοῦλος</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">den onde slaven</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">τὸ καλὸν εὐαγγέλιον</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">det goda evangeliet</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Neutrum: nominativ och ackusativ ser likadana ut. Formen ensam avslöjar inte om frasen är subjekt eller objekt.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">οἱ πονηροὶ ἄνθρωποι</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">de onda människorna</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">τῶν καλῶν ἱερῶν</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">de vackra templens</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Genitiv pluralis på -ων ser likadan ut för alla tre genus och båda deklinationerna — en av grekiskans mest tvetydiga former.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">τὸν ἀγαθὸν ἄγγελον</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">den gode ängeln</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">7</span><div class="ov-grek gr-grek">τοῖς ἁγίοις ἀδελφοῖς</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">åt de heliga bröderna</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">8</span><div class="ov-grek gr-grek">τοῦ ἀγαθοῦ θεοῦ</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">den gode Gudens</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">9</span><div class="ov-grek gr-grek">τὰ ἀγαθὰ τέκνα</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">de goda barnen</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Neutrum har samma form i nominativ och ackusativ: τὰ ἀγαθὰ τέκνα kan vara både subjekt och objekt (’de goda barnen’). Bara sammanhanget avgör kasus.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">10</span><div class="ov-grek gr-grek">τὸ πονηρὸν τέκνον</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">det onda barnet</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">11</span><div class="ov-grek gr-grek">ὁ καλὸς Φίλιππος</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">den gode Filippos</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">12</span><div class="ov-grek gr-grek">τῶν καλῶν ἀδελφῶν</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">de goda brödernas</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">13</span><div class="ov-grek gr-grek">τῷ ἀγαθῷ θεῷ</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">åt den gode Guden</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Dativ singularis; iota subscriptum (ῳ) är kännetecknet. Utan preposition betyder dativen ’åt/för den gode Guden’.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">14</span><div class="ov-grek gr-grek">ὦ καλὲ οὐρανέ</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">O sköna himmel!</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Vokativ (tilltal): ändelsen -ε på både adjektiv (καλέ) och substantiv (οὐρανέ), inlett av ὦ. Vokativ saknar artikel.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem4-satser" style="--accent:#a8842c">
+          <h3>Satser <span class="ov-tema">Satsdelar &amp; översättning</span> <span class="sem">Sem 4</span></h3>
+          <p class="note">Läs högt, ta ut satsdelar och översätt. Kasus — inte ordföljden — avgör vilken satsdel ett ord är.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Du, o broder, tror på änglarnas vackra bud.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">De onda barnen stjäl de fattiga slavarnas pengar.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">τηρεῖ καὶ σώζει ὁ Κύριος τὸν κόσμον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Herren bevakar och beskyddar världen.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Änglarna talar Guds ord.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">ζητοῦμεν ἐν τῷ ἀγρῷ τοὺς δούλους τοῦ κυρίου.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vi söker husbondens slavar på fältet.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">οἱ ἀδελφοὶ ἄγουσι τὰ τέκνα εἰς τὸν οἶκον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Bröderna leder barnen till huset.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">7</span><div class="ov-grek gr-grek">ζητοῦσιν αἱ ἀδελφαὶ τὴν βασιλείαν τοῦ Θεοῦ· φιλοῦσι γὰρ τὴν ἀλήθειαν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Systrarna söker Guds rike; ty de älskar sanningen.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> γάρ (’ty/för’) är postpositivt och står som satsens andra ord; det inleder en förklaring till det föregående. ζητοῦσιν/φιλοῦσι är kontraherade verb (-έω).</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">8</span><div class="ov-grek gr-grek">ὁ Ἰησοῦς ποιεῖ καλὰ σημεῖα.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Jesus gör sköna under(verk).</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem4-breakout" style="--accent:#3f7a4f">
+          <h3>Breakout <span class="ov-tema">Satsdelar &amp; översättning</span> <span class="sem">Sem 4</span></h3>
+          <p class="note">Identifiera satsdelar och översätt till svenska; läs meningarna för varandra.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">λέγει ὁ ἄγγελος τὴν ἀλήθειαν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Ängeln säger sanningen.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">ὁ ἀπόστολος κηρύσσει τὸ ἀγαθὸν εὐαγγέλιον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Aposteln predikar det goda evangeliet.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">ὁ κύριος πέμπει τῷ κόσμῳ ἄγγελον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Herren sänder en ängel till världen.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> τῷ κόσμῳ (dativ) = indirekt objekt ’till/åt världen’; ἄγγελον (ackusativ) = direkt objekt. Dativen ensam räcker för ’till’ — ingen preposition.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">τὸ τέκνον βλέπει τὸ σημεῖον τοῦ κυρίου.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Barnet ser herrens tecken.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">ἡ ἀγάπη τὴν ψυχήν σῴζει.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Kärleken räddar själen.</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Verbet σῴζει står sist. Subjekt är ἡ ἀγάπη (nominativ), objekt τὴν ψυχήν (ackusativ): ’Kärleken räddar själen’. Låt kasus, inte ordningen, styra.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">ὁ οὐρανός ἐστιν ἀγαθός.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Himlen är god.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem5-sjalvstudium" style="--accent:#8a5a86">
+          <h3>Självstudium <span class="ov-tema">Meningar att översätta</span> <span class="sem">Sem 5</span></h3>
+          <p class="note">Meningar för självstudium (facit fanns i övningsbladet, s. 4).</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">ἄγουσιν οἱ δοῦλοι τὰς παρθένους ἐκ τοῦ οἴκου εἰς τὴν κώμην, ὁ δὲ οἰκοδεσπότης τηρεῖ τὰ τέκνα σὺν τοῖς νεανίαις πρὸ τοῦ ἱεροῦ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Slavarna leder flickorna från huset till byn, men husbonden övervakar barnen tillsammans med ynglingarna framför templet.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">ἐν τῇ ἐκκλησίᾳ βλέπομεν τὴν δόξαν τοῦ θεοῦ· μαρτυροῦσι γὰρ οἱ ἀδελφοὶ τῇ δικαιοσύνῃ καὶ τῇ ἀληθείᾳ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">I kyrkan ser vi Guds härlighet; ty bröderna avlägger vittnesmål om rättvisan och sanningen.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">καλεῖτε τοὺς νεανίας πρὸ τοῦ σαββάτου, καὶ αἰτοῦσιν ἄρτον τοῖς τέκνοις.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Ni kallar på ynglingarna före sabbaten, och de ber om bröd åt barnen.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">ὦ Κύριε, σώζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν δαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">O Herre, du räddar världen och människorna från demonernas makt; alltså tror vi på evangeliets sanning.</div>
+            <div class="ov-meta">Avvikelse: Övningsbladet skriver σώζεις; masterformen (glosor.json/verb.json) är σῴζω (iota subscriptum).</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ τηρεῖ τὰς ἐντολὰς τοῦ θεοῦ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Flickan helar inte sjukdomarna, o profet, men hon älskar barnen och följer Guds bud.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι καὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Människosonen predikar till lärjungarna från båten, och de lyssnar och skriver (antecknar) orden för husbondens barn.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem5-prepositionsfraser" style="--accent:#3f7a4f">
+          <h3>Breakout 1 <span class="ov-tema">Prepositionsfraser</span> <span class="sem">Sem 5</span></h3>
+          <p class="note">Översätt prepositionsfraserna. Prepositionen styr kasus och färgar betydelsen.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">εἰς τὴν θάλασσαν</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">in i/till havet</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">ἐκ τῆς κώμης</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">ut ur byn</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">ἐν τῇ ἐρήμῳ</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">i öknen</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">ἐπὶ τῆς γῆς</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">på jorden</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">ὑπὸ τῶν λίθων</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">under stenarna</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">σὺν τοῖς ἁμαρτωλοῖς</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">med syndarna</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">7</span><div class="ov-grek gr-grek">μετὰ τῶν ἁμαρτωλῶν</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">med syndarna</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Både μετά (+ genitiv) och σύν (+ dativ) översätts ’med’. I koine är μετά det vanliga; σύν betonar sällskap.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">8</span><div class="ov-grek gr-grek">διὰ τὴν νόσον</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">på grund av sjukdomen</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">9</span><div class="ov-grek gr-grek">λέγει πρὸς τὸν μαθητήν</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">hon säger till lärjungen</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">10</span><div class="ov-grek gr-grek">λέγει τῷ μαθητῇ</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">hon säger till lärjungen</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem5-negation" style="--accent:#4a6a8a">
+          <h3>Breakout 2 <span class="ov-tema">Negationen οὐ</span> <span class="sem">Sem 5</span></h3>
+          <p class="note">Sätt in rätt form av οὐ och översätt. Formen (οὐ/οὐκ/οὐχ) styrs av ljudet efter.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">οἱ φίλοι __ πιστεύουσιν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vännerna tror inte.</div>
+            <div class="ov-sv"><span class="ov-lbl">Rätt form:</span> <span class="gr-grek">οἱ φίλοι οὐ πιστεύουσιν.</span></div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Tre former av samma negation: οὐ före konsonant, οὐκ före vokal med mjuk anda, οὐχ före vokal med sträv anda (h-ljud). Ljudet efter avgör.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">οἱ φίλοι __ ἀκούουσιν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vännerna hör inte.</div>
+            <div class="ov-sv"><span class="ov-lbl">Rätt form:</span> <span class="gr-grek">οἱ φίλοι οὐκ ἀκούουσιν.</span></div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">οἱ φίλοι __ ἁμαρτάνουσιν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vännerna syndar inte.</div>
+            <div class="ov-sv"><span class="ov-lbl">Rätt form:</span> <span class="gr-grek">οἱ φίλοι οὐχ ἁμαρτάνουσιν.</span></div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">ἐν ἀρχῇ ποιεῖ ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">I begynnelsen skapar Gud himlen och jorden.</div>
+            <div class="ov-sv"><span class="ov-lbl">Negerad:</span> <span class="gr-grek">ἐν ἀρχῇ οὐ ποιεῖ ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν.</span></div>
+            <div class="ov-meta">GT 1 Mosebok 1:1</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">ἐσμὲν τέκνα θεοῦ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vi är Guds barn.</div>
+            <div class="ov-sv"><span class="ov-lbl">Negerad:</span> <span class="gr-grek">οὐκ ἐσμὲν τέκνα θεοῦ.</span></div>
+            <div class="ov-meta">NT Romarbrevet 8:16</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">ἐν ἀρχῇ ἦν ὁ λόγος.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">I begynnelsen var Ordet.</div>
+            <div class="ov-sv"><span class="ov-lbl">Negerad:</span> <span class="gr-grek">ἐν ἀρχῇ οὐκ ἦν ὁ λόγος.</span></div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἦν = imperfekt av εἰμί (’var’). Negationen blir οὐκ eftersom ἦν börjar på vokal med mjuk anda.</div>
+            <div class="ov-meta">NT Johannesevangeliet 1:1</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem5-pronomen" style="--accent:#b0642f">
+          <h3>Breakout 3 <span class="ov-tema">Personliga pronomen</span> <span class="sem">Sem 5</span></h3>
+          <p class="note">Översätt. Håll koll på de obetonade (enklitiska) pronomenformerna.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">ζητοῦμεν ὑμᾶς.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vi söker er.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">κηρύσσουσιν ὑμῖν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">De predikar för er.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">φιλεῖ σε.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Han/hon gillar dig.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">λέγει περὶ σοῦ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Han talar om dig.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">οὐ πιστεύουσιν ἡμῖν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">De tror inte på oss.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> πιστεύω konstrueras med dativ (ἡμῖν) = ’tro på oss’.</div>
+            <div class="ov-meta">Avvikelse: Facit s. 67 översätter &#x27;på er&#x27;, men ἡμῖν = oss (dativ pl 1:a person).</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">λαλεῖς μοι.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Du talar med mig.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem6-breakout-1" style="--accent:#3f7a4f">
+          <h3>Breakout 1 <span class="ov-tema">Personliga &amp; possessiva pronomen</span> <span class="sem">Sem 6</span></h3>
+          <p class="note">Översätt till svenska. Håll koll på enklitiska (obetonade) pronomen och på αὐτός i genitiv som possessivt ord.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">βαπτίζω σε</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Jag döper dig</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> σε är den obetonade (enklitiska) formen av σύ i ackusativ. Den kan inte inleda satsen eller stå efter preposition — där krävs den betonade σέ.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">βαπτίζεις με</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Du döper mig</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">ὁ ἀδελφὸς αὐτῆς</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Hennes bror</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Genitiven αὐτῆς efter huvudordet uttrycker ägande: ’hennes bror’. αὐτός i genitiv fungerar som possessivt ’hans/hennes/deras’.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">ἡ ἀδελφὴ ἡμῶν</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vår syster</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">αὕτη βαπτίζει αὐτούς</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Hon döper dem</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> αὕτη (spiritus asper + akut) är det demonstrativa ’hon/denna’ — inte det personliga αὐτή ’hon’ och inte dativen αὐτῇ. Spiritus och accent avgör betydelsen.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">λέγω περὶ σοῦ</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Jag talar om dig</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Efter preposition används den betonade formen σοῦ, inte den enklitiska σου.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">7</span><div class="ov-grek gr-grek">λέγεις ἡμῖν / πρὸς ἡμᾶς</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Du säger till oss</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Mottagaren kan uttryckas med ren dativ (ἡμῖν) eller med πρός + ackusativ (πρὸς ἡμᾶς) — båda betyder ’till oss’.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">8</span><div class="ov-grek gr-grek">οὗτος λέγει περὶ αὐτῆς</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Han talar om henne</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Samma form αὐτῆς som i ’ὁ ἀδελφὸς αὐτῆς’, men här styrd av prepositionen περί: ’om henne’ (objekt), inte possessivt ’hennes’. Placeringen avgör rollen.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">9</span><div class="ov-grek gr-grek">Ὁ Ἰησοῦς ζητεῖ τοὺς μαθητὰς καὶ εὑρίσκει αὐτοὺς ἐν τῇ ἐρήμῳ καὶ λέγει αὐτοῖς· εἰρήνη ὑμῖν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Jesus söker lärjungarna och finner dem i öknen och säger till dem: &#x27;frid över er&#x27; (frid till er).</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">10</span><div class="ov-grek gr-grek">ἐξάγουσιν αὐτὸν καὶ φέρουσιν αὐτὸν ἐπὶ τὸν τοῦ θανάτου τόπον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">De leder ut honom och för honom mot dödens plats.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem6-breakout-2" style="--accent:#4a6a8a">
+          <h3>Breakout 2 <span class="ov-tema">Interrogativa pronomen</span> <span class="sem">Sem 6</span></h3>
+          <p class="note">Översätt till svenska. Frågeorden τίς/τί böjs i kasus och numerus.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">τίς ἐστιν;</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vem är det?</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> τίς med akut accent = frågande ’vem?’. Det enklitiska τις (utan egen accent) betyder ’någon’. Interrogativa τίς behåller alltid akut på första stavelsen.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">τίνος ὁ οἶκός ἐστιν;</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vems är huset?</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">τίνα οἶνον πίνεις;</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vilket vin dricker du? (förenat)</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Här står τίνα attributivt till οἶνον: ’vilket vin?’. τίς/τί kan användas både självständigt (’vad?’) och attributivt (’vilken?’).</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">ποῦ ἐστε;</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Var är ni?</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">τί ποιεῖς;</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vad gör du?</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">τίσι λαλεῖτε;</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Med vilka talar ni?</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> τίσι(ν) är dativ plural. λαλέω konstrueras med dativ: ’till/med vilka talar ni?’.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem6-breakout-3" style="--accent:#b0642f">
+          <h3>Breakout 3 <span class="ov-tema">Futurum</span> <span class="sem">Sem 6</span></h3>
+          <p class="note">Översätt till svenska. Futurum känns igen på tempustecknet σ före ändelsen — men några meningar är insmugen presens.</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">οἱ μαθηταὶ πιστεύσουσιν</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Lärjungarna ska tro.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Futurum bildas med tempustecknet σ mellan stam och ändelse: πιστεύ-σ-ουσιν. Personändelserna är desamma som i presens.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">πιστεύσω τῷ θεῷ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Jag ska tro på Gud.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">ὁ κύριος λαλήσει σοι.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Herren ska tala med dig.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> λαλέω är kontraktverb: stamvokalen ε förlängs till η före σ → λαλήσει (jfr φιλέω → φιλήσω).</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">παιδεύεις τὸ τέκνον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Du uppfostrar barnet.</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Fälla bland futurumövningarna: detta är PRESENS (παιδεύεις, utan σ) = ’du uppfostrar’, inte ’du ska uppfostra’. Leta alltid efter σ före ändelsen.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">οἱ ἄγγελοι λαλήσουσιν αὐτῷ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Änglarna ska tala med honom.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">οἱ ἀπόστολοι παιδεύσουσι τοὺς μαθητάς.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Apostlarna ska undervisa lärjungarna.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">7</span><div class="ov-grek gr-grek">ἡ ἀδελφὴ πιστεύσει.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Systern ska tro.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">8</span><div class="ov-grek gr-grek">οὐ λαλοῦμεν τὴν ἀλήθειαν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vi säger inte sanningen.</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Också presens (kontraherat λαλοῦμεν), inte futurum. Med negationen οὐ: ’vi säger inte’.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">9</span><div class="ov-grek gr-grek">τὸ τέκνον πιστεύσει.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Barnet ska tro.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">10</span><div class="ov-grek gr-grek">παιδεύσετε τοὺς μαθητάς.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Ni ska undervisa lärjungarna.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">11</span><div class="ov-grek gr-grek">ὁ προφήτης λαλεῖ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Profeten talar.</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Presens (λαλεῖ), inte futurum λαλήσει. Ingen σ = ingen framtid.</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">12</span><div class="ov-grek gr-grek">οἱ ἀδελφοὶ πιστεύσουσι εἰς τὸν κυρίον.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Bröderna ska tro på Herren.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> πιστεύω εἰς + ackusativ = ’tro på’. Med ren dativ (πιστεύσω τῷ θεῷ, mening 2) blir betydelsen snarare ’sätta tilltro till’.</div>
+            <div class="ov-meta">Avvikelse: Övningsbladet skriver τὸν κυρίον; korrekt accent enligt mastern (κύριος) är τὸν κύριον.</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="gr-card ov-card" id="sem6-sjalvstudium" style="--accent:#8a5a86">
+          <h3>Självstudium <span class="ov-tema">Meningar att översätta</span> <span class="sem">Sem 6</span></h3>
+          <p class="note">Meningar för självstudium (facit fanns i övningsbladet, s. 4).</p>
+          <ol class="ov-list">
+          <li class="ov-item">
+            <span class="ov-num">1</span><div class="ov-grek gr-grek">ἐγείρουσιν αὐτὸν καὶ λέγουσιν αὐτῷ, ὦ Διδάσκαλε […]</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">De väcker honom och säger till honom, o lärare!</div>
+            <div class="ov-meta">Mark 4:38</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">2</span><div class="ov-grek gr-grek">οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής·</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Denne är Johannes Döparen.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> οὗτός bär två accenter därför att det enklitiska ἐστιν skjuter tillbaka sin accent på föregående ord. Grundformen är οὗτος.</div>
+            <div class="ov-meta">Matt 14:2</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">3</span><div class="ov-grek gr-grek">φωνὴ ἐκ τῶν οὐρανῶν λέγει· Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">En röst ur himlen säger: Denne är min älskade son.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Attributivt adjektiv i efterställd ställning upprepar artikeln: ὁ υἱός μου ὁ ἀγαπητός = ’min älskade son’ (ordagrant ’sonen min, den älskade’).</div>
+            <div class="ov-meta">Matt 3:17</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">4</span><div class="ov-grek gr-grek">Ἰωάννης ὁ βαπτιστὴς ἀποστέλλει ἡμᾶς πρὸς σέ.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Johannes Döparen skickar oss till dig.</div>
+            <div class="ov-meta">Luk 7:20</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">5</span><div class="ov-grek gr-grek">ταῦτα λέγεις καὶ ἡμᾶς ὑβρίζεις.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Du säger detta och förolämpar oss.</div>
+            <div class="ov-meta">Luk 11:45</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">6</span><div class="ov-grek gr-grek">τίς ἐστιν οὗτος;</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Vem är denne?</div>
+            <div class="ov-meta">Matt 21:10</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">7</span><div class="ov-grek gr-grek">οἱ δὲ ὄχλοι λέγουσιν· Οὗτός ἐστιν ὁ προφήτης Ἰησοῦς ὁ ἀπὸ Ναζαρὲθ τῆς Γαλιλαίας.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Folkhoparna säger: Denne är profeten Jesus från Nasaret i Galileen.</div>
+            <div class="ov-meta">Matt 21:11</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">8</span><div class="ov-grek gr-grek">οἱ δὲ Φαρισαῖοι ἀκούουσι καὶ λέγουσιν· Οὗτος οὐκ ἐκβάλλει τὰ δαιμόνια</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Och fariséerna hör och säger: Denne fördriver inte onda andar.</div>
+            <div class="ov-meta">Matt 12:24</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">9</span><div class="ov-grek gr-grek">πάντες δὲ ὑμεῖς ἀδελφοί ἐστε</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Och alla ni är bröder.</div>
+            <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> πάντες är nom. pl. mask. av πᾶς ’all/alla’. δέ är postpositivt och står alltid som satsens andra ord.</div>
+            <div class="ov-meta">Matt 23:8</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">10</span><div class="ov-grek gr-grek">λέγει δὲ ὁ Πέτρος, Κύριε, πρὸς ἡμᾶς τὴν παραβολὴν ταύτην λέγεις ἢ καὶ πρὸς πάντας;</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Och Petrus säger, Herre, säger du denna liknelse till oss eller också till alla?</div>
+            <div class="ov-meta">Luk 12:41</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">11</span><div class="ov-grek gr-grek">καὶ μετὰ ἡμέρας ἓξ παραλαμβάνει ὁ Ἰησοῦς τὸν Πέτρον καὶ τὸν Ἰάκωβον καὶ τὸν Ἰωάννην, καὶ ἀναφέρει αὐτοὺς εἰς ὄρος ὑψηλόν.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Och efter sex dagar tog Jesus med sig Petrus och Jakob och Johannes och för dem upp till ett högt berg.</div>
+            <div class="ov-meta">Mark 9:2</div>
+            </div>
+          </li>
+          <li class="ov-item">
+            <span class="ov-num">12</span><div class="ov-grek gr-grek">Κύριον τὸν θεόν σου προσκυνήσεις καὶ αὐτῷ μόνῳ λατρεύσεις.</div>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-facit" hidden>
+            <div class="ov-sv">Du ska tillbedja Herren, din Gud, och tjäna honom allena.</div>
+            <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Futurum med budkraft: ’du SKA tillbe’ (ett bud, inte en förutsägelse) — vanligt i GT-citat. Notera rektionen: προσκυνέω + ackusativ (Κύριον), men λατρεύω + dativ (αὐτῷ μόνῳ).</div>
+            <div class="ov-meta">Matt 4:10</div>
+            </div>
+          </li>
+          </ol>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // Facit-toggle per uppgift.
+      document.querySelectorAll('.ov-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const facit = btn.parentElement.querySelector('.ov-facit');
+          const open = facit.hasAttribute('hidden');
+          facit.toggleAttribute('hidden', !open);
+          btn.setAttribute('aria-expanded', String(open));
+          btn.textContent = open ? 'Dölj facit' : 'Visa facit';
+        });
+      });
+      const setAll = (open) => {
+        document.querySelectorAll('.ov-toggle').forEach((btn) => {
+          const facit = btn.parentElement.querySelector('.ov-facit');
+          facit.toggleAttribute('hidden', !open);
+          btn.setAttribute('aria-expanded', String(open));
+          btn.textContent = open ? 'Dölj facit' : 'Visa facit';
+        });
+      };
+      document.getElementById('visa-alla').addEventListener('click', () => setAll(true));
+      document.getElementById('dolj-alla').addEventListener('click', () => setAll(false));
+
+      // Scrollspy + mjuk scroll + filter (från grammatikreferensen).
+      const links = [...document.querySelectorAll('#toc a')];
+      const byId = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
+      const spy = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              links.forEach((l) => l.classList.remove('active'));
+              const a = byId.get(e.target.id);
+              if (a) a.classList.add('active');
+            }
+          });
+        },
+        { rootMargin: '-10% 0px -75% 0px', threshold: 0 },
+      );
+      document.querySelectorAll('.gr-card').forEach((s) => spy.observe(s));
+      links.forEach((a) =>
+        a.addEventListener('click', (ev) => {
+          const el = document.getElementById(a.getAttribute('href').slice(1));
+          if (el) {
+            ev.preventDefault();
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.replaceState(null, '', a.getAttribute('href'));
+          }
+        }),
+      );
+      const filter = document.querySelector('.gr-filter');
+      const cards = [...document.querySelectorAll('.gr-card')];
+      filter.addEventListener('input', () => {
+        const q = filter.value.trim().toLowerCase();
+        cards.forEach((c) => {
+          const hit = !q || c.textContent.toLowerCase().includes(q);
+          c.classList.toggle('dim', !hit);
+        });
+        links.forEach((a) => {
+          const c = document.getElementById(a.getAttribute('href').slice(1));
+          const hit = !q || (c && c.textContent.toLowerCase().includes(q));
+          a.classList.toggle('hidden', !hit);
+        });
+      });
+    </script>
+  </body>
+</html>
