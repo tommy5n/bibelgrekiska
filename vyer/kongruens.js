@@ -536,10 +536,20 @@ function byggGridSem(){
     b.setAttribute("aria-pressed", String(state.valdaSem.has(s)));
     b.onclick = () => {
       state.valdaSem.has(s) ? state.valdaSem.delete(s) : state.valdaSem.add(s);
-      b.setAttribute("aria-pressed", String(state.valdaSem.has(s))); spara(); newQuestion();
+      b.setAttribute("aria-pressed", String(state.valdaSem.has(s))); uppdateraSnabbChips(); spara(); newQuestion();
     };
     g.appendChild(b);
   });
+  uppdateraSnabbChips();
+}
+/* "alla"/"inga"-chipsen blir svarta (aria-pressed) när seminarieurvalet exakt
+   motsvarar allt resp. inget — så valet syns även på snabbvalen. */
+function setEq(a, b){ return a.size === b.size && [...a].every(x => b.has(x)); }
+function uppdateraSnabbChips(){
+  const v = state.valdaSem;
+  const all = document.querySelector("[data-sem-all]"), none = document.querySelector("[data-sem-none]");
+  if(all)  all.setAttribute("aria-pressed", setEq(v, new Set(SEM_VARDEN)));
+  if(none) none.setAttribute("aria-pressed", v.size === 0);
 }
 
 /* visar rätt inställningssektioner för aktuell konstruktion */

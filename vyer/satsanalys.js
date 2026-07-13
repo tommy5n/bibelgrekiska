@@ -623,10 +623,27 @@ function byggGridNiva(){
     b.onclick = () => {
       state.valdaNivaer.has(n) ? state.valdaNivaer.delete(n) : state.valdaNivaer.add(n);
       b.setAttribute("aria-pressed", state.valdaNivaer.has(n));
-      spara(); newQuestion();
+      uppdateraSnabbChips(); spara(); newQuestion();
     };
     g.appendChild(b);
   });
+  uppdateraSnabbChips();
+}
+/* Snabbvals-chipsen blir svarta (aria-pressed) när nivåurvalet exakt motsvarar
+   det chipet sätter — som deck-chipsen i verbspelet. */
+function setEq(a, b){ return a.size === b.size && [...a].every(x => b.has(x)); }
+function uppdateraSnabbChips(){
+  const v = state.valdaNivaer, alla = new Set(Object.keys(NIVAER).map(Number));
+  const karta = [
+    ["[data-niva-all]",   alla],
+    ["[data-niva-core]",  new Set([1,2,3])],
+    ["[data-niva-clear]", new Set()],
+    ["[data-deck-sem2]",  alla],
+    ["[data-deck-sem4]",  new Set([8,9])],
+    ["[data-deck-sem5]",  new Set([10,11,12])],
+    ["[data-deck-sem6]",  new Set([13,14,15])],
+  ];
+  for(const [sel, set] of karta){ const b = document.querySelector(sel); if(b) b.setAttribute("aria-pressed", setEq(v, set)); }
 }
 function uppdateraKallaKnappar(){
   document.querySelectorAll("#seg-kalla button").forEach(b =>

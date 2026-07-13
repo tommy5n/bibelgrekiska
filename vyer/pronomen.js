@@ -376,10 +376,20 @@ export function render(root){
       b.onclick = () => {
         if(state.valdaSem.has(s)){ if(state.valdaSem.size>1) state.valdaSem.delete(s); } else state.valdaSem.add(s);
         b.setAttribute("aria-pressed", state.valdaSem.has(s));
-        byggGridPron(); uppdateraSektioner(); spara(); newQuestion();
+        uppdateraSnabbChips(); byggGridPron(); uppdateraSektioner(); spara(); newQuestion();
       };
       g.appendChild(b);
     });
+    uppdateraSnabbChips();
+  }
+  /* "alla"/"inga"-chipsen blir svarta (aria-pressed) när seminarieurvalet exakt
+     motsvarar allt resp. inget. */
+  function setEq(a, b){ return a.size === b.size && [...a].every(x => b.has(x)); }
+  function uppdateraSnabbChips(){
+    const v = state.valdaSem;
+    const all = document.querySelector("[data-sem-all]"), none = document.querySelector("[data-sem-none]");
+    if(all)  all.setAttribute("aria-pressed", setEq(v, new Set(SEMINARIER)));
+    if(none) none.setAttribute("aria-pressed", v.size === 0);
   }
   // Visa Betoning-/Genus-sektionen bara när aktiva pronomen använder dimensionen.
   function uppdateraSektioner(){

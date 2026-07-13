@@ -475,6 +475,10 @@ body {
   flex-direction: column;
   gap: 1.1rem;
 }
+/* Vissa vyer (glosor) fäller ihop väljaren via hidden-ATTRIBUTET istället för
+   .hidden-klassen. display:flex ovan vinner annars över UA:s [hidden]{display:none}
+   och panelen går aldrig att fälla ihop — så vi hidear attributet explicit. */
+.picker-body[hidden] { display: none !important; }
 .picker-body h2, .picker h2 {
   font-size: var(--fs-2xs);
   text-transform: uppercase;
