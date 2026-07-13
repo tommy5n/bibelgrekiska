@@ -90,6 +90,11 @@ const KASUS_ORDNING = ["gen","dat","ack"];
 const GRUPP = { 1:"ett kasus", 2:"två kasus", 3:"tre kasus" };
 const GRUPP_ORDNING = [1,2,3];
 
+/* Fasta prepositioner = styr bara ett kasus (ingen betydelseglidning). Bär
+   "Vilket kasus?"-läget. endaKasus() ger deras enda kasusnyckel. */
+const FASTA = prepositioner.filter(p => p.grupp === 1);
+const endaKasus = p => Object.keys(p.kasus)[0];
+
 /* Seminarie-axel: varje preposition bär sem:[…] ur mastern. */
 const SEMINARIER = [...new Set(prepositioner.flatMap(p => p.sem))].sort((a,b) => a - b);
 const semNamn = s => "Sem " + s;
@@ -101,7 +106,12 @@ const ALLA_BETYDELSER = [...new Set(prepositioner.flatMap(p => Object.values(p.k
 const ord = s => s.toLowerCase().split(/[\s,()]+/).filter(Boolean);
 
 const STYLE = `
+.vy-prep .modes{ display:flex; gap:.5rem; justify-content:center; margin:1rem 0 0; }
+.vy-prep .mode{ font-family:"Spectral",serif; font-size:var(--fs-sm); padding:.35rem .9rem;
+  border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
+/* .mode "valt"-svart ärvs från den delade .modes-regeln i app.css. */
 .vy-prep .stage{ display:flex; flex-direction:column; align-items:center; gap:1rem; margin-top:1rem; }
+.vy-prep .glosa{ font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-md); margin-top:.4rem; }
 .vy-prep .card{ background:var(--card); border:1px solid var(--line); border-radius:14px;
   padding:1.6rem 1.4rem; min-width:min(30rem,92vw); text-align:center;
   box-shadow:0 1px 0 rgba(0,0,0,.03); }
@@ -141,8 +151,13 @@ const STYLE = `
 const MARKUP = `<div class="vy vy-prep">
 <header>
   <h1>Grekiska — prepositioner</h1>
-  <div class="sub">Kasus styr betydelsen. Läs kasus på artikeln/ändelsen och välj rätt betydelse.</div>
+  <div class="sub">Kasus styr betydelsen hos grekiska prepositioner.</div>
 </header>
+
+<div class="modes" role="group" aria-label="Spelläge">
+  <button class="mode" id="mode-valj" aria-pressed="true">Välj betydelse</button>
+  <button class="mode" id="mode-kasus" aria-pressed="false">Vilket kasus?</button>
+</div>
 
 <div class="stage">
   <div class="card">
@@ -173,7 +188,7 @@ const MARKUP = `<div class="vy vy-prep">
       </div>
       <div class="grid" id="grid-sem"></div>
     </div>
-    <div>
+    <div id="sec-grupp">
       <h2>Antal kasus <span class="quicklabel">(betydelsen glider vid två/tre)</span></h2>
       <div class="grid" id="grid-grupp"></div>
     </div>
@@ -181,7 +196,7 @@ const MARKUP = `<div class="vy vy-prep">
       <h2>Prepositioner</h2>
       <div class="grid" id="grid-prep"></div>
     </div>
-    <div>
+    <div id="sec-kas">
       <h2>Kasus i frasen</h2>
       <div class="grid" id="grid-kas"></div>
     </div>
@@ -201,6 +216,7 @@ export function render(root){
 
   const LAGER = "grekiska-prepositionsspel";
   const state = {
+    mode: "valj",  // "valj" = välj betydelse, "kasus" = vilket kasus (fasta prep.)
     valdaSem:   new Set(SEMINARIER),
     valdaGrupp: new Set(GRUPP_ORDNING),
     valdaPrep:  new Set(prepositioner.map(p => p.lemma)),
@@ -230,11 +246,28 @@ export function render(root){
     const k = bas.filter(f => state.valdaKas.has(f.kasus));
     return k.length ? k : (bas.length ? bas : fraser);
   }
+  // "Vilket kasus?"-läget: bara fasta prepositioner i valda seminarier ∩ valda
+  // lemman (fallback: fasta i sem, sedan alla fasta).
+  function fastaAktiv(){
+    const inSem = FASTA.filter(p => p.sem.some(s => state.valdaSem.has(s)));
+    const bas = inSem.length ? inSem : FASTA;
+    const v = bas.filter(p => state.valdaPrep.has(p.lemma));
+    return v.length ? v : bas;
+  }
+  // Prepositions-grid: fasta prep. i "kasus"-läget, annars synliga (sem ∩ grupp).
+  function gridPrepList(){
+    if(state.mode === "kasus"){
+      const l = FASTA.filter(p => p.sem.some(s => state.valdaSem.has(s)));
+      return l.length ? l : FASTA;
+    }
+    return synligaPrep();
+  }
 
   function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({
-    valdaSem:[...state.valdaSem], valdaGrupp:[...state.valdaGrupp], valdaPrep:[...state.valdaPrep],
+    mode:state.mode, valdaSem:[...state.valdaSem], valdaGrupp:[...state.valdaGrupp], valdaPrep:[...state.valdaPrep],
     valdaKas:[...state.valdaKas], best:state.best })); }catch(e){} }
   function ladda(){ try{ const r = JSON.parse(localStorage.getItem(LAGER)); if(!r) return;
+    if(r.mode === "valj" || r.mode === "kasus") state.mode = r.mode;
     if(Array.isArray(r.valdaSem))   state.valdaSem   = new Set(r.valdaSem.filter(s => SEMINARIER.includes(s)));
     if(Array.isArray(r.valdaGrupp)) state.valdaGrupp = new Set(r.valdaGrupp.filter(g => GRUPP_ORDNING.includes(g)));
     if(Array.isArray(r.valdaPrep))  state.valdaPrep  = new Set(r.valdaPrep.filter(l => prepositioner.some(p=>p.lemma===l)));
@@ -263,12 +296,26 @@ export function render(root){
   }
 
   function newQuestion(){
+    if(state.mode === "kasus"){ newQuestionKasus(); return; }
     const fr = aktivaFraser();
     let f, n=0;
     do { f = pick(fr); } while(fr.length > 1 && f.gr === state.forra && ++n < 30);
     state.forra = f.gr;
     const ratt = prep(f.lemma).kasus[f.kasus];
-    state.card = { ...f, ratt, optioner: byggOptioner(f, ratt) };
+    state.card = { mode:"valj", ...f, ratt, optioner: byggOptioner(f, ratt) };
+    state.besvarad = false; state.valt = null;
+    render2();
+  }
+  // "Vilket kasus?": visa en fast preposition + dess betydelse, välj kasus.
+  function newQuestionKasus(){
+    const ps = fastaAktiv();
+    let p, n=0;
+    do { p = pick(ps); } while(ps.length > 1 && p.lemma === state.forra && ++n < 30);
+    state.forra = p.lemma;
+    const kas = endaKasus(p);
+    const ex = fraser.find(f => f.lemma === p.lemma) || null;
+    state.card = { mode:"kasus", lemma:p.lemma, kas, betyd:p.kasus[kas], ratt:KASUS[kas],
+      optioner: KASUS_ORDNING.map(k => KASUS[k]), ex };
     state.besvarad = false; state.valt = null;
     render2();
   }
@@ -282,8 +329,13 @@ export function render(root){
 
   function render2(){
     const c = state.card;
-    $("prompt").innerHTML = promptHTML(c);
-    $("fraga").innerHTML = "Vad betyder <b>" + c.lemma + "</b> här?";
+    if(c.mode === "kasus"){
+      $("prompt").textContent = c.lemma;
+      $("fraga").innerHTML = "<b>" + c.betyd + "</b> — vilket kasus styr den?";
+    } else {
+      $("prompt").innerHTML = promptHTML(c);
+      $("fraga").innerHTML = "Vad betyder <b>" + c.lemma + "</b> här?";
+    }
     $("streak").textContent = state.streak;
     $("best").textContent = state.best;
 
@@ -293,7 +345,15 @@ export function render(root){
   }
 
   function visaSvar(){
-    const c = state.card, p = prep(c.lemma);
+    const c = state.card;
+    if(c.mode === "kasus"){
+      $("svar").innerHTML = c.lemma + " styr <span class=\"kas\">" + KASUS[c.kas] + "</span> → " + c.betyd;
+      $("oversatt").innerHTML = c.ex ? (c.ex.gr + " = <b>" + c.ex.sv + "</b>") : "";
+      $("tabell").innerHTML = "";
+      $("reveal").classList.remove("hidden");
+      return;
+    }
+    const p = prep(c.lemma);
     $("svar").innerHTML = c.lemma + " + <span class=\"kas\">" + KASUS[c.kasus] + "</span> → " + c.ratt;
     $("oversatt").innerHTML = c.gr + " = <b>" + c.sv + "</b>";
     // Hela prepositionens kasus→betydelse (aktivt kasus markerat) — så kontrasten syns.
@@ -334,10 +394,10 @@ export function render(root){
       g.appendChild(b);
     });
   }
-  // Prepositions-griden visar bara prepositioner i valda seminarier + grupper.
+  // Prepositions-griden visar prep. som är relevanta för läget (se gridPrepList).
   function byggGridPrep(){
     const g = $("grid-prep"); g.innerHTML = "";
-    synligaPrep().forEach(p => {
+    gridPrepList().forEach(p => {
       const b = document.createElement("button");
       b.className="toggle"; b.textContent = p.lemma;
       b.setAttribute("aria-pressed", state.valdaPrep.has(p.lemma));
@@ -379,6 +439,22 @@ export function render(root){
     byggGrid("grid-kas", KASUS_ORDNING, k => KASUS[k], state.valdaKas);
   }
 
+  // Läge: uppdatera knappar + dölj de picker-sektioner som inte gäller "kasus".
+  function uppdateraLage(){
+    $("mode-valj").setAttribute("aria-pressed", state.mode === "valj");
+    $("mode-kasus").setAttribute("aria-pressed", state.mode === "kasus");
+    const k = state.mode === "kasus";
+    $("sec-grupp").classList.toggle("hidden", k);
+    $("sec-kas").classList.toggle("hidden", k);
+  }
+  function bytLage(m){
+    if(state.mode === m) return;
+    state.mode = m; state.streak = 0;
+    uppdateraLage(); byggGridPrep(); spara(); newQuestion();
+  }
+  $("mode-valj").onclick  = () => bytLage("valj");
+  $("mode-kasus").onclick = () => bytLage("kasus");
+
   $("btn-next").onclick = () => newQuestion();
   $("picker-toggle").onclick = () => { const o = $("picker-toggle").getAttribute("aria-expanded")==="true";
     $("picker-toggle").setAttribute("aria-expanded", !o); $("picker-body").classList.toggle("hidden", o); };
@@ -392,5 +468,5 @@ export function render(root){
   };
   document.addEventListener("keydown", __ph);
 
-  ladda(); byggPickers(); newQuestion();
+  ladda(); uppdateraLage(); byggPickers(); newQuestion();
 }
