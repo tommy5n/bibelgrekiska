@@ -157,6 +157,7 @@ const SEMINARIER = [
       { spel:"Kongruens", route:"#/kongruens", filter:"predikativt + εἰμί", vad:"den nya konstruktionen" },
       { spel:"Satsanalys", route:"#/satsanalys", vad:"adverbial som ny satsdel" },
       { spel:"Verb", route:"#/verb", filter:"kontraherade", vad:"φιλέω-typen i presens" },
+      { spel:"Prepositioner", route:"#/prepositioner", filter:"Vilket kasus?", vad:"koppla ἐν, εἰς, ἐκ till rätt kasus" },
     ],
     slaupp:[
       { text:"Feminina 1:a dekl", anchor:"subst-fem" },
@@ -196,6 +197,7 @@ const SEMINARIER = [
       { spel:"Glosor", route:"#/glosor", filter:"Sem 5", vad:"hela ordförrådet hittills" },
       { spel:"Kasus", route:"#/kasus", vad:"blanda alla genus och deklinationer" },
       { spel:"Pronomen", route:"#/pronomen", filter:"Sem 5", vad:"ἐγώ och σύ i alla kasus" },
+      { spel:"Prepositioner", route:"#/prepositioner", filter:"Välj betydelse", vad:"läs kasus i frasen och välj rätt betydelse" },
       { spel:"Satsanalys", route:"#/satsanalys", vad:"satser med pronomen och negation" },
     ],
     slaupp:[
