@@ -70,6 +70,12 @@ const SPEL = [
     desc: "Pronomen: ἐγώ, σύ, αὐτός, οὗτος, τίς",
     route: "#/pronomen",
   },
+  {
+    nr: 10,
+    namn: "Paradigm",
+    desc: "Fyll i hela böjningstabellen — kasus × numerus",
+    route: "#/paradigm",
+  },
 ];
 
 const ROUTES = {
@@ -82,6 +88,7 @@ const ROUTES = {
   "/andelser": () => import(`./vyer/andelser.js${vv}`),
   "/verb": () => import(`./vyer/verb.js${vv}`),
   "/pronomen": () => import(`./vyer/pronomen.js${vv}`),
+  "/paradigm": () => import(`./vyer/paradigm.js${vv}`),
 };
 
 let current = null;
