@@ -166,9 +166,7 @@ body {
 /* ══════════ VYER (namnrymdade) ══════════ */
 /* ═══ vy: alfabet ═══ */
 .vy-alfabet {
-  --paper: #f7f1e6;
   --paper-2: #efe2c4;
-  --card: #fffdf7;
   --ink: #2c2318;
   --ink-soft: #7a6a52;
   --line: #e0d2af;
@@ -516,6 +514,18 @@ body {
 }
 .picker .toggle:disabled { opacity: 0.4; cursor: default; }
 .picker .toggle .n { opacity: 0.6; font-size: var(--fs-xs); margin-left: 0.3rem; }
+
+/* ── Delade interaktions-/tillståndsregler (view-agnostiska) ──────────────
+   EN sanningskälla för hur "valt" och "dolt" ser ut i ALLA spel. Dessa
+   kopierades tidigare identiskt per vy (.vy-kasus, .vy-glosor …), vilket gav
+   drift och buggar (bl.a. saknades .hidden i flera vyer → pickern gick inte
+   att fälla ihop). Endast färg/visning här — storlek/layout hör till varje vy.
+   Chips/toggles täcks redan av .picker .chip/.toggle[aria-pressed] ovan. */
+.hidden { display: none !important; }
+.modes .mode[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.modes .mode:not([aria-pressed="true"]):hover { border-color: var(--gold); color: var(--ink); }
+.picker .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.streak b { color: var(--ink); font-weight: 600; }
 @media (max-width: 480px) {
   .picker { width: 100%; }
   .picker-toggle { font-size: var(--fs-xl); padding: 1rem 1.1rem; }
@@ -605,9 +615,6 @@ body {
   font-size: 1.05em;
   margin-right: 0.2em;
 }
-.vy-alfabet .hidden {
-  display: none !important;
-}
 @keyframes rise__alfabet {
   from {
     opacity: 0;
@@ -642,28 +649,11 @@ body {
 /* ═══ vy: glosor ═══ */
 .vy-glosor {
   --fs-3xs: 0.86rem;
-  --fs-2xs: 0.9rem;
-  --fs-xs: 0.92rem;
   --fs-sm: 0.98rem;
-  --fs-md: 1.02rem;
-  --fs-lg: 1.05rem;
-  --fs-xl: 1.08rem;
   --fs-2xl: 1.15rem;
   --fs-3xl: 1.55rem;
   --fs-4xl: 1.6rem;
   --fs-5xl: 3.2rem;
-
-  --paper: #f7f1e6;
-  --paper-2: #efe7d6;
-  --card: #fffdf7;
-  --ink: #2c2620;
-  --ink-soft: #6f6557;
-  --line: #e3d9c6;
-  --gold: #a8842c;
-  --good: #3f7a4f;
-  --good-bg: #eaf3e7;
-  --bad: #a8492c;
-  --bad-bg: #f6eae4;
 }
 .vy-glosor * {
   box-sizing: border-box;
@@ -725,11 +715,6 @@ body {
 .vy-glosor .mode:not([aria-pressed="true"]):hover:not(:disabled) {
   border-color: var(--gold);
   color: var(--ink);
-}
-.vy-glosor .mode[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
 }
 .vy-glosor .mode:disabled {
   opacity: 0.4;
@@ -922,11 +907,6 @@ body {
 .vy-glosor .toggle:hover {
   border-color: var(--gold);
 }
-.vy-glosor .toggle[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
 .vy-glosor .toggle .n {
   opacity: 0.6;
   font-size: var(--fs-xs);
@@ -976,28 +956,7 @@ body {
 
 /* ═══ vy: kasus ═══ */
 .vy-kasus {
-  --fs-3xs: 0.88rem;
-  --fs-2xs: 0.9rem;
-  --fs-xs: 0.92rem;
-  --fs-sm: 1rem;
-  --fs-md: 1.02rem;
-  --fs-lg: 1.05rem;
-  --fs-xl: 1.08rem;
-  --fs-2xl: 1.35rem;
-  --fs-3xl: 1.6rem;
   --fs-4xl: 3.2rem;
-
-  --paper: #f7f1e6;
-  --paper-2: #efe7d6;
-  --card: #fffdf7;
-  --ink: #2c2620;
-  --ink-soft: #6f6557;
-  --line: #e3d9c6;
-  --gold: #a8842c;
-  --good: #3f7a4f;
-  --good-bg: #eaf3e7;
-  --bad: #a8492c;
-  --bad-bg: #f6eae4;
 }
 .vy-kasus * {
   box-sizing: border-box;
@@ -1055,15 +1014,6 @@ body {
   padding: 0.45rem 1.05rem;
   cursor: pointer;
   transition: 0.2s;
-}
-.vy-kasus .mode:not([aria-pressed="true"]):hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
-.vy-kasus .mode[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
 }
 .vy-kasus .stage {
   width: min(440px, 100%);
@@ -1196,10 +1146,6 @@ body {
   font-size: var(--fs-md);
   text-align: center;
 }
-.vy-kasus .streak b {
-  color: var(--ink);
-  font-weight: 600;
-}
 .vy-kasus .picker {
   width: min(440px, 100%);
   margin-top: 1.6rem;
@@ -1243,11 +1189,6 @@ body {
   pointer-events: none;
   z-index: 5;
 }
-.vy-kasus .toggle[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
 .vy-kasus .seg {
   display: inline-flex;
   border: 1px solid var(--line);
@@ -1267,10 +1208,6 @@ body {
 .vy-kasus .seg button + button {
   border-left: 1px solid var(--line);
 }
-.vy-kasus .seg button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-}
 .vy-kasus footer {
   margin-top: 2rem;
   color: var(--ink-soft);
@@ -1283,9 +1220,6 @@ body {
   background: var(--paper-2);
   padding: 0.05rem 0.35rem;
   border-radius: 4px;
-}
-.vy-kasus .hidden {
-  display: none !important;
 }
 .vy-kasus .site-foot {
   margin: 2.4rem 0 0.5rem;
@@ -1324,18 +1258,6 @@ body {
   --fs-6xl: 1.12rem;
   --fs-7xl: 1.6rem;
   --fs-8xl: 1.85rem;
-
-  --paper: #f7f1e6;
-  --paper-2: #efe7d6;
-  --card: #fffdf7;
-  --ink: #2c2620;
-  --ink-soft: #6f6557;
-  --line: #e3d9c6;
-  --gold: #a8842c;
-  --good: #3f7a4f;
-  --good-bg: #eaf3e7;
-  --bad: #a8492c;
-  --bad-bg: #f6eae4;
 }
 .vy-satsanalys .r-pred {
   --c: #2c2620;
@@ -1451,15 +1373,6 @@ body {
   padding: 0.45rem 1.05rem;
   cursor: pointer;
   transition: 0.2s;
-}
-.vy-satsanalys .mode:not([aria-pressed="true"]):hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
-.vy-satsanalys .mode[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
 }
 .vy-satsanalys .stage {
   width: min(560px, 100%);
@@ -1667,10 +1580,6 @@ body {
   font-size: var(--fs-3xl);
   text-align: center;
 }
-.vy-satsanalys .streak b {
-  color: var(--ink);
-  font-weight: 600;
-}
 .vy-satsanalys .picker {
   width: min(560px, 100%);
   margin-top: 1.6rem;
@@ -1712,11 +1621,6 @@ body {
   pointer-events: none;
   z-index: 5;
 }
-.vy-satsanalys .toggle[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
 .vy-satsanalys .seg {
   display: inline-flex;
   border: 1px solid var(--line);
@@ -1736,10 +1640,6 @@ body {
 .vy-satsanalys .seg button + button {
   border-left: 1px solid var(--line);
 }
-.vy-satsanalys .seg button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-}
 .vy-satsanalys footer {
   margin-top: 2rem;
   color: var(--ink-soft);
@@ -1751,9 +1651,6 @@ body {
   background: var(--paper-2);
   padding: 0.05rem 0.35rem;
   border-radius: 4px;
-}
-.vy-satsanalys .hidden {
-  display: none !important;
 }
 .vy-satsanalys .site-foot {
   margin: 2.4rem 0 0.5rem;
@@ -1779,28 +1676,10 @@ body {
 /* ═══ vy: kongruens ═══ */
 .vy-kongruens {
   --fs-3xs: 0.8rem;
-  --fs-2xs: 0.9rem;
   --fs-xs: 0.96rem;
-  --fs-sm: 1rem;
-  --fs-md: 1.02rem;
-  --fs-lg: 1.05rem;
   --fs-xl: 1.15rem;
   --fs-2xl: 1.45rem;
-  --fs-3xl: 1.6rem;
   --fs-4xl: 2.05rem;
-
-  --paper: #f7f1e6;
-  --paper-2: #efe7d6;
-  --card: #fffdf7;
-  --ink: #2c2620;
-  --ink-soft: #6f6557;
-  --line: #e3d9c6;
-  --gold: #a8842c;
-  --good: #3f7a4f;
-  --good-bg: #eaf3e7;
-  --bad: #a8492c;
-  --bad-bg: #f6eae4;
-
   --axel: #8a6a1e;
 }
 .vy-kongruens * {
@@ -2020,10 +1899,6 @@ body {
   font-size: var(--fs-md);
   text-align: center;
 }
-.vy-kongruens .streak b {
-  color: var(--ink);
-  font-weight: 600;
-}
 .vy-kongruens .picker {
   width: min(560px, 100%);
   margin-top: 1.6rem;
@@ -2049,10 +1924,6 @@ body {
 .vy-kongruens .seg button + button {
   border-left: 1px solid var(--line);
 }
-.vy-kongruens .seg button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-}
 .vy-kongruens .toggle {
   font-family: inherit;
   font-size: var(--fs-sm);
@@ -2067,11 +1938,6 @@ body {
 .vy-kongruens .toggle:hover {
   border-color: var(--gold);
 }
-.vy-kongruens .toggle[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
 .vy-kongruens .hint {
   font-size: var(--fs-2xs);
   color: var(--ink-soft);
@@ -2084,9 +1950,6 @@ body {
   font-size: var(--fs-2xs);
   text-align: center;
   max-width: 560px;
-}
-.vy-kongruens .hidden {
-  display: none !important;
 }
 .vy-kongruens .site-foot {
   margin: 2.4rem 0 0.5rem;
@@ -2113,7 +1976,6 @@ body {
 .vy-studieguide {
   --fs-3xs: 0.82rem;
   --fs-2xs: 0.88rem;
-  --fs-xs: 0.92rem;
   --fs-sm: 0.95rem;
   --fs-md: 0.98rem;
   --fs-lg: 1rem;
@@ -2121,14 +1983,6 @@ body {
   --fs-2xl: 1.08rem;
   --fs-3xl: 1.3rem;
   --fs-4xl: 1.8rem;
-
-  --paper: #f7f1e6;
-  --paper-2: #efe7d6;
-  --card: #fffdf7;
-  --ink: #2c2620;
-  --ink-soft: #6f6557;
-  --line: #e3d9c6;
-  --gold: #a8842c;
   --gold-soft: #cdb069;
   --warn: #9a5b2a;
   --warn-bg: #f7ede0;
@@ -2450,30 +2304,6 @@ body {
 }
 
 /* ═══ vy: andelser ═══ */
-.vy-andelser {
-  --fs-3xs: 0.88rem;
-  --fs-2xs: 0.9rem;
-  --fs-xs: 0.92rem;
-  --fs-sm: 1rem;
-  --fs-md: 1.02rem;
-  --fs-lg: 1.05rem;
-  --fs-xl: 1.08rem;
-  --fs-2xl: 1.35rem;
-  --fs-3xl: 1.6rem;
-  --fs-4xl: 2.2rem;
-
-  --paper: #f7f1e6;
-  --paper-2: #efe7d6;
-  --card: #fffdf7;
-  --ink: #2c2620;
-  --ink-soft: #6f6557;
-  --line: #e3d9c6;
-  --gold: #a8842c;
-  --good: #3f7a4f;
-  --good-bg: #eaf3e7;
-  --bad: #a8492c;
-  --bad-bg: #f6eae4;
-}
 .vy-andelser * {
   box-sizing: border-box;
 }
@@ -2530,15 +2360,6 @@ body {
   padding: 0.45rem 1.05rem;
   cursor: pointer;
   transition: 0.2s;
-}
-.vy-andelser .mode:not([aria-pressed="true"]):hover {
-  border-color: var(--gold);
-  color: var(--ink);
-}
-.vy-andelser .mode[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
 }
 .vy-andelser .stage {
   width: min(440px, 100%);
@@ -2670,10 +2491,6 @@ body {
   font-size: var(--fs-md);
   text-align: center;
 }
-.vy-andelser .streak b {
-  color: var(--ink);
-  font-weight: 600;
-}
 .vy-andelser .picker {
   width: min(440px, 100%);
   margin-top: 1.6rem;
@@ -2717,11 +2534,6 @@ body {
   pointer-events: none;
   z-index: 5;
 }
-.vy-andelser .toggle[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
 .vy-andelser .seg {
   display: inline-flex;
   border: 1px solid var(--line);
@@ -2741,10 +2553,6 @@ body {
 .vy-andelser .seg button + button {
   border-left: 1px solid var(--line);
 }
-.vy-andelser .seg button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-}
 .vy-andelser footer {
   margin-top: 2rem;
   color: var(--ink-soft);
@@ -2756,9 +2564,6 @@ body {
   background: var(--paper-2);
   padding: 0.05rem 0.35rem;
   border-radius: 4px;
-}
-.vy-andelser .hidden {
-  display: none !important;
 }
 .vy-andelser .lemma {
   font-family: "Cardo", serif;

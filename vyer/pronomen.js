@@ -106,9 +106,8 @@ const STYLE = `
 .vy-pron .modes{ display:flex; gap:.5rem; justify-content:center; margin:.4rem 0 0; }
 .vy-pron .mode{ font-family:"Spectral",serif; font-size:var(--fs-sm); padding:.35rem .9rem;
   border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink-soft); cursor:pointer; }
-.vy-pron .mode[aria-pressed="true"]{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
-/* Picker (.picker/.picker-toggle/.toggle/.chip/.quickrow m.fl.) stylas av den
-   delade komponenten i app.css — inga vy-lokala regler här. */
+/* .mode "valt"-svart, picker, .toggle/.chip m.fl. ärvs från de delade
+   reglerna i app.css — inga vy-lokala regler här. */
 .vy-pron footer{ margin-top:1.4rem; font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; }
 .vy-pron footer a{ color:var(--gold); text-decoration:none; }
 .vy-pron footer a:hover{ text-decoration:underline; }

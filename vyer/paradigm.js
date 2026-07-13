@@ -40,14 +40,12 @@ const CSS = `
 .vy-paradigm .modes{ display:flex; gap:.5rem; justify-content:center; margin:0 0 1rem; }
 .vy-paradigm .mode{ border:1px solid var(--line); border-radius:9px; background:var(--card); color:var(--ink-soft);
   font-size:var(--fs-sm); padding:.4rem .9rem; cursor:pointer; }
-.vy-paradigm .mode[aria-pressed="true"]{ background:var(--gold); border-color:var(--gold); color:#fff; }
 .vy-paradigm .seg{ display:inline-flex; border:1px solid var(--line); border-radius:9px; overflow:hidden; }
 .vy-paradigm .seg button{ border:0; background:var(--card); color:var(--ink-soft); font-size:var(--fs-sm); padding:.4rem .9rem; cursor:pointer; }
 .vy-paradigm .seg button + button{ border-left:1px solid var(--line); }
-.vy-paradigm .seg button[aria-pressed="true"]{ background:var(--gold); color:#fff; }
 .vy-paradigm footer{ max-width:640px; margin:1.4rem auto 0; color:var(--ink-soft); font-size:var(--fs-sm); line-height:1.5; }
 .vy-paradigm footer code{ font-size:var(--fs-md); }
-.vy-paradigm .hidden{ display:none !important; }
+/* .mode/.seg "valt"-svart + .hidden ärvs nu från de delade reglerna i app.css. */
 `;
 
 const MARKUP = `<div class="vy vy-paradigm">
