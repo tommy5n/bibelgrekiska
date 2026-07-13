@@ -76,6 +76,12 @@ const SPEL = [
     desc: "Fyll i hela böjningstabellen — kasus × numerus",
     route: "#/paradigm",
   },
+  {
+    nr: 11,
+    namn: "Prepositioner",
+    desc: "Kasus styr betydelsen — välj rätt utifrån frasen",
+    route: "#/prepositioner",
+  },
 ];
 
 const ROUTES = {
@@ -89,6 +95,7 @@ const ROUTES = {
   "/verb": () => import(`./vyer/verb.js${vv}`),
   "/pronomen": () => import(`./vyer/pronomen.js${vv}`),
   "/paradigm": () => import(`./vyer/paradigm.js${vv}`),
+  "/prepositioner": () => import(`./vyer/prepositioner.js${vv}`),
 };
 
 let current = null;
