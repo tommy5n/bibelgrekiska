@@ -67,10 +67,18 @@ const MARKUP = `<div class="vy vy-kasus">
         <button class="chip" data-ord-clear>rensa</button>
       </div>
       <div class="quickrow">
-        <span class="quicklabel">Kategori:</span>
-        <button class="chip" data-deck="oxytona">Oxytona</button>
-        <button class="chip" data-deck="neutrum">Neutrum</button>
-        <button class="chip" data-deck="feminina">Feminina</button>
+        <span class="quicklabel">Deklination:</span>
+        <button class="chip" data-cat="d1">Dekl. 1</button>
+        <button class="chip" data-cat="d2">Dekl. 2</button>
+      </div>
+      <div class="quickrow">
+        <span class="quicklabel">Typ:</span>
+        <button class="chip" data-cat="os">-ος (dekl. 2)</button>
+        <button class="chip" data-cat="n">neutr. -ον</button>
+        <button class="chip" data-cat="fh">fem. η</button>
+        <button class="chip" data-cat="fa">fem. ren α</button>
+        <button class="chip" data-cat="fm">fem. blandad α</button>
+        <button class="chip" data-cat="m1">1:a dekl. mask.</button>
       </div>
       <div class="grid" id="grid-ord"></div>
     </div>
@@ -261,14 +269,21 @@ const ord = [
     nom:{sg:"φίλος",pl:"φίλοι"}, gen:{sg:"φίλου",pl:"φίλων"}, dat:{sg:"φίλῳ",pl:"φίλοις"}, ack:{sg:"φίλον",pl:"φίλους"}, vok:{sg:"φίλε",pl:"φίλοι"} }}
 ];
 
-/* Namngivna kortlekar (kategori-förval) — sparade ord-urval som återanvänder
-   samma motor. Axel: accenttyp (oxytona får cirkumflex i gen/dat) resp. genus.
-   Lekarna får överlappa. Seminarie-urvalet är en egen axel (se SEMINARIER). */
-const KORTLEKAR = {
-  oxytona: ["θεός","ἀδελφός","καιρός","καρπός","λαός","οὐρανός","ὀφθαλμός","υἱός","Χριστός","ἱερόν","ἀρχή","φωνή","ψυχή","ζωή","ἐντολή","ἀδελφή","κεφαλή","συναγωγή","ὁδός","μαθητής"],
-  neutrum: ["ἔργον","τέκνον","εὐαγγέλιον","ἱερόν","σημεῖον","πλοῖον","σάββατον","δαιμόνιον"],
-  feminina: ["ἀρχή","φωνή","ψυχή","ζωή","ἐντολή","ἀδελφή","κεφαλή","συναγωγή","ἀγάπη","εἰρήνη","δικαιοσύνη","ἐκκλησία","ἡμέρα","ἁμαρτία","ἐξουσία","καρδία","βασιλεία","ὥρα","ἀλήθεια","θάλασσα","κώμη","δόξα","νόσος","ὁδός","ἔρημος","παρθένος"],
+/* Kategori-förval på deklinations-/typaxeln, som predikat på paradigmKeyK —
+   härleds ur ord-listan (även de bedrägliga: νόσος är 2:a-dekl femininum, böjs
+   som -ος; μαθητής är 1:a-dekl maskulinum). Klick sätter ordurvalet; chipet blir
+   svart (aria-pressed) när urvalet exakt motsvarar kategorin. */
+const KATEGORIER = {
+  d1: o => ["f1h","f1a","f1m","m1"].includes(paradigmKeyK(o)), // hela deklination 1
+  d2: o => ["m2","n2"].includes(paradigmKeyK(o)),              // hela deklination 2
+  os: o => paradigmKeyK(o) === "m2",                           // -ος (dekl. 2, mask + νόσος-typ)
+  n:  o => paradigmKeyK(o) === "n2",                           // neutr. -ον
+  fh: o => paradigmKeyK(o) === "f1h",                          // fem. η-stam
+  fa: o => paradigmKeyK(o) === "f1a",                          // fem. ren α
+  fm: o => paradigmKeyK(o) === "f1m",                          // fem. blandad α
+  m1: o => paradigmKeyK(o) === "m1",                           // 1:a dekl. mask. (μαθητής-typ)
 };
+const katLemman = key => new Set(ord.filter(KATEGORIER[key]).map(o => o.lemma));
 
 /* Seminarie-axel: varje ord bär sem:[…] ur ord.json. 0 = "Övriga" (ord utan
    seminarietaggning, t.ex. högfrekventa NT-ord). Skalar till fler seminarier —
@@ -301,6 +316,19 @@ function shuffle(arr){                            // Fisher-Yates
   const a = arr.slice();
   for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
   return a;
+}
+function setEq(a,b){ return a.size===b.size && [...a].every(x=>b.has(x)); }
+function strip(s){ return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").normalize("NFC"); }
+/* Deklinations-/typklass ur formerna (ej bara genus, för att fånga de bedrägliga
+   νόσος/μαθητής). Ordning: neutrum -ον, 2:a-dekl -ος (mask + fem-νόσος),
+   1:a-dekl mask (nom ej -ος men gen -ου), sedan fem η / ren α / blandad α. */
+function paradigmKeyK(o){
+  const nom = strip(o.former.nom.sg), gen = strip(o.former.gen.sg);
+  if(nom.endsWith("ον")) return "n2";
+  if(nom.endsWith("ος")) return "m2";
+  if(gen.endsWith("ου")) return "m1";
+  if(nom.endsWith("η"))  return "f1h";
+  return gen.endsWith("ας") ? "f1a" : "f1m";
 }
 // Seminarie-urvalet styr VILKA ord som visas i rutnätet (synliga); ordrutnätet
 // finjusterar bland dem. Så när man väljer ett seminarium ser man direkt dess ord
@@ -508,10 +536,15 @@ function byggGridOrd(){
     b.onclick = () => {
       state.valdaOrd.has(o.lemma) ? state.valdaOrd.delete(o.lemma) : state.valdaOrd.add(o.lemma);
       b.setAttribute("aria-pressed", state.valdaOrd.has(o.lemma));
-      spara(); newQuestion();
+      uppdateraKatChips(); spara(); newQuestion();
     };
     g.appendChild(b);
   });
+  uppdateraKatChips();
+}
+function uppdateraKatChips(){
+  document.querySelectorAll("[data-cat]").forEach(b =>
+    b.setAttribute("aria-pressed", setEq(state.valdaOrd, katLemman(b.dataset.cat))));
 }
 function byggGridKasus(){
   const g = $("grid-kasus"); g.innerHTML = "";
@@ -571,8 +604,8 @@ $("picker-toggle").onclick = () => {
 
 document.querySelector("[data-ord-all]").onclick   = () => { state.valdaOrd = new Set(ord.map(o=>o.lemma)); byggGridOrd(); spara(); newQuestion(); };
 document.querySelector("[data-ord-clear]").onclick = () => { state.valdaOrd = new Set(); byggGridOrd(); spara(); newQuestion(); };
-document.querySelectorAll("[data-deck]").forEach(b => {
-  b.onclick = () => { state.valdaOrd = new Set(KORTLEKAR[b.dataset.deck] || []); byggGridOrd(); spara(); newQuestion(); };
+document.querySelectorAll("[data-cat]").forEach(b => {
+  b.onclick = () => { state.valdaOrd = katLemman(b.dataset.cat); byggGridOrd(); spara(); newQuestion(); };
 });
 document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEM_VARDEN); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };
 document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };

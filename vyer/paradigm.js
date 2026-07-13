@@ -47,6 +47,7 @@ const CSS = `
 .vy-paradigm .seg button[aria-pressed="true"]{ background:var(--gold); color:#fff; }
 .vy-paradigm footer{ max-width:640px; margin:1.4rem auto 0; color:var(--ink-soft); font-size:var(--fs-sm); line-height:1.5; }
 .vy-paradigm footer code{ font-size:var(--fs-md); }
+.vy-paradigm .hidden{ display:none !important; }
 `;
 
 const MARKUP = `<div class="vy vy-paradigm">
@@ -112,10 +113,17 @@ const MARKUP = `<div class="vy vy-paradigm">
         <button class="chip" data-ord-clear>rensa</button>
       </div>
       <div class="quickrow">
-        <span class="quicklabel">Kategori:</span>
-        <button class="chip" data-deck="oxytona">Oxytona</button>
-        <button class="chip" data-deck="neutrum">Neutrum</button>
-        <button class="chip" data-deck="feminina">Feminina</button>
+        <span class="quicklabel">Deklination:</span>
+        <button class="chip" data-cat="d1">Dekl. 1</button>
+        <button class="chip" data-cat="d2">Dekl. 2</button>
+      </div>
+      <div class="quickrow">
+        <span class="quicklabel">Typ:</span>
+        <button class="chip" data-cat="m">mask. -ος</button>
+        <button class="chip" data-cat="n">neutr. -ον</button>
+        <button class="chip" data-cat="fh">fem. η</button>
+        <button class="chip" data-cat="fa">fem. ren α</button>
+        <button class="chip" data-cat="fm">fem. blandad α</button>
       </div>
       <div class="grid" id="grid-ord"></div>
     </div>
@@ -280,11 +288,19 @@ const ord = [
     nom:{sg:"φίλος",pl:"φίλοι"}, gen:{sg:"φίλου",pl:"φίλων"}, dat:{sg:"φίλῳ",pl:"φίλοις"}, ack:{sg:"φίλον",pl:"φίλους"}, vok:{sg:"φίλε",pl:"φίλοι"} }}
 ];
 
-const KORTLEKAR = {
-  oxytona: ["θεός","ἀδελφός","καιρός","καρπός","λαός","οὐρανός","ὀφθαλμός","υἱός","Χριστός","ἱερόν","ἀρχή","φωνή","ψυχή","ζωή","ἐντολή","ἀδελφή","κεφαλή","συναγωγή"],
-  neutrum: ["ἔργον","τέκνον","εὐαγγέλιον","ἱερόν","σημεῖον","πλοῖον","σάββατον","δαιμόνιον"],
-  feminina: ["ἀρχή","φωνή","ψυχή","ζωή","ἐντολή","ἀδελφή","κεφαλή","συναγωγή","ἀγάπη","εἰρήνη","δικαιοσύνη","ἐκκλησία","ἡμέρα","ἁμαρτία","ἐξουσία","καρδία","βασιλεία","ὥρα","ἀλήθεια","θάλασσα","κώμη","δόξα"],
+/* Kategori-förval på deklinations-/typaxeln, som predikat på paradigmKey —
+   härleds ur ord-listan så nya ord fångas automatiskt. Klick sätter ordurvalet;
+   chipet blir svart (aria-pressed) när urvalet exakt motsvarar kategorin. */
+const KATEGORIER = {
+  d1: o => ["f1h","f1a","f1m"].includes(paradigmKey(o)),   // hela deklination 1
+  d2: o => ["m2","n2"].includes(paradigmKey(o)),           // hela deklination 2
+  m:  o => paradigmKey(o) === "m2",                        // mask. -ος
+  n:  o => paradigmKey(o) === "n2",                        // neutr. -ον
+  fh: o => paradigmKey(o) === "f1h",                       // fem. η-stam
+  fa: o => paradigmKey(o) === "f1a",                       // fem. ren α
+  fm: o => paradigmKey(o) === "f1m",                       // fem. blandad α
 };
+const katLemman = key => new Set(ord.filter(KATEGORIER[key]).map(o => o.lemma));
 
 /* Seminarie-axel: varje ord bär sem:[…] ur ord.json. 0 = "Övriga". */
 const SEMINARIER = [...new Set(ord.flatMap(o => o.sem))].sort((a,b) => a - b);
@@ -307,6 +323,7 @@ const ANDELSER_ALLA = (() => {
 
 /* ── HJÄLPARE ────────────────────────────────────────────────────────── */
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+function setEq(a,b){ return a.size===b.size && [...a].every(x=>b.has(x)); }
 function strip(s){ return s.normalize("NFD").replace(/[̀́͂̓̔̈̄̆]/g,"").normalize("NFC"); }
 function paradigmKey(o){
   if(o.genus==="m") return "m2";
@@ -497,10 +514,15 @@ function byggGridOrd(){
     b.setAttribute("aria-pressed", state.valdaOrd.has(o.lemma));
     b.onclick = () => {
       state.valdaOrd.has(o.lemma) ? state.valdaOrd.delete(o.lemma) : state.valdaOrd.add(o.lemma);
-      b.setAttribute("aria-pressed", state.valdaOrd.has(o.lemma)); spara(); nyttOrd();
+      b.setAttribute("aria-pressed", state.valdaOrd.has(o.lemma)); uppdateraKatChips(); spara(); nyttOrd();
     };
     g.appendChild(b);
   });
+  uppdateraKatChips();
+}
+function uppdateraKatChips(){
+  document.querySelectorAll("[data-cat]").forEach(b =>
+    b.setAttribute("aria-pressed", setEq(state.valdaOrd, katLemman(b.dataset.cat))));
 }
 function uppdateraVokKnappar(){
   document.querySelectorAll("#seg-vok button").forEach(b =>
@@ -527,8 +549,8 @@ $("picker-toggle").onclick = () => {
 };
 document.querySelector("[data-ord-all]").onclick   = () => { state.valdaOrd = new Set(ord.map(o=>o.lemma)); byggGridOrd(); spara(); nyttOrd(); };
 document.querySelector("[data-ord-clear]").onclick = () => { state.valdaOrd = new Set(); byggGridOrd(); spara(); nyttOrd(); };
-document.querySelectorAll("[data-deck]").forEach(b => {
-  b.onclick = () => { state.valdaOrd = new Set(KORTLEKAR[b.dataset.deck] || []); byggGridOrd(); spara(); nyttOrd(); };
+document.querySelectorAll("[data-cat]").forEach(b => {
+  b.onclick = () => { state.valdaOrd = katLemman(b.dataset.cat); byggGridOrd(); spara(); nyttOrd(); };
 });
 document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEM_VARDEN); byggGridSem(); byggGridOrd(); spara(); nyttOrd(); };
 document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); byggGridOrd(); spara(); nyttOrd(); };
