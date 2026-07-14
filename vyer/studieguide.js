@@ -254,29 +254,78 @@ const SEMINARIER = [
   },
 
   {
-    n:7, titel:"Det som väntar", preliminar:true,
-    tema:"Förberett i övningsdatan, men ännu inte i spelen eller grammatikreferensen — läggs in när kursens material för seminarium 7 är här.",
+    n:7, titel:"Två nya modus, ett nytt tempus och tredje deklinationen",
+    tema:"Seminariets tyngsta: verbet får både imperativ och infinitiv (nya modus) och imperfekt (nytt tempus), och substantiven får en helt ny böjningsprincip.",
     nytt:[
-      "Futurumklasser: σ möter konsonant → ψ, ξ eller σ (γράφω → γράψω, ἄγω → ἄξω)",
-      "Infinitiv — ny modus (λύειν, φιλεῖν, εἶναι)",
-      "Presens imperativ — befallningsform (λῦε ’lös!’)",
-      "Imperfekt — dåtid med augment (ἔλυον ’jag höll på att lösa’)",
-      "Oregelbundna adjektiv μέγας (stor) och πολύς (mycket)",
-      "Possessiva (ἐμός, σός) och indefinita (τις) pronomen",
-      "Tredje deklinationen — stambaserad böjning (ἡγεμών)",
+      "Futurum på konsonantstammar — σ möter roten: ξ, ψ eller σ (γράφω → γράψω, ἄγω → ἄξω)",
+      "Infinitiv — presens och futurum (λύειν, λύσειν, εἶναι)",
+      "Presens imperativ — nytt modus (λῦε ’lös!’)",
+      "Imperfekt — nytt tempus med augment (ἔλυον ’jag löste’)",
+      "μέγας (stor) och πολύς (mycken, många) — nästan regelbundna adjektiv",
+      "Possessiva pronomen — betonade och obetonade (ἐμός, μου)",
+      "Indefinita τις (någon) — τίς utan accent",
+      "Tredje deklinationen — stambaserad böjning (ὁ ἡγεμών, ἡγεμόνος)",
     ],
     begrepp:[
+      { rubrik:"Modus — verbets tredje axel",
+        text:"Du kan redan böja verb i <b>person</b>, <b>numerus</b> och <b>tempus</b>. Nu tillkommer <b>modus</b>: talarens sätt att framställa handlingen. <b>Indikativ</b> konstaterar ett faktum (<span class='grek'>βλέπεις</span> ’du ser’); <b>imperativ</b> uttrycker vilja (<span class='grek'>βλέπε</span> ’titta!’); <b>infinitiven</b> är den oböjda grundformen (<span class='grek'>βλέπειν</span> ’att se’). Samma verb, samma tempus — olika modus." },
       { rubrik:"Futurumets ljudmöten",
-        text:"När futurumets <span class='grek'>σ</span> möter en konsonant smälter de samman: labial + σ → <span class='grek'>ψ</span> (<span class='grek'>γράφω → γράψω</span>), velar + σ → <span class='grek'>ξ</span> (<span class='grek'>ἄγω → ἄξω</span>), dental + σ → <span class='grek'>σ</span> (<span class='grek'>πείθω → πείσω</span>)." },
-      { rubrik:"Nya modus: infinitiv och imperativ",
-        text:"<b>Modus</b> är verbets sätt att framställa handlingen — som ett faktiskt påstående, en befallning, en önskan. Hittills har verben stått i <b>indikativ</b> (påstående). Nu tillkommer <b>infinitiven</b> (<span class='grek'>λύειν</span> ’att lösa’), en oböjd grundform, och <b>imperativen</b> (<span class='grek'>λῦε</span> ’lös!’) som uttrycker befallning." },
-      { rubrik:"Imperfekt och augmentet",
-        text:"Imperfekt beskriver pågående dåtid. Det känns igen på <b>augmentet</b> — ett <span class='grek'>ἐ-</span> framför stammen (<span class='grek'>λύω → ἔλυον</span>), som vid vokalstam blir förlängning (<span class='grek'>ἀκούω → ἤκουον</span>)." },
+        text:"I sem 6 lärde du dig <span class='grek'>σ</span>-tecknet på vokalstammar. Nu möter σ konsonanter och de smälter samman: <b>κ, χ, γ, σσ</b> + σ → <span class='grek'>ξ</span> (<span class='grek'>διώκω → διώξω</span>), <b>π, φ, β, πτ</b> + σ → <span class='grek'>ψ</span> (<span class='grek'>πέμπω → πέμψω</span>), <b>τ, θ, δ, ζ</b> + σ → <span class='grek'>σ</span> (<span class='grek'>πείθω → πείσω</span>). <span class='grek'>ξ</span> och <span class='grek'>ψ</span> är bara skrivsätt för κσ och πσ." },
+      { rubrik:"Imperfekt = augment + sekundärändelser",
+        text:"Imperfekt är dåtid och känns igen <i>framför</i> stammen: ett <b>augment</b>. Börjar stammen på konsonant läggs <span class='grek'>ἐ-</span> till (<span class='grek'>λύω → ἔλυον</span>); börjar den på vokal förlängs vokalen i stället (<span class='grek'>ἄγω → ἦγον</span>, <span class='grek'>ἀκούω → ἤκουον</span>). Ändelserna är <b>sekundära</b>: <span class='grek'>-ον, -ες, -ε(ν), -ομεν, -ετε, -ον</span>." },
+      { rubrik:"Possessiva — placeringen är poängen",
+        text:"Ägande sägs på två sätt. <b>Obetonat</b> med genitiv av det personliga pronomenet, <i>efter</i> substantivet: <span class='grek'>ὁ υἱὸς ἡμῶν</span> ’vår son’. <b>Betonat</b> med ett eget adjektiv, <i>mellan</i> artikel och substantiv: <span class='grek'>ὁ ἡμέτερος υἱός</span> ’<i>vår</i> son (inte er)’. Formerna är lätta — placeringen är det du ska lära in." },
       { rubrik:"Tredje deklinationen — en ny princip",
-        text:"Hittills har ändelserna kunnat härledas ur genus. Tredje deklinationen är <b>stambaserad</b>: du måste kunna <i>genitivstammen</i> (<span class='grek'>ἡγεμών</span>, gen. <span class='grek'>ἡγεμόνος</span>) och lägga ändelserna på den. Därför lär man in dessa ord som par — nominativ + genitiv." },
+        text:"Hittills har ändelserna kunnat härledas ur genus. Tredje deklinationen är <b>stambaserad</b>: du måste kunna <i>genitivstammen</i> och lägga ändelserna på den. Därför lär man in dessa ord som par — nominativ + genitiv: <span class='grek'>ὁ ἡγεμών, ἡγεμόνος</span>. Nominativen ensam räcker inte, för den döljer stammen." },
     ],
     fallor:[
-      "Detta avsnitt är en förhandstitt: formerna finns i övningsdatan men är ännu inte inlagda i spelen eller grammatikreferensen. Vänta med att drilla tills kursen når hit.",
+      "<b>2:a person plural ändras inte</b> mellan indikativ och imperativ: <span class='grek'>πιστεύετε</span> är både ’ni tror’ och ’tro!’. Bara sammanhanget skiljer.",
+      "<b>Imperativ negeras med μή, aldrig οὐ:</b> <span class='grek'>μὴ μένετε</span> ’stanna inte!’ — men <span class='grek'>οὐ μένετε</span> ’ni stannar inte’. Modus avgör negationen.",
+      "<b>-ον i imperfekt är tvetydigt</b> — både 1:a sg och 3:e pl. <span class='grek'>ἔλεγον</span> = ’jag sade’ <i>eller</i> ’de sade’.",
+      "<b>τις utan accent = ’någon’; τίς med accent = ’vem?’.</b> Samma bokstäver. Enklitiskt <span class='grek'>τις</span> kan dessutom inte inleda en mening.",
+      "<b>Samma αὐτ--ord, två roller:</b> <span class='grek'>αὐτούς</span> (ackusativ) är objekt ’dem’, <span class='grek'>αὐτῶν</span> (genitiv) är possessivt ’deras’. Kasus avgör.",
+      "<b>μέγας och πολύς</b> är oregelbundna i bara fem celler (mask./neutr. nom/ack/vok sg). Resten är vanligt 2-1-2 — men på en <i>längre</i> stam: <span class='grek'>μεγαλ-</span>, <span class='grek'>πολλ-</span>.",
+    ],
+    ova:[
+      { spel:"Formverkstaden", route:"#/former", filter:"övningsbladets (a–e)", vad:"bygg om formen — presens ↔ imperfekt, futurum, imperativ" },
+      { spel:"Formverkstaden", route:"#/former", filter:"Vilken negation?", vad:"οὐ/οὐκ/οὐχ efter ljudet — men μή vid imperativ" },
+      { spel:"Verb", route:"#/verb", filter:"modus: imperativ / infinitiv", vad:"de nya modusen på hela verbinventariet" },
+      { spel:"Verb", route:"#/verb", filter:"tempus: imperfekt", vad:"augmentet på alla verb" },
+      { spel:"Pronomen", route:"#/pronomen", filter:"Sem 7", vad:"ἐμός, σός, ἡμέτερος, ὑμέτερος och τις" },
+      { spel:"Kongruens", route:"#/kongruens", filter:"oregelbundna", vad:"μέγας och πολύς mot substantiven" },
+      { spel:"Satsanalys", route:"#/satsanalys", filter:"nivå 16–18", vad:"possessiva, imperfekt och infinitiv som komplement" },
+      { spel:"Glosor", route:"#/glosor", filter:"Sem 7", vad:"det nyaste ordförrådet" },
+    ],
+    slaupp:[
+      { text:"Imperativ", anchor:"verb-imperativ" },
+      { text:"Imperfekt", anchor:"verb-imperfekt" },
+      { text:"Infinitiv", anchor:"verb-inf" },
+      { text:"Futurum", anchor:"verb-futurum" },
+      { text:"μέγας & πολύς", anchor:"adj-megas" },
+      { text:"Possessiva", anchor:"pron-poss" },
+      { text:"Indefinita", anchor:"pron-indef" },
+      { text:"3:e deklinationen", anchor:"subst-dekl3" },
+    ],
+    mal:"Du skiljer indikativ från imperativ, känner igen augmentet som dåtidsmarkör, och slår upp tredje deklinationens ord som par (nominativ + genitiv).",
+  },
+  {
+    n:8, titel:"Det som väntar", preliminar:true,
+    tema:"Nästa seminarium enligt presentationens sista slide — ännu inte inlagt i spelen eller grammatikreferensen.",
+    nytt:[
+      "Tillägg till imperfekt",
+      "Sigmatisk aorist — dåtidens andra tempus",
+      "Bisatser",
+      "Tredje deklinationen: τὸ πνεῦμα (B § 72.2)",
+      "Presens particip",
+    ],
+    begrepp:[
+      { rubrik:"Aorist vid sidan av imperfekt",
+        text:"Grekiskan har två dåtidstempus. Imperfekt (sem 7) ser handlingen som <i>pågående</i>; <b>aorist</b> ser den som en <i>helhet</i>. Skillnaden är inte tid utan <b>aspekt</b> — den kommer att kräva att du tänker om vad ’dåtid’ betyder." },
+      { rubrik:"Particip — verbet som adjektiv",
+        text:"Ett <b>particip</b> är en verbform som böjs som ett adjektiv och kongruerar med ett substantiv. Det är grekiskans mest använda konstruktion och den största behållaren i kursen." },
+    ],
+    fallor:[
+      "Detta avsnitt är en förhandstitt ur seminarium 7:s sista slide. Vänta med att drilla tills kursens material för seminarium 8 är här.",
     ],
     ova:[],
     slaupp:[],
@@ -309,9 +358,9 @@ function seminariumHTML(s){
   const mal = s.mal
     ? `<div class="mal"><span class="tag">Mål</span><span>${s.mal}</span></div>`
     : "";
-  const nodInner = kommande ? "7" : s.n;
+  const nodInner = s.n;
   const badge = kommande ? `<span class="badge">Kommande</span>` : "";
-  const rubrikNr = kommande ? "Seminarium 7 —" : `Seminarium ${s.n} —`;
+  const rubrikNr = `Seminarium ${s.n} —`;
 
   return `<div class="steg${kommande ? " kommande" : ""}">
     <div class="nod${kommande ? " nod-kommande" : ""}">${nodInner}</div>
