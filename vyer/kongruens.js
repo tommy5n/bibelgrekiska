@@ -48,9 +48,10 @@ const MARKUP = `<div class="vy vy-kongruens">
       <div class="seg" id="seg-adj" role="group" aria-label="Adjektivhög">
         <button data-v="oxytona" aria-pressed="false">oxytona</button>
         <button data-v="ovriga"  aria-pressed="false">förskjutande</button>
+        <button data-v="oregelbundna" aria-pressed="false">oregelbundna</button>
         <button data-v="alla"    aria-pressed="true">alla</button>
       </div>
-      <div class="hint">Förskjutande = proparoxytona och properispomena (ἅγιος, πρῶτος), där accenten flyttar i böjningen.</div>
+      <div class="hint">Förskjutande = proparoxytona och properispomena (ἅγιος, πρῶτος), där accenten flyttar i böjningen. Oregelbundna = μέγας och πολύς (Sem 7), som har korta 3:e-deklinationsformer i mask./neutr. nominativ och ackusativ singular.</div>
     </div>
     <div class="picker-section">
       <h2>Substantiv</h2>
@@ -162,7 +163,21 @@ const ADJEKTIV = [
   {lemma:"αἰώνιος", glosa:"evig", accenttyp:"proparoxyton", kortlek:"ovriga", sem:[5],
    m:{nom:["αἰώνιος","αἰώνιοι"], gen:["αἰωνίου","αἰωνίων"], dat:["αἰωνίῳ","αἰωνίοις"], ack:["αἰώνιον","αἰωνίους"], vok:["αἰώνιε","αἰώνιοι"]},
    f:{nom:["αἰώνιος","αἰώνιοι"], gen:["αἰωνίου","αἰωνίων"], dat:["αἰωνίῳ","αἰωνίοις"], ack:["αἰώνιον","αἰωνίους"], vok:["αἰώνιε","αἰώνιοι"]},
-   n:{nom:["αἰώνιον","αἰώνια"], gen:["αἰωνίου","αἰωνίων"], dat:["αἰωνίῳ","αἰωνίοις"], ack:["αἰώνιον","αἰώνια"], vok:["αἰώνιον","αἰώνια"]}}
+   n:{nom:["αἰώνιον","αἰώνια"], gen:["αἰωνίου","αἰωνίων"], dat:["αἰωνίῳ","αἰωνίοις"], ack:["αἰώνιον","αἰώνια"], vok:["αἰώνιον","αἰώνια"]}},
+
+  /* Seminarium 7 — "adjektiv efter tre deklinationer" (B § 108). Mask./neutr.
+     nom/ack/vok sg är korta 3:e-dekl-former på en KORT stam (μέγας, μέγαν,
+     μέγα / πολύς, πολύν, πολύ); allt övrigt är vanligt 2-1-2 på den LÅNGA
+     stammen (μεγαλ-, πολλ-). Formerna lagras därför explicit — de får inte
+     härledas ur ändelsemönstret. Ur adjektiv.json (oregelbunden:true). */
+  {lemma:"μέγας", glosa:"stor", accenttyp:"paroxyton", kortlek:"oregelbundna", sem:[7],
+   m:{nom:["μέγας","μεγάλοι"], gen:["μεγάλου","μεγάλων"], dat:["μεγάλῳ","μεγάλοις"], ack:["μέγαν","μεγάλους"], vok:["μέγας","μεγάλοι"]},
+   f:{nom:["μεγάλη","μεγάλαι"], gen:["μεγάλης","μεγάλων"], dat:["μεγάλῃ","μεγάλαις"], ack:["μεγάλην","μεγάλας"], vok:["μεγάλη","μεγάλαι"]},
+   n:{nom:["μέγα","μεγάλα"], gen:["μεγάλου","μεγάλων"], dat:["μεγάλῳ","μεγάλοις"], ack:["μέγα","μεγάλα"], vok:["μέγα","μεγάλα"]}},
+  {lemma:"πολύς", glosa:"mycken (pl. många)", accenttyp:"oxyton", kortlek:"oregelbundna", sem:[7],
+   m:{nom:["πολύς","πολλοί"], gen:["πολλοῦ","πολλῶν"], dat:["πολλῷ","πολλοῖς"], ack:["πολύν","πολλούς"], vok:["πολύς","πολλοί"]},
+   f:{nom:["πολλή","πολλαί"], gen:["πολλῆς","πολλῶν"], dat:["πολλῇ","πολλαῖς"], ack:["πολλήν","πολλάς"], vok:["πολλή","πολλαί"]},
+   n:{nom:["πολύ","πολλά"], gen:["πολλοῦ","πολλῶν"], dat:["πολλῷ","πολλοῖς"], ack:["πολύ","πολλά"], vok:["πολύ","πολλά"]}}
 ];
 
 const SUBSTANTIV = [
