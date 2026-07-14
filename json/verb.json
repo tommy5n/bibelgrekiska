@@ -1,5 +1,5 @@
 {
- "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope hittills (kursens första hälft): presens indikativ aktiv för ω-verb. Kontraherade verb och εἰμί samt fler tempus tillkommer. Seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι). Seminarium 7 tillför presens aktiv infinitiv (pres.inf.akt: λύειν, φιλεῖν, εἶναι) — härledd och korsverifierad; syntaxen (B § 266-271) hör till grammatikreferensen. Presens aktiv imperativ (pres.imp.akt) tillkommer i seminarium 7 (härledd + korsverifierad; syntaxen B § 265 hör till grammatikreferensen).",
+ "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope: presens indikativ aktiv (ω-verb, kontraherade -έω, εἰμί); seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι). Seminarium 7 (kurs-PDF 2026-07-14) tillför: imperfekt indikativ aktiv (impf.ind.akt) på hela inventariet, presens aktiv imperativ (pres.imp.akt), presens aktiv infinitiv (pres.inf.akt) och futurum aktiv infinitiv (fut.inf.akt: παιδεύσειν) samt futurum på konsonantstammar. Syntaxen (infinitiv B § 266-271, imperativ B § 265, tempus/aspekt § 251-255) hör till grammatikreferensen, inte hit.",
  "_genererad": "2026-07-07",
  "_nycklar": {
   "_forklaring": "Formnyckel = 'tempus.modus.diates'. Person/numerus = '1sg'..'3pl'. Kortformer för konsekvens med ord.json; långformer nedan.",
@@ -35,7 +35,7 @@
  },
  "_klasser": {
   "omega": {
-   "beskrivning": "Tematiska ω-verb. Ändelse på stammen, recessiv betoning. Futurum bildas med inskott av -σ- mellan stam och ändelse (λύ-σ-ω).",
+   "beskrivning": "Tematiska ω-verb. Ändelse på stammen, recessiv betoning. Futurum bildas med inskott av -σ- mellan stam och ändelse (λύ-σ-ω); infinitiv på -ειν (pres. λύ-ειν, fut. λύ-σ-ειν); imperativ -ε/-έτω/-ετε/-έτωσαν; imperfekt augment + sekundära ändelser.",
    "andelser": {
     "pres.ind.akt": {
      "1sg": "-ω",
@@ -70,6 +70,9 @@
      "2pl": "-ετε",
      "3pl": "-ον",
      "augment": "ἐ- före konsonant; vokal förlängs (ἀ/ε→η, αι→ῃ, ευ→ηυ); sammansatta får inre augment"
+    },
+    "fut.inf.akt": {
+     "inf": "-σειν"
     }
    }
   },
@@ -109,6 +112,9 @@
      "2pl": "-εῖτε",
      "3pl": "-ουν",
      "not": "kontraherat (ε+ο→ου, ε+ε→ει); samma augmentregler"
+    },
+    "fut.inf.akt": {
+     "inf": "-ήσειν"
     }
    },
    "kontraktionsregler": [
@@ -126,7 +132,8 @@
   "sem4": "kontraherade -έω, presens ind. aktiv (εἰμί tillkommer)",
   "eimi": "εἰμί (vara) — presens + imperfekt",
   "sem5": "Seminarium 5-verb (prepositions-/negations-/pronomenövningarna)",
-  "sem6": "Seminarium 6: futurum (ω-verb λύσω, -έω-verb φιλήσω, εἰμί ἔσομαι)"
+  "sem6": "Seminarium 6: futurum (ω-verb λύσω, -έω-verb φιλήσω, εἰμί ἔσομαι)",
+  "sem7": "Seminarium 7: imperfekt (ἔλυον), presens imperativ (λῦε), infinitiv (λύειν/λύσειν) + futurum-tillägg (konsonantstammar)"
  },
  "_falt": {
   "lemma": "Uppslagsform (1sg pres ind akt).",
@@ -136,12 +143,13 @@
   "seminarium": "Seminarier där ordet införs.",
   "kortlekar": "Vilka speldäck ordet ingår i.",
   "nt_frekvens": "Förekomster i NT (nt-lemman.json).",
-  "former": "Böjda former, nyklade 'tempus.modus.diates' -> {person_numerus: form}. Presens/imperfekt/futurum indikativ (pres.ind.akt, impf.ind.akt, fut.ind.akt; εἰμί fut.ind.med). Infinitiv (modus 'inf') saknar person/numerus och lagras som pres.inf.akt -> {\"inf\": form} (λύειν, φιλεῖν, εἶναι). Spel som itererar person_numerus måste hantera 'inf'-nyckeln särskilt. Imperativ (modus 'imp') saknar 1:a person och lagras som pres.imp.akt -> {2sg,3sg,2pl,3pl} (λῦε, λυέτω, λύετε, λυέτωσαν). 3pl-ändelsen är koine -έτωσαν (klassiskt -όντων: λυόντων). εἰμί: ἴσθι/ἔστω/ἔστε/ἔστωσαν. Imperfekt (impf.ind.akt) har augment + sekundära ändelser; ω -ον/-ες/-ε(ν)/-ομεν/-ετε/-ον, kontrakt -ουν/-εις/-ει/-οῦμεν/-εῖτε/-ουν. Augmentet är oregelbundet (ἐ- vs vokalförlängning vs inre augment) → formerna lagras explicit.",
+  "former": "Böjda former, nyklade 'tempus.modus.diates' -> {person_numerus: form}. Indikativ: pres.ind.akt, impf.ind.akt, fut.ind.akt (εἰμί + λαμβάνω: fut.ind.med) med 6 celler 1sg..3pl. Infinitiv (modus 'inf') saknar person/numerus och lagras som {\"inf\": form}: pres.inf.akt (λύειν, φιλεῖν, εἶναι) och fut.inf.akt (λύσειν, παιδεύσειν, φιλήσειν). Imperativ (modus 'imp') saknar 1:a person: pres.imp.akt -> {2sg,3sg,2pl,3pl} (λῦε, λυέτω, λύετε, λυέτωσαν); 3pl är koine -έτωσαν (klass. -όντων). εἰμί: ἴσθι/ἔστω/ἔστε/ἔστωσαν. SPEL SOM ITERERAR person_numerus MÅSTE hantera dessa avvikelser: 'inf' = 1 cell, 'imp' = 4 celler (ingen 1:a person). Imperfekt har augment + sekundära ändelser; ω -ον/-ες/-ε(ν)/-ομεν/-ετε/-ον, kontrakt -ουν/-εις/-ει/-οῦμεν/-εῖτε/-ουν. Augmentet är oregelbundet (ἐ- vs vokalförlängning vs inre augment i sammansättningar: ὑπάγω→ὑπῆγον, προσκυνέω→προσεκύνουν) → formerna lagras explicit.",
   "belagda_former": "Personnycklar vars form är direkt belagd (facit) i seminarierna — extra tillit.",
   "verifierad": "true först när formerna är samverifierade; false = mönstergenererad, väntar bekräftelse.",
-  "futurumklass": "vokal|diftong|sigma|labial|velar|dental — stambildningsklass för futurum (se _futurumklasser, Blomqvist § 165-166). Utelämnat för verb utan futurum."
+  "futurumklass": "vokal|epsilon|diftong|sigma|labial|velar|dental — stambildningsklass för futurum (se _futurumklasser, B § 165-166). Utelämnat för verb utan futurum. 'vokal' (lång vokal, oförändrad) och 'epsilon' (ε→η) hålls isär eftersom Oskar lär ut dem som två skilda regler.",
+  "not": "Avvikelse värd att flagga (oregelbundet augment, utelämnat futurum, stambildning)."
  },
- "_verifiering": "ω-däcket och kontrakt-däcket (-έω) är samverifierade: alla former genererades ur verifierade mönster (ω: stam+ändelse, recessiv accent; -έω: stam+kontraherad ändelse, cirkumflex på kontraktionsstavelsen) och matchar samtliga facit-belagda former (10 ω + 13 kontrakt) utan avvikelse. Auto-generering görs EJ för verb med accentkomplikationer utanför dessa mönster — de verifieras per verb.",
+ "_verifiering": "ω-däcket och kontrakt-däcket (-έω) är samverifierade: alla former genererades ur verifierade mönster (ω: stam+ändelse, recessiv accent; -έω: stam+kontraherad ändelse, cirkumflex på kontraktionsstavelsen) och matchar samtliga facit-belagda former (10 ω + 13 kontrakt) utan avvikelse. Auto-generering görs EJ för verb med accentkomplikationer utanför dessa mönster — de verifieras per verb. Seminarium 7 (2026-07-14): samtliga 72 grekiska verbformer som förekommer i kurs-PDF:erna (presentation 1:7, övningsbladets facit, breakout 1–3) är maskinellt korsverifierade mot mastern utan avvikelse. De nya verben (διώκω, πείθω, ὑπάγω, διδάσκω, μένω, βάλλω, θέλω, μέλλω) är mönstergenererade ur ω-mönstret och accentkontrollerade; oregelbundenheter (ὑπῆγον inre augment, ἤθελον, utelämnade kontraherade futurum μενῶ/βαλῶ) är flaggade i 'not'.",
  "verb": [
   {
    "lemma": "λύω",
@@ -150,11 +158,13 @@
    "stam": "λύ",
    "seminarium": [
     2,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem2",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 42,
    "former": {
@@ -190,6 +200,9 @@
      "1pl": "ἐλύομεν",
      "2pl": "ἐλύετε",
      "3pl": "ἔλυον"
+    },
+    "fut.inf.akt": {
+     "inf": "λύσειν"
     }
    },
    "belagda_former": [
@@ -198,7 +211,13 @@
     "fut.ind.akt.2pl",
     "fut.ind.akt.2sg",
     "fut.ind.akt.3pl",
-    "fut.ind.akt.3sg"
+    "fut.ind.akt.3sg",
+    "impf.ind.akt.1pl",
+    "impf.ind.akt.1sg",
+    "impf.ind.akt.2pl",
+    "impf.ind.akt.2sg",
+    "impf.ind.akt.3pl",
+    "impf.ind.akt.3sg"
    ],
    "verifierad": true,
    "futurumklass": "vokal"
@@ -210,10 +229,12 @@
    "stam": "βλέπ",
    "seminarium": [
     2,
-    5
+    5,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 133,
    "former": {
@@ -249,10 +270,19 @@
      "1pl": "ἐβλέπομεν",
      "2pl": "ἐβλέπετε",
      "3pl": "ἔβλεπον"
+    },
+    "fut.inf.akt": {
+     "inf": "βλέψειν"
     }
    },
    "belagda_former": [
-    "2sg"
+    "2sg",
+    "fut.ind.akt.1pl",
+    "fut.ind.akt.3pl",
+    "pres.imp.akt.2pl",
+    "pres.imp.akt.2sg",
+    "pres.imp.akt.3pl",
+    "pres.imp.akt.3sg"
    ],
    "verifierad": true,
    "futurumklass": "labial"
@@ -265,11 +295,13 @@
    "seminarium": [
     2,
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem2",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 427,
    "former": {
@@ -305,13 +337,18 @@
      "1pl": "ἠκούομεν",
      "2pl": "ἠκούετε",
      "3pl": "ἤκουον"
+    },
+    "fut.inf.akt": {
+     "inf": "ἀκούσειν"
     }
    },
    "belagda_former": [
-    "2pl"
+    "2pl",
+    "impf.ind.akt.3pl",
+    "impf.ind.akt.3sg"
    ],
    "verifierad": true,
-   "futurumklass": "sigma"
+   "futurumklass": "diftong"
   },
   {
    "lemma": "λέγω",
@@ -320,10 +357,12 @@
    "stam": "λέγ",
    "seminarium": [
     2,
-    5
+    5,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 2345,
    "former": {
@@ -354,7 +393,9 @@
     }
    },
    "belagda_former": [
-    "3pl"
+    "3pl",
+    "impf.ind.akt.2pl",
+    "impf.ind.akt.3pl"
    ],
    "verifierad": true
   },
@@ -365,10 +406,12 @@
    "stam": "γράφ",
    "seminarium": [
     2,
-    5
+    5,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 190,
    "former": {
@@ -404,10 +447,15 @@
      "1pl": "ἐγράφομεν",
      "2pl": "ἐγράφετε",
      "3pl": "ἔγραφον"
+    },
+    "fut.inf.akt": {
+     "inf": "γράψειν"
     }
    },
    "belagda_former": [
-    "3sg"
+    "3sg",
+    "fut.ind.akt.3pl",
+    "fut.ind.akt.3sg"
    ],
    "verifierad": true,
    "futurumklass": "labial"
@@ -418,10 +466,12 @@
    "klass": "omega",
    "stam": "ἐσθί",
    "seminarium": [
-    2
+    2,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 157,
    "former": {
@@ -452,7 +502,8 @@
     }
    },
    "belagda_former": [
-    "3sg"
+    "3sg",
+    "impf.ind.akt.1sg"
    ],
    "verifierad": true
   },
@@ -463,10 +514,12 @@
    "stam": "κηρύσσ",
    "seminarium": [
     2,
-    5
+    5,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 61,
    "former": {
@@ -502,10 +555,15 @@
      "1pl": "ἐκηρύσσομεν",
      "2pl": "ἐκηρύσσετε",
      "3pl": "ἐκήρυσσον"
+    },
+    "fut.inf.akt": {
+     "inf": "κηρύξειν"
     }
    },
    "belagda_former": [
-    "1pl"
+    "1pl",
+    "impf.ind.akt.1sg",
+    "pres.inf.akt.inf"
    ],
    "verifierad": true,
    "futurumklass": "velar"
@@ -516,10 +574,12 @@
    "klass": "omega",
    "stam": "λαμβάν",
    "seminarium": [
-    2
+    2,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 258,
    "former": {
@@ -571,11 +631,13 @@
    "stam": "παιδεύ",
    "seminarium": [
     2,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem2",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 13,
    "former": {
@@ -611,12 +673,18 @@
      "1pl": "ἐπαιδεύομεν",
      "2pl": "ἐπαιδεύετε",
      "3pl": "ἐπαίδευον"
+    },
+    "fut.inf.akt": {
+     "inf": "παιδεύσειν"
     }
    },
    "belagda_former": [
     "2sg",
+    "fut.ind.akt.1sg",
     "fut.ind.akt.2pl",
-    "fut.ind.akt.3pl"
+    "fut.ind.akt.3pl",
+    "fut.inf.akt.inf",
+    "pres.inf.akt.inf"
    ],
    "verifierad": true,
    "futurumklass": "diftong"
@@ -627,10 +695,12 @@
    "klass": "omega",
    "stam": "πέμπ",
    "seminarium": [
-    2
+    2,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 79,
    "former": {
@@ -666,10 +736,19 @@
      "1pl": "ἐπέμπομεν",
      "2pl": "ἐπέμπετε",
      "3pl": "ἔπεμπον"
+    },
+    "fut.inf.akt": {
+     "inf": "πέμψειν"
     }
    },
    "belagda_former": [
-    "3sg"
+    "3sg",
+    "fut.ind.akt.1sg",
+    "fut.ind.akt.3pl",
+    "fut.ind.akt.3sg",
+    "impf.ind.akt.2pl",
+    "pres.imp.akt.2sg",
+    "pres.inf.akt.inf"
    ],
    "verifierad": true,
    "futurumklass": "labial"
@@ -680,10 +759,12 @@
    "klass": "omega",
    "stam": "εὑρίσκ",
    "seminarium": [
-    2
+    2,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 176,
    "former": {
@@ -727,11 +808,13 @@
    "seminarium": [
     2,
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem2",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 241,
    "former": {
@@ -767,12 +850,18 @@
      "1pl": "ἐπιστεύομεν",
      "2pl": "ἐπιστεύετε",
      "3pl": "ἐπίστευον"
+    },
+    "fut.inf.akt": {
+     "inf": "πιστεύσειν"
     }
    },
    "belagda_former": [
     "fut.ind.akt.1sg",
     "fut.ind.akt.3pl",
-    "fut.ind.akt.3sg"
+    "fut.ind.akt.3sg",
+    "impf.ind.akt.3pl",
+    "pres.imp.akt.2pl",
+    "pres.inf.akt.inf"
    ],
    "verifierad": true,
    "futurumklass": "diftong"
@@ -783,10 +872,12 @@
    "klass": "omega",
    "stam": "βαπτίζ",
    "seminarium": [
-    2
+    2,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 77,
    "former": {
@@ -822,9 +913,16 @@
      "1pl": "ἐβαπτίζομεν",
      "2pl": "ἐβαπτίζετε",
      "3pl": "ἐβάπτιζον"
+    },
+    "fut.inf.akt": {
+     "inf": "βαπτίσειν"
     }
    },
-   "belagda_former": [],
+   "belagda_former": [
+    "fut.ind.akt.3sg",
+    "impf.ind.akt.3pl",
+    "impf.ind.akt.3sg"
+   ],
    "verifierad": true,
    "futurumklass": "dental",
    "not": "Verb på -ίζω: koine futurum -ίσω (βαπτίσω); klassiskt kontraherat βαπτιῶ (B § 166b)."
@@ -836,10 +934,12 @@
    "stam": "σῴζ",
    "seminarium": [
     2,
-    5
+    5,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 106,
    "former": {
@@ -875,6 +975,9 @@
      "1pl": "ἐσῴζομεν",
      "2pl": "ἐσῴζετε",
      "3pl": "ἔσῳζον"
+    },
+    "fut.inf.akt": {
+     "inf": "σώσειν"
     }
    },
    "belagda_former": [],
@@ -888,10 +991,12 @@
    "klass": "omega",
    "stam": "κλέπτ",
    "seminarium": [
-    2
+    2,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 13,
    "former": {
@@ -927,6 +1032,9 @@
      "1pl": "ἐκλέπτομεν",
      "2pl": "ἐκλέπτετε",
      "3pl": "ἔκλεπτον"
+    },
+    "fut.inf.akt": {
+     "inf": "κλέψειν"
     }
    },
    "belagda_former": [],
@@ -940,10 +1048,12 @@
    "stam": "ἄγ",
    "seminarium": [
     2,
-    5
+    5,
+    7
    ],
    "kortlekar": [
-    "sem2"
+    "sem2",
+    "sem7"
    ],
    "nt_frekvens": 68,
    "former": {
@@ -979,9 +1089,15 @@
      "1pl": "ἤγομεν",
      "2pl": "ἤγετε",
      "3pl": "ἦγον"
+    },
+    "fut.inf.akt": {
+     "inf": "ἄξειν"
     }
    },
-   "belagda_former": [],
+   "belagda_former": [
+    "fut.ind.akt.3sg",
+    "impf.ind.akt.1sg"
+   ],
    "verifierad": true,
    "futurumklass": "velar"
   },
@@ -993,11 +1109,13 @@
    "seminarium": [
     4,
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem4",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 25,
    "former": {
@@ -1033,6 +1151,9 @@
      "1pl": "ἐφιλοῦμεν",
      "2pl": "ἐφιλεῖτε",
      "3pl": "ἐφίλουν"
+    },
+    "fut.inf.akt": {
+     "inf": "φιλήσειν"
     }
    },
    "belagda_former": [
@@ -1050,7 +1171,7 @@
     "fut.ind.akt.3sg"
    ],
    "verifierad": true,
-   "futurumklass": "vokal"
+   "futurumklass": "epsilon"
   },
   {
    "lemma": "ζητέω",
@@ -1060,11 +1181,13 @@
    "seminarium": [
     4,
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem4",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 117,
    "former": {
@@ -1100,14 +1223,19 @@
      "1pl": "ἐζητοῦμεν",
      "2pl": "ἐζητεῖτε",
      "3pl": "ἐζήτουν"
+    },
+    "fut.inf.akt": {
+     "inf": "ζητήσειν"
     }
    },
    "belagda_former": [
     "1pl",
-    "3pl"
+    "3pl",
+    "pres.imp.akt.2pl",
+    "pres.ind.akt.2pl"
    ],
    "verifierad": true,
-   "futurumklass": "vokal"
+   "futurumklass": "epsilon"
   },
   {
    "lemma": "καλέω",
@@ -1116,10 +1244,12 @@
    "stam": "καλ",
    "seminarium": [
     4,
-    5
+    5,
+    7
    ],
    "kortlekar": [
-    "sem4"
+    "sem4",
+    "sem7"
    ],
    "nt_frekvens": 148,
    "former": {
@@ -1162,11 +1292,13 @@
    "seminarium": [
     4,
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem4",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 297,
    "former": {
@@ -1202,6 +1334,9 @@
      "1pl": "ἐλαλοῦμεν",
      "2pl": "ἐλαλεῖτε",
      "3pl": "ἐλάλουν"
+    },
+    "fut.inf.akt": {
+     "inf": "λαλήσειν"
     }
    },
    "belagda_former": [
@@ -1210,7 +1345,7 @@
     "fut.ind.akt.3sg"
    ],
    "verifierad": true,
-   "futurumklass": "vokal"
+   "futurumklass": "epsilon"
   },
   {
    "lemma": "μαρτυρέω",
@@ -1220,11 +1355,13 @@
    "seminarium": [
     4,
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem4",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 76,
    "former": {
@@ -1260,13 +1397,17 @@
      "1pl": "ἐμαρτυροῦμεν",
      "2pl": "ἐμαρτυρεῖτε",
      "3pl": "ἐμαρτύρουν"
+    },
+    "fut.inf.akt": {
+     "inf": "μαρτυρήσειν"
     }
    },
    "belagda_former": [
-    "2pl"
+    "2pl",
+    "fut.ind.akt.3sg"
    ],
    "verifierad": true,
-   "futurumklass": "vokal"
+   "futurumklass": "epsilon"
   },
   {
    "lemma": "ποιέω",
@@ -1276,11 +1417,13 @@
    "seminarium": [
     4,
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem4",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 568,
    "former": {
@@ -1316,13 +1459,18 @@
      "1pl": "ἐποιοῦμεν",
      "2pl": "ἐποιεῖτε",
      "3pl": "ἐποίουν"
+    },
+    "fut.inf.akt": {
+     "inf": "ποιήσειν"
     }
    },
    "belagda_former": [
-    "3sg"
+    "3sg",
+    "fut.ind.akt.1sg",
+    "pres.inf.akt.inf"
    ],
    "verifierad": true,
-   "futurumklass": "vokal"
+   "futurumklass": "epsilon"
   },
   {
    "lemma": "τηρέω",
@@ -1332,11 +1480,13 @@
    "seminarium": [
     4,
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem4",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 71,
    "former": {
@@ -1372,13 +1522,20 @@
      "1pl": "ἐτηροῦμεν",
      "2pl": "ἐτηρεῖτε",
      "3pl": "ἐτήρουν"
+    },
+    "fut.inf.akt": {
+     "inf": "τηρήσειν"
     }
    },
    "belagda_former": [
-    "3sg"
+    "3sg",
+    "pres.imp.akt.2pl",
+    "pres.imp.akt.2sg",
+    "pres.imp.akt.3pl",
+    "pres.imp.akt.3sg"
    ],
    "verifierad": true,
-   "futurumklass": "vokal"
+   "futurumklass": "epsilon"
   },
   {
    "lemma": "εἰμί",
@@ -1388,12 +1545,14 @@
    "seminarium": [
     4,
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem4",
     "eimi",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 2456,
    "former": {
@@ -1459,7 +1618,12 @@
     "fut.ind.med.2pl",
     "fut.ind.med.2sg",
     "fut.ind.med.3pl",
-    "fut.ind.med.3sg"
+    "fut.ind.med.3sg",
+    "pres.imp.akt.2pl",
+    "pres.imp.akt.2sg",
+    "pres.imp.akt.3pl",
+    "pres.imp.akt.3sg",
+    "pres.inf.akt.inf"
    ],
    "verifierad": true,
    "not": "Enklitiskt i presens (utom 2sg εἶ); accentuering = uppslagsform. Imperfekt har belagda varianter (se 'varianter').",
@@ -1472,11 +1636,13 @@
    "stam": "αἰτ",
    "seminarium": [
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem5",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 70,
    "former": {
@@ -1512,13 +1678,17 @@
      "1pl": "ᾐτοῦμεν",
      "2pl": "ᾐτεῖτε",
      "3pl": "ᾔτουν"
+    },
+    "fut.inf.akt": {
+     "inf": "αἰτήσειν"
     }
    },
    "belagda_former": [
-    "3pl"
+    "3pl",
+    "fut.ind.akt.1sg"
    ],
    "verifierad": true,
-   "futurumklass": "vokal"
+   "futurumklass": "epsilon"
   },
   {
    "lemma": "θεραπεύω",
@@ -1527,11 +1697,13 @@
    "stam": "θεραπευ",
    "seminarium": [
     5,
-    6
+    6,
+    7
    ],
    "kortlekar": [
     "sem5",
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 43,
    "former": {
@@ -1567,10 +1739,14 @@
      "1pl": "ἐθεραπεύομεν",
      "2pl": "ἐθεραπεύετε",
      "3pl": "ἐθεράπευον"
+    },
+    "fut.inf.akt": {
+     "inf": "θεραπεύσειν"
     }
    },
    "belagda_former": [
-    "3sg"
+    "3sg",
+    "impf.ind.akt.3pl"
    ],
    "verifierad": true,
    "futurumklass": "diftong"
@@ -1581,10 +1757,12 @@
    "klass": "omega",
    "stam": "ἁμαρταν",
    "seminarium": [
-    5
+    5,
+    7
    ],
    "kortlekar": [
-    "sem5"
+    "sem5",
+    "sem7"
    ],
    "nt_frekvens": 42,
    "former": {
@@ -1625,10 +1803,12 @@
    "klass": "omega",
    "stam": "λατρεύ",
    "seminarium": [
-    6
+    6,
+    7
    ],
    "kortlekar": [
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 21,
    "former": {
@@ -1664,6 +1844,9 @@
      "1pl": "ἐλατρεύομεν",
      "2pl": "ἐλατρεύετε",
      "3pl": "ἐλάτρευον"
+    },
+    "fut.inf.akt": {
+     "inf": "λατρεύσειν"
     }
    },
    "belagda_former": [
@@ -1678,10 +1861,12 @@
    "klass": "kontrakt_e",
    "stam": "προσκυνέ",
    "seminarium": [
-    6
+    6,
+    7
    ],
    "kortlekar": [
-    "sem6"
+    "sem6",
+    "sem7"
    ],
    "nt_frekvens": 60,
    "former": {
@@ -1717,25 +1902,441 @@
      "1pl": "προσεκυνοῦμεν",
      "2pl": "προσεκυνεῖτε",
      "3pl": "προσεκύνουν"
+    },
+    "fut.inf.akt": {
+     "inf": "προσκυνήσειν"
     }
    },
    "belagda_former": [
     "fut.ind.akt.2sg"
    ],
    "verifierad": true,
-   "futurumklass": "vokal",
+   "futurumklass": "epsilon",
    "not": "Imperfekt har inre augment (προσ-ε-): προσεκύνουν."
+  },
+  {
+   "lemma": "διώκω",
+   "glosa": "förfölja",
+   "klass": "omega",
+   "stam": "διωκ",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "sem7"
+   ],
+   "nt_frekvens": 45,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "διώκω",
+     "2sg": "διώκεις",
+     "3sg": "διώκει",
+     "1pl": "διώκομεν",
+     "2pl": "διώκετε",
+     "3pl": "διώκουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "διώξω",
+     "2sg": "διώξεις",
+     "3sg": "διώξει",
+     "1pl": "διώξομεν",
+     "2pl": "διώξετε",
+     "3pl": "διώξουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "διώκειν"
+    },
+    "fut.inf.akt": {
+     "inf": "διώξειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "δίωκε",
+     "3sg": "διωκέτω",
+     "2pl": "διώκετε",
+     "3pl": "διωκέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐδίωκον",
+     "2sg": "ἐδίωκες",
+     "3sg": "ἐδίωκε(ν)",
+     "1pl": "ἐδιώκομεν",
+     "2pl": "ἐδιώκετε",
+     "3pl": "ἐδίωκον"
+    }
+   },
+   "belagda_former": [
+    "fut.ind.akt.1sg"
+   ],
+   "verifierad": true,
+   "futurumklass": "velar"
+  },
+  {
+   "lemma": "πείθω",
+   "glosa": "övertyga",
+   "klass": "omega",
+   "stam": "πειθ",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "sem7"
+   ],
+   "nt_frekvens": 52,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "πείθω",
+     "2sg": "πείθεις",
+     "3sg": "πείθει",
+     "1pl": "πείθομεν",
+     "2pl": "πείθετε",
+     "3pl": "πείθουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "πείσω",
+     "2sg": "πείσεις",
+     "3sg": "πείσει",
+     "1pl": "πείσομεν",
+     "2pl": "πείσετε",
+     "3pl": "πείσουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "πείθειν"
+    },
+    "fut.inf.akt": {
+     "inf": "πείσειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "πεῖθε",
+     "3sg": "πειθέτω",
+     "2pl": "πείθετε",
+     "3pl": "πειθέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔπειθον",
+     "2sg": "ἔπειθες",
+     "3sg": "ἔπειθε(ν)",
+     "1pl": "ἐπείθομεν",
+     "2pl": "ἐπείθετε",
+     "3pl": "ἔπειθον"
+    }
+   },
+   "belagda_former": [
+    "fut.ind.akt.1sg"
+   ],
+   "verifierad": true,
+   "futurumklass": "dental"
+  },
+  {
+   "lemma": "ὑπάγω",
+   "glosa": "gå (bort), föra bort",
+   "klass": "omega",
+   "stam": "ὑπαγ",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "sem7"
+   ],
+   "nt_frekvens": 79,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "ὑπάγω",
+     "2sg": "ὑπάγεις",
+     "3sg": "ὑπάγει",
+     "1pl": "ὑπάγομεν",
+     "2pl": "ὑπάγετε",
+     "3pl": "ὑπάγουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "ὑπάξω",
+     "2sg": "ὑπάξεις",
+     "3sg": "ὑπάξει",
+     "1pl": "ὑπάξομεν",
+     "2pl": "ὑπάξετε",
+     "3pl": "ὑπάξουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "ὑπάγειν"
+    },
+    "fut.inf.akt": {
+     "inf": "ὑπάξειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "ὕπαγε",
+     "3sg": "ὑπαγέτω",
+     "2pl": "ὑπάγετε",
+     "3pl": "ὑπαγέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ὑπῆγον",
+     "2sg": "ὑπῆγες",
+     "3sg": "ὑπῆγε(ν)",
+     "1pl": "ὑπήγομεν",
+     "2pl": "ὑπήγετε",
+     "3pl": "ὑπῆγον"
+    }
+   },
+   "belagda_former": [
+    "fut.ind.akt.3pl",
+    "pres.ind.akt.3sg"
+   ],
+   "verifierad": true,
+   "futurumklass": "velar",
+   "not": "Sammansatt (ὑπό + ἄγω) → inre augment: ὑπ-ῆγον, inte *ὕπηγον (B § 138:7)."
+  },
+  {
+   "lemma": "διδάσκω",
+   "glosa": "undervisa",
+   "klass": "omega",
+   "stam": "διδασκ",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "sem7"
+   ],
+   "nt_frekvens": 96,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "διδάσκω",
+     "2sg": "διδάσκεις",
+     "3sg": "διδάσκει",
+     "1pl": "διδάσκομεν",
+     "2pl": "διδάσκετε",
+     "3pl": "διδάσκουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "διδάξω",
+     "2sg": "διδάξεις",
+     "3sg": "διδάξει",
+     "1pl": "διδάξομεν",
+     "2pl": "διδάξετε",
+     "3pl": "διδάξουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "διδάσκειν"
+    },
+    "fut.inf.akt": {
+     "inf": "διδάξειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "δίδασκε",
+     "3sg": "διδασκέτω",
+     "2pl": "διδάσκετε",
+     "3pl": "διδασκέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἐδίδασκον",
+     "2sg": "ἐδίδασκες",
+     "3sg": "ἐδίδασκε(ν)",
+     "1pl": "ἐδιδάσκομεν",
+     "2pl": "ἐδιδάσκετε",
+     "3pl": "ἐδίδασκον"
+    }
+   },
+   "belagda_former": [
+    "impf.ind.akt.3sg",
+    "pres.ind.akt.3sg"
+   ],
+   "verifierad": true,
+   "futurumklass": "velar",
+   "not": "Futurstammen bildas på verbroten διδαχ-/δακ- (διδάξω), inte på presensstammen διδασκ-."
+  },
+  {
+   "lemma": "μένω",
+   "glosa": "stanna, förbli",
+   "klass": "omega",
+   "stam": "μεν",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "sem7"
+   ],
+   "nt_frekvens": 118,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "μένω",
+     "2sg": "μένεις",
+     "3sg": "μένει",
+     "1pl": "μένομεν",
+     "2pl": "μένετε",
+     "3pl": "μένουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "μένειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "μένε",
+     "3sg": "μενέτω",
+     "2pl": "μένετε",
+     "3pl": "μενέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔμενον",
+     "2sg": "ἔμενες",
+     "3sg": "ἔμενε(ν)",
+     "1pl": "ἐμένομεν",
+     "2pl": "ἐμένετε",
+     "3pl": "ἔμενον"
+    }
+   },
+   "belagda_former": [
+    "pres.imp.akt.2pl"
+   ],
+   "verifierad": true,
+   "not": "Futurum är kontraherat (μενῶ, μενεῖς …) — nasalstam, B § 166a. Ej upplagt: ligger utanför kursens futurumregler (§ 165)."
+  },
+  {
+   "lemma": "βάλλω",
+   "glosa": "kasta",
+   "klass": "omega",
+   "stam": "βαλλ",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "sem7"
+   ],
+   "nt_frekvens": 121,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "βάλλω",
+     "2sg": "βάλλεις",
+     "3sg": "βάλλει",
+     "1pl": "βάλλομεν",
+     "2pl": "βάλλετε",
+     "3pl": "βάλλουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "βάλλειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "βάλλε",
+     "3sg": "βαλλέτω",
+     "2pl": "βάλλετε",
+     "3pl": "βαλλέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔβαλλον",
+     "2sg": "ἔβαλλες",
+     "3sg": "ἔβαλλε(ν)",
+     "1pl": "ἐβάλλομεν",
+     "2pl": "ἐβάλλετε",
+     "3pl": "ἔβαλλον"
+    }
+   },
+   "belagda_former": [
+    "impf.ind.akt.3sg",
+    "pres.imp.akt.2sg",
+    "pres.ind.akt.2sg"
+   ],
+   "verifierad": true,
+   "not": "Futurum är kontraherat (βαλῶ) — liquidastam, B § 166a. Ej upplagt (utanför § 165)."
+  },
+  {
+   "lemma": "θέλω",
+   "glosa": "vilja",
+   "klass": "omega",
+   "stam": "θελ",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "sem7"
+   ],
+   "nt_frekvens": 208,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "θέλω",
+     "2sg": "θέλεις",
+     "3sg": "θέλει",
+     "1pl": "θέλομεν",
+     "2pl": "θέλετε",
+     "3pl": "θέλουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "θέλειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "θέλε",
+     "3sg": "θελέτω",
+     "2pl": "θέλετε",
+     "3pl": "θελέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἤθελον",
+     "2sg": "ἤθελες",
+     "3sg": "ἤθελε(ν)",
+     "1pl": "ἠθέλομεν",
+     "2pl": "ἠθέλετε",
+     "3pl": "ἤθελον"
+    }
+   },
+   "belagda_former": [
+    "pres.ind.akt.3sg"
+   ],
+   "verifierad": true,
+   "not": "Oregelbundet augment: ἤθελον (verbet är ursprungligen ἐθέλω, så augmentet möter ε → η). Futurum θελήσω bildas på utvidgad stam θελη- — ej upplagt (utanför § 165). Styr infinitiv: θέλω κηρύσσειν."
+  },
+  {
+   "lemma": "μέλλω",
+   "glosa": "tänka, ämna, komma att",
+   "klass": "omega",
+   "stam": "μελλ",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "sem7"
+   ],
+   "nt_frekvens": 109,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "μέλλω",
+     "2sg": "μέλλεις",
+     "3sg": "μέλλει",
+     "1pl": "μέλλομεν",
+     "2pl": "μέλλετε",
+     "3pl": "μέλλουσι(ν)"
+    },
+    "pres.inf.akt": {
+     "inf": "μέλλειν"
+    },
+    "pres.imp.akt": {
+     "2sg": "μέλλε",
+     "3sg": "μελλέτω",
+     "2pl": "μέλλετε",
+     "3pl": "μελλέτωσαν"
+    },
+    "impf.ind.akt": {
+     "1sg": "ἔμελλον",
+     "2sg": "ἔμελλες",
+     "3sg": "ἔμελλε(ν)",
+     "1pl": "ἐμέλλομεν",
+     "2pl": "ἐμέλλετε",
+     "3pl": "ἔμελλον"
+    }
+   },
+   "belagda_former": [
+    "pres.ind.akt.2sg",
+    "pres.ind.akt.3sg"
+   ],
+   "verifierad": true,
+   "not": "Imperfekt även ἤμελλον (båda i NT). Futurum μελλήσω på utvidgad stam — ej upplagt (utanför § 165). Styr infinitiv: μέλλω κηρύσσειν."
   }
  ],
  "_futurumklasser": {
   "_om": "Klassificering av futurum aktiv/medium-stambildning efter verbrotens slut (Blomqvist § 165-166). Styr framtida grammatikreferens/spel.",
-  "vokal": "Rot på vokal; vokalen förlängs framför σ (ᾱ→η utom efter ε/ι/ρ; -έω→-ήσω). Ex: ἀγαπάω→ἀγαπήσω, φιλέω→φιλήσω.",
-  "diftong": "Rot på diftong/vokal+halvvokal; oförändrad framför σ. Ex: παιδεύω→παιδεύσω.",
-  "sigma": "Rot på -σ; faller framför suffix-σ. Ex: ἀκούω→ἀκούσω, εἰμί→ἔσομαι.",
+  "vokal": "Rot på LÅNG vokal; oförändrad framför σ (Oskars regel 1). Ex: λύω (λῡ-) → λύσω.",
+  "diftong": "Rot på diftong; oförändrad framför σ (Oskars regel 1). Ex: παιδεύω → παιδεύσω, ἀκούω (ἀκου-) → ἀκούσω.",
+  "sigma": "Rot på -σ. Gäller endast εἰμί (ἐσ- → ἔσομαι).",
   "labial": "Rot på labial klusil (π/β/φ); + σ = ψ. Ex: γράφω→γράψω, λαμβάνω→λήμψομαι.",
   "velar": "Rot på velar klusil (κ/γ/χ); + σ = ξ. Ex: κηρύσσω→κηρύξω, ἄγω→ἄξω.",
   "dental": "Rot på dental klusil (τ/δ/θ); faller framför σ. -ίζω-verb får koine -ίσω. Ex: βαπτίζω→βαπτίσω, σῴζω→σώσω.",
   "kontraherat": "Futurum atticum: liquida/nasal-rot (λ/ρ/ν/μ) → kontraherat -ῶ (B § 166a). Berör inga nuvarande verb.",
-  "suppletiv": "Futurum från annan rot (λέγω→ἐρῶ, ἐσθίω→φάγομαι). Ej upplagt än."
+  "suppletiv": "Futurum från annan rot (λέγω→ἐρῶ, ἐσθίω→φάγομαι). Ej upplagt än.",
+  "epsilon": "Rot på kort ε; förlängs till η framför σ (Oskars regel 2, § 165). Ex: αἰτέω (αἰτε-) → αἰτήσω, φιλέω → φιλήσω.",
+  "_oskars_regler": "Presentation 1:7 (s. 17) sammanfattar § 165 i tre regler: (1) lång vokal/diftong oförändrad [vokal, diftong]; (2) ε → η [epsilon]; (3) κ,χ,γ,σσ + σ = ξ [velar] · π,φ,β,πτ + σ = ψ [labial] · τ,θ,δ,ζ + σ = σ [dental]."
  }
 }

@@ -2724,12 +2724,53 @@
    },
    "glosaPl": "ståthållare",
    "not": "Nasalstam ἡγεμον- (B § 76-77): nom förlänger ο→ω (ἡγεμών), vok = nom. Dat pl ἡγεμόσι(ν): ν faller framför σ. Persistent accent på -μο-/-μω-."
+  },
+  {
+   "lemma": "ἀμπελών",
+   "glosa": "vingård",
+   "glosaGen": "vingårds",
+   "genus": "maskulinum",
+   "deklination": 3,
+   "stam": "ἀμπελων-",
+   "tredjeklass": "nasal",
+   "accenttyp": "oxyton",
+   "seminarium": [
+    7
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": false,
+   "former": {
+    "nom": {
+     "sg": "ἀμπελών",
+     "pl": "ἀμπελῶνες"
+    },
+    "gen": {
+     "sg": "ἀμπελῶνος",
+     "pl": "ἀμπελώνων"
+    },
+    "dat": {
+     "sg": "ἀμπελῶνι",
+     "pl": "ἀμπελῶσι(ν)"
+    },
+    "ack": {
+     "sg": "ἀμπελῶνα",
+     "pl": "ἀμπελῶνας"
+    },
+    "vok": {
+     "sg": "ἀμπελών",
+     "pl": "ἀμπελῶνες"
+    }
+   },
+   "glosaPl": "vingårdar",
+   "not": "Nasalstam ἀμπελων- (B § 76-77), samma typ som ἡγεμών men med LÅNG stamvokal ω genom hela böjningen (ἀμπελῶνος, jfr ἡγεμόνος med kort ο). Dat pl ἀμπελῶσι(ν): ν faller framför σ. Glossas i övningsbladet 1:7 som '3:e deklinationen, se presentation' — dvs. ska läsas mot ἡγεμών-paradigmet."
   }
  ],
  "_tredjeklasser": {
   "_om": "Undertyper av tredje deklinationen (Blomqvist § 68-96). Formerna byggs pa genitivstammen (faltet 'stam'), inte harledda ur genus som 1:a/2:a dekl. Darfor ska deklination==3 UNDANTAS andelsespelet och bara anvandas dar explicita former lases.",
   "_betoning": "Persistent accent — ligger kvar pa nominativens stavelse sa langt reglerna tillater; enstaviga stammar betonar andelsen i gen/dat (§70). Formerna lagras explicit per ord.",
-  "nasal": "Nasalstam -ν: ἡγεμών ἡγεμόνος, ποιμήν ποιμένος, αἰών αἰῶνος (§76-77).",
+  "nasal": "Nasalstam -ν: ἡγεμών ἡγεμόνος (kort ο), ἀμπελών ἀμπελῶνος (lång ω), ποιμήν ποιμένος, αἰών αἰῶνος (§76-77).",
   "klusil": "Klusilstam (labial/velar/dental): σάρξ σαρκός, νύξ νυκτός, ἐλπίς ἐλπίδος, χάρις χάριτος (§71-73).",
   "nt-neutrum": "Neutrum pa -μα/-ματος: πνεῦμα, ὄνομα, σῶμα (§72:2).",
   "ntstam": "Stam pa -ντ: γέρων γέροντος, ἄρχων ἄρχοντος (§74-75).",
@@ -2739,6 +2780,6 @@
   "vokal": "Vokalstam -υ/-ι: ἰχθῦς (§86-87).",
   "polis": "Halvvokalstam -ι, gen -εως: πόλις πόλεως (§88-89).",
   "basileus": "Halvvokalstam -ευ, gen -εως: βασιλεύς βασιλέως (§92-93).",
-  "_scope": "In-scope for kursen (NT-hogfrekvent): nasal, klusil, nt-neutrum, sigma-neutrum, liquida, liquida-avljud, polis, basileus. Reference-only (klassiskt/sallsynt), laggs EJ in: γραῦς/ναῦς/βοῦς (§94), πειθώ/Λητώ (§90), τριήρης (§82), ῥήτωρ/ἀνδριάς/γίγας m.fl. Piloten ἡγεμών (nasal) inlagd 2026-07-10."
+  "_scope": "In-scope for kursen (NT-hogfrekvent): nasal, klusil, nt-neutrum, sigma-neutrum, liquida, liquida-avljud, polis, basileus. Reference-only (klassiskt/sallsynt), laggs EJ in: γραῦς/ναῦς/βοῦς (§94), πειθώ/Λητώ (§90), τριήρης (§82), ῥήτωρ/ἀνδριάς/γίγας m.fl. Kurs-PDF 1:7 (2026-07-14) bekraftar att seminarium 7 tar ENDAST nasalstammar: ἡγεμών (§76-77, presentationens paradigm) och ἀμπελών (glossad i ovningsbladet mot samma paradigm). μήτηρ (§80, liquida-avljud) glossas men lars ej ut. Seminarium 8 tillfor τὸ πνεῦμα (§72:2, nt-neutrum) enligt presentationens sista slide."
  }
 }
