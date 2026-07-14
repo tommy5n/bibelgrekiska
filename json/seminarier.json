@@ -1,7 +1,7 @@
 {
  "_om": "Seminariearkiv för Bibelgrekiska I (SU 2026). Extraherat ur seminariernas PDF:er (zip-arkiv med JPEG + textsidecar per sida). 'index' är det trogna arkivet (ämneskarta + full sidtext + bildsökväg). 'glosor', 'satser', 'verb', 'kongruens' och 'paradigm' är strukturerade vyer för att mata spelen. Masterfilerna (ord.json, glosor.json, adjektiv.json, nt-lemman.json) är sanningskälla; denna fil dubblerar dem inte utan pekar via 'tacks_av_master'/'i_glosor_master'. Verb-sektionen är avsiktligt formad efter ord.json så den kan lyftas till en framtida verb.json-master.",
  "_genererad": "2026-07-14",
- "_verifiering": "Grekiska former kommer ur PDF:ernas textlager (rent, ej OCR). Övningsformer korskördes mot ord.json/adjektiv.json (grav→akut- och versalnormaliserat); enda äkta avvikelsen var ett facit-typo (κύριου→κυρίου). Vid diff gäller offentlig/vettad grekiska (nt-lemman/MorphGNT, LSJ, Smyth); avvikelser flaggas, skrivs ej över. Verbparadigm auto-genereras EJ — mallparadigm (λύω, φιλέω, εἰμί) och belagda övningsformer lagras verifierade; övriga verbformer ska genereras + verifieras per verb när verbspelet byggs (accenter är inte mekaniska).",
+ "_verifiering": "Grekiska former kommer ur PDF:ernas textlager (rent, ej OCR). Övningsformer korskördes mot ord.json/adjektiv.json/verb.json (grav→akut- och versalnormaliserat). NORMALISERING (2026-07-14, på användarens begäran): sidtext, satser och paradigm är NORMALISERADE mot korrekt grekiska — Oskars skriv- och accentfel skrivs numera ÖVER i stället för att bevaras. Tidigare policy var att bevara källtexten trogen och bara flagga. Varje rättelse är dokumenterad i _avvikelser med fältet 'facit_har' = vad källan faktiskt skriver, plus kalla/sida, så originalet är spårbart; PDF:erna i seminarium-N/ är den yttersta källan. Vid diff gäller offentlig/vettad grekiska (nt-lemman/MorphGNT, LSJ, Smyth). Verbparadigm auto-genereras EJ — mallparadigm (λύω, φιλέω, εἰμί) och belagda övningsformer lagras verifierade; övriga verbformer genereras + verifieras per verb (accenter är inte mekaniska).",
  "_avvikelser": [
   {
    "korrekt": "κυρίου",
@@ -61,7 +61,7 @@
   }
  ],
  "_falt": {
-  "index": "Per arkiv: kalla, seminarium, typ, antal_sidor, amneskarta (sektioner med slide-intervall), sidor (sida, bild, har_grafik, har_grekiska, text).",
+  "index": "Per arkiv: kalla, seminarium, typ, antal_sidor, amneskarta (sektioner med slide-intervall), sidor (sida, bild, har_grafik, har_grekiska, text). Sidtexten är trogen källan MED undantag för de fel som listas i _avvikelser — de är normaliserade till korrekt grekiska (se _verifiering).",
   "glosa": "lemma, artikel, glosa (sv), ordklass, nt_lemma, nt_frekvens, i_glosor_master, forekomster[].",
   "sats": "grekiska, instruktion, oversattning (om facit), satsdelar[] (om annoterat), diffar[]/avvikelse_ref, kalla/sida, kommentar (💡 förklarande), falla (⚠︎ varning för fälla), ovningsgrupp, uteslut (ovningsgrupp = sektionsnyckel; uteslut = misextraherad, hoppas). facit_form = den omvandlade grekiska formen (formläreövningar, sem 7); negerad = formen med rätt negation (οὐ/μή); bibelreferens = NT-ställe. Sem 7:s ovningsgrupp-nycklar: formlara-fut/-imp/-ind/-impf/-pres, oversattning, breakout-1/2/3 (generatorn slår upp gruppmetadata på '7:breakout-1' före 'breakout-1', eftersom sem 6 och 7 delar grupp-id men har olika teman).",
   "verb": "lemma, glosa, klass (omega/kontrakt_e/oregelbunden), stam, seminarium, nt_frekvens, attesterade_former[] (verifierade ur seminarier), former_kompletta (bool), se_paradigm (mallreferens). Master-formad för framtida verb.json.",
@@ -984,7 +984,7 @@
      "bild": "2__O_vningsblad/2.jpeg",
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "Facit\na)\n1. βλέπεις du ser\n2. ἀκούετε ni hör\n3. λέγουσι(ν) de säger\n4. ἐσθίει han/hon/det äter\n5. κηρύσσομεν vi predikar\n6. λαμβάνουσι de tar, de griper\n7. πέμπει han/hon/det skickar\n8. παιδεύεις du uppfostrar\n9. γράφει han/hon/det skriver\n10. εὑρίσκουσι de finner\nb)\n1. τὸν οὐρανὸν (direkt objekt) βλέπετε (predikat).\nNi ser himlen.\n2. ἀκούει (predikat, inklusive subjekt) λόγον (direkt objekt).\nHon/hon/det hör en berättelse.\n3. οἱ δοῦλοι (subjekt) λαμβάνουσι (predikat) τὸν καρπὸν τοῦ κύριου (direkt objekt). \nSlavarna griper herrens frukt.\n4. ἀκούει (predikat) ὁ λαὸς (subjekt) τοὺς λόγους τοῦ ἀποστόλου (direkt objekt).\nFolket hör orden/berättelserna.\n5. πέμπει (predikat) τοὺς δούλους (direkt objekt) τῷ ἀδελφῷ (indirekt objekt). \nHan/hon/det skickar slavarna till brodern.\n6. ἀκούουσιν (predikat) οἱ κύριοι (subjekt) τὸν λόγον τοῦ δούλου (direkt objekt).\nHerrarna hör slavens berättelse."
+     "text": "Facit\na)\n1. βλέπεις du ser\n2. ἀκούετε ni hör\n3. λέγουσι(ν) de säger\n4. ἐσθίει han/hon/det äter\n5. κηρύσσομεν vi predikar\n6. λαμβάνουσι de tar, de griper\n7. πέμπει han/hon/det skickar\n8. παιδεύεις du uppfostrar\n9. γράφει han/hon/det skriver\n10. εὑρίσκουσι de finner\nb)\n1. τὸν οὐρανὸν (direkt objekt) βλέπετε (predikat).\nNi ser himlen.\n2. ἀκούει (predikat, inklusive subjekt) λόγον (direkt objekt).\nHon/hon/det hör en berättelse.\n3. οἱ δοῦλοι (subjekt) λαμβάνουσι (predikat) τὸν καρπὸν τοῦ κυρίου (direkt objekt). \nSlavarna griper herrens frukt.\n4. ἀκούει (predikat) ὁ λαὸς (subjekt) τοὺς λόγους τοῦ ἀποστόλου (direkt objekt).\nFolket hör orden/berättelserna.\n5. πέμπει (predikat) τοὺς δούλους (direkt objekt) τῷ ἀδελφῷ (indirekt objekt). \nHan/hon/det skickar slavarna till brodern.\n6. ἀκούουσιν (predikat) οἱ κύριοι (subjekt) τὸν λόγον τοῦ δούλου (direkt objekt).\nHerrarna hör slavens berättelse."
     }
    ]
   },
@@ -1094,14 +1094,14 @@
      "bild": "3__Presentation/6.jpeg",
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "Grupprum (1)\nÖvning: Ta ut satsdelarna (subjekt, predikat, direkt och/eller indirekt objekt i\nföljande två meningar) och översätt.\n1. οἱ δοῦλοι βλέπουσι τὸν οἶκον. \n2. σώζουσιν οἱ ἄγγελοι τοὺς ἀδελφούς (σώζω ’rädda’).\n3. ὁ δοῦλος τῷ ἀποστόλῳ λέγει (λέγω ’säga’).\n4. γράφετε τοῖς δούλοις τοὺς λόγους τῶν ἀδελφῶν."
+     "text": "Grupprum (1)\nÖvning: Ta ut satsdelarna (subjekt, predikat, direkt och/eller indirekt objekt i\nföljande två meningar) och översätt.\n1. οἱ δοῦλοι βλέπουσι τὸν οἶκον. \n2. σῴζουσιν οἱ ἄγγελοι τοὺς ἀδελφούς (σῴζω ’rädda’).\n3. ὁ δοῦλος τῷ ἀποστόλῳ λέγει (λέγω ’säga’).\n4. γράφετε τοῖς δούλοις τοὺς λόγους τῶν ἀδελφῶν."
     },
     {
      "sida": 7,
      "bild": "3__Presentation/7.jpeg",
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "Grupprum (1)\nÖvning: Ta ut satsdelarna (subjekt, predikat, direkt och/eller indirekt objekt i\nföljande två meningar) och översätt.\n1. οἱ δοῦλοι (subjekt) βλέπουσι (predikat) τὸν οἶκον (direkt objekt).\n2. σώζουσιν (predikat) οἱ ἄγγελοι (subjekt) τοὺς ἀδελφούς (direkt objekt).\n3. ὁ δοῦλος (subjekt) τῷ ἀποστόλῳ (indirekt objekt) λέγει (predikat).\n4. γράφετε (predikat) τοῖς δούλοις (indirekt objekt) τοὺς λόγους τῶν ἀδελφῶν\n(direkt objekt)."
+     "text": "Grupprum (1)\nÖvning: Ta ut satsdelarna (subjekt, predikat, direkt och/eller indirekt objekt i\nföljande två meningar) och översätt.\n1. οἱ δοῦλοι (subjekt) βλέπουσι (predikat) τὸν οἶκον (direkt objekt).\n2. σῴζουσιν (predikat) οἱ ἄγγελοι (subjekt) τοὺς ἀδελφούς (direkt objekt).\n3. ὁ δοῦλος (subjekt) τῷ ἀποστόλῳ (indirekt objekt) λέγει (predikat).\n4. γράφετε (predikat) τοῖς δούλοις (indirekt objekt) τοὺς λόγους τῶν ἀδελφῶν\n(direkt objekt)."
     },
     {
      "sida": 8,
@@ -1907,7 +1907,7 @@
      "bild": "4__O_vningsblad/2.jpeg",
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "2\nὁ Ἰησοῦς Jesus\nποιέω göra\nτὸ σημεῖον tecken, under, underverk\nκαλός -ή -όν skön, vacker\n3. ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.\nπιστεύω tro på (med dativ för det man tror på)\nἡ ἐντολή bud, uppdrag\n4. κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.\nκλέπτω stjäla\nπονηρός -ά -όν ond\nτὸ ἀργύριον pengar\nπτωχός -ή -όν fattig\n5. τηρεῖ καὶ σώζει ὁ Κύριος τὸν κόσμον.\nτηρέω bevaka\nκαί och\nσώζω rädda, beskydda\nὁ κόσμος värld\nὁ Κύριος Herren\n6. λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.\nλαλέω tala"
+     "text": "2\nὁ Ἰησοῦς Jesus\nποιέω göra\nτὸ σημεῖον tecken, under, underverk\nκαλός -ή -όν skön, vacker\n3. ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.\nπιστεύω tro på (med dativ för det man tror på)\nἡ ἐντολή bud, uppdrag\n4. κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.\nκλέπτω stjäla\nπονηρός -ά -όν ond\nτὸ ἀργύριον pengar\nπτωχός -ή -όν fattig\n5. τηρεῖ καὶ σῴζει ὁ Κύριος τὸν κόσμον.\nτηρέω bevaka\nκαί och\nσῴζω rädda, beskydda\nὁ κόσμος värld\nὁ Κύριος Herren\n6. λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.\nλαλέω tala"
     },
     {
      "sida": 3,
@@ -1928,7 +1928,7 @@
      "bild": "4__O_vningsblad/5.jpeg",
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "5\n2. ὁ Ἰησοῦς ποιεῖ καλὰ σημεῖα.\nJesus gör sköna under(verk).\nὁ Ἰησοῦς Jesus\nποιέω göra\nτὸ σημεῖον tecken, under, underverk\nκαλός -ή -όν skön, vacker\n3. ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.\nDu, o broder, tror på änglarnas vackra bud.\nπιστεύω tro på (med dativ för det man tror på)\nἡ ἐντολή bud, uppdrag\n4. κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.\nDe onda barnen stjäl de fattiga slavarnas pengar. \nκλέπτω stjäla\nπονηρός -ά -όν ond\nτὸ ἀργύριον pengar\nπτωχός -ή -όν fattig\n5. τηρεῖ καὶ σώζει ὁ Κύριος τὸν κόσμον.\nHerren bevakar och beskyddar världen.\nτηρέω bevaka\nσώζω rädda, beskydda\nὁ κόσμος värld\nὁ Κύριος Herren\n6. λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.\nÄnglarna talar Guds ord.\nλαλέω tala"
+     "text": "5\n2. ὁ Ἰησοῦς ποιεῖ καλὰ σημεῖα.\nJesus gör sköna under(verk).\nὁ Ἰησοῦς Jesus\nποιέω göra\nτὸ σημεῖον tecken, under, underverk\nκαλός -ή -όν skön, vacker\n3. ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.\nDu, o broder, tror på änglarnas vackra bud.\nπιστεύω tro på (med dativ för det man tror på)\nἡ ἐντολή bud, uppdrag\n4. κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.\nDe onda barnen stjäl de fattiga slavarnas pengar. \nκλέπτω stjäla\nπονηρός -ά -όν ond\nτὸ ἀργύριον pengar\nπτωχός -ή -όν fattig\n5. τηρεῖ καὶ σῴζει ὁ Κύριος τὸν κόσμον.\nHerren bevakar och beskyddar världen.\nτηρέω bevaka\nσῴζω rädda, beskydda\nὁ κόσμος värld\nὁ Κύριος Herren\n6. λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.\nÄnglarna talar Guds ord.\nλαλέω tala"
     },
     {
      "sida": 6,
@@ -2565,7 +2565,7 @@
      "bild": null,
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "2 \n \nκαλεῖτε - använd er av gloslistan ’Ord som förekommer mer än 60 ggr i NT’ för att slå upp \ndetta ord. \nὁ νεανίας yngling (B § 57) \nπρό + gen. framför (rum), före (tid) \nκαί och \nαἰτέω be om (med dativ för den man ber om någonting för) \nτὸ τέκνον barn \n \n \n4. ὦ Κύριε, σώζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν \nδαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου. \n \n \n \nὁ Κύριος Herren \nσώζω rädda \nὁ κόσμος världen \nἐκ + gen. ur ut, ur, från \nἡ ἐξουσία makt \nτὸ δαιμόνιον demon \nπιστεύω tro (med ren dativ/εἰς + ack. för den man tror på) \nοὖν alltså (står alltid på andra plats) \nἡ ἀλήθεια sanning \n \n \n5. οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ \nτηρεῖ τὰς ἐντολὰς τοῦ θεοῦ. \n \n \n \nθεραπεύω hela \nἡ παρθένος jungfru \nἡ νόσος sjukdom (B § 60) \nὁ προφήτης profet (B § 57) \nἀλλά men, utan \nτηρέω bevara, här följa \nἡ ἐντολή bud \n \n \n6. κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι \nκαὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου. \n \n \n \nκηρύσσω predika (med dat. för den man predikar för) \nὁ υἱός τοῦ ἀνθρώπου Människosonen \nτὸ πλοῖον båt"
+     "text": "2 \n \nκαλεῖτε - använd er av gloslistan ’Ord som förekommer mer än 60 ggr i NT’ för att slå upp \ndetta ord. \nὁ νεανίας yngling (B § 57) \nπρό + gen. framför (rum), före (tid) \nκαί och \nαἰτέω be om (med dativ för den man ber om någonting för) \nτὸ τέκνον barn \n \n \n4. ὦ Κύριε, σῴζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν \nδαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου. \n \n \n \nὁ Κύριος Herren \nσῴζω rädda \nὁ κόσμος världen \nἐκ + gen. ur ut, ur, från \nἡ ἐξουσία makt \nτὸ δαιμόνιον demon \nπιστεύω tro (med ren dativ/εἰς + ack. för den man tror på) \nοὖν alltså (står alltid på andra plats) \nἡ ἀλήθεια sanning \n \n \n5. οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ \nτηρεῖ τὰς ἐντολὰς τοῦ θεοῦ. \n \n \n \nθεραπεύω hela \nἡ παρθένος jungfru \nἡ νόσος sjukdom (B § 60) \nὁ προφήτης profet (B § 57) \nἀλλά men, utan \nτηρέω bevara, här följa \nἡ ἐντολή bud \n \n \n6. κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι \nκαὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου. \n \n \n \nκηρύσσω predika (med dat. för den man predikar för) \nὁ υἱός τοῦ ἀνθρώπου Människosonen \nτὸ πλοῖον båt"
     },
     {
      "sida": 3,
@@ -2586,7 +2586,7 @@
      "bild": null,
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "5 \n \nNi kallar på ynglingarna före sabbaten, och de ber om bröd åt barnen. \n \nκαλέω kalla \nὁ νεανίας yngling (B § 57) \nπρό + gen. framför (rum), före (tid) \nκαί och \nαἰτέω be om (med dativ för den man ber om någonting för) \nτὸ τέκνον barn \n \n \n4. ὦ Κύριε, σώζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν \nδαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου. \n \nO Herre, du räddar världen och människorna från demonernas makt; alltså tror \nvi på evangeliets sanning. \n \nὁ Κύριος Herren \nσώζω rädda \nὁ κόσμος världen \nἐκ + gen. ur ut, ur, från \nἡ ἐξουσία makt \nτὸ δαιμόνιον demon \nπιστεύω tro (med ren dativ/εἰς + ack. för den man tror på) \nοὖν alltså (står alltid på andra plats) \nἡ ἀλήθεια sanning \n \n \n5. οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ \nτηρεῖ τὰς ἐντολὰς τοῦ θεοῦ. \n \nFlickan helar inte sjukdomarna, o profet, men hon älskar barnen och följer Guds \nbud. \n \nθεραπεύω hela \nἡ παρθένος jungfru \nἡ νόσος sjukdom (B § 60) \nὁ προφήτης profet (B § 57) \nἀλλά men, utan \nτηρέω bevara, här följa \nἡ ἐντολή bud \n \n \n6. κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι \nκαὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου."
+     "text": "5 \n \nNi kallar på ynglingarna före sabbaten, och de ber om bröd åt barnen. \n \nκαλέω kalla \nὁ νεανίας yngling (B § 57) \nπρό + gen. framför (rum), före (tid) \nκαί och \nαἰτέω be om (med dativ för den man ber om någonting för) \nτὸ τέκνον barn \n \n \n4. ὦ Κύριε, σῴζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν \nδαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου. \n \nO Herre, du räddar världen och människorna från demonernas makt; alltså tror \nvi på evangeliets sanning. \n \nὁ Κύριος Herren \nσῴζω rädda \nὁ κόσμος världen \nἐκ + gen. ur ut, ur, från \nἡ ἐξουσία makt \nτὸ δαιμόνιον demon \nπιστεύω tro (med ren dativ/εἰς + ack. för den man tror på) \nοὖν alltså (står alltid på andra plats) \nἡ ἀλήθεια sanning \n \n \n5. οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ \nτηρεῖ τὰς ἐντολὰς τοῦ θεοῦ. \n \nFlickan helar inte sjukdomarna, o profet, men hon älskar barnen och följer Guds \nbud. \n \nθεραπεύω hela \nἡ παρθένος jungfru \nἡ νόσος sjukdom (B § 60) \nὁ προφήτης profet (B § 57) \nἀλλά men, utan \nτηρέω bevara, här följa \nἡ ἐντολή bud \n \n \n6. κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι \nκαὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου."
     },
     {
      "sida": 6,
@@ -3354,7 +3354,7 @@
      "bild": null,
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "Tabell: betonade/obetonade personliga pronomen i sg.\nsg. 1: a p.\nbetonad\n(för emfas,\nefter preposi-\ntioner)\n1: a p.\nobetonad\n2:a p. betonad\n(för emfas,\nprepositioner)\n2:a p.\nobetonad\n3:e p.\nbetonad (för\nemfas)\n3:e p.\nobetonad\n(obs: även\nvid preposi-\ntioner)\nnom./\nvok.\nἐγώ jag (ren\nverbform)\nσύ du (ren\nverbform)\nοὗτος, denne\nἐκεῖνος osv.\n(ren\nverbform)\ngen. ἐμοῦ min μου min σοῦ din σου din τούτου,\nἐκεῖνου\nαὐτοῦ hans\ndat. ἐμοῖ åt mig μοι åt mig σοῖ åt dig σοι åt dig τούτῳ,\nἐκείνῳ\nαὐτῷ åt\nhonom\nack. ἐμέ mig με mig σέ dig σε dig τοῦτον,\nἐκεῖνον\nαὐτόν honom"
+     "text": "Tabell: betonade/obetonade personliga pronomen i sg.\nsg. 1: a p.\nbetonad\n(för emfas,\nefter preposi-\ntioner)\n1: a p.\nobetonad\n2:a p. betonad\n(för emfas,\nprepositioner)\n2:a p.\nobetonad\n3:e p.\nbetonad (för\nemfas)\n3:e p.\nobetonad\n(obs: även\nvid preposi-\ntioner)\nnom./\nvok.\nἐγώ jag (ren\nverbform)\nσύ du (ren\nverbform)\nοὗτος, denne\nἐκεῖνος osv.\n(ren\nverbform)\ngen. ἐμοῦ min μου min σοῦ din σου din τούτου,\nἐκεῖνου\nαὐτοῦ hans\ndat. ἐμοί åt mig μοι åt mig σοί åt dig σοι åt dig τούτῳ,\nἐκείνῳ\nαὐτῷ åt\nhonom\nack. ἐμέ mig με mig σέ dig σε dig τοῦτον,\nἐκεῖνον\nαὐτόν honom"
     },
     {
      "sida": 5,
@@ -3536,7 +3536,7 @@
      "bild": null,
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "μέγας, μεγάλη, μέγα stor (pl.)\nmask. sg. fem. sg. neutr. sg.\nnominativ μέγαλοι μεγάλαι μέγαλα\ngenitiv μεγάλων μεγάλων μεγάλων\ndativ μεγάλοις μεγάλαις μεγάλοις\nackusativ μεγάλους μεγάλας μέγαλα\nvokativ μέγαλοι μεγάλαι μέγαλα"
+     "text": "μέγας, μεγάλη, μέγα stor (pl.)\nmask. sg. fem. sg. neutr. sg.\nnominativ μεγάλοι μεγάλαι μεγάλα\ngenitiv μεγάλων μεγάλων μεγάλων\ndativ μεγάλοις μεγάλαις μεγάλοις\nackusativ μεγάλους μεγάλας μεγάλα\nvokativ μεγάλοι μεγάλαι μεγάλα"
     },
     {
      "sida": 31,
@@ -3613,7 +3613,7 @@
      "bild": null,
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "Tabell: betonade/obetonade personliga pronomen i sg.\nSg. 1: a p.\nbetonad\n(för emfas,\nprepositio-\nner)\n1: a p. obetonad 2:a p. betonad\n(för emfas,\nprepositioner)\n2:a p.\nobetonad\n3:e p.\nbetonad (för\nemfas)\n3:e p.\nobetonad\n(men även\nvid\nprepositioner)\nnom. ἐγώ (ren verbform) σύ (ren\nverbform)\nοὗτος,\nἐκεῖνος\n(ren\nverbform)\ngen. ἐμοῦ μου min σοῦ σου din τούτου,\nἐκεῖνου\nαὐτοῦ, αὐτῆς\nhans, hennes\ndat. ἐμοῖ μοι σοῖ σοι τούτῳ,\nἐκείνῳ\nαὐτῷ\nack. ἐμέ με σέ σε τοῦτον,\nἐκεῖνον\nαὐτόν"
+     "text": "Tabell: betonade/obetonade personliga pronomen i sg.\nSg. 1: a p.\nbetonad\n(för emfas,\nprepositio-\nner)\n1: a p. obetonad 2:a p. betonad\n(för emfas,\nprepositioner)\n2:a p.\nobetonad\n3:e p.\nbetonad (för\nemfas)\n3:e p.\nobetonad\n(men även\nvid\nprepositioner)\nnom. ἐγώ (ren verbform) σύ (ren\nverbform)\nοὗτος,\nἐκεῖνος\n(ren\nverbform)\ngen. ἐμοῦ μου min σοῦ σου din τούτου,\nἐκεῖνου\nαὐτοῦ, αὐτῆς\nhans, hennes\ndat. ἐμοί μοι σοί σοι τούτῳ,\nἐκείνῳ\nαὐτῷ\nack. ἐμέ με σέ σε τοῦτον,\nἐκεῖνον\nαὐτόν"
     },
     {
      "sida": 42,
@@ -3930,7 +3930,7 @@
      "bild": null,
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "1\nBIBELGREKISKA 1:7 Övningar för självstudium (facit finns på sidan 5)\nI. Formlära (för dessa övningar behövs formläran från presentationerna)\n(a) Omvandla följande former i presens till motsvarande former i futurum:\nβλέπομεν, ἄγει, γράφουσι, μαρτυρεῖ\n(b) Omvandla följande former i presens indikativ till motsvarande former i presens imperativ:\nπέμπεις, πιστεύετε, οὐ1 μένετε\n(c) Omvandla följande former i presens imperativ till motsvarande former i presens indikativ:\nβάλλε, σώζε, μή ζητεῖτε\n(d) Omvandla följande former i presens till imperfekt:\nκηρύσσω, ἀκούει, βαπτίζουσι, πέμπετε\n(e) Omvandla följande former i imperfekt till presens:\nἔβαλλε, ἐλέγετε, ἔσωζον, ἐδίδασκε\nII. Översättning till svenska\nVänligen notera:\n(a) Glosor ges i huvudsak för ord som inte finns i gloslistan ’Ord som förekommer mer än 60\nggr i NT’ (se Athena).\n(b) Meningarna är i vissa fall lätt modifierade.\n(c) Översättningarna är ordagranna och överensstämmer därför inte alltid med exempelvis\nBibel 2000.\n1. λέγει δὲ ὁ κύριος τοῦ ἀμπελῶνος, Τί ποιήσω; πέμψω τὸν υἱόν μου ἀγαπητόν· (Luk 20:13)\nὁ ἀμπελών ῶνος vingård (3:e deklinationen, se presentation)\nἀγαπητός älskad\n1 Notera att οὐ växlar till μή vid imperativ"
+     "text": "1\nBIBELGREKISKA 1:7 Övningar för självstudium (facit finns på sidan 5)\nI. Formlära (för dessa övningar behövs formläran från presentationerna)\n(a) Omvandla följande former i presens till motsvarande former i futurum:\nβλέπομεν, ἄγει, γράφουσι, μαρτυρεῖ\n(b) Omvandla följande former i presens indikativ till motsvarande former i presens imperativ:\nπέμπεις, πιστεύετε, οὐ1 μένετε\n(c) Omvandla följande former i presens imperativ till motsvarande former i presens indikativ:\nβάλλε, σῷζε, μή ζητεῖτε\n(d) Omvandla följande former i presens till imperfekt:\nκηρύσσω, ἀκούει, βαπτίζουσι, πέμπετε\n(e) Omvandla följande former i imperfekt till presens:\nἔβαλλε, ἐλέγετε, ἔσῳζον, ἐδίδασκε\nII. Översättning till svenska\nVänligen notera:\n(a) Glosor ges i huvudsak för ord som inte finns i gloslistan ’Ord som förekommer mer än 60\nggr i NT’ (se Athena).\n(b) Meningarna är i vissa fall lätt modifierade.\n(c) Översättningarna är ordagranna och överensstämmer därför inte alltid med exempelvis\nBibel 2000.\n1. λέγει δὲ ὁ κύριος τοῦ ἀμπελῶνος, Τί ποιήσω; πέμψω τὸν υἱόν μου ἀγαπητόν· (Luk 20:13)\nὁ ἀμπελών ῶνος vingård (3:e deklinationen, se presentation)\nἀγαπητός älskad\n1 Notera att οὐ växlar till μή vid imperativ"
     },
     {
      "sida": 2,
@@ -3958,7 +3958,7 @@
      "bild": null,
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "5\nFACIT\nI. Formlära\n(a) Omvandla följande former i presens till motsvarande former i futurum:\nβλέπομεν (βλέψομεν), ἄγει (ἄξει), γράφουσι (γράψουσι), μαρτυρεῖ (μαρτυρήσει)\n(b) Omvandla följande former i presens indikativ till motsvarande former i presens imperativ:\nπέμπεις (πέμπε), πιστεύετε (πιστεύετε), οὐ μένετε (μή μένετε)\n(c) Omvandla följande former i presens imperativ till motsvarande former i presens indikativ:\nβάλλε (βάλλεις), σώζε (σώζεις), μή ζητεῖτε (οὐ ζητεῖτε)\n(d) Omvandla följande former i presens till imperfekt:\nκηρύσσω (ἐκήρυσσον), ἀκούει (ἤκουε), βαπτίζουσι (ἐβάπτιζον), πέμπετε (ἐπέμπετε)\n(e) Omvandla följande former i imperfekt till presens:\nἔβαλλε (βάλλει), ἐλέγετε (λέγετε), ἔσωζον (σώζω / σώζουσι), ἐδίδασκε (διδάσκει)\nII. Översättning till svenska\n1. λέγει δὲ ὁ κύριος τοῦ ἀμπελῶνος, Τί ποιήσω; πέμψω τὸν υἱόν μου ἀγαπητόν· (Luk 20:13)\nὁ ἀμπελών ῶνος vingård (3:e deklinationen, se presentation)\nἀγαπητός älskad\nOch vingårdens herre säger: vad ska jag göra? Jag ska skicka min älskade son.\n2. καὶ ἔσται ὁ μισθὸς ὑμῶν πολύς, καὶ ἔσεσθε υἱοὶ τοῦ ὑψίστου (Luk 6:35)\nὁ μισθός lön\nπολύς πολλή πολύ mycket, stor, pl: många\nἔσται och ἔσεσθε är futurformer av εἰμι, se § 171 (se presentation 6)\nὁ ὕψιστος den högste\nOch er lön ska vara stor, och ni ska vara den högstes söner."
+     "text": "5\nFACIT\nI. Formlära\n(a) Omvandla följande former i presens till motsvarande former i futurum:\nβλέπομεν (βλέψομεν), ἄγει (ἄξει), γράφουσι (γράψουσι), μαρτυρεῖ (μαρτυρήσει)\n(b) Omvandla följande former i presens indikativ till motsvarande former i presens imperativ:\nπέμπεις (πέμπε), πιστεύετε (πιστεύετε), οὐ μένετε (μή μένετε)\n(c) Omvandla följande former i presens imperativ till motsvarande former i presens indikativ:\nβάλλε (βάλλεις), σῷζε (σῴζεις), μή ζητεῖτε (οὐ ζητεῖτε)\n(d) Omvandla följande former i presens till imperfekt:\nκηρύσσω (ἐκήρυσσον), ἀκούει (ἤκουε), βαπτίζουσι (ἐβάπτιζον), πέμπετε (ἐπέμπετε)\n(e) Omvandla följande former i imperfekt till presens:\nἔβαλλε (βάλλει), ἐλέγετε (λέγετε), ἔσῳζον (σῴζω / σῴζουσι), ἐδίδασκε (διδάσκει)\nII. Översättning till svenska\n1. λέγει δὲ ὁ κύριος τοῦ ἀμπελῶνος, Τί ποιήσω; πέμψω τὸν υἱόν μου ἀγαπητόν· (Luk 20:13)\nὁ ἀμπελών ῶνος vingård (3:e deklinationen, se presentation)\nἀγαπητός älskad\nOch vingårdens herre säger: vad ska jag göra? Jag ska skicka min älskade son.\n2. καὶ ἔσται ὁ μισθὸς ὑμῶν πολύς, καὶ ἔσεσθε υἱοὶ τοῦ ὑψίστου (Luk 6:35)\nὁ μισθός lön\nπολύς πολλή πολύ mycket, stor, pl: många\nἔσται och ἔσεσθε är futurformer av εἰμι, se § 171 (se presentation 6)\nὁ ὕψιστος den högste\nOch er lön ska vara stor, och ni ska vara den högstes söner."
     },
     {
      "sida": 6,
@@ -4009,7 +4009,7 @@
      "bild": null,
      "har_grafik": false,
      "har_grekiska": true,
-     "text": "oskar.andersson@su.se\n3\nBreakout room (3): Imperfekt\nUppgift: Översätt till svenska\n1. πάντες ἔλεγον ὅτι οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής.\nἔλεγον (= λέγω)\nὅτι att\n2. ὁ Ἰωάννης ἐβάπτιζε πολλοὺς ἀνθρώπους.\nπολλοὺς form av πολύς\n3. ἐδιδάσκεν αὐτοὺς ἐν τῇ συναγωγῇ αὐτῶν.\n4. πολλοὶ ἤκουον αὐτοῦ καὶ ἐπίστευον αὐτῷ.\nἤκουον (= ἀκούω; detta verb vill ofta ha ett direkt objekt i genitiv!)\nREGLER FÖR IMPERFEKT\n1. Imperfekt bildas med (delvis) andra personändelser än presens och futurum:\nἔλυ-ον, -ες, -ε, -ομεν, -ετε, -ον\n2. Ett augment (B § 138 :1–2) tillkommer i början av stammen. Om stammen börjar på en\nkonsonant, är detta augment ett enkel -ε (s.k. augmentum syllabicum):\nἔ-λυ-ον, ἔ-λυ-ες, osv.\n3. Om stammen börjar på vokal, förlängs denna som ett resultat av mötet med augmentet ε (s.k.\naugmentum temporale):\nε + ε = η (ἐσθίω äta > ἐ-εσθιον > ἤσθιον)\nε + α = η (ἄγω föra, leda > ἐ-αγον > ἦγον)"
+     "text": "oskar.andersson@su.se\n3\nBreakout room (3): Imperfekt\nUppgift: Översätt till svenska\n1. πάντες ἔλεγον ὅτι οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής.\nἔλεγον (= λέγω)\nὅτι att\n2. ὁ Ἰωάννης ἐβάπτιζε πολλοὺς ἀνθρώπους.\nπολλοὺς form av πολύς\n3. ἐδίδασκεν αὐτοὺς ἐν τῇ συναγωγῇ αὐτῶν.\n4. πολλοὶ ἤκουον αὐτοῦ καὶ ἐπίστευον αὐτῷ.\nἤκουον (= ἀκούω; detta verb vill ofta ha ett direkt objekt i genitiv!)\nREGLER FÖR IMPERFEKT\n1. Imperfekt bildas med (delvis) andra personändelser än presens och futurum:\nἔλυ-ον, -ες, -ε, -ομεν, -ετε, -ον\n2. Ett augment (B § 138 :1–2) tillkommer i början av stammen. Om stammen börjar på en\nkonsonant, är detta augment ett enkel -ε (s.k. augmentum syllabicum):\nἔ-λυ-ον, ἔ-λυ-ες, osv.\n3. Om stammen börjar på vokal, förlängs denna som ett resultat av mötet med augmentet ε (s.k.\naugmentum temporale):\nε + ε = η (ἐσθίω äta > ἐ-εσθιον > ἤσθιον)\nε + α = η (ἄγω föra, leda > ἐ-αγον > ἦγον)"
     }
    ]
   }
@@ -4851,6 +4851,16 @@
      "seminarium": 4,
      "kalla": "4__Breakout_rooms.pdf",
      "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 2
+    },
+    {
+     "seminarium": 4,
+     "kalla": "4__O_vningsblad.pdf",
+     "sida": 5
     }
    ]
   },
@@ -5310,27 +5320,6 @@
      "seminarium": 4,
      "kalla": "4__O_vningsblad.pdf",
      "sida": 2
-    }
-   ]
-  },
-  {
-   "lemma": "σώζω",
-   "artikel": null,
-   "glosa": "rädda, beskydda",
-   "ordklass": null,
-   "nt_lemma": false,
-   "nt_frekvens": null,
-   "i_glosor_master": false,
-   "forekomster": [
-    {
-     "seminarium": 4,
-     "kalla": "4__O_vningsblad.pdf",
-     "sida": 2
-    },
-    {
-     "seminarium": 4,
-     "kalla": "4__O_vningsblad.pdf",
-     "sida": 5
     }
    ]
   },
@@ -7071,7 +7060,7 @@
    "seminarium": 4,
    "kalla": "4__O_vningsblad.pdf",
    "sida": 2,
-   "grekiska": "τηρεῖ καὶ σώζει ὁ Κύριος τὸν κόσμον.",
+   "grekiska": "τηρεῖ καὶ σῴζει ὁ Κύριος τὸν κόσμον.",
    "instruktion": null,
    "oversattning": "Herren bevakar och beskyddar världen.",
    "ovningsgrupp": "satser"
@@ -7267,10 +7256,10 @@
    "seminarium": 5,
    "kalla": "5__O_vningsblad.pdf",
    "sida": 1,
-   "grekiska": "ὦ Κύριε, σώζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν δαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου.",
+   "grekiska": "ὦ Κύριε, σῴζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν δαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 4)",
    "oversattning": "O Herre, du räddar världen och människorna från demonernas makt; alltså tror vi på evangeliets sanning.",
-   "avvikelse": "Övningsbladet skriver σώζεις; masterformen (glosor.json/verb.json) är σῴζω (iota subscriptum).",
+   "avvikelse": "Övningsbladet skriver σῴζω utan iota subscriptum (σώζε/σώζεις/σώζω); formerna är här normaliserade till standardstavningen σῴζω (imperativ σῷζε).",
    "ovningsgrupp": "sjalvstudium"
   },
   {
@@ -8007,11 +7996,11 @@
    "seminarium": 7,
    "kalla": "7__O_vningsblad.pdf",
    "sida": 1,
-   "grekiska": "σώζε",
+   "grekiska": "σῷζε",
    "instruktion": "I (c) Omvandla följande former i presens imperativ till motsvarande former i presens indikativ.",
    "oversattning": "du räddar",
-   "facit_form": "σώζεις",
-   "avvikelse": "σῴζω skrivs i övningsbladet utan iota subscriptum (σώζε/σώζεις); standardformen är σῴζε/σῴζεις.",
+   "facit_form": "σῴζεις",
+   "avvikelse": "Övningsbladet skriver σῴζω utan iota subscriptum (σώζε/σώζεις/σώζω); formerna är här normaliserade till standardstavningen σῴζω (imperativ σῷζε).",
    "ovningsgrupp": "formlara-ind"
   },
   {
@@ -8101,12 +8090,12 @@
    "seminarium": 7,
    "kalla": "7__O_vningsblad.pdf",
    "sida": 1,
-   "grekiska": "ἔσωζον",
+   "grekiska": "ἔσῳζον",
    "instruktion": "I (e) Omvandla följande former i imperfekt till presens.",
    "oversattning": "jag räddar / de räddar",
-   "facit_form": "σώζω / σώζουσι(ν)",
-   "falla": "ἔσωζον är tvetydig: -ον är ändelse för BÅDE 1:a sg och 3:e pl i imperfekt. Därför har den två möjliga presensformer — σώζω eller σώζουσι(ν).",
-   "avvikelse": "Övningsbladet skriver σώζω utan iota subscriptum; standardformen är σῴζω.",
+   "facit_form": "σῴζω / σῴζουσι(ν)",
+   "falla": "ἔσῳζον är tvetydig: -ον är ändelse för BÅDE 1:a sg och 3:e pl i imperfekt. Därför har den två möjliga presensformer — σῴζω eller σῴζουσι(ν).",
+   "avvikelse": "Övningsbladet skriver σῴζω utan iota subscriptum (σώζε/σώζεις/σώζω); formerna är här normaliserade till standardstavningen σῴζω (imperativ σῷζε).",
    "ovningsgrupp": "formlara-pres"
   },
   {
