@@ -86,12 +86,12 @@ def main():
     d = json.loads(MASTER.read_text())
     rader = [bygg_rad(v) for v in d["verb"]]
     rader[-1] = rader[-1].rstrip(",")
-    array = "const verb = [\n" + "\n".join(rader) + "\n];"
+    array = "export const verb = [\n" + "\n".join(rader) + "\n];"
 
     src = VY.read_text()
-    ny, n = re.subn(r"const verb = \[.*?\n\];", lambda m: array, src, count=1, flags=re.S)
+    ny, n = re.subn(r"(?:export )?const verb = \[.*?\n\];", lambda m: array, src, count=1, flags=re.S)
     if not n:
-        raise SystemExit("Hittade ingen 'const verb = [...]' i vyer/verb.js")
+        raise SystemExit("Hittade ingen 'export const verb = [...]' i vyer/verb.js")
     VY.write_text(ny)
 
     st = collections.Counter()

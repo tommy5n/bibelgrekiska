@@ -82,6 +82,12 @@ const SPEL = [
     desc: "Kasus styr betydelsen — välj rätt utifrån frasen",
     route: "#/prepositioner",
   },
+  {
+    nr: 12,
+    namn: "Formverkstaden",
+    desc: "Bygg om formen: presens ↔ imperfekt, futurum, imperativ, infinitiv",
+    route: "#/former",
+  },
 ];
 
 const ROUTES = {
@@ -96,6 +102,7 @@ const ROUTES = {
   "/pronomen": () => import(`./vyer/pronomen.js${vv}`),
   "/paradigm": () => import(`./vyer/paradigm.js${vv}`),
   "/prepositioner": () => import(`./vyer/prepositioner.js${vv}`),
+  "/former": () => import(`./vyer/former.js${vv}`),
 };
 
 let current = null;
