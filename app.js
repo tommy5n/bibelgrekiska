@@ -61,7 +61,7 @@ const SPEL = [
   {
     nr: 8,
     namn: "Verbböjning",
-    desc: "Presens: ω-verb, kontraherade & εἰμί",
+    desc: "Tempus & modus: presens, imperfekt, futurum, imperativ, infinitiv",
     route: "#/verb",
   },
   {
