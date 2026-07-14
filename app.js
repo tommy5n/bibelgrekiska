@@ -67,7 +67,7 @@ const SPEL = [
   {
     nr: 9,
     namn: "Pronomen",
-    desc: "Pronomen: ἐγώ, σύ, αὐτός, οὗτος, τίς",
+    desc: "Pronomen: ἐγώ, σύ, αὐτός, οὗτος, τίς, ἐμός, τις",
     route: "#/pronomen",
   },
   {

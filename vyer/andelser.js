@@ -275,6 +275,13 @@ const semMatch = o => o.sem.length
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
 function strip(s){ return s.normalize("NFD").replace(/[\u0300\u0301\u0342\u0313\u0314\u0308\u0304\u0306]/g,"").normalize("NFC"); }
+/* Härleder paradigm ur GENUS + nominativens/genitivens utljud. Det fungerar
+   bara för deklination 1 och 2.
+   VARNING: ord ur deklination 3 (ἡγεμών, ἀμπελών — sem 7) får ALDRIG in i
+   `ord`-snapshoten ovan. De böjs på genitivstammen, inte ur genus, så de skulle
+   tyst få paradigmKey "m2" och ge fel facit. Samma skäl som 2:a-dekl-feminina
+   och 1:a-dekl-maskulina utelämnas. De övas i kasus- och kongruensspelen, där
+   explicita former läses. Se json/ord.json → _tredjeklasser._om. */
 function paradigmKey(o){
   if(o.genus==="m") return "m2";
   if(o.genus==="n") return "n2";
