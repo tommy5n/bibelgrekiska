@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "json" / "seminarier.json"
 
 # Vilka seminarier som renderas.
-SEMINARIER = [2, 3, 4, 5, 6]
+SEMINARIER = [2, 3, 4, 5, 6, 7]
 
 # ── Parsning av instruktion (sem 6: grupp härleds ur instruktionstexten) ─
 RE_BREAKOUT = re.compile(r"Breakout\s+(\S+?):\s*översätt\s*\(([^)]*)\)")
@@ -31,6 +31,8 @@ def esc(s):
 
 # Gruppkonfiguration: grupp_id → (rubrik, tema, note, accent).
 # Sektionerna ordnas efter första förekomst i datan (= PDF-ordning).
+# Nyckeln "<sem>:<gid>" vinner över "<gid>" — sem 6 och 7 delar grupp-id
+# (breakout-1/2/3) men har olika teman.
 GRUPPER = {
     # sem 2–5 (grupp bärs av fältet ovningsgrupp)
     "verbformer": ("Verbformer", "Presens indikativ",
@@ -56,8 +58,35 @@ GRUPPER = {
         "Översätt till svenska. Frågeorden τίς/τί böjs i kasus och numerus.", "#4a6a8a"),
     "breakout-3": ("Breakout 3", "Futurum",
         "Översätt till svenska. Futurum känns igen på tempustecknet σ före ändelsen — men några meningar är insmugen presens.", "#b0642f"),
+    # sem 7 — formläran omvandlar former (facit_form), inte översätter
+    "formlara-fut": ("Formlära (a)", "Presens → futurum",
+        "Omvandla till futurum. Tempustecknet σ möter rotens sista ljud: κ/χ/γ/σσ→ξ, π/φ/β/πτ→ψ, τ/θ/δ/ζ→σ; ε förlängs till η.", "#3f7a4f"),
+    "formlara-imp": ("Formlära (b)", "Indikativ → imperativ",
+        "Omvandla till presens imperativ. Tänk på att negationen οὐ växlar till μή vid imperativ.", "#4a6a8a"),
+    "formlara-ind": ("Formlära (c)", "Imperativ → indikativ",
+        "Omvandla tillbaka till presens indikativ — och växla μή tillbaka till οὐ.", "#4a6a8a"),
+    "formlara-impf": ("Formlära (d)", "Presens → imperfekt",
+        "Omvandla till imperfekt: augment framför stammen + sekundära ändelser (-ον, -ες, -ε(ν), -ομεν, -ετε, -ον).", "#b0642f"),
+    "formlara-pres": ("Formlära (e)", "Imperfekt → presens",
+        "Omvandla tillbaka till presens: dra bort augmentet och sätt tillbaka primärändelsen.", "#b0642f"),
+    "oversattning": ("Översättning", "Meningar ur NT",
+        "Översätt till svenska. Meningarna är ordagranna och ibland lätt modifierade — de följer inte alltid Bibel 2000.", "#8a5a86"),
+    "7:breakout-1": ("Breakout 1", "Futurum &amp; personliga pronomen",
+        "Översätt till svenska. Leta efter tempustecknet σ — flera meningar är minimala par där bara futurum skiljer.", "#3f7a4f"),
+    "7:breakout-2": ("Breakout 2", "Possessiva pronomen",
+        "Översätt till svenska. Obetonad possessiv står efter substantivet, betonad mellan artikel och substantiv.", "#4a6a8a"),
+    "7:breakout-3": ("Breakout 3", "Imperfekt",
+        "Översätt till svenska. Imperfekt känns igen på augmentet framför stammen — och -ον är både 1:a sg och 3:e pl.", "#b0642f"),
     "ovrigt": ("Övrigt", "", "", "#a8842c"),
 }
+
+# Standardvärden när en grupp saknar konfiguration.
+GRUPP_FALLBACK = ("Övrigt", "", "", "#a8842c")
+
+
+def grupp_meta(sem, gid):
+    """Gruppmetadata; seminariespecifik nyckel vinner över den generella."""
+    return GRUPPER.get(f"{sem}:{gid}") or GRUPPER.get(gid) or GRUPP_FALLBACK
 
 
 def grupp_av(sats):
@@ -128,7 +157,7 @@ def render_item(nr, sats):
 
 
 def render_sektion(sem, gid, poster):
-    rub, tema, note, accent = GRUPPER.get(gid, ("Övrigt", "", "", "#a8842c"))
+    rub, tema, note, accent = grupp_meta(sem, gid)
     sekid = f"sem{sem}-{gid}"
     items = "\n".join(render_item(i + 1, s) for i, s in enumerate(poster))
     temahtml = f' <span class="ov-tema">{tema}</span>' if tema else ""
@@ -169,7 +198,7 @@ def render_item_print(sats):
 
 
 def render_sektion_print(sem, gid, poster):
-    rub, tema, note, _ = GRUPPER.get(gid, ("Övrigt", "", "", ""))
+    rub, tema, note, _ = grupp_meta(sem, gid)
     items = "\n".join(render_item_print(s) for s in poster)
     temahtml = f' <span class="ex">{tema}</span>' if tema else ""
     return f'''      <section class="gr-card">
@@ -184,7 +213,7 @@ def render_sektion_print(sem, gid, poster):
 def toc_for_sem(sem, grupper):
     rader = [f'          <li class="group"><span>Seminarium {sem}</span></li>']
     for gid in grupper:
-        rub, tema = GRUPPER.get(gid, (gid, ""))[:2]
+        rub, tema = grupp_meta(sem, gid)[:2]
         # Generiska breakout-rubriker disambigueras med temat i sidopanelen.
         etikett = tema if (rub.startswith("Breakout ") and rub != "Breakout" and tema) else rub
         rader.append(f'          <li><a href="#sem{sem}-{gid}">{etikett}</a></li>')
@@ -193,8 +222,8 @@ def toc_for_sem(sem, grupper):
 
 def toc_print_for_sem(sem, grupper):
     items = "".join(
-        f'<span class="toc-item">{GRUPPER.get(gid, (gid,))[0]}'
-        f'{" · " + GRUPPER[gid][1] if GRUPPER.get(gid, (gid, ""))[1] else ""}</span>'
+        f'<span class="toc-item">{grupp_meta(sem, gid)[0]}'
+        f'{" · " + grupp_meta(sem, gid)[1] if grupp_meta(sem, gid)[1] else ""}</span>'
         for gid in grupper
     )
     return f'<div class="toc-group"><span class="toc-h">Seminarium {sem}</span>{items}</div>'
