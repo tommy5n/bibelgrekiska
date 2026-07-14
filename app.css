@@ -1299,6 +1299,11 @@ body {
   --cbg: #e9ebed;
   --cbd: #abb3bb;
 }
+.vy-satsanalys .r-inf {
+  --c: #8a5a86;
+  --cbg: #f0e6ef;
+  --cbd: #cbaac6;
+}
 .vy-satsanalys * {
   box-sizing: border-box;
 }

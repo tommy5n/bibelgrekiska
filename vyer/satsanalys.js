@@ -56,6 +56,7 @@ const MARKUP = `<div class="vy vy-satsanalys">
         <button class="chip" data-deck-sem4>Seminarium 4 (εἰμί impf + adverbial)</button>
         <button class="chip" data-deck-sem5>Seminarium 5 (prepositioner, negation, pronomen)</button>
         <button class="chip" data-deck-sem6>Seminarium 6 (pronomen, futurum)</button>
+        <button class="chip" data-deck-sem7>Seminarium 7 (possessiva, imperfekt, infinitiv)</button>
       </div>
       <div class="grid" id="grid-niva"></div>
     </div>
@@ -106,8 +107,10 @@ const ROLLER = {
          raknare:"nominativ",   fraga:"Vad sägs om subjektet?",                instr:"Klicka på predikatsfyllnaden." },
   adv: { namn:"adverbialet",       etikett:"adverbial",        klass:"r-adv",
          raknare:"rum/tid",     fraga:"Var eller när äger handlingen rum?",    instr:"Klicka på adverbialet (prepositionsfrasen)." },
+  inf: { namn:"infinitivkomplementet", etikett:"infinitiv",    klass:"r-inf",
+         raknare:"infinitiv",   fraga:"Vad är det man vill eller tänker göra?", instr:"Klicka på infinitiven." },
 };
-const ROLL_ORDNING = ["pred","subj","do","io","adv","pf","gen","vok"];
+const ROLL_ORDNING = ["pred","subj","do","io","adv","pf","gen","vok","inf"];
 
 const NIVAER = {
   1:"S-V-O (rak ordföljd)", 2:"Fri ordföljd", 3:"Subjekt i ändelsen",
@@ -117,6 +120,8 @@ const NIVAER = {
   10:"Prepositioner (sem 5)", 11:"Negationen οὐ (sem 5)", 12:"Personliga pronomen (sem 5)",
   13:"3:e person & demonstrativa pronomen (sem 6)", 14:"Interrogativa pronomen (sem 6)",
   15:"Futurum (sem 6)",
+  16:"Possessiva pronomen (sem 7)", 17:"Imperfekt (sem 7)",
+  18:"Infinitiv som komplement (sem 7)",
 };
 
 /* ── MENINGSBANK ──────────────────────────────────────────────────────
@@ -338,6 +343,38 @@ const SATSER = [
       {t:"ὁ κύριος",roll:"subj"},{t:"λαλήσει",roll:"pred"},{t:"σοι",roll:"io"} ]},
   { id:"s6f4", niva:15, kalla:"kurs", ref:"Breakout 6:3:6", sv:"Apostlarna ska undervisa lärjungarna.", chunks:[
       {t:"οἱ ἀπόστολοι",roll:"subj"},{t:"παιδεύσουσι",roll:"pred"},{t:"τοὺς μαθητάς",roll:"do"} ]},
+
+  /* ══ SEMINARIUM 7 ═══════════════════════════════════════════════
+     Possessiva pronomen: den obetonade possessiven är en GENITIV och
+     analyseras som genitivattribut — samma roll som τοῦ κυρίου. */
+  { id:"s7p1", niva:16, kalla:"kurs", ref:"Breakout 7:1:8", sv:"Min bror talar med dig.", chunks:[
+      {t:"ὁ ἀδελφός",roll:"subj"},{t:"μου",roll:"gen"},{t:"λαλεῖ",roll:"pred"},{t:"σοι",roll:"io"} ]},
+  { id:"s7p2", niva:16, kalla:"kurs", ref:"Breakout 7:1:9", sv:"Vår herre ska skicka båten till er.", chunks:[
+      {t:"πέμψει",roll:"pred"},{t:"ὁ κύριος",roll:"subj"},{t:"ἡμῶν",roll:"gen"},{t:"τὸ πλοῖον",roll:"do"},{t:"πρὸς ὑμᾶς",roll:"adv"} ]},
+  { id:"s7p3", niva:16, kalla:"kurs", ref:"Breakout 7:1:10", sv:"Deras syster ska döpa oss.", chunks:[
+      {t:"βαπτίσει",roll:"pred"},{t:"ἡ ἀδελφὴ",roll:"subj"},{t:"αὐτῶν",roll:"gen"},{t:"ἡμᾶς",roll:"do"} ]},
+  { id:"s7p4", niva:16, kalla:"kurs", ref:"Breakout 7:2:4 (utbyggd)", sv:"Hans slav ser huset.", chunks:[
+      {t:"ὁ τούτου",roll:"gen"},{t:"δοῦλος",roll:"subj"},{t:"βλέπει",roll:"pred"},{t:"τὸν οἶκον",roll:"do"} ]},
+
+  /* Imperfekt: augmentet framför stammen. -ον är både 1:a sg och 3:e pl. */
+  { id:"s7i1", niva:17, kalla:"kurs", ref:"Breakout 7:3:2", sv:"Johannes döpte många människor.", chunks:[
+      {t:"ὁ Ἰωάννης",roll:"subj"},{t:"ἐβάπτιζε",roll:"pred"},{t:"πολλοὺς ἀνθρώπους",roll:"do"} ]},
+  { id:"s7i2", niva:17, kalla:"kurs", ref:"Breakout 7:3:3", sv:"Han undervisade dem i deras synagoga.", subjI:"han/hon/det", chunks:[
+      {t:"ἐδίδασκεν",roll:"pred"},{t:"αὐτοὺς",roll:"do"},{t:"ἐν τῇ συναγωγῇ",roll:"adv"},{t:"αὐτῶν",roll:"gen"} ]},
+  { id:"s7i3", niva:17, kalla:"kurs", ref:"Övningsblad 7:II:17 (förkortad)", sv:"I synagogorna predikade han.", subjI:"han/hon/det", chunks:[
+      {t:"ἐν ταῖς συναγωγαῖς",roll:"adv"},{t:"ἐκήρυσσεν",roll:"pred"} ]},
+  { id:"s7i4", niva:17, kalla:"kurs", ref:"Övningsblad 7:II:14", sv:"Den stora folkhopen hörde hans ord.", chunks:[
+      {t:"ὁ πολὺς ὄχλος",roll:"subj"},{t:"ἤκουεν",roll:"pred"},{t:"τὸν λόγον",roll:"do"},{t:"αὐτοῦ",roll:"gen"} ]},
+
+  /* Infinitiv som komplement till θέλω/μέλλω. */
+  { id:"s7n1", niva:18, kalla:"kurs", ref:"Övningsblad 7:II:9", sv:"Vad tänker du göra?", subjI:"du", chunks:[
+      {t:"τί",roll:"do"},{t:"μέλλεις",roll:"pred"},{t:"ποιεῖν",roll:"inf"} ]},
+  { id:"s7n2", niva:18, kalla:"kurs", ref:"Presentation 7 s.22", sv:"Jag vill predika för er.", subjI:"jag", chunks:[
+      {t:"θέλω",roll:"pred"},{t:"κηρύσσειν",roll:"inf"},{t:"ὑμῖν",roll:"io"} ]},
+  { id:"s7n3", niva:18, kalla:"kurs", ref:"Presentation 7 s.22", sv:"Jag tänker predika för er.", subjI:"jag", chunks:[
+      {t:"μέλλω",roll:"pred"},{t:"κηρύσσειν",roll:"inf"},{t:"ὑμῖν",roll:"io"} ]},
+  { id:"s7n4", niva:18, kalla:"kurs", ref:"Övningsblad 7:II:10 (förkortad)", sv:"Gud kommer att slå dig.", chunks:[
+      {t:"τύπτειν",roll:"inf"},{t:"σε",roll:"do"},{t:"μέλλει",roll:"pred"},{t:"ὁ θεός",roll:"subj"} ]},
 ];
 
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
@@ -642,6 +679,7 @@ function uppdateraSnabbChips(){
     ["[data-deck-sem4]",  new Set([8,9])],
     ["[data-deck-sem5]",  new Set([10,11,12])],
     ["[data-deck-sem6]",  new Set([13,14,15])],
+    ["[data-deck-sem7]",  new Set([16,17,18])],
   ];
   for(const [sel, set] of karta){ const b = document.querySelector(sel); if(b) b.setAttribute("aria-pressed", setEq(v, set)); }
 }
@@ -681,6 +719,10 @@ document.querySelector("[data-deck-sem5]").onclick  = () => {
 };
 document.querySelector("[data-deck-sem6]").onclick  = () => {
   state.valdaNivaer = new Set([13,14,15]); state.kalla = "kurs";  // pronomen (3:e/dem/interr), futurum
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+};
+document.querySelector("[data-deck-sem7]").onclick  = () => {
+  state.valdaNivaer = new Set([16,17,18]); state.kalla = "kurs";  // possessiva, imperfekt, infinitiv
   byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
 };
 document.querySelectorAll("#seg-kalla button").forEach(b =>
