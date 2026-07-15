@@ -11,10 +11,17 @@
 // Här ges en BÖJD form och spelaren måste först läsa av person/numerus ur
 // ändelsen och sedan bygga om den i ett annat tempus/modus.
 //
-// Delar verbspelets snapshot via `import { verb }` — ingen egen kopia, så
-// json/verb.json → gen_verb_snapshot.py når båda spelen på en gång.
+// Delar verbspelets snapshot — ingen egen kopia, så json/verb.json →
+// gen_verb_snapshot.py når båda spelen på en gång.
 // Självförsörjande: injicerar egen .vy-former-stil och städar i teardown.
-import { verb } from "./verb.js";
+//
+// Versionen ärvs ur den egna URL:en. En bar `import { verb } from "./verb.js"`
+// hämtar en OVERSIONERAD kopia: annan cache-nyckel än app.js:s verb.js?v=NN, så
+// modulen laddas två gånger och den bara kan ligga upp till max-age (600 s) för
+// gammal efter en deploy. Med versionen med blir det samma URL som routern
+// använder — en instans, och cache-bustad som allt annat.
+const vv = new URL(import.meta.url).search;
+const { verb } = await import(`./verb.js${vv}`);
 
 let __fh = null;
 
