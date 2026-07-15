@@ -1,0 +1,538 @@
+{
+ "_om": "Meningsbank for pronomenspelets kontextlage (grekiska -> svenska). Varje sats bar ett eller flera MAL: ett pronomen i satsen vars svenska oversattning ar fragan. Kontexten finns for att pronomenformerna ar kraftigt sammanfallande — 43% av formerna i pronomen.json svarar mot mer an en analys och 21% mot mer an en svensk oversattning. Formen ensam racker alltsa inte; satsen avgor. Alla satser ar hamtade ur seminarier.json (kursens ovningsblad/breakout rooms), dar grekiska och oversattning redan ar verifierade mot kursmaterialet. Falten lemma/analys/roll/sv ar tillagda har.",
+ "_genererad": "2026-07-15",
+ "_kalla": "json/seminarier.json (falt: satser). Grekiska och oversattning ar oforandrade fran mastern; endast malanalysen ar ny.",
+ "_falt": {
+  "id": "Stabilt id. p<seminarium>-<lopnummer>; konstruerade satser far suffixet -s.",
+  "seminarium": "Seminariet satsen hor till (for konstruerade: dar pronomenet infors enligt pronomen.json).",
+  "grekiska": "Satsen. For kalla != 'skapad': ordagrant ur seminarier.json, oforandrad.",
+  "oversattning": "Hela satsens svenska oversattning.",
+  "kalla": "Kallfil i kursmaterialet, ELLER 'skapad' = konstruerad har for att tacka en lucka. Se _konstruerade.",
+  "sida": "Sida i kallfilen. Utelamnat for kalla='skapad'.",
+  "mal": "Pronomenforekomster i satsen som spelet kan fraga pa."
+},
+ "_falt_mal": {
+  "form": "Pronomenformen som den star i satsen (med grav accent dar loptexten har det).",
+  "n": "Ordningstal om samma form forekommer flera ganger i satsen. Utelamnat = 1.",
+  "lemma": "Uppslagsform i pronomen.json.",
+  "modell": "person | genus. Speglar bojningsmodell i pronomen.json och avgor analysens falt.",
+  "analys": "person: {num, kas, bet}. genus: {genus, num, kas}. genus kan vara 'm|f' nar kontexten inte avgor och svenskan anda blir densamma.",
+  "roll": "Se _nycklar.roll. Det ar rollen som avgor kasus — spelets pedagogiska poang.",
+  "sv": "Pronominets svenska oversattning I DENNA SATS. Inkluderar det svenska kasusuttrycket (t.ex. 'for er' for dativ) men INTE oversattningen av en fristaende grekisk preposition (peri sou -> 'dig', inte 'om dig').",
+  "alt": "Ytterligare godtagbara svenska svar.",
+  "not": "Kort forklaring som visas i facit."
+},
+ "_nycklar": {
+  "_om_roll": "Forsta meningen i varje varde ar den etikett spelet visar i facit och i pickern. Den ar darfor riktig svenska med aao — till skillnad fran ovrig metadataprosa i filen, som foljer masterfilernas ASCII-konvention. Resten av vardet ar forklaring och visas inte.",
+  "roll": {
+    "subj": "Subjekt.",
+    "pf": "Predikatsfyllnad. Kasus framgar av analys — aven genitiv forekommer (predikativ genitiv: 'huset ar VEMS?').",
+    "do": "Direkt objekt. Ackusativ.",
+    "obj-gen": "Genitivobjekt. Verbet styr lexikalt genitiv (akouo tinos 'hora nagon'). Objekt, inte attribut.",
+    "obj-dat": "Dativobjekt. Verbet styr lexikalt dativ och dativen ar INTE mottagare (pisteuo tini, latreuo tini).",
+    "io": "Indirekt objekt. Dativ i mottagar-/adressatroll (lego tini, pempo ti tini, grapho tini).",
+    "gen": "Genitivattribut. Aven den obetonade possessiven (mou, autou ...).",
+    "attr": "Förenat attribut. Kongruerar med sitt huvudord (possessivt adj., demonstrativt, interrogativt).",
+    "prep": "Rektion till preposition. Pronominet styrs av prepositionen; det ar frasen som helhet som ar adverbial, inte pronominet."
+  },
+  "roll_reserverade": {
+    "_om": "Definierade men annu oanvanda roller. Ligger har for att senare grammatik ska kunna laggas till utan att vokabularen designas om. Validatorn godtar dem redan.",
+    "adv-kasus": "Adverbiell kasusanvandning UTAN preposition (dativus instrumenti/temporis/locativus, genitivus temporis).",
+    "gen-abs": "Genitivus absolutus.",
+    "aci-subj": "Subjekt i ackusativ med infinitiv.",
+    "agent": "Agent vid passiv (hypo + genitiv).",
+    "part-gen": "Partitiv genitiv.",
+    "refl": "Reflexivt eller reciprokt bruk."
+  }
+},
+ "_roll_policy": {
+  "princip": "roll = pronominets SYNTAKTISKA FUNKTION i satsen. Kasus star separat i analys. De tva ar avsiktligt skilda: samma roll kan ha olika kasus (objekt kan vara ack, gen eller dat beroende pa verbet) och samma kasus kan ha olika roller (dativ kan vara io, obj-dat eller adv-kasus). Det ar just den kopplingen spelet ska lara ut.",
+  "styrande_verb": "Nar ett verb lexikalt styr genitiv eller dativ anvands obj-gen/obj-dat — inte do eller io. Att kalla akouo autou 'direkt objekt' eller pisteuo auto 'indirekt objekt' vore att tvinga in grekiskan i en svensk mall.",
+  "io_mot_obj-dat": "Gransen gar vid mottagarrollen. lalo soi / lego autois / pempo ploion hymin ar io (adressat/mottagare). pisteuo hymin / latreuo auto ar obj-dat (verbet styr dativ, men ingen tar emot nagot).",
+  "avviker_fran_satsanalys": "AVSIKTLIGT FINARE AN vyer/satsanalys.js. Det spelet anvander subj/pred/do/io/gen/adv/pf/inf, dar 'adv' aven tacker prepositionsfraser och dar obj-gen/obj-dat saknas helt. Denna bank prioriterar korrekt grekisk analys framfor samstammighet med satsanalys. Roller som skiljer: obj-gen och obj-dat (nya), prep (heter adv i satsanalys), attr (saknas i satsanalys).",
+  "utvidgning": "Nya roller laggs i _nycklar.roll nar de tas i bruk och i roll_reserverade innan dess. Byt aldrig betydelse pa en befintlig nyckel — lagg till en ny."
+},
+ "_konstruerade": {
+  "_om": "FLAGGA: satser med kalla='skapad' star INTE i kursmaterialet. De ar konstruerade for att tacka luckor dar kursens egna satser inte racker — framst ekeinos, som har noll forekomster i hela materialet, och de possessiva adjektiven, som har en forekomst var.",
+  "verifiering": "Varje ord i en konstruerad sats ar kontrollerat mot en verifierad paradigmkalla: ord.json (substantiv), verb.json (verbformer), adjektiv.json, pronomen.json, samt artikeln enligt vyer/paradigm.js. scripts/validera_pronomen_satser.py kor kontrollen och faller om nagot ord inte gar att harleda.",
+  "ordforrad": "Endast ord som redan finns i kursens gloslistor anvands — inget nytt ordforrad infors via banken.",
+  "enklitika": "tis ar enklitiskt och paverkar foregaende ords accent. Konstruerade tis-satser foljer accentregeln: proparoxyton far extra akut pa ultima (anthropos + tis -> anthropos tis), paroxyton far det inte (legei ti, prophetes tis)."
+},
+ "_tackning": {
+  "satser": 91,
+  "mal": 126,
+  "kursmaterial": 69,
+  "skapade": 22,
+  "utesluten": "seminarier.json har en post till med pronomen — 'legeis hemin / pros hemas' (6__Breakout_rooms.pdf s.1). Den ar tva formvarianter i en post, inte en sats, och lampar sig inte som spelkort."
+},
+ "satser": [
+
+  { "id": "p5-01", "seminarium": 5, "grekiska": "ζητοῦμεν ὑμᾶς.", "oversattning": "Vi söker er.",
+    "kalla": "5__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "ὑμᾶς", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "ack", "bet": "betonad"}, "roll": "do", "sv": "er" } ] },
+
+  { "id": "p5-02", "seminarium": 5, "grekiska": "κηρύσσουσιν ὑμῖν.", "oversattning": "De predikar för er.",
+    "kalla": "5__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "ὑμῖν", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "dat", "bet": "betonad"}, "roll": "io", "sv": "för er",
+      "not": "Dativen ensam bär 'för' — ingen preposition står i grekiskan." } ] },
+
+  { "id": "p5-03", "seminarium": 5, "grekiska": "φιλεῖ σε.", "oversattning": "Han/hon gillar dig.",
+    "kalla": "5__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "σε", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "ack", "bet": "obetonad"}, "roll": "do", "sv": "dig" } ] },
+
+  { "id": "p5-04", "seminarium": 5, "grekiska": "λέγει περὶ σοῦ.", "oversattning": "Han talar om dig.",
+    "kalla": "5__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "σοῦ", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "betonad"}, "roll": "prep", "sv": "dig",
+      "not": "Efter preposition står den betonade formen σοῦ, inte enklitikan σου. Att περί styr genitiv gör σοῦ till rektion — inte till possessivet σός." } ] },
+
+  { "id": "p5-05", "seminarium": 5, "grekiska": "οὐ πιστεύουσιν ἡμῖν.", "oversattning": "De tror inte på oss.",
+    "kalla": "5__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "ἡμῖν", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "dat", "bet": "betonad"}, "roll": "obj-dat", "sv": "på oss",
+      "not": "πιστεύω styr dativ: ἡμῖν är verbets objekt, inte en mottagare. Svenskan väljer 'på' — dativen har ingen fast svensk motsvarighet." } ] },
+
+  { "id": "p5-06", "seminarium": 5, "grekiska": "λαλεῖς μοι.", "oversattning": "Du talar med mig.",
+    "kalla": "5__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "μοι", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "dat", "bet": "obetonad"}, "roll": "io", "sv": "med mig",
+      "not": "λαλέω + dativ. Här blir dativens svenska 'med' — jämför 'för er' i p5-02." } ] },
+
+  { "id": "p6-01", "seminarium": 6, "grekiska": "βαπτίζω σε", "oversattning": "Jag döper dig",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "σε", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "ack", "bet": "obetonad"}, "roll": "do", "sv": "dig" } ] },
+
+  { "id": "p6-02", "seminarium": 6, "grekiska": "βαπτίζεις με", "oversattning": "Du döper mig",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "με", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "ack", "bet": "obetonad"}, "roll": "do", "sv": "mig" } ] },
+
+  { "id": "p6-03", "seminarium": 6, "grekiska": "ὁ ἀδελφὸς αὐτῆς", "oversattning": "Hennes bror",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτῆς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "gen"}, "roll": "gen", "sv": "hennes",
+      "not": "Genitiven av αὐτός är possessiv. Femininum αὐτῆς → 'hennes'; jämför αὐτοῦ → 'hans'." } ] },
+
+  { "id": "p6-04", "seminarium": 6, "grekiska": "ἡ ἀδελφὴ ἡμῶν", "oversattning": "Vår syster",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "ἡμῶν", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "gen", "bet": "betonad"}, "roll": "gen", "sv": "vår" } ] },
+
+  { "id": "p6-05", "seminarium": 6, "grekiska": "αὕτη βαπτίζει αὐτούς", "oversattning": "Hon döper dem",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὕτη", "lemma": "οὗτος", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "nom"}, "roll": "subj", "sv": "hon",
+      "alt": ["denna"], "not": "Demonstrativet står självständigt och översätts som personligt pronomen. Se upp: αὕτη (οὗτος f nom sg) mot αὐτή (αὐτός f nom sg) — bara andhämtningen och accenten skiljer." },
+    { "form": "αὐτούς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "do", "sv": "dem" } ] },
+
+  { "id": "p6-06", "seminarium": 6, "grekiska": "λέγω περὶ σοῦ", "oversattning": "Jag talar om dig",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "σοῦ", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "betonad"}, "roll": "prep", "sv": "dig" } ] },
+
+  { "id": "p6-07", "seminarium": 6, "grekiska": "οὗτος λέγει περὶ αὐτῆς", "oversattning": "Han talar om henne",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "οὗτος", "lemma": "οὗτος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "subj", "sv": "han",
+      "alt": ["denne"] },
+    { "form": "αὐτῆς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "gen"}, "roll": "prep", "sv": "henne",
+      "not": "Här är αὐτῆς styrd av περί och blir 'henne' — inte 'hennes' som i p6-03. Rollen avgör." } ] },
+
+  { "id": "p6-08", "seminarium": 6, "grekiska": "Ὁ Ἰησοῦς ζητεῖ τοὺς μαθητὰς καὶ εὑρίσκει αὐτοὺς ἐν τῇ ἐρήμῳ καὶ λέγει αὐτοῖς· εἰρήνη ὑμῖν.", "oversattning": "Jesus söker lärjungarna och finner dem i öknen och säger till dem: 'frid över er' (frid till er).",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτοὺς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "do", "sv": "dem",
+      "not": "Syftar tillbaka på τοὺς μαθητάς (m pl) — därför maskulinum." },
+    { "form": "αὐτοῖς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "dat"}, "roll": "io", "sv": "till dem",
+      "not": "Formen αὐτοῖς är också neutrum pl dat. Att den syftar på lärjungarna gör den maskulin — svenskan blir densamma." },
+    { "form": "ὑμῖν", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "dat", "bet": "betonad"}, "roll": "io", "sv": "över er",
+      "alt": ["till er"], "not": "εἰρήνη ὑμῖν är en nominalsats utan verb: 'frid (vare) över/till er'." } ] },
+
+  { "id": "p6-09", "seminarium": 6, "grekiska": "ἐξάγουσιν αὐτὸν καὶ φέρουσιν αὐτὸν ἐπὶ τὸν τοῦ θανάτου τόπον.", "oversattning": "De leder ut honom och för honom mot dödens plats.",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτὸν", "n": 1, "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "honom" },
+    { "form": "αὐτὸν", "n": 2, "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "honom" } ] },
+
+  { "id": "p6-10", "seminarium": 6, "grekiska": "τίς ἐστιν;", "oversattning": "Vem är det?",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "τίς", "lemma": "τίς", "modell": "genus", "analys": {"genus": "m|f", "num": "sg", "kas": "nom"}, "roll": "subj", "sv": "vem",
+      "not": "τίς har samma form i maskulinum och femininum — kontexten avgör inte här, och svenskan blir 'vem' oavsett." } ] },
+
+  { "id": "p6-11", "seminarium": 6, "grekiska": "τίνος ὁ οἶκός ἐστιν;", "oversattning": "Vems är huset?",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "τίνος", "lemma": "τίς", "modell": "genus", "analys": {"genus": "m|f", "num": "sg", "kas": "gen"}, "roll": "pf", "sv": "vems",
+      "not": "Predikativ genitiv: 'huset är vems?'" } ] },
+
+  { "id": "p6-12", "seminarium": 6, "grekiska": "τίνα οἶνον πίνεις;", "oversattning": "Vilket vin dricker du? (förenat)",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "τίνα", "lemma": "τίς", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "attr", "sv": "vilket",
+      "not": "Förenat med οἶνον (m sg ack) och kongruerar därför i maskulinum — men svenskan får neutrum, eftersom 'vin' är ett neutrum. Genus följer inte över språkgränsen." } ] },
+
+  { "id": "p6-13", "seminarium": 6, "grekiska": "τί ποιεῖς;", "oversattning": "Vad gör du?",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "τί", "lemma": "τίς", "modell": "genus", "analys": {"genus": "n", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "vad",
+      "not": "Formen τί är både nom och ack. Att ποιέω kräver ett objekt gör den till ackusativ." } ] },
+
+  { "id": "p6-14", "seminarium": 6, "grekiska": "τίσι λαλεῖτε;", "oversattning": "Med vilka talar ni?",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "τίσι", "lemma": "τίς", "modell": "genus", "analys": {"genus": "m|f", "num": "pl", "kas": "dat"}, "roll": "io", "sv": "med vilka" } ] },
+
+  { "id": "p6-15", "seminarium": 6, "grekiska": "ὁ κύριος λαλήσει σοι.", "oversattning": "Herren ska tala med dig.",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "σοι", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "dat", "bet": "obetonad"}, "roll": "io", "sv": "med dig",
+      "not": "Enklitisk form (σοι, inte σοί) — den obetonade används när pronominet inte är emfatiskt." } ] },
+
+  { "id": "p6-16", "seminarium": 6, "grekiska": "οἱ ἄγγελοι λαλήσουσιν αὐτῷ.", "oversattning": "Änglarna ska tala med honom.",
+    "kalla": "6__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "αὐτῷ", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "dat"}, "roll": "io", "sv": "med honom",
+      "not": "Referenten är en person, inte en sak — därför 'honom' och inte neutrumets 'till det'." } ] },
+
+  { "id": "p6-17", "seminarium": 6, "grekiska": "ἐγείρουσιν αὐτὸν καὶ λέγουσιν αὐτῷ, ὦ Διδάσκαλε […]", "oversattning": "De väcker honom och säger till honom, o lärare!",
+    "kalla": "6__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "αὐτὸν", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "honom" },
+    { "form": "αὐτῷ", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "dat"}, "roll": "io", "sv": "till honom",
+      "not": "Samma referent som αὐτόν, men dativ — och därför 'till honom', inte 'honom'." } ] },
+
+  { "id": "p6-18", "seminarium": 6, "grekiska": "φωνὴ ἐκ τῶν οὐρανῶν λέγει· Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός", "oversattning": "En röst ur himlen säger: Denne är min älskade son.",
+    "kalla": "6__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "μου", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "min",
+      "not": "Den obetonade genitiven är det vanliga sättet att säga 'min' — ett possessivt pronomen (ἐμός) behövs inte." } ] },
+
+  { "id": "p6-19", "seminarium": 6, "grekiska": "Ἰωάννης ὁ βαπτιστὴς ἀποστέλλει ἡμᾶς πρὸς σέ.", "oversattning": "Johannes Döparen skickar oss till dig.",
+    "kalla": "6__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "ἡμᾶς", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "ack", "bet": "betonad"}, "roll": "do", "sv": "oss" },
+    { "form": "σέ", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "ack", "bet": "betonad"}, "roll": "prep", "sv": "dig",
+      "not": "Efter πρός står den betonade σέ, inte enklitiska σε — jämför p6-01 där objektet är σε." } ] },
+
+  { "id": "p6-20", "seminarium": 6, "grekiska": "ταῦτα λέγεις καὶ ἡμᾶς ὑβρίζεις.", "oversattning": "Du säger detta och förolämpar oss.",
+    "kalla": "6__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "ταῦτα", "lemma": "οὗτος", "modell": "genus", "analys": {"genus": "n", "num": "pl", "kas": "ack"}, "roll": "do", "sv": "detta",
+      "alt": ["dessa ting", "detta här"], "not": "Neutrum plural, men svenskan tar singular 'detta'. λέγεις kräver ett objekt — alltså ackusativ, inte nominativ." },
+    { "form": "ἡμᾶς", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "ack", "bet": "betonad"}, "roll": "do", "sv": "oss" } ] },
+
+  { "id": "p6-21", "seminarium": 6, "grekiska": "τίς ἐστιν οὗτος;", "oversattning": "Vem är denne?",
+    "kalla": "6__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "τίς", "lemma": "τίς", "modell": "genus", "analys": {"genus": "m|f", "num": "sg", "kas": "nom"}, "roll": "pf", "sv": "vem" },
+    { "form": "οὗτος", "lemma": "οὗτος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "subj", "sv": "denne",
+      "alt": ["han"] } ] },
+
+  { "id": "p6-22", "seminarium": 6, "grekiska": "πάντες δὲ ὑμεῖς ἀδελφοί ἐστε", "oversattning": "Och alla ni är bröder.",
+    "kalla": "6__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "ὑμεῖς", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "nom", "bet": "betonad"}, "roll": "subj", "sv": "ni",
+      "not": "Nominativen saknar enklitisk form: verbändelsen (-τε) räcker för obetonat 'ni'. Att ὑμεῖς står utskrivet är i sig emfatiskt." } ] },
+
+  { "id": "p6-23", "seminarium": 6, "grekiska": "λέγει δὲ ὁ Πέτρος, Κύριε, πρὸς ἡμᾶς τὴν παραβολὴν ταύτην λέγεις ἢ καὶ πρὸς πάντας;", "oversattning": "Och Petrus säger, Herre, säger du denna liknelse till oss eller också till alla?",
+    "kalla": "6__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "ἡμᾶς", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "ack", "bet": "betonad"}, "roll": "prep", "sv": "oss" },
+    { "form": "ταύτην", "lemma": "οὗτος", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "ack"}, "roll": "attr", "sv": "denna",
+      "not": "Förenat med παραβολήν (f sg ack) och kongruerar med den." } ] },
+
+  { "id": "p6-24", "seminarium": 6, "grekiska": "καὶ μετὰ ἡμέρας ἓξ παραλαμβάνει ὁ Ἰησοῦς τὸν Πέτρον καὶ τὸν Ἰάκωβον καὶ τὸν Ἰωάννην, καὶ ἀναφέρει αὐτοὺς εἰς ὄρος ὑψηλόν.", "oversattning": "Och efter sex dagar tog Jesus med sig Petrus och Jakob och Johannes och för dem upp till ett högt berg.",
+    "kalla": "6__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "αὐτοὺς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "do", "sv": "dem",
+      "not": "Syftar på de tre namngivna lärjungarna — maskulinum plural." } ] },
+
+  { "id": "p6-25", "seminarium": 6, "grekiska": "Κύριον τὸν θεόν σου προσκυνήσεις καὶ αὐτῷ μόνῳ λατρεύσεις.", "oversattning": "Du ska tillbedja Herren, din Gud, och tjäna honom allena.",
+    "kalla": "6__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "σου", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "din" },
+    { "form": "αὐτῷ", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "dat"}, "roll": "obj-dat", "sv": "honom",
+      "not": "λατρεύω styr dativ: αὐτῷ är verbets objekt, inte en mottagare. Svenskans 'tjäna' tar direkt objekt — därför 'honom' utan preposition." } ] },
+
+  { "id": "p7-01", "seminarium": 7, "grekiska": "λέγει δὲ ὁ κύριος τοῦ ἀμπελῶνος, Τί ποιήσω; πέμψω τὸν υἱόν μου ἀγαπητόν·", "oversattning": "Och vingårdens herre säger: vad ska jag göra? Jag ska skicka min älskade son.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "Τί", "lemma": "τίς", "modell": "genus", "analys": {"genus": "n", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "vad" },
+    { "form": "μου", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "min" } ] },
+
+  { "id": "p7-02", "seminarium": 7, "grekiska": "καὶ ἔσται ὁ μισθὸς ὑμῶν πολύς, καὶ ἔσεσθε υἱοὶ τοῦ ὑψίστου", "oversattning": "Och er lön ska vara stor, och ni ska vara den högstes söner.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "ὑμῶν", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "gen", "bet": "betonad"}, "roll": "gen", "sv": "er" } ] },
+
+  { "id": "p7-03", "seminarium": 7, "grekiska": "ὁ θεὸς τῆς ἀγάπης καὶ εἰρήνης ἔσται μεθ’ ὑμῶν", "oversattning": "Kärlekens och fridens Gud ska vara med er.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "ὑμῶν", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "gen", "bet": "betonad"}, "roll": "prep", "sv": "er",
+      "not": "Samma form som i p7-02, men här styrd av μετά ('med') — alltså 'er', inte 'er' som attribut. Rollen skiljer, inte formen." } ] },
+
+  { "id": "p7-04", "seminarium": 7, "grekiska": "λέγει οὖν αὐτοῖς ὁ Ἰησοῦς, Ὁ καιρὸς ὁ ἐμὸς οὔπω πάρεστιν, ὁ δὲ καιρὸς ὁ ὑμέτερος πάντοτέ ἐστιν ἕτοιμος.", "oversattning": "Jesus säger alltså till dem, Min tid är ännu inte inne, men er tid är alltid redo.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "αὐτοῖς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "dat"}, "roll": "io", "sv": "till dem" },
+    { "form": "ἐμὸς", "lemma": "ἐμός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "min",
+      "not": "Possessivt adjektiv: kongruerar med καιρός (m sg nom). Jämför den obetonade genitiven μου, som aldrig böjer sig efter huvudordet." },
+    { "form": "ὑμέτερος", "lemma": "ὑμέτερος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "er" } ] },
+
+  { "id": "p7-05", "seminarium": 7, "grekiska": "ἐγὼ δέ σοι λέγω ὅτι σὺ εἶ Πέτρος, καὶ ἐπὶ ταύτῃ τῇ πέτρᾳ οἰκοδομήσω μου τὴν ἐκκλησίαν.", "oversattning": "Och jag säger till dig att du (betonat) är Petrus, och på denna klippa ska jag bygga min kyrka.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "ἐγὼ", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "nom", "bet": "betonad"}, "roll": "subj", "sv": "jag",
+      "not": "Utskriven nominativ är alltid emfatisk — verbändelsen -ω räcker annars." },
+    { "form": "σοι", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "dat", "bet": "obetonad"}, "roll": "io", "sv": "till dig" },
+    { "form": "σὺ", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "nom", "bet": "betonad"}, "roll": "subj", "sv": "du" },
+    { "form": "ταύτῃ", "lemma": "οὗτος", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "dat"}, "roll": "attr", "sv": "denna",
+      "not": "Förenat med πέτρᾳ (f sg dat) efter ἐπί." },
+    { "form": "μου", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "min" } ] },
+
+  { "id": "p7-06", "seminarium": 7, "grekiska": "Ὁ διδάσκαλος λέγει, Ὁ καιρός μου ἐγγύς ἐστιν· πρὸς σὲ ποιῶ τὸ πάσχα μετὰ τῶν μαθητῶν μου.", "oversattning": "Läraren säger, min tid är nära; hos dig firar jag (ordagrant: gör jag) påskmåltiden med mina lärjungar.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "μου", "n": 1, "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "min" },
+    { "form": "σὲ", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "ack", "bet": "betonad"}, "roll": "prep", "sv": "dig" },
+    { "form": "μου", "n": 2, "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "mina",
+      "not": "Exakt samma grekiska form som det första μου i satsen, men här 'mina' — huvudordet μαθητῶν är plural. Svenskan böjer possessiven; grekiskan gör det inte." } ] },
+
+  { "id": "p7-07", "seminarium": 7, "grekiska": "Τίς ἐστιν ἡ μήτηρ μου, καὶ τίνες εἰσὶν οἱ ἀδελφοί μου;", "oversattning": "Vem är min mor, och vilka är mina bröder?",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "Τίς", "lemma": "τίς", "modell": "genus", "analys": {"genus": "m|f", "num": "sg", "kas": "nom"}, "roll": "pf", "sv": "vem" },
+    { "form": "μου", "n": 1, "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "min" },
+    { "form": "τίνες", "lemma": "τίς", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "nom"}, "roll": "pf", "sv": "vilka" },
+    { "form": "μου", "n": 2, "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "mina" } ] },
+
+  { "id": "p7-08", "seminarium": 7, "grekiska": "Εἴ τις θέλει πρῶτος εἶναι, ἔσται πάντων διάκονος.", "oversattning": "Om någon vill vara först, ska han vara allas tjänare.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "τις", "lemma": "τις", "modell": "genus", "analys": {"genus": "m|f", "num": "sg", "kas": "nom"}, "roll": "subj", "sv": "någon",
+      "not": "Indefinit τις är enklitiskt och obetonat — jämför interrogativa τίς med akut accent, som alltid är betonat. Accenten är hela skillnaden." } ] },
+
+  { "id": "p7-09", "seminarium": 7, "grekiska": "Ὁ Παῦλος πρὸς αὐτὸν λέγει, Τύπτειν σε μέλλει ὁ θεός,", "oversattning": "Paulus säger till honom, Gud kommer att slå dig.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "αὐτὸν", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "prep", "sv": "honom" },
+    { "form": "σε", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "ack", "bet": "obetonad"}, "roll": "do", "sv": "dig",
+      "not": "Objekt till infinitiven τύπτειν, inte till μέλλει." } ] },
+
+  { "id": "p7-10", "seminarium": 7, "grekiska": "Ἀκούεις τί οὗτοι λέγουσιν;", "oversattning": "Hör du vad dessa säger?",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "τί", "lemma": "τίς", "modell": "genus", "analys": {"genus": "n", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "vad",
+      "not": "Indirekt frågeord: objekt till λέγουσιν i bisatsen." },
+    { "form": "οὗτοι", "lemma": "οὗτος", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "nom"}, "roll": "subj", "sv": "dessa",
+      "alt": ["de"] } ] },
+
+  { "id": "p7-11", "seminarium": 7, "grekiska": "Ἄκουε, Ἰσραήλ, κύριος ὁ θεὸς ἡμῶν κύριος εἷς ἐστιν", "oversattning": "Lyssna, Israel, Herren, vår Gud, är en Herre.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "ἡμῶν", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "gen", "bet": "betonad"}, "roll": "gen", "sv": "vår" } ] },
+
+  { "id": "p7-12", "seminarium": 7, "grekiska": "καὶ ὁ πολὺς ὄχλος ἤκουεν τὸν λόγον αὐτοῦ", "oversattning": "Och den stora folkhopen hörde på hans ord.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "αὐτοῦ", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "gen"}, "roll": "gen", "sv": "hans",
+      "not": "Referenten är en person — därför 'hans' och inte neutrumets 'dess'." } ] },
+
+  { "id": "p7-13", "seminarium": 7, "grekiska": "οἱ Φαρισαῖοι ἔλεγον τοῖς μαθηταῖς αὐτοῦ, Διὰ τί μετὰ τῶν τελωνῶν καὶ ἁμαρτωλῶν ἐσθίει ὁ διδάσκαλος ὑμῶν;", "oversattning": "Fariséerna sade till hans lärjungar, varför äter er lärare med tulltjänstemän och syndare?",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "αὐτοῦ", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "gen"}, "roll": "gen", "sv": "hans" },
+    { "form": "τί", "lemma": "τίς", "modell": "genus", "analys": {"genus": "n", "num": "sg", "kas": "ack"}, "roll": "prep", "sv": "vad",
+      "not": "Διὰ τί är ordagrant 'på grund av vad' — svenskan säger 'varför'. Ackusativ eftersom διά styr ackusativ i orsaksbetydelse." },
+    { "form": "ὑμῶν", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "gen", "bet": "betonad"}, "roll": "gen", "sv": "er" } ] },
+
+  { "id": "p7-14", "seminarium": 7, "grekiska": "δαιμόνια πολλὰ ἐξέβαλλον, καὶ ἤλειφον ἐλαίῳ πολλοὺς ἀρρώστους καὶ ἐθεράπευον αὐτούς", "oversattning": "De (alt. jag) fördrev många onda andar, och smorde många sjuka med olja och helade dem.",
+    "kalla": "7__O_vningsblad.pdf", "sida": 1, "mal": [
+    { "form": "αὐτούς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "do", "sv": "dem" } ] },
+
+  { "id": "p7-15", "seminarium": 7, "grekiska": "βλέπουσιν αὐτόν.", "oversattning": "De ser honom",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτόν", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "honom" } ] },
+
+  { "id": "p7-16", "seminarium": 7, "grekiska": "βλέψουσιν αὐτήν.", "oversattning": "De ska se henne",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτήν", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "henne" } ] },
+
+  { "id": "p7-17", "seminarium": 7, "grekiska": "γράφει αὐτοῖς.", "oversattning": "Han/hon skriver till dem",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτοῖς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "dat"}, "roll": "io", "sv": "till dem",
+      "not": "Ren dativ utan preposition. Jämför p7-18, som säger samma sak med πρός + ackusativ." } ] },
+
+  { "id": "p7-18", "seminarium": 7, "grekiska": "γράψει πρὸς αὐτούς.", "oversattning": "Han/hon ska skriva till dem",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτούς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "prep", "sv": "dem",
+      "not": "πρός + ackusativ ger samma svenska som den rena dativen i p7-17 — men grekiskan väljer olika kasus. Svenskan avslöjar alltså inte kasus." } ] },
+
+  { "id": "p7-19", "seminarium": 7, "grekiska": "ὑπάγει αὐτάς.", "oversattning": "Han/hon för bort dem",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτάς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "f", "num": "pl", "kas": "ack"}, "roll": "do", "sv": "dem",
+      "not": "Femininum plural — svenskan har inget genus i 'dem', så formen syns inte i översättningen." } ] },
+
+  { "id": "p7-20", "seminarium": 7, "grekiska": "ὑπάξουσιν αὐτούς.", "oversattning": "De ska föra bort dem",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτούς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "do", "sv": "dem" } ] },
+
+  { "id": "p7-21", "seminarium": 7, "grekiska": "λαλήσει ὑμῖν.", "oversattning": "Han/hon ska tala med er",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "ὑμῖν", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "dat", "bet": "betonad"}, "roll": "io", "sv": "med er",
+      "not": "Samma form som i p5-02, där den blev 'för er'. Verbet avgör: κηρύσσω → 'för', λαλέω → 'med'." } ] },
+
+  { "id": "p7-22", "seminarium": 7, "grekiska": "ὁ ἀδελφός μου λαλεῖ σοι.", "oversattning": "Min bror talar med dig",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "μου", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "min" },
+    { "form": "σοι", "lemma": "σύ", "modell": "person", "analys": {"num": "sg", "kas": "dat", "bet": "obetonad"}, "roll": "io", "sv": "med dig" } ] },
+
+  { "id": "p7-23", "seminarium": 7, "grekiska": "πέμψει ὁ κύριος ἡμῶν τὸ πλοῖον πρὸς ὑμᾶς.", "oversattning": "Vår herre ska skicka båten till er",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "ἡμῶν", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "gen", "bet": "betonad"}, "roll": "gen", "sv": "vår" },
+    { "form": "ὑμᾶς", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "ack", "bet": "betonad"}, "roll": "prep", "sv": "er" } ] },
+
+  { "id": "p7-24", "seminarium": 7, "grekiska": "βαπτίσει ἡ ἀδελφὴ αὐτῶν ἡμᾶς.", "oversattning": "Deras syster ska döpa oss",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "αὐτῶν", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m|f", "num": "pl", "kas": "gen"}, "roll": "gen", "sv": "deras",
+      "not": "αὐτῶν är samma form i alla tre genus — plural genitiv skiljer dem inte åt. Svenskans 'deras' gör det inte heller." },
+    { "form": "ἡμᾶς", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "ack", "bet": "betonad"}, "roll": "do", "sv": "oss" } ] },
+
+  { "id": "p7-25", "seminarium": 7, "grekiska": "οὗτοι πέμψουσι πλοῖον ὑμῖν.", "oversattning": "De ska skicka en båt till er",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "οὗτοι", "lemma": "οὗτος", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "nom"}, "roll": "subj", "sv": "de",
+      "alt": ["dessa"] },
+    { "form": "ὑμῖν", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "dat", "bet": "betonad"}, "roll": "io", "sv": "till er" } ] },
+
+  { "id": "p7-26", "seminarium": 7, "grekiska": "ἡμεῖς βλέψομεν ὑμᾶς.", "oversattning": "Vi kommer att se er",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 1, "mal": [
+    { "form": "ἡμεῖς", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "nom", "bet": "betonad"}, "roll": "subj", "sv": "vi" },
+    { "form": "ὑμᾶς", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "ack", "bet": "betonad"}, "roll": "do", "sv": "er" } ] },
+
+  { "id": "p7-27", "seminarium": 7, "grekiska": "οἱ ἐχθροὶ ὑμῶν", "oversattning": "era fiender",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "ὑμῶν", "lemma": "σύ", "modell": "person", "analys": {"num": "pl", "kas": "gen", "bet": "betonad"}, "roll": "gen", "sv": "era",
+      "not": "Svenskan böjer possessiven efter huvudordet ('era' till pluralt 'fiender'); grekiskans ὑμῶν står oförändrat." } ] },
+
+  { "id": "p7-28", "seminarium": 7, "grekiska": "ἡ καρδία αὐτοῦ", "oversattning": "hans hjärta",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "αὐτοῦ", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "gen"}, "roll": "gen", "sv": "hans",
+      "not": "Genitiven rättar sig efter ägaren (m), inte efter det ägda (καρδία, f). Motsatsen mot possessiva adjektiv." } ] },
+
+  { "id": "p7-29", "seminarium": 7, "grekiska": "τὸ ἔργον αὐτῆς", "oversattning": "hennes verk",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "αὐτῆς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "gen"}, "roll": "gen", "sv": "hennes" } ] },
+
+  { "id": "p7-30", "seminarium": 7, "grekiska": "ὁ τούτου δοῦλος", "oversattning": "hans slav",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "τούτου", "lemma": "οὗτος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "gen"}, "roll": "gen", "sv": "hans",
+      "alt": ["dennes"], "not": "Genitiv av οὗτος i attributiv ställning, mellan artikel och huvudord." } ] },
+
+  { "id": "p7-31", "seminarium": 7, "grekiska": "ὁ ἡμέτερος οἰκοδεσπότης", "oversattning": "vår husbonde",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "ἡμέτερος", "lemma": "ἡμέτερος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "vår",
+      "not": "Possessivt adjektiv i attributiv ställning — kongruerar med οἰκοδεσπότης (m sg nom). Jämför ἡμῶν i p7-23, som säger samma sak med genitiv." } ] },
+
+  { "id": "p7-32", "seminarium": 7, "grekiska": "ἡ ἀδελφή μου", "oversattning": "min syster",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "μου", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "min" } ] },
+
+  { "id": "p7-33", "seminarium": 7, "grekiska": "ὁ φίλος ἡμῶν", "oversattning": "vår vän",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "ἡμῶν", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "pl", "kas": "gen", "bet": "betonad"}, "roll": "gen", "sv": "vår" } ] },
+
+  { "id": "p7-34", "seminarium": 7, "grekiska": "ὁ σὸς φίλος", "oversattning": "din vän",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "σὸς", "lemma": "σός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "din",
+      "not": "Possessivt adjektiv, kongruerar med φίλος. Jämför σου (genitiv) som ger samma svenska." } ] },
+
+  { "id": "p7-35", "seminarium": 7, "grekiska": "οἱ ἐχθροί μου", "oversattning": "mina fiender",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "μου", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "gen", "bet": "obetonad"}, "roll": "gen", "sv": "mina",
+      "not": "μου är singular ('av mig'), men svenskan säger 'mina' eftersom fienderna är flera. Numerus följer huvudordet i svenskan, ägaren i grekiskan." } ] },
+
+  { "id": "p7-36", "seminarium": 7, "grekiska": "πρὸς τοὺς ἐμοὺς ἐχθρούς", "oversattning": "till mina fiender",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 2, "mal": [
+    { "form": "ἐμοὺς", "lemma": "ἐμός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "attr", "sv": "mina",
+      "not": "Possessivt adjektiv i ackusativ plural — kongruerar med ἐχθρούς, som styrs av πρός. Jämför μου i p7-35: samma svenska, helt olika grekisk mekanik." } ] },
+
+  { "id": "p7-37", "seminarium": 7, "grekiska": "ἐδίδασκεν αὐτοὺς ἐν τῇ συναγωγῇ αὐτῶν.", "oversattning": "Han undervisade dem i deras synagoga",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 3, "mal": [
+    { "form": "αὐτοὺς", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "do", "sv": "dem" },
+    { "form": "αὐτῶν", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m|f", "num": "pl", "kas": "gen"}, "roll": "gen", "sv": "deras",
+      "not": "Två former av samma lemma i en sats: ackusativen är objekt ('dem'), genitiven är attribut ('deras')." } ] },
+
+  { "id": "p7-38", "seminarium": 7, "grekiska": "πολλοὶ ἤκουον αὐτοῦ καὶ ἐπίστευον αὐτῷ.", "oversattning": "Många hörde honom och trodde på honom",
+    "kalla": "7__Breakout_rooms.pdf", "sida": 3, "mal": [
+    { "form": "αὐτοῦ", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "gen"}, "roll": "obj-gen", "sv": "honom",
+      "not": "ἀκούω styr genitiv när objektet är en person — genitiven är verbets objekt här, inte attribut. Därför 'honom', inte 'hans'." },
+    { "form": "αὐτῷ", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "dat"}, "roll": "obj-dat", "sv": "på honom",
+      "not": "πιστεύω styr dativ. Samma referent som αὐτοῦ, tre ord bort, men ett annat kasus — verbet bestämmer, inte rollen i handlingen." } ] },
+
+  { "id": "p6-s01", "seminarium": 6, "grekiska": "ἐκεῖνος βλέπει τὸν οἶκον.", "oversattning": "Den där ser huset.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐκεῖνος", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "subj", "sv": "den där",
+      "alt": ["han där"] } ] },
+
+  { "id": "p6-s02", "seminarium": 6, "grekiska": "βλέπομεν ἐκεῖνον.", "oversattning": "Vi ser den där.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐκεῖνον", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "den där",
+      "alt": ["honom där"] } ] },
+
+  { "id": "p6-s03", "seminarium": 6, "grekiska": "γράφει ἐκείνοις ὁ ἀπόστολος.", "oversattning": "Aposteln skriver till dem där.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐκείνοις", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "dat"}, "roll": "io", "sv": "till dem där",
+      "not": "Att γράφω tar en adressat gör dativen till indirekt objekt." } ] },
+
+  { "id": "p6-s04", "seminarium": 6, "grekiska": "ὁ ἐκείνου δοῦλος ἐσθίει τὸν ἄρτον.", "oversattning": "Hans slav äter brödet.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐκείνου", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "gen"}, "roll": "gen", "sv": "hans",
+      "alt": ["den därs"], "not": "Genitiv av ἐκεῖνος i attributiv ställning, mellan artikel och huvudord — samma bygge som ὁ τούτου δοῦλος i p7-30." } ] },
+
+  { "id": "p6-s05", "seminarium": 6, "grekiska": "ἐκεῖνο τὸ τέκνον βλέπει τὸ σημεῖον.", "oversattning": "Det där barnet ser tecknet.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐκεῖνο", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "n", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "det där",
+      "not": "Demonstrativet står i PREDIKATIV ställning (utanför artikel + huvudord) men har attributiv betydelse: ἐκεῖνο τὸ τέκνον = 'det där barnet'. Ett vanligt adjektiv skulle betyda något annat i samma position." } ] },
+
+  { "id": "p6-s06", "seminarium": 6, "grekiska": "πέμπει τοὺς μαθητὰς πρὸς ἐκείνους.", "oversattning": "Han skickar lärjungarna till dem där.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐκείνους", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "prep", "sv": "dem där" } ] },
+
+  { "id": "p6-s07", "seminarium": 6, "grekiska": "ἐκείνη βλέπει τὸ ἔργον.", "oversattning": "Hon där ser verket.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐκείνη", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "nom"}, "roll": "subj", "sv": "hon där",
+      "alt": ["den där"] } ] },
+
+  { "id": "p7-s01", "seminarium": 7, "grekiska": "ἡ ἐμὴ ἀδελφὴ βλέπει τὸ ἱερόν.", "oversattning": "Min syster ser templet.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐμὴ", "lemma": "ἐμός", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "min",
+      "not": "Possessivt adjektiv i attributiv ställning (mellan artikel och huvudord) och kongruerar med ἀδελφή. Jämför μου i p7-32, som säger samma sak med genitiv och aldrig böjs." } ] },
+
+  { "id": "p7-s02", "seminarium": 7, "grekiska": "ἐν τῷ ἐμῷ οἴκῳ", "oversattning": "i mitt hus",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐμῷ", "lemma": "ἐμός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "dat"}, "roll": "attr", "sv": "mitt",
+      "not": "Dativ eftersom ἐν styr dativ — men det är οἴκῳ som styrs; ἐμῷ följer bara med i kongruensen. Svenskan säger 'mitt' (neutrum), grekiskan har maskulinum efter οἶκος." } ] },
+
+  { "id": "p7-s03", "seminarium": 7, "grekiska": "ὁ σὸς ἀδελφὸς γράφει τὸν λόγον.", "oversattning": "Din bror skriver ordet.",
+    "kalla": "skapad", "mal": [
+    { "form": "σὸς", "lemma": "σός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "din" } ] },
+
+  { "id": "p7-s04", "seminarium": 7, "grekiska": "βλέπω τὸν σὸν οἶκον.", "oversattning": "Jag ser ditt hus.",
+    "kalla": "skapad", "mal": [
+    { "form": "σὸν", "lemma": "σός", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "attr", "sv": "ditt",
+      "not": "Ackusativ i kongruens med οἶκον, som är objektet. Svenskans 'ditt' är neutrum efter 'hus' — genus följer inte över språkgränsen." } ] },
+
+  { "id": "p7-s05", "seminarium": 7, "grekiska": "ἡ σὴ ἀδελφὴ λαλεῖ μοι.", "oversattning": "Din syster talar med mig.",
+    "kalla": "skapad", "mal": [
+    { "form": "σὴ", "lemma": "σός", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "din" },
+    { "form": "μοι", "lemma": "ἐγώ", "modell": "person", "analys": {"num": "sg", "kas": "dat", "bet": "obetonad"}, "roll": "io", "sv": "med mig" } ] },
+
+  { "id": "p7-s06", "seminarium": 7, "grekiska": "ὁ ἡμέτερος διδάσκαλος διδάσκει τὰ τέκνα.", "oversattning": "Vår lärare undervisar barnen.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἡμέτερος", "lemma": "ἡμέτερος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "vår" } ] },
+
+  { "id": "p7-s07", "seminarium": 7, "grekiska": "βλέπετε τὴν ἡμετέραν ἐκκλησίαν.", "oversattning": "Ni ser vår kyrka.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἡμετέραν", "lemma": "ἡμέτερος", "modell": "genus", "analys": {"genus": "f", "num": "sg", "kas": "ack"}, "roll": "attr", "sv": "vår" } ] },
+
+  { "id": "p7-s08", "seminarium": 7, "grekiska": "ἐν τῷ ἡμετέρῳ ἱερῷ", "oversattning": "i vårt tempel",
+    "kalla": "skapad", "mal": [
+    { "form": "ἡμετέρῳ", "lemma": "ἡμέτερος", "modell": "genus", "analys": {"genus": "n", "num": "sg", "kas": "dat"}, "roll": "attr", "sv": "vårt" } ] },
+
+  { "id": "p7-s09", "seminarium": 7, "grekiska": "ὁ ὑμέτερος οἶκος μένει.", "oversattning": "Ert hus består.",
+    "kalla": "skapad", "mal": [
+    { "form": "ὑμέτερος", "lemma": "ὑμέτερος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "ert",
+      "not": "Grekiskan har maskulinum (οἶκος), svenskan neutrum ('hus') — därför ὑμέτερος men 'ert'." } ] },
+
+  { "id": "p7-s10", "seminarium": 7, "grekiska": "βλέπομεν τοὺς ὑμετέρους ἀδελφούς.", "oversattning": "Vi ser era bröder.",
+    "kalla": "skapad", "mal": [
+    { "form": "ὑμετέρους", "lemma": "ὑμέτερος", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "ack"}, "roll": "attr", "sv": "era" } ] },
+
+  { "id": "p7-s11", "seminarium": 7, "grekiska": "ἄνθρωπός τις γράφει λόγον.", "oversattning": "En viss människa skriver ett ord.",
+    "kalla": "skapad", "mal": [
+    { "form": "τις", "lemma": "τις", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "attr", "sv": "en viss",
+      "alt": ["någon"], "not": "Indefinit τις är enklitiskt och kastar sin accent bakåt: ἄνθρωπος blir ἄνθρωπός τις. Accenten på ultiman är alltså inte ordets egen — den avslöjar att ett enklitikon följer. Formen är gemensam för m och f, men här kongruerar den med ἄνθρωπος och är alltså maskulin." } ] },
+
+  { "id": "p7-s12", "seminarium": 7, "grekiska": "λέγει τι ὁ προφήτης.", "oversattning": "Profeten säger något.",
+    "kalla": "skapad", "mal": [
+    { "form": "τι", "lemma": "τις", "modell": "genus", "analys": {"genus": "n", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "något",
+      "not": "Obetonat τι utan accent — jämför interrogativa τί, som alltid bär akut. Accenten är hela skillnaden mellan 'något' och 'vad?'." } ] },
+
+  { "id": "p6-s08", "seminarium": 6, "grekiska": "ἀκούομεν αὐτῶν.", "oversattning": "Vi hör dem.",
+    "kalla": "skapad", "mal": [
+    { "form": "αὐτῶν", "lemma": "αὐτός", "modell": "genus", "analys": {"genus": "m|f", "num": "pl", "kas": "gen"}, "roll": "obj-gen", "sv": "dem",
+      "not": "ἀκούω styr genitiv när det som hörs är en person. Formen är identisk med genitivattributet i p7-24 ('deras syster') — bara verbet skiljer objekt från attribut." } ] },
+
+  { "id": "p6-s09", "seminarium": 6, "grekiska": "ὁ ὄχλος ἀκούει ἐκείνου.", "oversattning": "Folkhopen hör honom där.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐκείνου", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "gen"}, "roll": "obj-gen", "sv": "honom där",
+      "not": "Genitivobjekt, inte attribut: jämför ὁ ἐκείνου δοῦλος i p6-s04, där samma form betyder 'hans'. Ställningen och verbet avgör." } ] },
+
+  { "id": "p6-s10", "seminarium": 6, "grekiska": "οἱ μαθηταὶ πιστεύουσιν ἐκείνῳ.", "oversattning": "Lärjungarna tror på honom där.",
+    "kalla": "skapad", "mal": [
+    { "form": "ἐκείνῳ", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "dat"}, "roll": "obj-dat", "sv": "på honom där",
+      "not": "πιστεύω styr dativ: ἐκείνῳ är verbets objekt, ingen mottagare — därför obj-dat och inte io." } ] }
+
+ ]
+}
