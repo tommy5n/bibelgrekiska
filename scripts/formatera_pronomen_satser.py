@@ -5,9 +5,15 @@
 
 Mastern underhålls för hand: en sats ska gå att läsa och rätta som ett block,
 inte som 30 rader. json.dumps(indent=…) spränger ut varje nyckel på egen rad och
-gör filen fyra gånger så lång. Kör det här efter varje programmatisk ändring.
+gör filen nästan fem gånger så lång (538 → 2577 rader). Kör det här efter varje
+programmatisk ändring.
 
-Layouten: header med indent 1, sedan ett block per sats med målen indragna under.
+`kanonisk_text()` är sanningen om formatet och importeras av
+validera_pronomen_satser.py, som FALLER om filen på disk avviker. Därför kan man
+inte glömma att köra formateraren — en osnygg master är ett valideringsfel, inte
+något man upptäcker långt senare. Håll formatlogiken här, inte på två ställen.
+
+Layouten: header med indent 2, sedan ett block per sats med målen indragna under.
 """
 import json
 from pathlib import Path
@@ -36,24 +42,31 @@ def rad_sats(s):
     return f"  {{ {rad1},\n    {rad2}, \"mal\": [\n{mal} ] }}"
 
 
+def kanonisk_text(bank):
+    """Bankens kanoniska filtext. Muterar inte `bank` — validatorn skickar in
+    sitt eget inlästa objekt och ska få tillbaka det orört."""
+    bank = dict(bank)                       # grund kopia: pop får ej slå tillbaka
+    satser = bank.pop("satser")
+    header = ",\n".join(f" {J(k)}: {json.dumps(v, ensure_ascii=False, indent=2)}"
+                        for k, v in bank.items())
+    kropp = ",\n\n".join(rad_sats(s) for s in satser)
+    return "{\n" + header + ',\n "satser": [\n\n' + kropp + "\n\n ]\n}\n"
+
+
 def main():
     bank = json.loads(BANK.read_text())
-    satser = bank.pop("satser")
+    text = kanonisk_text(bank)
 
-    delar = [f" {J(k)}: {json.dumps(v, ensure_ascii=False, indent=2)}"
-             for k, v in bank.items()]
-    header = ",\n".join(delar)
-    kropp = ",\n\n".join(rad_sats(s) for s in satser)
-
-    BANK.write_text("{\n" + header + ',\n "satser": [\n\n' + kropp + "\n\n ]\n}\n")
-
-    # Rundgångskontroll: formateringen får inte ändra innehållet.
-    om = json.loads(BANK.read_text())
-    bank["satser"] = satser
-    if om != bank:
+    # Rundgångskontroll: formateringen får aldrig ändra innehållet.
+    if json.loads(text) != bank:
         raise SystemExit("FEL: formateringen ändrade innehållet — filen är inte skriven.")
-    rader = len(BANK.read_text().splitlines())
-    print(f"Skrev {BANK.relative_to(ROOT)} — {len(satser)} satser, {rader} rader.")
+
+    if text == BANK.read_text():
+        print(f"{BANK.relative_to(ROOT)} — redan kanonisk, inget skrivet.")
+        return
+    BANK.write_text(text)
+    print(f"Skrev {BANK.relative_to(ROOT)} — {len(bank['satser'])} satser, "
+          f"{len(text.splitlines())} rader.")
 
 
 if __name__ == "__main__":

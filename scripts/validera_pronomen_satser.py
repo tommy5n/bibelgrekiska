@@ -17,6 +17,7 @@ pronomen.json, artikeln). Ett ord som inte kan härledas är antingen felstavat
 eller påhittat, och båda ska falla.
 
 Kontrollerna:
+  0. filen är i kanoniskt format (annars är den inte handredigerbar längre)
   1. id är unika
   2. grekiska/oversattning/seminarium/kalla/sida oförändrade mot seminarier.json
      (kalla != "skapad")
@@ -36,6 +37,9 @@ import re
 import sys
 import unicodedata
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from formatera_pronomen_satser import kanonisk_text  # noqa: E402  (samma katalog)
 
 ROOT = Path(__file__).resolve().parent.parent
 BANK = ROOT / "json" / "pronomen-satser.json"
@@ -129,6 +133,13 @@ def main():
     fel = []
     def F(id_, msg):
         fel.append(f"  {id_}: {msg}")
+
+    # 0. kanoniskt format. Mastern redigeras för hand; ett skript som skrivit om
+    #    den med json.dumps gör den ~5x längre och oläsbar. Att bara HA en
+    #    formaterare räcker inte — den glöms. Här faller bygget i stället.
+    if BANK.read_text() != kanonisk_text(bank):
+        F("_format", "filen är inte i kanoniskt format "
+                     "— kör: python3 scripts/formatera_pronomen_satser.py")
 
     # 1. id-unika
     sedda = set()

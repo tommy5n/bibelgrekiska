@@ -2,3 +2,5 @@
 .DS_Store
 # Genereras manuellt (Skriv ut → Spara som PDF) ur grammatikreferens-utskrift.html
 grammatikreferens.pdf
+# validera_pronomen_satser.py importerar formatera_pronomen_satser.py (samma katalog)
+__pycache__/
