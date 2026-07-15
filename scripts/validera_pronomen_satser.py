@@ -13,8 +13,8 @@ Meningsbanken är hand­författad ovanpå två master-filer och kan glida ifrå
 Satser med kalla="skapad" står inte i kursmaterialet och har ingen källa att
 jämföras mot. För dem gäller ett hårdare krav i stället: VARJE ord måste gå att
 härleda ur en verifierad paradigmkälla (ord.json, verb.json, adjektiv.json,
-pronomen.json, artikeln). Ett ord som inte kan härledas är antingen felstavat
-eller påhittat, och båda ska falla.
+pronomen.json, artikeln i vyer/ord-data.js). Ett ord som inte kan härledas är
+antingen felstavat eller påhittat, och båda ska falla.
 
 Kontrollerna:
   0. filen är i kanoniskt format (annars är den inte handredigerbar längre)
@@ -49,7 +49,7 @@ ORD = ROOT / "json" / "ord.json"
 VERB = ROOT / "json" / "verb.json"
 ADJEKTIV = ROOT / "json" / "adjektiv.json"
 PREPOSITIONER = ROOT / "json" / "prepositioner.json"
-PARADIGM_VY = ROOT / "vyer" / "paradigm.js"
+ORD_DATA = ROOT / "vyer" / "ord-data.js"
 
 SKILJETECKEN = ".,;:·;?!()»«\"'’·[]…"
 
@@ -86,10 +86,14 @@ def platta(nod, ut):
 
 
 def artikelformer():
-    """Artikeln bor i vyer/paradigm.js, inte i json/. Läs den därifrån."""
-    m = re.search(r"const ARTIKEL = \{.*?\n\};", PARADIGM_VY.read_text(), re.S)
+    """Artikeln bor i vyer/ord-data.js, inte i json/ — den är oböjlig och delas
+    av ändelse- och paradigmspelet. (Låg fram till 2026-07-15 kopierad i båda
+    vyerna; den här kontrollen läste den ur paradigm.js och föll när kopiorna
+    ersattes av den delade modulen.)"""
+    m = re.search(r"export const ARTIKEL = \{.*?\n\};", ORD_DATA.read_text(), re.S)
     if not m:
-        raise SystemExit("Hittade ingen ARTIKEL i vyer/paradigm.js")
+        raise SystemExit("Hittade ingen ARTIKEL i vyer/ord-data.js — "
+                         "kör scripts/gen_ord_snapshot.py")
     return set(re.findall(r'"([^"]+)"', m.group(0)))
 
 
