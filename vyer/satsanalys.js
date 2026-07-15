@@ -379,7 +379,11 @@ function byggSteg(s){
     return steg;
   }
   const steg = ["pred","subj","do"];
-  ["io","obj-dat","adv","gen","vok"].forEach(r => { if(harRoll(s,r)) steg.push(r); });
+  // inf frågas direkt efter objektet: infinitiven kompletterar predikatet
+  // (θέλω KHΡΥΣΣΕΙΝ), så den hör hemma tidigt bland komplementen. Den saknades
+  // här i tre veckor trots att rollen fanns med färg, etikett och egen fråga —
+  // guidat läge hoppade tyst över κηρύσσειν i alla fyra infinitivsatser.
+  ["inf","io","obj-dat","adv","gen","vok"].forEach(r => { if(harRoll(s,r)) steg.push(r); });
   return steg;
 }
 

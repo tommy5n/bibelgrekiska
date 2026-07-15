@@ -31,13 +31,15 @@ Kontrollerna:
   3b. harledd_ur → källmeningen finns i seminarier.json och bankens ord är en
       delsekvens av den
   4. varje ord i en sats mastern äger själv härleds ur en paradigmkälla
-  5. roll finns i _nycklar.roll eller roll_reserverade
+  5. roll finns i _nycklar.roll eller roll_reserverade, OCH vyn kan faktiskt
+     visa och fråga på den (ROLLER + ROLL_ORDNING + byggSteg)
   6. varje sats har exakt ett pred; subj XOR subjI
   7. _tackning stämmer
 
 Accent-/versalnormalisering som i validera_pronomen_satser.py — se den för varför.
 """
 import json
+import re
 import sys
 import unicodedata
 from pathlib import Path
@@ -81,6 +83,46 @@ def harledbar(w, lexikon, tillatna, lexikon_utan_akut):
     return utan_akut(norm(w)) in lexikon_utan_akut
 
 
+VY = ROOT / "vyer" / "satsanalys.js"
+
+
+def roller_vyn_kan_fraga():
+    """Rollerna som vyn faktiskt kan visa och fråga på.
+
+    Vyn har TRE listor som måste täcka samma roller, och de är lätta att glömma
+    var för sig: ROLLER (etikett + fråga + färg), ROLL_ORDNING (palettens ordning
+    i fritt läge) och byggSteg (guidat läges frågeordning). En roll som saknas i
+    byggSteg får färg och etikett men FRÅGAS ALDRIG — `inf` låg så i tre veckor
+    utan att någon märkte det, eftersom inget gick sönder: satsen gick bara
+    igenom utan att infinitiven nämndes.
+
+    Faller hellre högljutt än tyst: om regexen inte hittar listorna har vyn
+    formaterats om, och då ska kontrollen fixas — inte tigande passera.
+    """
+    src = VY.read_text()
+
+    def block(monster, namn):
+        m = re.search(monster, src, re.S)
+        if not m:
+            raise SystemExit(f"Hittade ingen {namn} i vyer/satsanalys.js — "
+                             f"har vyn formaterats om? Kontrollen måste uppdateras.")
+        return m.group(0)
+
+    # ROLLER:s nycklar är mest OCITERADE (pred:, subj:) men "obj-dat" måste
+    # citeras — plocka därför nycklar, inte alla citerade strängar (de är
+    # etiketter och färger).
+    roller = set(re.findall(r'^\s*"?([a-z-]+)"?:\s*\{',
+                            block(r"const ROLLER = \{.*?\n\};", "ROLLER"), re.M))
+    ordning = set(re.findall(r'"([a-z-]+)"',
+                             block(r"const ROLL_ORDNING = \[[^\]]*\];", "ROLL_ORDNING")))
+    # byggSteg: de obligatoriska tre + de valfria i forEach-listan + pf-grenen.
+    steg = set(re.findall(r'"([a-z-]+)"',
+                          block(r'const steg = \["pred","subj","do"\];'
+                                r'(?:\s*\n\s*//[^\n]*)*\s*\n\s*\[[^\]]*\]',
+                                "byggSteg-listan")))
+    return {"ROLLER": roller, "ROLL_ORDNING": ordning, "byggSteg": steg | {"pf"}}
+
+
 def satstext(s):
     return " ".join(c["t"] for c in s["chunks"])
 
@@ -107,6 +149,7 @@ def main():
     roller = set(bank["_nycklar"]["roll"]) | (set(bank["_nycklar"]["roll_reserverade"]) - {"_om"})
     nivaer = set(bank["_nivaer"])
     lexikon = ordforrad()
+    vy = roller_vyn_kan_fraga()
     # Ordförråd som paradigmkällorna helt saknar. Explicit lista: ett NYTT okänt
     # ord ska falla, inte glida igenom.
     tillatna = {norm(w) for w in bank["_ordforrad_utanfor_paradigm"]}
@@ -181,6 +224,13 @@ def main():
         for c in s["chunks"]:
             if c["roll"] not in roller:
                 F(s["id"], f'okänd roll "{c["roll"]}"')
+            for lista, kan in vy.items():
+                if c["roll"] not in kan:
+                    F(s["id"], f'rollen "{c["roll"]}" saknas i {lista} i '
+                               f'vyer/satsanalys.js — den skulle '
+                               + ("aldrig frågas i guidat läge"
+                                  if lista == "byggSteg" else
+                                  "sakna etikett/plats i paletten"))
         pred = [c for c in s["chunks"] if c["roll"] == "pred"]
         if len(pred) != 1:
             F(s["id"], f"{len(pred)} pred-chunks, ska vara exakt 1")

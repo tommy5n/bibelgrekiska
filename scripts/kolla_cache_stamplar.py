@@ -18,9 +18,11 @@ Två kontroller:
   1. Alla HTML-sidor stämplar SAMMA version. index.html är kanonisk;
      seminarieovningar.html ärver den via generatorn, grammatikreferens.html är
      handunderhållen och måste följa med.
-  2. Ingen commit har rört app.css/app.js efter den commit som senast bumpade
-     respektive stämpel. Det är hela poängen: stämpeln ska vara minst lika ny
-     som filen den stämplar.
+  2. Ingen commit har rört det stämpeln TÄCKER efter den commit som senast
+     bumpade den. app.js?v= täcker app.js OCH vyer/ (modulerna ärver versionen
+     via import.meta.url) — den första versionen av den här kontrollen tittade
+     bara på app.js och sa "hederlig" om en release där bara en vy ändrats,
+     vilket är det vanligaste fallet av alla.
 
 Faller med exit 1 och säger vad som ska göras. Kör före deploy.
 """
@@ -41,8 +43,27 @@ def git(*args):
                           capture_output=True, text=True).stdout.strip()
 
 
-def senaste_commit_som_rorde(sokvag):
-    return git("log", "-1", "--format=%H", "--", sokvag)
+# Vad varje stämpel FAKTISKT täcker. app.js?v= gäller inte bara app.js: alla
+# vy-moduler ärver den via import.meta.url, så en ändrad vy kräver samma bump.
+# Att bara titta på app.js vore att missa det vanligaste fallet — det gjorde
+# den här kontrollen i sin första version, och den sa "hederlig" om en release
+# där vyer/ ändrats efter bumpen.
+TACKER = {
+    "app.js": ["app.js", "vyer"],
+    "app.css": ["app.css"],
+}
+
+
+def senaste_commit_som_rorde(sokvagar):
+    """Nyaste commiten som rört NÅGON av sökvägarna."""
+    commits = [c for c in (git("log", "-1", "--format=%H", "--", s) for s in sokvagar) if c]
+    if not commits:
+        return ""
+    # Nyaste = den som har alla andra som förfäder.
+    for c in commits:
+        if all(c == other or ar_efter(c, other) for other in commits):
+            return c
+    return commits[0]
 
 
 def senaste_commit_som_bumpade(fil, stampel):
@@ -85,12 +106,13 @@ def main():
                                   " — rätta för hand"))
 
         # 2. stämpeln minst lika ny som filen den stämplar
-        rord = senaste_commit_som_rorde(fil)
+        rord = senaste_commit_som_rorde(TACKER[fil])
         bumpad = senaste_commit_som_bumpade(fil, stampel)
         if rord and bumpad and ar_efter(rord, bumpad):
+            vad = " eller ".join(TACKER[fil])
             fel.append(
-                f"{fil} ändrades i {rord[:7]} EFTER att v={stampel} sattes i "
-                f"{bumpad[:7]} — bumpa {fil}?v={int(stampel)+1} i index.html, "
+                f"{vad} ändrades i {rord[:7]} EFTER att {fil}?v={stampel} sattes "
+                f"i {bumpad[:7]} — bumpa {fil}?v={int(stampel)+1} i index.html, "
                 f"annars får återvändande besökare gammal fil")
 
     if fel:
@@ -101,7 +123,7 @@ def main():
 
     for fil in ("app.css", "app.js"):
         v = re.search(rf"{re.escape(fil)}\?v=(\d+)", index).group(1)
-        print(f"  ✓ {fil}?v={v} — stämpeln är minst lika ny som filen")
+        print(f'  ✓ {fil}?v={v} — minst lika ny som {"/".join(TACKER[fil])}')
     print("Cache-stämplarna är hederliga.")
 
 
