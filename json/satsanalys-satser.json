@@ -1,0 +1,453 @@
+{
+ "_om": "Meningsbank for satsanalysspelet: kursens satser uppdelade i satsled (chunks) med syntaktisk roll. Extraherad ur vyer/satsanalys.js 2026-07-15, som tidigare bar den handunderhallen direkt i vyfilen. Skalet till mastern: 51 av 95 satser fanns BARA i vyn — hade den nagonsin regenererats ur en kalla utan dem vore de sparlost borta (samma fellage som nastan raderade sem6-glosorna, se seminarier-data-minnet).",
+ "_genererad": "2026-07-15",
+ "_falt": {
+  "id": "Stabilt id, oforandrat fran vyns bank sa localStorage/lankar overlever.",
+  "niva": "Progressionsniva, se _nivaer. Styr spelets nivafilter och sem-dackchipsen.",
+  "kalla": "kurs = ur kursmaterialet | skapad = konstruerad har. Styr spelets kalla-filter.",
+  "ref": "Var i kursmaterialet satsen star (for kalla=kurs), eller vad den ovar (for skapad).",
+  "i_seminarier": "true = satsen finns ordagrant i seminarier.json:s satser och valideras mot den; den far inte glida. false = mastern ager satsen sjalv (presentationsslides som aldrig extraherats, samt allt kalla=skapad).",
+  "sv": "Hela satsens svenska oversattning = facit.",
+  "subjI": "Subjekt i verbandelsen (ingen subj-chunk finns). Vardet ar personen: jag/du/han-hon-det/vi/ni/de.",
+  "impf": "true = satsen ovar imperfekt.",
+  "chunks": "Ordnad lista av satsled. Artikel + substantiv halls ihop; genitivattribut ar egen chunk enligt presentationens analys."
+},
+ "_nycklar": {
+  "_om_roll": "Forsta meningen i varje varde ar etiketten spelet visar. Vokabularen ar CHUNK-niva: en chunk ar ett helt satsled, sa en prepositionsfras ar ett adverbial. Jamfor pronomen-satser.json, som annoterar ETT ORD och darfor har 'prep' (prepositionens rektion) dar denna har 'adv' (frasen som helhet). Det ar INTE motstridiga vokabularer — de beskriver olika lager, och bada ar riktiga.",
+  "roll": {
+    "subj": "Subjekt.",
+    "pred": "Predikat. Verbet.",
+    "do": "Direkt objekt. Ackusativ.",
+    "obj-dat": "Dativobjekt. Verbet styr lexikalt dativ och dativen ar INTE mottagare (pisteuo tini). Skilj fran io.",
+    "io": "Indirekt objekt. Dativ i mottagar-/adressatroll.",
+    "gen": "Genitivattribut.",
+    "pf": "Predikatsfyllnad. Vid eimi.",
+    "vok": "Vokativ. Tilltal.",
+    "adv": "Adverbial. Hela prepositionsfrasen, eller annan omstandighetsbestamning.",
+    "inf": "Infinitivkomplement. Till thelo/mello."
+  },
+  "roll_reserverade": {
+    "_om": "Definierade men annu oanvanda. Ligger har sa senare grammatik kan laggas till utan omdesign; validatorn godtar dem redan. Se korrekthet-fore-kursmaterial-minnet.",
+    "obj-gen": "Genitivobjekt: verbet styr lexikalt genitiv (akouo + gen om PERSONEN man hor; akouo + ack om saken — kursens satser har hittills bara ack, darfor oanvand).",
+    "attr": "Forenat attribut, om chunkningen nagon gang delas finare.",
+    "gen-abs": "Genitivus absolutus.",
+    "aci-subj": "Subjekt i ackusativ med infinitiv.",
+    "agent": "Agent vid passiv."
+  }
+},
+ "_nivaer": {
+  "1": "S-V-O (rak ordföljd)",
+  "2": "Fri ordföljd",
+  "3": "Subjekt i ändelsen",
+  "4": "Indirekt objekt",
+  "5": "Genitivattribut",
+  "6": "Vokativ",
+  "7": "Predikatsfyllnad (εἰμί)",
+  "8": "εἰμί i imperfekt (var)",
+  "9": "Adverbial (prepositionsfras)",
+  "10": "Prepositioner (sem 5)",
+  "11": "Negationen οὐ (sem 5)",
+  "12": "Personliga pronomen (sem 5)",
+  "13": "3:e person & demonstrativa pronomen (sem 6)",
+  "14": "Interrogativa pronomen (sem 6)",
+  "15": "Futurum (sem 6)",
+  "16": "Possessiva pronomen (sem 7)",
+  "17": "Imperfekt (sem 7)",
+  "18": "Infinitiv som komplement (sem 7)"
+},
+ "_ordforrad_utanfor_paradigm": [
+  "Ἰησοῦς",
+  "οὐ",
+  "τύπτειν"
+],
+ "_tackning": {
+  "satser": 95,
+  "validerbara_mot_seminarier": 44,
+  "mastern_ager_sjalv": 51,
+  "_om_luckan": "35 satser med kalla=kurs star i presentationsslides/ovningsblad som aldrig extraherats till seminarier.json:s satser. De ar verifierade mot kursmaterialet av den som forfattade banken, men kan inte kontrolleras maskinellt. Blir de nagon gang extraherade till seminarier.json ska i_seminarier sattas till true — validatorn faller da den upptacker dem dar."
+},
+ "_om_ordforrad_utanfor_paradigm": "Ord i banken som ingen paradigmkalla tacker, med skal. Ἰησοῦς = egennamn (ord.json har inga); οὐ = negationspartikel (oboijlig, bor i grammatikreferensen); τύπτειν = infinitiv av τύπτω, som star i sem7:s ovningsblad men aldrig lades i verb.json. Listan ar explicit sa att ett NYTT okant ord faller i stallet for att glida igenom — lagg bara till efter att ha kontrollerat att ordet verkligen ar ratt.",
+ "satser": [
+
+  { "id": "k01", "niva": 1, "kalla": "kurs", "ref": "Breakout 2:1", "i_seminarier": true,
+    "sv": "Människan ser huset.",
+    "chunks": [{"t": "ὁ ἄνθρωπος", "roll": "subj"}, {"t": "βλέπει", "roll": "pred"}, {"t": "τὸν οἶκον", "roll": "do"}] },
+
+  { "id": "k02", "niva": 2, "kalla": "kurs", "ref": "Breakout 2:2", "i_seminarier": true,
+    "sv": "Gud ser människan.",
+    "chunks": [{"t": "τὸν ἄνθρωπον", "roll": "do"}, {"t": "βλέπει", "roll": "pred"}, {"t": "ὁ θεός", "roll": "subj"}] },
+
+  { "id": "k03", "niva": 2, "kalla": "kurs", "ref": "Breakout 2:3", "i_seminarier": true,
+    "sv": "Slavarna skriver ett ord.",
+    "chunks": [{"t": "γράφουσι", "roll": "pred"}, {"t": "λόγον", "roll": "do"}, {"t": "οἱ δοῦλοι", "roll": "subj"}] },
+
+  { "id": "k04", "niva": 4, "kalla": "kurs", "ref": "Breakout 2:4", "i_seminarier": true,
+    "sv": "Aposteln skriver ordet till bröderna.",
+    "chunks": [{"t": "ὁ ἀπόστολος", "roll": "subj"}, {"t": "γράφει", "roll": "pred"}, {"t": "τὸν λόγον", "roll": "do"}, {"t": "τοῖς ἀδελφοῖς", "roll": "io"}] },
+
+  { "id": "k05", "niva": 3, "kalla": "kurs", "ref": "Övningsblad b:1", "i_seminarier": true,
+    "sv": "Ni ser himlen.", "subjI": "ni",
+    "chunks": [{"t": "τὸν οὐρανὸν", "roll": "do"}, {"t": "βλέπετε", "roll": "pred"}] },
+
+  { "id": "k06", "niva": 3, "kalla": "kurs", "ref": "Övningsblad b:2", "i_seminarier": true,
+    "sv": "Han/hon hör en berättelse.", "subjI": "han/hon/det",
+    "chunks": [{"t": "ἀκούει", "roll": "pred"}, {"t": "λόγον", "roll": "do"}] },
+
+  { "id": "k07", "niva": 5, "kalla": "kurs", "ref": "Övningsblad b:3", "i_seminarier": true,
+    "sv": "Slavarna griper herrens frukt.",
+    "chunks": [{"t": "οἱ δοῦλοι", "roll": "subj"}, {"t": "λαμβάνουσι", "roll": "pred"}, {"t": "τὸν καρπὸν", "roll": "do"}, {"t": "τοῦ κυρίου", "roll": "gen"}] },
+
+  { "id": "k08", "niva": 5, "kalla": "kurs", "ref": "Övningsblad b:4", "i_seminarier": true,
+    "sv": "Folket hör apostelns ord.",
+    "chunks": [{"t": "ἀκούει", "roll": "pred"}, {"t": "ὁ λαὸς", "roll": "subj"}, {"t": "τοὺς λόγους", "roll": "do"}, {"t": "τοῦ ἀποστόλου", "roll": "gen"}] },
+
+  { "id": "k09", "niva": 4, "kalla": "kurs", "ref": "Övningsblad b:5", "i_seminarier": true,
+    "sv": "Han skickar slavarna till brodern.", "subjI": "han/hon/det",
+    "chunks": [{"t": "πέμπει", "roll": "pred"}, {"t": "τοὺς δούλους", "roll": "do"}, {"t": "τῷ ἀδελφῷ", "roll": "io"}] },
+
+  { "id": "k10", "niva": 5, "kalla": "kurs", "ref": "Övningsblad b:6", "i_seminarier": true,
+    "sv": "Herrarna hör slavens berättelse.",
+    "chunks": [{"t": "ἀκούουσιν", "roll": "pred"}, {"t": "οἱ κύριοι", "roll": "subj"}, {"t": "τὸν λόγον", "roll": "do"}, {"t": "τοῦ δούλου", "roll": "gen"}] },
+
+  { "id": "k11", "niva": 1, "kalla": "kurs", "ref": "Presentation s.36", "i_seminarier": false,
+    "sv": "Människan ser ängeln.",
+    "chunks": [{"t": "ὁ ἄνθρωπος", "roll": "subj"}, {"t": "βλέπει", "roll": "pred"}, {"t": "τὸν ἄγγελον", "roll": "do"}] },
+
+  { "id": "k12", "niva": 4, "kalla": "kurs", "ref": "Presentation s.44", "i_seminarier": false,
+    "sv": "Aposteln skriver en berättelse för människorna.",
+    "chunks": [{"t": "ὁ ἀπόστολος", "roll": "subj"}, {"t": "γράφει", "roll": "pred"}, {"t": "λόγον", "roll": "do"}, {"t": "τοῖς ἀνθρώποις", "roll": "io"}] },
+
+  { "id": "k13", "niva": 5, "kalla": "kurs", "ref": "Presentation s.47", "i_seminarier": false,
+    "sv": "Jag ser apostelns hus.", "subjI": "jag",
+    "chunks": [{"t": "βλέπω", "roll": "pred"}, {"t": "τὸν οἶκον", "roll": "do"}, {"t": "τοῦ ἀποστόλου", "roll": "gen"}] },
+
+  { "id": "k14", "niva": 6, "kalla": "kurs", "ref": "Presentation s.50", "i_seminarier": false,
+    "sv": "Du, o ängel, ser apostelns hus.", "subjI": "du",
+    "chunks": [{"t": "ὦ ἄγγελε", "roll": "vok"}, {"t": "βλέπεις", "roll": "pred"}, {"t": "τὸν οἶκον", "roll": "do"}, {"t": "τοῦ ἀποστόλου", "roll": "gen"}] },
+
+  { "id": "k15", "niva": 1, "kalla": "kurs", "ref": "Presentation s.54", "i_seminarier": false,
+    "sv": "Människorna ser himlen.",
+    "chunks": [{"t": "οἱ ἄνθρωποι", "roll": "subj"}, {"t": "βλέπουσι", "roll": "pred"}, {"t": "τὸν οὐρανόν", "roll": "do"}] },
+
+  { "id": "k16", "niva": 1, "kalla": "kurs", "ref": "Presentation s.54", "i_seminarier": false,
+    "sv": "Brodern skriver en berättelse.",
+    "chunks": [{"t": "ὁ ἀδελφὸς", "roll": "subj"}, {"t": "γράφει", "roll": "pred"}, {"t": "λόγον", "roll": "do"}] },
+
+  { "id": "k17", "niva": 2, "kalla": "kurs", "ref": "Breakout 1:2", "i_seminarier": true,
+    "sv": "Änglarna räddar bröderna.",
+    "chunks": [{"t": "σῴζουσιν", "roll": "pred"}, {"t": "οἱ ἄγγελοι", "roll": "subj"}, {"t": "τοὺς ἀδελφούς", "roll": "do"}] },
+
+  { "id": "k18", "niva": 4, "kalla": "kurs", "ref": "Breakout 1:3", "i_seminarier": true,
+    "sv": "Slaven talar till aposteln.",
+    "chunks": [{"t": "ὁ δοῦλος", "roll": "subj"}, {"t": "τῷ ἀποστόλῳ", "roll": "io"}, {"t": "λέγει", "roll": "pred"}] },
+
+  { "id": "k19", "niva": 5, "kalla": "kurs", "ref": "Breakout 1:4", "i_seminarier": true,
+    "sv": "Ni skriver brödernas ord till slavarna.", "subjI": "ni",
+    "chunks": [{"t": "γράφετε", "roll": "pred"}, {"t": "τοῖς δούλοις", "roll": "io"}, {"t": "τοὺς λόγους", "roll": "do"}, {"t": "τῶν ἀδελφῶν", "roll": "gen"}] },
+
+  { "id": "k20", "niva": 5, "kalla": "kurs", "ref": "Breakout 2:1", "i_seminarier": true,
+    "sv": "Vi ser Guds tecken.", "subjI": "vi",
+    "chunks": [{"t": "βλέπομεν", "roll": "pred"}, {"t": "τὸ σημεῖον", "roll": "do"}, {"t": "τοῦ θεοῦ", "roll": "gen"}] },
+
+  { "id": "k21", "niva": 2, "kalla": "kurs", "ref": "Breakout 2:2", "i_seminarier": true,
+    "sv": "Slavarna skickar båtarna.",
+    "chunks": [{"t": "πέμπουσιν", "roll": "pred"}, {"t": "οἱ δοῦλοι", "roll": "subj"}, {"t": "τὰ πλοῖα", "roll": "do"}] },
+
+  { "id": "k22", "niva": 1, "kalla": "kurs", "ref": "Breakout 2:3", "i_seminarier": true,
+    "sv": "Bröderna finner evangelierna.",
+    "chunks": [{"t": "οἱ ἀδελφοὶ", "roll": "subj"}, {"t": "εὑρίσκουσι", "roll": "pred"}, {"t": "τὰ εὐαγγέλια", "roll": "do"}] },
+
+  { "id": "k23", "niva": 6, "kalla": "kurs", "ref": "Breakout 2:4", "i_seminarier": true,
+    "sv": "Du, o ängel, skriver evangeliets ord till barnen.", "subjI": "du",
+    "chunks": [{"t": "ὦ ἄγγελε", "roll": "vok"}, {"t": "γράφεις", "roll": "pred"}, {"t": "τοὺς λόγους", "roll": "do"}, {"t": "τοῦ εὐαγγελίου", "roll": "gen"}, {"t": "τοῖς τέκνοις", "roll": "io"}] },
+
+  { "id": "k24", "niva": 1, "kalla": "kurs", "ref": "Övningsblad 1", "i_seminarier": false,
+    "sv": "Den vackre brodern talar.",
+    "chunks": [{"t": "ὁ καλὸς ἀδελφὸς", "roll": "subj"}, {"t": "λέγει", "roll": "pred"}] },
+
+  { "id": "k25", "niva": 1, "kalla": "kurs", "ref": "Övningsblad 2", "i_seminarier": false,
+    "sv": "De trogna apostlarna predikar det heliga evangeliet.",
+    "chunks": [{"t": "οἱ πιστοὶ ἀπόστολοι", "roll": "subj"}, {"t": "κηρύσσουσι", "roll": "pred"}, {"t": "τὸ ἅγιον εὐαγγέλιον", "roll": "do"}] },
+
+  { "id": "k26", "niva": 2, "kalla": "kurs", "ref": "Övningsblad 3", "i_seminarier": false,
+    "sv": "Ni döper de små barnen.", "subjI": "ni",
+    "chunks": [{"t": "τὰ μικρὰ τέκνα", "roll": "do"}, {"t": "βαπτίζετε", "roll": "pred"}] },
+
+  { "id": "k27", "niva": 3, "kalla": "kurs", "ref": "Övningsblad 4", "i_seminarier": false,
+    "sv": "Vi äter det goda brödet.", "subjI": "vi",
+    "chunks": [{"t": "ἐσθίομεν", "roll": "pred"}, {"t": "τὸν ἀγαθὸν ἄρτον", "roll": "do"}] },
+
+  { "id": "k28", "niva": 4, "kalla": "kurs", "ref": "Övningsblad 5", "i_seminarier": false,
+    "sv": "Gud skickar sonen till människorna.",
+    "chunks": [{"t": "τὸν υἱὸν", "roll": "do"}, {"t": "ὁ θεὸς", "roll": "subj"}, {"t": "πέμπει", "roll": "pred"}, {"t": "τοῖς ἀνθρώποις", "roll": "io"}] },
+
+  { "id": "k29", "niva": 1, "kalla": "kurs", "ref": "Övningsblad 6", "i_seminarier": true,
+    "sv": "De onda människorna lyssnar till det vackra evangeliet.",
+    "chunks": [{"t": "οἱ πονηροὶ ἄνθρωποι", "roll": "subj"}, {"t": "ἀκούουσι", "roll": "pred"}, {"t": "τὸ καλὸν εὐαγγέλιον", "roll": "do"}] },
+
+  { "id": "k30", "niva": 4, "kalla": "kurs", "ref": "Övningsblad 7", "i_seminarier": true,
+    "sv": "De tror på Gud.", "subjI": "de",
+    "chunks": [{"t": "τῷ θεῷ", "roll": "obj-dat"}, {"t": "πιστεύουσιν", "roll": "pred"}] },
+
+  { "id": "k31", "niva": 7, "kalla": "kurs", "ref": "Presentation s.41", "i_seminarier": false,
+    "sv": "Människan är ond.",
+    "chunks": [{"t": "ὁ ἄνθρωπός", "roll": "subj"}, {"t": "ἐστι", "roll": "pred"}, {"t": "πονηρός", "roll": "pf"}] },
+
+  { "id": "k32", "niva": 7, "kalla": "kurs", "ref": "Presentation s.41", "i_seminarier": false,
+    "sv": "Evangeliet är vackert.",
+    "chunks": [{"t": "τὸ εὐαγγέλιόν", "roll": "subj"}, {"t": "ἐστι", "roll": "pred"}, {"t": "καλόν", "roll": "pf"}] },
+
+  { "id": "k33", "niva": 7, "kalla": "kurs", "ref": "Presentation s.41", "i_seminarier": false,
+    "sv": "Människorna är vackra.",
+    "chunks": [{"t": "οἱ ἄνθρωποί", "roll": "subj"}, {"t": "εἰσι", "roll": "pred"}, {"t": "καλοί", "roll": "pf"}] },
+
+  { "id": "k34", "niva": 7, "kalla": "kurs", "ref": "Presentation s.42", "i_seminarier": false,
+    "sv": "Jesus är Guds son.",
+    "chunks": [{"t": "ὁ Ἰησοῦς", "roll": "subj"}, {"t": "ἐστιν", "roll": "pred"}, {"t": "ὁ υἱὸς", "roll": "pf"}, {"t": "τοῦ θεοῦ", "roll": "gen"}] },
+
+  { "id": "k35", "niva": 7, "kalla": "kurs", "ref": "Presentation s.41 (överkurs)", "i_seminarier": false,
+    "sv": "Evangelierna är vackra.",
+    "chunks": [{"t": "τὰ εὐαγγέλιά", "roll": "subj"}, {"t": "ἐστι", "roll": "pred"}, {"t": "καλά", "roll": "pf"}] },
+
+  { "id": "s01", "niva": 1, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Herren ser slaven.",
+    "chunks": [{"t": "ὁ κύριος", "roll": "subj"}, {"t": "βλέπει", "roll": "pred"}, {"t": "τὸν δοῦλον", "roll": "do"}] },
+
+  { "id": "s02", "niva": 1, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Sonen tar brödet.",
+    "chunks": [{"t": "ὁ υἱὸς", "roll": "subj"}, {"t": "λαμβάνει", "roll": "pred"}, {"t": "τὸν ἄρτον", "roll": "do"}] },
+
+  { "id": "s03", "niva": 1, "kalla": "skapad", "ref": "konstruerad (utan objekt)", "i_seminarier": false,
+    "sv": "Aposteln skriver.",
+    "chunks": [{"t": "ὁ ἀπόστολος", "roll": "subj"}, {"t": "γράφει", "roll": "pred"}] },
+
+  { "id": "s04", "niva": 2, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Människan ser ängeln.",
+    "chunks": [{"t": "τὸν ἄγγελον", "roll": "do"}, {"t": "βλέπει", "roll": "pred"}, {"t": "ὁ ἄνθρωπος", "roll": "subj"}] },
+
+  { "id": "s05", "niva": 2, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Slavarna tar frukten.",
+    "chunks": [{"t": "λαμβάνουσι", "roll": "pred"}, {"t": "τὸν καρπὸν", "roll": "do"}, {"t": "οἱ δοῦλοι", "roll": "subj"}] },
+
+  { "id": "s06", "niva": 3, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Vi ser himlen.", "subjI": "vi",
+    "chunks": [{"t": "βλέπομεν", "roll": "pred"}, {"t": "τὸν οὐρανόν", "roll": "do"}] },
+
+  { "id": "s07", "niva": 3, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Han skriver orden.", "subjI": "han/hon/det",
+    "chunks": [{"t": "γράφει", "roll": "pred"}, {"t": "τοὺς λόγους", "roll": "do"}] },
+
+  { "id": "s08", "niva": 4, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Herren skickar ängeln till folket.",
+    "chunks": [{"t": "ὁ κύριος", "roll": "subj"}, {"t": "πέμπει", "roll": "pred"}, {"t": "τὸν ἄγγελον", "roll": "do"}, {"t": "τῷ λαῷ", "roll": "io"}] },
+
+  { "id": "s09", "niva": 4, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Vi skriver en berättelse till bröderna.", "subjI": "vi",
+    "chunks": [{"t": "γράφομεν", "roll": "pred"}, {"t": "λόγον", "roll": "do"}, {"t": "τοῖς ἀδελφοῖς", "roll": "io"}] },
+
+  { "id": "s10", "niva": 5, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Vi ser Guds hus.", "subjI": "vi",
+    "chunks": [{"t": "βλέπομεν", "roll": "pred"}, {"t": "τὸν οἶκον", "roll": "do"}, {"t": "τοῦ θεοῦ", "roll": "gen"}] },
+
+  { "id": "s11", "niva": 5, "kalla": "skapad", "ref": "konstruerad (gen. på subjektet)", "i_seminarier": false,
+    "sv": "Herrens slav tar brödet.",
+    "chunks": [{"t": "ὁ δοῦλος", "roll": "subj"}, {"t": "τοῦ κυρίου", "roll": "gen"}, {"t": "λαμβάνει", "roll": "pred"}, {"t": "τὸν ἄρτον", "roll": "do"}] },
+
+  { "id": "s12", "niva": 6, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Du, o slav, ser herren.", "subjI": "du",
+    "chunks": [{"t": "ὦ δοῦλε", "roll": "vok"}, {"t": "βλέπεις", "roll": "pred"}, {"t": "τὸν κύριον", "roll": "do"}] },
+
+  { "id": "s13", "niva": 6, "kalla": "skapad", "ref": "konstruerad", "i_seminarier": false,
+    "sv": "Du, o människa, hör Guds ord.", "subjI": "du",
+    "chunks": [{"t": "ὦ ἄνθρωπε", "roll": "vok"}, {"t": "ἀκούεις", "roll": "pred"}, {"t": "τὸν λόγον", "roll": "do"}, {"t": "τοῦ θεοῦ", "roll": "gen"}] },
+
+  { "id": "e01", "niva": 8, "kalla": "kurs", "ref": "Presentation s.14", "i_seminarier": false,
+    "sv": "Jesus var Guds son.", "impf": true,
+    "chunks": [{"t": "ὁ Ἰησοῦς", "roll": "subj"}, {"t": "ἦν", "roll": "pred"}, {"t": "ὁ υἱὸς", "roll": "pf"}, {"t": "τοῦ θεοῦ", "roll": "gen"}] },
+
+  { "id": "e02", "niva": 8, "kalla": "kurs", "ref": "Presentation s.14", "i_seminarier": false,
+    "sv": "Barnen var slavar.", "impf": true,
+    "chunks": [{"t": "τὰ τέκνα", "roll": "subj"}, {"t": "ἦσαν", "roll": "pred"}, {"t": "δοῦλοι", "roll": "pf"}] },
+
+  { "id": "e03", "niva": 8, "kalla": "kurs", "ref": "Presentation s.17", "i_seminarier": false,
+    "sv": "Bröderna var goda.", "impf": true,
+    "chunks": [{"t": "οἱ ἀδελφοὶ", "roll": "subj"}, {"t": "ἦσαν", "roll": "pred"}, {"t": "ἀγαθοί", "roll": "pf"}] },
+
+  { "id": "e04", "niva": 8, "kalla": "kurs", "ref": "Presentation s.17", "i_seminarier": false,
+    "sv": "Verket var vackert.", "impf": true,
+    "chunks": [{"t": "τὸ ἔργον", "roll": "subj"}, {"t": "ἦν", "roll": "pred"}, {"t": "καλόν", "roll": "pf"}] },
+
+  { "id": "e05", "niva": 8, "kalla": "kurs", "ref": "Presentation s.17", "i_seminarier": false,
+    "sv": "Verken var vackra.", "impf": true,
+    "chunks": [{"t": "τὰ ἔργα", "roll": "subj"}, {"t": "ἦν", "roll": "pred"}, {"t": "καλά", "roll": "pf"}] },
+
+  { "id": "a01", "niva": 9, "kalla": "kurs", "ref": "Presentation s.44", "i_seminarier": false,
+    "sv": "I huset skriver aposteln.",
+    "chunks": [{"t": "ἐν τῷ οἴκῳ", "roll": "adv"}, {"t": "ὁ ἀπόστολος", "roll": "subj"}, {"t": "γράφει", "roll": "pred"}] },
+
+  { "id": "a02", "niva": 9, "kalla": "kurs", "ref": "Övningsblad 8", "i_seminarier": true,
+    "sv": "Bröderna leder barnen till huset.",
+    "chunks": [{"t": "οἱ ἀδελφοὶ", "roll": "subj"}, {"t": "ἄγουσι", "roll": "pred"}, {"t": "τὰ τέκνα", "roll": "do"}, {"t": "εἰς τὸν οἶκον", "roll": "adv"}] },
+
+  { "id": "a03", "niva": 9, "kalla": "kurs", "ref": "Övningsblad 7", "i_seminarier": true,
+    "sv": "Vi söker husbondens slavar på fältet.", "subjI": "vi",
+    "chunks": [{"t": "ζητοῦμεν", "roll": "pred"}, {"t": "ἐν τῷ ἀγρῷ", "roll": "adv"}, {"t": "τοὺς δούλους", "roll": "do"}, {"t": "τοῦ κυρίου", "roll": "gen"}] },
+
+  { "id": "a04", "niva": 9, "kalla": "skapad", "ref": "konstruerad (εἰς + ack.)", "i_seminarier": false,
+    "sv": "Herren skickar slaven till huset.",
+    "chunks": [{"t": "ὁ κύριος", "roll": "subj"}, {"t": "πέμπει", "roll": "pred"}, {"t": "τὸν δοῦλον", "roll": "do"}, {"t": "εἰς τὸν οἶκον", "roll": "adv"}] },
+
+  { "id": "a05", "niva": 9, "kalla": "skapad", "ref": "konstruerad (ἐν + dat.)", "i_seminarier": false,
+    "sv": "I huset skriver vi orden.", "subjI": "vi",
+    "chunks": [{"t": "ἐν τῷ οἴκῳ", "roll": "adv"}, {"t": "γράφομεν", "roll": "pred"}, {"t": "τοὺς λόγους", "roll": "do"}] },
+
+  { "id": "a06", "niva": 9, "kalla": "skapad", "ref": "konstruerad (ἐκ + gen.)", "i_seminarier": false,
+    "sv": "Aposteln leder barnen ut ur huset.",
+    "chunks": [{"t": "ὁ ἀπόστολος", "roll": "subj"}, {"t": "ἄγει", "roll": "pred"}, {"t": "τὰ τέκνα", "roll": "do"}, {"t": "ἐκ τοῦ οἴκου", "roll": "adv"}] },
+
+  { "id": "f01", "niva": 2, "kalla": "kurs", "ref": "Breakout 3:5", "i_seminarier": true,
+    "sv": "Kärleken räddar själen.",
+    "chunks": [{"t": "ἡ ἀγάπη", "roll": "subj"}, {"t": "τὴν ψυχήν", "roll": "do"}, {"t": "σῴζει", "roll": "pred"}] },
+
+  { "id": "f02", "niva": 5, "kalla": "kurs", "ref": "Övningsblad 9", "i_seminarier": false,
+    "sv": "Systrarna söker Guds rike.",
+    "chunks": [{"t": "ζητοῦσιν", "roll": "pred"}, {"t": "αἱ ἀδελφαὶ", "roll": "subj"}, {"t": "τὴν βασιλείαν", "roll": "do"}, {"t": "τοῦ θεοῦ", "roll": "gen"}] },
+
+  { "id": "f03", "niva": 6, "kalla": "kurs", "ref": "Övningsblad 3", "i_seminarier": true,
+    "sv": "Du, o broder, tror på änglarnas vackra bud.", "subjI": "du",
+    "chunks": [{"t": "ὦ ἀδελφέ", "roll": "vok"}, {"t": "πιστεύεις", "roll": "pred"}, {"t": "ταῖς καλαῖς ἐντολαῖς", "roll": "obj-dat"}, {"t": "τῶν ἀγγέλων", "roll": "gen"}] },
+
+  { "id": "f04", "niva": 1, "kalla": "kurs", "ref": "Övningsblad 2", "i_seminarier": true,
+    "sv": "Jesus gör sköna under.",
+    "chunks": [{"t": "ὁ Ἰησοῦς", "roll": "subj"}, {"t": "ποιεῖ", "roll": "pred"}, {"t": "καλὰ σημεῖα", "roll": "do"}] },
+
+  { "id": "f05", "niva": 5, "kalla": "kurs", "ref": "Övningsblad 6", "i_seminarier": true,
+    "sv": "Änglarna talar Guds ord.",
+    "chunks": [{"t": "λαλοῦσιν", "roll": "pred"}, {"t": "οἱ ἄγγελοι", "roll": "subj"}, {"t": "τοὺς λόγους", "roll": "do"}, {"t": "τοῦ θεοῦ", "roll": "gen"}] },
+
+  { "id": "s5p1", "niva": 10, "kalla": "kurs", "ref": "Övningsblad 5:1", "i_seminarier": false,
+    "sv": "Slavarna leder flickorna till byn.",
+    "chunks": [{"t": "ἄγουσιν", "roll": "pred"}, {"t": "οἱ δοῦλοι", "roll": "subj"}, {"t": "τὰς παρθένους", "roll": "do"}, {"t": "εἰς τὴν κώμην", "roll": "adv"}] },
+
+  { "id": "s5p2", "niva": 10, "kalla": "kurs", "ref": "Presentation 5 s.34", "i_seminarier": false,
+    "sv": "Husbonden övervakar barnen framför templet.",
+    "chunks": [{"t": "ὁ οἰκοδεσπότης", "roll": "subj"}, {"t": "τηρεῖ", "roll": "pred"}, {"t": "τὰ τέκνα", "roll": "do"}, {"t": "πρὸ τοῦ ἱεροῦ", "roll": "adv"}] },
+
+  { "id": "s5p3", "niva": 10, "kalla": "kurs", "ref": "Övningsblad 5:2", "i_seminarier": false,
+    "sv": "I kyrkan ser vi Guds härlighet.", "subjI": "vi",
+    "chunks": [{"t": "ἐν τῇ ἐκκλησίᾳ", "roll": "adv"}, {"t": "βλέπομεν", "roll": "pred"}, {"t": "τὴν δόξαν", "roll": "do"}, {"t": "τοῦ θεοῦ", "roll": "gen"}] },
+
+  { "id": "s5n1", "niva": 11, "kalla": "kurs", "ref": "Breakout 5:2a", "i_seminarier": false,
+    "sv": "Vännerna tror inte.",
+    "chunks": [{"t": "οἱ φίλοι", "roll": "subj"}, {"t": "οὐ πιστεύουσιν", "roll": "pred"}] },
+
+  { "id": "s5n2", "niva": 11, "kalla": "kurs", "ref": "Övningsblad 5:5", "i_seminarier": false,
+    "sv": "Flickan helar inte sjukdomarna.",
+    "chunks": [{"t": "οὐ θεραπεύει", "roll": "pred"}, {"t": "ἡ παρθένος", "roll": "subj"}, {"t": "τὰς νόσους", "roll": "do"}] },
+
+  { "id": "s5r1", "niva": 12, "kalla": "kurs", "ref": "Breakout 5:3", "i_seminarier": true,
+    "sv": "Vi söker er.", "subjI": "vi",
+    "chunks": [{"t": "ζητοῦμεν", "roll": "pred"}, {"t": "ὑμᾶς", "roll": "do"}] },
+
+  { "id": "s5r2", "niva": 12, "kalla": "kurs", "ref": "Breakout 5:3", "i_seminarier": true,
+    "sv": "De predikar för er.", "subjI": "de",
+    "chunks": [{"t": "κηρύσσουσιν", "roll": "pred"}, {"t": "ὑμῖν", "roll": "io"}] },
+
+  { "id": "s5r3", "niva": 12, "kalla": "kurs", "ref": "Breakout 5:3", "i_seminarier": true,
+    "sv": "Han talar om dig.", "subjI": "han/hon/det",
+    "chunks": [{"t": "λέγει", "roll": "pred"}, {"t": "περὶ σοῦ", "roll": "adv"}] },
+
+  { "id": "s6a1", "niva": 13, "kalla": "kurs", "ref": "Breakout 6:1:1", "i_seminarier": true,
+    "sv": "Jag döper dig.", "subjI": "jag",
+    "chunks": [{"t": "βαπτίζω", "roll": "pred"}, {"t": "σε", "roll": "do"}] },
+
+  { "id": "s6a2", "niva": 13, "kalla": "kurs", "ref": "Breakout 6:1:5", "i_seminarier": true,
+    "sv": "Hon döper dem.",
+    "chunks": [{"t": "αὕτη", "roll": "subj"}, {"t": "βαπτίζει", "roll": "pred"}, {"t": "αὐτούς", "roll": "do"}] },
+
+  { "id": "s6a3", "niva": 13, "kalla": "kurs", "ref": "Breakout 6:1:8", "i_seminarier": true,
+    "sv": "Han talar om henne.",
+    "chunks": [{"t": "οὗτος", "roll": "subj"}, {"t": "λέγει", "roll": "pred"}, {"t": "περὶ αὐτῆς", "roll": "adv"}] },
+
+  { "id": "s6a4", "niva": 13, "kalla": "kurs", "ref": "Breakout 6:1:9 (förkortad)", "i_seminarier": false,
+    "sv": "Jesus söker lärjungarna.",
+    "chunks": [{"t": "ὁ Ἰησοῦς", "roll": "subj"}, {"t": "ζητεῖ", "roll": "pred"}, {"t": "τοὺς μαθητάς", "roll": "do"}] },
+
+  { "id": "s6i1", "niva": 14, "kalla": "kurs", "ref": "Breakout 6:2:1", "i_seminarier": true,
+    "sv": "Vem är det?",
+    "chunks": [{"t": "τίς", "roll": "subj"}, {"t": "ἐστιν", "roll": "pred"}] },
+
+  { "id": "s6i2", "niva": 14, "kalla": "kurs", "ref": "Breakout 6:2:3", "i_seminarier": true,
+    "sv": "Vilket vin dricker du?", "subjI": "du",
+    "chunks": [{"t": "τίνα οἶνον", "roll": "do"}, {"t": "πίνεις", "roll": "pred"}] },
+
+  { "id": "s6i3", "niva": 14, "kalla": "kurs", "ref": "Breakout 6:2:5", "i_seminarier": true,
+    "sv": "Vad gör du?", "subjI": "du",
+    "chunks": [{"t": "τί", "roll": "do"}, {"t": "ποιεῖς", "roll": "pred"}] },
+
+  { "id": "s6f1", "niva": 15, "kalla": "kurs", "ref": "Breakout 6:3:1", "i_seminarier": true,
+    "sv": "Lärjungarna ska tro.",
+    "chunks": [{"t": "οἱ μαθηταὶ", "roll": "subj"}, {"t": "πιστεύσουσιν", "roll": "pred"}] },
+
+  { "id": "s6f2", "niva": 15, "kalla": "kurs", "ref": "Breakout 6:3:2", "i_seminarier": true,
+    "sv": "Jag ska tro på Gud.", "subjI": "jag",
+    "chunks": [{"t": "πιστεύσω", "roll": "pred"}, {"t": "τῷ θεῷ", "roll": "obj-dat"}] },
+
+  { "id": "s6f3", "niva": 15, "kalla": "kurs", "ref": "Breakout 6:3:3", "i_seminarier": true,
+    "sv": "Herren ska tala med dig.",
+    "chunks": [{"t": "ὁ κύριος", "roll": "subj"}, {"t": "λαλήσει", "roll": "pred"}, {"t": "σοι", "roll": "io"}] },
+
+  { "id": "s6f4", "niva": 15, "kalla": "kurs", "ref": "Breakout 6:3:6", "i_seminarier": true,
+    "sv": "Apostlarna ska undervisa lärjungarna.",
+    "chunks": [{"t": "οἱ ἀπόστολοι", "roll": "subj"}, {"t": "παιδεύσουσι", "roll": "pred"}, {"t": "τοὺς μαθητάς", "roll": "do"}] },
+
+  { "id": "s7p1", "niva": 16, "kalla": "kurs", "ref": "Breakout 7:1:8", "i_seminarier": true,
+    "sv": "Min bror talar med dig.",
+    "chunks": [{"t": "ὁ ἀδελφός", "roll": "subj"}, {"t": "μου", "roll": "gen"}, {"t": "λαλεῖ", "roll": "pred"}, {"t": "σοι", "roll": "io"}] },
+
+  { "id": "s7p2", "niva": 16, "kalla": "kurs", "ref": "Breakout 7:1:9", "i_seminarier": true,
+    "sv": "Vår herre ska skicka båten till er.",
+    "chunks": [{"t": "πέμψει", "roll": "pred"}, {"t": "ὁ κύριος", "roll": "subj"}, {"t": "ἡμῶν", "roll": "gen"}, {"t": "τὸ πλοῖον", "roll": "do"}, {"t": "πρὸς ὑμᾶς", "roll": "adv"}] },
+
+  { "id": "s7p3", "niva": 16, "kalla": "kurs", "ref": "Breakout 7:1:10", "i_seminarier": true,
+    "sv": "Deras syster ska döpa oss.",
+    "chunks": [{"t": "βαπτίσει", "roll": "pred"}, {"t": "ἡ ἀδελφὴ", "roll": "subj"}, {"t": "αὐτῶν", "roll": "gen"}, {"t": "ἡμᾶς", "roll": "do"}] },
+
+  { "id": "s7p4", "niva": 16, "kalla": "kurs", "ref": "Breakout 7:2:4 (utbyggd)", "i_seminarier": false,
+    "sv": "Hans slav ser huset.",
+    "chunks": [{"t": "ὁ τούτου", "roll": "gen"}, {"t": "δοῦλος", "roll": "subj"}, {"t": "βλέπει", "roll": "pred"}, {"t": "τὸν οἶκον", "roll": "do"}] },
+
+  { "id": "s7i1", "niva": 17, "kalla": "kurs", "ref": "Breakout 7:3:2", "i_seminarier": true,
+    "sv": "Johannes döpte många människor.",
+    "chunks": [{"t": "ὁ Ἰωάννης", "roll": "subj"}, {"t": "ἐβάπτιζε", "roll": "pred"}, {"t": "πολλοὺς ἀνθρώπους", "roll": "do"}] },
+
+  { "id": "s7i2", "niva": 17, "kalla": "kurs", "ref": "Breakout 7:3:3", "i_seminarier": true,
+    "sv": "Han undervisade dem i deras synagoga.", "subjI": "han/hon/det",
+    "chunks": [{"t": "ἐδίδασκεν", "roll": "pred"}, {"t": "αὐτοὺς", "roll": "do"}, {"t": "ἐν τῇ συναγωγῇ", "roll": "adv"}, {"t": "αὐτῶν", "roll": "gen"}] },
+
+  { "id": "s7i3", "niva": 17, "kalla": "kurs", "ref": "Övningsblad 7:II:17 (förkortad)", "i_seminarier": false,
+    "sv": "I synagogorna predikade han.", "subjI": "han/hon/det",
+    "chunks": [{"t": "ἐν ταῖς συναγωγαῖς", "roll": "adv"}, {"t": "ἐκήρυσσεν", "roll": "pred"}] },
+
+  { "id": "s7i4", "niva": 17, "kalla": "kurs", "ref": "Övningsblad 7:II:14", "i_seminarier": false,
+    "sv": "Den stora folkhopen hörde hans ord.",
+    "chunks": [{"t": "ὁ πολὺς ὄχλος", "roll": "subj"}, {"t": "ἤκουεν", "roll": "pred"}, {"t": "τὸν λόγον", "roll": "do"}, {"t": "αὐτοῦ", "roll": "gen"}] },
+
+  { "id": "s7n1", "niva": 18, "kalla": "kurs", "ref": "Övningsblad 7:II:9", "i_seminarier": true,
+    "sv": "Vad tänker du göra?", "subjI": "du",
+    "chunks": [{"t": "τί", "roll": "do"}, {"t": "μέλλεις", "roll": "pred"}, {"t": "ποιεῖν", "roll": "inf"}] },
+
+  { "id": "s7n2", "niva": 18, "kalla": "kurs", "ref": "Presentation 7 s.22", "i_seminarier": false,
+    "sv": "Jag vill predika för er.", "subjI": "jag",
+    "chunks": [{"t": "θέλω", "roll": "pred"}, {"t": "κηρύσσειν", "roll": "inf"}, {"t": "ὑμῖν", "roll": "io"}] },
+
+  { "id": "s7n3", "niva": 18, "kalla": "kurs", "ref": "Presentation 7 s.22", "i_seminarier": false,
+    "sv": "Jag tänker predika för er.", "subjI": "jag",
+    "chunks": [{"t": "μέλλω", "roll": "pred"}, {"t": "κηρύσσειν", "roll": "inf"}, {"t": "ὑμῖν", "roll": "io"}] },
+
+  { "id": "s7n4", "niva": 18, "kalla": "kurs", "ref": "Övningsblad 7:II:10 (förkortad)", "i_seminarier": false,
+    "sv": "Gud kommer att slå dig.",
+    "chunks": [{"t": "τύπτειν", "roll": "inf"}, {"t": "σε", "roll": "do"}, {"t": "μέλλει", "roll": "pred"}, {"t": "ὁ θεός", "roll": "subj"}] }
+
+ ]
+}

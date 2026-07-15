@@ -99,6 +99,12 @@ const ROLLER = {
          raknare:"ackusativ",   fraga:"Vem eller vad påverkas direkt?",        instr:"Klicka på det direkta objektet, eller välj Saknas." },
   io:  { namn:"indirekta objektet",etikett:"indirekt objekt", klass:"r-io",   kasus:"dativ",
          raknare:"dativ",       fraga:"Till, åt eller för vem utförs handlingen?", instr:"Klicka på det indirekta objektet." },
+  /* Dativobjekt delar färg med io: samma kasus, och en egen färg vore att påstå
+     att ögat ska skilja dem åt — det är verbet som gör det, inte formen. Men
+     frågan är en annan, och det är hela poängen: πιστεύω αὐτῷ är inte "tror åt
+     honom" utan "tror PÅ honom". Ingen tar emot något. */
+  "obj-dat":{ namn:"dativobjektet",etikett:"dativobjekt",     klass:"r-io",   kasus:"dativ",
+         raknare:"dativ",       fraga:"Vilket ord kräver verbet i dativ?",     instr:"Klicka på dativobjektet." },
   gen: { namn:"genitivattributet", etikett:"genitivattribut", klass:"r-gen",  kasus:"genitiv",
          raknare:"genitiv",     fraga:"Till vem hör någon eller något?",       instr:"Klicka på genitivattributet." },
   vok: { namn:"vokativen",         etikett:"vokativ",         klass:"r-vok",  kasus:"vokativ",
@@ -110,17 +116,26 @@ const ROLLER = {
   inf: { namn:"infinitivkomplementet", etikett:"infinitiv",    klass:"r-inf",
          raknare:"infinitiv",   fraga:"Vad är det man vill eller tänker göra?", instr:"Klicka på infinitiven." },
 };
-const ROLL_ORDNING = ["pred","subj","do","io","adv","pf","gen","vok","inf"];
+const ROLL_ORDNING = ["pred","subj","do","io","obj-dat","adv","pf","gen","vok","inf"];
 
 const NIVAER = {
-  1:"S-V-O (rak ordföljd)", 2:"Fri ordföljd", 3:"Subjekt i ändelsen",
-  4:"Indirekt objekt", 5:"Genitivattribut", 6:"Vokativ",
-  7:"Predikatsfyllnad (εἰμί)", 8:"εἰμί i imperfekt (var)",
+  1:"S-V-O (rak ordföljd)",
+  2:"Fri ordföljd",
+  3:"Subjekt i ändelsen",
+  4:"Indirekt objekt",
+  5:"Genitivattribut",
+  6:"Vokativ",
+  7:"Predikatsfyllnad (εἰμί)",
+  8:"εἰμί i imperfekt (var)",
   9:"Adverbial (prepositionsfras)",
-  10:"Prepositioner (sem 5)", 11:"Negationen οὐ (sem 5)", 12:"Personliga pronomen (sem 5)",
-  13:"3:e person & demonstrativa pronomen (sem 6)", 14:"Interrogativa pronomen (sem 6)",
+  10:"Prepositioner (sem 5)",
+  11:"Negationen οὐ (sem 5)",
+  12:"Personliga pronomen (sem 5)",
+  13:"3:e person & demonstrativa pronomen (sem 6)",
+  14:"Interrogativa pronomen (sem 6)",
   15:"Futurum (sem 6)",
-  16:"Possessiva pronomen (sem 7)", 17:"Imperfekt (sem 7)",
+  16:"Possessiva pronomen (sem 7)",
+  17:"Imperfekt (sem 7)",
   18:"Infinitiv som komplement (sem 7)",
 };
 
@@ -132,10 +147,6 @@ const NIVAER = {
    kalla:"skapad" = jag har konstruerat den; former kollade mot ord.json.
    Accenter återges som i källan (grav före nästa ord, akut sist).        */
 const SATSER = [
-
-  /* ══ UR KURSMATERIALET ══════════════════════════════════════════ */
-
-  // Breakout rooms (facit, presentationen s.57)
   { id:"k01", niva:1, kalla:"kurs", ref:"Breakout 2:1", sv:"Människan ser huset.", chunks:[
       {t:"ὁ ἄνθρωπος",roll:"subj"},{t:"βλέπει",roll:"pred"},{t:"τὸν οἶκον",roll:"do"} ]},
   { id:"k02", niva:2, kalla:"kurs", ref:"Breakout 2:2", sv:"Gud ser människan.", chunks:[
@@ -144,8 +155,6 @@ const SATSER = [
       {t:"γράφουσι",roll:"pred"},{t:"λόγον",roll:"do"},{t:"οἱ δοῦλοι",roll:"subj"} ]},
   { id:"k04", niva:4, kalla:"kurs", ref:"Breakout 2:4", sv:"Aposteln skriver ordet till bröderna.", chunks:[
       {t:"ὁ ἀπόστολος",roll:"subj"},{t:"γράφει",roll:"pred"},{t:"τὸν λόγον",roll:"do"},{t:"τοῖς ἀδελφοῖς",roll:"io"} ]},
-
-  // Övningsblad b)
   { id:"k05", niva:3, kalla:"kurs", ref:"Övningsblad b:1", sv:"Ni ser himlen.", subjI:"ni", chunks:[
       {t:"τὸν οὐρανὸν",roll:"do"},{t:"βλέπετε",roll:"pred"} ]},
   { id:"k06", niva:3, kalla:"kurs", ref:"Övningsblad b:2", sv:"Han/hon hör en berättelse.", subjI:"han/hon/det", chunks:[
@@ -158,8 +167,6 @@ const SATSER = [
       {t:"πέμπει",roll:"pred"},{t:"τοὺς δούλους",roll:"do"},{t:"τῷ ἀδελφῷ",roll:"io"} ]},
   { id:"k10", niva:5, kalla:"kurs", ref:"Övningsblad b:6", sv:"Herrarna hör slavens berättelse.", chunks:[
       {t:"ἀκούουσιν",roll:"pred"},{t:"οἱ κύριοι",roll:"subj"},{t:"τὸν λόγον",roll:"do"},{t:"τοῦ δούλου",roll:"gen"} ]},
-
-  // Presentationen — genomgångna exempel
   { id:"k11", niva:1, kalla:"kurs", ref:"Presentation s.36", sv:"Människan ser ängeln.", chunks:[
       {t:"ὁ ἄνθρωπος",roll:"subj"},{t:"βλέπει",roll:"pred"},{t:"τὸν ἄγγελον",roll:"do"} ]},
   { id:"k12", niva:4, kalla:"kurs", ref:"Presentation s.44", sv:"Aposteln skriver en berättelse för människorna.", chunks:[
@@ -172,17 +179,12 @@ const SATSER = [
       {t:"οἱ ἄνθρωποι",roll:"subj"},{t:"βλέπουσι",roll:"pred"},{t:"τὸν οὐρανόν",roll:"do"} ]},
   { id:"k16", niva:1, kalla:"kurs", ref:"Presentation s.54", sv:"Brodern skriver en berättelse.", chunks:[
       {t:"ὁ ἀδελφὸς",roll:"subj"},{t:"γράφει",roll:"pred"},{t:"λόγον",roll:"do"} ]},
-
-  // ── Seminarium 3 ────────────────────────────────────────────────
-  // Breakout 1 (facit, presentation s.7)
   { id:"k17", niva:2, kalla:"kurs", ref:"Breakout 1:2", sv:"Änglarna räddar bröderna.", chunks:[
       {t:"σῴζουσιν",roll:"pred"},{t:"οἱ ἄγγελοι",roll:"subj"},{t:"τοὺς ἀδελφούς",roll:"do"} ]},
   { id:"k18", niva:4, kalla:"kurs", ref:"Breakout 1:3", sv:"Slaven talar till aposteln.", chunks:[
       {t:"ὁ δοῦλος",roll:"subj"},{t:"τῷ ἀποστόλῳ",roll:"io"},{t:"λέγει",roll:"pred"} ]},
   { id:"k19", niva:5, kalla:"kurs", ref:"Breakout 1:4", sv:"Ni skriver brödernas ord till slavarna.", subjI:"ni", chunks:[
       {t:"γράφετε",roll:"pred"},{t:"τοῖς δούλοις",roll:"io"},{t:"τοὺς λόγους",roll:"do"},{t:"τῶν ἀδελφῶν",roll:"gen"} ]},
-
-  // Breakout 2 (facit, presentation s.21) — neutrala substantiv
   { id:"k20", niva:5, kalla:"kurs", ref:"Breakout 2:1", sv:"Vi ser Guds tecken.", subjI:"vi", chunks:[
       {t:"βλέπομεν",roll:"pred"},{t:"τὸ σημεῖον",roll:"do"},{t:"τοῦ θεοῦ",roll:"gen"} ]},
   { id:"k21", niva:2, kalla:"kurs", ref:"Breakout 2:2", sv:"Slavarna skickar båtarna.", chunks:[
@@ -191,8 +193,6 @@ const SATSER = [
       {t:"οἱ ἀδελφοὶ",roll:"subj"},{t:"εὑρίσκουσι",roll:"pred"},{t:"τὰ εὐαγγέλια",roll:"do"} ]},
   { id:"k23", niva:6, kalla:"kurs", ref:"Breakout 2:4", sv:"Du, o ängel, skriver evangeliets ord till barnen.", subjI:"du", chunks:[
       {t:"ὦ ἄγγελε",roll:"vok"},{t:"γράφεις",roll:"pred"},{t:"τοὺς λόγους",roll:"do"},{t:"τοῦ εὐαγγελίου",roll:"gen"},{t:"τοῖς τέκνοις",roll:"io"} ]},
-
-  // Övningsbladet (facit) — adjektivattribut + neutrum
   { id:"k24", niva:1, kalla:"kurs", ref:"Övningsblad 1", sv:"Den vackre brodern talar.", chunks:[
       {t:"ὁ καλὸς ἀδελφὸς",roll:"subj"},{t:"λέγει",roll:"pred"} ]},
   { id:"k25", niva:1, kalla:"kurs", ref:"Övningsblad 2", sv:"De trogna apostlarna predikar det heliga evangeliet.", chunks:[
@@ -206,9 +206,7 @@ const SATSER = [
   { id:"k29", niva:1, kalla:"kurs", ref:"Övningsblad 6", sv:"De onda människorna lyssnar till det vackra evangeliet.", chunks:[
       {t:"οἱ πονηροὶ ἄνθρωποι",roll:"subj"},{t:"ἀκούουσι",roll:"pred"},{t:"τὸ καλὸν εὐαγγέλιον",roll:"do"} ]},
   { id:"k30", niva:4, kalla:"kurs", ref:"Övningsblad 7", sv:"De tror på Gud.", subjI:"de", chunks:[
-      {t:"τῷ θεῷ",roll:"io"},{t:"πιστεύουσιν",roll:"pred"} ]},
-
-  // εἰμί — predikatsfyllnad (facit, presentation s.41–42)
+      {t:"τῷ θεῷ",roll:"obj-dat"},{t:"πιστεύουσιν",roll:"pred"} ]},
   { id:"k31", niva:7, kalla:"kurs", ref:"Presentation s.41", sv:"Människan är ond.", chunks:[
       {t:"ὁ ἄνθρωπός",roll:"subj"},{t:"ἐστι",roll:"pred"},{t:"πονηρός",roll:"pf"} ]},
   { id:"k32", niva:7, kalla:"kurs", ref:"Presentation s.41", sv:"Evangeliet är vackert.", chunks:[
@@ -219,90 +217,64 @@ const SATSER = [
       {t:"ὁ Ἰησοῦς",roll:"subj"},{t:"ἐστιν",roll:"pred"},{t:"ὁ υἱὸς",roll:"pf"},{t:"τοῦ θεοῦ",roll:"gen"} ]},
   { id:"k35", niva:7, kalla:"kurs", ref:"Presentation s.41 (överkurs)", sv:"Evangelierna är vackra.", chunks:[
       {t:"τὰ εὐαγγέλιά",roll:"subj"},{t:"ἐστι",roll:"pred"},{t:"καλά",roll:"pf"} ]},
-
-  /* ══ SKAPADE ÖVNINGAR (former kollade mot ord.json — verifiera gärna) ══ */
-
-  // Nivå 1
   { id:"s01", niva:1, kalla:"skapad", ref:"konstruerad", sv:"Herren ser slaven.", chunks:[
       {t:"ὁ κύριος",roll:"subj"},{t:"βλέπει",roll:"pred"},{t:"τὸν δοῦλον",roll:"do"} ]},
   { id:"s02", niva:1, kalla:"skapad", ref:"konstruerad", sv:"Sonen tar brödet.", chunks:[
       {t:"ὁ υἱὸς",roll:"subj"},{t:"λαμβάνει",roll:"pred"},{t:"τὸν ἄρτον",roll:"do"} ]},
   { id:"s03", niva:1, kalla:"skapad", ref:"konstruerad (utan objekt)", sv:"Aposteln skriver.", chunks:[
       {t:"ὁ ἀπόστολος",roll:"subj"},{t:"γράφει",roll:"pred"} ]},
-
-  // Nivå 2
   { id:"s04", niva:2, kalla:"skapad", ref:"konstruerad", sv:"Människan ser ängeln.", chunks:[
       {t:"τὸν ἄγγελον",roll:"do"},{t:"βλέπει",roll:"pred"},{t:"ὁ ἄνθρωπος",roll:"subj"} ]},
   { id:"s05", niva:2, kalla:"skapad", ref:"konstruerad", sv:"Slavarna tar frukten.", chunks:[
       {t:"λαμβάνουσι",roll:"pred"},{t:"τὸν καρπὸν",roll:"do"},{t:"οἱ δοῦλοι",roll:"subj"} ]},
-
-  // Nivå 3
   { id:"s06", niva:3, kalla:"skapad", ref:"konstruerad", sv:"Vi ser himlen.", subjI:"vi", chunks:[
       {t:"βλέπομεν",roll:"pred"},{t:"τὸν οὐρανόν",roll:"do"} ]},
   { id:"s07", niva:3, kalla:"skapad", ref:"konstruerad", sv:"Han skriver orden.", subjI:"han/hon/det", chunks:[
       {t:"γράφει",roll:"pred"},{t:"τοὺς λόγους",roll:"do"} ]},
-
-  // Nivå 4
   { id:"s08", niva:4, kalla:"skapad", ref:"konstruerad", sv:"Herren skickar ängeln till folket.", chunks:[
       {t:"ὁ κύριος",roll:"subj"},{t:"πέμπει",roll:"pred"},{t:"τὸν ἄγγελον",roll:"do"},{t:"τῷ λαῷ",roll:"io"} ]},
   { id:"s09", niva:4, kalla:"skapad", ref:"konstruerad", sv:"Vi skriver en berättelse till bröderna.", subjI:"vi", chunks:[
       {t:"γράφομεν",roll:"pred"},{t:"λόγον",roll:"do"},{t:"τοῖς ἀδελφοῖς",roll:"io"} ]},
-
-  // Nivå 5
   { id:"s10", niva:5, kalla:"skapad", ref:"konstruerad", sv:"Vi ser Guds hus.", subjI:"vi", chunks:[
       {t:"βλέπομεν",roll:"pred"},{t:"τὸν οἶκον",roll:"do"},{t:"τοῦ θεοῦ",roll:"gen"} ]},
   { id:"s11", niva:5, kalla:"skapad", ref:"konstruerad (gen. på subjektet)", sv:"Herrens slav tar brödet.", chunks:[
       {t:"ὁ δοῦλος",roll:"subj"},{t:"τοῦ κυρίου",roll:"gen"},{t:"λαμβάνει",roll:"pred"},{t:"τὸν ἄρτον",roll:"do"} ]},
-
-  // Nivå 6
   { id:"s12", niva:6, kalla:"skapad", ref:"konstruerad", sv:"Du, o slav, ser herren.", subjI:"du", chunks:[
       {t:"ὦ δοῦλε",roll:"vok"},{t:"βλέπεις",roll:"pred"},{t:"τὸν κύριον",roll:"do"} ]},
   { id:"s13", niva:6, kalla:"skapad", ref:"konstruerad", sv:"Du, o människa, hör Guds ord.", subjI:"du", chunks:[
       {t:"ὦ ἄνθρωπε",roll:"vok"},{t:"ἀκούεις",roll:"pred"},{t:"τὸν λόγον",roll:"do"},{t:"τοῦ θεοῦ",roll:"gen"} ]},
-
-  // ══ SEMINARIUM 4 ════════════════════════════════════════════════════
-
-  // εἰμί i imperfekt — predikatsfyllnad (facit). impf:true → facit-not om ἦν/ἦσαν.
-  { id:"e01", niva:8, kalla:"kurs", ref:"Presentation s.14", impf:true, sv:"Jesus var Guds son.", chunks:[
+  { id:"e01", niva:8, kalla:"kurs", ref:"Presentation s.14", sv:"Jesus var Guds son.", impf:true, chunks:[
       {t:"ὁ Ἰησοῦς",roll:"subj"},{t:"ἦν",roll:"pred"},{t:"ὁ υἱὸς",roll:"pf"},{t:"τοῦ θεοῦ",roll:"gen"} ]},
-  { id:"e02", niva:8, kalla:"kurs", ref:"Presentation s.14", impf:true, sv:"Barnen var slavar.", chunks:[
+  { id:"e02", niva:8, kalla:"kurs", ref:"Presentation s.14", sv:"Barnen var slavar.", impf:true, chunks:[
       {t:"τὰ τέκνα",roll:"subj"},{t:"ἦσαν",roll:"pred"},{t:"δοῦλοι",roll:"pf"} ]},
-  { id:"e03", niva:8, kalla:"kurs", ref:"Presentation s.17", impf:true, sv:"Bröderna var goda.", chunks:[
+  { id:"e03", niva:8, kalla:"kurs", ref:"Presentation s.17", sv:"Bröderna var goda.", impf:true, chunks:[
       {t:"οἱ ἀδελφοὶ",roll:"subj"},{t:"ἦσαν",roll:"pred"},{t:"ἀγαθοί",roll:"pf"} ]},
-  { id:"e04", niva:8, kalla:"kurs", ref:"Presentation s.17", impf:true, sv:"Verket var vackert.", chunks:[
+  { id:"e04", niva:8, kalla:"kurs", ref:"Presentation s.17", sv:"Verket var vackert.", impf:true, chunks:[
       {t:"τὸ ἔργον",roll:"subj"},{t:"ἦν",roll:"pred"},{t:"καλόν",roll:"pf"} ]},
-  { id:"e05", niva:8, kalla:"kurs", ref:"Presentation s.17", impf:true, sv:"Verken var vackra.", chunks:[
+  { id:"e05", niva:8, kalla:"kurs", ref:"Presentation s.17", sv:"Verken var vackra.", impf:true, chunks:[
       {t:"τὰ ἔργα",roll:"subj"},{t:"ἦν",roll:"pred"},{t:"καλά",roll:"pf"} ]},
-
-  // Adverbial — prepositionsfras som en enhet (facit)
   { id:"a01", niva:9, kalla:"kurs", ref:"Presentation s.44", sv:"I huset skriver aposteln.", chunks:[
       {t:"ἐν τῷ οἴκῳ",roll:"adv"},{t:"ὁ ἀπόστολος",roll:"subj"},{t:"γράφει",roll:"pred"} ]},
   { id:"a02", niva:9, kalla:"kurs", ref:"Övningsblad 8", sv:"Bröderna leder barnen till huset.", chunks:[
       {t:"οἱ ἀδελφοὶ",roll:"subj"},{t:"ἄγουσι",roll:"pred"},{t:"τὰ τέκνα",roll:"do"},{t:"εἰς τὸν οἶκον",roll:"adv"} ]},
   { id:"a03", niva:9, kalla:"kurs", ref:"Övningsblad 7", sv:"Vi söker husbondens slavar på fältet.", subjI:"vi", chunks:[
       {t:"ζητοῦμεν",roll:"pred"},{t:"ἐν τῷ ἀγρῷ",roll:"adv"},{t:"τοὺς δούλους",roll:"do"},{t:"τοῦ κυρίου",roll:"gen"} ]},
-
-  // Adverbial — konstruerade (en preposition var: εἰς+ack, ἐν+dat, ἐκ+gen)
   { id:"a04", niva:9, kalla:"skapad", ref:"konstruerad (εἰς + ack.)", sv:"Herren skickar slaven till huset.", chunks:[
       {t:"ὁ κύριος",roll:"subj"},{t:"πέμπει",roll:"pred"},{t:"τὸν δοῦλον",roll:"do"},{t:"εἰς τὸν οἶκον",roll:"adv"} ]},
   { id:"a05", niva:9, kalla:"skapad", ref:"konstruerad (ἐν + dat.)", sv:"I huset skriver vi orden.", subjI:"vi", chunks:[
       {t:"ἐν τῷ οἴκῳ",roll:"adv"},{t:"γράφομεν",roll:"pred"},{t:"τοὺς λόγους",roll:"do"} ]},
   { id:"a06", niva:9, kalla:"skapad", ref:"konstruerad (ἐκ + gen.)", sv:"Aposteln leder barnen ut ur huset.", chunks:[
       {t:"ὁ ἀπόστολος",roll:"subj"},{t:"ἄγει",roll:"pred"},{t:"τὰ τέκνα",roll:"do"},{t:"ἐκ τοῦ οἴκου",roll:"adv"} ]},
-
-  // Feminina substantiv av första deklinationen (facit) — bonus, sprider sig över nivåerna
   { id:"f01", niva:2, kalla:"kurs", ref:"Breakout 3:5", sv:"Kärleken räddar själen.", chunks:[
       {t:"ἡ ἀγάπη",roll:"subj"},{t:"τὴν ψυχήν",roll:"do"},{t:"σῴζει",roll:"pred"} ]},
   { id:"f02", niva:5, kalla:"kurs", ref:"Övningsblad 9", sv:"Systrarna söker Guds rike.", chunks:[
       {t:"ζητοῦσιν",roll:"pred"},{t:"αἱ ἀδελφαὶ",roll:"subj"},{t:"τὴν βασιλείαν",roll:"do"},{t:"τοῦ θεοῦ",roll:"gen"} ]},
   { id:"f03", niva:6, kalla:"kurs", ref:"Övningsblad 3", sv:"Du, o broder, tror på änglarnas vackra bud.", subjI:"du", chunks:[
-      {t:"ὦ ἀδελφέ",roll:"vok"},{t:"πιστεύεις",roll:"pred"},{t:"ταῖς καλαῖς ἐντολαῖς",roll:"io"},{t:"τῶν ἀγγέλων",roll:"gen"} ]},
+      {t:"ὦ ἀδελφέ",roll:"vok"},{t:"πιστεύεις",roll:"pred"},{t:"ταῖς καλαῖς ἐντολαῖς",roll:"obj-dat"},{t:"τῶν ἀγγέλων",roll:"gen"} ]},
   { id:"f04", niva:1, kalla:"kurs", ref:"Övningsblad 2", sv:"Jesus gör sköna under.", chunks:[
       {t:"ὁ Ἰησοῦς",roll:"subj"},{t:"ποιεῖ",roll:"pred"},{t:"καλὰ σημεῖα",roll:"do"} ]},
   { id:"f05", niva:5, kalla:"kurs", ref:"Övningsblad 6", sv:"Änglarna talar Guds ord.", chunks:[
       {t:"λαλοῦσιν",roll:"pred"},{t:"οἱ ἄγγελοι",roll:"subj"},{t:"τοὺς λόγους",roll:"do"},{t:"τοῦ θεοῦ",roll:"gen"} ]},
-
-  /* ══ SEMINARIUM 5 — prepositioner, negation, personliga pronomen ══ */
   { id:"s5p1", niva:10, kalla:"kurs", ref:"Övningsblad 5:1", sv:"Slavarna leder flickorna till byn.", chunks:[
       {t:"ἄγουσιν",roll:"pred"},{t:"οἱ δοῦλοι",roll:"subj"},{t:"τὰς παρθένους",roll:"do"},{t:"εἰς τὴν κώμην",roll:"adv"} ]},
   { id:"s5p2", niva:10, kalla:"kurs", ref:"Presentation 5 s.34", sv:"Husbonden övervakar barnen framför templet.", chunks:[
@@ -315,12 +287,10 @@ const SATSER = [
       {t:"οὐ θεραπεύει",roll:"pred"},{t:"ἡ παρθένος",roll:"subj"},{t:"τὰς νόσους",roll:"do"} ]},
   { id:"s5r1", niva:12, kalla:"kurs", ref:"Breakout 5:3", sv:"Vi söker er.", subjI:"vi", chunks:[
       {t:"ζητοῦμεν",roll:"pred"},{t:"ὑμᾶς",roll:"do"} ]},
-  { id:"s5r2", niva:12, kalla:"kurs", ref:"Breakout 5:3", sv:"De predikar för er.", chunks:[
+  { id:"s5r2", niva:12, kalla:"kurs", ref:"Breakout 5:3", sv:"De predikar för er.", subjI:"de", chunks:[
       {t:"κηρύσσουσιν",roll:"pred"},{t:"ὑμῖν",roll:"io"} ]},
   { id:"s5r3", niva:12, kalla:"kurs", ref:"Breakout 5:3", sv:"Han talar om dig.", subjI:"han/hon/det", chunks:[
       {t:"λέγει",roll:"pred"},{t:"περὶ σοῦ",roll:"adv"} ]},
-
-  /* ══ SEMINARIUM 6 — 3:e person/demonstrativa/interrogativa pronomen, futurum ══ */
   { id:"s6a1", niva:13, kalla:"kurs", ref:"Breakout 6:1:1", sv:"Jag döper dig.", subjI:"jag", chunks:[
       {t:"βαπτίζω",roll:"pred"},{t:"σε",roll:"do"} ]},
   { id:"s6a2", niva:13, kalla:"kurs", ref:"Breakout 6:1:5", sv:"Hon döper dem.", chunks:[
@@ -338,15 +308,11 @@ const SATSER = [
   { id:"s6f1", niva:15, kalla:"kurs", ref:"Breakout 6:3:1", sv:"Lärjungarna ska tro.", chunks:[
       {t:"οἱ μαθηταὶ",roll:"subj"},{t:"πιστεύσουσιν",roll:"pred"} ]},
   { id:"s6f2", niva:15, kalla:"kurs", ref:"Breakout 6:3:2", sv:"Jag ska tro på Gud.", subjI:"jag", chunks:[
-      {t:"πιστεύσω",roll:"pred"},{t:"τῷ θεῷ",roll:"io"} ]},
+      {t:"πιστεύσω",roll:"pred"},{t:"τῷ θεῷ",roll:"obj-dat"} ]},
   { id:"s6f3", niva:15, kalla:"kurs", ref:"Breakout 6:3:3", sv:"Herren ska tala med dig.", chunks:[
       {t:"ὁ κύριος",roll:"subj"},{t:"λαλήσει",roll:"pred"},{t:"σοι",roll:"io"} ]},
   { id:"s6f4", niva:15, kalla:"kurs", ref:"Breakout 6:3:6", sv:"Apostlarna ska undervisa lärjungarna.", chunks:[
       {t:"οἱ ἀπόστολοι",roll:"subj"},{t:"παιδεύσουσι",roll:"pred"},{t:"τοὺς μαθητάς",roll:"do"} ]},
-
-  /* ══ SEMINARIUM 7 ═══════════════════════════════════════════════
-     Possessiva pronomen: den obetonade possessiven är en GENITIV och
-     analyseras som genitivattribut — samma roll som τοῦ κυρίου. */
   { id:"s7p1", niva:16, kalla:"kurs", ref:"Breakout 7:1:8", sv:"Min bror talar med dig.", chunks:[
       {t:"ὁ ἀδελφός",roll:"subj"},{t:"μου",roll:"gen"},{t:"λαλεῖ",roll:"pred"},{t:"σοι",roll:"io"} ]},
   { id:"s7p2", niva:16, kalla:"kurs", ref:"Breakout 7:1:9", sv:"Vår herre ska skicka båten till er.", chunks:[
@@ -355,8 +321,6 @@ const SATSER = [
       {t:"βαπτίσει",roll:"pred"},{t:"ἡ ἀδελφὴ",roll:"subj"},{t:"αὐτῶν",roll:"gen"},{t:"ἡμᾶς",roll:"do"} ]},
   { id:"s7p4", niva:16, kalla:"kurs", ref:"Breakout 7:2:4 (utbyggd)", sv:"Hans slav ser huset.", chunks:[
       {t:"ὁ τούτου",roll:"gen"},{t:"δοῦλος",roll:"subj"},{t:"βλέπει",roll:"pred"},{t:"τὸν οἶκον",roll:"do"} ]},
-
-  /* Imperfekt: augmentet framför stammen. -ον är både 1:a sg och 3:e pl. */
   { id:"s7i1", niva:17, kalla:"kurs", ref:"Breakout 7:3:2", sv:"Johannes döpte många människor.", chunks:[
       {t:"ὁ Ἰωάννης",roll:"subj"},{t:"ἐβάπτιζε",roll:"pred"},{t:"πολλοὺς ἀνθρώπους",roll:"do"} ]},
   { id:"s7i2", niva:17, kalla:"kurs", ref:"Breakout 7:3:3", sv:"Han undervisade dem i deras synagoga.", subjI:"han/hon/det", chunks:[
@@ -365,8 +329,6 @@ const SATSER = [
       {t:"ἐν ταῖς συναγωγαῖς",roll:"adv"},{t:"ἐκήρυσσεν",roll:"pred"} ]},
   { id:"s7i4", niva:17, kalla:"kurs", ref:"Övningsblad 7:II:14", sv:"Den stora folkhopen hörde hans ord.", chunks:[
       {t:"ὁ πολὺς ὄχλος",roll:"subj"},{t:"ἤκουεν",roll:"pred"},{t:"τὸν λόγον",roll:"do"},{t:"αὐτοῦ",roll:"gen"} ]},
-
-  /* Infinitiv som komplement till θέλω/μέλλω. */
   { id:"s7n1", niva:18, kalla:"kurs", ref:"Övningsblad 7:II:9", sv:"Vad tänker du göra?", subjI:"du", chunks:[
       {t:"τί",roll:"do"},{t:"μέλλεις",roll:"pred"},{t:"ποιεῖν",roll:"inf"} ]},
   { id:"s7n2", niva:18, kalla:"kurs", ref:"Presentation 7 s.22", sv:"Jag vill predika för er.", subjI:"jag", chunks:[
@@ -374,7 +336,7 @@ const SATSER = [
   { id:"s7n3", niva:18, kalla:"kurs", ref:"Presentation 7 s.22", sv:"Jag tänker predika för er.", subjI:"jag", chunks:[
       {t:"μέλλω",roll:"pred"},{t:"κηρύσσειν",roll:"inf"},{t:"ὑμῖν",roll:"io"} ]},
   { id:"s7n4", niva:18, kalla:"kurs", ref:"Övningsblad 7:II:10 (förkortad)", sv:"Gud kommer att slå dig.", chunks:[
-      {t:"τύπτειν",roll:"inf"},{t:"σε",roll:"do"},{t:"μέλλει",roll:"pred"},{t:"ὁ θεός",roll:"subj"} ]},
+      {t:"τύπτειν",roll:"inf"},{t:"σε",roll:"do"},{t:"μέλλει",roll:"pred"},{t:"ὁ θεός",roll:"subj"} ]}
 ];
 
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
@@ -417,7 +379,7 @@ function byggSteg(s){
     return steg;
   }
   const steg = ["pred","subj","do"];
-  ["io","adv","gen","vok"].forEach(r => { if(harRoll(s,r)) steg.push(r); });
+  ["io","obj-dat","adv","gen","vok"].forEach(r => { if(harRoll(s,r)) steg.push(r); });
   return steg;
 }
 
