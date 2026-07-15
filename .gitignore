@@ -4,3 +4,6 @@
 grammatikreferens.pdf
 # validera_pronomen_satser.py importerar formatera_pronomen_satser.py (samma katalog)
 __pycache__/
+# Kursens PDF:er/bilder per seminarium. Yttersta källan för json/seminarier.json,
+# men Oskars upphovsrätt — de committas inte. Extraherad data bor i json/.
+seminarier/

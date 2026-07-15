@@ -157,7 +157,7 @@ const SATSER = [
       {t:"ὁ ἀπόστολος",roll:"subj"},{t:"γράφει",roll:"pred"},{t:"τὸν λόγον",roll:"do"},{t:"τοῖς ἀδελφοῖς",roll:"io"} ]},
   { id:"k05", niva:3, kalla:"kurs", ref:"Övningsblad b:1", sv:"Ni ser himlen.", subjI:"ni", chunks:[
       {t:"τὸν οὐρανὸν",roll:"do"},{t:"βλέπετε",roll:"pred"} ]},
-  { id:"k06", niva:3, kalla:"kurs", ref:"Övningsblad b:2", sv:"Han/hon hör en berättelse.", subjI:"han/hon/det", chunks:[
+  { id:"k06", niva:3, kalla:"kurs", ref:"Övningsblad b:2", sv:"Han/hon/det hör en berättelse.", subjI:"han/hon/det", chunks:[
       {t:"ἀκούει",roll:"pred"},{t:"λόγον",roll:"do"} ]},
   { id:"k07", niva:5, kalla:"kurs", ref:"Övningsblad b:3", sv:"Slavarna griper herrens frukt.", chunks:[
       {t:"οἱ δοῦλοι",roll:"subj"},{t:"λαμβάνουσι",roll:"pred"},{t:"τὸν καρπὸν",roll:"do"},{t:"τοῦ κυρίου",roll:"gen"} ]},

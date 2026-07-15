@@ -90,7 +90,7 @@
     "chunks": [{"t": "τὸν οὐρανὸν", "roll": "do"}, {"t": "βλέπετε", "roll": "pred"}] },
 
   { "id": "k06", "niva": 3, "kalla": "kurs", "ref": "Övningsblad b:2", "i_seminarier": true,
-    "sv": "Han/hon hör en berättelse.", "subjI": "han/hon/det",
+    "sv": "Han/hon/det hör en berättelse.", "subjI": "han/hon/det",
     "chunks": [{"t": "ἀκούει", "roll": "pred"}, {"t": "λόγον", "roll": "do"}] },
 
   { "id": "k07", "niva": 5, "kalla": "kurs", "ref": "Övningsblad b:3", "i_seminarier": true,

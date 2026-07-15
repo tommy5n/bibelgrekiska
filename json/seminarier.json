@@ -58,6 +58,22 @@
    "facit_har": "σώζε / σώζεις / σώζω",
    "kalla": "7__O_vningsblad.pdf",
    "sida": 1
+  },
+  {
+   "korrekt": "Han/hon/det hör en berättelse.",
+   "typ": "skrivfel",
+   "not": "Facit skriver 'Hon/hon/det' — ren felskrivning för 'Han/hon/det', som samma facit anvander konsekvent pa alla andra 3:e person sg-former (esthiei, pempei, grafei i uppgift a).",
+   "facit_har": "Hon/hon/det hör en berättelse.",
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 2
+  },
+  {
+   "korrekt": "Folket hör apostelns ord.",
+   "typ": "översättningsfel",
+   "not": "Facit oversatter inte genitivattributet tou apostolou: 'Folket hor orden/berattelserna'. Samma facit oversatter genitiven i den narmast foljande meningen ('Herrarna hor slavens berattelse', tou doulou), sa utelamnandet ar ett forbiseende och inte ett val.",
+   "facit_har": "Folket hör orden/berättelserna.",
+   "kalla": "2__O_vningsblad.pdf",
+   "sida": 2
   }
  ],
  "_falt": {
@@ -6643,7 +6659,7 @@
    "sida": 1,
    "grekiska": "ἀκούει λόγον.",
    "instruktion": "och indirekt objekt) och översätt. Notera: inte alla satsdelar behöver finnas med i varje",
-   "oversattning": "Hon/hon/det hör en berättelse.",
+   "oversattning": "Han/hon/det hör en berättelse.",
    "satsdelar": [
     {
      "ord": "ἀκούει",
@@ -6654,7 +6670,16 @@
      "del": "direkt objekt"
     }
    ],
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "avvikelse_ref": [
+    {
+     "facit_har": "Hon/hon/det hör en berättelse.",
+     "korrekt": "Han/hon/det hör en berättelse.",
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 2,
+     "not": "Facit skriver 'Hon/hon/det' — ren felskrivning för 'Han/hon/det', som samma facit anvander konsekvent pa alla andra 3:e person sg-former (esthiei, pempei, grafei i uppgift a)."
+    }
+   ]
   },
   {
    "typ": "sats",
@@ -6672,7 +6697,7 @@
      "not": "Facit på angiven sida har fel accent; denna övningsmening (uppgiftssidan) är korrekt."
     }
    ],
-   "oversattning": "Slavarna tar emot herrens frukt.",
+   "oversattning": "Slavarna griper herrens frukt.",
    "ovningsgrupp": "satser"
   },
   {
@@ -6682,7 +6707,7 @@
    "sida": 1,
    "grekiska": "ἀκούει ὁ λαὸς τοὺς λόγους τοῦ ἀποστόλου.",
    "instruktion": "och indirekt objekt) och översätt. Notera: inte alla satsdelar behöver finnas med i varje",
-   "oversattning": "Folket hör orden/berättelserna.",
+   "oversattning": "Folket hör apostelns ord.",
    "satsdelar": [
     {
      "ord": "ἀκούει",
@@ -6697,7 +6722,16 @@
      "del": "direkt objekt"
     }
    ],
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "avvikelse_ref": [
+    {
+     "facit_har": "Folket hör orden/berättelserna.",
+     "korrekt": "Folket hör apostelns ord.",
+     "kalla": "2__O_vningsblad.pdf",
+     "sida": 2,
+     "not": "Facit oversatter inte genitivattributet tou apostolou: 'Folket hor orden/berattelserna'. Samma facit oversatter genitiven i den narmast foljande meningen ('Herrarna hor slavens berattelse', tou doulou), sa utelamnandet ar ett forbiseende och inte ett val."
+    }
+   ]
   },
   {
    "typ": "sats",
