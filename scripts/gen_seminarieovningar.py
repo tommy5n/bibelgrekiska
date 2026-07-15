@@ -15,6 +15,21 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "json" / "seminarier.json"
+INDEX = ROOT / "index.html"
+
+
+def css_version():
+    """app.css-stämpeln ur index.html — den är kanonisk.
+
+    Sidan bar tidigare en egen hårdkodad stämpel och hamnade på v=8 medan
+    index.html gick vidare till v=11: två cache-nycklar för samma fil, och en
+    besökare med den gamla nyckeln fick föråldrad CSS. Att ärva i stället för
+    att kopiera gör drift omöjlig — samma skäl som app.js ärver sin version via
+    import.meta.url."""
+    m = re.search(r'app\.css\?v=(\d+)', INDEX.read_text())
+    if not m:
+        raise SystemExit("Hittade ingen app.css?v=NN i index.html")
+    return m.group(1)
 
 # Vilka seminarier som renderas.
 SEMINARIER = [2, 3, 4, 5, 6, 7]
@@ -268,6 +283,7 @@ def main():
     # Webbversion
     ut = ROOT / "seminarieovningar.html"
     ut.write_text(SIDMALL.format(
+        css_v=css_version(),
         toc="\n".join(toc_block),
         sektioner="\n\n".join(sektion_block),
     ))
@@ -292,7 +308,7 @@ SIDMALL = '''<!doctype html>
     <meta name="theme-color" content="#a8842c" />
     <link rel="apple-touch-icon" href="appletouchicon.png" />
     <!-- Ärver Cardo/Spectral-fonter och :root-temat från appen -->
-    <link rel="stylesheet" href="app.css?v=8" />
+    <link rel="stylesheet" href="app.css?v={css_v}" />
     <style>
       /* ── Delad grammatikreferens-layout (.gr-*) ─────────────────── */
       body {{ background: var(--paper); }}
