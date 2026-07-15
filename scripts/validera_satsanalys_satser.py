@@ -6,14 +6,18 @@
 Banken är hand­författad och delvis självägande, vilket gör den känsligare än
 pronomen-satser.json:
 
-  i_seminarier=true (44 st)  satsen står ordagrant i seminarier.json:s `satser`.
-                             Den får INTE glida — grekiskan och översättningen
-                             jämförs mot mastern.
-  i_seminarier=false (51 st) mastern äger satsen själv: presentationsslides som
-                             aldrig extraherades, plus alla konstruerade. Här
-                             finns ingen källa att jämföra mot, så kontrollen är
-                             i stället att varje ord ska gå att härleda ur ett
-                             verifierat paradigm.
+  i_seminarier=true   satsen står ordagrant i seminarier.json:s `satser` och
+                      får INTE glida.
+  harledd_ur: "..."   satsen är en BEARBETNING av en mening arkivet har: spelet
+                      behöver EN sats, källan ger en periodmening. Fältet bär
+                      källmeningen ordagrant, och bankens ord måste vara en
+                      DELSEKVENS av den. Delsekvens (inte prefix) är rätt test:
+                      s5p1 plockar bort "ἐκ τοῦ οἴκου" mitt i satsen. Testet
+                      faller om spelet hittat på ett ord som inte står i källan.
+  varken eller        mastern äger satsen: konstruerade satser, samt de få
+                      kursmeningar som byggts ut och därför inte är en
+                      delsekvens av något. Kontrollen är att varje ord ska gå
+                      att härleda ur ett verifierat paradigm.
 
 Den viktigaste kontrollen är nog #3: en sats märkt i_seminarier=false som ändå
 DYKER UPP i seminarier.json fälls. Utan den skulle en senare extraktion tyst ge
@@ -24,6 +28,8 @@ Kontrollerna:
   1. id unika; niva finns i _nivaer; kalla är kurs|skapad
   2. i_seminarier=true → finns i seminarier.json, grekiskan+översättningen matchar
   3. i_seminarier=false → finns INTE i seminarier.json (annars: backporta)
+  3b. harledd_ur → källmeningen finns i seminarier.json och bankens ord är en
+      delsekvens av den
   4. varje ord i en sats mastern äger själv härleds ur en paradigmkälla
   5. roll finns i _nycklar.roll eller roll_reserverade
   6. varje sats har exakt ett pred; subj XOR subjI
@@ -77,6 +83,13 @@ def harledbar(w, lexikon, tillatna, lexikon_utan_akut):
 
 def satstext(s):
     return " ".join(c["t"] for c in s["chunks"])
+
+
+def delsekvens(liten, stor):
+    """Är varje ord i `liten` med i `stor`, i samma ordning? Fångar både
+    avkortning i änden och bortplock mitt i."""
+    it = iter(stor)
+    return all(any(w == s for s in it) for w in liten)
 
 
 def satsnyckel(text):
@@ -145,12 +158,24 @@ def main():
                 F(s["id"], "i_seminarier=false men satsen HAR dykt upp i "
                            "seminarier.json — sätt i_seminarier=true och "
                            "stäm av texten, annars finns två sanningar")
-            # 4. mastern äger satsen → varje ord måste gå att härleda
-            for w in tokens(gr):
-                if not harledbar(w, lexikon, tillatna, lexikon_utan_akut):
-                    F(s["id"], f'ordet "{w}" går inte att härleda ur någon '
-                               f'paradigmkälla — stavfel, eller lägg till det i '
-                               f'_ordforrad_utanfor_paradigm med skäl')
+            if "harledd_ur" in s:
+                # 3b. bearbetning av en arkiverad mening
+                kalltext = kalla.get(satsnyckel(s["harledd_ur"]))
+                if not kalltext:
+                    F(s["id"], f'harledd_ur finns inte i seminarier.json:\n'
+                               f'      {s["harledd_ur"]}')
+                elif not delsekvens([norm(w) for w in tokens(gr)],
+                                    [norm(w) for w in tokens(s["harledd_ur"])]):
+                    F(s["id"], "bankens ord är inte en delsekvens av harledd_ur "
+                               "— spelet har lagt till eller ändrat något som "
+                               "inte står i källan")
+            else:
+                # 4. mastern äger satsen → varje ord måste gå att härleda
+                for w in tokens(gr):
+                    if not harledbar(w, lexikon, tillatna, lexikon_utan_akut):
+                        F(s["id"], f'ordet "{w}" går inte att härleda ur någon '
+                                   f'paradigmkälla — stavfel, eller lägg till det i '
+                                   f'_ordforrad_utanfor_paradigm med skäl')
 
         # 5 + 6. chunks
         for c in s["chunks"]:
@@ -170,7 +195,9 @@ def main():
     fakta = {
         "satser": len(bank["satser"]),
         "validerbara_mot_seminarier": sum(1 for s in bank["satser"] if s["i_seminarier"]),
-        "mastern_ager_sjalv": sum(1 for s in bank["satser"] if not s["i_seminarier"]),
+        "harledda_ur_seminarier": sum(1 for s in bank["satser"] if "harledd_ur" in s),
+        "mastern_ager_sjalv": sum(1 for s in bank["satser"]
+                                  if not s["i_seminarier"] and "harledd_ur" not in s),
     }
     for k, v in fakta.items():
         if t[k] != v:
@@ -180,9 +207,10 @@ def main():
         print(f"{len(fel)} fel:\n" + "\n".join(fel))
         sys.exit(1)
 
-    print(f'OK — {fakta["satser"]} satser '
-          f'({fakta["validerbara_mot_seminarier"]} validerade mot seminarier.json, '
-          f'{fakta["mastern_ager_sjalv"]} som mastern äger själv), inga fel.\n')
+    print(f'OK — {fakta["satser"]} satser: '
+          f'{fakta["validerbara_mot_seminarier"]} validerade ordagrant mot seminarier.json, '
+          f'{fakta["harledda_ur_seminarier"]} härledda ur en arkiverad mening, '
+          f'{fakta["mastern_ager_sjalv"]} som mastern äger själv. Inga fel.\n')
 
     per_roll, per_niva = {}, {}
     for s in bank["satser"]:

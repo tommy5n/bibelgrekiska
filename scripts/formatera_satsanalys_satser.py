@@ -20,6 +20,11 @@ J = lambda v: json.dumps(v, ensure_ascii=False)
 def rad_sats(s):
     huvud = ", ".join(f"{J(k)}: {J(s[k])}" for k in
                       ("id", "niva", "kalla", "ref", "i_seminarier") if k in s)
+    # harledd_ur bär en hel källmening och får en egen rad. Rundgångskontrollen i
+    # main() faller om ett fält glöms här — den fångade just det när harledd_ur
+    # infördes, så lägg till nya fält i någon av de här listorna.
+    if "harledd_ur" in s:
+        huvud += ",\n    " + f'"harledd_ur": {J(s["harledd_ur"])}'
     andra = ", ".join(f"{J(k)}: {J(s[k])}" for k in ("sv", "subjI", "impf") if k in s)
     chunks = ", ".join("{" + f'"t": {J(c["t"])}, "roll": {J(c["roll"])}' + "}"
                        for c in s["chunks"])

@@ -8596,6 +8596,233 @@
    "oversattning": "Många hörde honom och trodde på honom",
    "falla": "ἀκούω tar ofta objektet i GENITIV (αὐτοῦ), och πιστεύω tar det i DATIV (αὐτῷ). Ingen av dem är possessiv här — det är verbens rektion.",
    "kommentar": "Augment vid vokalstam: ἀκούω → ἤκουον (ἐ + ἀ = η)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2_Presentation.pdf",
+   "sida": 36,
+   "grekiska": "ὁ ἄνθρωπος βλέπει τὸν ἄγγελον.",
+   "oversattning": "Människan ser ängeln.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2_Presentation.pdf",
+   "sida": 44,
+   "grekiska": "ὁ ἀπόστολος γράφει λόγον τοῖς ἀνθρώποις.",
+   "oversattning": "Aposteln skriver en berättelse för människorna.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2_Presentation.pdf",
+   "sida": 47,
+   "grekiska": "βλέπω τὸν οἶκον τοῦ ἀποστόλου.",
+   "oversattning": "Jag ser apostelns hus.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2_Presentation.pdf",
+   "sida": 50,
+   "grekiska": "ὦ ἄγγελε, βλέπεις τὸν οἶκον τοῦ ἀποστόλου.",
+   "oversattning": "Du, o ängel, ser apostelns hus.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2_Presentation.pdf",
+   "sida": 54,
+   "grekiska": "οἱ ἄνθρωποι βλέπουσι τὸν οὐρανόν.",
+   "oversattning": "Människorna ser himlen.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 2,
+   "kalla": "2_Presentation.pdf",
+   "sida": 54,
+   "grekiska": "ὁ ἀδελφὸς γράφει λόγον.",
+   "oversattning": "Brodern skriver en berättelse.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ὁ καλὸς ἀδελφὸς λέγει.",
+   "oversattning": "Den vackre brodern talar.",
+   "ovningsgrupp": "sjalvstudium"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "οἱ πιστοὶ ἀπόστολοι κηρύσσουσι τὸ ἅγιον εὐαγγέλιον.",
+   "oversattning": "De trogna apostlarna predikar det heliga evangeliet.",
+   "ovningsgrupp": "sjalvstudium"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "τὰ μικρὰ τέκνα βαπτίζετε.",
+   "oversattning": "Ni döper de små barnen.",
+   "ovningsgrupp": "sjalvstudium"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "ἐσθίομεν τὸν ἀγαθὸν ἄρτον.",
+   "oversattning": "Vi äter det goda brödet.",
+   "ovningsgrupp": "sjalvstudium"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__O_vningsblad.pdf",
+   "sida": 1,
+   "grekiska": "τὸν υἱὸν ὁ θεὸς πέμπει τοῖς ἀνθρώποις.",
+   "oversattning": "Gud skickar sin son till människorna.",
+   "ovningsgrupp": "sjalvstudium"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Presentation.pdf",
+   "sida": 41,
+   "grekiska": "ὁ ἄνθρωπός ἐστι πονηρός.",
+   "oversattning": "Människan är ond.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Presentation.pdf",
+   "sida": 41,
+   "grekiska": "τὸ εὐαγγέλιόν ἐστι καλόν.",
+   "oversattning": "Evangeliet är vackert.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Presentation.pdf",
+   "sida": 41,
+   "grekiska": "οἱ ἄνθρωποί εἰσι καλοί.",
+   "oversattning": "Människorna är vackra.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Presentation.pdf",
+   "sida": 42,
+   "grekiska": "ὁ Ἰησοῦς ἐστιν ὁ υἱὸς τοῦ θεοῦ.",
+   "oversattning": "Jesus är Guds son.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 3,
+   "kalla": "3__Presentation.pdf",
+   "sida": 41,
+   "grekiska": "τὰ εὐαγγέλιά ἐστι καλά.",
+   "oversattning": "Evangelierna är vackra.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Neutrum plural tar singularverb (ἐστι, inte εἰσι) — den klassiska regeln, som sliden visar utan att namnge den."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Presentation.pdf",
+   "sida": 14,
+   "grekiska": "ὁ Ἰησοῦς ἦν ὁ υἱὸς τοῦ θεοῦ.",
+   "oversattning": "Jesus var Guds son.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Presentation.pdf",
+   "sida": 14,
+   "grekiska": "τὰ τέκνα ἦσαν δοῦλοι.",
+   "oversattning": "Barnen var slavar.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Presentation.pdf",
+   "sida": 17,
+   "grekiska": "οἱ ἀδελφοὶ ἦσαν ἀγαθοί.",
+   "oversattning": "Bröderna var goda.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Presentation.pdf",
+   "sida": 17,
+   "grekiska": "τὸ ἔργον ἦν καλόν.",
+   "oversattning": "Verket var vackert.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Presentation.pdf",
+   "sida": 17,
+   "grekiska": "τὰ ἔργα ἦν καλά.",
+   "oversattning": "Verken var vackra.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Sliden skriver 'ἦν / ἦσαν' och tillåter båda. ἦν är den klassiska regeln: neutrum plural tar singularverb."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 4,
+   "kalla": "4__Presentation.pdf",
+   "sida": 44,
+   "grekiska": "ἐν τῷ οἴκῳ ὁ ἀπόστολος γράφει.",
+   "oversattning": "I huset skriver aposteln.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 54,
+   "grekiska": "οἱ φίλοι οὐ πιστεύουσιν.",
+   "oversattning": "Vännerna tror inte.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 22,
+   "grekiska": "θέλω κηρύσσειν ὑμῖν.",
+   "oversattning": "Jag vill predika för er.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 22,
+   "grekiska": "μέλλω κηρύσσειν ὑμῖν.",
+   "oversattning": "Jag tänker predika för er.",
+   "ovningsgrupp": "presentation"
   }
  ],
  "verb": [

@@ -51,6 +51,11 @@ GRUPPER = {
         "Översätt. Håll koll på de obetonade (enklitiska) pronomenformerna.", "#b0642f"),
     "sjalvstudium": ("Självstudium", "Meningar att översätta",
         "Meningar för självstudium (facit fanns i övningsbladet, s. 4).", "#8a5a86"),
+    # Presentationsexempel är INTE övningar utan genomgångna exempel från
+    # föreläsningen — de backportades till seminarier.json 2026-07-15 och dök
+    # då upp här. Egen sektion så det framgår att svaret gavs på plats.
+    "presentation": ("Presentation", "Genomgångna exempel",
+        "Exempel som gicks igenom på föreläsningen, med lärarens egen översättning. Inte övningar — men bra att pröva innan du läser facit.", "#6a6a6a"),
     # sem 6 (grupp härleds ur instruktion → breakout-1/2/3)
     "breakout-1": ("Breakout 1", "Personliga &amp; possessiva pronomen",
         "Översätt till svenska. Håll koll på enklitiska (obetonade) pronomen och på αὐτός i genitiv som possessivt ord.", "#3f7a4f"),
