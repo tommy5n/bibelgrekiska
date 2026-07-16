@@ -180,6 +180,17 @@ const ADJEKTIV = [
    n:{nom:["πολύ","πολλά"], gen:["πολλοῦ","πολλῶν"], dat:["πολλῷ","πολλοῖς"], ack:["πολύ","πολλά"], vok:["πολύ","πολλά"]}}
 ];
 
+/* SCOPE (medvetet, användarens beslut 2026-07-15): kongruens täcker sem 1–5,
+   INTE alla ord i mastrarna. Följande finns i adjektiv.json/ord.json men är
+   avsiktligt UTELÄMNADE här — lägg inte till dem utan att scope-frågan tas om:
+     adjektiv:   ἀγαπητός, ὑψηλός (sem 6)
+     substantiv: διδάσκαλος, οἶνος, βαπτιστής, παραβολή (sem 6), ἡγεμών, ἀμπελών (sem 7)
+   Sem-axeln HÄRLEDS ur substantiven nedan, så ett sem6/7-substantiv skulle skapa
+   ett nytt chip och bredda övningens omfång. Det är därför urvalet stannar vid
+   sem 5 och μέγας/πολύς ligger i en egen "oregelbundna"-hög i stället för under
+   ett sem7-chip. Handkurerat, INGEN generator (till skillnad från de flesta
+   andra snapshots) — just för att urvalet är redaktionellt. De 66 substantiven
+   + 17 adjektiven är dock byte-identiska med mastrarnas former (verifierat). */
 const SUBSTANTIV = [
   {lemma:"ἄνθρωπος", glosa:"människa", genus:"m", accenttyp:"proparoxyton", sem:[2], former:{nom:["ἄνθρωπος","ἄνθρωποι"], gen:["ἀνθρώπου","ἀνθρώπων"], dat:["ἀνθρώπῳ","ἀνθρώποις"], ack:["ἄνθρωπον","ἀνθρώπους"], vok:["ἄνθρωπε","ἄνθρωποι"]}},
   {lemma:"λόγος", glosa:"ord, berättelse", genus:"m", accenttyp:"paroxyton", sem:[2], former:{nom:["λόγος","λόγοι"], gen:["λόγου","λόγων"], dat:["λόγῳ","λόγοις"], ack:["λόγον","λόγους"], vok:["λόγε","λόγοι"]}},
