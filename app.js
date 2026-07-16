@@ -88,6 +88,12 @@ const SPEL = [
     desc: "Bygg om formen: presens ↔ imperfekt, futurum, imperativ, infinitiv",
     route: "#/former",
   },
+  {
+    nr: 13,
+    namn: "Uppslagsbok",
+    desc: "Slå upp och bläddra kursens ord — sök, filtrera, se översättningen",
+    route: "#/ordbok",
+  },
 ];
 
 const ROUTES = {
@@ -103,6 +109,7 @@ const ROUTES = {
   "/paradigm": () => import(`./vyer/paradigm.js${vv}`),
   "/prepositioner": () => import(`./vyer/prepositioner.js${vv}`),
   "/former": () => import(`./vyer/former.js${vv}`),
+  "/ordbok": () => import(`./vyer/ordbok.js${vv}`),
 };
 
 let current = null;

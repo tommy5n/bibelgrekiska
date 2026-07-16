@@ -10,7 +10,9 @@
   "status": "exakt = exakt traff mot facit | rattad = form justerad mot utgavan | form = bojningsform av annat lemma",
   "seminarium": "Lista over seminarier (2-7) dar ordet forekommer i ovningsbladens/breakout-rummens/presentationernas ordlistor. [] = ej i nagot seminariedack.",
   "kalla": "seminarium-ordlista = tillagt fran ett seminariums ordlista (ej fran >60-frekvenslistan); saknar falt = ursprunglig >60-lista.",
-  "ordklass": "Ordklass. 'pron.adv' = pronominellt adverb (ποῦ, πόθεν, πότε)."
+  "ordklass": "Ordklass. 'pron.adv' = pronominellt adverb (ποῦ, πόθεν, πότε).",
+  "genitiv": "Genitivform for uppslagsboken, avlast ur >60-PDF:en dar den visas (oforutsagbara 3:e-dekl-stammar: αἰων -> αἰωνος). Utelamnat dar formen ar regelbunden/forutsagbar.",
+  "not": "Kort uppslagsnot for ordboken (harledning, korsreferens, betydelsehistoria) ur >60-PDF:en. Skild fran 'anteckning' (som ar dataproveniens och inte visas)."
  },
  "_statistik": {
   "antal": 314,
@@ -209,6 +211,7 @@
   },
   {
    "lemma": "αἰών",
+   "genitiv": "αἰῶνος",
    "glosa": "evighet",
    "ordklass": "substantiv",
    "genus": "m",
@@ -302,6 +305,7 @@
   },
   {
    "lemma": "ἁμαρτία",
+   "not": "”misstag” i klassisk grekiska",
    "glosa": "synd",
    "ordklass": "substantiv",
    "genus": "f",
@@ -314,6 +318,7 @@
   },
   {
    "lemma": "ἀμήν",
+   "not": "hebreiska",
    "glosa": "amen, sannerligen",
    "ordklass": "partikel",
    "genus": null,
@@ -344,6 +349,7 @@
   },
   {
    "lemma": "ἀνήρ",
+   "genitiv": "ἀνδρός",
    "glosa": "man",
    "ordklass": "substantiv",
    "genus": "m",
@@ -532,6 +538,7 @@
   },
   {
    "lemma": "βαπτίζω",
+   "not": "av βάπτω ”indoppa”",
    "glosa": "döpa",
    "ordklass": "verb",
    "genus": null,
@@ -663,6 +670,7 @@
   },
   {
    "lemma": "γυνή",
+   "genitiv": "γυναικός",
    "glosa": "kvinna",
    "ordklass": "substantiv",
    "genus": "f",
@@ -1429,6 +1437,7 @@
   },
   {
    "lemma": "ἰδού",
+   "not": "imperativ av εἶδον",
    "glosa": "se!",
    "ordklass": "interjektion",
    "genus": null,
@@ -1813,6 +1822,7 @@
   },
   {
    "lemma": "μήτηρ",
+   "genitiv": "μητρός",
    "glosa": "mor",
    "ordklass": "substantiv",
    "genus": "f",
@@ -1869,6 +1879,7 @@
   },
   {
    "lemma": "νύξ",
+   "genitiv": "νυκτός",
    "glosa": "natt",
    "ordklass": "substantiv",
    "genus": "f",
@@ -1911,6 +1922,7 @@
   },
   {
    "lemma": "οἶκος",
+   "not": "= ἡ οἰκία",
    "glosa": "hus",
    "ordklass": "substantiv",
    "genus": "m",
@@ -2209,6 +2221,7 @@
   },
   {
    "lemma": "πατήρ",
+   "genitiv": "πατρός",
    "glosa": "far",
    "ordklass": "substantiv",
    "genus": "m",
@@ -2398,6 +2411,7 @@
   },
   {
    "lemma": "πούς",
+   "genitiv": "ποδός",
    "glosa": "fot",
    "ordklass": "substantiv",
    "genus": "m",
@@ -2488,6 +2502,7 @@
   },
   {
    "lemma": "πῦρ",
+   "genitiv": "πυρός",
    "glosa": "eld",
    "ordklass": "substantiv",
    "genus": "n",
@@ -2508,6 +2523,7 @@
   },
   {
    "lemma": "σάρξ",
+   "genitiv": "σαρκός",
    "glosa": "kött, kropp",
    "ordklass": "substantiv",
    "genus": "f",
@@ -2711,6 +2727,7 @@
   },
   {
    "lemma": "ὕδωρ",
+   "genitiv": "ὕδατος",
    "glosa": "vatten",
    "ordklass": "substantiv",
    "genus": "n",
@@ -2819,6 +2836,7 @@
   },
   {
    "lemma": "φῶς",
+   "genitiv": "φωτός",
    "glosa": "ljus",
    "ordklass": "substantiv",
    "genus": "n",
@@ -2839,6 +2857,8 @@
   },
   {
    "lemma": "χάρις",
+   "genitiv": "χάριτος",
+   "not": "ack. χάριν",
    "glosa": "nåd, gunst, tack",
    "ordklass": "substantiv",
    "genus": "f",
@@ -2849,6 +2869,7 @@
   },
   {
    "lemma": "χείρ",
+   "genitiv": "χειρός",
    "glosa": "hand",
    "ordklass": "substantiv",
    "genus": "f",
