@@ -1258,6 +1258,8 @@ body {
   --fs-6xl: 1.12rem;
   --fs-7xl: 1.6rem;
   --fs-8xl: 1.85rem;
+  --warn: #9a5b2a;
+  --warn-bg: #f7ede0;
 }
 .vy-satsanalys .r-pred {
   --c: #2c2620;
@@ -1394,6 +1396,38 @@ body {
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
   animation: rise__satsanalys 0.35s ease both;
   position: relative;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+/* Resultat-ram: tunn färgad kant + mjukt sken när satsen är avklarad.
+   Grön = rent löst, amber = felklick/gav upp. --ring driver pulsen nedan. */
+.vy-satsanalys .card.klar-ren {
+  --ring: var(--good);
+  border-color: var(--good);
+  box-shadow: 0 0 0 3px var(--good-bg);
+}
+.vy-satsanalys .card.klar-smuts {
+  --ring: var(--warn);
+  border-color: var(--warn);
+  box-shadow: 0 0 0 3px var(--warn-bg);
+}
+/* Kort puls när satsen just avklarats — ett overlay-ringlager som växer och
+   tonar ut, så kortets egen rise-animation lämnas orörd. */
+.vy-satsanalys .card.klar-ren::after,
+.vy-satsanalys .card.klar-smuts::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  pointer-events: none;
+  animation: puls__satsanalys 0.5s ease-out;
+}
+@keyframes puls__satsanalys {
+  0%   { box-shadow: 0 0 0 2px var(--ring); opacity: 0.85; }
+  100% { box-shadow: 0 0 0 11px var(--ring); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vy-satsanalys .card.klar-ren::after,
+  .vy-satsanalys .card.klar-smuts::after { animation: none; }
 }
 .vy-satsanalys .kalla {
   position: absolute;

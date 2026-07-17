@@ -13,7 +13,7 @@ const MARKUP = `<div class="vy vy-satsanalys">
 </div>
 
 <div class="stage">
-  <div class="card">
+  <div class="card" id="kort">
     <div class="kalla" id="kalla"></div>
 
     <div class="sats" id="sats"></div>
@@ -37,6 +37,7 @@ const MARKUP = `<div class="vy vy-satsanalys">
 
   <div class="streak">
     Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b>
+    &nbsp;·&nbsp; <b id="runda-kvar">0</b> kvar i rundan
   </div>
 </div>
 
@@ -356,11 +357,23 @@ const state = {
   smutsig: false,                         // felklick i denna sats?
   klar: false,                            // satsen avklarad?
   forra: null,                            // id, undvik upprepning
+  forraRen: true,                         // besvarades den nyss avklarade satsen rent?
+  ko: [],                                 // rundkö av sats-id (glosmodell)
+  kvar: 0,                                // distinkta satser kvar att klara i rundan
 };
 
 /* ── HJÄLPARE ────────────────────────────────────────────────────────── */
 const $ = id => document.getElementById(id);
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+function shuffle(arr){                                   // Fisher–Yates, som glosspelet
+  const a = arr.slice();
+  for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; }
+  return a;
+}
+/* Ny runda: blanda om det aktuella filtret (nivå ∩ källa) och nollställ räknaren. */
+function fyllKo(){ state.ko = shuffle(aktivaSatser().map(s => s.id)); state.kvar = state.ko.length; }
+/* Filter-/lägesbyte → färsk runda från början. */
+function nyRunda(){ state.forra = null; state.forraRen = true; fyllKo(); newQuestion(); }
 
 function aktivaSatser(){
   let p = SATSER.filter(s => state.valdaNivaer.has(s.niva));
@@ -418,9 +431,16 @@ function ladda(){
 function newQuestion(){
   uppdateraAntal();
   const pool = aktivaSatser();
-  let s, forsok = 0;
-  do { s = pick(pool); } while(pool.length > 1 && s.id === state.forra && ++forsok < 30);
+  // Missad föregående sats läggs sist i kön (återkommer inom rundan).
+  if(state.forra != null && !state.forraRen) state.ko.push(state.forra);
+  // Tom kö = alla klarade rent → ny runda, omblandad.
+  if(!state.ko.length) fyllKo();
+  let id = state.ko.shift();
+  // Undvik direkt upprepning när en ny runda just blandats om.
+  if(id === state.forra && state.ko.length){ state.ko.push(id); id = state.ko.shift(); }
+  const s = pool.find(x => x.id === id) || pick(pool);
   state.forra = s.id;
+  state.forraRen = false;                 // tills satsen besvarats rent
 
   state.sats = s;                         // upplöst en gång; render läser bara
   state.steg = byggSteg(s);
@@ -437,6 +457,12 @@ function render(){
   const s = state.sats;
   $("streak").textContent = state.streak;
   $("best").textContent = state.best;
+  $("runda-kvar").textContent = state.kvar;
+
+  // resultat-ram runt kortet: grön vid ren lösning, röd annars
+  const kort = $("kort");
+  kort.classList.toggle("klar-ren",  state.klar && state.forraRen);
+  kort.classList.toggle("klar-smuts", state.klar && !state.forraRen);
 
   // källflagga
   const kf = $("kalla");
@@ -528,7 +554,11 @@ function naestaSteg(){
   state.stegIdx++;
   if(state.stegIdx >= state.steg.length){
     state.klar = true;
-    if(!state.smutsig){ state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); } }
+    state.forraRen = !state.smutsig;
+    if(state.forraRen){
+      state.kvar = Math.max(0, state.kvar - 1);            // klarad rent → ur rundan
+      state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); }
+    }
   }
   render();
 }
@@ -567,7 +597,11 @@ function rattaFritt(){
   }
   const rentRatt = state.sats.chunks.every((c, i) => state.tilldelad[i] === c.roll);
   state.klar = true;
-  if(rentRatt){ state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); } }
+  state.forraRen = rentRatt;
+  if(rentRatt){
+    state.kvar = Math.max(0, state.kvar - 1);              // klarad rent → ur rundan
+    state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); }
+  }
   else state.streak = 0;
   render();
 }
@@ -619,8 +653,8 @@ function ritaControls(){
     mk("Rätta", "primary", rattaFritt);
   }
 }
-function visaLosning(){                                   // ger upp → svit nollas
-  state.smutsig = true; state.streak = 0; state.klar = true; render();
+function visaLosning(){                                   // ger upp → svit nollas, satsen stannar i rundan
+  state.smutsig = true; state.forraRen = false; state.streak = 0; state.klar = true; render();
 }
 
 /* ── VÄLJAREN ────────────────────────────────────────────────────────── */
@@ -636,7 +670,7 @@ function byggGridNiva(){
     b.onclick = () => {
       state.valdaNivaer.has(n) ? state.valdaNivaer.delete(n) : state.valdaNivaer.add(n);
       b.setAttribute("aria-pressed", state.valdaNivaer.has(n));
-      uppdateraSnabbChips(); spara(); newQuestion();
+      uppdateraSnabbChips(); spara(); nyRunda();
     };
     g.appendChild(b);
   });
@@ -670,8 +704,8 @@ function uppdateraLagesknappar(){
 }
 
 /* ── HÄNDELSER ───────────────────────────────────────────────────────── */
-$("mode-guidat").onclick = () => { state.mode="guidat"; uppdateraLagesknappar(); spara(); newQuestion(); };
-$("mode-fritt").onclick  = () => { state.mode="fritt";  uppdateraLagesknappar(); spara(); newQuestion(); };
+$("mode-guidat").onclick = () => { state.mode="guidat"; uppdateraLagesknappar(); spara(); nyRunda(); };
+$("mode-fritt").onclick  = () => { state.mode="fritt";  uppdateraLagesknappar(); spara(); nyRunda(); };
 
 $("picker-toggle").onclick = () => {
   const open = $("picker-toggle").getAttribute("aria-expanded") === "true";
@@ -679,35 +713,35 @@ $("picker-toggle").onclick = () => {
   $("picker-body").classList.toggle("hidden", open);
 };
 
-document.querySelector("[data-niva-all]").onclick   = () => { state.valdaNivaer = new Set(Object.keys(NIVAER).map(Number)); byggGridNiva(); spara(); newQuestion(); };
-document.querySelector("[data-niva-core]").onclick  = () => { state.valdaNivaer = new Set([1,2,3]); byggGridNiva(); spara(); newQuestion(); };
-document.querySelector("[data-niva-clear]").onclick = () => { state.valdaNivaer = new Set(); byggGridNiva(); spara(); newQuestion(); };
+document.querySelector("[data-niva-all]").onclick   = () => { state.valdaNivaer = new Set(Object.keys(NIVAER).map(Number)); byggGridNiva(); spara(); nyRunda(); };
+document.querySelector("[data-niva-core]").onclick  = () => { state.valdaNivaer = new Set([1,2,3]); byggGridNiva(); spara(); nyRunda(); };
+document.querySelector("[data-niva-clear]").onclick = () => { state.valdaNivaer = new Set(); byggGridNiva(); spara(); nyRunda(); };
 document.querySelector("[data-deck-sem2]").onclick  = () => {
   state.valdaNivaer = new Set([1,2,3,4,5,6]); state.kalla = "kurs";  // kasus & satslära
-  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); nyRunda();
 };
 document.querySelector("[data-deck-sem3]").onclick  = () => {
   state.valdaNivaer = new Set([7]); state.kalla = "kurs";        // εἰμί (presens), predikatsfyllnad
-  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); nyRunda();
 };
 document.querySelector("[data-deck-sem4]").onclick  = () => {
   state.valdaNivaer = new Set([8,9]); state.kalla = "kurs";     // εἰμί imperfekt + adverbial
-  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); nyRunda();
 };
 document.querySelector("[data-deck-sem5]").onclick  = () => {
   state.valdaNivaer = new Set([10,11,12]); state.kalla = "kurs";  // prepositioner, negation, pronomen
-  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); nyRunda();
 };
 document.querySelector("[data-deck-sem6]").onclick  = () => {
   state.valdaNivaer = new Set([13,14,15]); state.kalla = "kurs";  // pronomen (3:e/dem/interr), futurum
-  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); nyRunda();
 };
 document.querySelector("[data-deck-sem7]").onclick  = () => {
   state.valdaNivaer = new Set([16,17,18]); state.kalla = "kurs";  // possessiva, imperfekt, infinitiv
-  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); nyRunda();
 };
 document.querySelectorAll("#seg-kalla button").forEach(b =>
-  b.onclick = () => { state.kalla = b.dataset.kalla; uppdateraKallaKnappar(); spara(); newQuestion(); });
+  b.onclick = () => { state.kalla = b.dataset.kalla; uppdateraKallaKnappar(); spara(); nyRunda(); });
 
 // tangentbord: Enter → nästa/rätta
 __kh = e => {
