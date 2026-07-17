@@ -1591,13 +1591,14 @@ body {
   animation: rise__satsanalys 0.6s ease both;
 }
 .vy-satsanalys .grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 0.4rem;
 }
 .vy-satsanalys .toggle {
   font-family: inherit;
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-md);
+  text-align: left;
   padding: 0.35rem 0.7rem;
   border-radius: 8px;
   border: 1px solid var(--line);
@@ -1607,24 +1608,18 @@ body {
   transition: 0.15s;
   position: relative;
 }
+.vy-satsanalys .toggle .num {
+  display: inline-block;
+  min-width: 1.4em;
+  margin-right: 0.4rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.vy-satsanalys .toggle[aria-pressed="true"] .num {
+  color: inherit;
+}
 .vy-satsanalys .toggle:hover {
   border-color: var(--gold);
-}
-.vy-satsanalys .toggle[data-tip]:hover::after,
-.vy-satsanalys .toggle[data-tip]:focus-visible::after {
-  content: attr(data-tip);
-  position: absolute;
-  left: 50%;
-  bottom: calc(100% + 6px);
-  transform: translateX(-50%);
-  white-space: nowrap;
-  background: var(--ink);
-  color: var(--paper);
-  font-size: var(--fs-sm);
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  pointer-events: none;
-  z-index: 5;
 }
 .vy-satsanalys .seg {
   display: inline-flex;

@@ -52,7 +52,8 @@ const MARKUP = `<div class="vy vy-satsanalys">
         <button class="chip" data-niva-all>alla</button>
         <button class="chip" data-niva-core>kärna (1–3)</button>
         <button class="chip" data-niva-clear>rensa</button>
-        <button class="chip" data-deck-sem2>Seminarium 2 (facit)</button>
+        <button class="chip" data-deck-sem2>Seminarium 2 (kasus & satslära)</button>
+        <button class="chip" data-deck-sem3>Seminarium 3 (εἰμί, predikatsfyllnad)</button>
         <button class="chip" data-deck-sem4>Seminarium 4 (εἰμί impf + adverbial)</button>
         <button class="chip" data-deck-sem5>Seminarium 5 (prepositioner, negation, pronomen)</button>
         <button class="chip" data-deck-sem6>Seminarium 6 (pronomen, futurum)</button>
@@ -619,8 +620,8 @@ function byggGridNiva(){
   Object.keys(NIVAER).forEach(nStr => {
     const n = +nStr;
     const b = document.createElement("button");
-    b.className = "toggle"; b.textContent = n;
-    b.dataset.tip = "Nivå " + n + " — " + NIVAER[n];
+    b.className = "toggle";
+    b.innerHTML = `<span class="num">${n}</span>${NIVAER[n]}`;
     b.setAttribute("aria-label", "Nivå " + n + ", " + NIVAER[n]);
     b.setAttribute("aria-pressed", state.valdaNivaer.has(n));
     b.onclick = () => {
@@ -641,7 +642,8 @@ function uppdateraSnabbChips(){
     ["[data-niva-all]",   alla],
     ["[data-niva-core]",  new Set([1,2,3])],
     ["[data-niva-clear]", new Set()],
-    ["[data-deck-sem2]",  alla],
+    ["[data-deck-sem2]",  new Set([1,2,3,4,5,6])],
+    ["[data-deck-sem3]",  new Set([7])],
     ["[data-deck-sem4]",  new Set([8,9])],
     ["[data-deck-sem5]",  new Set([10,11,12])],
     ["[data-deck-sem6]",  new Set([13,14,15])],
@@ -672,7 +674,11 @@ document.querySelector("[data-niva-all]").onclick   = () => { state.valdaNivaer 
 document.querySelector("[data-niva-core]").onclick  = () => { state.valdaNivaer = new Set([1,2,3]); byggGridNiva(); spara(); newQuestion(); };
 document.querySelector("[data-niva-clear]").onclick = () => { state.valdaNivaer = new Set(); byggGridNiva(); spara(); newQuestion(); };
 document.querySelector("[data-deck-sem2]").onclick  = () => {
-  state.valdaNivaer = new Set(Object.keys(NIVAER).map(Number)); state.kalla = "kurs";
+  state.valdaNivaer = new Set([1,2,3,4,5,6]); state.kalla = "kurs";  // kasus & satslära
+  byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
+};
+document.querySelector("[data-deck-sem3]").onclick  = () => {
+  state.valdaNivaer = new Set([7]); state.kalla = "kurs";        // εἰμί (presens), predikatsfyllnad
   byggGridNiva(); uppdateraKallaKnappar(); spara(); newQuestion();
 };
 document.querySelector("[data-deck-sem4]").onclick  = () => {
