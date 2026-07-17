@@ -74,6 +74,14 @@
    "facit_har": "Folket hör orden/berättelserna.",
    "kalla": "2__O_vningsblad.pdf",
    "sida": 2
+  },
+  {
+   "korrekt": "τί ἐστιν;",
+   "typ": "accentfel",
+   "not": "Slide 35 skriver τί ἐστίν; med akut på ἐστίν, men τί är oxytont — efter oxyton behåller enklitikan ingen egen accent (jfr. τίς ἐστιν; på samma slide, som är rätt). Standardformen är τί ἐστιν; (t.ex. Mark 1:27 τί ἐστιν τοῦτο;). Verifierad mot Smyths enklitikaregler.",
+   "facit_har": "τί ἐστίν;",
+   "kalla": "6__Presentation.pdf",
+   "sida": 35
   }
  ],
  "_falt": {
@@ -192,6 +200,30 @@
    "seminarium": 5,
    "typ": "kursoversikt",
    "antal_sidor": 1
+  },
+  {
+   "kalla": "6__Presentation.pdf",
+   "seminarium": 6,
+   "typ": "presentation",
+   "antal_sidor": 65
+  },
+  {
+   "kalla": "6__O_vningsblad.pdf",
+   "seminarium": 6,
+   "typ": "ovningsblad",
+   "antal_sidor": 6
+  },
+  {
+   "kalla": "6__Breakout_rooms.pdf",
+   "seminarium": 6,
+   "typ": "breakout",
+   "antal_sidor": 2
+  },
+  {
+   "kalla": "6__Pronomen.pdf",
+   "seminarium": 6,
+   "typ": "tabellblad",
+   "antal_sidor": 3
   },
   {
    "kalla": "7__Presentation.pdf",
@@ -8808,6 +8840,314 @@
   },
   {
    "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 34,
+   "grekiska": "ἡ πονηρὰ νόσος",
+   "oversattning": "den onda sjukdomen",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 34,
+   "grekiska": "ἡ μακρὰ ὁδός",
+   "oversattning": "den långa vägen",
+   "ovningsgrupp": "presentation",
+   "falla": "ὁδός ser maskulin ut på ändelsen men är feminin — adjektivet (μακρά) och artikeln (ἡ) avslöjar genus."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 48,
+   "grekiska": "ἐν ἀρχῇ",
+   "oversattning": "i begynnelsen",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Grekiskan utelämnar ofta artikeln där svenskan har den."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 48,
+   "grekiska": "ἐν ἀγρῷ",
+   "oversattning": "på fältet",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 62,
+   "grekiska": "πρὸς ἐμέ",
+   "oversattning": "till/hos mig",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Betonad form — de betonade formerna sätts ut efter prepositioner."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 62,
+   "grekiska": "ἐγὼ μὲν λέγω, σὺ δὲ ἀκούεις.",
+   "oversattning": "Jag talar och du lyssnar.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Betonade former används för emfas, särskilt i motsatser: μέν … δέ ställer ’jag’ mot ’du’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 64,
+   "grekiska": "κηρύσσομέν σοι.",
+   "oversattning": "Vi predikar för dig.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Obetonad (enklitisk) form — varken preposition eller emfas. Enklitikonet kastar en akut bakåt: κηρύσσομεν + σοι → κηρύσσομέν σοι."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 64,
+   "grekiska": "πιστεύετέ μοι.",
+   "oversattning": "Ni tror på mig.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 5,
+   "kalla": "5__Presentation.pdf",
+   "sida": 64,
+   "grekiska": "βλέπομέν σε.",
+   "oversattning": "Vi ser dig.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 8,
+   "grekiska": "περὶ σοῦ",
+   "oversattning": "om dig",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 9,
+   "grekiska": "ὁ υἱός μου",
+   "oversattning": "min son",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Obetonat possessivt genitiv efter substantivet."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 13,
+   "grekiska": "πρὸς ἡμᾶς",
+   "oversattning": "till oss",
+   "ovningsgrupp": "presentation",
+   "kommentar": "I plural finns inga obetonade former kvar — samma form används vid preposition, betoning och icke-betoning."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 13,
+   "grekiska": "κηρύσσομεν ὑμῖν.",
+   "oversattning": "Vi predikar för er.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 13,
+   "grekiska": "βλέπομεν ὑμᾶς.",
+   "oversattning": "Vi ser er.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 14,
+   "grekiska": "ἡμεῖς μὲν λέγομεν, ὑμεῖς δὲ ἀκούετε.",
+   "oversattning": "Vi talar och ni lyssnar.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Nominativ ἡμεῖς/ὑμεῖς är alltid betonad — personändelsen ensam (-ομεν, -ετε) ger redan ett obetonat ’vi’, ’ni’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 17,
+   "grekiska": "βλέπομεν αὐτόν.",
+   "oversattning": "Vi ser honom.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 17,
+   "grekiska": "κηρύσσομεν αὐτῇ.",
+   "oversattning": "Vi predikar för henne.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 17,
+   "grekiska": "λέγομεν αὐτοῖς.",
+   "oversattning": "Vi säger till dem.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Dativ utan preposition — jämför λέγομεν πρὸς αὐτούς, som betyder detsamma."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 17,
+   "grekiska": "λέγομεν πρὸς αὐτούς.",
+   "oversattning": "Vi säger till dem.",
+   "ovningsgrupp": "presentation",
+   "falla": "αὐτός-formerna står kvar i sin obetonade roll även efter preposition — till skillnad från ἐγώ/σύ, som byter till betonad form."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 23,
+   "grekiska": "λέγετε περὶ ἐμοῦ.",
+   "oversattning": "Ni talar om mig.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Oskar påminner om att paradigmens glosor (’min’, ’åt mig’) är FÖRENKLINGAR — de fungerar vid objekt, inte efter preposition."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 23,
+   "grekiska": "λαλῶ ὑμῖν.",
+   "oversattning": "Jag talar med er.",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 28,
+   "grekiska": "οὗτός ἐστι προφήτης.",
+   "oversattning": "Denne är en profet.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Självständigt/substantiviskt bruk — demonstrativen är här en betonad form av ’han’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 28,
+   "grekiska": "δίκαιος καὶ ἅγιός ἐστιν οὗτος ὁ προφήτης.",
+   "oversattning": "Rättrådig och helig är denne profet.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Förenat/adjektiviskt bruk. δίκαιος och ἅγιος står predikativt (utanför artikelns grepp)."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 30,
+   "grekiska": "οὗτος ὁ προφήτης",
+   "oversattning": "den här profeten",
+   "ovningsgrupp": "presentation",
+   "kommentar": "οὗτος pekar ut det som ligger NÄRA talaren."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 30,
+   "grekiska": "ἐκεῖνος ὁ προφήτης",
+   "oversattning": "den där profeten",
+   "ovningsgrupp": "presentation",
+   "kommentar": "ἐκεῖνος pekar ut det som ligger LÄNGRE BORT från talaren."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 35,
+   "grekiska": "τί ἐστιν;",
+   "oversattning": "Vad är det?",
+   "ovningsgrupp": "presentation",
+   "falla": "Grekiskan saknar vårt frågetecken — semikolon (;) markerar frågan."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 35,
+   "grekiska": "τίς ἄνθρωπος λέγει;",
+   "oversattning": "Vilken människa pratar?",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Förenat bruk: τίς står till ett substantiv."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 35,
+   "grekiska": "τίνας παρθένους βλέπομεν;",
+   "oversattning": "Vilka flickor ser vi?",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 43,
+   "grekiska": "πᾶς ἄνθρωπος",
+   "oversattning": "varje människa",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 43,
+   "grekiska": "πᾶσα Ἱεροσόλυμα",
+   "oversattning": "hela Jerusalem",
+   "ovningsgrupp": "presentation",
+   "kommentar": "πᾶς i singular betyder ’varje’ vid räknebara ord, ’hel’ vid odelbara."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 43,
+   "grekiska": "πάντες ἄνθρωποι",
+   "oversattning": "alla människor",
+   "ovningsgrupp": "presentation",
+   "kommentar": "I plural blir πᾶς ’alla’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 6,
+   "kalla": "6__Presentation.pdf",
+   "sida": 47,
+   "grekiska": "κακῶς πάσχω.",
+   "oversattning": "Jag lider ont.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Adverbet bildas ur adjektivets genitiv maskulinum plural: κακός → κακῶν → κακῶς. Alltså ’jag lider svårt’."
+  },
+  {
+   "typ": "sats",
    "seminarium": 7,
    "kalla": "7__Presentation.pdf",
    "sida": 22,
@@ -8823,6 +9163,151 @@
    "grekiska": "μέλλω κηρύσσειν ὑμῖν.",
    "oversattning": "Jag tänker predika för er.",
    "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 22,
+   "grekiska": "θέλει ἀγαθὸς εἶναι.",
+   "oversattning": "Han vill vara god.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "εἶναι är εἰμί:s oregelbundna infinitiv. Predikatsfyllnaden (ἀγαθός) står i nominativ."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 31,
+   "grekiska": "ὁ μέγας οἶκος",
+   "oversattning": "det stora huset",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 31,
+   "grekiska": "μεγάλη ἁμαρτία",
+   "oversattning": "en stor synd",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Femininum bygger på den längre stammen μεγαλ- och är helt regelbunden."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 31,
+   "grekiska": "μέγα σημεῖον",
+   "oversattning": "ett stort tecken",
+   "ovningsgrupp": "presentation",
+   "falla": "μέγα (inte *μέγαν) — neutrum nominativ/ackusativ är en av de fem oregelbundna cellerna."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 37,
+   "grekiska": "πολὺς καρπός",
+   "oversattning": "mycket frukt",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 37,
+   "grekiska": "πολλὰ σημεῖα",
+   "oversattning": "många tecken",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Samma ord i plural betyder ’många’, i singular ’mycken’ — på den längre stammen πολλ-."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 43,
+   "grekiska": "ὁ υἱὸς ἡμῶν",
+   "oversattning": "vår son",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Obetonat possessivt uttryck: genitiv av det personliga pronomenet EFTER substantivet."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 43,
+   "grekiska": "ὁ υἱὸς ὑμῶν",
+   "oversattning": "er son",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 43,
+   "grekiska": "ὁ υἱὸς αὐτῶν",
+   "oversattning": "deras son",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 44,
+   "grekiska": "μου ὁ υἱός",
+   "oversattning": "min son",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Det obetonade possessivet står i regel efter substantivet, men kan också stå före artikeln."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 46,
+   "grekiska": "ὁ τούτου οἶκος",
+   "oversattning": "hans hus",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Betonat possessivt i 3:e person = genitiv av οὗτος/ἐκεῖνος, mellan artikel och substantiv."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 46,
+   "grekiska": "ὁ ἐμὸς υἱός",
+   "oversattning": "min son",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Betonat possessivt i 1:a/2:a person = eget adjektiv (ἐμός), mellan artikel och substantiv."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 46,
+   "grekiska": "ὁ ἐμὸς ὁ υἱός",
+   "oversattning": "min son",
+   "ovningsgrupp": "presentation",
+   "falla": "Artikeln kan upprepas — samma betydelse, samma betonade konstruktion."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 47,
+   "grekiska": "οἱ ἀδελφοὶ ἡμῶν",
+   "oversattning": "våra bröder",
+   "ovningsgrupp": "presentation"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 7,
+   "kalla": "7__Presentation.pdf",
+   "sida": 60,
+   "grekiska": "ἄνθρωπός τις",
+   "oversattning": "någon människa",
+   "ovningsgrupp": "presentation",
+   "kommentar": "Förenat bruk. τις är enklitiskt och kastar en akut bakåt (ἄνθρωπος + τις → ἄνθρωπός τις)."
   }
  ],
  "verb": [

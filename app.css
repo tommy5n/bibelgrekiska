@@ -2039,6 +2039,8 @@ body {
 
 /* intro-rutor */
 .vy-studieguide .guide-info,
+.vy-studieguide .bakgrund,
+.vy-studieguide .kursoversikt,
 .vy-studieguide .principer {
   background: var(--card);
   border: 1px solid var(--line);
@@ -2051,6 +2053,8 @@ body {
   margin-bottom: 2.4rem;
 }
 .vy-studieguide .guide-info h2,
+.vy-studieguide .bakgrund h2,
+.vy-studieguide .kursoversikt h2,
 .vy-studieguide .principer h2 {
   font-size: var(--fs-2xs);
   text-transform: uppercase;
@@ -2061,6 +2065,51 @@ body {
 }
 .vy-studieguide .guide-info p {
   margin: 0;
+}
+
+/* bakgrund (NT + koine) — samma styckeform som begreppen i kapitlen */
+.vy-studieguide .bakgrund-item + .bakgrund-item {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--line);
+}
+.vy-studieguide .bakgrund .rubrik {
+  font-weight: 600;
+  margin: 0 0 0.15rem;
+}
+.vy-studieguide .bakgrund p {
+  margin: 0;
+}
+
+/* Oskars kursöversikt 1:1–5 */
+.vy-studieguide .kursoversikt .ko-inledning {
+  margin: 0 0 0.9rem;
+  color: var(--ink-soft);
+  font-size: var(--fs-lg);
+}
+.vy-studieguide .ko-avd + .ko-avd {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--line);
+}
+.vy-studieguide .ko-avd .rubrik {
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+}
+.vy-studieguide .ko-avd ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+.vy-studieguide .ko-avd li {
+  margin: 0.15rem 0;
+}
+.vy-studieguide .ko-avd a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-soft);
+}
+.vy-studieguide .ko-avd a:hover {
+  border-color: var(--gold);
 }
 .vy-studieguide .princip-item {
   display: flex;
@@ -2254,16 +2303,30 @@ body {
   content: "— ";
 }
 
-/* slå upp */
+/* gör (seminarieövningarna) + slå upp (grammatikreferensen) — samma länkrad,
+   olika mål: uppgifterna med facit respektive tabellkorten. */
+.vy-studieguide .gor,
 .vy-studieguide .slaupp {
   padding: 0.2rem 0.2rem 0;
   margin-bottom: 0.6rem;
 }
+.vy-studieguide .gor .tag,
 .vy-studieguide .slaupp .tag {
   display: inline;
   margin-right: 0.5rem;
   margin-bottom: 0;
 }
+/* Länkarna sätts utan blanktecken emellan och är var för sig nowrap — utan en
+   egen radbrytningsmekanism finns ingen brytpunkt alls, och en lång rad (sem 7:s
+   Gör har sex länkar) tvingar fram horisontell scroll i hela sidan. Flex-wrap
+   ger brytpunkten; gap ersätter den gamla a + a-marginalen. */
+.vy-studieguide .gor .lankar,
+.vy-studieguide .slaupp .lankar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.7rem;
+}
+.vy-studieguide .gor .lankar a,
 .vy-studieguide .slaupp .lankar a {
   color: var(--gold);
   text-decoration: none;
@@ -2271,11 +2334,9 @@ body {
   font-size: var(--fs-lg);
   white-space: nowrap;
 }
+.vy-studieguide .gor .lankar a:hover,
 .vy-studieguide .slaupp .lankar a:hover {
   border-color: var(--gold);
-}
-.vy-studieguide .slaupp .lankar a + a {
-  margin-left: 0.7rem;
 }
 
 /* mål */

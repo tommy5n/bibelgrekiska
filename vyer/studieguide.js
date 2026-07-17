@@ -3,6 +3,45 @@
 // bara innehåll. Varje seminarium: Nytt denna gång → Begrepp → Fällor → Öva → Slå upp.
 export function teardown(){}
 
+// Bakgrunden Oskar ger på seminarium 1 (slides 5–7) innan alfabetet börjar.
+// Den är kontext, inte grammatik, och hade ingen plats på sajten förrän nu —
+// grammatikreferensen är byggd av böjningstabeller. Källa: 1_Presentation.pdf.
+const BAKGRUND = [
+  { rubrik:"Nya testamentet",
+    text:"NT är Bibelns andra del: <b>27 skrifter</b> av olika längd, författade omkring <b>50–130 e.Kr.</b> — fyra evangelier om Jesu liv, död och uppståndelse; Apostlagärningarna om hur läran spreds från Jerusalem till Rom; 21 brev, bland andra Paulus’, till församlingar och enskilda; och Uppenbarelseboken om framtiden. Alla är skrivna på koine-grekiska." },
+  { rubrik:"Från attiska till koine",
+    text:"<b>Attiskan</b> talades i och kring Athen under klassisk tid (480–336 f.Kr.). Under 400-talet påverkades den av <b>östjoniskan</b>, som talades av greker i dagens Turkiet: <span class='grek'>σσ</span> ersatte <span class='grek'>ττ</span>, <span class='grek'>γίνωσκω</span> ersatte <span class='grek'>γιγνώσκω</span>. Denna nya attiska — ”storattiskan” (<i>Great Attic</i>) — spreds genom det athenska imperiet." },
+  { rubrik:"Därför heter den ’koine’",
+    text:"Under 300-talet bar <b>Alexander den stores</b> erövringar storattiskan vidare över östra Medelhavsområdet, Egypten inräknat, där den blev ett gemensamt kulturspråk för handel, förvaltning, diplomati och utbildning — talat av greker och icke-greker. Språket <b>förenklades</b> och ordförrådet växte. Den varianten kallas <b>koine</b>, ’gemensam’ (underförstått: dialekt). På 200-talet lät judar i Alexandria översätta Gamla testamentet till koine — <b>Septuaginta</b> (LXX) — och tidiga kristna skrev ned evangelierna på en talspråklig koine." },
+];
+
+// Oskars egen paragrafkarta (5__Kursoversikt.pdf). NB: den täcker BARA 1:1–5 —
+// rubriken säger det, så den inte läses som en karta över hela kursen.
+const KURSOVERSIKT = [
+  { avd:"I. Alfabet och uttal", punkter:[
+    "Alfabetet (B § 12)", "Diftonger (§ 16:1–2)", "ng-ljud (§ 15:2)",
+    "Diakritiska tecken: spiritus asper/lenis (§§ 18, 20), accenter (§ 19)",
+    "Iota subscriptum/adscriptum (§ 16:2)",
+  ] },
+  { avd:"II. Morfologi", punkter:[
+    "Bestämd artikel (§ 51)",
+    "Substantiv av 1:a dekl. (<span class='grek'>ἡ ἐκκλησία, ἡ ἀρχή, ἡ θάλασσα</span>) och 2:a dekl. (<span class='grek'>ὁ ἄνθρωπος, τὸ ἔργον</span>) (§§ 53–54, 61–64) — samt personnamn (§ 97:1, 5), maskulina i 1:a dekl. (<span class='grek'>ὁ μαθητής</span>, §§ 56–58) och feminina i 2:a dekl. (<span class='grek'>ἡ νόσος</span>, § 60)",
+    "Adjektiv av 1:a och 2:a dekl. (<span class='grek'>ἀγαθός, δίκαιος</span>) (§ 99) — samt ”adjektiv med två slut” (§ 101) och substantiverade adjektiv (§ 224:5)",
+    "ω-verb i presens, inklusive kontraherade på <span class='grek'>-έω</span> (§ 146:3; 148)",
+    "<span class='grek'>εἰμί</span> i presens och imperfekt (§ 156)",
+    "Negationen <span class='grek'>οὐ</span> och dess varianter (§ 298:1)",
+    "Personliga pronomen (§ 116:1)",
+  ] },
+  { avd:"III. Syntax", punkter:[
+    "Satsanalys: subjekt, predikat, direkt och indirekt objekt, predikatsfyllnad, rums- och tidsadverbial",
+    "Kongruens — adjektiv, predikatsfyllnad, även neutrala substantiv i plural (§ 223:1)",
+    "Hur prepositioner fungerar tillsammans med substantiv (§ 240:1, 6, 7)",
+  ] },
+  { avd:"IV. Övrigt", punkter:[
+    "Kunna navigera i en ordlista/ordbok — <a href='#/ordbok'>öva i Uppslagsboken</a>",
+  ] },
+];
+
 // Genomgående principer — den röda tråd som håller genom hela kursen.
 const PRINCIPER = [
   { rubrik:"Ändelsen bär rollen, inte ordföljden",
@@ -71,8 +110,15 @@ const SEMINARIER = [
     ],
     ova:[
       { spel:"Glosor", route:"#/glosor", filter:"Sem 2", vad:"starta ordförrådsmotorn — och sedan några minuter varje dag" },
+      { spel:"Uppslagsboken", route:"#/ordbok", vad:"kursens ordlista: slå upp och bläddra orden du möter (kursmål IV)" },
       { spel:"Kasus", route:"#/kasus", filter:"maskulinum", vad:"nöt själva kasusformerna" },
       { spel:"Satsanalys", route:"#/satsanalys", vad:"läs rollen ur kasus, inte ur ordföljden" },
+    ],
+    gor:[
+      { text:"Verbformer", anchor:"sem2-verbformer" },
+      { text:"Satser", anchor:"sem2-satser" },
+      { text:"Breakout", anchor:"sem2-breakout" },
+      { text:"Presentationens exempel", anchor:"sem2-presentation" },
     ],
     slaupp:[
       { text:"Kasus", anchor:"kasus" },
@@ -115,6 +161,12 @@ const SEMINARIER = [
       { spel:"Kongruens", route:"#/kongruens", filter:"attributivt", vad:"adjektivets böjning och accentläge" },
       { spel:"Satsanalys", route:"#/satsanalys", vad:"nu med εἰμί-satser och predikatsfyllnad" },
       { spel:"Verb", route:"#/verb", filter:"εἰμί", vad:"böj ’vara’ i presens" },
+    ],
+    gor:[
+      { text:"Satser", anchor:"sem3-satser" },
+      { text:"Substantivfraser", anchor:"sem3-substantivfraser" },
+      { text:"Självstudium", anchor:"sem3-sjalvstudium" },
+      { text:"Presentationens exempel", anchor:"sem3-presentation" },
     ],
     slaupp:[
       { text:"Neutrum -ον", anchor:"subst-neut" },
@@ -159,6 +211,11 @@ const SEMINARIER = [
       { spel:"Verb", route:"#/verb", filter:"kontraherade", vad:"φιλέω-typen i presens" },
       { spel:"Prepositioner", route:"#/prepositioner", filter:"Vilket kasus?", vad:"koppla ἐν, εἰς, ἐκ till rätt kasus" },
     ],
+    gor:[
+      { text:"Satser", anchor:"sem4-satser" },
+      { text:"Breakout", anchor:"sem4-breakout" },
+      { text:"Presentationens exempel", anchor:"sem4-presentation" },
+    ],
     slaupp:[
       { text:"Feminina 1:a dekl", anchor:"subst-fem" },
       { text:"Adjektiv", anchor:"adjektiv" },
@@ -199,6 +256,13 @@ const SEMINARIER = [
       { spel:"Pronomen", route:"#/pronomen", filter:"Sem 5", vad:"ἐγώ och σύ i alla kasus" },
       { spel:"Prepositioner", route:"#/prepositioner", filter:"Välj betydelse", vad:"läs kasus i frasen och välj rätt betydelse" },
       { spel:"Satsanalys", route:"#/satsanalys", vad:"satser med pronomen och negation" },
+    ],
+    gor:[
+      { text:"Prepositionsfraser", anchor:"sem5-prepositionsfraser" },
+      { text:"Negationen οὐ", anchor:"sem5-negation" },
+      { text:"Personliga pronomen", anchor:"sem5-pronomen" },
+      { text:"Självstudium", anchor:"sem5-sjalvstudium" },
+      { text:"Presentationens exempel", anchor:"sem5-presentation" },
     ],
     slaupp:[
       { text:"2:a-dekl feminina", anchor:"subst-fem2" },
@@ -242,6 +306,13 @@ const SEMINARIER = [
       { spel:"Verb", route:"#/verb", filter:"futurum", vad:"σ-tempuset på regelbundna verb" },
       { spel:"Satsanalys", route:"#/satsanalys", filter:"nivå 13–15", vad:"pronomen, interrogativa och futurum" },
       { spel:"Glosor", route:"#/glosor", filter:"Sem 6", vad:"det nyaste ordförrådet" },
+    ],
+    gor:[
+      { text:"Breakout 1: pronomen", anchor:"sem6-breakout-1" },
+      { text:"Breakout 2: interrogativa", anchor:"sem6-breakout-2" },
+      { text:"Breakout 3: futurum", anchor:"sem6-breakout-3" },
+      { text:"Självstudium", anchor:"sem6-sjalvstudium" },
+      { text:"Presentationens exempel", anchor:"sem6-presentation" },
     ],
     slaupp:[
       { text:"αὐτός", anchor:"pron-autos" },
@@ -295,6 +366,14 @@ const SEMINARIER = [
       { spel:"Kongruens", route:"#/kongruens", filter:"oregelbundna", vad:"μέγας och πολύς mot substantiven" },
       { spel:"Satsanalys", route:"#/satsanalys", filter:"nivå 16–18", vad:"possessiva, imperfekt och infinitiv som komplement" },
       { spel:"Glosor", route:"#/glosor", filter:"Sem 7", vad:"det nyaste ordförrådet" },
+    ],
+    gor:[
+      { text:"Formlära (a–e)", anchor:"sem7-formlara-fut" },
+      { text:"Översättning", anchor:"sem7-oversattning" },
+      { text:"Breakout 1: futurum", anchor:"sem7-breakout-1" },
+      { text:"Breakout 2: possessiva", anchor:"sem7-breakout-2" },
+      { text:"Breakout 3: imperfekt", anchor:"sem7-breakout-3" },
+      { text:"Presentationens exempel", anchor:"sem7-presentation" },
     ],
     slaupp:[
       { text:"Imperativ", anchor:"verb-imperativ" },
@@ -350,6 +429,13 @@ function seminariumHTML(s){
           return `<div class="ova-rad"><a class="spel" href="${o.route}">${o.spel}</a>${filter}<span class="vad">${o.vad}</span></div>`;
         }).join("")}</div></div>`
     : "";
+  // Gör = Oskars egna uppgifter, breakout-rum och genomgångna exempel med facit.
+  // Samma form som "Slå upp", men mot seminarieövningarnas sektionsankare.
+  const gor = (s.gor || []).length
+    ? `<div class="gor"><span class="tag">Gör</span><span class="lankar">${
+        s.gor.map(l => `<a href="seminarieovningar.html#${l.anchor}">${l.text}</a>`).join("")
+      }</span></div>`
+    : "";
   const slaupp = s.slaupp.length
     ? `<div class="slaupp"><span class="tag">Slå upp</span><span class="lankar">${
         s.slaupp.map(l => `<a href="grammatikreferens.html#${l.anchor}">${l.text}</a>`).join("")
@@ -370,6 +456,7 @@ function seminariumHTML(s){
     <div class="block begrepp"><span class="tag">Begrepp</span><div class="begrepp-inner">${begrepp}</div></div>
     ${fallor}
     ${ova}
+    ${gor}
     ${slaupp}
     ${mal}
   </div>`;
@@ -385,7 +472,12 @@ const MARKUP = `<div class="vy vy-studieguide">
 
   <div class="guide-info">
     <h2>Så använder du guiden</h2>
-    <p>Guiden går igenom kursen ett seminarium i taget. För varje seminarium hittar du <b>vad som är nytt</b>, <b>begreppen bakom</b> och <b>fällorna</b> att se upp med — samt länkar vidare till rätt spel (<i>Öva</i>) och rätt kort i grammatikreferensen (<i>Slå upp</i>).</p>
+    <p>Guiden går igenom kursen ett seminarium i taget. För varje seminarium hittar du <b>vad som är nytt</b>, <b>begreppen bakom</b> och <b>fällorna</b> att se upp med — samt länkar vidare till rätt spel (<i>Öva</i>), till seminariets alla uppgifter och breakout-rum med facit (<i>Gör</i>) och till rätt kort i grammatikreferensen (<i>Slå upp</i>). Allt Oskar går igenom finns här — du behöver inte öppna presentationerna.</p>
+  </div>
+
+  <div class="bakgrund">
+    <h2>Bakgrund: språket och skrifterna</h2>
+    ${BAKGRUND.map(b => `<div class="bakgrund-item"><p class="rubrik">${b.rubrik}</p><p>${b.text}</p></div>`).join("")}
   </div>
 
   <div class="principer">
@@ -394,6 +486,14 @@ const MARKUP = `<div class="vy vy-studieguide">
   </div>
 
   <div class="stege">${SEMINARIER.map(seminariumHTML).join("")}</div>
+
+  <div class="kursoversikt">
+    <h2>Oskars kursöversikt 1:1–5</h2>
+    <p class="ko-inledning">Lärarens egen paragrafkarta över de fem första seminarierna, med hänvisningar till Blomqvist &amp; Jastrups <i>Grekisk grammatik</i> (B §). Den täcker <b>bara 1:1–5</b> — seminarium 6 och 7 står i kapitlen ovan.</p>
+    ${KURSOVERSIKT.map(k => `<div class="ko-avd"><p class="rubrik">${k.avd}</p><ul>${
+      k.punkter.map(p => `<li>${p}</li>`).join("")
+    }</ul></div>`).join("")}
+  </div>
 
   <footer>
     Tänk på grammatikreferensen som teknikgenomgången och spelen som gymmet: läs greppet här i guiden, slå upp tabellen i referensen, och nöt repetitionerna i spelet tills formen sitter.
