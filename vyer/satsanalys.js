@@ -42,7 +42,7 @@ const MARKUP = `<div class="vy vy-satsanalys">
 
 <div class="picker">
   <button class="picker-toggle" id="picker-toggle" aria-expanded="false">
-    <span>Anpassa övningen</span><span class="chev">▾</span>
+    <span>Anpassa övningen <span class="count" id="satsanalys-count"></span></span><span class="chev">▾</span>
   </button>
   <div class="picker-body hidden" id="picker-body">
 
@@ -370,6 +370,14 @@ function aktivaSatser(){
 }
 function harRoll(s, roll){ return s.chunks.some(c => c.roll === roll); }
 
+/* Antal meningar i det aktiva urvalet (nivå ∩ källa). Speglar aktivaSatser,
+   inkl. dess "tomt = alla"-fallback, så siffran är vad man faktiskt övar på. */
+function uppdateraAntal(){
+  const n = aktivaSatser().length;
+  const el = $("satsanalys-count");
+  if(el) el.textContent = n === 1 ? "(1 mening)" : "(" + n + " meningar)";
+}
+
 /* Guidat: vilka steg ska gås igenom, i metodordning.
    pred/subj/do alltid (subj/do kan besvaras med Saknas → lär ut frånvaro).
    io/gen/vok bara när de finns (deras närvaro är poängen).               */
@@ -408,6 +416,7 @@ function ladda(){
 
 /* ── NY SATS ─────────────────────────────────────────────────────────── */
 function newQuestion(){
+  uppdateraAntal();
   const pool = aktivaSatser();
   let s, forsok = 0;
   do { s = pick(pool); } while(pool.length > 1 && s.id === state.forra && ++forsok < 30);

@@ -112,7 +112,7 @@ const SEMINARIER = [
       { spel:"Glosor", route:"#/glosor", filter:"Sem 2", vad:"starta ordförrådsmotorn — och sedan några minuter varje dag" },
       { spel:"Uppslagsboken", route:"#/ordbok", vad:"kursens ordlista: slå upp och bläddra orden du möter (kursmål IV)" },
       { spel:"Kasus", route:"#/kasus", filter:"maskulinum", vad:"nöt själva kasusformerna" },
-      { spel:"Satsanalys", route:"#/satsanalys", vad:"läs rollen ur kasus, inte ur ordföljden" },
+      { spel:"Satsanalys", route:"#/satsanalys", filter:"Seminarium 2", vad:"läs rollen ur kasus, inte ur ordföljden" },
     ],
     gor:[
       { text:"Verbformer", anchor:"sem2-verbformer" },
@@ -159,7 +159,7 @@ const SEMINARIER = [
     ova:[
       { spel:"Kasus", route:"#/kasus", filter:"+ neutrum", vad:"sikta på nom = ack-fällan" },
       { spel:"Kongruens", route:"#/kongruens", filter:"attributivt", vad:"adjektivets böjning och accentläge" },
-      { spel:"Satsanalys", route:"#/satsanalys", vad:"nu med εἰμί-satser och predikatsfyllnad" },
+      { spel:"Satsanalys", route:"#/satsanalys", filter:"Seminarium 3", vad:"nu med εἰμί-satser och predikatsfyllnad" },
       { spel:"Verb", route:"#/verb", filter:"εἰμί", vad:"böj ’vara’ i presens" },
     ],
     gor:[
@@ -207,7 +207,7 @@ const SEMINARIER = [
       { spel:"Glosor", route:"#/glosor", filter:"+ Sem 4", vad:"bygg vidare på ordförrådet" },
       { spel:"Kasus", route:"#/kasus", filter:"+ femininum", vad:"alla tre genus" },
       { spel:"Kongruens", route:"#/kongruens", filter:"predikativt + εἰμί", vad:"den nya konstruktionen" },
-      { spel:"Satsanalys", route:"#/satsanalys", vad:"adverbial som ny satsdel" },
+      { spel:"Satsanalys", route:"#/satsanalys", filter:"Seminarium 4", vad:"adverbial som ny satsdel" },
       { spel:"Verb", route:"#/verb", filter:"kontraherade", vad:"φιλέω-typen i presens" },
       { spel:"Prepositioner", route:"#/prepositioner", filter:"Vilket kasus?", vad:"koppla ἐν, εἰς, ἐκ till rätt kasus" },
     ],
@@ -255,7 +255,7 @@ const SEMINARIER = [
       { spel:"Kasus", route:"#/kasus", vad:"blanda alla genus och deklinationer" },
       { spel:"Pronomen", route:"#/pronomen", filter:"Sem 5", vad:"ἐγώ och σύ i alla kasus" },
       { spel:"Prepositioner", route:"#/prepositioner", filter:"Välj betydelse", vad:"läs kasus i frasen och välj rätt betydelse" },
-      { spel:"Satsanalys", route:"#/satsanalys", vad:"satser med pronomen och negation" },
+      { spel:"Satsanalys", route:"#/satsanalys", filter:"Seminarium 5", vad:"satser med pronomen och negation" },
     ],
     gor:[
       { text:"Prepositionsfraser", anchor:"sem5-prepositionsfraser" },
@@ -304,7 +304,7 @@ const SEMINARIER = [
     ova:[
       { spel:"Pronomen", route:"#/pronomen", filter:"Sem 6", vad:"αὐτός, οὗτος, ἐκεῖνος, τίς" },
       { spel:"Verb", route:"#/verb", filter:"futurum", vad:"σ-tempuset på regelbundna verb" },
-      { spel:"Satsanalys", route:"#/satsanalys", filter:"nivå 13–15", vad:"pronomen, interrogativa och futurum" },
+      { spel:"Satsanalys", route:"#/satsanalys", filter:"Seminarium 6", vad:"pronomen, interrogativa och futurum" },
       { spel:"Glosor", route:"#/glosor", filter:"Sem 6", vad:"det nyaste ordförrådet" },
     ],
     gor:[
@@ -364,7 +364,7 @@ const SEMINARIER = [
       { spel:"Verb", route:"#/verb", filter:"tempus: imperfekt", vad:"augmentet på alla verb" },
       { spel:"Pronomen", route:"#/pronomen", filter:"Sem 7", vad:"ἐμός, σός, ἡμέτερος, ὑμέτερος och τις" },
       { spel:"Kongruens", route:"#/kongruens", filter:"oregelbundna", vad:"μέγας och πολύς mot substantiven" },
-      { spel:"Satsanalys", route:"#/satsanalys", filter:"nivå 16–18", vad:"possessiva, imperfekt och infinitiv som komplement" },
+      { spel:"Satsanalys", route:"#/satsanalys", filter:"Seminarium 7", vad:"possessiva, imperfekt och infinitiv som komplement" },
       { spel:"Glosor", route:"#/glosor", filter:"Sem 7", vad:"det nyaste ordförrådet" },
     ],
     gor:[
