@@ -5,7 +5,9 @@ Speglar grammatikreferensens layout (.gr-*), men lägger till ett övnings-
 namespace (.ov-*) för uppgiftslistor med döljbart facit. Körs lokalt, output
 committas (samma statiska deploy-modell som resten av sajten).
 
-Just nu: webbversion (seminarieovningar.html). Utskriftsversion byggs senare.
+Skriver två filer: webbversion (seminarieovningar.html, döljbart facit) och
+utskriftsversion (seminarieovningar-utskrift.html, tvåkolumns självtest där
+facit ligger i ett fast högerband som kan täckas med en pappersremsa).
 """
 import json
 import re
@@ -190,22 +192,30 @@ def render_sektion(sem, gid, poster):
         </section>'''
 
 
-# ── Utskriftsrendering (facit alltid synligt, svartvitt) ───────────────
-def render_item_print(sats):
+# ── Utskriftsrendering ─────────────────────────────────────────────────
+# Tvåkolumns självtest: fråga (grekiska) vänster, facit höger. Facit-
+# kolumnen ligger i ett fast högerband (table-layout: fixed) så att den kan
+# täckas med en pappersremsa medan man övar; band-x är detsamma på alla sidor.
+def render_item_print(nr, sats):
     grek = esc(sats["grekiska"])
+    # Frågecell: nummer + grekiska (fråga man ska översätta/omvandla).
+    fraga = f'<span class="ov-num">{nr}</span><span class="ov-grek">{grek}</span>'
+
+    # Facitcell: svaret + alla noter (fälla, kommentar, referens).
     sv = esc(sats.get("oversattning") or "")
-    huvud = f'<span class="ov-grek">{grek}</span>'
+    svar_bitar = []
     if sv:
-        huvud += f' — {sv}'
+        svar_bitar.append(sv)
     if sats.get("facit_form"):
-        huvud += f' <span class="ov-form">[{esc(sats["facit_form"])}]</span>'
+        svar_bitar.append(f'<span class="ov-form">→ {esc(sats["facit_form"])}</span>')
     if sats.get("negerad"):
-        huvud += f' <span class="ov-form">neg. {esc(sats["negerad"])}</span>'
-    noter = []
+        svar_bitar.append(f'<span class="ov-form">neg. {esc(sats["negerad"])}</span>')
+    svar = " ".join(svar_bitar)
+    delar = [f'<div class="ov-svar">{svar}</div>'] if svar else []
     if sats.get("falla"):
-        noter.append(f'<div class="ov-note"><b>Fälla:</b> {esc(sats["falla"])}</div>')
+        delar.append(f'<div class="ov-note"><b>Fälla:</b> {esc(sats["falla"])}</div>')
     if sats.get("kommentar"):
-        noter.append(f'<div class="ov-note"><b>Kommentar:</b> {esc(sats["kommentar"])}</div>')
+        delar.append(f'<div class="ov-note"><b>Kommentar:</b> {esc(sats["kommentar"])}</div>')
     meta = []
     ref = facit_ref(sats)
     if ref:
@@ -213,20 +223,29 @@ def render_item_print(sats):
     if sats.get("avvikelse"):
         meta.append("Avvikelse: " + esc(sats["avvikelse"]))
     if meta:
-        noter.append(f'<div class="ov-note ov-meta">{" · ".join(meta)}</div>')
-    return f'<li class="ov-item">{huvud}{"".join(noter)}</li>'
+        delar.append(f'<div class="ov-note ov-meta">{" · ".join(meta)}</div>')
+    facit = "".join(delar)
+
+    return (f'<tr class="ov-item">'
+            f'<td class="ov-q">{fraga}</td>'
+            f'<td class="ov-a">{facit}</td>'
+            f'</tr>')
 
 
 def render_sektion_print(sem, gid, poster):
     rub, tema, note, _ = grupp_meta(sem, gid)
-    items = "\n".join(render_item_print(s) for s in poster)
+    rader = "\n".join(render_item_print(i + 1, s) for i, s in enumerate(poster))
     temahtml = f' <span class="ex">{tema}</span>' if tema else ""
     return f'''      <section class="gr-card">
         <h3>{rub}{temahtml} <span class="sem">Sem {sem}</span></h3>
         <p class="note">{esc(note)}</p>
-        <ol class="ov-list">
-{items}
-        </ol>
+        <table class="ov-list">
+          <colgroup><col class="c-q" /><col class="c-a" /></colgroup>
+          <thead><tr><th>Grekiska</th><th>Facit</th></tr></thead>
+          <tbody>
+{rader}
+          </tbody>
+        </table>
       </section>'''
 
 
@@ -564,34 +583,57 @@ html, body {{
 }}
 .toc-item {{ display: block; font-size: 7.7pt; padding: 0.15mm 0; }}
 
-.gr-card {{ break-inside: avoid; margin: 0 0 4.5mm; }}
+/* Sektionen får brytas mellan sidor (sem 7 har många rader); bara rubriken
+   hålls ihop med sina första rader och enskilda rader bryts aldrig itu. */
+.gr-card {{ break-inside: auto; margin: 0 0 4.5mm; }}
 .gr-card h3 {{
   font-size: 10.5pt; font-weight: 600; margin: 0 0 0.8mm;
   padding-bottom: 0.8mm; border-bottom: 0.75pt solid #000;
+  break-after: avoid;
 }}
 .gr-card h3 .ex {{ font-weight: 400; font-style: italic; font-size: 9pt; margin-left: 1mm; }}
 .gr-card h3 .sem {{ font-weight: 400; font-size: 7.4pt; float: right; margin-top: 1.2pt; }}
 .gr-card h3 .sem::before {{ content: "["; }}
 .gr-card h3 .sem::after  {{ content: "]"; }}
-.note {{ margin: 0 0 1.6mm; font-size: 8.2pt; line-height: 1.3; font-style: italic; }}
+.note {{ margin: 0 0 1.6mm; font-size: 8.2pt; line-height: 1.3; font-style: italic; break-after: avoid; }}
 
-.ov-list {{ margin: 0; padding: 0 0 0 4.5mm; columns: 2; column-gap: 7mm; }}
-.ov-item {{
-  break-inside: avoid; margin: 0 0 1.8mm; padding-left: 0.5mm;
+/* ── Tvåkolumns självtest: fråga | facit ────────────────────────────
+   Fast kolumnbredd (table-layout: fixed) håller facit-bandet på samma
+   plats på varje sida, så en lodrät pappersremsa täcker alla svar. */
+.ov-list {{ width: 100%; border-collapse: collapse; margin: 0; table-layout: fixed; }}
+.ov-list col.c-q {{ width: 53%; }}
+.ov-list col.c-a {{ width: 47%; }}
+.ov-list thead th {{
+  font-size: 6.6pt; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.07em; text-align: left; color: #444;
+  padding: 0 0 0.6mm; border-bottom: 0.5pt solid #000;
+}}
+.ov-list thead th:last-child {{ padding-left: 6mm; }}
+.ov-item {{ break-inside: avoid; }}
+.ov-item > td {{
+  vertical-align: top; padding: 1.7mm 0; border-bottom: 0.4pt solid #b8b8b8;
   font-size: 8.7pt; line-height: 1.32;
 }}
-.ov-grek {{ font-family: "Cardo", "Spectral", serif; font-size: 1.12em; white-space: nowrap; }}
+.ov-q {{ padding-right: 6mm; }}
+/* Lodrät hårlinje = vikkant för pappersremsan; luft på båda sidor om den. */
+.ov-a {{ border-left: 0.5pt solid #000; padding-left: 6mm; }}
+.ov-num {{
+  font-weight: 600; font-size: 0.82em; margin-right: 1.4mm;
+  font-variant-numeric: tabular-nums; color: #555;
+}}
+.ov-grek {{ font-family: "Cardo", "Spectral", serif; font-size: 1.12em; }}
+.ov-svar {{ font-size: 8.5pt; }}
 .ov-form {{ font-family: "Cardo", "Spectral", serif; }}
-.ov-note {{ font-size: 7.9pt; line-height: 1.28; margin: 0.3mm 0 0 3mm; }}
+.ov-note {{ font-size: 7.7pt; line-height: 1.26; margin: 0.4mm 0 0; color: #222; }}
 .ov-note b {{ font-weight: 600; }}
-.ov-meta {{ font-style: italic; }}
+.ov-meta {{ font-style: italic; color: #444; }}
 b {{ font-weight: 600; }}
 </style>
 </head>
 <body>
   <div class="doc-head">
     <h1>Seminarieövningar · Bibelgrekiska I</h1>
-    <p class="lead">Övningar och breakout-uppgifter ur seminarierna, med facit, kommentarer och fällvarningar. Facit är utskrivet under varje mening.</p>
+    <p class="lead">Övningar och breakout-uppgifter ur seminarierna, med facit, kommentarer och fällvarningar. Facit står i högerkolumnen — täck den med ett papper (längs den lodräta linjen) och pröva dig själv först.</p>
   </div>
   <nav class="toc">
 {toc}
