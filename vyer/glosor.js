@@ -579,7 +579,7 @@ function render(){
   if(state.mode === "flashcard"){
     if(!state.vand){
       card.className = "card flippable";
-      card.innerHTML = `<div class="lemma">${w.l}</div><div class="prompt-hint">tryck på kortet eller mellanslag för att vända</div>`;
+      card.innerHTML = `<div class="lemma">${w.l}</div><div class="prompt-hint">tryck på kortet för att vända</div>`;
       card.onclick = () => { state.vand = true; render(); };
     }else{
       card.className = "card flippable";
