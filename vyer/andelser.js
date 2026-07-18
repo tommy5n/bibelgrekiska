@@ -136,6 +136,12 @@ const KORTLEKAR = {
   feminina: ["ἀρχή","φωνή","ψυχή","ζωή","ἐντολή","ἀδελφή","κεφαλή","συναγωγή","ἀγάπη","εἰρήνη","δικαιοσύνη","ἐκκλησία","ἡμέρα","ἁμαρτία","ἐξουσία","καρδία","βασιλεία","ὥρα","ἀλήθεια","θάλασσα","κώμη","δόξα","νόσος","ὁδός","ἔρημος","παρθένος"],
 };
 
+/* Kategori-deck ∩ snapshoten: decken listar även ord som generatorn utelämnar
+   (2:a-dekl-femininer, 1:a-dekl-maskulina), så vi filtrerar till lemman som
+   faktiskt finns. Ger korrekt urval OCH exakt chip-matchning nedan. */
+const deckLemman = deck => (KORTLEKAR[deck] || []).filter(l => ord.some(o => o.lemma === l));
+const setEq = (a, b) => a.size === b.size && [...a].every(x => b.has(x));
+
 /* Seminarie-axel: varje ord bär sem:[…] ur ord.json. 0 = "Övriga" (otaggade
    högfrekventa NT-ord). Skalar till fler seminarier — chipsen radbryts. */
 const SEMINARIER = [...new Set(ord.flatMap(o => o.sem))].sort((a,b) => a - b);
@@ -330,6 +336,12 @@ function render(){
   $("streak").textContent = state.streak; $("best").textContent = state.best;
   renderOpts();
 
+  // Resultat-ram runt kortet: grön vid rätt, amber vid fel (satsanalys-modellen).
+  const ratt = state.besvarad && state.selEnd === c.endFacit && state.selArt === c.artFacit;
+  const kort = document.querySelector(".vy-andelser .card");
+  kort.classList.toggle("svar-ratt", state.besvarad && ratt);
+  kort.classList.toggle("svar-fel",  state.besvarad && !ratt);
+
   if(state.besvarad){
     $("r-form").textContent = c.formFull;
     $("r-glosa").textContent = c.glosa;
@@ -379,10 +391,12 @@ function byggGridOrd(){
     b.setAttribute("aria-pressed", state.valdaOrd.has(o.lemma));
     b.onclick = () => {
       state.valdaOrd.has(o.lemma) ? state.valdaOrd.delete(o.lemma) : state.valdaOrd.add(o.lemma);
-      b.setAttribute("aria-pressed", state.valdaOrd.has(o.lemma)); spara(); newQuestion();
+      b.setAttribute("aria-pressed", state.valdaOrd.has(o.lemma));
+      uppdateraKategoriChips(); spara(); newQuestion();
     };
     g.appendChild(b);
   });
+  uppdateraKategoriChips();
 }
 function byggGridKasus(){
   const g = $("grid-kasus"); g.innerHTML = "";
@@ -406,6 +420,12 @@ function uppdateraLägesknappar(){
   $("mode-full").setAttribute("aria-pressed", state.mode === "full");
   $("mode-end").setAttribute("aria-pressed", state.mode === "end");
 }
+/* Kategori-chipsen (Oxytona/Neutrum/Feminina) blir svarta när ordurvalet exakt
+   motsvarar deras deck — som snabbvals-chipsen i satsanalys. */
+function uppdateraKategoriChips(){
+  document.querySelectorAll("[data-deck]").forEach(b =>
+    b.setAttribute("aria-pressed", setEq(state.valdaOrd, new Set(deckLemman(b.dataset.deck)))));
+}
 
 /* ── HÄNDELSER ───────────────────────────────────────────────────────── */
 $("mode-full").onclick = () => { state.mode="full"; uppdateraLägesknappar(); spara(); newQuestion(); };
@@ -420,7 +440,14 @@ $("picker-toggle").onclick = () => {
 document.querySelector("[data-ord-all]").onclick   = () => { state.valdaOrd = new Set(ord.map(o=>o.lemma)); byggGridOrd(); spara(); newQuestion(); };
 document.querySelector("[data-ord-clear]").onclick = () => { state.valdaOrd = new Set(); byggGridOrd(); spara(); newQuestion(); };
 document.querySelectorAll("[data-deck]").forEach(b => {
-  b.onclick = () => { state.valdaOrd = new Set(KORTLEKAR[b.dataset.deck] || []); byggGridOrd(); spara(); newQuestion(); };
+  // En genus-kategori är oberoende av seminarium: öppna alla seminarier så orden
+  // blir synliga (annars tomt snitt → tyst fallback till alla ord). Filtrera
+  // decken mot snapshoten så urval och chip-matchning stämmer exakt.
+  b.onclick = () => {
+    state.valdaSem = new Set(SEM_VARDEN);
+    state.valdaOrd = new Set(deckLemman(b.dataset.deck));
+    byggGridSem(); byggGridOrd(); spara(); newQuestion();
+  };
 });
 document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEM_VARDEN); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };
 document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };

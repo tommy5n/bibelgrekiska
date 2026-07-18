@@ -2464,6 +2464,7 @@ body {
 }
 .vy-andelser .card {
   width: 100%;
+  position: relative;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -2471,6 +2472,38 @@ body {
   text-align: center;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
   animation: rise__andelser 0.35s ease both;
+}
+/* Resultat-ram: tunn färgad kant + mjukt sken när svaret rättats. Grön = rätt,
+   amber = fel — samma modell som satsanalys. --warn saknas globalt; scopa den. */
+.vy-andelser { --warn: #9a5b2a; --warn-bg: #f7ede0; }
+.vy-andelser .card.svar-ratt {
+  --ring: var(--good);
+  border-color: var(--good);
+  box-shadow: 0 0 0 3px var(--good-bg);
+}
+.vy-andelser .card.svar-fel {
+  --ring: var(--warn);
+  border-color: var(--warn);
+  box-shadow: 0 0 0 3px var(--warn-bg);
+}
+/* Kort puls när svaret just rättats — ett overlay-ringlager som växer och tonar
+   ut, så kortets egen rise-animation lämnas orörd. */
+.vy-andelser .card.svar-ratt::after,
+.vy-andelser .card.svar-fel::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  pointer-events: none;
+  animation: puls__andelser 0.5s ease-out;
+}
+@keyframes puls__andelser {
+  0%   { box-shadow: 0 0 0 2px var(--ring); opacity: 0.85; }
+  100% { box-shadow: 0 0 0 11px var(--ring); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vy-andelser .card.svar-ratt::after,
+  .vy-andelser .card.svar-fel::after { animation: none; }
 }
 .vy-andelser .form {
   font-size: 2rem;
@@ -2719,9 +2752,9 @@ body {
   border-color: var(--gold);
 }
 .vy-andelser .optx[aria-pressed="true"] {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: #fff;
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 .vy-andelser .optx:disabled {
   cursor: default;
