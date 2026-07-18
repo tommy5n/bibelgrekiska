@@ -21,9 +21,11 @@
       }
       .gr-bar .hem { color: var(--gold); text-decoration: none; font-weight: 600; font-size: var(--fs-sm); }
       .gr-bar .hem:hover { text-decoration: underline; }
-      .gr-bar .wordmark { font-weight: 600; color: var(--ink-soft); font-size: var(--fs-sm); letter-spacing: 0.02em; }
+      .gr-bar .wordmark { font-weight: 600; color: var(--ink-soft); font-size: var(--fs-sm); letter-spacing: 0.02em; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
       .gr-bar .utskrift { margin-left: auto; color: var(--gold); text-decoration: none; font-weight: 600; font-size: var(--fs-sm); white-space: nowrap; }
       .gr-bar .utskrift:hover { text-decoration: underline; }
+      .gr-bar .xref { color: var(--gold); text-decoration: none; font-weight: 600; font-size: var(--fs-sm); white-space: nowrap; }
+      .gr-bar .xref:hover { text-decoration: underline; }
       .gr-layout {
         display: grid; grid-template-columns: 240px minmax(0, 1fr);
         gap: 2.5rem; max-width: 1180px; margin: 0 auto; padding: 1.6rem 1.6rem 5rem;
@@ -129,7 +131,8 @@
     <header class="gr-bar">
       <a class="hem" href="index.html">← Meny</a>
       <span class="wordmark">Bibelgrekiska · Seminarieövningar</span>
-      <a class="utskrift" href="grammatikreferens.html">📘 Grammatikreferens</a>
+      <a class="utskrift" href="seminarieovningar-utskrift.html">🖨 Utskriftsversion</a>
+      <a class="xref" href="grammatikreferens.html">📘 Grammatikreferens</a>
     </header>
 
     <div class="gr-layout">
