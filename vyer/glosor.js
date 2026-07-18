@@ -626,9 +626,13 @@ function renderFlervalFacit(valdKnapp, korrekt){
     if(b.dataset.glosa === state.card.svar.g) b.classList.add("correct");
     else if(b === valdKnapp) b.classList.add("wrong");
   });
+  // grön/amber ram (nollställs när nästa fråga sätter card.className)
+  const card = document.getElementById("card");
+  card.classList.toggle("svar-ratt", korrekt);
+  card.classList.toggle("svar-fel", !korrekt);
   const controls = document.getElementById("controls");
   controls.innerHTML = "";
-  controls.appendChild(mkBtn("Nästa", "btn primary", () => newQuestion(), "mellanslag"));
+  controls.appendChild(mkBtn("Nästa", "btn primary", () => newQuestion()));
   renderStats();
 }
 

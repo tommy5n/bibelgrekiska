@@ -477,6 +477,14 @@ function render(){
       $("controls-next").classList.remove("hidden");
     }
   }
+
+  // Grön/amber ram: bara i flerval (vänd-läget självbedöms och går vidare direkt).
+  const kort = document.querySelector(".vy-kasus .card");
+  if(kort){
+    const svarat = state.mode !== "vand" && state.besvarad && state.valt != null;
+    kort.classList.toggle("svar-ratt", svarat && state.card.facitSet.includes(state.valt));
+    kort.classList.toggle("svar-fel",  svarat && !state.card.facitSet.includes(state.valt));
+  }
 }
 
 function visaFacit(){

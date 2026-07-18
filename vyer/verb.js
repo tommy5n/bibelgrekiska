@@ -351,6 +351,16 @@ export function render(root){
       renderOptioner(); $("options").classList.remove("hidden");
       if(state.besvarad){ visaSvar(); $("controls-next").classList.remove("hidden"); }
     }
+    resultatram();
+  }
+  // Grön/amber ram: bara i flerval där svaret rättas automatiskt (vänd-läget
+  // självbedöms och går vidare direkt, så ingen ram där).
+  function resultatram(){
+    const kort = document.querySelector(".vy-verb .card"); if(!kort) return;
+    const rätt = state.mode==="flerval" && state.besvarad && state.valt!=null && state.card.rätta.has(state.valt);
+    const fel  = state.mode==="flerval" && state.besvarad && state.valt!=null && !state.card.rätta.has(state.valt);
+    kort.classList.toggle("svar-ratt", rätt);
+    kort.classList.toggle("svar-fel", fel);
   }
   function visaSvar(){
     const c = state.card;

@@ -1014,6 +1014,14 @@ export function render(root){
       renderOptioner(); $("options").classList.remove("hidden");
       if(state.besvarad){ visaSvar(); $("controls-next").classList.remove("hidden"); }
     }
+    resultatram();
+  }
+  // Grön/amber ram: bara i flerval (vänd-läget självbedöms och går vidare direkt).
+  function resultatram(){
+    const kort = document.querySelector(".vy-pron .card"); if(!kort) return;
+    const svarat = state.mode==="flerval" && state.besvarad && state.valt!=null;
+    kort.classList.toggle("svar-ratt", svarat && state.valt === facit());
+    kort.classList.toggle("svar-fel",  svarat && state.valt !== facit());
   }
 
   function renderForm(){

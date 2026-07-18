@@ -541,6 +541,13 @@ function render(){
     rev.classList.add("hidden");
   }
   $("btn-visa").classList.toggle("hidden", state.klar);
+
+  // Grön/amber ram: grön = löst utan felklick, amber = felklick eller gav upp.
+  const kort = document.querySelector(".vy-kongruens .card");
+  if(kort){
+    kort.classList.toggle("svar-ratt", state.klar && !state.smutsig);
+    kort.classList.toggle("svar-fel",  state.klar && state.smutsig);
+  }
 }
 
 /* ── INSTÄLLNINGAR ───────────────────────────────────────────────────── */

@@ -397,6 +397,12 @@ export function render(root){
     renderOptioner();
     if(state.besvarad){ visaSvar(); $("controls-next").classList.remove("hidden"); }
     else { $("reveal").classList.add("hidden"); $("controls-next").classList.add("hidden"); }
+    const kort = document.querySelector(".vy-prep .card");   // grön/amber ram
+    if(kort){
+      const svarat = state.besvarad && state.valt!=null;
+      kort.classList.toggle("svar-ratt", svarat && state.valt === c.ratt);
+      kort.classList.toggle("svar-fel",  svarat && state.valt !== c.ratt);
+    }
   }
 
   function visaSvar(){

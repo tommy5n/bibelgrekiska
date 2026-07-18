@@ -334,6 +334,12 @@ export function render(root){
     }
     renderOptioner();
     if(state.besvarad){ visaSvar(); $("controls-next").classList.remove("hidden"); }
+    const kort = document.querySelector(".vy-former .card");   // grön/amber ram
+    if(kort){
+      const svarat = state.besvarad && state.valt!=null;
+      kort.classList.toggle("svar-ratt", svarat && c.ratta.has(state.valt));
+      kort.classList.toggle("svar-fel",  svarat && !c.ratta.has(state.valt));
+    }
   }
 
   function visaSvar(){

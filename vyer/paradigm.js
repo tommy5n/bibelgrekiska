@@ -258,6 +258,7 @@ function nyttOrd(){
   state.pk = paradigmKey(o);
   state.svar = {};
   state.besvarad = false;
+  state.svarRatt = null;
   state.aktiv = state.mode === "fyll" ? celler()[0] : null;
   render();
 }
@@ -350,6 +351,13 @@ function render(){
   $("glosa").textContent = o.glosa;
   $("streak").textContent = state.streak; $("best").textContent = state.best;
   renderTabell(); renderPalett(); uppdateraGo();
+
+  // Grön/amber ram: grön när hela tabellen är rätt, amber annars.
+  const kort = document.querySelector(".vy-paradigm .card");
+  if(kort){
+    kort.classList.toggle("svar-ratt", state.besvarad && state.svarRatt === true);
+    kort.classList.toggle("svar-fel",  state.besvarad && state.svarRatt === false);
+  }
 }
 
 /* ── SVAR & SVIT ─────────────────────────────────────────────────────── */
@@ -360,6 +368,7 @@ function ratta(){
     return state.svar[key] === END[state.pk][k][n];
   });
   state.besvarad = true;
+  state.svarRatt = alltRatt;
   if(alltRatt){ state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); } }
   else state.streak = 0;
   render();

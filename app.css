@@ -62,6 +62,8 @@
   --good-bg: #eaf3e7;
   --bad: #a8492c;
   --bad-bg: #f6eae4;
+  --warn: #9a5b2a;
+  --warn-bg: #f7ede0;
 }
 
 * {
@@ -526,6 +528,40 @@ body {
 .modes .mode:not([aria-pressed="true"]):hover { border-color: var(--gold); color: var(--ink); }
 .picker .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .streak b { color: var(--ink); font-weight: 600; }
+
+/* Resultat-ram (view-agnostisk): tunn färgad kant + mjukt sken + kort puls när
+   ett svar rättats. Grön = rätt, amber = fel — samma modell i alla spel. JS
+   sätter .svar-ratt / .svar-fel på kortet. .vy-prefixet ger regeln högre
+   specificitet än varje vys egen `.vy-X .card`, så ramen inte skrivs över.
+   border-radius ärvs från kortet; position:relative bara när ringen är aktiv. */
+.vy .card.svar-ratt, .vy .card.svar-fel { position: relative; }
+.vy .card.svar-ratt {
+  --ring: var(--good);
+  border-color: var(--good);
+  box-shadow: 0 0 0 3px var(--good-bg);
+}
+.vy .card.svar-fel {
+  --ring: var(--warn);
+  border-color: var(--warn);
+  box-shadow: 0 0 0 3px var(--warn-bg);
+}
+.vy .card.svar-ratt::after,
+.vy .card.svar-fel::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: puls-svar 0.5s ease-out;
+}
+@keyframes puls-svar {
+  0%   { box-shadow: 0 0 0 2px var(--ring); opacity: 0.85; }
+  100% { box-shadow: 0 0 0 11px var(--ring); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vy .card.svar-ratt::after,
+  .vy .card.svar-fel::after { animation: none; }
+}
 @media (max-width: 480px) {
   .picker { width: 100%; }
   .picker-toggle { font-size: var(--fs-xl); padding: 1rem 1.1rem; }
@@ -2464,7 +2500,6 @@ body {
 }
 .vy-andelser .card {
   width: 100%;
-  position: relative;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
@@ -2472,38 +2507,6 @@ body {
   text-align: center;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
   animation: rise__andelser 0.35s ease both;
-}
-/* Resultat-ram: tunn färgad kant + mjukt sken när svaret rättats. Grön = rätt,
-   amber = fel — samma modell som satsanalys. --warn saknas globalt; scopa den. */
-.vy-andelser { --warn: #9a5b2a; --warn-bg: #f7ede0; }
-.vy-andelser .card.svar-ratt {
-  --ring: var(--good);
-  border-color: var(--good);
-  box-shadow: 0 0 0 3px var(--good-bg);
-}
-.vy-andelser .card.svar-fel {
-  --ring: var(--warn);
-  border-color: var(--warn);
-  box-shadow: 0 0 0 3px var(--warn-bg);
-}
-/* Kort puls när svaret just rättats — ett overlay-ringlager som växer och tonar
-   ut, så kortets egen rise-animation lämnas orörd. */
-.vy-andelser .card.svar-ratt::after,
-.vy-andelser .card.svar-fel::after {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: 16px;
-  pointer-events: none;
-  animation: puls__andelser 0.5s ease-out;
-}
-@keyframes puls__andelser {
-  0%   { box-shadow: 0 0 0 2px var(--ring); opacity: 0.85; }
-  100% { box-shadow: 0 0 0 11px var(--ring); opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .vy-andelser .card.svar-ratt::after,
-  .vy-andelser .card.svar-fel::after { animation: none; }
 }
 .vy-andelser .form {
   font-size: 2rem;

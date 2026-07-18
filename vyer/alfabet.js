@@ -61,7 +61,7 @@ const MARKUP = `<div class="vy vy-alfabet">
             </div>
           </div>
           <div class="actions">
-            <button class="btn" id="flip">Vänd<kbd>mellanslag</kbd></button>
+            <button class="btn" id="flip">Vänd</button>
             <button class="btn ghost" id="fc-next">
               Nästa<kbd>enter</kbd>
             </button>
@@ -504,6 +504,14 @@ export function render(root) {
 
     if (state.mode === "flashcard") renderFlashcard();
     else renderQuiz();
+
+    // Grön/amber ram: bara i quiz (flashcard vänds utan rätt/fel).
+    const kort = document.querySelector(".vy-alfabet .card");
+    if (kort) {
+      const svarat = state.mode === "quiz" && state.answered;
+      kort.classList.toggle("svar-ratt", svarat && state.chosen === state.current);
+      kort.classList.toggle("svar-fel", svarat && state.chosen !== state.current);
+    }
   }
 
   function renderFlashcard() {
