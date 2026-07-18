@@ -163,7 +163,7 @@ const MARKUP = `<div class="vy vy-verb">
   <div class="options hidden" id="options"></div>
   <div class="controls hidden" id="controls-next"><button class="btn primary" id="btn-next">Nästa</button></div>
 
-  <div class="streak">Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b></div>
+  <div class="streak">Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b> &nbsp;·&nbsp; <b id="runda-kvar">0</b> kvar i rundan</div>
 </div>
 
 <div class="picker">
@@ -228,6 +228,7 @@ export function render(root){
     valdaSem: new Set(SEMINARIER),
     valdaPN: new Set(PN_ORDNING),
     streak: 0, best: 0, card: null, besvarad: false, valt: null, forra: null,
+    rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },
   };
 
   const $ = id => document.getElementById(id);
@@ -248,6 +249,24 @@ export function render(root){
     const bs = synligaVerb().filter(harForm);
     return bs.length ? bs : verb.filter(harForm);
   };
+
+  /* Rundkö (glosmodell, som satsanalys): gå igenom verben en gång; ett verb som
+     missas läggs sist och återkommer inom rundan; tom kö → ny omblandad runda.
+     Rundan fylls om automatiskt när urvalet (verbmängden) ändras. "kvar i rundan"
+     räknar distinkta verb som är kvar att klara. */
+  const aktivaVerbIds = () => aktivaVerb().map(v => v.lemma);
+  const rkSig = () => aktivaVerbIds().join("");
+  function rkFyll(){ const ids = aktivaVerbIds(); state.rk.ko = shuffle(ids); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
+  function rkNasta(){
+    const rk = state.rk;
+    if(rk.bas !== rkSig()){ rk.forra = null; rk.forraRen = true; rkFyll(); }   // urval ändrat → ny runda
+    else { if(rk.forra != null && !rk.forraRen) rk.ko.push(rk.forra); if(!rk.ko.length) rkFyll(); }
+    let id = rk.ko.shift();
+    if(id === rk.forra && rk.ko.length){ rk.ko.push(id); id = rk.ko.shift(); }
+    rk.forra = id; rk.forraRen = false;
+    return id;
+  }
+  function rkKlarad(){ const rk = state.rk; if(!rk.forraRen){ rk.forraRen = true; rk.kvar = Math.max(0, rk.kvar - 1); } }
   // Person/numerus-filtret gäller bara de celler nyckeln faktiskt har: infinitiv
   // har ingen person, imperativ ingen 1:a person.
   const aktivaPN = k => {
@@ -301,13 +320,8 @@ export function render(root){
   function uppdateraAntal(){ const el = $("verb-count"); if(el) el.textContent = "(" + aktivaVerb().length + " verb)"; }
   function newQuestion(){
     uppdateraAntal();
-    const vs = aktivaVerb();
-    let v, k, p, sig, n=0;
-    do {
-      v = pick(vs); k = pick(nycklarFor(v)); p = pick(aktivaPN(k));
-      sig = v.lemma+"|"+k+"|"+p;
-    } while(sig === state.forra && ++n < 30);
-    state.forra = sig;
+    const v = verb.find(o => o.lemma === rkNasta()) || pick(aktivaVerb());
+    const k = pick(nycklarFor(v)), p = pick(aktivaPN(k));
     const rätta = new Set(accepterade(v, k, p));
     state.card = {
       lemma: v.lemma, glosa: v.glosa, pn: p, nyckel: k,
@@ -337,6 +351,7 @@ export function render(root){
     $("target").innerHTML = "→ " + delar.join(" · ");
     $("streak").textContent = state.streak;
     $("best").textContent = state.best;
+    $("runda-kvar").textContent = state.rk.kvar;
 
     $("reveal").classList.add("hidden");
     $("controls-vand").classList.add("hidden");
@@ -386,7 +401,7 @@ export function render(root){
     });
   }
   function registrera(rätt){ if(rätt){ state.streak++; if(state.streak>state.best){ state.best=state.streak; spara(); } } else state.streak=0; }
-  function svara(f){ state.valt=f; state.besvarad=true; registrera(state.card.rätta.has(f)); render2(); }
+  function svara(f){ const rätt = state.card.rätta.has(f); state.valt=f; state.besvarad=true; registrera(rätt); if(rätt) rkKlarad(); render2(); }
 
   // Ett tempus/modus-par som inget verb har (t.ex. imperfekt imperativ) vore en
   // återvändsgränd → knappen inaktiveras i stället för att ge tom fråga.
@@ -489,7 +504,7 @@ export function render(root){
   $("mode-vand").onclick    = () => { state.mode="vand"; uppdateraLäge(); spara(); newQuestion(); };
   $("mode-flerval").onclick = () => { state.mode="flerval"; uppdateraLäge(); spara(); newQuestion(); };
   $("btn-vand").onclick     = () => { state.besvarad=true; render2(); };
-  $("btn-kunde").onclick    = () => { registrera(true); newQuestion(); };
+  $("btn-kunde").onclick    = () => { registrera(true); rkKlarad(); newQuestion(); };
   $("btn-missade").onclick  = () => { registrera(false); newQuestion(); };
   $("btn-next").onclick     = () => newQuestion();
   $("picker-toggle").onclick = () => { const o = $("picker-toggle").getAttribute("aria-expanded")==="true";

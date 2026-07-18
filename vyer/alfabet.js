@@ -83,6 +83,7 @@ const MARKUP = `<div class="vy vy-alfabet">
         Rätt <strong id="sb-correct">0</strong> / <span id="sb-total">0</span> ·
         Streak <strong id="sb-streak">0</strong>
         <span class="best">bästa <span id="sb-best">0</span></span>
+        · <strong id="runda-kvar">0</strong> kvar i rundan
       </div>
     </main>
 
@@ -318,6 +319,24 @@ export function render(root) {
       : letters;
   }
 
+  /* Rundkö (glosmodell, som satsanalys): gå igenom bokstäverna en gång; en som
+     missas i quizet läggs sist och återkommer inom rundan; tom kö → ny omblandad
+     runda. Fylls om automatiskt när urvalet ändras. "kvar i rundan" räknar
+     distinkta bokstäver kvar att klara. */
+  const aktivaIds = () => activeLetters().map((l) => l.name);
+  const rkSig = () => aktivaIds().join("");
+  function rkFyll() { const ids = aktivaIds(); state.rk.ko = shuffle(ids); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
+  function rkNasta() {
+    const rk = state.rk;
+    if (rk.bas !== rkSig()) { rk.forra = null; rk.forraRen = true; rkFyll(); }
+    else { if (rk.forra != null && !rk.forraRen) rk.ko.push(rk.forra); if (!rk.ko.length) rkFyll(); }
+    let id = rk.ko.shift();
+    if (id === rk.forra && rk.ko.length) { rk.ko.push(id); id = rk.ko.shift(); }
+    rk.forra = id; rk.forraRen = false;
+    return id;
+  }
+  function rkKlarad() { const rk = state.rk; if (!rk.forraRen) { rk.forraRen = true; rk.kvar = Math.max(0, rk.kvar - 1); } }
+
   // Slumpa fram en bokstav ur det aktiva urvalet, gärna inte samma som förra.
   function randomLetter(exclude) {
     const pool = activeLetters();
@@ -369,6 +388,7 @@ export function render(root) {
     total: 0,
     streak: 0,
     bestStreak: 0,
+    rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null }, // rundkö (glosmodell)
   };
 
   /* ============================================================
@@ -431,7 +451,7 @@ export function render(root) {
    LOGIK — vad som händer i spelet.
    ============================================================ */
   function newQuestion() {
-    state.current = randomLetter(state.current);
+    state.current = letters.find((l) => l.name === rkNasta()) || randomLetter(state.current);
     state.glyph = resolveGlyph(state.current); // lotta formen en gång, här
     state.revealed = false;
     state.answered = false;
@@ -452,6 +472,7 @@ export function render(root) {
     state.total++;
     const isRight = chosen === state.current;
     if (isRight) {
+      rkKlarad();
       state.correct++;
       state.streak++;
       if (state.streak > state.bestStreak) {
@@ -569,6 +590,7 @@ export function render(root) {
     el("sb-total").textContent = state.total;
     el("sb-streak").textContent = state.streak;
     el("sb-best").textContent = state.bestStreak;
+    el("runda-kvar").textContent = state.rk.kvar;
   }
 
   /* ============================================================

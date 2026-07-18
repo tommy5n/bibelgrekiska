@@ -41,6 +41,7 @@ const MARKUP = `<div class="vy vy-kasus">
 
   <div class="streak">
     Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b>
+    &nbsp;·&nbsp; <b id="runda-kvar">0</b> kvar i rundan
   </div>
 </div>
 
@@ -308,6 +309,7 @@ const state = {
   best: 0,
   card: null,                                    // upplöst EN gång i newQuestion()
   besvarad: false,
+  rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
 };
 
 /* ── HJÄLPARE ────────────────────────────────────────────────────────── */
@@ -341,6 +343,23 @@ function aktivaOrd(){
   const valda = synligaOrd().filter(o => state.valdaOrd.has(o.lemma));
   return valda.length ? valda : synligaOrd();    // tomt ord-urval = alla synliga
 }
+/* Rundkö (glosmodell, som satsanalys): gå igenom orden en gång; ett ord som
+   missas läggs sist och återkommer inom rundan; tom kö → ny omblandad runda.
+   Rundan fylls om automatiskt när ordurvalet ändras. "kvar i rundan" räknar
+   distinkta ord kvar att klara. */
+function aktivaOrdIds(){ return aktivaOrd().map(o => o.lemma); }
+function rkSig(){ return aktivaOrdIds().join(""); }
+function rkFyll(){ const ids = aktivaOrdIds(); state.rk.ko = shuffle(ids); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
+function rkNasta(){
+  const rk = state.rk;
+  if(rk.bas !== rkSig()){ rk.forra = null; rk.forraRen = true; rkFyll(); }
+  else { if(rk.forra != null && !rk.forraRen) rk.ko.push(rk.forra); if(!rk.ko.length) rkFyll(); }
+  let id = rk.ko.shift();
+  if(id === rk.forra && rk.ko.length){ rk.ko.push(id); id = rk.ko.shift(); }
+  rk.forra = id; rk.forraRen = false;
+  return id;
+}
+function rkKlarad(){ const rk = state.rk; if(!rk.forraRen){ rk.forraRen = true; rk.kvar = Math.max(0, rk.kvar - 1); } }
 function aktivaKasus(){
   const valda = KASUS_ORDNING.filter(k => state.valdaKasus.has(k));
   return valda.length ? valda : KASUS_ORDNING;   // tomt = alla
@@ -413,16 +432,9 @@ function newQuestion(){
 
   // Dra kort, men undvik exakt samma kort (ord+kasus+numerus) två ggr i rad.
   // Taket skyddar mot loop när bara ett kort är möjligt — då finns inget annat.
-  let w, k, n, sig, forsok = 0;
-  do {
-    w = pick(ordLista);
-    k = pick(kasusLista);
-    n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
-    // neutrum nom/ack visar samma kort — normalisera så samma kort ej upprepas
-    const ksig = (w.genus === "n" && (k === "nom" || k === "ack")) ? "nomack" : k;
-    sig = w.lemma + "|" + ksig + "|" + n;
-  } while(sig === state.forraKort && ++forsok < 30);
-  state.forraKort = sig;
+  const w = ord.find(o => o.lemma === rkNasta()) || pick(ordLista);
+  const k = pick(kasusLista);
+  const n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
 
   // Neutrum: nom och ack är identiska (τὸ ἔργον = τὸ ἔργον) även med artikel
   // — bägge svaren gäller. Övriga genus skiljs alltid av artikeln.
@@ -454,6 +466,7 @@ function render(){
 
   $("streak").textContent = state.streak;
   $("best").textContent = state.best;
+  $("runda-kvar").textContent = state.rk.kvar;
 
   // dölj allt lägesspecifikt först
   $("reveal").classList.add("hidden");
@@ -530,7 +543,9 @@ function registrera(rätt){
 function svaraFlerval(k){
   state.valt = k;
   state.besvarad = true;
-  registrera(state.card.facitSet.includes(k));
+  const rätt = state.card.facitSet.includes(k);
+  registrera(rätt);
+  if(rätt) rkKlarad();
   render();
 }
 
@@ -600,7 +615,7 @@ $("mode-vand").onclick = () => { state.mode="vand"; uppdateraLägesknappar(); sp
 $("mode-flerval").onclick = () => { state.mode="flerval"; uppdateraLägesknappar(); spara(); newQuestion(); };
 
 $("btn-vand").onclick = () => { state.besvarad = true; render(); };
-$("btn-kunde").onclick = () => { registrera(true); newQuestion(); };
+$("btn-kunde").onclick = () => { registrera(true); rkKlarad(); newQuestion(); };
 $("btn-missade").onclick = () => { registrera(false); newQuestion(); };
 $("btn-next").onclick = () => newQuestion();
 

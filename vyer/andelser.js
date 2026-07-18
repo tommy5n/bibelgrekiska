@@ -49,6 +49,7 @@ const MARKUP = `<div class="vy vy-andelser">
 
   <div class="streak">
     Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b>
+    &nbsp;·&nbsp; <b id="runda-kvar">0</b> kvar i rundan
   </div>
 </div>
 
@@ -225,6 +226,7 @@ const state = {
   streak: 0, best: 0,
   card: null, besvarad: false,
   selArt: null, selEnd: null, forraKort: null,
+  rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
 };
 
 // Seminarie-urvalet styr vilka ord som visas i rutnätet; ordrutnätet finjusterar.
@@ -234,6 +236,24 @@ function aktivaOrd(){
   return v.length ? v : synligaOrd();
 }
 function aktivaKasus(){ const v = KASUS_ORDNING.filter(k => state.valdaKasus.has(k)); return v.length ? v : KASUS_ORDNING; }
+
+/* Rundkö (glosmodell, som satsanalys): gå igenom orden en gång; ett ord som
+   missas läggs sist och återkommer inom rundan; tom kö → ny omblandad runda.
+   Rundan fylls om automatiskt när ordurvalet ändras. "kvar i rundan" räknar
+   distinkta ord kvar att klara. */
+function aktivaOrdIds(){ return aktivaOrd().map(o => o.lemma); }
+function rkSig(){ return aktivaOrdIds().join(""); }
+function rkFyll(){ const ids = aktivaOrdIds(); state.rk.ko = shuffle(ids); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
+function rkNasta(){
+  const rk = state.rk;
+  if(rk.bas !== rkSig()){ rk.forra = null; rk.forraRen = true; rkFyll(); }
+  else { if(rk.forra != null && !rk.forraRen) rk.ko.push(rk.forra); if(!rk.ko.length) rkFyll(); }
+  let id = rk.ko.shift();
+  if(id === rk.forra && rk.ko.length){ rk.ko.push(id); id = rk.ko.shift(); }
+  rk.forra = id; rk.forraRen = false;
+  return id;
+}
+function rkKlarad(){ const rk = state.rk; if(!rk.forraRen){ rk.forraRen = true; rk.kvar = Math.max(0, rk.kvar - 1); } }
 
 /* ── PERSISTENS ──────────────────────────────────────────────────────── */
 function spara(){
@@ -260,13 +280,9 @@ function uppdateraAntal(){ const el = $("ord-count"); if(el) el.textContent = "(
 function newQuestion(){
   const ordLista = aktivaOrd(), kasusLista = aktivaKasus();
   uppdateraAntal();
-  let o, k, n, sig, forsok = 0;
-  do {
-    o = pick(ordLista); k = pick(kasusLista);
-    n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
-    sig = o.lemma + "|" + k + "|" + n;
-  } while(sig === state.forraKort && ++forsok < 30);
-  state.forraKort = sig;
+  const o = ord.find(x => x.lemma === rkNasta()) || pick(ordLista);
+  const k = pick(kasusLista);
+  const n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
 
   const pk = paradigmKey(o), g = o.genus;
   const eo = andelseOptioner(pk, k, n, 6);
@@ -334,6 +350,7 @@ function render(){
   $("slot").textContent = c.slot;
   $("block-art").classList.toggle("hidden", false);
   $("streak").textContent = state.streak; $("best").textContent = state.best;
+  $("runda-kvar").textContent = state.rk.kvar;
   renderOpts();
 
   // Resultat-ram runt kortet: grön vid rätt, amber vid fel (satsanalys-modellen).
@@ -365,7 +382,9 @@ function rätta(){
   const c = state.card;
   if(state.mode === "end") state.selArt = c.artFacit;
   state.besvarad = true;
-  registrera(state.selEnd === c.endFacit && state.selArt === c.artFacit);
+  const rätt = state.selEnd === c.endFacit && state.selArt === c.artFacit;
+  registrera(rätt);
+  if(rätt) rkKlarad();
   render();
 }
 

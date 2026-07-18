@@ -27,6 +27,7 @@ const MARKUP = `<div class="vy vy-kongruens">
 
   <div class="streak">
     Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b>
+    &nbsp;·&nbsp; <b id="runda-kvar">0</b> kvar i rundan
   </div>
 </div>
 
@@ -310,6 +311,7 @@ const state = {
   sistFel:null,                // form för senaste felklick (för skak-animation)
   klar:false, smutsig:false,
   forra:"",
+  rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
 };
 
 /* ── PERSISTENS ──────────────────────────────────────────────────────── */
@@ -350,12 +352,31 @@ function aktivaSubst(){
   return bySem.length ? bySem : SUBSTANTIV.slice();
 }
 
+/* Rundkö (glosmodell, som satsanalys): gå igenom substantiven en gång; ett
+   substantiv som missas (felklick eller uppgivet) läggs sist och återkommer inom
+   rundan; tom kö → ny omblandad runda. Fylls om automatiskt när substantivurvalet
+   ändras. "kvar i rundan" räknar distinkta substantiv kvar att klara. */
+function aktivaSubstIds(){ return aktivaSubst().map(s => s.lemma); }
+function rkSig(){ return aktivaSubstIds().join(""); }
+function rkFyll(){ const ids = aktivaSubstIds(); state.rk.ko = shuffle(ids.slice()); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
+function rkNasta(){
+  const rk = state.rk;
+  if(rk.bas !== rkSig()){ rk.forra = null; rk.forraRen = true; rkFyll(); }
+  else { if(rk.forra != null && !rk.forraRen) rk.ko.push(rk.forra); if(!rk.ko.length) rkFyll(); }
+  let id = rk.ko.shift();
+  if(id === rk.forra && rk.ko.length){ rk.ko.push(id); id = rk.ko.shift(); }
+  rk.forra = id; rk.forraRen = false;
+  return id;
+}
+function rkKlarad(){ const rk = state.rk; if(!rk.forraRen){ rk.forraRen = true; rk.kvar = Math.max(0, rk.kvar - 1); } }
+
 /* ── NYTT KORT ───────────────────────────────────────────────────────────
    Allt löses EN gång här och läggs i state; render() läser bara state.    */
 function newQuestion(){
   state.klar = false; state.smutsig = false; state.sistFel = null;
-  if(state.konstruktion === "predikativ") nyttPredikativt();
-  else nyttAttributivt();
+  const subst = SUBSTANTIV.find(s => s.lemma === rkNasta()) || pick(aktivaSubst());
+  if(state.konstruktion === "predikativ") nyttPredikativt(subst);
+  else nyttAttributivt(subst);
   render();
 }
 
@@ -375,17 +396,13 @@ function byggAlternativ(korrekt, kand, fyllPool){
 }
 
 /* ── ATTRIBUTIV (ὁ ἀγαθὸς ἀδελφός) ──────────────────────────────────── */
-function nyttAttributivt(){
-  const adjPool = aktivaAdj(), substPool = aktivaSubst();
+function nyttAttributivt(substIn){
+  const adjPool = aktivaAdj();
   const kasusVal = state.vokativ ? [...KASUS,"vok"] : KASUS.slice();
 
-  let subst, adj, kasus, num, nyckel, forsok = 0;
-  do {
-    subst = pick(substPool); adj = pick(adjPool);
-    kasus = pick(kasusVal);  num = pick(["sg","pl"]);
-    nyckel = "a"+subst.lemma + adj.lemma + kasus + num;
-  } while(nyckel === state.forra && ++forsok < 30);
-  state.forra = nyckel;
+  const subst = substIn || pick(aktivaSubst());
+  const adj = pick(adjPool);
+  const kasus = pick(kasusVal), num = pick(["sg","pl"]);
 
   const g = subst.genus, ni = idx(num);
   const korrekt = adj[g][kasus][ni];
@@ -419,17 +436,13 @@ function nyttAttributivt(){
 /* ── PREDIKATIV (ὁ ἀδελφός ἐστιν ἀγαθός) ────────────────────────────────
    Subjekt och predikatsfyllnad står BÅDA i nominativ; bara genus + numerus
    rättas. Med verblucka blankas ibland εἰμί istället. */
-function nyttPredikativt(){
-  const adjPool = aktivaAdj(), substPool = aktivaSubst();
+function nyttPredikativt(substIn){
+  const adjPool = aktivaAdj();
 
-  let subst, adj, num, tempus, lucka, nyckel, forsok = 0;
-  do {
-    subst = pick(substPool); adj = pick(adjPool); num = pick(["sg","pl"]);
-    tempus = state.tempus==="blandat" ? pick(["pres","impf"]) : state.tempus;
-    lucka = (state.verblucka && Math.random() < 0.4) ? "verb" : "adj";
-    nyckel = "p"+subst.lemma + adj.lemma + num + tempus + lucka;
-  } while(nyckel === state.forra && ++forsok < 30);
-  state.forra = nyckel;
+  const subst = substIn || pick(aktivaSubst());
+  const adj = pick(adjPool), num = pick(["sg","pl"]);
+  const tempus = state.tempus==="blandat" ? pick(["pres","impf"]) : state.tempus;
+  const lucka = (state.verblucka && Math.random() < 0.4) ? "verb" : "adj";
 
   const g = subst.genus, ni = idx(num), annatNum = num==="sg" ? "pl" : "sg";
   const annatTempus = tempus==="pres" ? "impf" : "pres";
@@ -484,7 +497,7 @@ function svara(i){
   o.klickad = true;
   if(o.korrekt){
     state.klar = true;
-    if(!state.smutsig){ state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); } }
+    if(!state.smutsig){ rkKlarad(); state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); } }
   } else {
     state.smutsig = true; state.streak = 0; state.sistFel = o.form;
   }
@@ -500,6 +513,7 @@ function visaSvar(){                       // ge upp → sviten nollas
 function render(){
   $("streak").textContent = state.streak;
   $("best").textContent   = state.best;
+  $("runda-kvar").textContent = state.rk.kvar;
   $("prompt").innerHTML   = state.prompt;
 
   // frasen byggs ur tokens; {slot:true} blir luckan (fylld vid facit)

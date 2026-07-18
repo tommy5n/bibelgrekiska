@@ -412,7 +412,7 @@ const state = {
   card: null,                                     // upplöst EN gång i newQuestion()
   vand: false,                                    // flashcard: är kortet vänt?
   besvarad: false,                                // flerval: har man svarat?
-  ko: [],                                         // flashcard: rundkö (med retry)
+  rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
 };
 
 /* ── HJÄLPARE ────────────────────────────────────────────────────────── */
@@ -496,10 +496,23 @@ function byggOptioner(svar){
   return shuffle([svar.g, ...distraktorer]);
 }
 
-/* ── KORTLOGIK ───────────────────────────────────────────────────────── */
-function fyllKo(){
-  state.ko = shuffle(aktivaOrd());
+/* ── KORTLOGIK ───────────────────────────────────────────────────────────
+   Rundkö (glosmodell, som satsanalys) i BÅDA lägen: gå igenom orden en gång;
+   ett ord som missas läggs sist och återkommer inom rundan; tom kö → ny
+   omblandad runda. Fylls om automatiskt när ordurvalet ändras. "kvar i rundan"
+   räknar distinkta ord kvar att klara. */
+function rkSig(){ return aktivaOrd().map(w => w.l).join(""); }
+function fyllKo(){ const ids = aktivaOrd().map(w => w.l); state.rk.ko = shuffle(ids); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
+function rkNasta(){
+  const rk = state.rk;
+  if(rk.bas !== rkSig()){ rk.forra = null; rk.forraRen = true; fyllKo(); }
+  else { if(rk.forra != null && !rk.forraRen) rk.ko.push(rk.forra); if(!rk.ko.length) fyllKo(); }
+  let id = rk.ko.shift();
+  if(id === rk.forra && rk.ko.length){ rk.ko.push(id); id = rk.ko.shift(); }
+  rk.forra = id; rk.forraRen = false;
+  return id;
 }
+function rkKlarad(){ const rk = state.rk; if(!rk.forraRen){ rk.forraRen = true; rk.kvar = Math.max(0, rk.kvar - 1); } }
 function newQuestion(){
   const aktiva = aktivaOrd();
   state.vand = false;
@@ -507,12 +520,10 @@ function newQuestion(){
 
   if(!aktiva.length){ state.card = null; render(); return; }
 
+  const svar = aktiva.find(w => w.l === rkNasta()) || aktiva[0];
   if(state.mode === "flashcard"){
-    if(!state.ko.length) fyllKo();
-    const svar = state.ko.shift();
     state.card = { svar, sida: "fram" };
   }else{
-    const svar = aktiva[Math.floor(Math.random()*aktiva.length)];
     state.card = { svar, optioner: byggOptioner(svar) };
   }
   render();
@@ -528,7 +539,7 @@ function bokfor(korrekt){
 function flashcardSvar(kunde){
   if(!state.vand) return;
   bokfor(kunde);
-  if(!kunde) state.ko.push(state.card.svar);      // retry-kö: tillbaka senare i rundan
+  if(kunde) rkKlarad();                           // rätt → ur rundan; fel → återköas
   newQuestion();
 }
 function flervalSvar(valdGlosa, knapp){
@@ -536,6 +547,7 @@ function flervalSvar(valdGlosa, knapp){
   state.besvarad = true;
   const korrekt = valdGlosa === state.card.svar.g;
   bokfor(korrekt);
+  if(korrekt) rkKlarad();
   renderFlervalFacit(knapp, korrekt);
 }
 
@@ -651,6 +663,7 @@ function renderStats(){
   stats.innerHTML =
     `Svit: <b>${state.streak}</b> i rad` +
     `<span class="dot">·</span>Bästa: <b>${b}</b>` +
+    `<span class="dot">·</span><b>${state.rk.kvar}</b> kvar i rundan` +
     `<span class="dot">·</span>Session: <b>${state.ratt}/${state.totalt}</b> (${andel}%)`;
 }
 

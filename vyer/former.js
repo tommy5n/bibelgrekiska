@@ -161,7 +161,7 @@ const MARKUP = `<div class="vy vy-former">
   <div class="options" id="options"></div>
   <div class="controls hidden" id="controls-next"><button class="btn primary" id="btn-next">Nästa</button></div>
 
-  <div class="streak">Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b></div>
+  <div class="streak">Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b> &nbsp;·&nbsp; <b id="runda-kvar">0</b> kvar i rundan</div>
 </div>
 
 <div class="picker">
@@ -211,6 +211,7 @@ export function render(root){
     valdaOmv: new Set(BLADET),
     valdaKlass: new Set(Object.keys(KLASSER)),
     streak: 0, best: 0, card: null, besvarad: false, valt: null, forra: null,
+    rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
   };
 
   const $ = id => document.getElementById(id);
@@ -231,6 +232,31 @@ export function render(root){
   // Ett par (verb, omvandling) duger bara om verbet har BÅDA formnycklarna.
   const parFor = omv => kandidatVerb().filter(v => v.former[omv.from] && v.former[omv.to]);
   const giltigaOmv = () => aktivaOmv().filter(o => parFor(o).length > 0);
+
+  /* Rundkö (glosmodell, som satsanalys): gå igenom verben en gång; ett verb som
+     missas läggs sist och återkommer inom rundan; tom kö → ny omblandad runda.
+     Basmängden är verb som duger i AKTUELLT läge (neg: har ind/imp; bygg: passar
+     minst en vald omvandling). Fylls om automatiskt när mängden ändras. */
+  const negNyckel = v => Object.keys(v.former).some(k => k.endsWith(".ind") || k.endsWith(".imp"));
+  const basVerb = () => {
+    if(state.mode === "neg"){ const v = kandidatVerb().filter(negNyckel); return v.length ? v : kandidatVerb(); }
+    const oms = giltigaOmv();
+    const v = kandidatVerb().filter(x => oms.some(o => x.former[o.from] && x.former[o.to]));
+    return v.length ? v : kandidatVerb();
+  };
+  const basVerbIds = () => basVerb().map(v => v.lemma);
+  const rkSig = () => state.mode + "|" + basVerbIds().join("");
+  function rkFyll(){ const ids = basVerbIds(); state.rk.ko = shuffle(ids); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
+  function rkNasta(){
+    const rk = state.rk;
+    if(rk.bas !== rkSig()){ rk.forra = null; rk.forraRen = true; rkFyll(); }
+    else { if(rk.forra != null && !rk.forraRen) rk.ko.push(rk.forra); if(!rk.ko.length) rkFyll(); }
+    let id = rk.ko.shift();
+    if(id === rk.forra && rk.ko.length){ rk.ko.push(id); id = rk.ko.shift(); }
+    rk.forra = id; rk.forraRen = false;
+    return id;
+  }
+  function rkKlarad(){ const rk = state.rk; if(!rk.forraRen){ rk.forraRen = true; rk.kvar = Math.max(0, rk.kvar - 1); } }
 
   function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({
     mode:state.mode, valdaSem:[...state.valdaSem], valdaOmv:[...state.valdaOmv],
@@ -253,11 +279,12 @@ export function render(root){
     return cellerFor(nyckel).filter(p => f[p] === f[pn]);
   };
 
-  function nyBygg(){
-    const omvs = giltigaOmv();
-    const omv = pick(omvs);
+  function nyBygg(vIn){
+    // vIn (ur rundkön) styr verbet; välj en omvandling som verbet klarar.
+    const omvs = vIn ? giltigaOmv().filter(o => vIn.former[o.from] && vIn.former[o.to]) : giltigaOmv();
+    const omv = pick(omvs.length ? omvs : giltigaOmv());
     const kand = parFor(omv);
-    const v = pick(kand);
+    const v = (vIn && kand.includes(vIn)) ? vIn : pick(kand);
     // Källcellen måste finnas i BÅDA nycklarna (imperativ saknar 1:a person).
     const gemensamma = cellerFor(omv.from).filter(p => cellerFor(omv.to).includes(p) || omv.to.endsWith(".inf"));
     const pn = pick(omv.to.endsWith(".inf") ? cellerFor(omv.from) : gemensamma);
@@ -287,9 +314,8 @@ export function render(root){
     };
   }
 
-  function nyNeg(){
-    const kand = kandidatVerb();
-    const v = pick(kand);
+  function nyNeg(vIn){
+    const v = (vIn && negNyckel(vIn)) ? vIn : pick(kandidatVerb().filter(negNyckel));
     // Negationen prövas på indikativ (οὐ/οὐκ/οὐχ efter ljudet) och imperativ (alltid μή).
     const nycklar = Object.keys(v.former).filter(k => k.endsWith(".ind") || k.endsWith(".imp"));
     const nyckel = pick(nycklar);
@@ -305,18 +331,15 @@ export function render(root){
 
   function newQuestion(){
     uppdateraAntal();
-    let n = 0;
-    do {
-      state.mode === "neg" ? nyNeg() : nyBygg();
-      var sig = state.card.lemma + "|" + (state.card.omv ? state.card.omv.id : state.card.nyckel) + "|" + state.card.pn;
-    } while(sig === state.forra && ++n < 30);
-    state.forra = sig;
+    const v = verb.find(x => x.lemma === rkNasta());
+    state.mode === "neg" ? nyNeg(v) : nyBygg(v);
     state.besvarad = false; state.valt = null;
     render2();
   }
 
   function render2(){
     const c = state.card;
+    $("runda-kvar").textContent = state.rk.kvar;
     $("reveal").classList.add("hidden");
     $("controls-next").classList.add("hidden");
     $("options").classList.toggle("neg", c.typ==="neg");
@@ -387,7 +410,7 @@ export function render(root){
   }
   function svara(f){
     state.valt = f; state.besvarad = true;
-    if(state.card.ratta.has(f)){ state.streak++; if(state.streak>state.best){ state.best=state.streak; spara(); } }
+    if(state.card.ratta.has(f)){ state.streak++; rkKlarad(); if(state.streak>state.best){ state.best=state.streak; spara(); } }
     else state.streak = 0;
     $("streak").textContent = state.streak; $("best").textContent = state.best;
     render2();

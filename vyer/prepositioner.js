@@ -228,7 +228,7 @@ const MARKUP = `<div class="vy vy-prep">
   <div class="options" id="options"></div>
   <div class="controls hidden" id="controls-next"><button class="btn primary" id="btn-next">Nästa</button></div>
 
-  <div class="streak">Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b></div>
+  <div class="streak">Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b> &nbsp;·&nbsp; <b id="runda-kvar">0</b> kvar i rundan</div>
 </div>
 
 <div class="picker">
@@ -277,6 +277,7 @@ export function render(root){
     valdaPrep:  new Set(prepositioner.map(p => p.lemma)),
     valdaKas:   new Set(KASUS_ORDNING),
     streak: 0, best: 0, card: null, besvarad: false, valt: null, forra: null,
+    rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
   };
 
   const $ = id => document.getElementById(id);
@@ -318,6 +319,24 @@ export function render(root){
     return synligaPrep();
   }
 
+  /* Rundkö (glosmodell, som satsanalys): gå igenom urvalet en gång; ett item som
+     missas läggs sist och återkommer inom rundan; tom kö → ny omblandad runda.
+     Item = fras (valj-läget) resp. preposition (kasus-läget); fylls om automatiskt
+     när urvalet/läget ändras. "kvar i rundan" räknar distinkta item kvar. */
+  const rkIds = () => state.mode === "kasus" ? fastaAktiv().map(p => p.lemma) : aktivaFraser().map(f => f.gr);
+  const rkSig = () => state.mode + "|" + rkIds().join("");
+  function rkFyll(){ const ids = rkIds(); state.rk.ko = shuffle(ids); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
+  function rkNasta(){
+    const rk = state.rk;
+    if(rk.bas !== rkSig()){ rk.forra = null; rk.forraRen = true; rkFyll(); }
+    else { if(rk.forra != null && !rk.forraRen) rk.ko.push(rk.forra); if(!rk.ko.length) rkFyll(); }
+    let id = rk.ko.shift();
+    if(id === rk.forra && rk.ko.length){ rk.ko.push(id); id = rk.ko.shift(); }
+    rk.forra = id; rk.forraRen = false;
+    return id;
+  }
+  function rkKlarad(){ const rk = state.rk; if(!rk.forraRen){ rk.forraRen = true; rk.kvar = Math.max(0, rk.kvar - 1); } }
+
   function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({
     mode:state.mode, valdaSem:[...state.valdaSem], valdaGrupp:[...state.valdaGrupp], valdaPrep:[...state.valdaPrep],
     valdaKas:[...state.valdaKas], best:state.best })); }catch(e){} }
@@ -351,22 +370,19 @@ export function render(root){
   }
 
   function newQuestion(){
-    if(state.mode === "kasus"){ newQuestionKasus(); return; }
+    const id = rkNasta();
+    if(state.mode === "kasus"){ newQuestionKasus(id); return; }
     const fr = aktivaFraser();
-    let f, n=0;
-    do { f = pick(fr); } while(fr.length > 1 && f.gr === state.forra && ++n < 30);
-    state.forra = f.gr;
+    const f = fr.find(x => x.gr === id) || pick(fr);
     const ratt = prep(f.lemma).kasus[f.kasus];
     state.card = { mode:"valj", ...f, ratt, optioner: byggOptioner(f, ratt) };
     state.besvarad = false; state.valt = null;
     render2();
   }
   // "Vilket kasus?": visa en fast preposition + dess betydelse, välj kasus.
-  function newQuestionKasus(){
+  function newQuestionKasus(id){
     const ps = fastaAktiv();
-    let p, n=0;
-    do { p = pick(ps); } while(ps.length > 1 && p.lemma === state.forra && ++n < 30);
-    state.forra = p.lemma;
+    const p = ps.find(x => x.lemma === id) || pick(ps);
     const kas = endaKasus(p);
     const ex = fraser.find(f => f.lemma === p.lemma) || null;
     state.card = { mode:"kasus", lemma:p.lemma, kas, betyd:p.kasus[kas], ratt:KASUS[kas],
@@ -393,6 +409,7 @@ export function render(root){
     }
     $("streak").textContent = state.streak;
     $("best").textContent = state.best;
+    $("runda-kvar").textContent = state.rk.kvar;
 
     renderOptioner();
     if(state.besvarad){ visaSvar(); $("controls-next").classList.remove("hidden"); }
@@ -439,7 +456,7 @@ export function render(root){
   }
 
   function registrera(rätt){ if(rätt){ state.streak++; if(state.streak>state.best){ state.best=state.streak; spara(); } } else state.streak=0; }
-  function svara(v){ state.valt=v; state.besvarad=true; registrera(v === state.card.ratt); render2(); }
+  function svara(v){ const rätt = v === state.card.ratt; state.valt=v; state.besvarad=true; registrera(rätt); if(rätt) rkKlarad(); render2(); }
 
   // ── Picker: en toggle-grid per dimension (multival, minst ett kvar). ──
   function byggGrid(id, nycklar, etikett, valda, efter){

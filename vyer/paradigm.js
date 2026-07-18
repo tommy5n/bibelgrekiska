@@ -91,7 +91,7 @@ const MARKUP = `<div class="vy vy-paradigm">
   </div>
 
   <div class="scorebar">
-    Rätt i rad: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b>
+    Rätt i rad: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b> &nbsp;·&nbsp; <b id="runda-kvar">0</b> kvar i rundan
   </div>
 </div>
 
@@ -196,6 +196,7 @@ const ANDELSER_ALLA = (() => {
 
 /* ── HJÄLPARE ────────────────────────────────────────────────────────── */
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function setEq(a,b){ return a.size===b.size && [...a].every(x=>b.has(x)); }
 /* Härleder paradigm ur GENUS + nominativens/genitivens utljud. Det fungerar
    bara för deklination 1 och 2.
@@ -217,6 +218,7 @@ const state = {
   svar: {},                                        // "k|n" -> vald ändelse
   aktiv: null,                                     // "k|n" som fylls just nu
   besvarad: false,
+  rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
 };
 
 function aktivaKasus(){ return state.medVok ? KASUS_ORDNING : KASUS_ORDNING.filter(k => k !== "vok"); }
@@ -226,6 +228,24 @@ function aktivaOrd(){
   const v = synligaOrd().filter(o => state.valdaOrd.has(o.lemma));
   return v.length ? v : synligaOrd();
 }
+
+/* Rundkö (glosmodell, som satsanalys): gå igenom orden en gång; ett ord som
+   missas (tabellen ej helt rätt) läggs sist och återkommer inom rundan; tom kö
+   → ny omblandad runda. Fylls om automatiskt när ordurvalet ändras. "kvar i
+   rundan" räknar distinkta ord kvar att klara. */
+function aktivaOrdIds(){ return aktivaOrd().map(o => o.lemma); }
+function rkSig(){ return aktivaOrdIds().join(""); }
+function rkFyll(){ const ids = aktivaOrdIds(); state.rk.ko = shuffle(ids); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
+function rkNasta(){
+  const rk = state.rk;
+  if(rk.bas !== rkSig()){ rk.forra = null; rk.forraRen = true; rkFyll(); }
+  else { if(rk.forra != null && !rk.forraRen) rk.ko.push(rk.forra); if(!rk.ko.length) rkFyll(); }
+  let id = rk.ko.shift();
+  if(id === rk.forra && rk.ko.length){ rk.ko.push(id); id = rk.ko.shift(); }
+  rk.forra = id; rk.forraRen = false;
+  return id;
+}
+function rkKlarad(){ const rk = state.rk; if(!rk.forraRen){ rk.forraRen = true; rk.kvar = Math.max(0, rk.kvar - 1); } }
 
 /* ── PERSISTENS ──────────────────────────────────────────────────────── */
 function spara(){
@@ -252,10 +272,8 @@ function uppdateraAntal(){ const el = $("ord-count"); if(el) el.textContent = "(
 
 function nyttOrd(){
   uppdateraAntal();
-  let o;
-  do { o = pick(aktivaOrd()); } while(aktivaOrd().length > 1 && o === state.ord);
-  state.ord = o;
-  state.pk = paradigmKey(o);
+  state.ord = ord.find(x => x.lemma === rkNasta()) || pick(aktivaOrd());
+  state.pk = paradigmKey(state.ord);
   state.svar = {};
   state.besvarad = false;
   state.svarRatt = null;
@@ -350,6 +368,7 @@ function render(){
   $("tag").textContent = GENUS_NAMN[o.genus] + " · " + PARADIGM_NAMN[state.pk];
   $("glosa").textContent = o.glosa;
   $("streak").textContent = state.streak; $("best").textContent = state.best;
+  $("runda-kvar").textContent = state.rk.kvar;
   renderTabell(); renderPalett(); uppdateraGo();
 
   // Grön/amber ram: grön när hela tabellen är rätt, amber annars.
@@ -369,7 +388,7 @@ function ratta(){
   });
   state.besvarad = true;
   state.svarRatt = alltRatt;
-  if(alltRatt){ state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); } }
+  if(alltRatt){ rkKlarad(); state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); } }
   else state.streak = 0;
   render();
 }
