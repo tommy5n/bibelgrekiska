@@ -613,9 +613,11 @@ html, body {{
 }}
 .ov-list thead th:last-child {{ padding-left: 6mm; }}
 .ov-item {{ break-inside: avoid; }}
+/* Bara lodrät padding här — INTE shorthand, som skulle nolla vänster/höger
+   (den vinner på specificitet över .ov-q/.ov-a och åt gutter-luften). */
 .ov-item > td {{
-  vertical-align: top; padding: 1.7mm 0; border-bottom: 0.4pt solid #b8b8b8;
-  font-size: 8.7pt; line-height: 1.32;
+  vertical-align: top; padding-top: 1.7mm; padding-bottom: 1.7mm;
+  border-bottom: 0.4pt solid #b8b8b8; font-size: 8.7pt; line-height: 1.32;
 }}
 .ov-q {{ padding-right: 6mm; }}
 /* Lodrät hårlinje = vikkant för pappersremsan; luft på båda sidor om den. */
