@@ -422,13 +422,13 @@ SIDMALL = '''<!doctype html>
         .gr-toc {{ position: static; max-height: none; margin-bottom: 1rem; }}
         .ov-item {{ grid-template-columns: 1.4rem 1fr; }}
         .ov-toggle {{ grid-row: 2; grid-column: 2; justify-self: start; margin-top: 0.2rem; }}
-        .ov-facit {{ grid-column: 1 / 3; }}
+        .ov-facit {{ grid-row: 3; grid-column: 1 / 3; }}
       }}
     </style>
   </head>
   <body>
     <header class="gr-bar">
-      <a class="hem" href="index.html">← Spel</a>
+      <a class="hem" href="index.html">← Meny</a>
       <span class="wordmark">Bibelgrekiska · Seminarieövningar</span>
       <a class="utskrift" href="grammatikreferens.html">📘 Grammatikreferens</a>
     </header>
