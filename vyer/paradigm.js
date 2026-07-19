@@ -272,7 +272,8 @@ function uppdateraAntal(){ const el = $("ord-count"); if(el) el.textContent = "(
 
 function nyttOrd(){
   uppdateraAntal();
-  state.ord = ord.find(x => x.lemma === rkNasta()) || pick(aktivaOrd());
+  const _id = rkNasta();
+  state.ord = ord.find(x => x.lemma === _id) || pick(aktivaOrd());
   state.pk = paradigmKey(state.ord);
   state.svar = {};
   state.besvarad = false;

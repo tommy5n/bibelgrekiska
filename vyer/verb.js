@@ -320,7 +320,8 @@ export function render(root){
   function uppdateraAntal(){ const el = $("verb-count"); if(el) el.textContent = "(" + aktivaVerb().length + " verb)"; }
   function newQuestion(){
     uppdateraAntal();
-    const v = verb.find(o => o.lemma === rkNasta()) || pick(aktivaVerb());
+    const _id = rkNasta();
+    const v = verb.find(o => o.lemma === _id) || pick(aktivaVerb());
     const k = pick(nycklarFor(v)), p = pick(aktivaPN(k));
     const rätta = new Set(accepterade(v, k, p));
     state.card = {

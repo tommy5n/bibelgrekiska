@@ -280,7 +280,8 @@ function uppdateraAntal(){ const el = $("ord-count"); if(el) el.textContent = "(
 function newQuestion(){
   const ordLista = aktivaOrd(), kasusLista = aktivaKasus();
   uppdateraAntal();
-  const o = ord.find(x => x.lemma === rkNasta()) || pick(ordLista);
+  const _id = rkNasta();
+  const o = ord.find(x => x.lemma === _id) || pick(ordLista);
   const k = pick(kasusLista);
   const n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
 

@@ -374,7 +374,8 @@ function rkKlarad(){ const rk = state.rk; if(!rk.forraRen){ rk.forraRen = true; 
    Allt löses EN gång här och läggs i state; render() läser bara state.    */
 function newQuestion(){
   state.klar = false; state.smutsig = false; state.sistFel = null;
-  const subst = SUBSTANTIV.find(s => s.lemma === rkNasta()) || pick(aktivaSubst());
+  const _id = rkNasta();
+  const subst = SUBSTANTIV.find(s => s.lemma === _id) || pick(aktivaSubst());
   if(state.konstruktion === "predikativ") nyttPredikativt(subst);
   else nyttAttributivt(subst);
   render();

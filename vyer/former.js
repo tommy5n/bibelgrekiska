@@ -331,7 +331,8 @@ export function render(root){
 
   function newQuestion(){
     uppdateraAntal();
-    const v = verb.find(x => x.lemma === rkNasta());
+    const _id = rkNasta();
+    const v = verb.find(x => x.lemma === _id);
     state.mode === "neg" ? nyNeg(v) : nyBygg(v);
     state.besvarad = false; state.valt = null;
     render2();

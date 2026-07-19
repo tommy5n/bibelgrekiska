@@ -520,7 +520,8 @@ function newQuestion(){
 
   if(!aktiva.length){ state.card = null; render(); return; }
 
-  const svar = aktiva.find(w => w.l === rkNasta()) || aktiva[0];
+  const _id = rkNasta();
+  const svar = aktiva.find(w => w.l === _id) || aktiva[0];
   if(state.mode === "flashcard"){
     state.card = { svar, sida: "fram" };
   }else{

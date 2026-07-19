@@ -451,7 +451,8 @@ export function render(root) {
    LOGIK — vad som händer i spelet.
    ============================================================ */
   function newQuestion() {
-    state.current = letters.find((l) => l.name === rkNasta()) || randomLetter(state.current);
+    const _id = rkNasta();
+    state.current = letters.find((l) => l.name === _id) || randomLetter(state.current);
     state.glyph = resolveGlyph(state.current); // lotta formen en gång, här
     state.revealed = false;
     state.answered = false;

@@ -432,7 +432,8 @@ function newQuestion(){
 
   // Dra kort, men undvik exakt samma kort (ord+kasus+numerus) två ggr i rad.
   // Taket skyddar mot loop när bara ett kort är möjligt — då finns inget annat.
-  const w = ord.find(o => o.lemma === rkNasta()) || pick(ordLista);
+  const _id = rkNasta();
+  const w = ord.find(o => o.lemma === _id) || pick(ordLista);
   const k = pick(kasusLista);
   const n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
 
