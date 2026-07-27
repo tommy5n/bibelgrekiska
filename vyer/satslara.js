@@ -85,6 +85,12 @@ export function render(root){
     { id:"s10", ref:"Presentation 8 (§280)", subj:"ὅτι", funktion:"att-sats (efter βλέπω)",
       sv:"Hon ser att döparen predikar i byn.",
       chunks:[{t:"αὕτη"},{t:"βλέπει"},{t:"ὅτι",b:1},{t:"ὁ βαπτιστὴς",b:1},{t:"κηρύσσει",b:1},{t:"ἐν τῇ κώμῃ",b:1}] },
+    { id:"s11", ref:"Joh 14:29 (jfr)", subj:"ἵνα", funktion:"final (för att); tar konjunktiv",
+      sv:"Jesus säger detta för att ni ska tro.",
+      chunks:[{t:"ὁ Ἰησοῦς"},{t:"ταῦτα"},{t:"λέγει"},{t:"ἵνα",b:1},{t:"πιστεύητε",b:1}] },
+    { id:"s12", ref:"Matt 12:22 (jfr)", subj:"ὥστε", funktion:"konsekutiv (så att); tar infinitiv",
+      sv:"Jesus botade honom, så att den stumme talade.",
+      chunks:[{t:"ὁ Ἰησοῦς"},{t:"ἐθεράπευσεν"},{t:"αὐτόν"},{t:"ὥστε",b:1},{t:"τὸν κωφὸν",b:1},{t:"λαλεῖν",b:1}] },
   ];
 
   const SUBJ = [
@@ -113,6 +119,21 @@ export function render(root){
   const $ = id => document.getElementById(id);
   const pick = arr => arr[Math.floor(Math.random()*arr.length)];
   function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+  // Synonym-vakt (jfr prepositionsspelet): ett felalternativ får inte dela
+  // innehållsord med rätt svar — annars kan ὡς "då, när, som" dyka upp som
+  // distraktor till ὅτε "när", eller διότι "eftersom" till ὅτι "att, eftersom",
+  // vilket blir en kuggfråga. Faller tillbaka på överlappande ord bara om det
+  // inte går att fylla tre rena (inträffar aldrig med nuvarande SUBJ-lista).
+  const ORD = s => new Set(s.toLowerCase().split(/[^a-zåäöé]+/).filter(w => w.length > 1));
+  function valjDistraktorer(ratt){
+    const ord = ORD(ratt.sv);
+    const ovriga = SUBJ.filter(s => s.ord !== ratt.ord);
+    const delar = s => { for(const w of ORD(s.sv)) if(ord.has(w)) return true; return false; };
+    const fel = shuffle(ovriga.filter(s => !delar(s))).slice(0,3);
+    if(fel.length < 3){ for(const s of shuffle(ovriga.filter(s => !fel.includes(s)))){ if(fel.length>=3) break; fel.push(s); } }
+    return fel;
+  }
   function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({best:state.best})); }catch(e){} }
   function ladda(){ try{ const r=JSON.parse(localStorage.getItem(LAGER)||"{}"); if(typeof r.best==="number") state.best=r.best; }catch(e){} }
 
@@ -131,7 +152,7 @@ export function render(root){
       state.sats = SATSER[i];
     } else {
       state.subj = SUBJ[i];
-      const fel = shuffle(SUBJ.filter(s=>s.ord!==state.subj.ord)).slice(0,3);
+      const fel = valjDistraktorer(state.subj);
       state.alternativ = shuffle([state.subj, ...fel]);
     }
     render();
