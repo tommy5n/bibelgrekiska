@@ -389,6 +389,7 @@ const SEMINARIER = [
   },
   {
     n:8, titel:"Aorist, bisatser, neutrala substantiv och particip",
+    tema:"Aspekt blir nyckelordet: aoristen ställs mot imperfekt, och satsen fördjupas med bisatser och particip.",
     nytt:[
       "Tillägg till imperfekt — temporalt augment, augment i sammansatta verb, elision, imperfekt av -έω-verb",
       "Sigmatisk aorist — dåtidens andra tempus (ἔλυσα): indikativ, imperativ, infinitiv",
