@@ -196,7 +196,7 @@ const MARKUP = `<div class="vy vy-former">
 </div>
 
 <footer>Övningsbladets formlära, men åt båda hållen. Först måste du läsa av <b>person och numerus</b> ur den givna ändelsen — sedan bygga om formen. Vissa former ändras inte alls (2:a pl är samma i indikativ och imperativ), och <b>-ον</b> i imperfekt är både 1:a sg och 3:e pl, så då godtas båda svaren.
-<div class="gr-lank"><a href="grammatikreferens.html#verb-imperfekt">§ Imperfekt</a> · <a href="grammatikreferens.html#verb-imperativ">§ Imperativ</a> · <a href="grammatikreferens.html#verb-futurum">§ Futurum</a></div></footer>
+<div class="gr-lank"><a href="grammatikreferens.html#verb-imperfekt">§ Imperfekt</a> · <a href="grammatikreferens.html#verb-imperativ">§ Imperativ</a> · <a href="grammatikreferens.html#verb-futurum">§ Futurum</a> · <a href="grammatikreferens.html#verb-aorist">§ Aorist</a></div></footer>
 </div>`;
 
 export function render(root){
