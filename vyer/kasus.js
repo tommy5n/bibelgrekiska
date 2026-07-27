@@ -71,6 +71,7 @@ const MARKUP = `<div class="vy vy-kasus">
         <span class="quicklabel">Deklination:</span>
         <button class="chip" data-cat="d1">Dekl. 1</button>
         <button class="chip" data-cat="d2">Dekl. 2</button>
+        <button class="chip" data-cat="d3">Dekl. 3</button>
       </div>
       <div class="quickrow">
         <span class="quicklabel">Typ:</span>
@@ -267,7 +268,30 @@ const ord = [
   { lemma:"δαιμόνιον", glosa:"demon", glosaGen:"demons", glosaPl:"demoner", genus:"n", sem:[5], former:{
     nom:{sg:"δαιμόνιον",pl:"δαιμόνια"}, gen:{sg:"δαιμονίου",pl:"δαιμονίων"}, dat:{sg:"δαιμονίῳ",pl:"δαιμονίοις"}, ack:{sg:"δαιμόνιον",pl:"δαιμόνια"}, vok:{sg:"δαιμόνιον",pl:"δαιμόνια"} }},
   { lemma:"φίλος", glosa:"vän", glosaGen:"väns", glosaPl:"vänner", genus:"m", sem:[5], former:{
-    nom:{sg:"φίλος",pl:"φίλοι"}, gen:{sg:"φίλου",pl:"φίλων"}, dat:{sg:"φίλῳ",pl:"φίλοις"}, ack:{sg:"φίλον",pl:"φίλους"}, vok:{sg:"φίλε",pl:"φίλοι"} }}
+    nom:{sg:"φίλος",pl:"φίλοι"}, gen:{sg:"φίλου",pl:"φίλων"}, dat:{sg:"φίλῳ",pl:"φίλοις"}, ack:{sg:"φίλον",pl:"φίλους"}, vok:{sg:"φίλε",pl:"φίλοι"} }},
+
+  /* ── Tredje deklinationen (stambaserad, dekl:3) ────────────────────────
+     Formerna läses explicit — dekl:3 håller dem utanför paradigmKeyK:s
+     ändelseklassning. Neutra: nom = ack (sg & pl). Sem 8 = neutra (§72–83);
+     ἡγεμών/ἀμπελών (mask., nasalstam) från sem 7 ger genuskontrasten. */
+  { lemma:"πνεῦμα", glosa:"ande", glosaGen:"andes", glosaPl:"andar", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"πνεῦμα",pl:"πνεύματα"}, gen:{sg:"πνεύματος",pl:"πνευμάτων"}, dat:{sg:"πνεύματι",pl:"πνεύμασι(ν)"}, ack:{sg:"πνεῦμα",pl:"πνεύματα"}, vok:{sg:"πνεῦμα",pl:"πνεύματα"} }},
+  { lemma:"σῶμα", glosa:"kropp", glosaGen:"kropps", glosaPl:"kroppar", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"σῶμα",pl:"σώματα"}, gen:{sg:"σώματος",pl:"σωμάτων"}, dat:{sg:"σώματι",pl:"σώμασι(ν)"}, ack:{sg:"σῶμα",pl:"σώματα"}, vok:{sg:"σῶμα",pl:"σώματα"} }},
+  { lemma:"αἷμα", glosa:"blod", glosaGen:"blods", glosaPl:"blod", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"αἷμα",pl:"αἵματα"}, gen:{sg:"αἵματος",pl:"αἱμάτων"}, dat:{sg:"αἵματι",pl:"αἵμασι(ν)"}, ack:{sg:"αἷμα",pl:"αἵματα"}, vok:{sg:"αἷμα",pl:"αἵματα"} }},
+  { lemma:"ὄνομα", glosa:"namn", glosaGen:"namns", glosaPl:"namn", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"ὄνομα",pl:"ὀνόματα"}, gen:{sg:"ὀνόματος",pl:"ὀνομάτων"}, dat:{sg:"ὀνόματι",pl:"ὀνόμασι(ν)"}, ack:{sg:"ὄνομα",pl:"ὀνόματα"}, vok:{sg:"ὄνομα",pl:"ὀνόματα"} }},
+  { lemma:"φῶς", glosa:"ljus", glosaGen:"ljus", glosaPl:"ljus", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"φῶς",pl:"φῶτα"}, gen:{sg:"φωτός",pl:"φώτων"}, dat:{sg:"φωτί",pl:"φωσί(ν)"}, ack:{sg:"φῶς",pl:"φῶτα"}, vok:{sg:"φῶς",pl:"φῶτα"} }},
+  { lemma:"ὕδωρ", glosa:"vatten", glosaGen:"vattens", glosaPl:"vatten", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"ὕδωρ",pl:"ὕδατα"}, gen:{sg:"ὕδατος",pl:"ὑδάτων"}, dat:{sg:"ὕδατι",pl:"ὕδασι(ν)"}, ack:{sg:"ὕδωρ",pl:"ὕδατα"}, vok:{sg:"ὕδωρ",pl:"ὕδατα"} }},
+  { lemma:"ὄρος", glosa:"berg", glosaGen:"bergs", glosaPl:"berg", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"ὄρος",pl:"ὄρη"}, gen:{sg:"ὄρους",pl:"ὄρων"}, dat:{sg:"ὄρει",pl:"ὄρεσι(ν)"}, ack:{sg:"ὄρος",pl:"ὄρη"}, vok:{sg:"ὄρος",pl:"ὄρη"} }},
+  { lemma:"ἡγεμών", glosa:"ståthållare", glosaGen:"ståthållares", glosaPl:"ståthållare", genus:"m", dekl:3, sem:[7], former:{
+    nom:{sg:"ἡγεμών",pl:"ἡγεμόνες"}, gen:{sg:"ἡγεμόνος",pl:"ἡγεμόνων"}, dat:{sg:"ἡγεμόνι",pl:"ἡγεμόσι(ν)"}, ack:{sg:"ἡγεμόνα",pl:"ἡγεμόνας"}, vok:{sg:"ἡγεμών",pl:"ἡγεμόνες"} }},
+  { lemma:"ἀμπελών", glosa:"vingård", glosaGen:"vingårds", glosaPl:"vingårdar", genus:"m", dekl:3, sem:[7], former:{
+    nom:{sg:"ἀμπελών",pl:"ἀμπελῶνες"}, gen:{sg:"ἀμπελῶνος",pl:"ἀμπελώνων"}, dat:{sg:"ἀμπελῶνι",pl:"ἀμπελῶσι(ν)"}, ack:{sg:"ἀμπελῶνα",pl:"ἀμπελῶνας"}, vok:{sg:"ἀμπελών",pl:"ἀμπελῶνες"} }}
 ];
 
 /* Kategori-förval på deklinations-/typaxeln, som predikat på paradigmKeyK —
@@ -277,6 +301,7 @@ const ord = [
 const KATEGORIER = {
   d1: o => ["f1h","f1a","f1m","m1"].includes(paradigmKeyK(o)), // hela deklination 1
   d2: o => ["m2","n2"].includes(paradigmKeyK(o)),              // hela deklination 2
+  d3: o => ["n3","m3"].includes(paradigmKeyK(o)),             // hela deklination 3 (stambaserad)
   os: o => paradigmKeyK(o) === "m2",                           // -ος (dekl. 2, mask + νόσος-typ)
   n:  o => paradigmKeyK(o) === "n2",                           // neutr. -ον
   fh: o => paradigmKeyK(o) === "f1h",                          // fem. η-stam
@@ -325,6 +350,7 @@ function strip(s){ return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").norm
    νόσος/μαθητής). Ordning: neutrum -ον, 2:a-dekl -ος (mask + fem-νόσος),
    1:a-dekl mask (nom ej -ος men gen -ου), sedan fem η / ren α / blandad α. */
 function paradigmKeyK(o){
+  if(o.dekl === 3) return o.genus === "n" ? "n3" : "m3";  // stambaserad — ändelser klassar ej dekl. 3
   const nom = strip(o.former.nom.sg), gen = strip(o.former.gen.sg);
   if(nom.endsWith("ον")) return "n2";
   if(nom.endsWith("ος")) return "m2";

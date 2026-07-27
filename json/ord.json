@@ -2765,6 +2765,293 @@
    },
    "glosaPl": "vingårdar",
    "not": "Nasalstam ἀμπελων- (B § 76-77), samma typ som ἡγεμών men med LÅNG stamvokal ω genom hela böjningen (ἀμπελῶνος, jfr ἡγεμόνος med kort ο). Dat pl ἀμπελῶσι(ν): ν faller framför σ. Glossas i övningsbladet 1:7 som '3:e deklinationen, se presentation' — dvs. ska läsas mot ἡγεμών-paradigmet."
+  },
+  {
+   "lemma": "πνεῦμα",
+   "glosa": "ande",
+   "glosaGen": "andes",
+   "genus": "neutrum",
+   "deklination": 3,
+   "stam": "πνευματ-",
+   "tredjeklass": "nt-neutrum",
+   "accenttyp": "properispomenon",
+   "seminarium": [
+    8
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "πνεῦμα",
+     "pl": "πνεύματα"
+    },
+    "gen": {
+     "sg": "πνεύματος",
+     "pl": "πνευμάτων"
+    },
+    "dat": {
+     "sg": "πνεύματι",
+     "pl": "πνεύμασι(ν)"
+    },
+    "ack": {
+     "sg": "πνεῦμα",
+     "pl": "πνεύματα"
+    },
+    "vok": {
+     "sg": "πνεῦμα",
+     "pl": "πνεύματα"
+    }
+   },
+   "glosaPl": "andar",
+   "not": "Neutrum -μα/-ματος (B § 72:2). nom = ack (sg & pl). Dat pl -σι(ν): τ faller (πνεύμα-σι). Gen pl πνευμάτων — accent flyttas till μά framför långt -ων."
+  },
+  {
+   "lemma": "σῶμα",
+   "glosa": "kropp",
+   "glosaGen": "kropps",
+   "genus": "neutrum",
+   "deklination": 3,
+   "stam": "σωματ-",
+   "tredjeklass": "nt-neutrum",
+   "accenttyp": "properispomenon",
+   "seminarium": [
+    8
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "σῶμα",
+     "pl": "σώματα"
+    },
+    "gen": {
+     "sg": "σώματος",
+     "pl": "σωμάτων"
+    },
+    "dat": {
+     "sg": "σώματι",
+     "pl": "σώμασι(ν)"
+    },
+    "ack": {
+     "sg": "σῶμα",
+     "pl": "σώματα"
+    },
+    "vok": {
+     "sg": "σῶμα",
+     "pl": "σώματα"
+    }
+   },
+   "glosaPl": "kroppar",
+   "not": "Böjs som πνεῦμα (B § 72:2). nom = ack."
+  },
+  {
+   "lemma": "αἷμα",
+   "glosa": "blod",
+   "glosaGen": "blods",
+   "genus": "neutrum",
+   "deklination": 3,
+   "stam": "αἱματ-",
+   "tredjeklass": "nt-neutrum",
+   "accenttyp": "properispomenon",
+   "seminarium": [
+    8
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "αἷμα",
+     "pl": "αἵματα"
+    },
+    "gen": {
+     "sg": "αἵματος",
+     "pl": "αἱμάτων"
+    },
+    "dat": {
+     "sg": "αἵματι",
+     "pl": "αἵμασι(ν)"
+    },
+    "ack": {
+     "sg": "αἷμα",
+     "pl": "αἵματα"
+    },
+    "vok": {
+     "sg": "αἷμα",
+     "pl": "αἵματα"
+    }
+   },
+   "glosaPl": "blod",
+   "not": "Böjs som πνεῦμα. Spiritus asper genom hela paradigmet."
+  },
+  {
+   "lemma": "ὄνομα",
+   "glosa": "namn",
+   "glosaGen": "namns",
+   "genus": "neutrum",
+   "deklination": 3,
+   "stam": "ὀνοματ-",
+   "tredjeklass": "nt-neutrum",
+   "accenttyp": "proparoxyton",
+   "seminarium": [
+    8
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "ὄνομα",
+     "pl": "ὀνόματα"
+    },
+    "gen": {
+     "sg": "ὀνόματος",
+     "pl": "ὀνομάτων"
+    },
+    "dat": {
+     "sg": "ὀνόματι",
+     "pl": "ὀνόμασι(ν)"
+    },
+    "ack": {
+     "sg": "ὄνομα",
+     "pl": "ὀνόματα"
+    },
+    "vok": {
+     "sg": "ὄνομα",
+     "pl": "ὀνόματα"
+    }
+   },
+   "glosaPl": "namn",
+   "not": "Böjs som πνεῦμα. Accenten vandrar framåt vid längre ändelse (ὄνομα → ὀνόματος)."
+  },
+  {
+   "lemma": "φῶς",
+   "glosa": "ljus",
+   "glosaGen": "ljus",
+   "genus": "neutrum",
+   "deklination": 3,
+   "stam": "φωτ-",
+   "tredjeklass": "klusil",
+   "accenttyp": "properispomenon",
+   "seminarium": [
+    8
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "φῶς",
+     "pl": "φῶτα"
+    },
+    "gen": {
+     "sg": "φωτός",
+     "pl": "φώτων"
+    },
+    "dat": {
+     "sg": "φωτί",
+     "pl": "φωσί(ν)"
+    },
+    "ack": {
+     "sg": "φῶς",
+     "pl": "φῶτα"
+    },
+    "vok": {
+     "sg": "φῶς",
+     "pl": "φῶτα"
+    }
+   },
+   "glosaPl": "ljus",
+   "not": "Neutrum, dentalstam φωτ- (B § 73:8). Enstavig stam → gen/dat sg oxytona (φωτός, φωτί). Dat pl φωσί(ν): τ faller framför σ."
+  },
+  {
+   "lemma": "ὕδωρ",
+   "glosa": "vatten",
+   "glosaGen": "vattens",
+   "genus": "neutrum",
+   "deklination": 3,
+   "stam": "ὑδατ-",
+   "tredjeklass": "klusil",
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    8
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "ὕδωρ",
+     "pl": "ὕδατα"
+    },
+    "gen": {
+     "sg": "ὕδατος",
+     "pl": "ὑδάτων"
+    },
+    "dat": {
+     "sg": "ὕδατι",
+     "pl": "ὕδασι(ν)"
+    },
+    "ack": {
+     "sg": "ὕδωρ",
+     "pl": "ὕδατα"
+    },
+    "vok": {
+     "sg": "ὕδωρ",
+     "pl": "ὕδατα"
+    }
+   },
+   "glosaPl": "vatten",
+   "not": "Neutrum, dentalstam ὑδατ- (B § 73:8). Avvikande nom./ack. sg ὕδωρ; övriga former som πνεῦμα på stammen ὑδατ-."
+  },
+  {
+   "lemma": "ὄρος",
+   "glosa": "berg",
+   "glosaGen": "bergs",
+   "genus": "neutrum",
+   "deklination": 3,
+   "stam": "ὀρεσ-",
+   "tredjeklass": "sigma-neutrum",
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    8
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "ὄρος",
+     "pl": "ὄρη"
+    },
+    "gen": {
+     "sg": "ὄρους",
+     "pl": "ὄρων"
+    },
+    "dat": {
+     "sg": "ὄρει",
+     "pl": "ὄρεσι(ν)"
+    },
+    "ack": {
+     "sg": "ὄρος",
+     "pl": "ὄρη"
+    },
+    "vok": {
+     "sg": "ὄρος",
+     "pl": "ὄρη"
+    }
+   },
+   "glosaPl": "berg",
+   "not": "Neutrum -ος/-ους, sigmastam ὀρεσ- (B § 82, 83:1–2). σ faller mellan vokaler → kontraktion (ὄρε-ος → ὄρους, ὄρε-α → ὄρη). Gen pl: presentationen ger ὄρων; NT/MorphGNT attesterar ὀρέων (okontraherat) — kursform primär, NT-form noterad."
   }
  ],
  "_tredjeklasser": {
