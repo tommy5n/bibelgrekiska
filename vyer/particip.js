@@ -10,7 +10,30 @@
 let __kh = null;
 export function teardown(){ if(__kh){ document.removeEventListener("keydown", __kh); __kh = null; } }
 
-const MARKUP = `<div class="vy vy-particip">
+// Scopad CSS (mönstret för nya vyer: bo i vyn, inte app.css). Self-cleaning —
+// följer med när root.innerHTML byts, ingen teardown behövs. Ärver skalet +
+// globala tokens; här bara det spelspecifika. Grön = rätt (--cbg/--cbd/--c).
+const CSS = `
+.vy-particip .prompt { font-size: var(--fs-lg); color: var(--ink); text-align: center; margin-top: 0.8rem; }
+.vy-particip .fras { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; margin: 1.1rem 0 0.8rem; }
+.vy-particip .hufras { font-size: 1.85rem; color: var(--ink); }
+.vy-particip .huanalys { font-size: var(--fs-sm); color: var(--ink-soft); font-style: italic; }
+.vy-particip .alternativ { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0.4rem 0 0.6rem; }
+.vy-particip .alt {
+  font-family: inherit; font-size: var(--fs-2xl); color: var(--ink); background: var(--card);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 0.45rem 1rem; cursor: pointer; transition: 0.15s;
+}
+.vy-particip .alt:hover:not(:disabled) { border-color: var(--gold); }
+.vy-particip .alt:disabled { cursor: default; }
+.vy-particip .alt.ratt { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
+.vy-particip .alt.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+.vy-particip .reveal { text-align: center; margin-top: 0.4rem; }
+.vy-particip .helfras { font-size: var(--fs-2xl); color: var(--ink); margin-bottom: 0.3rem; }
+.vy-particip .analys { font-size: var(--fs-sm); color: var(--ink-soft); }
+.vy-particip .not { font-size: var(--fs-xs); color: var(--ink-soft); font-style: italic; margin-top: 0.2rem; }
+`;
+
+const MARKUP = `<div class="vy vy-particip"><style>${CSS}</style>
 <header>
   <h1>Grekiska — presens particip</h1>
   <div class="sub">Participet är ett verbaladjektiv — det kongruerar med sitt huvudord i genus, numerus och kasus.</div>

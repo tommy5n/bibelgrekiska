@@ -9,7 +9,47 @@
 let __kh = null;
 export function teardown(){ if(__kh){ document.removeEventListener("keydown", __kh); __kh = null; } }
 
-const MARKUP = `<div class="vy vy-satslara">
+// Scopad CSS (mönstret för nya vyer: bo i vyn, inte app.css). Self-cleaning —
+// följer med när root.innerHTML byts, ingen teardown behövs. Ärver skalklasserna
+// (.modes/.card/.reveal/.controls/.streak) + globala tokens; här bara det
+// spelspecifika. Grön = rätt (--cbg/--cbd/--c, samma "rätt"-trio som satsanalys).
+const CSS = `
+.vy-satslara .sats {
+  display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center;
+  margin: 1.5rem 0 0.4rem; min-height: 3.2rem; align-items: flex-end;
+}
+.vy-satslara .chunk {
+  font-family: inherit; font-size: 1.85rem; line-height: 1.15;
+  color: var(--ink); background: var(--card); border: 1.5px solid var(--line);
+  border-radius: 12px; padding: 0.35rem 0.7rem 0.3rem; cursor: pointer; transition: 0.15s;
+}
+.vy-satslara .chunk:hover:not(:disabled) { border-color: var(--gold); }
+.vy-satslara .chunk:disabled { cursor: default; }
+.vy-satslara .chunk.vald { background: var(--cbg); border-color: var(--gold); color: var(--ink); }
+.vy-satslara .chunk.bisats { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
+.vy-satslara .chunk.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+.vy-satslara .fraga { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; margin: 1.4rem 0 0.6rem; }
+.vy-satslara .subj-stor { font-size: 2.4rem; color: var(--ink); }
+.vy-satslara .subj-fraga { font-size: var(--fs-sm); color: var(--ink-soft); }
+.vy-satslara .options { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0.4rem 0 0.6rem; }
+.vy-satslara .opt {
+  font-family: inherit; font-size: var(--fs-lg); color: var(--ink); background: var(--card);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 0.5rem 1rem; cursor: pointer; transition: 0.15s;
+}
+.vy-satslara .opt:hover:not(:disabled) { border-color: var(--gold); }
+.vy-satslara .opt:disabled { cursor: default; }
+.vy-satslara .opt.ratt { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
+.vy-satslara .opt.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+.vy-satslara .controls { display: flex; gap: 0.6rem; justify-content: center; margin-top: 0.6rem; }
+.vy-satslara .ctl {
+  font-family: inherit; font-size: var(--fs-sm); color: var(--ink); background: var(--card);
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 0.45rem 1rem; cursor: pointer; transition: 0.15s;
+}
+.vy-satslara .ctl:hover { border-color: var(--gold); }
+.vy-satslara .ctl.primar { background: var(--gold); border-color: var(--gold); color: #fff; }
+`;
+
+const MARKUP = `<div class="vy vy-satslara"><style>${CSS}</style>
 <header>
   <h1>Grekiska — satsläran</h1>
   <div class="sub">Hitta bisatsen — och lär dig subjunktionerna som inleder den.</div>
