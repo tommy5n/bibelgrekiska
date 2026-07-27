@@ -1,5 +1,5 @@
 {
- "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope: presens indikativ aktiv (ω-verb, kontraherade -έω, εἰμί); seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι). Seminarium 7 (kurs-PDF 2026-07-14) tillför: imperfekt indikativ aktiv (impf.ind.akt) på hela inventariet, presens aktiv imperativ (pres.imp.akt), presens aktiv infinitiv (pres.inf.akt) och futurum aktiv infinitiv (fut.inf.akt: παιδεύσειν) samt futurum på konsonantstammar. Syntaxen (infinitiv B § 266-271, imperativ B § 265, tempus/aspekt § 251-255) hör till grammatikreferensen, inte hit.",
+ "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope: presens indikativ aktiv (ω-verb, kontraherade -έω, εἰμί); seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι). Seminarium 7 (kurs-PDF 2026-07-14) tillför: imperfekt indikativ aktiv (impf.ind.akt) på hela inventariet, presens aktiv imperativ (pres.imp.akt), presens aktiv infinitiv (pres.inf.akt) och futurum aktiv infinitiv (fut.inf.akt: παιδεύσειν) samt futurum på konsonantstammar. Syntaxen (infinitiv B § 266-271, imperativ B § 265, tempus/aspekt § 251-255) hör till grammatikreferensen, inte hit. Seminarium 8 tillför sigmatisk aorist (aor.ind/imp/inf.akt) för sigmatiska verb; andraaorister (utan sigma) skjuts till seminarium 9.",
  "_genererad": "2026-07-07",
  "_nycklar": {
   "_forklaring": "Formnyckel = 'tempus.modus.diates'. Person/numerus = '1sg'..'3pl'. Kortformer för konsekvens med ord.json; långformer nedan.",
@@ -133,7 +133,8 @@
   "eimi": "εἰμί (vara) — presens + imperfekt",
   "sem5": "Seminarium 5-verb (prepositions-/negations-/pronomenövningarna)",
   "sem6": "Seminarium 6: futurum (ω-verb λύσω, -έω-verb φιλήσω, εἰμί ἔσομαι)",
-  "sem7": "Seminarium 7: imperfekt (ἔλυον), presens imperativ (λῦε), infinitiv (λύειν/λύσειν) + futurum-tillägg (konsonantstammar)"
+  "sem7": "Seminarium 7: imperfekt (ἔλυον), presens imperativ (λῦε), infinitiv (λύειν/λύσειν) + futurum-tillägg (konsonantstammar)",
+  "sem8": "Seminarium 8: sigmatisk aorist (ind./imp./inf.) — ω-verb + kontraherade -έω; καλέω som undantag (ἐκάλεσα)"
  },
  "_falt": {
   "lemma": "Uppslagsform (1sg pres ind akt).",
@@ -159,12 +160,14 @@
    "seminarium": [
     2,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 42,
    "former": {
@@ -203,6 +206,23 @@
     },
     "fut.inf.akt": {
      "inf": "λύσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἔλυσα",
+     "2sg": "ἔλυσας",
+     "3sg": "ἔλυσε(ν)",
+     "1pl": "ἐλύσαμεν",
+     "2pl": "ἐλύσατε",
+     "3pl": "ἔλυσαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "λῦσον",
+     "3sg": "λυσάτω",
+     "2pl": "λύσατε",
+     "3pl": "λυσάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "λῦσαι"
     }
    },
    "belagda_former": [
@@ -230,11 +250,13 @@
    "seminarium": [
     2,
     5,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 133,
    "former": {
@@ -273,6 +295,23 @@
     },
     "fut.inf.akt": {
      "inf": "βλέψειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἔβλεψα",
+     "2sg": "ἔβλεψας",
+     "3sg": "ἔβλεψε(ν)",
+     "1pl": "ἐβλέψαμεν",
+     "2pl": "ἐβλέψατε",
+     "3pl": "ἔβλεψαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "βλέψον",
+     "3sg": "βλεψάτω",
+     "2pl": "βλέψατε",
+     "3pl": "βλεψάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "βλέψαι"
     }
    },
    "belagda_former": [
@@ -296,12 +335,14 @@
     2,
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 427,
    "former": {
@@ -340,6 +381,23 @@
     },
     "fut.inf.akt": {
      "inf": "ἀκούσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἤκουσα",
+     "2sg": "ἤκουσας",
+     "3sg": "ἤκουσε(ν)",
+     "1pl": "ἠκούσαμεν",
+     "2pl": "ἠκούσατε",
+     "3pl": "ἤκουσαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "ἄκουσον",
+     "3sg": "ἀκουσάτω",
+     "2pl": "ἀκούσατε",
+     "3pl": "ἀκουσάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "ἀκοῦσαι"
     }
    },
    "belagda_former": [
@@ -407,11 +465,13 @@
    "seminarium": [
     2,
     5,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 190,
    "former": {
@@ -450,6 +510,23 @@
     },
     "fut.inf.akt": {
      "inf": "γράψειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἔγραψα",
+     "2sg": "ἔγραψας",
+     "3sg": "ἔγραψε(ν)",
+     "1pl": "ἐγράψαμεν",
+     "2pl": "ἐγράψατε",
+     "3pl": "ἔγραψαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "γράψον",
+     "3sg": "γραψάτω",
+     "2pl": "γράψατε",
+     "3pl": "γραψάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "γράψαι"
     }
    },
    "belagda_former": [
@@ -515,11 +592,13 @@
    "seminarium": [
     2,
     5,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 61,
    "former": {
@@ -558,6 +637,23 @@
     },
     "fut.inf.akt": {
      "inf": "κηρύξειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐκήρυξα",
+     "2sg": "ἐκήρυξας",
+     "3sg": "ἐκήρυξε(ν)",
+     "1pl": "ἐκηρύξαμεν",
+     "2pl": "ἐκηρύξατε",
+     "3pl": "ἐκήρυξαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "κήρυξον",
+     "3sg": "κηρυξάτω",
+     "2pl": "κηρύξατε",
+     "3pl": "κηρυξάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "κηρῦξαι"
     }
    },
    "belagda_former": [
@@ -632,12 +728,14 @@
    "seminarium": [
     2,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 13,
    "former": {
@@ -676,6 +774,23 @@
     },
     "fut.inf.akt": {
      "inf": "παιδεύσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐπαίδευσα",
+     "2sg": "ἐπαίδευσας",
+     "3sg": "ἐπαίδευσε(ν)",
+     "1pl": "ἐπαιδεύσαμεν",
+     "2pl": "ἐπαιδεύσατε",
+     "3pl": "ἐπαίδευσαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "παίδευσον",
+     "3sg": "παιδευσάτω",
+     "2pl": "παιδεύσατε",
+     "3pl": "παιδευσάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "παιδεῦσαι"
     }
    },
    "belagda_former": [
@@ -696,11 +811,13 @@
    "stam": "πέμπ",
    "seminarium": [
     2,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 79,
    "former": {
@@ -739,6 +856,23 @@
     },
     "fut.inf.akt": {
      "inf": "πέμψειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἔπεμψα",
+     "2sg": "ἔπεμψας",
+     "3sg": "ἔπεμψε(ν)",
+     "1pl": "ἐπέμψαμεν",
+     "2pl": "ἐπέμψατε",
+     "3pl": "ἔπεμψαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "πέμψον",
+     "3sg": "πεμψάτω",
+     "2pl": "πέμψατε",
+     "3pl": "πεμψάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "πέμψαι"
     }
    },
    "belagda_former": [
@@ -809,12 +943,14 @@
     2,
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 241,
    "former": {
@@ -853,6 +989,23 @@
     },
     "fut.inf.akt": {
      "inf": "πιστεύσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐπίστευσα",
+     "2sg": "ἐπίστευσας",
+     "3sg": "ἐπίστευσε(ν)",
+     "1pl": "ἐπιστεύσαμεν",
+     "2pl": "ἐπιστεύσατε",
+     "3pl": "ἐπίστευσαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "πίστευσον",
+     "3sg": "πιστευσάτω",
+     "2pl": "πιστεύσατε",
+     "3pl": "πιστευσάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "πιστεῦσαι"
     }
    },
    "belagda_former": [
@@ -873,11 +1026,13 @@
    "stam": "βαπτίζ",
    "seminarium": [
     2,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 77,
    "former": {
@@ -916,6 +1071,23 @@
     },
     "fut.inf.akt": {
      "inf": "βαπτίσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐβάπτισα",
+     "2sg": "ἐβάπτισας",
+     "3sg": "ἐβάπτισε(ν)",
+     "1pl": "ἐβαπτίσαμεν",
+     "2pl": "ἐβαπτίσατε",
+     "3pl": "ἐβάπτισαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "βάπτισον",
+     "3sg": "βαπτισάτω",
+     "2pl": "βαπτίσατε",
+     "3pl": "βαπτισάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "βαπτίσαι"
     }
    },
    "belagda_former": [
@@ -935,11 +1107,13 @@
    "seminarium": [
     2,
     5,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 106,
    "former": {
@@ -978,6 +1152,23 @@
     },
     "fut.inf.akt": {
      "inf": "σώσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἔσωσα",
+     "2sg": "ἔσωσας",
+     "3sg": "ἔσωσε(ν)",
+     "1pl": "ἐσώσαμεν",
+     "2pl": "ἐσώσατε",
+     "3pl": "ἔσωσαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "σῶσον",
+     "3sg": "σωσάτω",
+     "2pl": "σώσατε",
+     "3pl": "σωσάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "σῶσαι"
     }
    },
    "belagda_former": [],
@@ -992,11 +1183,13 @@
    "stam": "κλέπτ",
    "seminarium": [
     2,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem2",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 13,
    "former": {
@@ -1035,6 +1228,23 @@
     },
     "fut.inf.akt": {
      "inf": "κλέψειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἔκλεψα",
+     "2sg": "ἔκλεψας",
+     "3sg": "ἔκλεψε(ν)",
+     "1pl": "ἐκλέψαμεν",
+     "2pl": "ἐκλέψατε",
+     "3pl": "ἔκλεψαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "κλέψον",
+     "3sg": "κλεψάτω",
+     "2pl": "κλέψατε",
+     "3pl": "κλεψάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "κλέψαι"
     }
    },
    "belagda_former": [],
@@ -1110,12 +1320,14 @@
     4,
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem4",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 25,
    "former": {
@@ -1154,6 +1366,23 @@
     },
     "fut.inf.akt": {
      "inf": "φιλήσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐφίλησα",
+     "2sg": "ἐφίλησας",
+     "3sg": "ἐφίλησε(ν)",
+     "1pl": "ἐφιλήσαμεν",
+     "2pl": "ἐφιλήσατε",
+     "3pl": "ἐφίλησαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "φίλησον",
+     "3sg": "φιλησάτω",
+     "2pl": "φιλήσατε",
+     "3pl": "φιλησάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "φιλῆσαι"
     }
    },
    "belagda_former": [
@@ -1182,12 +1411,14 @@
     4,
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem4",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 117,
    "former": {
@@ -1226,6 +1457,23 @@
     },
     "fut.inf.akt": {
      "inf": "ζητήσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐζήτησα",
+     "2sg": "ἐζήτησας",
+     "3sg": "ἐζήτησε(ν)",
+     "1pl": "ἐζητήσαμεν",
+     "2pl": "ἐζητήσατε",
+     "3pl": "ἐζήτησαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "ζήτησον",
+     "3sg": "ζητησάτω",
+     "2pl": "ζητήσατε",
+     "3pl": "ζητησάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "ζητῆσαι"
     }
    },
    "belagda_former": [
@@ -1245,11 +1493,13 @@
    "seminarium": [
     4,
     5,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem4",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 148,
    "former": {
@@ -1277,6 +1527,23 @@
      "1pl": "ἐκαλοῦμεν",
      "2pl": "ἐκαλεῖτε",
      "3pl": "ἐκάλουν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐκάλεσα",
+     "2sg": "ἐκάλεσας",
+     "3sg": "ἐκάλεσε(ν)",
+     "1pl": "ἐκαλέσαμεν",
+     "2pl": "ἐκαλέσατε",
+     "3pl": "ἐκάλεσαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "κάλεσον",
+     "3sg": "καλεσάτω",
+     "2pl": "καλέσατε",
+     "3pl": "καλεσάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "καλέσαι"
     }
    },
    "belagda_former": [
@@ -1293,12 +1560,14 @@
     4,
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem4",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 297,
    "former": {
@@ -1337,6 +1606,23 @@
     },
     "fut.inf.akt": {
      "inf": "λαλήσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐλάλησα",
+     "2sg": "ἐλάλησας",
+     "3sg": "ἐλάλησε(ν)",
+     "1pl": "ἐλαλήσαμεν",
+     "2pl": "ἐλαλήσατε",
+     "3pl": "ἐλάλησαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "λάλησον",
+     "3sg": "λαλησάτω",
+     "2pl": "λαλήσατε",
+     "3pl": "λαλησάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "λαλῆσαι"
     }
    },
    "belagda_former": [
@@ -1356,12 +1642,14 @@
     4,
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem4",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 76,
    "former": {
@@ -1400,6 +1688,23 @@
     },
     "fut.inf.akt": {
      "inf": "μαρτυρήσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐμαρτύρησα",
+     "2sg": "ἐμαρτύρησας",
+     "3sg": "ἐμαρτύρησε(ν)",
+     "1pl": "ἐμαρτυρήσαμεν",
+     "2pl": "ἐμαρτυρήσατε",
+     "3pl": "ἐμαρτύρησαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "μαρτύρησον",
+     "3sg": "μαρτυρησάτω",
+     "2pl": "μαρτυρήσατε",
+     "3pl": "μαρτυρησάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "μαρτυρῆσαι"
     }
    },
    "belagda_former": [
@@ -1418,12 +1723,14 @@
     4,
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem4",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 568,
    "former": {
@@ -1462,6 +1769,23 @@
     },
     "fut.inf.akt": {
      "inf": "ποιήσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐποίησα",
+     "2sg": "ἐποίησας",
+     "3sg": "ἐποίησε(ν)",
+     "1pl": "ἐποιήσαμεν",
+     "2pl": "ἐποιήσατε",
+     "3pl": "ἐποίησαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "ποίησον",
+     "3sg": "ποιησάτω",
+     "2pl": "ποιήσατε",
+     "3pl": "ποιησάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "ποιῆσαι"
     }
    },
    "belagda_former": [
@@ -1481,12 +1805,14 @@
     4,
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem4",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 71,
    "former": {
@@ -1525,6 +1851,23 @@
     },
     "fut.inf.akt": {
      "inf": "τηρήσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐτήρησα",
+     "2sg": "ἐτήρησας",
+     "3sg": "ἐτήρησε(ν)",
+     "1pl": "ἐτηρήσαμεν",
+     "2pl": "ἐτηρήσατε",
+     "3pl": "ἐτήρησαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "τήρησον",
+     "3sg": "τηρησάτω",
+     "2pl": "τηρήσατε",
+     "3pl": "τηρησάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "τηρῆσαι"
     }
    },
    "belagda_former": [
@@ -1637,12 +1980,14 @@
    "seminarium": [
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem5",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 70,
    "former": {
@@ -1681,6 +2026,23 @@
     },
     "fut.inf.akt": {
      "inf": "αἰτήσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ᾔτησα",
+     "2sg": "ᾔτησας",
+     "3sg": "ᾔτησε(ν)",
+     "1pl": "ᾐτήσαμεν",
+     "2pl": "ᾐτήσατε",
+     "3pl": "ᾔτησαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "αἴτησον",
+     "3sg": "αἰτησάτω",
+     "2pl": "αἰτήσατε",
+     "3pl": "αἰτησάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "αἰτῆσαι"
     }
    },
    "belagda_former": [
@@ -1698,12 +2060,14 @@
    "seminarium": [
     5,
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem5",
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 43,
    "former": {
@@ -1742,6 +2106,23 @@
     },
     "fut.inf.akt": {
      "inf": "θεραπεύσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐθεράπευσα",
+     "2sg": "ἐθεράπευσας",
+     "3sg": "ἐθεράπευσε(ν)",
+     "1pl": "ἐθεραπεύσαμεν",
+     "2pl": "ἐθεραπεύσατε",
+     "3pl": "ἐθεράπευσαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "θεράπευσον",
+     "3sg": "θεραπευσάτω",
+     "2pl": "θεραπεύσατε",
+     "3pl": "θεραπευσάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "θεραπεῦσαι"
     }
    },
    "belagda_former": [
@@ -1804,11 +2185,13 @@
    "stam": "λατρεύ",
    "seminarium": [
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 21,
    "former": {
@@ -1847,6 +2230,23 @@
     },
     "fut.inf.akt": {
      "inf": "λατρεύσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐλάτρευσα",
+     "2sg": "ἐλάτρευσας",
+     "3sg": "ἐλάτρευσε(ν)",
+     "1pl": "ἐλατρεύσαμεν",
+     "2pl": "ἐλατρεύσατε",
+     "3pl": "ἐλάτρευσαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "λάτρευσον",
+     "3sg": "λατρευσάτω",
+     "2pl": "λατρεύσατε",
+     "3pl": "λατρευσάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "λατρεῦσαι"
     }
    },
    "belagda_former": [
@@ -1862,11 +2262,13 @@
    "stam": "προσκυνέ",
    "seminarium": [
     6,
-    7
+    7,
+    8
    ],
    "kortlekar": [
     "sem6",
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 60,
    "former": {
@@ -1905,6 +2307,23 @@
     },
     "fut.inf.akt": {
      "inf": "προσκυνήσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "προσεκύνησα",
+     "2sg": "προσεκύνησας",
+     "3sg": "προσεκύνησε(ν)",
+     "1pl": "προσεκυνήσαμεν",
+     "2pl": "προσεκυνήσατε",
+     "3pl": "προσεκύνησαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "προσκύνησον",
+     "3sg": "προσκυνησάτω",
+     "2pl": "προσκυνήσατε",
+     "3pl": "προσκυνησάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "προσκυνῆσαι"
     }
    },
    "belagda_former": [
@@ -1920,10 +2339,12 @@
    "klass": "omega",
    "stam": "διωκ",
    "seminarium": [
-    7
+    7,
+    8
    ],
    "kortlekar": [
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 45,
    "former": {
@@ -1962,6 +2383,23 @@
      "1pl": "ἐδιώκομεν",
      "2pl": "ἐδιώκετε",
      "3pl": "ἐδίωκον"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐδίωξα",
+     "2sg": "ἐδίωξας",
+     "3sg": "ἐδίωξε(ν)",
+     "1pl": "ἐδιώξαμεν",
+     "2pl": "ἐδιώξατε",
+     "3pl": "ἐδίωξαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "δίωξον",
+     "3sg": "διωξάτω",
+     "2pl": "διώξατε",
+     "3pl": "διωξάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "διῶξαι"
     }
    },
    "belagda_former": [
@@ -1976,10 +2414,12 @@
    "klass": "omega",
    "stam": "πειθ",
    "seminarium": [
-    7
+    7,
+    8
    ],
    "kortlekar": [
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 52,
    "former": {
@@ -2018,6 +2458,23 @@
      "1pl": "ἐπείθομεν",
      "2pl": "ἐπείθετε",
      "3pl": "ἔπειθον"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἔπεισα",
+     "2sg": "ἔπεισας",
+     "3sg": "ἔπεισε(ν)",
+     "1pl": "ἐπείσαμεν",
+     "2pl": "ἐπείσατε",
+     "3pl": "ἔπεισαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "πεῖσον",
+     "3sg": "πεισάτω",
+     "2pl": "πείσατε",
+     "3pl": "πεισάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "πεῖσαι"
     }
    },
    "belagda_former": [
@@ -2090,10 +2547,12 @@
    "klass": "omega",
    "stam": "διδασκ",
    "seminarium": [
-    7
+    7,
+    8
    ],
    "kortlekar": [
-    "sem7"
+    "sem7",
+    "sem8"
    ],
    "nt_frekvens": 96,
    "former": {
@@ -2132,6 +2591,23 @@
      "1pl": "ἐδιδάσκομεν",
      "2pl": "ἐδιδάσκετε",
      "3pl": "ἐδίδασκον"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἐδίδαξα",
+     "2sg": "ἐδίδαξας",
+     "3sg": "ἐδίδαξε(ν)",
+     "1pl": "ἐδιδάξαμεν",
+     "2pl": "ἐδιδάξατε",
+     "3pl": "ἐδίδαξαν"
+    },
+    "aor.imp.akt": {
+     "2sg": "δίδαξον",
+     "3sg": "διδαξάτω",
+     "2pl": "διδάξατε",
+     "3pl": "διδαξάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "διδάξαι"
     }
    },
    "belagda_former": [

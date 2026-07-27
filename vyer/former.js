@@ -37,7 +37,8 @@ const IMP_ORDNING = ["2sg","3sg","2pl","3pl"];
 const PN_NAMN = { "1sg":"1:a sg", "2sg":"2:a sg", "3sg":"3:e sg",
                   "1pl":"1:a pl", "2pl":"2:a pl", "3pl":"3:e pl", "inf":"infinitiv" };
 const NYCKEL_NAMN = { "pres.ind":"presens indikativ", "impf.ind":"imperfekt", "fut.ind":"futurum",
-                      "pres.imp":"presens imperativ", "pres.inf":"presens infinitiv", "fut.inf":"futurum infinitiv" };
+                      "pres.imp":"presens imperativ", "pres.inf":"presens infinitiv", "fut.inf":"futurum infinitiv",
+                      "aor.ind":"aorist" };
 const cellerFor = k => k.endsWith(".inf") ? ["inf"] : k.endsWith(".imp") ? IMP_ORDNING : PN_ORDNING;
 
 /* Omvandlingarna, i övningsbladets ordning. `id` används av filterchipsen. */
@@ -50,6 +51,8 @@ const OMVANDLINGAR = [
     regel:"Tillbaka till indikativens primärändelser. 2:a pl ändras inte." },
   { id:"impf",  from:"pres.ind", to:"impf.ind",  namn:"presens → imperfekt",
     regel:"Augment framför stammen (ἐ- vid konsonant; vokalen förlängs vid vokal) + sekundärändelser -ον, -ες, -ε(ν), -ομεν, -ετε, -ον." },
+  { id:"aor",   from:"pres.ind", to:"aor.ind",   namn:"presens → aorist",
+    regel:"Sigmatisk aorist = augment (som imperfekt) + σ (samma ljudlagar som futurum: κ/χ/γ+σ=ξ, π/φ/β+σ=ψ, τ/θ/δ/ζ+σ=σ, -έω → -η-) + ändelserna -α, -ας, -ε(ν), -αμεν, -ατε, -αν." },
   { id:"pres",  from:"impf.ind", to:"pres.ind",  namn:"imperfekt → presens",
     regel:"Dra bort augmentet och sätt tillbaka primärändelsen." },
   { id:"inf",   from:"pres.ind", to:"pres.inf",  namn:"presens → infinitiv",
@@ -204,7 +207,7 @@ export function render(root){
   root.innerHTML = MARKUP;
 
   const LAGER = "grekiska-formverkstaden";
-  const BLADET = ["fut","imp","ind","impf","pres"];        // övningsbladets a–e
+  const BLADET = ["fut","imp","ind","impf","aor","pres"];   // övningsbladets a–e + sem 8 aorist
   const state = {
     mode: "bygg",
     valdaSem: new Set(SEMINARIER),
