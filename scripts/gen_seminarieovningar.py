@@ -34,7 +34,7 @@ def css_version():
     return m.group(1)
 
 # Vilka seminarier som renderas.
-SEMINARIER = [2, 3, 4, 5, 6, 7]
+SEMINARIER = [2, 3, 4, 5, 6, 7, 8]
 
 # ── Parsning av instruktion (sem 6: grupp härleds ur instruktionstexten) ─
 RE_BREAKOUT = re.compile(r"Breakout\s+(\S+?):\s*översätt\s*\(([^)]*)\)")
@@ -99,6 +99,13 @@ GRUPPER = {
         "Översätt till svenska. Obetonad possessiv står efter substantivet, betonad mellan artikel och substantiv.", "#4a6a8a"),
     "7:breakout-3": ("Breakout 3", "Imperfekt",
         "Översätt till svenska. Imperfekt känns igen på augmentet framför stammen — och -ον är både 1:a sg och 3:e pl.", "#b0642f"),
+    # sem 8 — imperfekt-tillägg + sigmatisk aorist + bisatser + 3:e-dekl. neutra
+    "8:breakout-1": ("Breakout 1", "Imperfekt",
+        "Översätt till svenska. Imperfekt visar en pågående/upprepad dåtid; leta augmentet — och i sammansatta verb sitter det <i>inne</i> i ordet (κατ-έ-βαινεν).", "#3f7a4f"),
+    "8:breakout-2": ("Breakout 2", "Sigmatisk aorist",
+        "Översätt till svenska. Aoristen ser handlingen som en helhet (avslutad dåtid): augment + σ + ändelserna -α, -ας, -ε(ν), -αμεν, -ατε, -αν.", "#4a6a8a"),
+    "8:breakout-3": ("Breakout 3", "Bisatser &amp; tredje deklinationen",
+        "Översätt till svenska och stryk under bisatsen. En bisats har eget predikat men inleds av en subjunktion (ὅτι, ὡς …).", "#b0642f"),
     "ovrigt": ("Övrigt", "", "", "#a8842c"),
 }
 
