@@ -100,6 +100,12 @@ const SPEL = [
     desc: "Hitta bisatsen och lär dig subjunktionerna (ὅτι, ὅτε, ὡς, εἰ …)",
     route: "#/satslara",
   },
+  {
+    nr: 15,
+    namn: "Presens particip",
+    desc: "Verbaladjektivet som kongruerar: λύων, λύουσα, λῦον",
+    route: "#/particip",
+  },
 ];
 
 const ROUTES = {
@@ -108,6 +114,7 @@ const ROUTES = {
   "/kasus": () => import(`./vyer/kasus.js${vv}`),
   "/satsanalys": () => import(`./vyer/satsanalys.js${vv}`),
   "/satslara": () => import(`./vyer/satslara.js${vv}`),
+  "/particip": () => import(`./vyer/particip.js${vv}`),
   "/kongruens": () => import(`./vyer/kongruens.js${vv}`),
   "/studieguide": () => import(`./vyer/studieguide.js${vv}`),
   "/andelser": () => import(`./vyer/andelser.js${vv}`),

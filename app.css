@@ -2848,3 +2848,23 @@ body {
 }
 .vy-satslara .ctl:hover { border-color: var(--gold); }
 .vy-satslara .ctl.primar { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+/* ── Presens particip (kongruens-mönster) ─────────────────────────────────
+   Ärver skalet globalt; här det spelspecifika. Grön = rätt (--cbg/--cbd/--c). */
+.vy-particip .prompt { font-size: var(--fs-lg); color: var(--ink); text-align: center; margin-top: 0.8rem; }
+.vy-particip .fras { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; margin: 1.1rem 0 0.8rem; }
+.vy-particip .hufras { font-size: var(--fs-8xl); color: var(--ink); }
+.vy-particip .huanalys { font-size: var(--fs-sm); color: var(--ink-soft); font-style: italic; }
+.vy-particip .alternativ { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0.4rem 0 0.6rem; }
+.vy-particip .alt {
+  font-family: inherit; font-size: var(--fs-2xl); color: var(--ink); background: var(--card);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 0.45rem 1rem; cursor: pointer; transition: 0.15s;
+}
+.vy-particip .alt:hover:not(:disabled) { border-color: var(--gold); }
+.vy-particip .alt:disabled { cursor: default; }
+.vy-particip .alt.ratt { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
+.vy-particip .alt.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
+.vy-particip .reveal { text-align: center; margin-top: 0.4rem; }
+.vy-particip .helfras { font-size: var(--fs-2xl); color: var(--ink); margin-bottom: 0.3rem; }
+.vy-particip .analys { font-size: var(--fs-sm); color: var(--ink-soft); }
+.vy-particip .not { font-size: var(--fs-xs); color: var(--ink-soft); font-style: italic; margin-top: 0.2rem; }
