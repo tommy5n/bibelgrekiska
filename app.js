@@ -94,6 +94,12 @@ const SPEL = [
     desc: "Slå upp och bläddra kursens ord — sök, filtrera, se översättningen",
     route: "#/ordbok",
   },
+  {
+    nr: 14,
+    namn: "Satsläran",
+    desc: "Hitta bisatsen och lär dig subjunktionerna (ὅτι, ὅτε, ὡς, εἰ …)",
+    route: "#/satslara",
+  },
 ];
 
 const ROUTES = {
@@ -101,6 +107,7 @@ const ROUTES = {
   "/glosor": () => import(`./vyer/glosor.js${vv}`),
   "/kasus": () => import(`./vyer/kasus.js${vv}`),
   "/satsanalys": () => import(`./vyer/satsanalys.js${vv}`),
+  "/satslara": () => import(`./vyer/satslara.js${vv}`),
   "/kongruens": () => import(`./vyer/kongruens.js${vv}`),
   "/studieguide": () => import(`./vyer/studieguide.js${vv}`),
   "/andelser": () => import(`./vyer/andelser.js${vv}`),
