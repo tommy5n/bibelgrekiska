@@ -2106,6 +2106,7 @@ body {
 .vy-studieguide .guide-info,
 .vy-studieguide .bakgrund,
 .vy-studieguide .kursoversikt,
+.vy-studieguide .studieknep,
 .vy-studieguide .principer {
   background: var(--card);
   border: 1px solid var(--line);
@@ -2114,12 +2115,16 @@ body {
   margin-bottom: 1.4rem;
   animation: rise__studieguide 0.6s ease both;
 }
-.vy-studieguide .principer {
+.vy-studieguide .studieknep {
   margin-bottom: 2.4rem;
+}
+.vy-studieguide .principer {
+  margin-bottom: 1.4rem;
 }
 .vy-studieguide .guide-info h2,
 .vy-studieguide .bakgrund h2,
 .vy-studieguide .kursoversikt h2,
+.vy-studieguide .studieknep h2,
 .vy-studieguide .principer h2 {
   font-size: var(--fs-2xs);
   text-transform: uppercase;
@@ -2198,6 +2203,72 @@ body {
   justify-content: center;
   font-weight: 600;
   font-size: var(--fs-sm);
+}
+
+/* studieknep — Oskars ändelse-tips */
+.vy-studieguide .studieknep .knep-rubrik {
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+  font-size: var(--fs-lg);
+}
+.vy-studieguide .studieknep .knep-brod {
+  margin: 0 0 1rem;
+}
+.vy-studieguide .knep-listor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+.vy-studieguide .knep-lista {
+  flex: 1 1 15rem;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+}
+.vy-studieguide .knep-etikett {
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  margin-bottom: 0.5rem;
+}
+.vy-studieguide .knep-sem {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: var(--fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-left: 0.3rem;
+}
+.vy-studieguide .knep-and {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+.vy-studieguide .knep-and .and {
+  background: var(--card);
+  border: 1px solid var(--gold-soft);
+  border-radius: 7px;
+  padding: 0.1rem 0.45rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+.vy-studieguide .knep-ex {
+  color: var(--ink-soft);
+  font-size: var(--fs-sm);
+}
+.vy-studieguide .studieknep .knep-slut {
+  margin: 1rem 0 0;
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+}
+.vy-studieguide .studieknep .knep-slut a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-soft);
+}
+.vy-studieguide .studieknep .knep-slut a:hover {
+  border-color: var(--gold);
 }
 
 /* tidslinje */

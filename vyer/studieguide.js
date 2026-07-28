@@ -52,6 +52,23 @@ const PRINCIPER = [
     text:"Varje form har en markör: artikeln (<span class='grek'>ὁ/ἡ/τό</span>) visar genus, ett inskjutet <span class='grek'>σ</span> visar futurum, augmentet <span class='grek'>ἐ-</span> visar dåtid, och neutrum har samma form i nominativ och ackusativ." },
 ];
 
+// Oskars återkommande studietekniktips (2_Presentation.pdf s.31, 4__Presentation.pdf s.52):
+// lär ändelserna, inte varje helt ord. Presentationerna skriver de kontraherade
+// ändelserna oaccentuerade (-ουμεν, -ειτε); här visas de rätta cirkumflexformerna,
+// i linje med grammatikreferensens -έω-kort. Källa: presentationsslides märkta
+// "Tips: studieteknik".
+const STUDIEKNEP = {
+  rubrik: "Lär ändelserna, inte varje ord",
+  brod: "Oskars återkommande studietips: ett verb har sex personformer, men bara <b>en</b> uppsättning ändelser. Memorera ändelserna en gång — sedan böjer du vilket verb som helst genom att bara byta stam. Samma ekonomiska knep gäller kasusändelserna, och längre fram imperfektens och aoristens ändelser.",
+  listor: [
+    { etikett:"ω-verb i presens", sem:"Sem 2",
+      andelser:["-ω","-εις","-ει","-ομεν","-ετε","-ουσι(ν)"], ex:"λύω, λύεις, λύει …" },
+    { etikett:"Kontraherade verb på -έω", sem:"Sem 4",
+      andelser:["-ῶ","-εῖς","-εῖ","-οῦμεν","-εῖτε","-οῦσι(ν)"], ex:"φιλῶ, φιλεῖς, φιλεῖ …" },
+  ],
+  slut: "Nöt formerna i <a href='#/verb'>Verb</a> och <a href='#/former'>Formverkstaden</a>; slå upp hela tabellen under <a href='grammatikreferens.html#verb-omega'>ω-verb</a> och <a href='grammatikreferens.html#verb-kontrakt'>kontraherade verb</a>.",
+};
+
 // Ett kapitel per seminarium. Ämneskartorna är hämtade troget ur json/seminarier.json.
 const SEMINARIER = [
   {
@@ -515,6 +532,20 @@ const MARKUP = `<div class="vy vy-studieguide">
   <div class="principer">
     <h2>Tre principer som håller genom hela kursen</h2>
     ${PRINCIPER.map((p, i) => `<div class="princip-item"><span class="pnum">${i+1}</span><div><b>${p.rubrik}.</b> ${p.text}</div></div>`).join("")}
+  </div>
+
+  <div class="studieknep">
+    <h2>Studieknep</h2>
+    <p class="knep-rubrik">${STUDIEKNEP.rubrik}</p>
+    <p class="knep-brod">${STUDIEKNEP.brod}</p>
+    <div class="knep-listor">
+      ${STUDIEKNEP.listor.map(l => `<div class="knep-lista">
+        <div class="knep-etikett">${l.etikett} <span class="knep-sem">${l.sem}</span></div>
+        <div class="knep-and">${l.andelser.map(a => `<span class="and grek">${a}</span>`).join("")}</div>
+        <div class="knep-ex grek">${l.ex}</div>
+      </div>`).join("")}
+    </div>
+    <p class="knep-slut">${STUDIEKNEP.slut}</p>
   </div>
 
   <div class="stege">${SEMINARIER.map(seminariumHTML).join("")}</div>

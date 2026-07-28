@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#a8842c" />
     <link rel="apple-touch-icon" href="appletouchicon.png" />
     <!-- Ärver Cardo/Spectral-fonter och :root-temat från appen -->
-    <link rel="stylesheet" href="app.css?v=18" />
+    <link rel="stylesheet" href="app.css?v=19" />
     <style>
       /* ── Grammatikreferens — egen, namnrymdad layout (.gr-*) ───────── */
       body { background: var(--paper); }
@@ -137,6 +137,20 @@
       .gr-rule b { color: var(--gold); }
       .gr-rule ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
       .gr-rule li { margin: 0.15rem 0; }
+
+      .gr-tip {
+        border-left: 3px solid var(--gold);
+        background: var(--paper-2);
+        border-radius: 0 10px 10px 0;
+        padding: 0.6rem 0.9rem; margin: 0.9rem 0 0;
+        font-size: var(--fs-sm);
+      }
+      .gr-tip .tip-label {
+        color: var(--gold); font-weight: 600;
+        text-transform: uppercase; letter-spacing: 0.07em;
+        font-size: var(--fs-2xs); display: block; margin-bottom: 0.25rem;
+      }
+      .gr-tip .end { color: var(--gold); font-weight: 600; }
 
       .gr-inline-ex { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin-top: 0.6rem; }
       .gr-inline-ex div { font-size: var(--fs-sm); }
@@ -675,6 +689,7 @@
             </table>
           </div>
           <div class="gr-rule">Rörligt <b>ν</b> i 3 pl (<span class="gr-grek">λύουσιν</span>) framför vokal eller vid satsslut. Samma ändelser i <span class="gr-grek">βλέπω</span> (se), <span class="gr-grek">ἀκούω</span> (höra), <span class="gr-grek">λέγω</span> (säga), <span class="gr-grek">γράφω</span> (skriva), <span class="gr-grek">πιστεύω</span> (tro)…</div>
+          <div class="gr-tip"><span class="tip-label">Studietips</span>Ett ekonomiskt sätt att plugga verb är att memorera <b>ändelserna</b> — <span class="end">-ω, -εις, -ει, -ομεν, -ετε, -ουσι(ν)</span> — i stället för varje hel form. Sitter de en gång böjer du vilket ω-verb som helst genom att bara byta stam.</div>
         </section>
 
         <!-- ══ Kontraherade verb ══ -->
@@ -704,6 +719,7 @@
             </ul>
             Jfr <span class="gr-grek">ζητέω</span> (söka), <span class="gr-grek">καλέω</span> (kalla), <span class="gr-grek">λαλέω</span> (tala), <span class="gr-grek">ποιέω</span> (göra), <span class="gr-grek">τηρέω</span> (bevara), <span class="gr-grek">μαρτυρέω</span> (vittna).
           </div>
+          <div class="gr-tip"><span class="tip-label">Studietips</span>Samma knep som för ω-verben — lär <b>ändelserna</b>, inte formerna. De kontraherade ändelserna är <span class="end">-ῶ, -εῖς, -εῖ, -οῦμεν, -εῖτε, -οῦσι(ν)</span>; cirkumflexen sitter där stamvokalen ε drogs samman med ändelsen.</div>
         </section>
 
         <!-- ══ εἰμί ══ -->
