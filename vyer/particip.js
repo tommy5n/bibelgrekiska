@@ -14,6 +14,12 @@ export function teardown(){ if(__kh){ document.removeEventListener("keydown", __
 // följer med när root.innerHTML byts, ingen teardown behövs. Ärver skalet +
 // globala tokens; här bara det spelspecifika. Grön = rätt (--cbg/--cbd/--c).
 const CSS = `
+.vy-particip .modes { display: flex; gap: 0.5rem; justify-content: center; margin: 0.9rem 0 0.2rem; }
+.vy-particip .mode {
+  font-family: inherit; font-size: var(--fs-sm); color: var(--ink-soft); background: var(--card);
+  border: 1.5px solid var(--line); border-radius: 999px; padding: 0.3rem 0.9rem; cursor: pointer; transition: 0.15s;
+}
+.vy-particip .mode:not([aria-pressed="true"]):hover { border-color: var(--gold); color: var(--ink); }
 .vy-particip .prompt { font-size: var(--fs-lg); color: var(--ink); text-align: center; margin-top: 0.8rem; }
 .vy-particip .fras { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; margin: 1.1rem 0 0.8rem; }
 .vy-particip .hufras { font-size: 1.85rem; color: var(--ink); }
@@ -36,8 +42,13 @@ const CSS = `
 const MARKUP = `<div class="vy vy-particip"><style>${CSS}</style>
 <header>
   <h1>Grekiska — presens particip</h1>
-  <div class="sub">Participet är ett verbaladjektiv — det kongruerar med sitt huvudord i genus, numerus och kasus.</div>
+  <div class="sub" id="sub">Participet är ett verbaladjektiv — det kongruerar med sitt huvudord i genus, numerus och kasus.</div>
 </header>
+
+<div class="modes" role="group" aria-label="Spelläge">
+  <button class="mode" id="mode-kongruens" aria-pressed="true">Kongruens</button>
+  <button class="mode" id="mode-densom" aria-pressed="false">Den som …</button>
+</div>
 
 <div class="stage">
   <div class="card">
@@ -74,27 +85,27 @@ export function render(root){
   /* ── DATA ─────────────────────────────────────────────────────────────
      Particip: former[genus][kasus] = [sg, pl]. λύω verifierad mot slides 79–80. */
   const PART = [
-    { lemma:"λύων", verb:"λύω", glosa:"lösande (som löser)", sem:[8], former:{
+    { lemma:"λύων", verb:"λύω", glosa:"lösande (som löser)", densom:"löser", sem:[8,9], former:{
       m:{nom:["λύων","λύοντες"],gen:["λύοντος","λυόντων"],dat:["λύοντι","λύουσι(ν)"],ack:["λύοντα","λύοντας"]},
       f:{nom:["λύουσα","λύουσαι"],gen:["λυούσης","λυουσῶν"],dat:["λυούσῃ","λυούσαις"],ack:["λύουσαν","λυούσας"]},
       n:{nom:["λῦον","λύοντα"],gen:["λύοντος","λυόντων"],dat:["λύοντι","λύουσι(ν)"],ack:["λῦον","λύοντα"]} }},
-    { lemma:"βλέπων", verb:"βλέπω", glosa:"seende", sem:[8], former:{
+    { lemma:"βλέπων", verb:"βλέπω", glosa:"seende", densom:"ser", sem:[8,9], former:{
       m:{nom:["βλέπων","βλέποντες"],gen:["βλέποντος","βλεπόντων"],dat:["βλέποντι","βλέπουσι(ν)"],ack:["βλέποντα","βλέποντας"]},
       f:{nom:["βλέπουσα","βλέπουσαι"],gen:["βλεπούσης","βλεπουσῶν"],dat:["βλεπούσῃ","βλεπούσαις"],ack:["βλέπουσαν","βλεπούσας"]},
       n:{nom:["βλέπον","βλέποντα"],gen:["βλέποντος","βλεπόντων"],dat:["βλέποντι","βλέπουσι(ν)"],ack:["βλέπον","βλέποντα"]} }},
-    { lemma:"γράφων", verb:"γράφω", glosa:"skrivande", sem:[8], former:{
+    { lemma:"γράφων", verb:"γράφω", glosa:"skrivande", densom:"skriver", sem:[8,9], former:{
       m:{nom:["γράφων","γράφοντες"],gen:["γράφοντος","γραφόντων"],dat:["γράφοντι","γράφουσι(ν)"],ack:["γράφοντα","γράφοντας"]},
       f:{nom:["γράφουσα","γράφουσαι"],gen:["γραφούσης","γραφουσῶν"],dat:["γραφούσῃ","γραφούσαις"],ack:["γράφουσαν","γραφούσας"]},
       n:{nom:["γράφον","γράφοντα"],gen:["γράφοντος","γραφόντων"],dat:["γράφοντι","γράφουσι(ν)"],ack:["γράφον","γράφοντα"]} }},
-    { lemma:"ἀκούων", verb:"ἀκούω", glosa:"hörande", sem:[8], former:{
+    { lemma:"ἀκούων", verb:"ἀκούω", glosa:"hörande", densom:"hör", sem:[8,9], former:{
       m:{nom:["ἀκούων","ἀκούοντες"],gen:["ἀκούοντος","ἀκουόντων"],dat:["ἀκούοντι","ἀκούουσι(ν)"],ack:["ἀκούοντα","ἀκούοντας"]},
       f:{nom:["ἀκούουσα","ἀκούουσαι"],gen:["ἀκουούσης","ἀκουουσῶν"],dat:["ἀκουούσῃ","ἀκουούσαις"],ack:["ἀκούουσαν","ἀκουούσας"]},
       n:{nom:["ἀκοῦον","ἀκούοντα"],gen:["ἀκούοντος","ἀκουόντων"],dat:["ἀκούοντι","ἀκούουσι(ν)"],ack:["ἀκοῦον","ἀκούοντα"]} }},
-    { lemma:"πέμπων", verb:"πέμπω", glosa:"skickande", sem:[8], former:{
+    { lemma:"πέμπων", verb:"πέμπω", glosa:"skickande", densom:"skickar", sem:[8,9], former:{
       m:{nom:["πέμπων","πέμποντες"],gen:["πέμποντος","πεμπόντων"],dat:["πέμποντι","πέμπουσι(ν)"],ack:["πέμποντα","πέμποντας"]},
       f:{nom:["πέμπουσα","πέμπουσαι"],gen:["πεμπούσης","πεμπουσῶν"],dat:["πεμπούσῃ","πεμπούσαις"],ack:["πέμπουσαν","πεμπούσας"]},
       n:{nom:["πέμπον","πέμποντα"],gen:["πέμποντος","πεμπόντων"],dat:["πέμποντι","πέμπουσι(ν)"],ack:["πέμπον","πέμποντα"]} }},
-    { lemma:"πιστεύων", verb:"πιστεύω", glosa:"troende", sem:[8], former:{
+    { lemma:"πιστεύων", verb:"πιστεύω", glosa:"troende", densom:"tror", sem:[8,9], former:{
       m:{nom:["πιστεύων","πιστεύοντες"],gen:["πιστεύοντος","πιστευόντων"],dat:["πιστεύοντι","πιστεύουσι(ν)"],ack:["πιστεύοντα","πιστεύοντας"]},
       f:{nom:["πιστεύουσα","πιστεύουσαι"],gen:["πιστευούσης","πιστευουσῶν"],dat:["πιστευούσῃ","πιστευούσαις"],ack:["πιστεύουσαν","πιστευούσας"]},
       n:{nom:["πιστεῦον","πιστεύοντα"],gen:["πιστεύοντος","πιστευόντων"],dat:["πιστεύοντι","πιστεύουσι(ν)"],ack:["πιστεῦον","πιστεύοντα"]} }},
@@ -118,17 +129,19 @@ export function render(root){
   const NUM = ["sg","pl"];
   const NUM_NAMN = {sg:"singular",pl:"plural"};
   const GEN_NAMN = {m:"maskulinum",f:"femininum",n:"neutrum"};
+  // Substantiverat particip (artikel + particip utan huvudord) → "den/hon/det/de som …"
+  const DEN = { m:{sg:"den som",pl:"de som"}, f:{sg:"hon som",pl:"de som"}, n:{sg:"det som",pl:"de som"} };
 
   /* ── TILLSTÅND ────────────────────────────────────────────────────────── */
   const LAGER = "grekiska-particip";
-  const state = { streak:0, best:0, q:null, besvarad:false, ko:[], forra:null };
+  const state = { mode:"kongruens", streak:0, best:0, q:null, besvarad:false, ko:[], forra:null };
 
   const $ = id => document.getElementById(id);
   const pick = arr => arr[Math.floor(Math.random()*arr.length)];
   function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
   const gi = {sg:0,pl:1};
-  function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({best:state.best})); }catch(e){} }
-  function ladda(){ try{ const r=JSON.parse(localStorage.getItem(LAGER)||"{}"); if(typeof r.best==="number") state.best=r.best; }catch(e){} }
+  function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({best:state.best, mode:state.mode})); }catch(e){} }
+  function ladda(){ try{ const r=JSON.parse(localStorage.getItem(LAGER)||"{}"); if(typeof r.best==="number") state.best=r.best; if(r.mode==="kongruens"||r.mode==="densom") state.mode=r.mode; }catch(e){} }
 
   // rundkö över substantiven (glosmodell)
   function fyllKo(){ state.ko = shuffle(SUBST.map((_,i)=>i)); }
@@ -137,6 +150,7 @@ export function render(root){
   function alla(P){ const out=[]; for(const g of ["m","f","n"]) for(const k of KASUS) for(const n of NUM) out.push({form:P.former[g][k][gi[n]],g,k,n}); return out; }
 
   function newQuestion(){
+    if(state.mode==="densom") return newDensom();
     if(!state.ko.length) fyllKo();
     let si = state.ko.shift();
     if(SUBST.length>1 && si===state.forra && state.ko.length){ state.ko.push(si); si=state.ko.shift(); }
@@ -154,14 +168,41 @@ export function render(root){
     render();
   }
 
-  function render(){
-    const q=state.q;
-    $("streak").textContent=state.streak; $("best").textContent=state.best;
-    $("runda-kvar").textContent=state.ko.length;
-    $("prompt").innerHTML = `Vilken form av <b>${q.P.lemma}</b> (”${q.P.glosa}”) kongruerar med huvudordet?`;
-    const art = ART[q.subst.genus][q.k][gi[q.n]];
-    const subjForm = q.subst.former[q.k][gi[q.n]];
-    $("fras").innerHTML = `<span class="hufras">${art} ${subjForm}</span><span class="huanalys">${GEN_NAMN[q.subst.genus]} · ${KASUS_NAMN[q.k]} · ${NUM_NAMN[q.n]}</span>`;
+  // Substantiverat particip: ὁ πιστεύων = "den som tror". Artikel + particip utan
+  // huvudord; artikelns genus/numerus ger "den/hon/det/de som", participet ger verbet.
+  // Distraktorer blandar två axlar: fel pronomen (samma verb) och fel verb (samma pronomen),
+  // så man måste läsa BÅDE artikeln och participet.
+  function newDensom(){
+    // rundkö går här över participen i stället för substantiven
+    const P = pick(PART);
+    const g = pick(["m","f","n"]), n = pick(NUM);
+    const frames = [["m","sg"],["f","sg"],["n","sg"],["m","pl"]]; // ger den/hon/det/de som
+    const korrekt = `${DEN[g][n]} ${P.densom}`;
+    const seen = new Set([korrekt]); const distr = [];
+    // 2 pronomenvarianter (samma verb, annat "den/hon/det/de som")
+    for(const [fg,fn] of shuffle(frames)){
+      const s = `${DEN[fg][fn]} ${P.densom}`;
+      if(!seen.has(s)){ seen.add(s); distr.push(s); } if(distr.length===2) break;
+    }
+    // 1 verbvariant (samma pronomen, annat verb)
+    for(const P2 of shuffle(PART)){
+      const s = `${DEN[g][n]} ${P2.densom}`;
+      if(!seen.has(s)){ seen.add(s); distr.push(s); break; }
+    }
+    // fyll ev. luckor
+    for(const P2 of shuffle(PART)){ for(const [fg,fn] of shuffle(frames)){
+      if(distr.length>=3) break;
+      const s = `${DEN[fg][fn]} ${P2.densom}`;
+      if(!seen.has(s)){ seen.add(s); distr.push(s); }
+    }}
+    state.q = { densom:true, P, g, n, korrekt,
+      greek:`${ART[g].nom[gi[n]]} ${P.former[g].nom[gi[n]]}`,
+      alternativ: shuffle([korrekt, ...distr.slice(0,3)]) };
+    state.besvarad=false;
+    render();
+  }
+
+  function ritaAlternativ(q){
     const alt=$("alternativ"); alt.innerHTML="";
     q.alternativ.forEach(f=>{
       const b=document.createElement("button"); b.className="alt"; b.type="button"; b.textContent=f;
@@ -173,11 +214,36 @@ export function render(root){
       b.onclick=()=>svara(f);
       alt.appendChild(b);
     });
+  }
+
+  function render(){
+    const q=state.q;
+    $("streak").textContent=state.streak; $("best").textContent=state.best;
+    if(q.densom){ renderDensom(q); return; }
+    $("runda-kvar").textContent=state.ko.length;
+    $("prompt").innerHTML = `Vilken form av <b>${q.P.lemma}</b> (”${q.P.glosa}”) kongruerar med huvudordet?`;
+    const art = ART[q.subst.genus][q.k][gi[q.n]];
+    const subjForm = q.subst.former[q.k][gi[q.n]];
+    $("fras").innerHTML = `<span class="hufras">${art} ${subjForm}</span><span class="huanalys">${GEN_NAMN[q.subst.genus]} · ${KASUS_NAMN[q.k]} · ${NUM_NAMN[q.n]}</span>`;
+    ritaAlternativ(q);
     $("reveal").classList.toggle("hidden", !state.besvarad);
     if(state.besvarad){
       $("helfras").innerHTML = `<b>${art} ${q.korrekt} ${subjForm}</b>`;
       $("analys").textContent = `${q.P.lemma}: ${GEN_NAMN[q.subst.genus]} ${KASUS_NAMN[q.k]} ${NUM_NAMN[q.n]} = ${q.korrekt}`;
       $("not").textContent = q.subst.genus==="n" ? "Neutrum: nominativ = ackusativ." : "Participet böjs som ett treändelseadjektiv.";
+    }
+  }
+
+  function renderDensom(q){
+    $("runda-kvar").textContent="∞";
+    $("prompt").innerHTML = `Vad betyder det substantiverade participet?`;
+    $("fras").innerHTML = `<span class="hufras">${q.greek}</span><span class="huanalys">artikel + particip · ${GEN_NAMN[q.g]} ${NUM_NAMN[q.n]} · utan huvudord</span>`;
+    ritaAlternativ(q);
+    $("reveal").classList.toggle("hidden", !state.besvarad);
+    if(state.besvarad){
+      $("helfras").innerHTML = `<b>${q.greek}</b> = ${q.korrekt}`;
+      $("analys").textContent = `${ART[q.g].nom[gi[q.n]]} (${GEN_NAMN[q.g]} ${NUM_NAMN[q.n]}) → ”${DEN[q.g][q.n]}”; ${q.P.lemma} → ”${q.P.densom}”.`;
+      $("not").textContent = "Particip med bara bestämd artikel (utan substantiv) översätts med ”den/hon/det/de som …”.";
     }
   }
 
@@ -192,6 +258,21 @@ export function render(root){
   $("btn-next").onclick = newQuestion;
   $("btn-visa").onclick = ()=>{ if(!state.besvarad){ state.__valt=null; state.besvarad=true; state.streak=0; render(); } };
 
+  const SUB_TEXT = {
+    kongruens: "Participet är ett verbaladjektiv — det kongruerar med sitt huvudord i genus, numerus och kasus.",
+    densom: "Med bara bestämd artikel (utan substantiv) blir participet självständigt: ὁ πιστεύων ”den som tror”.",
+  };
+  function setMode(m){
+    if(state.mode===m) return;
+    state.mode=m; state.streak=0; spara();
+    $("mode-kongruens").setAttribute("aria-pressed", m==="kongruens");
+    $("mode-densom").setAttribute("aria-pressed", m==="densom");
+    $("sub").textContent = SUB_TEXT[m];
+    nyRunda();
+  }
+  $("mode-kongruens").onclick = ()=>setMode("kongruens");
+  $("mode-densom").onclick = ()=>setMode("densom");
+
   __kh=(e)=>{
     if(e.key==="Enter"){ if(state.besvarad) newQuestion(); e.preventDefault(); }
     else if(!state.besvarad && /^[1-4]$/.test(e.key)){ const b=$("alternativ").children[+e.key-1]; if(b) b.click(); }
@@ -199,5 +280,9 @@ export function render(root){
   document.addEventListener("keydown", __kh);
 
   ladda();
+  // synka läges-UI mot ev. sparat läge
+  $("mode-kongruens").setAttribute("aria-pressed", state.mode==="kongruens");
+  $("mode-densom").setAttribute("aria-pressed", state.mode==="densom");
+  $("sub").textContent = SUB_TEXT[state.mode];
   nyRunda();
 }

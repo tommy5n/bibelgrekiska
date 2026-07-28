@@ -291,7 +291,18 @@ const ord = [
   { lemma:"ἡγεμών", glosa:"ståthållare", glosaGen:"ståthållares", glosaPl:"ståthållare", genus:"m", dekl:3, sem:[7], former:{
     nom:{sg:"ἡγεμών",pl:"ἡγεμόνες"}, gen:{sg:"ἡγεμόνος",pl:"ἡγεμόνων"}, dat:{sg:"ἡγεμόνι",pl:"ἡγεμόσι(ν)"}, ack:{sg:"ἡγεμόνα",pl:"ἡγεμόνας"}, vok:{sg:"ἡγεμών",pl:"ἡγεμόνες"} }},
   { lemma:"ἀμπελών", glosa:"vingård", glosaGen:"vingårds", glosaPl:"vingårdar", genus:"m", dekl:3, sem:[7], former:{
-    nom:{sg:"ἀμπελών",pl:"ἀμπελῶνες"}, gen:{sg:"ἀμπελῶνος",pl:"ἀμπελώνων"}, dat:{sg:"ἀμπελῶνι",pl:"ἀμπελῶσι(ν)"}, ack:{sg:"ἀμπελῶνα",pl:"ἀμπελῶνας"}, vok:{sg:"ἀμπελών",pl:"ἀμπελῶνες"} }}
+    nom:{sg:"ἀμπελών",pl:"ἀμπελῶνες"}, gen:{sg:"ἀμπελῶνος",pl:"ἀμπελώνων"}, dat:{sg:"ἀμπελῶνι",pl:"ἀμπελῶσι(ν)"}, ack:{sg:"ἀμπελῶνα",pl:"ἀμπελῶνας"}, vok:{sg:"ἀμπελών",pl:"ἀμπελῶνες"} }},
+  /* Liquidastammar med avljud (πατήρ πατρός, §80–81), sem 9: stamväxling i sg
+     (πατ-ήρ / πατ-ρός / πατ-έρα). Dat pl skjuter in α: πατράσι(ν). Vok = ren stam
+     med recessiv accent (πάτερ). ἀνήρ har δ-inskott (ἀνδρός, ἄνδρες). */
+  { lemma:"πατήρ", glosa:"fader", glosaGen:"faders", glosaPl:"fäder", genus:"m", dekl:3, sem:[9], former:{
+    nom:{sg:"πατήρ",pl:"πατέρες"}, gen:{sg:"πατρός",pl:"πατέρων"}, dat:{sg:"πατρί",pl:"πατράσι(ν)"}, ack:{sg:"πατέρα",pl:"πατέρας"}, vok:{sg:"πάτερ",pl:"πατέρες"} }},
+  { lemma:"μήτηρ", glosa:"moder", glosaGen:"moders", glosaPl:"mödrar", genus:"f", dekl:3, sem:[9], former:{
+    nom:{sg:"μήτηρ",pl:"μητέρες"}, gen:{sg:"μητρός",pl:"μητέρων"}, dat:{sg:"μητρί",pl:"μητράσι(ν)"}, ack:{sg:"μητέρα",pl:"μητέρας"}, vok:{sg:"μῆτερ",pl:"μητέρες"} }},
+  { lemma:"θυγάτηρ", glosa:"dotter", glosaGen:"dotters", glosaPl:"döttrar", genus:"f", dekl:3, sem:[9], former:{
+    nom:{sg:"θυγάτηρ",pl:"θυγατέρες"}, gen:{sg:"θυγατρός",pl:"θυγατέρων"}, dat:{sg:"θυγατρί",pl:"θυγατράσι(ν)"}, ack:{sg:"θυγατέρα",pl:"θυγατέρας"}, vok:{sg:"θύγατερ",pl:"θυγατέρες"} }},
+  { lemma:"ἀνήρ", glosa:"man", glosaGen:"mans", glosaPl:"män", genus:"m", dekl:3, sem:[9], former:{
+    nom:{sg:"ἀνήρ",pl:"ἄνδρες"}, gen:{sg:"ἀνδρός",pl:"ἀνδρῶν"}, dat:{sg:"ἀνδρί",pl:"ἀνδράσι(ν)"}, ack:{sg:"ἄνδρα",pl:"ἄνδρας"}, vok:{sg:"ἄνερ",pl:"ἄνδρες"} }}
 ];
 
 /* Kategori-förval på deklinations-/typaxeln, som predikat på paradigmKeyK —

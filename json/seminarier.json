@@ -9663,6 +9663,182 @@
    "ovningsgrupp": "presentation",
    "kommentar": "ὅτι (att) efter förnimmelseverb (βλέπω).",
    "_sem8": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "Τίς ἐστιν ὁ ἄνθρωπος ὁ ἅγιος ὃν ἀπεκεφάλισεν ὁ Ἡρῴδης;",
+   "oversattning": "Vem är den heliga människan som Herodes halshögg?",
+   "ovningsgrupp": "breakout-1",
+   "bibelreferens": "Mark 6:16",
+   "kommentar": "Relativsatsen är ὃν ἀπεκεφάλισεν ὁ Ἡρῴδης. ὅν är maskulinum sg (efter korrelatet ἄνθρωπος) men ackusativ, eftersom det är direkt objekt i bisatsen.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "καὶ οὗτος ὃς οὐ λαμβάνει τὸν σταυρὸν αὐτοῦ οὐκ ἔστιν μου ἄξιος.",
+   "oversattning": "Och den som inte tar sitt kors är inte värdig mig.",
+   "ovningsgrupp": "breakout-1",
+   "bibelreferens": "Matt 10:38",
+   "falla": "ὅς är här subjekt i bisatsen → nominativ. αὐτοῦ ’sitt’; det man är värdig (μου) står i genitiv.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "οἱ μαθηταὶ ἐπίστευσαν τῷ λόγῳ ὃν ἔλεγεν ὁ Ἰησοῦς.",
+   "oversattning": "Lärjungarna trodde på ordet som Jesus sade.",
+   "ovningsgrupp": "breakout-1",
+   "bibelreferens": "Joh 2:22",
+   "kommentar": "Korrelatet λόγῳ står i dativ (πιστεύω styr dativ), men relativpronomenet ὅν är ackusativ — det är objekt i sin egen bisats.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "εἰσὶν ἐξ ὑμῶν τινες οἳ οὐ πιστεύουσιν.",
+   "oversattning": "Det finns några av er som inte tror.",
+   "ovningsgrupp": "breakout-1",
+   "bibelreferens": "Joh 6:64",
+   "kommentar": "οἵ är maskulinum pluralis, subjekt i bisatsen. εἰσίν form av εἰμί; ἐξ översätts bäst ’av’.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "ὁ τρώγων",
+   "oversattning": "Den som äter",
+   "ovningsgrupp": "breakout-2",
+   "bibelreferens": "—",
+   "kommentar": "Substantiverat particip: bestämd artikel + particip utan substantiv = ’den som …’. τρώγω äta.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "ὁ πίνων",
+   "oversattning": "Den som dricker",
+   "ovningsgrupp": "breakout-2",
+   "bibelreferens": "—",
+   "kommentar": "πίνω dricka. Maskulinum nominativ singular ger ’den som’.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "ὁ πιστεύων εἰς τὸν υἱὸν ἔχει ζωὴν αἰώνιον·",
+   "oversattning": "Den som tror på sonen har evigt liv.",
+   "ovningsgrupp": "breakout-2",
+   "bibelreferens": "Joh 3:3",
+   "kommentar": "Participet ὁ πιστεύων är satsens subjekt; huvudverbet är ἔχει. αἰώνιος ’evig’ är ett adjektiv med två slut.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "ὁ τρώγων μου τὴν σάρκα καὶ πίνων μου τὸ αἷμα ἔχει ζωὴν αἰώνιον.",
+   "oversattning": "Den som äter mitt kött och dricker mitt blod har evigt liv.",
+   "ovningsgrupp": "breakout-2",
+   "bibelreferens": "Joh 6:54",
+   "kommentar": "Två samordnade particip (τρώγων … καὶ πίνων) med varsitt objekt. ἡ σάρξ σαρκός, τὸ αἷμα αἵματος — tredje deklinationen.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "Ἰωάννης ὁ βαπτιστὴς ἀπέστειλεν ἡμᾶς πρὸς σέ.",
+   "oversattning": "Johannes Döparen sände ut oss till dig.",
+   "ovningsgrupp": "breakout-3",
+   "bibelreferens": "Luk 7:20",
+   "kommentar": "ἀπέστειλεν är aorist av ἀποστέλλω utan sigma: ἀπεστελ-σ- → ἀπέστειλ- (σ faller, ε→ει).",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "ἀπήγγειλαν δὲ αὐτῷ ὅτι Ἰησοῦς ὁ Ναζωραῖος πάρεστιν.",
+   "oversattning": "Och de meddelade honom att Jesus av Nasaret var där.",
+   "ovningsgrupp": "breakout-3",
+   "bibelreferens": "Luk 18:37",
+   "kommentar": "ἀπήγγειλαν aorist av ἀπαγγέλλω (utan sigma). ὅτι inleder en att-sats. πάρειμι ’vara närvarande, vara där’.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "καθὼς ἐμὲ ἀπέστειλας εἰς τὸν κόσμον, κἀγὼ ἀπέστειλα αὐτοὺς εἰς τὸν κόσμον·",
+   "oversattning": "Såsom du sände ut mig till världen, sände också jag ut dem till världen.",
+   "ovningsgrupp": "breakout-3",
+   "bibelreferens": "Joh 17:18",
+   "kommentar": "Två aoristformer av ἀποστέλλω (2 sg ἀπέστειλας, 1 sg ἀπέστειλα). καθώς ’såsom’; κἀγώ = καὶ ἐγώ.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "ἔκρινεν τὴν πόρνην τὴν μεγάλην ἣ ἔφθειρεν τὴν γῆν ἐν τῇ πορνείᾳ αὐτῆς.",
+   "oversattning": "Han dömde den stora skökan som fördärvade jorden med sin otukt.",
+   "ovningsgrupp": "breakout-3",
+   "bibelreferens": "Upp 19:2",
+   "kommentar": "ἔκρινεν aorist av κρίνω utan sigma (ἐκριν-σ- → ἔκρῑνα, ι förlängs). ἥ är relativpronomen (subjekt i bisatsen). ἔφθειρεν aorist av φθείρω.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "εἰρήνην τὴν ἐμὴν δίδωμι ὑμῖν.",
+   "oversattning": "Min fred ger jag till er.",
+   "ovningsgrupp": "breakout-4",
+   "bibelreferens": "Joh 14:27",
+   "kommentar": "δίδωμι är ett μι-verb (1 sg presens). ἡ εἰρήνη fred; ἐμός ’min’.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "Ἰησοῦς λαμβάνει τὸν ἄρτον καὶ δίδωσιν αὐτοῖς.",
+   "oversattning": "Jesus tar brödet och ger till dem.",
+   "ovningsgrupp": "breakout-4",
+   "bibelreferens": "Joh 21:13",
+   "kommentar": "δίδωσιν är 3 sg presens av δίδωμι (-σι(ν)-ändelsen). ὁ ἄρτος bröd.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "ὁδὸν ὑμῖν δείκνυμι.",
+   "oversattning": "En väg visar jag för er.",
+   "ovningsgrupp": "breakout-4",
+   "bibelreferens": "1 Kor 12:31",
+   "kommentar": "δείκνυμι μι-verb, 1 sg presens ’jag visar’. ἡ ὁδός väg.",
+   "_sem9": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Breakout room.pdf",
+   "grekiska": "οὐκ ἔστιν καλὸν λαμβάνειν τὸν ἄρτον τῶν τέκνων καὶ βάλλειν τοῖς κυναρίοις.",
+   "oversattning": "Det är inte vackert att ta barnens bröd och kasta det till hundarna.",
+   "ovningsgrupp": "breakout-4",
+   "bibelreferens": "Matt 15:26",
+   "kommentar": "Två infinitiver (λαμβάνειν, βάλλειν) som subjekt till οὐκ ἔστιν καλόν. τὸ κυνάριον ’hund(valp)’.",
+   "_sem9": true
   }
  ],
  "verb": [

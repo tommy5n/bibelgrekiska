@@ -34,7 +34,7 @@ def css_version():
     return m.group(1)
 
 # Vilka seminarier som renderas.
-SEMINARIER = [2, 3, 4, 5, 6, 7, 8]
+SEMINARIER = [2, 3, 4, 5, 6, 7, 8, 9]
 
 # ── Parsning av instruktion (sem 6: grupp härleds ur instruktionstexten) ─
 RE_BREAKOUT = re.compile(r"Breakout\s+(\S+?):\s*översätt\s*\(([^)]*)\)")
@@ -106,6 +106,15 @@ GRUPPER = {
         "Översätt till svenska. Aoristen ser handlingen som en helhet (avslutad dåtid): augment + σ + ändelserna -α, -ας, -ε(ν), -αμεν, -ατε, -αν.", "#4a6a8a"),
     "8:breakout-3": ("Breakout 3", "Bisatser &amp; tredje deklinationen",
         "Översätt till svenska och stryk under bisatsen. En bisats har eget predikat men inleds av en subjunktion (ὅτι, ὡς …).", "#b0642f"),
+    # sem 9 — relativa bisatser + particip + aorist utan sigma + μι-verb
+    "9:breakout-1": ("Breakout 1", "Relativpronomen &amp; relativa bisatser",
+        "Översätt och stryk under relativsatsen. Relativpronomenets genus/numerus följer korrelatet, men kasus avgörs av rollen i bisatsen.", "#3f7a4f"),
+    "9:breakout-2": ("Breakout 2", "Presens particip",
+        "Översätt. Ett particip med bara bestämd artikel (utan substantiv) blir självständigt: ὁ πιστεύων ’den som tror’.", "#4a6a8a"),
+    "9:breakout-3": ("Breakout 3", "Sigmatisk aorist utan sigma",
+        "Översätt. Likvidaverb (λ/ρ/μ/ν) tappar σ i aoristen och förlänger vokalen: ἀπέστειλα, ἔκρῑνα.", "#b0642f"),
+    "9:breakout-4": ("Breakout 4", "μι-verb",
+        "Översätt. μι-verben (δίδωμι, δείκνυμι) böjs avvikande i presens: ändelserna -μι, -ς, -σι(ν), -μεν, -τε, -ασι(ν).", "#8a5a86"),
     "ovrigt": ("Övrigt", "", "", "#a8842c"),
 }
 

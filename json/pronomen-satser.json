@@ -59,9 +59,9 @@
   "enklitika": "tis ar enklitiskt och paverkar foregaende ords accent. Konstruerade tis-satser foljer accentregeln: proparoxyton far extra akut pa ultima (anthropos + tis -> anthropos tis), paroxyton far det inte (legei ti, prophetes tis)."
 },
  "_tackning": {
-  "satser": 91,
-  "mal": 126,
-  "kursmaterial": 69,
+  "satser": 95,
+  "mal": 130,
+  "kursmaterial": 73,
   "skapade": 22,
   "utesluten": "seminarier.json har en post till med pronomen — 'legeis hemin / pros hemas' (6__Breakout_rooms.pdf s.1). Den ar tva formvarianter i en post, inte en sats, och lampar sig inte som spelkort."
 },
@@ -532,7 +532,23 @@
   { "id": "p6-s10", "seminarium": 6, "grekiska": "οἱ μαθηταὶ πιστεύουσιν ἐκείνῳ.", "oversattning": "Lärjungarna tror på honom där.",
     "kalla": "skapad", "mal": [
     { "form": "ἐκείνῳ", "lemma": "ἐκεῖνος", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "dat"}, "roll": "obj-dat", "sv": "på honom där",
-      "not": "πιστεύω styr dativ: ἐκείνῳ är verbets objekt, ingen mottagare — därför obj-dat och inte io." } ] }
+      "not": "πιστεύω styr dativ: ἐκείνῳ är verbets objekt, ingen mottagare — därför obj-dat och inte io." } ] },
+
+  { "id": "p9-01", "seminarium": 9, "grekiska": "Τίς ἐστιν ὁ ἄνθρωπος ὁ ἅγιος ὃν ἀπεκεφάλισεν ὁ Ἡρῴδης;", "oversattning": "Vem är den heliga människan som Herodes halshögg?",
+    "kalla": "9. Breakout room.pdf", "mal": [
+    { "form": "ὃν", "lemma": "ὅς", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "som" } ] },
+
+  { "id": "p9-02", "seminarium": 9, "grekiska": "καὶ οὗτος ὃς οὐ λαμβάνει τὸν σταυρὸν αὐτοῦ οὐκ ἔστιν μου ἄξιος.", "oversattning": "Och den som inte tar sitt kors är inte värdig mig.",
+    "kalla": "9. Breakout room.pdf", "mal": [
+    { "form": "ὃς", "lemma": "ὅς", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "nom"}, "roll": "subj", "sv": "som" } ] },
+
+  { "id": "p9-03", "seminarium": 9, "grekiska": "οἱ μαθηταὶ ἐπίστευσαν τῷ λόγῳ ὃν ἔλεγεν ὁ Ἰησοῦς.", "oversattning": "Lärjungarna trodde på ordet som Jesus sade.",
+    "kalla": "9. Breakout room.pdf", "mal": [
+    { "form": "ὃν", "lemma": "ὅς", "modell": "genus", "analys": {"genus": "m", "num": "sg", "kas": "ack"}, "roll": "do", "sv": "som" } ] },
+
+  { "id": "p9-04", "seminarium": 9, "grekiska": "εἰσὶν ἐξ ὑμῶν τινες οἳ οὐ πιστεύουσιν.", "oversattning": "Det finns några av er som inte tror.",
+    "kalla": "9. Breakout room.pdf", "mal": [
+    { "form": "οἳ", "lemma": "ὅς", "modell": "genus", "analys": {"genus": "m", "num": "pl", "kas": "nom"}, "roll": "subj", "sv": "som" } ] }
 
  ]
 }

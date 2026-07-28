@@ -458,9 +458,155 @@ const SEMINARIER = [
     ],
     mal:"Du skiljer aorist från imperfekt på aspekt, känner igen bisatsen på subjunktionen, böjer τὸ πνεῦμα-typen med nom = ack, och läser presens particip som ett kongruerande adjektiv.",
   },
+  {
+    n:9, titel:"Relativsatser, particip, tredje deklinationen och μι-verb",
+    tema:"Sista innehållspasset knyter ihop satsläran och verbläran — och lägger de sista formerna före tentamen.",
+    nytt:[
+      "Relativpronomen (ὅς ἥ ὅ) och relativa bisatser",
+      "Presens particip fördjupat — hela deklinationen och det självständiga bruket (ὁ πιστεύων ’den som tror’)",
+      "Tredje deklinationens stamväxlande liquidastammar — ὁ πατήρ, ἡ μήτηρ, ἡ θυγάτηρ, ὁ ἀνήρ",
+      "Sigmatisk aorist utan sigma på likvidaverb (ἀπέστειλα, ἔκρῑνα)",
+      "Kontraherat futurum (ἀποστελῶ, κρινῶ)",
+      "μι-verb — δίδωμι, δείκνυμι (εἰμί mötte vi redan)",
+      "Placering av attribut — tre ställen för adjektiv- och genitivattribut",
+    ],
+    begrepp:[
+      { rubrik:"Relativpronomenet: korrelatet och rollen",
+        text:"Ett <b>relativpronomen</b> (<span class='grek'>ὅς, ἥ, ὅ</span> ’som, vilken’) inleder en relativ bisats och böjs som ett 2-1-2-adjektiv, men med spiritus asper och accent. Två saker styr formen: <b>genus och numerus</b> rättar sig efter <b>korrelatet</b> (ordet i huvudsatsen), men <b>kasus</b> avgörs av pronomenets <b>roll i bisatsen</b>. En relativ bisats är en bisats: eget predikat, kan inte stå själv." },
+      { rubrik:"Particip som ’den som’",
+        text:"Med bara bestämd artikel och utan substantiv blir participet självständigt: <span class='grek'>ὁ πιστεύων</span> ’den som tror’, <span class='grek'>ἡ βλέπουσα</span> ’hon som ser’, <span class='grek'>οἱ ἀκούοντες</span> ’de som hör’. Artikelns genus och numerus ger ’den/hon/det/de som’. Particip kan också ta objekt (<span class='grek'>ὁ ἀκούων τὸν λόγον</span> ’den som hör ordet’)." },
+      { rubrik:"Stamväxling i tredje deklinationen",
+        text:"<span class='grek'>ὁ πατήρ</span> ’fader’ växlar stam i singular: <span class='grek'>πατήρ, πατρός, πατρί, πατέρα</span> (vok <span class='grek'>πάτερ</span>). Likadant böjs <span class='grek'>ἡ μήτηρ</span> mor, <span class='grek'>ἡ θυγάτηρ</span> dotter och <span class='grek'>ὁ ἀνήρ</span> man (den sista med δ-inskott: <span class='grek'>ἀνδρός, ἄνδρες</span>)." },
+      { rubrik:"Sigmat som faller: aorist och futurum på likvidor",
+        text:"Verb vars stam slutar på <span class='grek'>λ, ρ, μ, ν</span> tål inte σ. I <b>aoristen</b> faller σ och vokalen förlängs som kompensation: <span class='grek'>ἀπεστελ-σ- → ἀπέστειλα</span>, <span class='grek'>ἐκρῐν-σ- → ἔκρῑνα</span>. I <b>futurum</b> faller σ och verbet böjs kontraherat som <span class='grek'>φιλέω</span>: <span class='grek'>ἀποστελῶ, κρινῶ</span>." },
+      { rubrik:"μι-verb — den andra verbgruppen",
+        text:"De flesta verb är ω-verb (<span class='grek'>-ω</span> i 1 sg). En liten men vanlig grupp är <b>μι-verben</b> (<span class='grek'>-μι</span> i 1 sg): <span class='grek'>δίδωμι</span> ge, <span class='grek'>δείκνυμι</span> visa, <span class='grek'>εἰμί</span> vara. De böjs avvikande <b>bara i presenssystemet</b> — ändelserna är <span class='grek'>-μι, -ς, -σι(ν), -μεν, -τε, -ασι(ν)</span>." },
+      { rubrik:"Attributets tre platser",
+        text:"Ett attribut (adjektiv eller genitiv) till ett bestämt substantiv kan stå på tre ställen och betyder detsamma: <span class='grek'>τὸ ἅγιον πνεῦμα</span> / <span class='grek'>τὸ πνεῦμα τὸ ἅγιον</span> / <span class='grek'>πνεῦμα τὸ ἅγιον</span> ’den heliga Anden’. Det gemensamma är att attributet står <b>innanför artikelns räckvidd</b> (attributiv ställning)." },
+    ],
+    fallor:[
+      "<b>Relativpronomen vs bestämd artikel:</b> <span class='grek'>ὅς, ᾧ, ὅν</span> (accent + asper) mot artikelns <span class='grek'>ὁ, τῷ, τόν</span> (τ- och obetonad nom). De liknar varandra men är olika ord.",
+      "<b>Relativpronomenets kasus ≠ korrelatets kasus:</b> i <span class='grek'>τῷ λόγῳ ὃν ἔλεγεν</span> är korrelatet <span class='grek'>λόγῳ</span> dativ men <span class='grek'>ὅν</span> ackusativ — för att det är objekt i bisatsen.",
+      "<b>κρίνω → κρινῶ:</b> futurum skiljer sig från presens bara på accenten (cirkumflex). Läs accenten.",
+      "<b>ἀποστέλλω har -λλ- bara i presens</b>, -λ- i aoristen (<span class='grek'>ἀπέστειλα</span>). Dubbelteckningen försvinner.",
+      "<b>μι-verben böjs avvikande bara i presens</b> — och redan i koinen tränger ω-former in: <span class='grek'>δεικνύεις</span> i st.f. <span class='grek'>δείκνυς</span> (Joh 2:18).",
+      "<b>Attributiv vs predikativ ställning:</b> <span class='grek'>τὸ ἅγιον πνεῦμα</span> ’den heliga Anden’ men <span class='grek'>τὸ πνεῦμα ἅγιον</span> ’Anden är helig’. Artikeln framför adjektivet avgör.",
+    ],
+    ova:[
+      { spel:"Pronomen", route:"#/pronomen", filter:"Sem 9", vad:"relativpronomenet ὅς ἥ ὅ — form och betydelse" },
+      { spel:"Satsläran", route:"#/satslara", vad:"hitta den relativa bisatsen — börja vid relativpronomenet" },
+      { spel:"Presens particip", route:"#/particip", filter:"Den som …", vad:"det substantiverade participet: ὁ πιστεύων ’den som tror’" },
+      { spel:"Kasus", route:"#/kasus", filter:"Dekl. 3", vad:"πατήρ-familjens stamväxling — sikta på gen/dat sg och dat pl" },
+      { spel:"Verbböjning", route:"#/verb", filter:"μι-verb", vad:"δίδωμι och δείκνυμι i presens" },
+      { spel:"Formverkstaden", route:"#/former", filter:"Sem 9", vad:"likvidaverbens aorist utan sigma (ἀπέστειλα, ἔκρῑνα)" },
+      { spel:"Glosor", route:"#/glosor", filter:"Sem 9", vad:"det sista ordförrådet — och provlistan inför tentan" },
+    ],
+    gor:[
+      { text:"Breakout 1: relativa bisatser", anchor:"sem9-breakout-1" },
+      { text:"Breakout 2: presens particip", anchor:"sem9-breakout-2" },
+      { text:"Breakout 3: aorist utan sigma", anchor:"sem9-breakout-3" },
+      { text:"Breakout 4: μι-verb", anchor:"sem9-breakout-4" },
+    ],
+    slaupp:[
+      { text:"Relativpronomen", anchor:"relativ" },
+      { text:"Presens particip", anchor:"verb-particip" },
+      { text:"Likvidaverb (fut. & aorist)", anchor:"verb-likvida" },
+      { text:"μι-verb", anchor:"verb-mi" },
+      { text:"3:e deklinationen", anchor:"subst-dekl3" },
+      { text:"Placering av attribut", anchor:"attribut" },
+    ],
+    mal:"Du känner igen relativpronomenet och dess bisats, böjer πατήρ med stamväxling, bildar aorist och futurum på likvidaverb utan σ, böjer μι-verben i presens och läser det substantiverade participet som ’den som …’.",
+  },
 ];
 
+// Inför provet — hubben som samlar Oskars ORDKUNSKAP 1–10 (seminarium-9-mappen).
+// De tre första kraven är formigenkänning över HELA kursen (välj alla seminarier
+// i respektive spel); det fjärde är en sluten gloslista som ska sitta utantill
+// och som har ett eget "Inför provet"-däck i Glosor och Uppslagsboken.
+const PROV = {
+  intro:"Provet prövar <b>ordkunskap</b> i fyra delar. De tre första är formigenkänning över hela kursen — öva dem genom att välja <b>alla seminarier</b> i respektive spel. Den fjärde är en sluten gloslista som ska kunnas utantill; den har ett eget däck <b>Inför provet</b> i Glosor och Uppslagsboken.",
+  delar:[
+    { rubrik:"1. Artikelns, substantivens och adjektivens former",
+      text:"Kunna översätta bestämd artikel, substantiv och adjektiv i <b>alla kasus och numerus</b>, alla tre deklinationerna.",
+      ova:[
+        { spel:"Kasus", route:"#/kasus", filter:"alla seminarier", vad:"genus, kasus och bestämd artikel" },
+        { spel:"Artiklar & ändelser", route:"#/andelser", vad:"bygg formen i rätt deklination" },
+        { spel:"Kongruens", route:"#/kongruens", vad:"adjektivets böjning och överensstämmelse" },
+      ],
+      slaupp:[
+        { text:"Bestämd artikel", anchor:"artikel" },
+        { text:"Jämför deklinationerna", anchor:"subst-jmf" },
+        { text:"Adjektiv 2-1-2", anchor:"adjektiv" },
+      ] },
+    { rubrik:"2. Alla pronomenformer",
+      text:"Kunna översätta samtliga pronomenformer kursen tagit upp — personliga, possessiva, demonstrativa, interrogativa, indefinita och relativa.",
+      ova:[
+        { spel:"Pronomen", route:"#/pronomen", filter:"alla seminarier", vad:"form → betydelse, med kontextläge" },
+      ],
+      slaupp:[
+        { text:"Personliga pronomen", anchor:"pronomen" },
+        { text:"3:e person (αὐτός)", anchor:"pron-autos" },
+        { text:"Relativpronomen", anchor:"relativ" },
+      ] },
+    { rubrik:"3. Alla verbformer",
+      text:"Kunna översätta personändelserna i alla tempus (presens, imperfekt, futurum, aorist), samt infinitiv och imperativ.",
+      ova:[
+        { spel:"Verbböjning", route:"#/verb", filter:"alla tempus", vad:"personändelser i alla tempus och modus" },
+        { spel:"Formverkstaden", route:"#/former", vad:"bygg om formen mellan tempus och modus" },
+        { spel:"Presens particip", route:"#/particip", vad:"verbaladjektivet och ’den som …’" },
+      ],
+      slaupp:[
+        { text:"ω-verb", anchor:"verb-omega" },
+        { text:"Futurum", anchor:"verb-futurum" },
+        { text:"Sigmatisk aorist", anchor:"verb-aorist" },
+        { text:"μι-verb", anchor:"verb-mi" },
+      ] },
+  ],
+  glosor:{
+    intro:"Följande glosor ska kunnas <b>specifikt</b>. Öva dem samlat i Glosor eller Uppslagsboken — välj däcket <b>Inför provet</b>.",
+    ova:[
+      { spel:"Glosor", route:"#/glosor", filter:"Inför provet", vad:"provlistan som flashcard eller flerval" },
+      { spel:"Uppslagsbok", route:"#/ordbok", filter:"Inför provet", vad:"slå upp och bläddra provlistan med genitiv" },
+    ],
+    grupper:[
+      { etikett:"Subjunktioner", ord:"ὅτι, ὅτε, ὡς, ἐπεί, εἰ" },
+      { etikett:"Verb", ord:"ἀκολουθέω, ἀκούω, ἀποστέλλω, βαπτίζω, βλέπω, γράφω, δίδωμι, εἰμί, καλέω, κηρύσσω, λαλέω, λέγω, λύω, πέμπω, πιστεύω, ποιέω" },
+      { etikett:"Substantiv", ord:"ἡ ἀδελφή, ὁ ἀδελφός, ὁ ἄγγελος, ὁ ἀνήρ, ὁ ἄνθρωπος, ὁ ἀπόστολος, ἡ ἀρχή, ὁ βαπτιστής, ὁ δοῦλος, ἡ ἐκκλησία, τὸ ἔργον, ἡ ζωή, ὁ θεός, τὸ ἱερόν, ὁ κύριος, ὁ λόγος, ὁ μαθητής, ἡ μήτηρ, ἡ ὁδός, ὁ οἶκος, ὁ οὐρανός, τὸ ὄρος, τὸ τέκνον, τὸ ὕδωρ, ὁ υἱός, ὁ πατήρ, τὸ πλοῖον, τὸ πνεῦμα, ὁ προφήτης, τὸ φῶς" },
+      { etikett:"Adjektiv", ord:"ἀγαθός, ἅγιος, δίκαιος, μέγας, πᾶς, πολύς, πονηρός" },
+      { etikett:"Prepositioner", ord:"ἐν, εἰς, ἐκ/ἐξ, περί, πρός, σύν" },
+      { etikett:"Småord", ord:"γάρ, δέ, καί, μή, οὐ (οὐκ, οὐχ), εὖ" },
+    ],
+  },
+};
+
 function esc(s){ return String(s).replace(/[&<>]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;" }[c])); }
+
+function ovaBlockHTML(lista){
+  return `<div class="block ova"><span class="tag">Öva</span>
+    <div class="ova-lista">${lista.map(o => {
+      const filter = o.filter ? `<span class="filter">${o.filter}</span>` : "";
+      return `<div class="ova-rad"><a class="spel" href="${o.route}">${o.spel}</a>${filter}<span class="vad">${o.vad}</span></div>`;
+    }).join("")}</div></div>`;
+}
+function slauppBlockHTML(lista){
+  return `<div class="slaupp"><span class="tag">Slå upp</span><span class="lankar">${
+    lista.map(l => `<a href="grammatikreferens.html#${l.anchor}">${l.text}</a>`).join("")
+  }</span></div>`;
+}
+
+function provHTML(){
+  const delar = PROV.delar.map(d =>
+    `<div class="begrepp-item"><p class="rubrik">${d.rubrik}</p><p>${d.text}</p>
+      ${ovaBlockHTML(d.ova)}${slauppBlockHTML(d.slaupp)}</div>`).join("");
+  const glosor = `<div class="begrepp-item"><p class="rubrik">4. Glosor som ska kunnas specifikt</p>
+    <p>${PROV.glosor.intro}</p>${ovaBlockHTML(PROV.glosor.ova)}
+    ${PROV.glosor.grupper.map(g => `<div class="ko-avd"><p class="rubrik">${g.etikett}</p><p class="grek">${g.ord}</p></div>`).join("")}</div>`;
+  return `<div class="kursoversikt" id="infor-provet">
+    <h2>Inför provet</h2>
+    <p class="ko-inledning">${PROV.intro}</p>
+    <div class="begrepp-inner">${delar}${glosor}</div>
+  </div>`;
+}
 
 function seminariumHTML(s){
   const kommande = s.preliminar;
@@ -549,6 +695,8 @@ const MARKUP = `<div class="vy vy-studieguide">
   </div>
 
   <div class="stege">${SEMINARIER.map(seminariumHTML).join("")}</div>
+
+  ${provHTML()}
 
   <div class="kursoversikt">
     <h2>Oskars kursöversikt 1:1–5</h2>

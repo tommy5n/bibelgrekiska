@@ -3052,6 +3052,170 @@
    },
    "glosaPl": "berg",
    "not": "Neutrum -ος/-ους, sigmastam ὀρεσ- (B § 82, 83:1–2). σ faller mellan vokaler → kontraktion (ὄρε-ος → ὄρους, ὄρε-α → ὄρη). Gen pl: presentationen ger ὄρων; NT/MorphGNT attesterar ὀρέων (okontraherat) — kursform primär, NT-form noterad."
+  },
+  {
+   "lemma": "πατήρ",
+   "glosa": "fader",
+   "glosaGen": "faders",
+   "genus": "maskulinum",
+   "deklination": 3,
+   "stam": "πατ(ε)ρ-",
+   "tredjeklass": "liquida-avljud",
+   "accenttyp": "oxyton",
+   "seminarium": [
+    9
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "πατήρ",
+     "pl": "πατέρες"
+    },
+    "gen": {
+     "sg": "πατρός",
+     "pl": "πατέρων"
+    },
+    "dat": {
+     "sg": "πατρί",
+     "pl": "πατράσι(ν)"
+    },
+    "ack": {
+     "sg": "πατέρα",
+     "pl": "πατέρας"
+    },
+    "vok": {
+     "sg": "πάτερ",
+     "pl": "πατέρες"
+    }
+   },
+   "glosaPl": "fäder",
+   "not": "Liquidastam med avljud (B § 80-81). Stamväxling i sg: stark stam πατερ- (nom πατήρ, vok πάτερ), svag πατρ- (gen πατρός, dat πατρί), medelstam πατερ- i ack πατέρα. Dat pl πατράσι(ν) skjuter in α. ἡ μήτηρ, ἡ θυγάτηρ böjs likadant; ὁ ἀνήρ med δ-inskott."
+  },
+  {
+   "lemma": "μήτηρ",
+   "glosa": "moder",
+   "glosaGen": "moders",
+   "genus": "femininum",
+   "deklination": 3,
+   "stam": "μητ(ε)ρ-",
+   "tredjeklass": "liquida-avljud",
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    9
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "μήτηρ",
+     "pl": "μητέρες"
+    },
+    "gen": {
+     "sg": "μητρός",
+     "pl": "μητέρων"
+    },
+    "dat": {
+     "sg": "μητρί",
+     "pl": "μητράσι(ν)"
+    },
+    "ack": {
+     "sg": "μητέρα",
+     "pl": "μητέρας"
+    },
+    "vok": {
+     "sg": "μῆτερ",
+     "pl": "μητέρες"
+    }
+   },
+   "glosaPl": "mödrar",
+   "not": "Böjs som πατήρ (B § 80). Stamväxling μητερ-/μητρ-; vok μῆτερ."
+  },
+  {
+   "lemma": "θυγάτηρ",
+   "glosa": "dotter",
+   "glosaGen": "dotters",
+   "genus": "femininum",
+   "deklination": 3,
+   "stam": "θυγατ(ε)ρ-",
+   "tredjeklass": "liquida-avljud",
+   "accenttyp": "paroxyton",
+   "seminarium": [
+    9
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "θυγάτηρ",
+     "pl": "θυγατέρες"
+    },
+    "gen": {
+     "sg": "θυγατρός",
+     "pl": "θυγατέρων"
+    },
+    "dat": {
+     "sg": "θυγατρί",
+     "pl": "θυγατράσι(ν)"
+    },
+    "ack": {
+     "sg": "θυγατέρα",
+     "pl": "θυγατέρας"
+    },
+    "vok": {
+     "sg": "θύγατερ",
+     "pl": "θυγατέρες"
+    }
+   },
+   "glosaPl": "döttrar",
+   "not": "Böjs som πατήρ (B § 80). Stamväxling θυγατερ-/θυγατρ-; vok θύγατερ (recessiv accent)."
+  },
+  {
+   "lemma": "ἀνήρ",
+   "glosa": "man",
+   "glosaGen": "mans",
+   "genus": "maskulinum",
+   "deklination": 3,
+   "stam": "ἀνδρ-/ἀνερ-",
+   "tredjeklass": "liquida-avljud",
+   "accenttyp": "oxyton",
+   "seminarium": [
+    9
+   ],
+   "kortlekar": [
+    "tredjedekl"
+   ],
+   "ntFrekvensOver60": true,
+   "former": {
+    "nom": {
+     "sg": "ἀνήρ",
+     "pl": "ἄνδρες"
+    },
+    "gen": {
+     "sg": "ἀνδρός",
+     "pl": "ἀνδρῶν"
+    },
+    "dat": {
+     "sg": "ἀνδρί",
+     "pl": "ἀνδράσι(ν)"
+    },
+    "ack": {
+     "sg": "ἄνδρα",
+     "pl": "ἄνδρας"
+    },
+    "vok": {
+     "sg": "ἄνερ",
+     "pl": "ἄνδρες"
+    }
+   },
+   "glosaPl": "män",
+   "not": "Liquidastam med avljud + δ-inskott (B § 80-81): svag stam ἀνδρ- (ἀνδρός, ἄνδρες) får ett δ mellan ν och ρ; stark stam ἀνερ- bara i vok ἄνερ. Dat pl ἀνδράσι(ν)."
   }
  ],
  "_tredjeklasser": {
@@ -3067,6 +3231,6 @@
   "vokal": "Vokalstam -υ/-ι: ἰχθῦς (§86-87).",
   "polis": "Halvvokalstam -ι, gen -εως: πόλις πόλεως (§88-89).",
   "basileus": "Halvvokalstam -ευ, gen -εως: βασιλεύς βασιλέως (§92-93).",
-  "_scope": "In-scope for kursen (NT-hogfrekvent): nasal, klusil, nt-neutrum, sigma-neutrum, liquida, liquida-avljud, polis, basileus. Reference-only (klassiskt/sallsynt), laggs EJ in: γραῦς/ναῦς/βοῦς (§94), πειθώ/Λητώ (§90), τριήρης (§82), ῥήτωρ/ἀνδριάς/γίγας m.fl. Kurs-PDF 1:7 (2026-07-14) bekraftar att seminarium 7 tar ENDAST nasalstammar: ἡγεμών (§76-77, presentationens paradigm) och ἀμπελών (glossad i ovningsbladet mot samma paradigm). μήτηρ (§80, liquida-avljud) glossas men lars ej ut. Seminarium 8 tillfor τὸ πνεῦμα (§72:2, nt-neutrum) enligt presentationens sista slide."
+  "_scope": "In-scope for kursen (NT-hogfrekvent): nasal, klusil, nt-neutrum, sigma-neutrum, liquida, liquida-avljud, polis, basileus. Reference-only (klassiskt/sallsynt), laggs EJ in: γραῦς/ναῦς/βοῦς (§94), πειθώ/Λητώ (§90), τριήρης (§82), ῥήτωρ/ἀνδριάς/γίγας m.fl. Kurs-PDF 1:7 (2026-07-14) bekraftar att seminarium 7 tar ENDAST nasalstammar: ἡγεμών (§76-77, presentationens paradigm) och ἀμπελών (glossad i ovningsbladet mot samma paradigm). μήτηρ (§80, liquida-avljud) glossas men lars ej ut. Seminarium 8 tillfor τὸ πνεῦμα (§72:2, nt-neutrum) enligt presentationens sista slide. Seminarium 9 (kurs-PDF 2026-07-28) tillfor liquida-avljud: paradigmet ὁ πατήρ πατρός (§80-81) plus ordkunskap ἡ μήτηρ, ἡ θυγάτηρ, ὁ ἀνήρ (§80)."
  }
 }

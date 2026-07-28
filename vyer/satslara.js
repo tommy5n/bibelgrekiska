@@ -1,4 +1,4 @@
-// Vy: Satsläran — huvudsats/bisats + subjunktioner (seminarium 8).
+// Vy: Satsläran — huvudsats/bisats + subjunktioner (seminarium 8; relativa bisatser sem 9).
 // Byggd på satsanalys-mönstret: mening → klickbara chunks, streak + rundkö,
 // facit med svensk översättning och not. Två lägen:
 //   (1) Hitta bisatsen — markera hela det underordnade ledet (börjar vid
@@ -81,10 +81,12 @@ const MARKUP = `<div class="vy vy-satslara"><style>${CSS}</style>
 </div>
 
 <footer>
-  En <b>bisats</b> har ett eget predikat men kan inte stå själv — den inleds av en
-  <b>subjunktion</b> (ὅτι, ὅτε, ὡς, εἰ, ἵνα, ὥστε …) som binder den till
-  huvudsatsen. I <b>Hitta bisatsen</b> markerar du hela det underordnade ledet;
-  börja vid subjunktionen. I <b>Subjunktioner</b> nöter du vad småorden betyder.
+  En <b>bisats</b> har ett eget predikat men kan inte stå själv. Den inleds oftast av en
+  <b>subjunktion</b> (ὅτι, ὅτε, ὡς, εἰ, ἵνα, ὥστε …) — men en <b>relativ bisats</b>
+  inleds i stället av ett <b>relativpronomen</b> (ὅς, ἥ, ὅ, ὅν …) och fungerar som
+  attribut till sitt korrelat. I <b>Hitta bisatsen</b> markerar du hela det
+  underordnade ledet; börja vid subjunktionen eller relativpronomenet. I
+  <b>Subjunktioner</b> nöter du vad småorden betyder.
 </footer>
 </div>`;
 
@@ -131,6 +133,21 @@ export function render(root){
     { id:"s12", ref:"Matt 12:22 (jfr)", subj:"ὥστε", funktion:"konsekutiv (så att); tar infinitiv",
       sv:"Jesus botade honom, så att den stumme talade.",
       chunks:[{t:"ὁ Ἰησοῦς"},{t:"ἐθεράπευσεν"},{t:"αὐτόν"},{t:"ὥστε",b:1},{t:"τὸν κωφὸν",b:1},{t:"λαλεῖν",b:1}] },
+    // Relativa bisatser (seminarium 9, breakout 1). En relativ bisats inleds av ett
+    // relativpronomen (ὅς ἥ ὅ) och fungerar som attribut till korrelatet — men den är
+    // en bisats: eget predikat, kan inte stå själv. rel:1 → facit säger "relativpronomen".
+    { id:"s13", ref:"Mark 6:16", subj:"ὅν", funktion:"som — direkt objekt i bisatsen", rel:1,
+      sv:"Vem är den heliga människan som Herodes halshögg?",
+      chunks:[{t:"τίς"},{t:"ἐστιν"},{t:"ὁ ἄνθρωπος ὁ ἅγιος"},{t:"ὃν",b:1},{t:"ἀπεκεφάλισεν",b:1},{t:"ὁ Ἡρῴδης",b:1}] },
+    { id:"s14", ref:"Matt 10:38", subj:"ὅς", funktion:"som — subjekt i bisatsen", rel:1,
+      sv:"Och den som inte tar sitt kors är inte värdig mig.",
+      chunks:[{t:"καὶ"},{t:"οὗτος"},{t:"ὃς",b:1},{t:"οὐ λαμβάνει",b:1},{t:"τὸν σταυρὸν αὐτοῦ",b:1},{t:"οὐκ ἔστιν"},{t:"μου ἄξιος"}] },
+    { id:"s15", ref:"Joh 2:22", subj:"ὅν", funktion:"som — direkt objekt i bisatsen", rel:1,
+      sv:"Lärjungarna trodde på ordet som Jesus sade.",
+      chunks:[{t:"οἱ μαθηταὶ"},{t:"ἐπίστευσαν"},{t:"τῷ λόγῳ"},{t:"ὃν",b:1},{t:"ἔλεγεν",b:1},{t:"ὁ Ἰησοῦς",b:1}] },
+    { id:"s16", ref:"Joh 6:64", subj:"οἵ", funktion:"som — subjekt i bisatsen", rel:1,
+      sv:"Det finns några av er som inte tror.",
+      chunks:[{t:"εἰσὶν"},{t:"ἐξ ὑμῶν"},{t:"τινες"},{t:"οἳ",b:1},{t:"οὐ πιστεύουσιν",b:1}] },
   ];
 
   const SUBJ = [
@@ -231,7 +248,8 @@ export function render(root){
     });
     if(state.besvarad){
       $("r-sv").textContent = s.sv;
-      $("r-not").innerHTML = `Subjunktion: <b>${s.subj}</b> — ${s.funktion}. Bisatsen har eget predikat och kan inte stå själv.`;
+      const etikett = s.rel ? "Relativpronomen" : "Subjunktion";
+      $("r-not").innerHTML = `${etikett}: <b>${s.subj}</b> — ${s.funktion}. Bisatsen har eget predikat och kan inte stå själv.`;
     }
   }
 

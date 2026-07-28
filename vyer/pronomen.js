@@ -48,7 +48,10 @@ const pronomen = [
     sv:{ m:{ sg:{nom:"er", gen:"er", dat:"er", ack:"er"}, pl:{nom:"era", gen:"era", dat:"era", ack:"era"} }, f:{ sg:{nom:"er", gen:"er", dat:"er", ack:"er"}, pl:{nom:"era", gen:"era", dat:"era", ack:"era"} }, n:{ sg:{nom:"ert", gen:"ert", dat:"ert", ack:"ert"}, pl:{nom:"era", gen:"era", dat:"era", ack:"era"} } } },
   { lemma:"τις", glosa:"någon, något", modell:"genus", sem:[7],
     former:{ m:{ nom:{sg:"τις",pl:"τινές"}, gen:{sg:"τινός",pl:"τινῶν"}, dat:{sg:"τινί",pl:"τισί(ν)"}, ack:{sg:"τινά",pl:"τινάς"} }, f:{ nom:{sg:"τις",pl:"τινές"}, gen:{sg:"τινός",pl:"τινῶν"}, dat:{sg:"τινί",pl:"τισί(ν)"}, ack:{sg:"τινά",pl:"τινάς"} }, n:{ nom:{sg:"τι",pl:"τινά"}, gen:{sg:"τινός",pl:"τινῶν"}, dat:{sg:"τινί",pl:"τισί(ν)"}, ack:{sg:"τι",pl:"τινά"} } },
-    sv:{ m:{ sg:{nom:"någon", gen:"någons", dat:"åt någon", ack:"någon"}, pl:{nom:"några", gen:"någras", dat:"åt några", ack:"några"} }, f:{ sg:{nom:"någon", gen:"någons", dat:"åt någon", ack:"någon"}, pl:{nom:"några", gen:"någras", dat:"åt några", ack:"några"} }, n:{ sg:{nom:"något", gen:"någots", dat:"åt något", ack:"något"}, pl:{nom:"några", gen:"någras", dat:"åt några", ack:"några"} } } }
+    sv:{ m:{ sg:{nom:"någon", gen:"någons", dat:"åt någon", ack:"någon"}, pl:{nom:"några", gen:"någras", dat:"åt några", ack:"några"} }, f:{ sg:{nom:"någon", gen:"någons", dat:"åt någon", ack:"någon"}, pl:{nom:"några", gen:"någras", dat:"åt några", ack:"några"} }, n:{ sg:{nom:"något", gen:"någots", dat:"åt något", ack:"något"}, pl:{nom:"några", gen:"någras", dat:"åt några", ack:"några"} } } },
+  { lemma:"ὅς", glosa:"som, vilken, vars (relativt pronomen)", modell:"genus", sem:[9],
+    former:{ m:{ nom:{sg:"ὅς",pl:"οἵ"}, gen:{sg:"οὗ",pl:"ὧν"}, dat:{sg:"ᾧ",pl:"οἷς"}, ack:{sg:"ὅν",pl:"οὕς"} }, f:{ nom:{sg:"ἥ",pl:"αἵ"}, gen:{sg:"ἧς",pl:"ὧν"}, dat:{sg:"ᾗ",pl:"αἷς"}, ack:{sg:"ἥν",pl:"ἅς"} }, n:{ nom:{sg:"ὅ",pl:"ἅ"}, gen:{sg:"οὗ",pl:"ὧν"}, dat:{sg:"ᾧ",pl:"οἷς"}, ack:{sg:"ὅ",pl:"ἅ"} } },
+    sv:{ m:{ sg:{nom:"som", gen:"vars", dat:"till vilken", ack:"som"}, pl:{nom:"som", gen:"vars", dat:"till vilka", ack:"som"} }, f:{ sg:{nom:"som", gen:"vars", dat:"till vilken", ack:"som"}, pl:{nom:"som", gen:"vars", dat:"till vilka", ack:"som"} }, n:{ sg:{nom:"som", gen:"vars", dat:"till vilken", ack:"som"}, pl:{nom:"som", gen:"vars", dat:"till vilka", ack:"som"} } } }
 ];
 
 /* ── SATSBANK — snapshot av pronomen-satser.json. Regenereras ur mastern:
@@ -638,7 +641,31 @@ const satser = [
     sv:"Lärjungarna tror på honom där.",
     ord:["οἱ", "μαθηταὶ", "πιστεύουσιν", "ἐκείνῳ."],
     mal:[
-      { i:3, form:"ἐκείνῳ", lemma:"ἐκεῖνος", modell:"genus", num:"sg", kas:"dat", bet:null, genus:"m", roll:"obj-dat", sv:"på honom där", ocksa:[{sv:"till det där", etikett:"ἐκεῖνος neutrum dativ singular"}], not:"πιστεύω styr dativ: ἐκείνῳ är verbets objekt, ingen mottagare — därför obj-dat och inte io." } ] }
+      { i:3, form:"ἐκείνῳ", lemma:"ἐκεῖνος", modell:"genus", num:"sg", kas:"dat", bet:null, genus:"m", roll:"obj-dat", sv:"på honom där", ocksa:[{sv:"till det där", etikett:"ἐκεῖνος neutrum dativ singular"}], not:"πιστεύω styr dativ: ἐκείνῳ är verbets objekt, ingen mottagare — därför obj-dat och inte io." } ] },
+  { id:"p9-01", sem:9, skapad:false,
+    kalla:"Breakout rooms 9",
+    sv:"Vem är den heliga människan som Herodes halshögg?",
+    ord:["Τίς", "ἐστιν", "ὁ", "ἄνθρωπος", "ὁ", "ἅγιος", "ὃν", "ἀπεκεφάλισεν", "ὁ", "Ἡρῴδης;"],
+    mal:[
+      { i:6, form:"ὃν", lemma:"ὅς", modell:"genus", num:"sg", kas:"ack", bet:null, genus:"m", roll:"do", sv:"som" } ] },
+  { id:"p9-02", sem:9, skapad:false,
+    kalla:"Breakout rooms 9",
+    sv:"Och den som inte tar sitt kors är inte värdig mig.",
+    ord:["καὶ", "οὗτος", "ὃς", "οὐ", "λαμβάνει", "τὸν", "σταυρὸν", "αὐτοῦ", "οὐκ", "ἔστιν", "μου", "ἄξιος."],
+    mal:[
+      { i:2, form:"ὃς", lemma:"ὅς", modell:"genus", num:"sg", kas:"nom", bet:null, genus:"m", roll:"subj", sv:"som" } ] },
+  { id:"p9-03", sem:9, skapad:false,
+    kalla:"Breakout rooms 9",
+    sv:"Lärjungarna trodde på ordet som Jesus sade.",
+    ord:["οἱ", "μαθηταὶ", "ἐπίστευσαν", "τῷ", "λόγῳ", "ὃν", "ἔλεγεν", "ὁ", "Ἰησοῦς."],
+    mal:[
+      { i:5, form:"ὃν", lemma:"ὅς", modell:"genus", num:"sg", kas:"ack", bet:null, genus:"m", roll:"do", sv:"som" } ] },
+  { id:"p9-04", sem:9, skapad:false,
+    kalla:"Breakout rooms 9",
+    sv:"Det finns några av er som inte tror.",
+    ord:["εἰσὶν", "ἐξ", "ὑμῶν", "τινες", "οἳ", "οὐ", "πιστεύουσιν."],
+    mal:[
+      { i:4, form:"οἳ", lemma:"ὅς", modell:"genus", num:"pl", kas:"nom", bet:null, genus:"m", roll:"subj", sv:"som" } ] }
 ];
 const ROLL = {
   "subj": "Subjekt",

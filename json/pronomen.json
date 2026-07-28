@@ -1177,7 +1177,119 @@
     }
    },
    "not": "Indefinit pronomen, ENKLITISKT: samma former som interrogativa τίς men obetonat — accenten (när den finns) ligger på andra stavelsen (τινός, τινί, τινά), inte på τί. Neutrum pl har biformen ἄττα. Skiljs från τίς (§122) enbart genom accent/betoning."
+  },
+  {
+   "lemma": "ὅς",
+   "glosa": "som, vilken, vars (relativt pronomen)",
+   "typ": "relativt",
+   "bojningsmodell": "genus",
+   "seminarium": [
+    9
+   ],
+   "ntFrekvens": 1406,
+   "referens": "Blomqvist § 121",
+   "former": {
+    "m": {
+     "nom": {
+      "sg": "ὅς",
+      "pl": "οἵ"
+     },
+     "gen": {
+      "sg": "οὗ",
+      "pl": "ὧν"
+     },
+     "dat": {
+      "sg": "ᾧ",
+      "pl": "οἷς"
+     },
+     "ack": {
+      "sg": "ὅν",
+      "pl": "οὕς"
+     }
+    },
+    "f": {
+     "nom": {
+      "sg": "ἥ",
+      "pl": "αἵ"
+     },
+     "gen": {
+      "sg": "ἧς",
+      "pl": "ὧν"
+     },
+     "dat": {
+      "sg": "ᾗ",
+      "pl": "αἷς"
+     },
+     "ack": {
+      "sg": "ἥν",
+      "pl": "ἅς"
+     }
+    },
+    "n": {
+     "nom": {
+      "sg": "ὅ",
+      "pl": "ἅ"
+     },
+     "gen": {
+      "sg": "οὗ",
+      "pl": "ὧν"
+     },
+     "dat": {
+      "sg": "ᾧ",
+      "pl": "οἷς"
+     },
+     "ack": {
+      "sg": "ὅ",
+      "pl": "ἅ"
+     }
+    }
+   },
+   "glosa_kasus": {
+    "m": {
+     "sg": {
+      "nom": "som",
+      "gen": "vars",
+      "dat": "till vilken",
+      "ack": "som"
+     },
+     "pl": {
+      "nom": "som",
+      "gen": "vars",
+      "dat": "till vilka",
+      "ack": "som"
+     }
+    },
+    "f": {
+     "sg": {
+      "nom": "som",
+      "gen": "vars",
+      "dat": "till vilken",
+      "ack": "som"
+     },
+     "pl": {
+      "nom": "som",
+      "gen": "vars",
+      "dat": "till vilka",
+      "ack": "som"
+     }
+    },
+    "n": {
+     "sg": {
+      "nom": "som",
+      "gen": "vars",
+      "dat": "till vilken",
+      "ack": "som"
+     },
+     "pl": {
+      "nom": "som",
+      "gen": "vars",
+      "dat": "till vilka",
+      "ack": "som"
+     }
+    }
+   },
+   "not": "Böjs som ett 2-1-2-adjektiv (som αὐτός) men med spiritus asper och genomgående accent: ὅς ἥ ὅ. Genus/numerus rättar sig efter korrelatet (ordet i huvudsatsen), kasus efter rollen i relativsatsen. Får ej förväxlas med bestämda artikeln (ὁ ἡ τό / οἱ αἱ τά) — artikeln saknar accent i nom och har τ- i de flesta former."
   }
  ],
- "_framtida": "Ännu ej inlagda (väntar på att kursen tar upp dem): reflexiva (ἐμαυτοῦ/σεαυτοῦ/ἑαυτοῦ, § 117), reciprokt (ἀλλήλων, § 118), relativa (ὅς/ὅστις, § 121), demonstrativt ὅδε (§ 120:2), οὐδείς/μηδείς (§ 123:2) samt pronominaladjektiv/-adverb (§ 124). Flera är NT-högfrekventa (ὅς ~1400, ἑαυτοῦ ~320, οὐδείς ~230). πᾶς πᾶσα πᾶν ligger som paradigm i seminarier.json (blandad 3:e+1:a deklination), inte här."
+ "_framtida": "Ännu ej inlagda (väntar på att kursen tar upp dem): reflexiva (ἐμαυτοῦ/σεαυτοῦ/ἑαυτοῦ, § 117), reciprokt (ἀλλήλων, § 118), det relativa ὅστις (§ 121), demonstrativt ὅδε (§ 120:2), οὐδείς/μηδείς (§ 123:2) samt pronominaladjektiv/-adverb (§ 124). Flera är NT-högfrekventa (ἑαυτοῦ ~320, οὐδείς ~230). Relativa ὅς ἥ ὅ lades in sem 9 (2026-07-28). πᾶς πᾶσα πᾶν ligger som paradigm i seminarier.json (blandad 3:e+1:a deklination), inte här."
 }

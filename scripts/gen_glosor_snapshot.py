@@ -28,6 +28,8 @@ def main():
             d.append("sem")
         if (x.get("frekvens") or 0) > 60:
             d.append("60")
+        if "prov" in (x.get("listor") or []):
+            d.append("prov")
         rader.append({
             "l": x["lemma"], "g": x["glosa"], "o": x["ordklass"], "gen": x.get("genus"),
             "f": x.get("frekvens"), "s": x["seminarium"], "d": d,
@@ -54,7 +56,9 @@ def main():
     per = {s: sum(1 for x in G if s in x["seminarium"]) for s in sem}
     print(f"Skrev {VY.relative_to(ROOT)} — {len(rader)} glosor, seminarium {span}.")
     print("  per seminarium:", per)
-    print("  däck: sem =", sum(1 for r in rader if "sem" in r["d"]), "| 60 =", sum(1 for r in rader if "60" in r["d"]))
+    print("  däck: sem =", sum(1 for r in rader if "sem" in r["d"]),
+          "| 60 =", sum(1 for r in rader if "60" in r["d"]),
+          "| prov =", sum(1 for r in rader if "prov" in r["d"]))
 
 
 if __name__ == "__main__":

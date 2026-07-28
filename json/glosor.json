@@ -12,7 +12,8 @@
   "kalla": "seminarium-ordlista = tillagt fran ett seminariums ordlista (ej fran >60-frekvenslistan); saknar falt = ursprunglig >60-lista.",
   "ordklass": "Ordklass. 'pron.adv' = pronominellt adverb (ποῦ, πόθεν, πότε).",
   "genitiv": "Genitivform for uppslagsboken, avlast ur >60-PDF:en dar den visas (oforutsagbara 3:e-dekl-stammar: αἰων -> αἰωνος). Utelamnat dar formen ar regelbunden/forutsagbar.",
-  "not": "Kort uppslagsnot for ordboken (harledning, korsreferens, betydelsehistoria) ur >60-PDF:en. Skild fran 'anteckning' (som ar dataproveniens och inte visas)."
+  "not": "Kort uppslagsnot for ordboken (harledning, korsreferens, betydelsehistoria) ur >60-PDF:en. Skild fran 'anteckning' (som ar dataproveniens och inte visas).",
+  "listor": "Namngivna urvalslistor ordet ingar i, utover seminarie-/frekvensdack. 'prov' = Oskars ORDKUNSKAP 1-10 (den slutna gloslistan infor tentamen)."
  },
  "_statistik": {
   "antal": 332,
@@ -111,6 +112,9 @@
     3,
     4,
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -147,6 +151,9 @@
     2,
     3,
     6
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -159,6 +166,9 @@
    "status": "exakt",
    "seminarium": [
     3
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -175,6 +185,9 @@
     4,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -186,7 +199,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    8
+    8,
+    9
    ]
   },
   {
@@ -232,7 +246,8 @@
    "harParadigm": true,
    "status": "exakt",
    "seminarium": [
-    5
+    5,
+    9
    ]
   },
   {
@@ -245,6 +260,9 @@
    "status": "exakt",
    "seminarium": [
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -261,6 +279,9 @@
     5,
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -366,7 +387,12 @@
    "frekvens": 216,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    9
+   ],
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "ἄνθρωπος",
@@ -380,6 +406,9 @@
     2,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -472,7 +501,10 @@
    "frekvens": 132,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [],
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "ἀπόστολος",
@@ -485,6 +517,9 @@
    "seminarium": [
     2,
     6
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -498,7 +533,8 @@
    "seminarium": [
     3,
     4,
-    5
+    5,
+    9
    ]
   },
   {
@@ -559,6 +595,9 @@
     3,
     6,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -597,6 +636,9 @@
     3,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -610,6 +652,9 @@
    "seminarium": [
     4,
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -631,7 +676,8 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    5
+    5,
+    9
    ]
   },
   {
@@ -678,6 +724,9 @@
     5,
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -717,6 +766,9 @@
    "seminarium": [
     5,
     6
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -766,7 +818,10 @@
    "frekvens": 415,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [],
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "δίκαιος",
@@ -779,6 +834,9 @@
    "seminarium": [
     4,
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -819,6 +877,9 @@
     4,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -927,6 +988,9 @@
    "seminarium": [
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -954,6 +1018,9 @@
     4,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -979,7 +1046,8 @@
    "status": "exakt",
    "seminarium": [
     4,
-    6
+    6,
+    9
    ]
   },
   {
@@ -993,6 +1061,9 @@
    "seminarium": [
     4,
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1029,6 +1100,9 @@
    "status": "exakt",
    "seminarium": [
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1088,6 +1162,9 @@
    "seminarium": [
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1114,6 +1191,9 @@
     4,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1196,6 +1276,9 @@
     4,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1334,7 +1417,10 @@
    "frekvens": 135,
    "harParadigm": true,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [],
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "ἤ",
@@ -1444,6 +1530,9 @@
     3,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1481,6 +1570,9 @@
    "seminarium": [
     3,
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1536,6 +1628,9 @@
    "seminarium": [
     4,
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1561,6 +1656,9 @@
    "seminarium": [
     5,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1644,7 +1742,8 @@
    "status": "exakt",
    "seminarium": [
     4,
-    5
+    5,
+    9
    ]
   },
   {
@@ -1672,6 +1771,9 @@
     4,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1688,6 +1790,9 @@
     6,
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1726,6 +1831,9 @@
     5,
     6,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1741,6 +1849,9 @@
     3,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1755,6 +1866,9 @@
     5,
     6,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1791,6 +1905,9 @@
    "seminarium": [
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1838,7 +1955,10 @@
    "frekvens": 1036,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [],
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "μηδείς",
@@ -1860,7 +1980,11 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    7
+    7,
+    9
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1938,6 +2062,9 @@
    "status": "exakt",
    "seminarium": [
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -1965,6 +2092,9 @@
     4,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2020,6 +2150,9 @@
    "seminarium": [
     6,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2072,6 +2205,9 @@
    "status": "exakt",
    "seminarium": [
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2085,6 +2221,9 @@
    "seminarium": [
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2097,6 +2236,9 @@
    "status": "exakt",
    "seminarium": [
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2144,6 +2286,9 @@
     3,
     5,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2257,6 +2402,9 @@
    "seminarium": [
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2269,7 +2417,11 @@
    "harParadigm": false,
    "status": "exakt",
    "seminarium": [
-    8
+    8,
+    9
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2285,6 +2437,9 @@
     3,
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2298,6 +2453,9 @@
    "seminarium": [
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2349,6 +2507,9 @@
     6,
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2383,6 +2544,9 @@
     3,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2395,6 +2559,9 @@
    "status": "exakt",
    "seminarium": [
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2410,6 +2577,9 @@
     5,
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2433,6 +2603,9 @@
    "seminarium": [
     7,
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2447,6 +2620,9 @@
     3,
     4,
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2492,6 +2668,9 @@
    "seminarium": [
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2535,6 +2714,9 @@
    "seminarium": [
     5,
     6
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2580,7 +2762,9 @@
    "frekvens": 147,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    9
+   ]
   },
   {
    "lemma": "σημεῖον",
@@ -2629,6 +2813,9 @@
    "status": "exakt",
    "seminarium": [
     5
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2695,6 +2882,9 @@
     4,
     5,
     6
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2790,6 +2980,9 @@
    "status": "exakt",
    "seminarium": [
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2804,6 +2997,9 @@
     3,
     5,
     7
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2901,6 +3097,9 @@
    "status": "exakt",
    "seminarium": [
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -2989,6 +3188,9 @@
    "status": "exakt",
    "seminarium": [
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -3018,7 +3220,10 @@
     5,
     7
    ],
-   "kalla": "seminarium-ordlista"
+   "kalla": "seminarium-ordlista",
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "κλέπτω",
@@ -3045,7 +3250,10 @@
     2,
     7
    ],
-   "kalla": "seminarium-ordlista"
+   "kalla": "seminarium-ordlista",
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "μικρός",
@@ -3143,7 +3351,10 @@
     4,
     7
    ],
-   "kalla": "seminarium-ordlista"
+   "kalla": "seminarium-ordlista",
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "ἀργύριον",
@@ -3332,7 +3543,10 @@
    "seminarium": [
     5
    ],
-   "kalla": "seminarium-ordlista"
+   "kalla": "seminarium-ordlista",
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "σάββατον",
@@ -3570,7 +3784,10 @@
     6,
     7
    ],
-   "kalla": "seminarium-ordlista"
+   "kalla": "seminarium-ordlista",
+   "listor": [
+    "prov"
+   ]
   },
   {
    "lemma": "παραβολή",
@@ -3966,6 +4183,9 @@
    "status": "exakt",
    "seminarium": [
     8
+   ],
+   "listor": [
+    "prov"
    ]
   },
   {
@@ -4159,6 +4379,62 @@
    "seminarium": [
     8
    ]
+  },
+  {
+   "lemma": "σταυρός",
+   "glosa": "kors",
+   "ordklass": "substantiv",
+   "genus": "m",
+   "frekvens": 27,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    9
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "ἄξιος",
+   "glosa": "värdig",
+   "ordklass": "adjektiv",
+   "genus": null,
+   "frekvens": 41,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    9
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "εὖ",
+   "glosa": "väl, gott",
+   "ordklass": "adverb",
+   "genus": null,
+   "frekvens": 5,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    9
+   ],
+   "kalla": "seminarium-ordlista",
+   "listor": [
+    "prov"
+   ]
+  },
+  {
+   "lemma": "θυγάτηρ",
+   "glosa": "dotter",
+   "ordklass": "substantiv",
+   "genus": "f",
+   "frekvens": 28,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    9
+   ],
+   "kalla": "seminarium-ordlista",
+   "genitiv": "θυγατρός"
   }
  ]
 }

@@ -54,6 +54,7 @@ GENUS_SV = {"m": "maskulinum", "f": "femininum", "n": "neutrum"}
 # källhänvisning. Kartan är uttömmande; en okänd fil ska falla, inte visas trasig.
 KALLA_SV = {
     "Breakout_rooms": "Breakout rooms",
+    "Breakout room": "Breakout rooms",   # sem 9 döpte filen med punkt+mellanslag
     "O_vningsblad": "Övningsblad",
 }
 
@@ -83,7 +84,7 @@ def kallatext(s):
     """Läsbar källhänvisning: '7__O_vningsblad.pdf' s.1 -> 'Övningsblad 7, s. 1'."""
     if s["kalla"] == "skapad":
         return "Konstruerad sats — står inte i kursmaterialet."
-    m = re.fullmatch(r"(\d+)__(.+)\.pdf", s["kalla"])
+    m = re.fullmatch(r"(\d+)(?:__|\.\s*)(.+)\.pdf", s["kalla"])
     if not m or m.group(2) not in KALLA_SV:
         raise SystemExit(f'Okänd källfil "{s["kalla"]}" ({s["id"]}) — lägg till den i KALLA_SV.')
     ut = f"{KALLA_SV[m.group(2)]} {m.group(1)}"

@@ -1,5 +1,5 @@
 {
- "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope: presens indikativ aktiv (ω-verb, kontraherade -έω, εἰμί); seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι). Seminarium 7 (kurs-PDF 2026-07-14) tillför: imperfekt indikativ aktiv (impf.ind.akt) på hela inventariet, presens aktiv imperativ (pres.imp.akt), presens aktiv infinitiv (pres.inf.akt) och futurum aktiv infinitiv (fut.inf.akt: παιδεύσειν) samt futurum på konsonantstammar. Syntaxen (infinitiv B § 266-271, imperativ B § 265, tempus/aspekt § 251-255) hör till grammatikreferensen, inte hit. Seminarium 8 tillför sigmatisk aorist (aor.ind/imp/inf.akt) för sigmatiska verb; andraaorister (utan sigma) skjuts till seminarium 9.",
+ "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope: presens indikativ aktiv (ω-verb, kontraherade -έω, εἰμί); seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι). Seminarium 7 (kurs-PDF 2026-07-14) tillför: imperfekt indikativ aktiv (impf.ind.akt) på hela inventariet, presens aktiv imperativ (pres.imp.akt), presens aktiv infinitiv (pres.inf.akt) och futurum aktiv infinitiv (fut.inf.akt: παιδεύσειν) samt futurum på konsonantstammar. Syntaxen (infinitiv B § 266-271, imperativ B § 265, tempus/aspekt § 251-255) hör till grammatikreferensen, inte hit. Seminarium 8 tillför sigmatisk aorist (aor.ind/imp/inf.akt) för sigmatiska verb; andraaorister (utan sigma) skjuts till seminarium 9. Seminarium 9 (kurs-PDF 2026-07-28) tillför: μι-verb δίδωμι/δείκνυμι (presens ind. akt., klass 'mi'); kontraherat futurum (fut.ind.akt utan σ, φιλέω-mönster) och sigmatisk aorist utan sigma (aor.ind.akt) för likvida/nasal-stammar ἀποστέλλω/κρίνω/ἀγγέλλω. εἰμί är sedan tidigare det enda μι-verbet i inventariet.",
  "_genererad": "2026-07-07",
  "_nycklar": {
   "_forklaring": "Formnyckel = 'tempus.modus.diates'. Person/numerus = '1sg'..'3pl'. Kortformer för konsekvens med ord.json; långformer nedan.",
@@ -125,6 +125,19 @@
   },
   "oregelbunden": {
    "beskrivning": "Egna paradigm (εἰμί; futurum medium ἔσομαι)."
+  },
+  "mi": {
+   "beskrivning": "μι-verb (aten. böjning). Slutar på -μι i 1sg presens indikativ och särskiljs bara inom presenssystemet (B § 137, 142). Presens ind. akt. har ändelserna -μι, -ς, -σι(ν), -μεν, -τε, -(α)σι(ν) på en reduplicerad/lång stam (δίδω-/διδο-, δείκνυ-). Redan i koinen fick de ofta ω-verbens ändelser (Joh 2:18 δεικνύεις).",
+   "andelser": {
+    "pres.ind.akt": {
+     "1sg": "-μι",
+     "2sg": "-ς",
+     "3sg": "-σι(ν)",
+     "1pl": "-μεν",
+     "2pl": "-τε",
+     "3pl": "-ασι(ν)"
+    }
+   }
   }
  },
  "_kortlekar": {
@@ -134,7 +147,9 @@
   "sem5": "Seminarium 5-verb (prepositions-/negations-/pronomenövningarna)",
   "sem6": "Seminarium 6: futurum (ω-verb λύσω, -έω-verb φιλήσω, εἰμί ἔσομαι)",
   "sem7": "Seminarium 7: imperfekt (ἔλυον), presens imperativ (λῦε), infinitiv (λύειν/λύσειν) + futurum-tillägg (konsonantstammar)",
-  "sem8": "Seminarium 8: sigmatisk aorist (ind./imp./inf.) — ω-verb + kontraherade -έω; καλέω som undantag (ἐκάλεσα)"
+  "sem8": "Seminarium 8: sigmatisk aorist (ind./imp./inf.) — ω-verb + kontraherade -έω; καλέω som undantag (ἐκάλεσα)",
+  "sem9": "Seminarium 9: kontraherat futurum (ἀποστελῶ, κρινῶ, ἀγγελῶ) och sigmatisk aorist utan sigma (ἀπέστειλα, ἔκρῑνα, ἤγγειλα) på likvida/nasal-stammar (λ/ρ/μ/ν)",
+  "mi": "μι-verb (δίδωμι, δείκνυμι) — presens indikativ aktiv"
  },
  "_falt": {
   "lemma": "Uppslagsform (1sg pres ind akt).",
@@ -1895,7 +1910,8 @@
     "sem4",
     "eimi",
     "sem6",
-    "sem7"
+    "sem7",
+    "mi"
    ],
    "nt_frekvens": 2456,
    "former": {
@@ -2800,6 +2816,216 @@
    ],
    "verifierad": true,
    "not": "Imperfekt även ἤμελλον (båda i NT). Futurum μελλήσω på utvidgad stam — ej upplagt (utanför § 165). Styr infinitiv: μέλλω κηρύσσειν."
+  },
+  {
+   "lemma": "δίδωμι",
+   "glosa": "ge",
+   "klass": "mi",
+   "stam": "διδο",
+   "seminarium": [
+    9
+   ],
+   "kortlekar": [
+    "mi"
+   ],
+   "nt_frekvens": 415,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "δίδωμι",
+     "2sg": "δίδως",
+     "3sg": "δίδωσι(ν)",
+     "1pl": "δίδομεν",
+     "2pl": "δίδοτε",
+     "3pl": "διδόασι(ν)"
+    }
+   },
+   "belagda_former": [
+    "1sg",
+    "2sg",
+    "3sg",
+    "1pl",
+    "2pl",
+    "3pl"
+   ],
+   "verifierad": true,
+   "not": "μι-verb (B § 154). Böjs bara avvikande i presenssystemet; i koinen tränger ω-ändelser in. Aorist ἔδωκα m.m. hör till senare pass."
+  },
+  {
+   "lemma": "δείκνυμι",
+   "glosa": "visa",
+   "klass": "mi",
+   "stam": "δεικνυ",
+   "seminarium": [
+    9
+   ],
+   "kortlekar": [
+    "mi"
+   ],
+   "nt_frekvens": 33,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "δείκνυμι",
+     "2sg": "δείκνυς",
+     "3sg": "δείκνυσι(ν)",
+     "1pl": "δείκνυμεν",
+     "2pl": "δείκνυτε",
+     "3pl": "δεικνύασι(ν)"
+    }
+   },
+   "belagda_former": [
+    "1sg",
+    "2sg",
+    "3sg",
+    "1pl",
+    "2pl",
+    "3pl"
+   ],
+   "verifierad": true,
+   "not": "μι-verb (B § 163). Koine har ofta ω-formen δεικνύεις (Joh 2:18) i st.f. δείκνυς."
+  },
+  {
+   "lemma": "ἀποστέλλω",
+   "glosa": "sända ut",
+   "klass": "omega",
+   "stam": "ἀποστελ",
+   "seminarium": [
+    9
+   ],
+   "kortlekar": [
+    "sem9"
+   ],
+   "nt_frekvens": 132,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "ἀποστέλλω",
+     "2sg": "ἀποστέλλεις",
+     "3sg": "ἀποστέλλει",
+     "1pl": "ἀποστέλλομεν",
+     "2pl": "ἀποστέλλετε",
+     "3pl": "ἀποστέλλουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "ἀποστελῶ",
+     "2sg": "ἀποστελεῖς",
+     "3sg": "ἀποστελεῖ",
+     "1pl": "ἀποστελοῦμεν",
+     "2pl": "ἀποστελεῖτε",
+     "3pl": "ἀποστελοῦσι(ν)"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἀπέστειλα",
+     "2sg": "ἀπέστειλας",
+     "3sg": "ἀπέστειλε(ν)",
+     "1pl": "ἀπεστείλαμεν",
+     "2pl": "ἀπεστείλατε",
+     "3pl": "ἀπέστειλαν"
+    }
+   },
+   "belagda_former": [
+    "aor.ind.akt.1sg",
+    "aor.ind.akt.2sg",
+    "aor.ind.akt.3sg",
+    "aor.ind.akt.1pl",
+    "aor.ind.akt.2pl",
+    "aor.ind.akt.3pl",
+    "fut.ind.akt.1sg"
+   ],
+   "verifierad": true,
+   "futurumklass": "kontraherat",
+   "not": "Presens har -λλ-, aorist -λ- (ἀπεστελ-σ- → ἀπέστειλα, σigmat faller, ε→ει). Futurum kontraherat likt φιλέω (ἀποστελῶ). Slides sem 9 s. 76."
+  },
+  {
+   "lemma": "κρίνω",
+   "glosa": "döma",
+   "klass": "omega",
+   "stam": "κριν",
+   "seminarium": [
+    9
+   ],
+   "kortlekar": [
+    "sem9"
+   ],
+   "nt_frekvens": 114,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "κρίνω",
+     "2sg": "κρίνεις",
+     "3sg": "κρίνει",
+     "1pl": "κρίνομεν",
+     "2pl": "κρίνετε",
+     "3pl": "κρίνουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "κρινῶ",
+     "2sg": "κρινεῖς",
+     "3sg": "κρινεῖ",
+     "1pl": "κρινοῦμεν",
+     "2pl": "κρινεῖτε",
+     "3pl": "κρινοῦσι(ν)"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἔκρινα",
+     "2sg": "ἔκρινας",
+     "3sg": "ἔκρινε(ν)",
+     "1pl": "ἐκρίναμεν",
+     "2pl": "ἐκρίνατε",
+     "3pl": "ἔκριναν"
+    }
+   },
+   "belagda_former": [
+    "aor.ind.akt.1sg",
+    "aor.ind.akt.3sg",
+    "fut.ind.akt.1sg"
+   ],
+   "verifierad": true,
+   "futurumklass": "kontraherat",
+   "not": "Aorist utan sigma: ἐκρῐν-σ- → ἔκρῑνα (σ faller, ῐ→ῑ; förlängningen syns ej i skrift men hörs). Slides skriver ἔκρῑνα/ἔκρῑνεν med makron; här standardortografi utan makron."
+  },
+  {
+   "lemma": "ἀγγέλλω",
+   "glosa": "meddela, förkunna",
+   "klass": "omega",
+   "stam": "ἀγγελ",
+   "seminarium": [
+    9
+   ],
+   "kortlekar": [
+    "sem9"
+   ],
+   "nt_frekvens": 1,
+   "former": {
+    "pres.ind.akt": {
+     "1sg": "ἀγγέλλω",
+     "2sg": "ἀγγέλλεις",
+     "3sg": "ἀγγέλλει",
+     "1pl": "ἀγγέλλομεν",
+     "2pl": "ἀγγέλλετε",
+     "3pl": "ἀγγέλλουσι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "ἀγγελῶ",
+     "2sg": "ἀγγελεῖς",
+     "3sg": "ἀγγελεῖ",
+     "1pl": "ἀγγελοῦμεν",
+     "2pl": "ἀγγελεῖτε",
+     "3pl": "ἀγγελοῦσι(ν)"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἤγγειλα",
+     "2sg": "ἤγγειλας",
+     "3sg": "ἤγγειλε(ν)",
+     "1pl": "ἠγγείλαμεν",
+     "2pl": "ἠγγείλατε",
+     "3pl": "ἤγγειλαν"
+    }
+   },
+   "belagda_former": [
+    "fut.ind.akt.1sg",
+    "aor.ind.akt.1sg"
+   ],
+   "verifierad": true,
+   "futurumklass": "kontraherat",
+   "not": "Oskars ledexempel för kontraherat futurum + aorist utan sigma (studietips-slide: ἀγγέλλω ἀγγελῶ ἤγγειλα). Simplex sällsynt i NT; sammansättningar (ἀπαγγέλλω m.fl.) vanliga."
   }
  ],
  "_futurumklasser": {
