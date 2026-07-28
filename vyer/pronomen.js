@@ -742,7 +742,7 @@ const STYLE = `
 .vy-pron .options{ display:grid; grid-template-columns:1fr 1fr; gap:.6rem; min-width:min(30rem,92vw); }
 .vy-pron .opt{ font-family:"Cardo",serif; font-size:var(--fs-2xl); padding:.5rem .3rem;
   border:1px solid var(--line); border-radius:10px; background:var(--card); color:var(--ink); cursor:pointer; }
-.vy-pron .opt:hover:not(:disabled){ border-color:var(--gold); }
+.vy-pron .options:not(.no-hover) .opt:hover:not(:disabled){ border-color:var(--gold); }
 .vy-pron .opt:disabled{ cursor:default; }
 .vy-pron .opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
 .vy-pron .opt.wrong{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
@@ -1138,7 +1138,7 @@ export function render(root){
   }
 
   function renderOptioner(){
-    const box = $("options"); box.innerHTML = "";
+    const box = $("options"); box.innerHTML = ""; box.classList.add("no-hover"); box.addEventListener("pointermove", () => box.classList.remove("no-hover"), { once: true });
     const ratt = facit(), grsv = state.riktning === "gr-sv";
     state.card.optioner.forEach(f => {
       const b = document.createElement("button");

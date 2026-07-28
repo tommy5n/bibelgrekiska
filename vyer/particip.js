@@ -29,7 +29,7 @@ const CSS = `
   font-family: inherit; font-size: var(--fs-2xl); color: var(--ink); background: var(--card);
   border: 1.5px solid var(--line); border-radius: 12px; padding: 0.45rem 1rem; cursor: pointer; transition: 0.15s;
 }
-.vy-particip .alt:hover:not(:disabled) { border-color: var(--gold); }
+.vy-particip .alternativ:not(.no-hover) .alt:hover:not(:disabled) { border-color: var(--gold); }
 .vy-particip .alt:disabled { cursor: default; }
 .vy-particip .alt.ratt { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
 .vy-particip .alt.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
@@ -203,7 +203,7 @@ export function render(root){
   }
 
   function ritaAlternativ(q){
-    const alt=$("alternativ"); alt.innerHTML="";
+    const alt=$("alternativ"); alt.innerHTML=""; alt.classList.add("no-hover"); alt.addEventListener("pointermove", () => alt.classList.remove("no-hover"), { once: true });
     q.alternativ.forEach(f=>{
       const b=document.createElement("button"); b.className="alt"; b.type="button"; b.textContent=f;
       if(state.besvarad){

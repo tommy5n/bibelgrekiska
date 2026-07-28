@@ -311,7 +311,7 @@ function klar(){ return state.mode === "end" ? !!state.selEnd : (!!state.selArt 
 
 function renderOpts(){
   const c = state.card, ca = $("opts-art"), ce = $("opts-end");
-  ca.innerHTML = ""; ce.innerHTML = "";
+  ca.innerHTML = ""; ce.innerHTML = ""; ca.classList.add("no-hover"); ca.addEventListener("pointermove", () => ca.classList.remove("no-hover"), { once: true }); ce.classList.add("no-hover"); ce.addEventListener("pointermove", () => ce.classList.remove("no-hover"), { once: true });
 
   if(state.mode === "end"){
     const b = document.createElement("button");

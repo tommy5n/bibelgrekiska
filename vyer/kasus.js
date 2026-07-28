@@ -558,7 +558,7 @@ function visaFacit(){
 }
 
 function renderOptioner(){
-  const box = $("options"); box.innerHTML = "";
+  const box = $("options"); box.innerHTML = ""; box.classList.add("no-hover"); box.addEventListener("pointermove", () => box.classList.remove("no-hover"), { once: true });
   state.card.optioner.forEach(k => {
     const b = document.createElement("button");
     b.className = "opt"; b.textContent = KASUS[k].namn; b.dataset.kasus = k;

@@ -530,7 +530,7 @@ function render(){
     fras.appendChild(span);
   });
 
-  const box = $("alternativ"); box.innerHTML = "";
+  const box = $("alternativ"); box.innerHTML = ""; box.classList.add("no-hover"); box.addEventListener("pointermove", () => box.classList.remove("no-hover"), { once: true });
   state.alternativ.forEach((o,i) => {
     const b = document.createElement("button");
     b.className = "opt";

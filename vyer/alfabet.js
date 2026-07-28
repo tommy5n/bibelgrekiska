@@ -555,7 +555,7 @@ export function render(root) {
     const box = el("choices");
     if (!state.answered) {
       const options = buildOptions(c);
-      box.innerHTML = "";
+      box.innerHTML = ""; box.classList.add("no-hover"); box.addEventListener("pointermove", () => box.classList.remove("no-hover"), { once: true });
       options.forEach((opt, i) => {
         const b = document.createElement("button");
         b.className = "choice";

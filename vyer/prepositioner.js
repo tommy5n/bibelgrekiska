@@ -187,7 +187,7 @@ const STYLE = `
 .vy-prep .options{ display:grid; grid-template-columns:1fr 1fr; gap:.6rem; min-width:min(30rem,92vw); }
 .vy-prep .opt{ font-family:"Spectral",serif; font-size:var(--fs-lg); padding:.7rem .5rem;
   border:1px solid var(--line); border-radius:10px; background:var(--card); color:var(--ink); cursor:pointer; }
-.vy-prep .opt:hover:not(:disabled){ border-color:var(--gold); }
+.vy-prep .options:not(.no-hover) .opt:hover:not(:disabled){ border-color:var(--gold); }
 .vy-prep .opt:disabled{ cursor:default; }
 .vy-prep .opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
 .vy-prep .opt.wrong{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
@@ -442,7 +442,7 @@ export function render(root){
   }
 
   function renderOptioner(){
-    const box = $("options"); box.innerHTML = "";
+    const box = $("options"); box.innerHTML = ""; box.classList.add("no-hover"); box.addEventListener("pointermove", () => box.classList.remove("no-hover"), { once: true });
     state.card.optioner.forEach(v => {
       const b = document.createElement("button");
       b.className = "opt"; b.textContent = v;

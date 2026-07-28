@@ -384,7 +384,7 @@ body {
   font-size: 0.7rem;
   color: var(--ink-soft);
 }
-.vy-alfabet .choice:hover:not(:disabled) {
+.vy-alfabet .choices:not(.no-hover) .choice:hover:not(:disabled) {
   border-color: var(--gold);
   background: #fbf2da;
 }
@@ -1163,7 +1163,7 @@ body {
   cursor: pointer;
   transition: 0.15s;
 }
-.vy-kasus .opt:hover:not(:disabled) {
+.vy-kasus .options:not(.no-hover) .opt:hover:not(:disabled) {
   border-color: var(--gold);
 }
 .vy-kasus .opt:disabled {
@@ -1884,7 +1884,7 @@ body {
   align-items: center;
   gap: 0.15rem;
 }
-.vy-kongruens .opt:hover:not(:disabled) {
+.vy-kongruens .alternativ:not(.no-hover) .opt:hover:not(:disabled) {
   border-color: var(--gold);
 }
 .vy-kongruens .opt:disabled {
@@ -2825,7 +2825,7 @@ body {
   transition: 0.15s;
   min-width: 3rem;
 }
-.vy-andelser .optx:hover:not(:disabled) {
+.vy-andelser .opts:not(.no-hover) .optx:hover:not(:disabled) {
   border-color: var(--gold);
 }
 .vy-andelser .optx[aria-pressed="true"] {

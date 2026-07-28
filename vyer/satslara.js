@@ -36,7 +36,7 @@ const CSS = `
   font-family: inherit; font-size: var(--fs-lg); color: var(--ink); background: var(--card);
   border: 1.5px solid var(--line); border-radius: 12px; padding: 0.5rem 1rem; cursor: pointer; transition: 0.15s;
 }
-.vy-satslara .opt:hover:not(:disabled) { border-color: var(--gold); }
+.vy-satslara .options:not(.no-hover) .opt:hover:not(:disabled) { border-color: var(--gold); }
 .vy-satslara .opt:disabled { cursor: default; }
 .vy-satslara .opt.ratt { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
 .vy-satslara .opt.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
@@ -258,7 +258,7 @@ export function render(root){
     $("sats").classList.add("hidden"); $("sats").innerHTML="";
     const fr=$("fraga"); fr.classList.remove("hidden");
     fr.innerHTML = `<span class="subj-stor">${state.subj.ord}</span><span class="subj-fraga">Vad betyder subjunktionen?</span>`;
-    const opt=$("options"); opt.classList.remove("hidden"); opt.innerHTML="";
+    const opt=$("options"); opt.classList.remove("hidden"); opt.innerHTML=""; opt.classList.add("no-hover"); opt.addEventListener("pointermove", () => opt.classList.remove("no-hover"), { once: true });
     state.alternativ.forEach(a=>{
       const b=document.createElement("button");
       b.className="opt"; b.type="button"; b.textContent=a.sv;
