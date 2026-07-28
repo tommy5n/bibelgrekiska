@@ -879,7 +879,10 @@ body {
   transition: 0.15s;
   text-align: center;
 }
-.vy-glosor .opt:hover:not(:disabled) {
+/* .no-hover: nyrenderade alternativ ärver INTE hover förrän muspekaren rört sig.
+   Annars får alternativet som råkar hamna under en stilla pekare (efter att man
+   gått vidare med tangentbord) en gyllene ram utan att man hovrat — spökhover. */
+.vy-glosor .options:not(.no-hover) .opt:hover:not(:disabled) {
   border-color: var(--gold);
 }
 .vy-glosor .opt:disabled {

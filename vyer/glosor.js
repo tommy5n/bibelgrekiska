@@ -652,7 +652,10 @@ function render(){
 function renderOptioner(){
   const card = document.getElementById("card");
   const grid = document.createElement("div");
-  grid.className = "options";
+  // "no-hover" tas bort vid första muspekarrörelsen: annars får alternativet
+  // under en stilla pekare (efter tangentbords-Nästa) en gyllene spökhover-ram.
+  grid.className = "options no-hover";
+  grid.addEventListener("pointermove", () => grid.classList.remove("no-hover"), { once: true });
   state.card.optioner.forEach((glosa, i) => {
     const b = document.createElement("button");
     b.className = "opt";
