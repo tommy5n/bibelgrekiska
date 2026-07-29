@@ -25,7 +25,7 @@ const CSS = `
 .vy-paradigm td.rowlab{ color:var(--ink-soft); font-size:var(--fs-sm); white-space:nowrap; }
 .vy-paradigm .cell{ width:100%; min-height:2.6rem; border:1px solid var(--line); border-radius:9px; background:var(--paper);
   font-size:var(--fs-lg); color:var(--ink); cursor:pointer; padding:.35rem .3rem; line-height:1.15; text-align:center; }
-.vy-paradigm .cell:hover:not(:disabled){ border-color:var(--gold); }
+@media (hover: hover) { .vy-paradigm .cell:hover:not(:disabled){ border-color:var(--gold); } }
 .vy-paradigm .cell.active{ border-color:var(--gold); box-shadow:0 0 0 2px color-mix(in srgb, var(--gold) 40%, transparent); }
 .vy-paradigm .cell.empty{ color:var(--line); }
 .vy-paradigm .cell .sub{ display:block; font-size:var(--fs-3xs); color:var(--bad); margin-top:.1rem; }
@@ -35,7 +35,7 @@ const CSS = `
 .vy-paradigm .palette{ display:flex; flex-wrap:wrap; gap:.4rem; justify-content:center; margin:.8rem 0 .2rem; }
 .vy-paradigm .palette .end{ border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink);
   font-size:var(--fs-md); padding:.4rem .7rem; cursor:pointer; min-width:2.6rem; }
-.vy-paradigm .palette .end:hover{ border-color:var(--gold); }
+@media (hover: hover) { .vy-paradigm .palette .end:hover{ border-color:var(--gold); } }
 .vy-paradigm .palette-label{ text-align:center; color:var(--ink-soft); font-size:var(--fs-xs); margin-top:.6rem; }
 .vy-paradigm .controls{ display:flex; gap:.6rem; justify-content:center; margin-top:1rem; }
 .vy-paradigm .btn{ border:1px solid var(--line); border-radius:9px; background:var(--card); color:var(--ink);

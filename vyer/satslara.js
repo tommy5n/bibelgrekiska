@@ -23,7 +23,7 @@ const CSS = `
   color: var(--ink); background: var(--card); border: 1.5px solid var(--line);
   border-radius: 12px; padding: 0.35rem 0.7rem 0.3rem; cursor: pointer; transition: 0.15s;
 }
-.vy-satslara .chunk:hover:not(:disabled) { border-color: var(--gold); }
+@media (hover: hover) { .vy-satslara .chunk:hover:not(:disabled) { border-color: var(--gold); } }
 .vy-satslara .chunk:disabled { cursor: default; }
 .vy-satslara .chunk.vald { background: var(--cbg); border-color: var(--gold); color: var(--ink); }
 .vy-satslara .chunk.bisats { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
@@ -36,7 +36,7 @@ const CSS = `
   font-family: inherit; font-size: var(--fs-lg); color: var(--ink); background: var(--card);
   border: 1.5px solid var(--line); border-radius: 12px; padding: 0.5rem 1rem; cursor: pointer; transition: 0.15s;
 }
-.vy-satslara .options:not(.no-hover) .opt:hover:not(:disabled) { border-color: var(--gold); }
+@media (hover: hover) { .vy-satslara .options:not(.no-hover) .opt:hover:not(:disabled) { border-color: var(--gold); } }
 .vy-satslara .opt:disabled { cursor: default; }
 .vy-satslara .opt.ratt { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
 .vy-satslara .opt.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }

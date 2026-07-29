@@ -384,9 +384,11 @@ body {
   font-size: 0.7rem;
   color: var(--ink-soft);
 }
+@media (hover: hover) {
 .vy-alfabet .choices:not(.no-hover) .choice:hover:not(:disabled) {
   border-color: var(--gold);
   background: #fbf2da;
+}
 }
 .vy-alfabet .choice:disabled {
   cursor: default;
@@ -594,8 +596,10 @@ body {
   align-items: center;
   justify-content: center;
 }
+@media (hover: hover) {
 .vy-alfabet .cell:hover {
   border-color: var(--gold);
+}
 }
 .vy-alfabet .cell.on {
   background: var(--gold);
@@ -882,8 +886,10 @@ body {
 /* .no-hover: nyrenderade alternativ ärver INTE hover förrän muspekaren rört sig.
    Annars får alternativet som råkar hamna under en stilla pekare (efter att man
    gått vidare med tangentbord) en gyllene ram utan att man hovrat — spökhover. */
+@media (hover: hover) {
 .vy-glosor .options:not(.no-hover) .opt:hover:not(:disabled) {
   border-color: var(--gold);
+}
 }
 .vy-glosor .opt:disabled {
   cursor: default;
@@ -1163,8 +1169,10 @@ body {
   cursor: pointer;
   transition: 0.15s;
 }
+@media (hover: hover) {
 .vy-kasus .options:not(.no-hover) .opt:hover:not(:disabled) {
   border-color: var(--gold);
+}
 }
 .vy-kasus .opt:disabled {
   cursor: default;
@@ -1521,8 +1529,10 @@ body {
   color: var(--ink-soft);
   text-transform: lowercase;
 }
+@media (hover: hover) {
 .vy-satsanalys .chunk:hover:not(:disabled) {
   border-color: var(--gold);
+}
 }
 .vy-satsanalys .chunk:disabled {
   cursor: default;
@@ -1589,8 +1599,10 @@ body {
   cursor: pointer;
   transition: 0.15s;
 }
+@media (hover: hover) {
 .vy-satsanalys .roll:hover {
   filter: brightness(0.97);
+}
 }
 .vy-satsanalys .roll[aria-pressed="true"] {
   box-shadow: 0 0 0 2px var(--c) inset;
@@ -1884,8 +1896,10 @@ body {
   align-items: center;
   gap: 0.15rem;
 }
+@media (hover: hover) {
 .vy-kongruens .alternativ:not(.no-hover) .opt:hover:not(:disabled) {
   border-color: var(--gold);
+}
 }
 .vy-kongruens .opt:disabled {
   cursor: default;
@@ -2674,8 +2688,10 @@ body {
   cursor: pointer;
   transition: 0.15s;
 }
+@media (hover: hover) {
 .vy-andelser .opt:hover:not(:disabled) {
   border-color: var(--gold);
+}
 }
 .vy-andelser .opt:disabled {
   cursor: default;
@@ -2825,8 +2841,10 @@ body {
   transition: 0.15s;
   min-width: 3rem;
 }
+@media (hover: hover) {
 .vy-andelser .opts:not(.no-hover) .optx:hover:not(:disabled) {
   border-color: var(--gold);
+}
 }
 .vy-andelser .optx[aria-pressed="true"] {
   background: var(--ink);

@@ -121,7 +121,7 @@ const STYLE = `
 .vy-former .options.neg{ grid-template-columns:repeat(4,1fr); }
 .vy-former .opt{ font-family:"Cardo",serif; font-size:var(--fs-2xl); padding:.7rem .5rem;
   border:1px solid var(--line); border-radius:10px; background:var(--card); color:var(--ink); cursor:pointer; }
-.vy-former .options:not(.no-hover) .opt:hover:not(:disabled){ border-color:var(--gold); }
+@media (hover: hover) { .vy-former .options:not(.no-hover) .opt:hover:not(:disabled){ border-color:var(--gold); } }
 .vy-former .opt:disabled{ cursor:default; }
 .vy-former .opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
 .vy-former .opt.wrong{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
