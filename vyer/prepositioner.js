@@ -199,7 +199,7 @@ const STYLE = `
 /* .picker, .toggle, .chip m.fl. ärvs från de delade reglerna i app.css. */
 .vy-prep footer{ margin-top:1.4rem; font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; }
 .vy-prep footer a{ color:var(--gold); text-decoration:none; }
-.vy-prep footer a:hover{ text-decoration:underline; }
+@media (hover: hover) { .vy-prep footer a:hover{ text-decoration:underline; } }
 .vy-prep .gr-lank{ margin-top:.6rem; }
 `;
 

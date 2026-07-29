@@ -19,7 +19,7 @@ const CSS = `
   font-family: inherit; font-size: var(--fs-sm); color: var(--ink-soft); background: var(--card);
   border: 1.5px solid var(--line); border-radius: 999px; padding: 0.3rem 0.9rem; cursor: pointer; transition: 0.15s;
 }
-.vy-particip .mode:not([aria-pressed="true"]):hover { border-color: var(--gold); color: var(--ink); }
+@media (hover: hover) { .vy-particip .mode:not([aria-pressed="true"]):hover { border-color: var(--gold); color: var(--ink); } }
 .vy-particip .prompt { font-size: var(--fs-lg); color: var(--ink); text-align: center; margin-top: 0.8rem; }
 .vy-particip .fras { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; margin: 1.1rem 0 0.8rem; }
 .vy-particip .hufras { font-size: 1.85rem; color: var(--ink); }

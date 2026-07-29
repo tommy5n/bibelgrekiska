@@ -45,7 +45,7 @@ const CSS = `
   font-family: inherit; font-size: var(--fs-sm); color: var(--ink); background: var(--card);
   border: 1.5px solid var(--line); border-radius: 10px; padding: 0.45rem 1rem; cursor: pointer; transition: 0.15s;
 }
-.vy-satslara .ctl:hover { border-color: var(--gold); }
+@media (hover: hover) { .vy-satslara .ctl:hover { border-color: var(--gold); } }
 .vy-satslara .ctl.primar { background: var(--gold); border-color: var(--gold); color: #fff; }
 `;
 

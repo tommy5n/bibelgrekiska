@@ -14,7 +14,7 @@ const CSS = `
 .vy-ordbok #sok:focus{ outline:2px solid var(--gold); outline-offset:1px; border-color:var(--gold); }
 .vy-ordbok #sok-rensa{ font:inherit; font-size:1.1rem; line-height:1; width:2.6rem;
   border:1px solid var(--line); border-radius:0.6rem; background:var(--card); color:var(--ink-soft); cursor:pointer; }
-.vy-ordbok #sok-rensa:hover{ color:var(--ink); }
+@media (hover: hover) { .vy-ordbok #sok-rensa:hover{ color:var(--ink); } }
 .vy-ordbok .traff-antal{ color:var(--ink-soft); font-size:var(--fs-meta); margin:0.1rem 0 0.5rem; }
 .vy-ordbok .resultat{ display:flex; flex-direction:column; gap:0.15rem; }
 .vy-ordbok .ord{ padding:0.6rem 0.2rem; border-bottom:1px solid var(--line); }

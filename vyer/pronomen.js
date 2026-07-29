@@ -769,7 +769,7 @@ const STYLE = `
    reglerna i app.css — inga vy-lokala regler här. */
 .vy-pron footer{ margin-top:1.4rem; font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; }
 .vy-pron footer a{ color:var(--gold); text-decoration:none; }
-.vy-pron footer a:hover{ text-decoration:underline; }
+@media (hover: hover) { .vy-pron footer a:hover{ text-decoration:underline; } }
 .vy-pron .gr-lank{ margin-top:.6rem; }
 `;
 

@@ -133,7 +133,7 @@ const STYLE = `
 /* .picker, .toggle, .chip m.fl. ärvs från de delade reglerna i app.css. */
 .vy-former footer{ margin-top:1.4rem; font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-2xs); text-align:center; }
 .vy-former footer a{ color:var(--gold); text-decoration:none; }
-.vy-former footer a:hover{ text-decoration:underline; }
+@media (hover: hover) { .vy-former footer a:hover{ text-decoration:underline; } }
 .vy-former .gr-lank{ margin-top:.6rem; }
 `;
 
