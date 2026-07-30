@@ -604,8 +604,8 @@
     "n": {
      "sg": {
       "nom": "vad?",
-      "gen": "vilkens?",
-      "dat": "till vilken?",
+      "gen": "av vad?",
+      "dat": "till vad?",
       "ack": "vad?"
      },
      "pl": {
@@ -1277,7 +1277,7 @@
      "sg": {
       "nom": "som",
       "gen": "vars",
-      "dat": "till vilken",
+      "dat": "till vilket",
       "ack": "som"
      },
      "pl": {

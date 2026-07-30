@@ -33,7 +33,7 @@ const pronomen = [
     sv:{ m:{ sg:{nom:"den där", gen:"den därs", dat:"till den där", ack:"den där"}, pl:{nom:"de där", gen:"de därs", dat:"till de där", ack:"de där"} }, f:{ sg:{nom:"den där", gen:"den därs", dat:"till den där", ack:"den där"}, pl:{nom:"de där", gen:"de därs", dat:"till de där", ack:"de där"} }, n:{ sg:{nom:"det där", gen:"det därs", dat:"till det där", ack:"det där"}, pl:{nom:"de där", gen:"de därs", dat:"till de där", ack:"de där"} } } },
   { lemma:"τίς", glosa:"vem?, vad?, vilken?", modell:"genus", sem:[6],
     former:{ m:{ nom:{sg:"τίς",pl:"τίνες"}, gen:{sg:"τίνος",pl:"τίνων"}, dat:{sg:"τίνι",pl:"τίσι(ν)"}, ack:{sg:"τίνα",pl:"τίνας"} }, f:{ nom:{sg:"τίς",pl:"τίνες"}, gen:{sg:"τίνος",pl:"τίνων"}, dat:{sg:"τίνι",pl:"τίσι(ν)"}, ack:{sg:"τίνα",pl:"τίνας"} }, n:{ nom:{sg:"τί",pl:"τίνα"}, gen:{sg:"τίνος",pl:"τίνων"}, dat:{sg:"τίνι",pl:"τίσι(ν)"}, ack:{sg:"τί",pl:"τίνα"} } },
-    sv:{ m:{ sg:{nom:"vem?", gen:"vems?", dat:"till vem?", ack:"vem?"}, pl:{nom:"vilka?", gen:"vilkas?", dat:"till vilka?", ack:"vilka?"} }, f:{ sg:{nom:"vem?", gen:"vems?", dat:"till vem?", ack:"vem?"}, pl:{nom:"vilka?", gen:"vilkas?", dat:"till vilka?", ack:"vilka?"} }, n:{ sg:{nom:"vad?", gen:"vilkens?", dat:"till vilken?", ack:"vad?"}, pl:{nom:"vilka?", gen:"vilkas?", dat:"till vilka?", ack:"vilka?"} } } },
+    sv:{ m:{ sg:{nom:"vem?", gen:"vems?", dat:"till vem?", ack:"vem?"}, pl:{nom:"vilka?", gen:"vilkas?", dat:"till vilka?", ack:"vilka?"} }, f:{ sg:{nom:"vem?", gen:"vems?", dat:"till vem?", ack:"vem?"}, pl:{nom:"vilka?", gen:"vilkas?", dat:"till vilka?", ack:"vilka?"} }, n:{ sg:{nom:"vad?", gen:"av vad?", dat:"till vad?", ack:"vad?"}, pl:{nom:"vilka?", gen:"vilkas?", dat:"till vilka?", ack:"vilka?"} } } },
   { lemma:"ἐμός", glosa:"min, mitt, mina", modell:"genus", sem:[7],
     former:{ m:{ nom:{sg:"ἐμός",pl:"ἐμοί"}, gen:{sg:"ἐμοῦ",pl:"ἐμῶν"}, dat:{sg:"ἐμῷ",pl:"ἐμοῖς"}, ack:{sg:"ἐμόν",pl:"ἐμούς"} }, f:{ nom:{sg:"ἐμή",pl:"ἐμαί"}, gen:{sg:"ἐμῆς",pl:"ἐμῶν"}, dat:{sg:"ἐμῇ",pl:"ἐμαῖς"}, ack:{sg:"ἐμήν",pl:"ἐμάς"} }, n:{ nom:{sg:"ἐμόν",pl:"ἐμά"}, gen:{sg:"ἐμοῦ",pl:"ἐμῶν"}, dat:{sg:"ἐμῷ",pl:"ἐμοῖς"}, ack:{sg:"ἐμόν",pl:"ἐμά"} } },
     sv:{ m:{ sg:{nom:"min", gen:"min", dat:"min", ack:"min"}, pl:{nom:"mina", gen:"mina", dat:"mina", ack:"mina"} }, f:{ sg:{nom:"min", gen:"min", dat:"min", ack:"min"}, pl:{nom:"mina", gen:"mina", dat:"mina", ack:"mina"} }, n:{ sg:{nom:"mitt", gen:"mitt", dat:"mitt", ack:"mitt"}, pl:{nom:"mina", gen:"mina", dat:"mina", ack:"mina"} } } },
@@ -51,7 +51,7 @@ const pronomen = [
     sv:{ m:{ sg:{nom:"någon", gen:"någons", dat:"åt någon", ack:"någon"}, pl:{nom:"några", gen:"någras", dat:"åt några", ack:"några"} }, f:{ sg:{nom:"någon", gen:"någons", dat:"åt någon", ack:"någon"}, pl:{nom:"några", gen:"någras", dat:"åt några", ack:"några"} }, n:{ sg:{nom:"något", gen:"någots", dat:"åt något", ack:"något"}, pl:{nom:"några", gen:"någras", dat:"åt några", ack:"några"} } } },
   { lemma:"ὅς", glosa:"som, vilken, vars (relativt pronomen)", modell:"genus", sem:[9],
     former:{ m:{ nom:{sg:"ὅς",pl:"οἵ"}, gen:{sg:"οὗ",pl:"ὧν"}, dat:{sg:"ᾧ",pl:"οἷς"}, ack:{sg:"ὅν",pl:"οὕς"} }, f:{ nom:{sg:"ἥ",pl:"αἵ"}, gen:{sg:"ἧς",pl:"ὧν"}, dat:{sg:"ᾗ",pl:"αἷς"}, ack:{sg:"ἥν",pl:"ἅς"} }, n:{ nom:{sg:"ὅ",pl:"ἅ"}, gen:{sg:"οὗ",pl:"ὧν"}, dat:{sg:"ᾧ",pl:"οἷς"}, ack:{sg:"ὅ",pl:"ἅ"} } },
-    sv:{ m:{ sg:{nom:"som", gen:"vars", dat:"till vilken", ack:"som"}, pl:{nom:"som", gen:"vars", dat:"till vilka", ack:"som"} }, f:{ sg:{nom:"som", gen:"vars", dat:"till vilken", ack:"som"}, pl:{nom:"som", gen:"vars", dat:"till vilka", ack:"som"} }, n:{ sg:{nom:"som", gen:"vars", dat:"till vilken", ack:"som"}, pl:{nom:"som", gen:"vars", dat:"till vilka", ack:"som"} } } }
+    sv:{ m:{ sg:{nom:"som", gen:"vars", dat:"till vilken", ack:"som"}, pl:{nom:"som", gen:"vars", dat:"till vilka", ack:"som"} }, f:{ sg:{nom:"som", gen:"vars", dat:"till vilken", ack:"som"}, pl:{nom:"som", gen:"vars", dat:"till vilka", ack:"som"} }, n:{ sg:{nom:"som", gen:"vars", dat:"till vilket", ack:"som"}, pl:{nom:"som", gen:"vars", dat:"till vilka", ack:"som"} } } }
 ];
 
 /* ── SATSBANK — snapshot av pronomen-satser.json. Regenereras ur mastern:
@@ -167,7 +167,7 @@ const satser = [
     sv:"Vems är huset?",
     ord:["τίνος", "ὁ", "οἶκός", "ἐστιν;"],
     mal:[
-      { i:0, form:"τίνος", lemma:"τίς", modell:"genus", num:"sg", kas:"gen", bet:null, genus:"m|f", roll:"pf", sv:"vems", ocksa:[{sv:"vilkens?", etikett:"τίς neutrum genitiv singular"}], not:"Predikativ genitiv: 'huset är vems?'" } ] },
+      { i:0, form:"τίνος", lemma:"τίς", modell:"genus", num:"sg", kas:"gen", bet:null, genus:"m|f", roll:"pf", sv:"vems", ocksa:[{sv:"av vad?", etikett:"τίς neutrum genitiv singular"}], not:"Predikativ genitiv: 'huset är vems?'" } ] },
   { id:"p6-12", sem:6, skapad:false,
     kalla:"Breakout rooms 6, s. 1",
     sv:"Vilket vin dricker du? (förenat)",

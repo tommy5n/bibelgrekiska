@@ -144,6 +144,7 @@ td.end { font-family: "Cardo", "Spectral", serif; }
    Cardo regular är en tunn stil; på liten grad blir den anemisk.
    Grekiskan får därför egen, större grad än den svenska UI-texten. */
 table.gr td.gr-el { font-size: 10.6pt; line-height: 1.1; }
+table.gr td.gr-el .sv { display: block; font-size: 6.9pt; line-height: 1.05; color: #555; }
 table.gr td.end   { font-size: 10pt; }
 table.gr caption  { font-size: 9.9pt; }
 .gr-grek          { font-size: 1.12em; }   /* inline i löptext + grekiska kolumnrubriker */
@@ -1070,20 +1071,20 @@ b { font-weight: 600; }
               <caption>1:a person — jag / vi</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Sg betonad</th><th>Sg enklit.</th><th>Plural</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἐγώ</td><td class="gr-el">—</td><td class="gr-el">ἡμεῖς</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἐμοῦ</td><td class="gr-el">μου</td><td class="gr-el">ἡμῶν</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἐμοί</td><td class="gr-el">μοι</td><td class="gr-el">ἡμῖν</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἐμέ</td><td class="gr-el">με</td><td class="gr-el">ἡμᾶς</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἐγώ<span class="sv">jag</span></td><td class="gr-el">—</td><td class="gr-el">ἡμεῖς<span class="sv">vi</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἐμοῦ<span class="sv">min</span></td><td class="gr-el">μου<span class="sv">min</span></td><td class="gr-el">ἡμῶν<span class="sv">vår</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἐμοί<span class="sv">till mig</span></td><td class="gr-el">μοι<span class="sv">till mig</span></td><td class="gr-el">ἡμῖν<span class="sv">till oss</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἐμέ<span class="sv">mig</span></td><td class="gr-el">με<span class="sv">mig</span></td><td class="gr-el">ἡμᾶς<span class="sv">oss</span></td></tr>
               </tbody>
             </table>
             <table class="gr">
               <caption>2:a person — du / ni</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Sg betonad</th><th>Sg enklit.</th><th>Plural</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">σύ</td><td class="gr-el">—</td><td class="gr-el">ὑμεῖς</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">σοῦ</td><td class="gr-el">σου</td><td class="gr-el">ὑμῶν</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">σοί</td><td class="gr-el">σοι</td><td class="gr-el">ὑμῖν</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">σέ</td><td class="gr-el">σε</td><td class="gr-el">ὑμᾶς</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">σύ<span class="sv">du</span></td><td class="gr-el">—</td><td class="gr-el">ὑμεῖς<span class="sv">ni</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">σοῦ<span class="sv">din</span></td><td class="gr-el">σου<span class="sv">din</span></td><td class="gr-el">ὑμῶν<span class="sv">er</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">σοί<span class="sv">till dig</span></td><td class="gr-el">σοι<span class="sv">till dig</span></td><td class="gr-el">ὑμῖν<span class="sv">till er</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">σέ<span class="sv">dig</span></td><td class="gr-el">σε<span class="sv">dig</span></td><td class="gr-el">ὑμᾶς<span class="sv">er</span></td></tr>
               </tbody>
             </table>
           </div>
@@ -1112,10 +1113,10 @@ b { font-weight: 600; }
               <tr><th>Sg</th><th>Pl</th><th>Sg</th><th>Pl</th><th>Sg</th><th>Pl</th></tr>
             </thead>
             <tbody>
-              <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">αὐτός</td><td class="gr-el">αὐτοί</td><td class="gr-el">αὐτό</td><td class="gr-el">αὐτά</td><td class="gr-el">αὐτή</td><td class="gr-el">αὐταί</td></tr>
-              <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">αὐτοῦ</td><td class="gr-el">αὐτῶν</td><td class="gr-el">αὐτοῦ</td><td class="gr-el">αὐτῶν</td><td class="gr-el">αὐτῆς</td><td class="gr-el">αὐτῶν</td></tr>
-              <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">αὐτῷ</td><td class="gr-el">αὐτοῖς</td><td class="gr-el">αὐτῷ</td><td class="gr-el">αὐτοῖς</td><td class="gr-el">αὐτῇ</td><td class="gr-el">αὐταῖς</td></tr>
-              <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">αὐτόν</td><td class="gr-el">αὐτούς</td><td class="gr-el">αὐτό</td><td class="gr-el">αὐτά</td><td class="gr-el">αὐτήν</td><td class="gr-el">αὐτάς</td></tr>
+              <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">αὐτός<span class="sv">han (själv)</span></td><td class="gr-el">αὐτοί<span class="sv">de (själva)</span></td><td class="gr-el">αὐτό<span class="sv">det (självt)</span></td><td class="gr-el">αὐτά<span class="sv">de (själva)</span></td><td class="gr-el">αὐτή<span class="sv">hon (själv)</span></td><td class="gr-el">αὐταί<span class="sv">de (själva)</span></td></tr>
+              <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">αὐτοῦ<span class="sv">hans</span></td><td class="gr-el">αὐτῶν<span class="sv">deras</span></td><td class="gr-el">αὐτοῦ<span class="sv">dess</span></td><td class="gr-el">αὐτῶν<span class="sv">deras</span></td><td class="gr-el">αὐτῆς<span class="sv">hennes</span></td><td class="gr-el">αὐτῶν<span class="sv">deras</span></td></tr>
+              <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">αὐτῷ<span class="sv">till honom</span></td><td class="gr-el">αὐτοῖς<span class="sv">till dem</span></td><td class="gr-el">αὐτῷ<span class="sv">till det</span></td><td class="gr-el">αὐτοῖς<span class="sv">till dem</span></td><td class="gr-el">αὐτῇ<span class="sv">till henne</span></td><td class="gr-el">αὐταῖς<span class="sv">till dem</span></td></tr>
+              <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">αὐτόν<span class="sv">honom</span></td><td class="gr-el">αὐτούς<span class="sv">dem</span></td><td class="gr-el">αὐτό<span class="sv">det</span></td><td class="gr-el">αὐτά<span class="sv">dem</span></td><td class="gr-el">αὐτήν<span class="sv">henne</span></td><td class="gr-el">αὐτάς<span class="sv">dem</span></td></tr>
             </tbody>
           </table>
           <div class="gr-rule">Exempel: <span class="gr-grek">βλέπομεν αὐτόν</span> ”vi ser honom”, <span class="gr-grek">κηρύσσομεν αὐτῇ</span> ”vi predikar för henne”, <span class="gr-grek">λέγομεν αὐτοῖς / πρὸς αὐτούς</span> ”vi säger till dem”. <b>Attributiv ställning</b> = mellan artikel och substantiv (adjektivet hör ihop med substantivet); <b>predikativ ställning</b> = utanför den positionen (adjektivet säger något om substantivet). <b>Nominativens ställning:</b> med artikel = ”samme” (<span class="gr-grek">ὁ αὐτὸς λόγος</span>, attributiv), utan artikel bredvid ett bestämt substantiv = ”själv” (<span class="gr-grek">αὐτὸς ὁ λόγος</span> ”ordet självt”, predikativ). För ett <b>betonat</b> subjekt-”han/hon/det” används i stället de demonstrativa <span class="gr-grek">οὗτος</span> och <span class="gr-grek">ἐκεῖνος</span>.</div>
@@ -1133,10 +1134,10 @@ b { font-weight: 600; }
                 <tr><th>Sg</th><th>Pl</th><th>Sg</th><th>Pl</th><th>Sg</th><th>Pl</th></tr>
               </thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">οὗτος</td><td class="gr-el">οὗτοι</td><td class="gr-el">τοῦτο</td><td class="gr-el">ταῦτα</td><td class="gr-el">αὕτη</td><td class="gr-el">αὗται</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">τούτου</td><td class="gr-el">τούτων</td><td class="gr-el">τούτου</td><td class="gr-el">τούτων</td><td class="gr-el">ταύτης</td><td class="gr-el">τούτων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">τούτῳ</td><td class="gr-el">τούτοις</td><td class="gr-el">τούτῳ</td><td class="gr-el">τούτοις</td><td class="gr-el">ταύτῃ</td><td class="gr-el">ταύταις</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">τοῦτον</td><td class="gr-el">τούτους</td><td class="gr-el">τοῦτο</td><td class="gr-el">ταῦτα</td><td class="gr-el">ταύτην</td><td class="gr-el">ταύτας</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">οὗτος<span class="sv">denne</span></td><td class="gr-el">οὗτοι<span class="sv">dessa</span></td><td class="gr-el">τοῦτο<span class="sv">detta</span></td><td class="gr-el">ταῦτα<span class="sv">dessa</span></td><td class="gr-el">αὕτη<span class="sv">denna</span></td><td class="gr-el">αὗται<span class="sv">dessa</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">τούτου<span class="sv">dennes</span></td><td class="gr-el">τούτων<span class="sv">dessas</span></td><td class="gr-el">τούτου<span class="sv">dettas</span></td><td class="gr-el">τούτων<span class="sv">dessas</span></td><td class="gr-el">ταύτης<span class="sv">dennas</span></td><td class="gr-el">τούτων<span class="sv">dessas</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">τούτῳ<span class="sv">till denne</span></td><td class="gr-el">τούτοις<span class="sv">till dessa</span></td><td class="gr-el">τούτῳ<span class="sv">till detta</span></td><td class="gr-el">τούτοις<span class="sv">till dessa</span></td><td class="gr-el">ταύτῃ<span class="sv">till denna</span></td><td class="gr-el">ταύταις<span class="sv">till dessa</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">τοῦτον<span class="sv">denne</span></td><td class="gr-el">τούτους<span class="sv">dessa</span></td><td class="gr-el">τοῦτο<span class="sv">detta</span></td><td class="gr-el">ταῦτα<span class="sv">dessa</span></td><td class="gr-el">ταύτην<span class="sv">denna</span></td><td class="gr-el">ταύτας<span class="sv">dessa</span></td></tr>
               </tbody>
             </table>
             <table class="gr">
@@ -1146,10 +1147,10 @@ b { font-weight: 600; }
                 <tr><th>Sg</th><th>Pl</th><th>Sg</th><th>Pl</th><th>Sg</th><th>Pl</th></tr>
               </thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἐκεῖνος</td><td class="gr-el">ἐκεῖνοι</td><td class="gr-el">ἐκεῖνο</td><td class="gr-el">ἐκεῖνα</td><td class="gr-el">ἐκείνη</td><td class="gr-el">ἐκεῖναι</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἐκείνου</td><td class="gr-el">ἐκείνων</td><td class="gr-el">ἐκείνου</td><td class="gr-el">ἐκείνων</td><td class="gr-el">ἐκείνης</td><td class="gr-el">ἐκείνων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἐκείνῳ</td><td class="gr-el">ἐκείνοις</td><td class="gr-el">ἐκείνῳ</td><td class="gr-el">ἐκείνοις</td><td class="gr-el">ἐκείνῃ</td><td class="gr-el">ἐκείναις</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἐκεῖνον</td><td class="gr-el">ἐκείνους</td><td class="gr-el">ἐκεῖνο</td><td class="gr-el">ἐκεῖνα</td><td class="gr-el">ἐκείνην</td><td class="gr-el">ἐκείνας</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἐκεῖνος<span class="sv">den där</span></td><td class="gr-el">ἐκεῖνοι<span class="sv">de där</span></td><td class="gr-el">ἐκεῖνο<span class="sv">det där</span></td><td class="gr-el">ἐκεῖνα<span class="sv">de där</span></td><td class="gr-el">ἐκείνη<span class="sv">den där</span></td><td class="gr-el">ἐκεῖναι<span class="sv">de där</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἐκείνου<span class="sv">den därs</span></td><td class="gr-el">ἐκείνων<span class="sv">de därs</span></td><td class="gr-el">ἐκείνου<span class="sv">det därs</span></td><td class="gr-el">ἐκείνων<span class="sv">de därs</span></td><td class="gr-el">ἐκείνης<span class="sv">den därs</span></td><td class="gr-el">ἐκείνων<span class="sv">de därs</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἐκείνῳ<span class="sv">till den där</span></td><td class="gr-el">ἐκείνοις<span class="sv">till de där</span></td><td class="gr-el">ἐκείνῳ<span class="sv">till det där</span></td><td class="gr-el">ἐκείνοις<span class="sv">till de där</span></td><td class="gr-el">ἐκείνῃ<span class="sv">till den där</span></td><td class="gr-el">ἐκείναις<span class="sv">till de där</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἐκεῖνον<span class="sv">den där</span></td><td class="gr-el">ἐκείνους<span class="sv">de där</span></td><td class="gr-el">ἐκεῖνο<span class="sv">det där</span></td><td class="gr-el">ἐκεῖνα<span class="sv">de där</span></td><td class="gr-el">ἐκείνην<span class="sv">den där</span></td><td class="gr-el">ἐκείνας<span class="sv">de där</span></td></tr>
               </tbody>
             </table>
           </div>
@@ -1168,10 +1169,10 @@ b { font-weight: 600; }
               <tr><th>Sg</th><th>Pl</th><th>Sg</th><th>Pl</th></tr>
             </thead>
             <tbody>
-              <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">τίς</td><td class="gr-el">τίνες</td><td class="gr-el">τί</td><td class="gr-el">τίνα</td></tr>
-              <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">τίνος</td><td class="gr-el">τίνων</td><td class="gr-el">τίνος</td><td class="gr-el">τίνων</td></tr>
-              <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">τίνι</td><td class="gr-el">τίσι(ν)</td><td class="gr-el">τίνι</td><td class="gr-el">τίσι(ν)</td></tr>
-              <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">τίνα</td><td class="gr-el">τίνας</td><td class="gr-el">τί</td><td class="gr-el">τίνα</td></tr>
+              <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">τίς<span class="sv">vem?</span></td><td class="gr-el">τίνες<span class="sv">vilka?</span></td><td class="gr-el">τί<span class="sv">vad?</span></td><td class="gr-el">τίνα<span class="sv">vilka?</span></td></tr>
+              <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">τίνος<span class="sv">vems?</span></td><td class="gr-el">τίνων<span class="sv">vilkas?</span></td><td class="gr-el">τίνος<span class="sv">av vad?</span></td><td class="gr-el">τίνων<span class="sv">vilkas?</span></td></tr>
+              <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">τίνι<span class="sv">till vem?</span></td><td class="gr-el">τίσι(ν)<span class="sv">till vilka?</span></td><td class="gr-el">τίνι<span class="sv">till vad?</span></td><td class="gr-el">τίσι(ν)<span class="sv">till vilka?</span></td></tr>
+              <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">τίνα<span class="sv">vem?</span></td><td class="gr-el">τίνας<span class="sv">vilka?</span></td><td class="gr-el">τί<span class="sv">vad?</span></td><td class="gr-el">τίνα<span class="sv">vilka?</span></td></tr>
             </tbody>
           </table>
           <div class="gr-rule">
@@ -1288,20 +1289,20 @@ b { font-weight: 600; }
               <caption>Singular</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Mask.</th><th>Fem.</th><th>Neutr.</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ὅς</td><td class="gr-el">ἥ</td><td class="gr-el">ὅ</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">οὗ</td><td class="gr-el">ἧς</td><td class="gr-el">οὗ</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ᾧ</td><td class="gr-el">ᾗ</td><td class="gr-el">ᾧ</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ὅν</td><td class="gr-el">ἥν</td><td class="gr-el">ὅ</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ὅς<span class="sv">som</span></td><td class="gr-el">ἥ<span class="sv">som</span></td><td class="gr-el">ὅ<span class="sv">som</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">οὗ<span class="sv">vars</span></td><td class="gr-el">ἧς<span class="sv">vars</span></td><td class="gr-el">οὗ<span class="sv">vars</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ᾧ<span class="sv">till vilken</span></td><td class="gr-el">ᾗ<span class="sv">till vilken</span></td><td class="gr-el">ᾧ<span class="sv">till vilket</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ὅν<span class="sv">som</span></td><td class="gr-el">ἥν<span class="sv">som</span></td><td class="gr-el">ὅ<span class="sv">som</span></td></tr>
               </tbody>
             </table>
             <table class="gr">
               <caption>Plural</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Mask.</th><th>Fem.</th><th>Neutr.</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">οἵ</td><td class="gr-el">αἵ</td><td class="gr-el">ἅ</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ὧν</td><td class="gr-el">ὧν</td><td class="gr-el">ὧν</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">οἷς</td><td class="gr-el">αἷς</td><td class="gr-el">οἷς</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">οὕς</td><td class="gr-el">ἅς</td><td class="gr-el">ἅ</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">οἵ<span class="sv">som</span></td><td class="gr-el">αἵ<span class="sv">som</span></td><td class="gr-el">ἅ<span class="sv">som</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ὧν<span class="sv">vars</span></td><td class="gr-el">ὧν<span class="sv">vars</span></td><td class="gr-el">ὧν<span class="sv">vars</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">οἷς<span class="sv">till vilka</span></td><td class="gr-el">αἷς<span class="sv">till vilka</span></td><td class="gr-el">οἷς<span class="sv">till vilka</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">οὕς<span class="sv">som</span></td><td class="gr-el">ἅς<span class="sv">som</span></td><td class="gr-el">ἅ<span class="sv">som</span></td></tr>
               </tbody>
             </table>
           </div>
