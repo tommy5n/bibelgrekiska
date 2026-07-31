@@ -582,14 +582,16 @@ function flervalSvar(valdGlosa, knapp){
 }
 
 /* ── RENDER ──────────────────────────────────────────────────────────── */
-function artikelText(w){
-  if(w.o !== "substantiv" || !w.gen) return "";
-  return ARTIKEL[w.gen] + " · " + GENUS_NAMN[w.gen];
+function lemmaHTML(w){
+  // substantiv lärs in med artikel (genus): ὁ ἄγγελος, ἡ ἀγάπη, τό αἷμα
+  if(w.o === "substantiv" && w.gen){
+    return `<span class="art-pre">${ARTIKEL[w.gen]}</span>${w.l}`;
+  }
+  return w.l;
 }
 function metaRad(w){
   const delar = [w.o];
-  const art = artikelText(w);
-  if(art) delar.push(`<span class="art">${art}</span>`);
+  if(w.o === "substantiv" && w.gen) delar.push(GENUS_NAMN[w.gen]);
   return delar.join(" · ");
 }
 
@@ -623,13 +625,13 @@ function render(){
   if(state.mode === "flashcard"){
     if(!state.vand){
       card.className = "card flippable";
-      card.innerHTML = `<div class="lemma">${w.l}</div><div class="prompt-hint">tryck på kortet för att vända</div>`;
+      card.innerHTML = `<div class="lemma">${lemmaHTML(w)}</div><div class="prompt-hint">tryck på kortet för att vända</div>`;
       card.onclick = () => { state.vand = true; render(); };
     }else{
       card.className = "card flippable";
       card.innerHTML = `
         <div class="reveal">
-          <div class="prompt-echo">${w.l}</div>
+          <div class="prompt-echo">${lemmaHTML(w)}</div>
           <div class="glosa">${w.g}</div>
           <div class="meta">${metaRad(w)}</div>
         </div>`;
@@ -641,7 +643,7 @@ function render(){
   }else{
     card.className = "card";
     card.onclick = null;
-    card.innerHTML = `<div class="lemma">${w.l}</div>`;
+    card.innerHTML = `<div class="lemma">${lemmaHTML(w)}</div>`;
     renderOptioner();
   }
 
