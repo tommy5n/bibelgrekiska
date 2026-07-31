@@ -15,6 +15,7 @@ export function teardown(){ if(__kh){ document.removeEventListener("keydown", __
 const CSS = `
 .vy-paradigm .stage{ max-width:640px; margin:0 auto; }
 .vy-paradigm .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1rem 1.1rem 1.2rem; }
+.vy-paradigm button{ font-family:inherit; }  /* <button> ärver inte typsnitt (UA-default = Arial) */
 .vy-paradigm .lemma{ font-size:var(--fs-4xl); text-align:center; line-height:1.1; }
 .vy-paradigm .tag{ text-align:center; color:var(--ink-soft); font-size:var(--fs-sm); margin-top:.2rem; }
 .vy-paradigm .glosa{ text-align:center; color:var(--ink-soft); font-size:var(--fs-sm); font-style:italic; margin-top:.15rem; }
