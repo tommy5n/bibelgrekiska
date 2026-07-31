@@ -20,6 +20,7 @@ smäller generatorn — precis så drift fångas.
 """
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -70,6 +71,57 @@ DISPLAY = {
 
 ARTIKEL = {"m": "ὁ", "f": "ἡ", "n": "τό"}
 
+AKUT = "́"
+VOKALER = set("αεηιουω")
+
+
+def oxyton(ord):
+    """True om nominativ har akut på ultima (sista vokalen bär akut).
+
+    Oxytona 1:a/2:a-dekl-ord får CIRKUMFLEX i genitiv (θεός→θεοῦ, ἀρχή→ἀρχῆς),
+    paroxytona behåller akut (λόγος→λόγου). Perispomena (cirkumflex på ultima)
+    finns inte bland dessa nominativer, så det räcker att leta akut.
+    """
+    d = unicodedata.normalize("NFD", ord)
+    baser = []  # [(basbokstav, kombinerande tecken)]
+    for ch in d:
+        if unicodedata.combining(ch):
+            if baser:
+                baser[-1][1] += ch
+        else:
+            baser.append([ch, ""])
+    for bas, tecken in reversed(baser):
+        if bas.lower() in VOKALER:
+            return AKUT in tecken
+    return False
+
+
+def genitiv_display(x):
+    """Genitiv att visa efter substantivets lemma, eller None.
+
+    Lagrad 'genitiv' (oförutsägbar 3:e-dekl-stam) har företräde och visas som HEL
+    form (ἀνδρός, φωτός). Regelbunden 1:a/2:a dekl härleds till en ÄNDELSE (-οῦ, -ης)
+    ur nominativändelsen + oxytonregeln — lagras aldrig i mastern (härledbar).
+    """
+    if x.get("genitiv"):
+        return x["genitiv"]
+    lemma = x["lemma"]
+    ox = oxyton(lemma)
+    # Ändelsen matchas mot en ACCENTSTRIPPAD form — annars missar endswith de
+    # oxytona orden vars sista vokal är förkomponerad med accent (θεός, ζωή).
+    naken = "".join(
+        c for c in unicodedata.normalize("NFD", lemma) if not unicodedata.combining(c)
+    )
+    if naken.endswith(("ος", "ον")):        # 2:a dekl (θεός, λόγος, ἔργον, ὁδός)
+        return "-οῦ" if ox else "-ου"
+    if naken.endswith("η"):                  # 1:a dekl fem (ἀρχή, ζωή)
+        return "-ῆς" if ox else "-ης"
+    if naken.endswith("α"):                  # 1:a dekl fem (ἐκκλησία)
+        return "-ᾶς" if ox else "-ας"
+    if naken.endswith(("ης", "ας")):         # 1:a dekl mask (μαθητής, προφήτης)
+        return "-οῦ" if ox else "-ου"
+    return None                              # okänt mönster → visa ingen genitiv
+
 
 def main():
     glosor = json.loads(MASTER.read_text())["glosor"]
@@ -95,10 +147,14 @@ def main():
         for lemma in lemman:
             x = prov[lemma]
             grek = DISPLAY.get(lemma, lemma)
-            # Substantiv visas med artikel (= genus), som på Oskars provblad.
+            post = {"grek": grek, "sv": x["glosa"]}
+            # Substantiv visas med artikel (= genus) + genitiv, som på Oskars provblad.
             if x.get("ordklass") == "substantiv" and x.get("genus") in ARTIKEL:
-                grek = f"{ARTIKEL[x['genus']]} {grek}"
-            ord.append({"grek": grek, "sv": x["glosa"]})
+                post["grek"] = f"{ARTIKEL[x['genus']]} {grek}"
+                gen = genitiv_display(x)
+                if gen:
+                    post["gen"] = gen
+            ord.append(post)
         grupper.append({"kat": namn, "not": NOTER[namn], "ord": ord})
 
     block = "const PROV = [\n" + "\n".join(

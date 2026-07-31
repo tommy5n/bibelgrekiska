@@ -2141,6 +2141,7 @@
   },
   {
    "lemma": "ὄρος",
+   "genitiv": "ὄρους",
    "glosa": "berg",
    "ordklass": "substantiv",
    "genus": "n",
@@ -2551,6 +2552,7 @@
   },
   {
    "lemma": "πνεῦμα",
+   "genitiv": "πνεύματος",
    "glosa": "ande",
    "ordklass": "substantiv",
    "genus": "n",
