@@ -201,6 +201,83 @@
       th.h-gen { color: #8a5a86; } th.h-dat { color: #3f7a4f; } th.h-ack { color: #b0642f; }
       .swe-inline { font-size: var(--fs-2xs); color: var(--ink-soft); }
 
+      /* ── S1 Självtest: dölj formerna, klicka för att visa ───────────── */
+      body.test-mode table.gr td.gr-el {
+        filter: blur(5px); cursor: pointer; border-radius: 5px;
+        transition: filter 0.12s ease; user-select: none;
+      }
+      body.test-mode table.gr td.gr-el:hover { filter: blur(2.5px); }
+      body.test-mode table.gr td.gr-el.revealed {
+        filter: none; cursor: default; user-select: auto;
+        background: color-mix(in srgb, var(--gold) 13%, transparent);
+      }
+      /* toggles staplas snyggt */
+      .gr-controls { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; margin: -0.6rem 0 1.1rem; }
+      .gr-controls .gr-arttoggle { margin: 0; }
+
+      /* ── S2 Färgnyckel för kasus ────────────────────────────────────── */
+      .gr-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; margin: 0 0 1.6rem; font-size: var(--fs-2xs); color: var(--ink-soft); }
+      .gr-legend span { display: inline-flex; align-items: center; gap: 0.34rem; }
+      .gr-legend i { width: 0.72rem; height: 0.72rem; border-radius: 3px; background: var(--lc); }
+      .l-nom { --lc: #4a6a8a; } .l-gen { --lc: #8a5a86; } .l-dat { --lc: #3f7a4f; } .l-ack { --lc: #b0642f; } .l-vok { --lc: #9a9285; }
+
+      /* ── S3 Hover-markera samma kasus i ett kort ────────────────────── */
+      table.gr tr.kx-hi td, table.gr tr.kx-hi th {
+        background: color-mix(in srgb, var(--kc, transparent) 14%, transparent);
+      }
+
+      /* ── V1 Tempus/aspekt-tidslinje ─────────────────────────────────── */
+      .gr-timeline svg { width: 100%; max-width: 580px; height: auto; display: block; margin: 0.2rem auto 0.6rem; }
+      .gr-timeline text { fill: var(--ink); }
+      .gr-timeline .axis { stroke: var(--ink-soft); stroke-width: 1.5; }
+      .gr-timeline .now { stroke: var(--gold); stroke-width: 1.5; stroke-dasharray: 3 3; }
+      .gr-timeline .era { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; fill: var(--ink-soft); font-weight: 700; }
+      .gr-timeline .tense { font-family: "Cardo","Spectral",serif; font-size: 15px; }
+      .gr-timeline .asp { font-size: 10.5px; fill: var(--ink-soft); }
+      .gr-timeline .tbox { fill: var(--paper-2); stroke-width: 1.5; }
+      .gr-timeline .b-lin { stroke: #3f7a4f; } .gr-timeline .b-agg { stroke: #8a5a86; } .gr-timeline .b-fut { stroke: #4a6a8a; }
+      .gr-timeline .alegend { }
+      .gr-tl-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin: 0.1rem 0 0; font-size: var(--fs-2xs); color: var(--ink-soft); justify-content: center; }
+      .gr-tl-legend span { display: inline-flex; align-items: center; gap: 0.34rem; }
+      .gr-tl-legend i { width: 0.85rem; height: 0.72rem; border-radius: 3px; border: 2px solid; }
+      .gr-tl-legend .lin { border-color: #3f7a4f; } .gr-tl-legend .agg { border-color: #8a5a86; } .gr-tl-legend .fut { border-color: #4a6a8a; }
+
+      /* ── V2 Verb-morfem i byggblock ─────────────────────────────────── */
+      .gr-build { margin: 0.6rem 0 0.2rem; }
+      .gr-build .brow { display: flex; align-items: center; gap: 0.55rem; margin: 0.32rem 0; flex-wrap: wrap; }
+      .gr-build .blabel { font-size: var(--fs-2xs); color: var(--ink-soft); width: 5.2rem; flex: none; }
+      .gr-build .segs { display: flex; gap: 0.2rem; align-items: stretch; }
+      .seg { font-family: "Cardo","Spectral",serif; font-size: var(--fs-lg); line-height: 1.5; padding: 0.02rem 0.42rem; border-radius: 6px; }
+      .seg.aug   { background: color-mix(in srgb, #b0642f 20%, transparent); }
+      .seg.stem  { background: color-mix(in srgb, #4a6a8a 18%, transparent); }
+      .seg.tense { background: color-mix(in srgb, #3f7a4f 22%, transparent); }
+      .seg.end   { background: color-mix(in srgb, #8a5a86 20%, transparent); }
+      .gr-build .blegend { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; margin-top: 0.6rem; font-size: var(--fs-2xs); color: var(--ink-soft); }
+      .gr-build .blegend span { display: inline-flex; align-items: center; gap: 0.3rem; }
+      .gr-build .blegend i { width: 0.7rem; height: 0.7rem; border-radius: 3px; }
+      .gr-build .blegend .aug { background: color-mix(in srgb, #b0642f 55%, transparent); }
+      .gr-build .blegend .stem { background: color-mix(in srgb, #4a6a8a 50%, transparent); }
+      .gr-build .blegend .tense { background: color-mix(in srgb, #3f7a4f 60%, transparent); }
+      .gr-build .blegend .end { background: color-mix(in srgb, #8a5a86 55%, transparent); }
+
+      /* ── V3 Attributiv vs predikativ ställning ──────────────────────── */
+      .gr-pos { display: flex; flex-wrap: wrap; gap: 1rem 1.4rem; margin: 0.7rem 0 0.2rem; }
+      .gr-pos .pcard { flex: 1 1 240px; border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.9rem; }
+      .gr-pos .ptag { font-size: var(--fs-2xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.45rem; }
+      .pcard.attr .ptag { color: #3f7a4f; } .pcard.pred .ptag { color: #b0642f; }
+      .gr-pos .pex { font-family: "Cardo","Spectral",serif; font-size: var(--fs-xl); margin: 0.3rem 0; }
+      .pcard.attr .reach { border-bottom: 2px solid #3f7a4f; border-radius: 0 0 4px 4px; padding: 0 0.15rem 0.14rem; }
+      .gr-pos .adjmark { padding: 0 0.1rem; border-radius: 3px; }
+      .pcard.attr .adjmark { background: color-mix(in srgb, #3f7a4f 20%, transparent); }
+      .pcard.pred .adjmark { background: color-mix(in srgb, #b0642f 20%, transparent); }
+      .gr-pos .psv { font-size: var(--fs-xs); color: var(--ink-soft); margin-top: 0.3rem; }
+
+      /* ── V4 Satsanalys: färglagt exempel ────────────────────────────── */
+      .gr-sent { margin: 0.7rem 0 0.3rem; display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem; align-items: flex-end; }
+      .gr-sent .sd { font-family: "Cardo","Spectral",serif; font-size: var(--fs-xl); padding: 0.1rem 0.35rem 0.05rem; border-radius: 5px 5px 0 0; border-bottom: 2.5px solid var(--sc); background: color-mix(in srgb, var(--sc) 12%, transparent); white-space: nowrap; }
+      .gr-sent .sd .role { display: block; font-size: var(--fs-3xs); font-family: var(--font-ui, inherit); text-transform: uppercase; letter-spacing: 0.03em; color: var(--sc); font-weight: 700; line-height: 1.2; margin-top: 0.1rem; }
+      .s-subj { --sc: #4a6a8a; } .s-pred { --sc: #a8842c; } .s-dobj { --sc: #b0642f; } .s-iobj { --sc: #3f7a4f; } .s-gen { --sc: #8a5a86; }
+
       @media (max-width: 900px) {
         .gr-layout { grid-template-columns: 1fr; }
         .gr-toc { position: static; max-height: none; margin-bottom: 1rem; }
@@ -238,6 +315,7 @@
           <li><a href="#adj-pas">πᾶς πᾶσα πᾶν</a></li>
           <li><a href="#adj-megas">μέγας &amp; πολύς</a></li>
           <li class="group"><span>Verb</span></li>
+          <li><a href="#verb-oversikt">Tempus, aspekt &amp; uppbyggnad</a></li>
           <li><a href="#verb-omega">ω-verb, presens</a></li>
           <li><a href="#verb-kontrakt">Kontraherade -έω</a></li>
           <li><a href="#verb-eimi">εἰμί (vara)</a></li>
@@ -274,10 +352,23 @@
           exempel, samlat för snabb uppslagning. Kasus ordnas alltid
           <b>nom · gen · dat · ack · vok</b>.
         </p>
-        <label class="gr-arttoggle">
-          <input type="checkbox" id="gr-arttoggle" />
-          Visa <b>artikeln</b> framför formerna (<span class="gr-grek">ὁ ἄνθρωπος, τοῦ ἀνθρώπου …</span>) — så möter du dem i texten
-        </label>
+        <div class="gr-controls">
+          <label class="gr-arttoggle">
+            <input type="checkbox" id="gr-studytoggle" />
+            <b>Testa dig själv</b> — dölj formerna, klicka på en cell för att avslöja
+          </label>
+          <label class="gr-arttoggle">
+            <input type="checkbox" id="gr-arttoggle" />
+            Visa <b>artikeln</b> framför formerna (<span class="gr-grek">ὁ ἄνθρωπος …</span>)
+          </label>
+        </div>
+        <div class="gr-legend" aria-label="Färgnyckel för kasus">
+          <span><i class="l-nom"></i> nominativ</span>
+          <span><i class="l-gen"></i> genitiv</span>
+          <span><i class="l-dat"></i> dativ</span>
+          <span><i class="l-ack"></i> ackusativ</span>
+          <span><i class="l-vok"></i> vokativ</span>
+        </div>
 
         <!-- ══ Bestämd artikel ══ -->
         <section class="gr-card" id="artikel" style="--accent:#a8842c">
@@ -732,6 +823,76 @@
             <br /><b>πολύς byter betydelse med numerus:</b> singular ”mycken, stor” (<span class="gr-grek">πολὺς καρπός</span> ”mycket frukt”, <span class="gr-grek">ὁ πολὺς ὄχλος</span> ”den stora folkhopen”), plural ”många” (<span class="gr-grek">πολλὰ σημεῖα</span> ”många tecken”).
             <br /><b>Kongruens som vanligt:</b> <span class="gr-grek">ὁ μέγας οἶκος</span> (det stora huset), <span class="gr-grek">μεγάλη ἁμαρτία</span> (en stor synd), <span class="gr-grek">μέγα σημεῖον</span> (ett stort tecken).
           </div>
+        </section>
+
+        <!-- ══ Verb: tempus, aspekt & uppbyggnad ══ -->
+        <section class="gr-card" id="verb-oversikt" style="--accent:#4a6a8a">
+          <h3>Tempus, aspekt &amp; uppbyggnad <span class="sem">Sem 2–9</span></h3>
+          <p class="note">Ett grekiskt verb säger två saker om tiden: <b>när</b> (tempus — dåtid/nutid/framtid) och <b>hur</b> handlingen ses (<b>aspekt</b> — pågående eller som en helhet). Aspekten är ofta viktigare än tidpunkten.</p>
+          <figure class="gr-timeline" role="img" aria-label="Tidslinje: imperfekt och aorist i dåtid, presens i nutid, futurum i framtid.">
+            <svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="tl-arr" markerWidth="9" markerHeight="9" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="var(--ink-soft)"/></marker>
+              </defs>
+              <!-- tempus-boxar -->
+              <g>
+                <rect class="tbox b-lin" x="35"  y="44" width="120" height="58" rx="10"/>
+                <text class="tense" x="95"  y="68" text-anchor="middle">imperfekt</text>
+                <text class="tense" x="95"  y="91" text-anchor="middle">ἔλυον</text>
+              </g>
+              <g>
+                <rect class="tbox b-agg" x="162" y="44" width="120" height="58" rx="10"/>
+                <text class="tense" x="222" y="68" text-anchor="middle">aorist</text>
+                <text class="tense" x="222" y="91" text-anchor="middle">ἔλυσα</text>
+              </g>
+              <g>
+                <rect class="tbox b-lin" x="290" y="44" width="120" height="58" rx="10"/>
+                <text class="tense" x="350" y="68" text-anchor="middle">presens</text>
+                <text class="tense" x="350" y="91" text-anchor="middle">λύω</text>
+              </g>
+              <g>
+                <rect class="tbox b-fut" x="418" y="44" width="120" height="58" rx="10"/>
+                <text class="tense" x="478" y="68" text-anchor="middle">futurum</text>
+                <text class="tense" x="478" y="91" text-anchor="middle">λύσω</text>
+              </g>
+              <!-- kopplingar till axeln -->
+              <line class="axis" x1="95"  y1="102" x2="95"  y2="150" />
+              <line class="axis" x1="222" y1="102" x2="222" y2="150" />
+              <line class="axis" x1="350" y1="102" x2="350" y2="150" />
+              <line class="axis" x1="478" y1="102" x2="478" y2="150" />
+              <!-- tidsaxel -->
+              <line class="axis" x1="24" y1="150" x2="556" y2="150" marker-end="url(#tl-arr)" />
+              <!-- NU -->
+              <line class="now" x1="350" y1="36" x2="350" y2="164" />
+              <text class="era" x="350" y="30" text-anchor="middle" fill="#a8842c">nu</text>
+              <!-- epoker -->
+              <text class="era" x="158" y="176" text-anchor="middle">förfluten</text>
+              <text class="era" x="478" y="176" text-anchor="middle">framtid</text>
+              <text class="asp" x="556" y="166" text-anchor="end">tid →</text>
+            </svg>
+          </figure>
+          <div class="gr-tl-legend">
+            <span><i class="lin"></i> pågående / linjär aspekt (presens, imperfekt)</span>
+            <span><i class="agg"></i> helhet / aoristisk (aorist)</span>
+            <span><i class="fut"></i> framtid (futurum)</span>
+          </div>
+          <div class="gr-rule">
+            <b>Samma aspekt, olika tid:</b> presens och imperfekt bygger båda på <b>presensstammen</b> och ser handlingen som <i>pågående</i> — imperfekt är helt enkelt presens flyttat till dåtid (med augment). Aoristen ser samma dåtidshandling som en <i>avslutad helhet</i>. Därför delar presens och imperfekt färg ovan.
+          </div>
+          <p class="note" style="margin-top:1.2rem">Tempus byggs <b>kompositionellt</b> — lägg till och dra ifrån byggblock kring stammen:</p>
+          <div class="gr-build">
+            <div class="brow"><span class="blabel">presens</span><span class="segs"><span class="seg stem">λύ</span><span class="seg end">ω</span></span> <span class="swe-inline">jag löser</span></div>
+            <div class="brow"><span class="blabel">futurum</span><span class="segs"><span class="seg stem">λύ</span><span class="seg tense">σ</span><span class="seg end">ω</span></span> <span class="swe-inline">jag ska lösa (σ = framtid)</span></div>
+            <div class="brow"><span class="blabel">imperfekt</span><span class="segs"><span class="seg aug">ἔ</span><span class="seg stem">λυ</span><span class="seg end">ον</span></span> <span class="swe-inline">jag löste (augment = dåtid)</span></div>
+            <div class="brow"><span class="blabel">aorist</span><span class="segs"><span class="seg aug">ἔ</span><span class="seg stem">λυ</span><span class="seg tense">σ</span><span class="seg end">α</span></span> <span class="swe-inline">jag löste (augment + σ)</span></div>
+            <div class="blegend">
+              <span><i class="aug"></i> augment (dåtid)</span>
+              <span><i class="stem"></i> stam</span>
+              <span><i class="tense"></i> tempustecken σ</span>
+              <span><i class="end"></i> personändelse</span>
+            </div>
+          </div>
+          <div class="gr-rule"><b>Läs blocken:</b> <span class="gr-grek">σ</span> framför ändelsen = framtid (futurum) eller helhet (aorist); <span class="gr-grek">ἐ-</span> framför stammen = dåtid (imperfekt, aorist). Presens är stammen naken. Detaljerna för varje tempus står i korten nedan.</div>
         </section>
 
         <!-- ══ ω-verb ══ -->
@@ -1217,7 +1378,7 @@
             <span class="tip-label">Ändelserna är artikelns</span>
             αὐτός, οὗτος, ἐκεῖνος, relativet <span class="gr-grek">ὅς</span> och frågande <span class="gr-grek">τίς</span> tar alla <b>samma ändelser som den bestämda artikeln</b> (2-1-2-mönstret). Jämför stammen <span class="gr-grek">αὐτ-</span> med artikeln: <span class="gr-grek">αὐτοῦ·τοῦ, αὐτῷ·τῷ, αὐτόν·τόν, αὐτῶν·τῶν, αὐτοῖς·τοῖς, αὐτούς·τούς</span> · fem <span class="gr-grek">αὐτῆς·τῆς, αὐτῇ·τῇ, αὐτήν·τήν</span>. Lär stammen och häng på artikeländelserna.
           </div>
-          <div class="gr-rule">Exempel: <span class="gr-grek">βλέπομεν αὐτόν</span> ”vi ser honom”, <span class="gr-grek">κηρύσσομεν αὐτῇ</span> ”vi predikar för henne”, <span class="gr-grek">λέγομεν αὐτοῖς / πρὸς αὐτούς</span> ”vi säger till dem”. <b>Attributiv ställning</b> = mellan artikel och substantiv (adjektivet hör ihop med substantivet); <b>predikativ ställning</b> = utanför den positionen (adjektivet säger något om substantivet). <b>Nominativens ställning:</b> med artikel = ”samme” (<span class="gr-grek">ὁ αὐτὸς λόγος</span>, attributiv), utan artikel bredvid ett bestämt substantiv = ”själv” (<span class="gr-grek">αὐτὸς ὁ λόγος</span> ”ordet självt”, predikativ). För ett <b>betonat</b> subjekt-”han/hon/det” används i stället de demonstrativa <span class="gr-grek">οὗτος</span> och <span class="gr-grek">ἐκεῖνος</span>.</div>
+          <div class="gr-rule">Exempel: <span class="gr-grek">βλέπομεν αὐτόν</span> ”vi ser honom”, <span class="gr-grek">κηρύσσομεν αὐτῇ</span> ”vi predikar för henne”, <span class="gr-grek">λέγομεν αὐτοῖς / πρὸς αὐτούς</span> ”vi säger till dem”. <b>Attributiv ställning</b> = mellan artikel och substantiv (adjektivet hör ihop med substantivet); <b>predikativ ställning</b> = utanför den positionen (adjektivet säger något om substantivet). <b>Nominativens ställning:</b> med artikel = ”samme” (<span class="gr-grek">ὁ αὐτὸς λόγος</span>, attributiv), utan artikel bredvid ett bestämt substantiv = ”själv” (<span class="gr-grek">αὐτὸς ὁ λόγος</span> ”ordet självt”, predikativ). För ett <b>betonat</b> subjekt-”han/hon/det” används i stället de demonstrativa <span class="gr-grek">οὗτος</span> och <span class="gr-grek">ἐκεῖνος</span>. <span class="swe-inline">Se schemat under <a href="#attribut">Placering av attribut</a>.</span></div>
         </section>
 
         <!-- ══ Demonstrativa pronomen ══ -->
@@ -1323,7 +1484,7 @@
             </table>
           </div>
           <div class="gr-rule">
-            <b>Placeringen är det svåra — inte formerna.</b> Obetonad possessiv står normalt <i>efter</i> substantivet; betonad står <i>inne i</i> artikelfrasen.
+            <b>Placeringen är det svåra — inte formerna.</b> Obetonad possessiv står normalt <i>efter</i> substantivet; betonad står <i>inne i</i> artikelfrasen (attributiv ställning — <a href="#attribut">se schemat</a>).
             <br /><b>1:a och 2:a person</b> har egna betonade ord (<span class="gr-grek">ἐμός, σός, ἡμέτερος, ὑμέτερος</span>) som böjs som vanliga 2-1-2-adjektiv och kongruerar med huvudordet. <b>3:e person</b> har inget eget ord — där används genitiv av <span class="gr-grek">οὗτος</span> eller <span class="gr-grek">ἐκεῖνος</span>: <span class="gr-grek">ὁ τούτου οἶκος</span> ”hans hus”.
             <br /><b>Eftertrycket:</b> <span class="gr-grek">οἱ ἀδελφοὶ ἡμῶν</span> ”våra bröder” — men <span class="gr-grek">οἱ ἡμέτεροι ἀδελφοί</span> ”<i>våra</i> bröder (inte era)”.
             <br /><b>Fälla:</b> samma <span class="gr-grek">αὐτ-</span>-ord i två roller. <span class="gr-grek">ἐδίδασκεν αὐτοὺς ἐν τῇ συναγωγῇ αὐτῶν</span> — <span class="gr-grek">αὐτούς</span> (ackusativ) är objekt ”dem”, <span class="gr-grek">αὐτῶν</span> (genitiv) är possessivt ”deras”. Kasus avgör.
@@ -1434,6 +1595,19 @@
         <section class="gr-card" id="attribut" style="--accent:#8a6d3b">
           <h3>Placering av attribut <span class="sem">Sem 9</span></h3>
           <p class="note">Ett <b>attribut</b> (adjektiv eller genitiv) till ett bestämt substantiv kan stå på tre ställen i förhållande till huvudordet. Alla tre översätts i regel likadant (B § 225:2).</p>
+          <p class="note"><b>Artikelns räckvidd avgör allt.</b> Står attributet <i>innanför</i> artikelfrasen är det attributivt (”den goda …”); står det <i>utanför</i> blir det predikativt (”… är god”):</p>
+          <div class="gr-pos">
+            <div class="pcard attr">
+              <div class="ptag">Attributiv · innanför artikeln</div>
+              <div class="pex"><span class="reach">ὁ <span class="adjmark">ἀγαθὸς</span> λόγος</span></div>
+              <div class="psv">”den <b>goda</b> logos” — attributet ligger inne i artikelns räckvidd. Även <span class="gr-grek">ὁ λόγος ὁ ἀγαθός</span> (upprepad artikel).</div>
+            </div>
+            <div class="pcard pred">
+              <div class="ptag">Predikativ · utanför artikeln</div>
+              <div class="pex">ὁ λόγος <span class="adjmark">ἀγαθός</span></div>
+              <div class="psv">”ordet <b>är</b> gott” — adjektivet står utanför artikelfrasen → predikatsfyllnad (<span class="gr-grek">ἐστίν</span> underförstått).</div>
+            </div>
+          </div>
           <table class="gr" style="width:100%">
             <thead><tr><th class="kasus">Placering</th><th>Adjektivattribut</th><th>Genitivattribut</th></tr></thead>
             <tbody>
@@ -1538,6 +1712,13 @@
         <section class="gr-card" id="satsanalys" style="--accent:#a8842c">
           <h3>Satsanalys <span class="sem">Sem 2–5</span></h3>
           <p class="note">Analysera uppifrån: först predikatet (verbhandlingen), sedan subjektet, direkt och indirekt objekt. Kasus avslöjar rollen — inte ordföljden.</p>
+          <div class="gr-sent" role="img" aria-label="Färglagd satsanalys av ὁ ἀπόστολος γράφει τοῖς ἀνθρώποις τὸν λόγον.">
+            <span class="sd s-subj">ὁ ἀπόστολος<span class="role">subjekt · nom</span></span>
+            <span class="sd s-pred">γράφει<span class="role">predikat</span></span>
+            <span class="sd s-iobj">τοῖς ἀνθρώποις<span class="role">indir. obj · dat</span></span>
+            <span class="sd s-dobj">τὸν λόγον<span class="role">dir. obj · ack</span></span>
+          </div>
+          <p class="note" style="margin-top:0.4rem">”Aposteln skriver ordet till människorna.” Färgerna följer <a href="#kasus">kasusen</a>: nominativ→subjekt, ackusativ→direkt objekt, dativ→indirekt objekt. Ordföljden kan kastas om — <span class="gr-grek">τὸν λόγον γράφει ὁ ἀπόστολος</span> betyder samma sak, för kasusen bär rollerna.</p>
           <table class="gr" style="width:100%">
             <thead><tr><th>Satsdel</th><th>Kasus</th><th>Frågar</th></tr></thead>
             <tbody>
@@ -1614,6 +1795,37 @@
       const artToggle = document.getElementById('gr-arttoggle');
       artToggle.addEventListener('change', () => {
         document.body.classList.toggle('show-artikel', artToggle.checked);
+      });
+
+      // S1 Självtest: dölj formerna; klicka på en cell för att avslöja.
+      const studyToggle = document.getElementById('gr-studytoggle');
+      studyToggle.addEventListener('change', () => {
+        document.body.classList.toggle('test-mode', studyToggle.checked);
+        if (!studyToggle.checked)
+          document.querySelectorAll('td.gr-el.revealed').forEach((c) => c.classList.remove('revealed'));
+      });
+      document.querySelectorAll('table.gr').forEach((tbl) =>
+        tbl.addEventListener('click', (ev) => {
+          if (!document.body.classList.contains('test-mode')) return;
+          const cell = ev.target.closest('td.gr-el');
+          if (cell) cell.classList.toggle('revealed');
+        }),
+      );
+
+      // S3 Hover-markera alla rader med samma kasus inom samma kort.
+      const KCLS = ['k-nom', 'k-gen', 'k-dat', 'k-ack', 'k-vok'];
+      document.querySelectorAll('.gr-card').forEach((card) => {
+        const rows = [...card.querySelectorAll('tr')];
+        const kasusOf = (tr) => KCLS.find((k) => tr.classList.contains(k));
+        card.addEventListener('mouseover', (ev) => {
+          const tr = ev.target.closest('tr');
+          const k = tr && kasusOf(tr);
+          if (!k) return;
+          rows.forEach((r) => r.classList.toggle('kx-hi', r.classList.contains(k)));
+        });
+        card.addEventListener('mouseleave', () =>
+          rows.forEach((r) => r.classList.remove('kx-hi')),
+        );
       });
 
       // Scrollspy: markera aktivt avsnitt i innehållsförteckningen.
