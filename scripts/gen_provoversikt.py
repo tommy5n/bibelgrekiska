@@ -26,6 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 MASTER = ROOT / "json" / "glosor.json"
 SIDA = ROOT / "provoversikt.html"
+UTSKRIFT = ROOT / "provoversikt-utskrift.html"
 
 # Oskars sex kategorier, i PDF:ens ordning. Varje lista är lemman i PDF:ens ordning.
 KATEGORIER = [
@@ -167,8 +168,44 @@ def main():
         raise SystemExit("Hittade ingen 'const PROV = [...]' i provoversikt.html")
     SIDA.write_text(ny)
 
+    # Utskriften bär samma gloslista som statisk (JS-fri) HTML — renderas här in
+    # mellan markörerna, precis som grammatikreferens-utskrift.html.
+    render_utskrift(grupper)
+
     antal = sum(len(g["ord"]) for g in grupper)
-    print(f"Skrev {antal} provord i {len(grupper)} kategorier till {SIDA.name}.")
+    print(f"Skrev {antal} provord i {len(grupper)} kategorier till {SIDA.name} + {UTSKRIFT.name}.")
+
+
+def esc(s):
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def render_utskrift(grupper):
+    sektioner = []
+    for g in grupper:
+        rader = []
+        for o in g["ord"]:
+            gen = f'<span class="gen">{esc(o["gen"])}</span> ' if o.get("gen") else ""
+            rader.append(
+                f'<div class="pv-word"><span class="g">{esc(o["grek"])}</span> '
+                f'{gen}<span class="sv">{esc(o["sv"])}</span></div>'
+            )
+        sektioner.append(
+            f'<section class="pv-cat">\n'
+            f'  <h3>{esc(g["kat"])} <span class="antal">{len(g["ord"])}</span></h3>\n'
+            f'  <div class="pv-list">\n    ' + "\n    ".join(rader) + "\n  </div>\n"
+            f"</section>"
+        )
+    blob = "\n".join(sektioner)
+    src = UTSKRIFT.read_text()
+    ny, n = re.subn(
+        r"(<!-- GEN:vocab START -->).*?(<!-- GEN:vocab END -->)",
+        lambda m: f"{m.group(1)}\n{blob}\n{m.group(2)}",
+        src, count=1, flags=re.S,
+    )
+    if not n:
+        raise SystemExit("Hittade inga GEN:vocab-markörer i provoversikt-utskrift.html")
+    UTSKRIFT.write_text(ny)
 
 
 if __name__ == "__main__":
