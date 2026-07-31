@@ -825,10 +825,14 @@ body {
   margin-top: 0.5rem;
   font-size: var(--fs-lg);
 }
-.vy-glosor .lemma .art-pre,
-.vy-glosor .prompt-echo .art-pre {
+.vy-glosor .art-pre {
   color: var(--ink-soft);
   margin-right: 0.35em;
+}
+.vy-glosor .reveal .former-parse {
+  color: var(--ink-soft);
+  font-size: var(--fs-lg);
+  margin-bottom: 0.5rem;
 }
 .vy-glosor .reveal .prompt-echo {
   font-size: var(--fs-2xl);
