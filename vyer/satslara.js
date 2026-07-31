@@ -14,6 +14,12 @@ export function teardown(){ if(__kh){ document.removeEventListener("keydown", __
 // (.modes/.card/.reveal/.controls/.streak) + globala tokens; här bara det
 // spelspecifika. Grön = rätt (--cbg/--cbd/--c, samma "rätt"-trio som satsanalys).
 const CSS = `
+.vy-satslara .modes { display: flex; gap: 0.5rem; justify-content: center; margin: 0.9rem 0 0.2rem; }
+.vy-satslara .mode {
+  font-family: inherit; font-size: var(--fs-sm); color: var(--ink-soft); background: var(--card);
+  border: 1.5px solid var(--line); border-radius: 999px; padding: 0.3rem 0.9rem; cursor: pointer; transition: 0.15s;
+}
+/* .mode pressed-svart + hover ärvs från de delade reglerna i app.css. */
 .vy-satslara .sats {
   display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center;
   margin: 1.5rem 0 0.4rem; min-height: 3.2rem; align-items: flex-end;
