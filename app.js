@@ -156,6 +156,13 @@ function renderHub(root) {
           <span class="desc">Deklinationer, böjningar och exempel – för uppslag</span>
         </span>
       </a>
+      <a class="hub-card" href="provoversikt.html">
+        <span class="num">★</span>
+        <span class="body">
+          <span class="name">Inför provet</span>
+          <span class="desc">Allt ordkunskapsprovet kräver, samlat – med dolda översättningar</span>
+        </span>
+      </a>
     </div>
   </div>`;
 }
