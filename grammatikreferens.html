@@ -183,6 +183,24 @@
       .gr-arttoggle input { accent-color: var(--gold); width: 1rem; height: 1rem; cursor: pointer; }
       .gr-arttoggle b { color: var(--gold); font-weight: 600; }
 
+      /* Prepositions-schema: kasus = rums-riktning */
+      .gr-schema { margin: 0.3rem 0 1rem; }
+      .gr-schema svg { width: 100%; max-width: 560px; height: auto; display: block; margin: 0 auto; }
+      .gr-schema .box { fill: var(--paper-2); stroke: #3f7a4f; stroke-width: 1.5; }
+      .gr-schema .arr { fill: none; stroke-width: 2.5; }
+      .gr-schema .arr.from { stroke: #8a5a86; }
+      .gr-schema .arr.to   { stroke: #b0642f; }
+      .gr-schema text { fill: var(--ink); }
+      .gr-schema .grek { font-family: "Cardo","Spectral",serif; font-size: 17px; }
+      .gr-schema .swe  { font-size: 12px; fill: var(--ink-soft); }
+      .gr-schema .cap  { font-size: 11.5px; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 700; }
+      .gr-schema .cap.from, .gr-schema .grek.from { fill: #8a5a86; }
+      .gr-schema .cap.to,   .gr-schema .grek.to   { fill: #b0642f; }
+      .gr-schema .cap.at { fill: #3f7a4f; }
+      /* färgade kolumnrubriker i flerkasus-tabellen */
+      th.h-gen { color: #8a5a86; } th.h-dat { color: #3f7a4f; } th.h-ack { color: #b0642f; }
+      .swe-inline { font-size: var(--fs-2xs); color: var(--ink-soft); }
+
       @media (max-width: 900px) {
         .gr-layout { grid-template-columns: 1fr; }
         .gr-toc { position: static; max-height: none; margin-bottom: 1rem; }
@@ -1168,6 +1186,10 @@
               <li>Nominativ saknar enklitisk form — verbändelsen bär det obetonade subjektet (<span class="gr-grek">βλέπω</span> = "jag ser"). Pluralen har ingen särskild enklitisk form.</li>
             </ul>
           </div>
+          <div class="gr-tip">
+            <span class="tip-label">Enklitisk = betonad minus ἐ</span>
+            Du behöver inte memorera två kolumner. <b>1:a person:</b> stryk begynnelse-<span class="gr-grek">ἐ</span> och accenten — <span class="gr-grek">ἐμοῦ→μου, ἐμοί→μοι, ἐμέ→με</span>. <b>2:a person:</b> bara accenten faller — <span class="gr-grek">σοῦ→σου, σοί→σοι, σέ→σε</span>. Nominativ (<span class="gr-grek">ἐγώ, σύ</span>) och hela pluralen har ingen enklitisk form.
+          </div>
         </section>
 
         <!-- ══ Personligt pronomen 3:e person (αὐτός) ══ -->
@@ -1191,6 +1213,10 @@
               <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">αὐτόν<span class="sv">honom</span></td><td class="gr-el">αὐτούς<span class="sv">dem</span></td><td class="gr-el">αὐτό<span class="sv">det</span></td><td class="gr-el">αὐτά<span class="sv">dem</span></td><td class="gr-el">αὐτήν<span class="sv">henne</span></td><td class="gr-el">αὐτάς<span class="sv">dem</span></td></tr>
             </tbody>
           </table>
+          <div class="gr-tip">
+            <span class="tip-label">Ändelserna är artikelns</span>
+            αὐτός, οὗτος, ἐκεῖνος, relativet <span class="gr-grek">ὅς</span> och frågande <span class="gr-grek">τίς</span> tar alla <b>samma ändelser som den bestämda artikeln</b> (2-1-2-mönstret). Jämför stammen <span class="gr-grek">αὐτ-</span> med artikeln: <span class="gr-grek">αὐτοῦ·τοῦ, αὐτῷ·τῷ, αὐτόν·τόν, αὐτῶν·τῶν, αὐτοῖς·τοῖς, αὐτούς·τούς</span> · fem <span class="gr-grek">αὐτῆς·τῆς, αὐτῇ·τῇ, αὐτήν·τήν</span>. Lär stammen och häng på artikeländelserna.
+          </div>
           <div class="gr-rule">Exempel: <span class="gr-grek">βλέπομεν αὐτόν</span> ”vi ser honom”, <span class="gr-grek">κηρύσσομεν αὐτῇ</span> ”vi predikar för henne”, <span class="gr-grek">λέγομεν αὐτοῖς / πρὸς αὐτούς</span> ”vi säger till dem”. <b>Attributiv ställning</b> = mellan artikel och substantiv (adjektivet hör ihop med substantivet); <b>predikativ ställning</b> = utanför den positionen (adjektivet säger något om substantivet). <b>Nominativens ställning:</b> med artikel = ”samme” (<span class="gr-grek">ὁ αὐτὸς λόγος</span>, attributiv), utan artikel bredvid ett bestämt substantiv = ”själv” (<span class="gr-grek">αὐτὸς ὁ λόγος</span> ”ordet självt”, predikativ). För ett <b>betonat</b> subjekt-”han/hon/det” används i stället de demonstrativa <span class="gr-grek">οὗτος</span> och <span class="gr-grek">ἐκεῖνος</span>.</div>
         </section>
 
@@ -1228,6 +1254,10 @@
           </div>
           <div class="gr-rule">
             <b>Självständigt</b> (substantiviskt) i nominativ = betonat ”han/hon/det”: <span class="gr-grek">οὗτός ἐστι προφήτης</span> ”denne är en profet”. <b>Förenat</b> (adjektiviskt) med artikel: <span class="gr-grek">οὗτος ὁ προφήτης</span> ”den här profeten”, <span class="gr-grek">ἐκεῖνος ὁ προφήτης</span> ”den där profeten”. Neutrum pl <span class="gr-grek">ταῦτα</span> = ”dessa (ting)/detta”. Vokalväxling i οὗτος: <span class="gr-grek">ου</span> när stavelsen har o-ljud (<span class="gr-grek">τούτου</span>), <span class="gr-grek">αυ</span> annars (<span class="gr-grek">αὕτη, ταύτης</span>).
+          </div>
+          <div class="gr-tip">
+            <span class="tip-label">οὗτος speglar artikeln</span>
+            Kan du artikeln kan du <span class="gr-grek">οὗτος</span>: pronomenet har <b>sträv anda</b> exakt där artikeln har det (<span class="gr-grek">οὗτος/ὁ, αὕτη/ἡ, οὗτοι/οἱ, αὗται/αἱ</span>) och <b>τ-</b> exakt där artikeln har τ- (<span class="gr-grek">τούτου/τοῦ, ταύτης/τῆς, τοῦτο/τό, ταῦτα/τά …</span>). Bara stamvokalen (ου/αυ) skiljer.
           </div>
         </section>
 
@@ -1418,28 +1448,75 @@
 
                 <section class="gr-card" id="prepositioner" style="--accent:#8a5a86">
           <h3>Prepositioner <span class="sem">Sem 4–5 · B § 240</span></h3>
-          <p class="note">En preposition kräver alltid ett bestämt kasus. Frasen räknas i satsanalysen som <b>ett</b> adverbial. Många prepositioner tar olika kasus med olika betydelse.</p>
-          <table class="gr" style="width:100%">
-            <thead><tr><th>Prep.</th><th>Kasus</th><th>Betydelse</th></tr></thead>
-            <tbody>
-              <tr class="k-dat"><td class="gr-el">ἐν</td><td>dativ</td><td>i</td></tr>
-              <tr class="k-dat"><td class="gr-el">σύν</td><td>dativ</td><td>med, jämte</td></tr>
-              <tr class="k-ack"><td class="gr-el">εἰς</td><td>ackusativ</td><td>in i, till</td></tr>
-              <tr class="k-gen"><td class="gr-el">ἐκ / ἐξ</td><td>genitiv</td><td>ur, ut ur</td></tr>
-              <tr class="k-gen"><td class="gr-el">ἀπό</td><td>genitiv</td><td>från, av</td></tr>
-              <tr class="k-gen"><td class="gr-el">πρό</td><td>genitiv</td><td>framför (rum), före (tid)</td></tr>
-              <tr><td class="gr-el">διά</td><td>gen · ack</td><td>gen: genom · ack: på grund av</td></tr>
-              <tr><td class="gr-el">μετά</td><td>gen · ack</td><td>gen: med · ack: efter</td></tr>
-              <tr><td class="gr-el">περί</td><td>gen · ack</td><td>gen: om, angående · ack: kring</td></tr>
-              <tr><td class="gr-el">κατά</td><td>gen · ack</td><td>gen: utför, mot · ack: enligt</td></tr>
-              <tr><td class="gr-el">ὑπέρ</td><td>gen · ack</td><td>gen: för, över · ack: mer än</td></tr>
-              <tr><td class="gr-el">ὑπό</td><td>gen · ack</td><td>gen: av, genom · ack: in under</td></tr>
-              <tr><td class="gr-el">ἐπί</td><td>gen · dat · ack</td><td>på, över · vid · mot</td></tr>
-              <tr><td class="gr-el">παρά</td><td>gen · dat · ack</td><td>från · hos, vid · bredvid</td></tr>
-              <tr><td class="gr-el">πρός</td><td>gen · dat · ack</td><td>på (ngns sida) · vid · till, hos</td></tr>
-            </tbody>
-          </table>
-          <div class="gr-rule"><span class="gr-grek">ἐξ</span> används framför vokal (annars <span class="gr-grek">ἐκ</span>). De flesta prepositioner på vokal <b>elideras</b> framför ett vokalljud (<span class="gr-grek">ἀπ' αὐτοῦ, δι' αὐτῶν, κατ' οἶκον</span>); framför sträv anda aspireras konsonanten (<span class="gr-grek">ἀφ' ἡμῶν, μεθ' ὑμῶν, καθ' ἡμέραν, ὑφ' ὑμῶν</span>). Exempel: <span class="gr-grek">ἐν τῷ οἴκῳ</span> "i huset", <span class="gr-grek">εἰς τὴν κώμην</span> "in i byn", <span class="gr-grek">μετὰ τῶν ἀδελφῶν</span> "med bröderna". Substantivet efter en preposition tar inte alltid bestämd artikel: <span class="gr-grek">ἐν ἀρχῇ</span> "i begynnelsen".</div>
+          <p class="note">En preposition kräver alltid ett bestämt kasus, och kasuset bär <b>rums-riktningen</b>: genitiv = <b>varifrån</b>, dativ = <b>var</b>, ackusativ = <b>vart</b>. Frasen räknas i satsanalysen som <b>ett</b> adverbial.</p>
+          <figure class="gr-schema" role="img" aria-label="Kasus som rums-riktning: genitiv = varifrån, dativ = var, ackusativ = vart.">
+            <svg viewBox="0 0 560 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="ah-from" markerWidth="9" markerHeight="9" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8a5a86"/></marker>
+                <marker id="ah-to" markerWidth="9" markerHeight="9" refX="5.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#b0642f"/></marker>
+              </defs>
+              <!-- dativ = platsen -->
+              <rect class="box" x="215" y="96" width="130" height="56" rx="13"/>
+              <text class="cap at" x="280" y="88" text-anchor="middle">dativ · var</text>
+              <text class="grek" x="280" y="126" text-anchor="middle">ἐν, σύν</text>
+              <text class="swe" x="280" y="145" text-anchor="middle">i · hos</text>
+              <!-- genitiv: lämnar platsen åt vänster -->
+              <path class="arr from" d="M212,118 C150,118 108,82 62,54" marker-end="url(#ah-from)"/>
+              <text class="cap from" x="150" y="28" text-anchor="middle">genitiv · varifrån</text>
+              <text class="grek from" x="150" y="50" text-anchor="middle">ἐκ, ἀπό</text>
+              <text class="swe" x="150" y="68" text-anchor="middle">ur · från</text>
+              <!-- ackusativ: rör sig in i platsen från höger -->
+              <path class="arr to" d="M498,54 C452,82 400,100 348,120" marker-end="url(#ah-to)"/>
+              <text class="cap to" x="430" y="28" text-anchor="middle">ackusativ · vart</text>
+              <text class="grek to" x="430" y="50" text-anchor="middle">εἰς</text>
+              <text class="swe" x="430" y="68" text-anchor="middle">in i · till</text>
+            </svg>
+          </figure>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption>Ett fast kasus</caption>
+              <thead><tr><th>Prep.</th><th class="kasus">Kasus</th><th>Betydelse</th></tr></thead>
+              <tbody>
+                <tr class="k-gen"><td class="gr-el">ἐκ / ἐξ</td><td>gen</td><td>ur, ut ur</td></tr>
+                <tr class="k-gen"><td class="gr-el">ἀπό</td><td>gen</td><td>från, av</td></tr>
+                <tr class="k-gen"><td class="gr-el">πρό</td><td>gen</td><td>framför (rum), före (tid)</td></tr>
+                <tr class="k-dat"><td class="gr-el">ἐν</td><td>dat</td><td>i</td></tr>
+                <tr class="k-dat"><td class="gr-el">σύν</td><td>dat</td><td>med, jämte</td></tr>
+                <tr class="k-ack"><td class="gr-el">εἰς</td><td>ack</td><td>in i, till</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>Flera kasus — betydelsen skiftar med kasuset</caption>
+              <thead><tr><th>Prep.</th><th class="h-gen">+ gen · varifrån</th><th class="h-dat">+ dat · var</th><th class="h-ack">+ ack · vart</th></tr></thead>
+              <tbody>
+                <tr><td class="gr-el">διά</td><td>genom</td><td>—</td><td>på grund av</td></tr>
+                <tr><td class="gr-el">μετά</td><td>med</td><td>—</td><td>efter</td></tr>
+                <tr><td class="gr-el">περί</td><td>om, angående</td><td>—</td><td>kring</td></tr>
+                <tr><td class="gr-el">κατά</td><td>utför, mot</td><td>—</td><td>enligt</td></tr>
+                <tr><td class="gr-el">ὑπέρ</td><td>för, över</td><td>—</td><td>mer än</td></tr>
+                <tr><td class="gr-el">ὑπό</td><td>av, genom</td><td>—</td><td>in under</td></tr>
+                <tr><td class="gr-el">ἐπί</td><td>på, över</td><td>vid</td><td>mot</td></tr>
+                <tr><td class="gr-el">παρά</td><td>från (bredvid)</td><td>hos, vid</td><td>till (bredvid)</td></tr>
+                <tr><td class="gr-el">πρός</td><td>på (ngns sida)</td><td>vid</td><td>till, hos</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>Framför vokal: elision &amp; aspiration</caption>
+              <thead><tr><th>Grundform</th><th>+ mjuk anda</th><th>+ sträv anda</th></tr></thead>
+              <tbody>
+                <tr><td class="gr-el">ἀπό</td><td class="gr-el">ἀπ'</td><td class="gr-el">ἀφ' <span class="swe-inline">ἡμῶν</span></td></tr>
+                <tr><td class="gr-el">ἐπί</td><td class="gr-el">ἐπ'</td><td class="gr-el">ἐφ' <span class="swe-inline">ὑμᾶς</span></td></tr>
+                <tr><td class="gr-el">κατά</td><td class="gr-el">κατ' <span class="swe-inline">οἶκον</span></td><td class="gr-el">καθ' <span class="swe-inline">ἡμέραν</span></td></tr>
+                <tr><td class="gr-el">μετά</td><td class="gr-el">μετ'</td><td class="gr-el">μεθ' <span class="swe-inline">ὑμῶν</span></td></tr>
+                <tr><td class="gr-el">ὑπό</td><td class="gr-el">ὑπ'</td><td class="gr-el">ὑφ' <span class="swe-inline">ὑμῶν</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule">
+            <b>Rums-logiken bär även de abstrakta betydelserna:</b> de metaforiska översättningarna (<span class="gr-grek">διά</span>+ack ”på grund av”, <span class="gr-grek">κατά</span>+ack ”enligt”) är utvidgningar av samma från/vid/till-riktning. Lär in prepositionen tillsammans med sitt kasus — <span class="gr-grek">ἐν</span> + dativ, <span class="gr-grek">εἰς</span> + ackusativ — aldrig lösryckt.
+            <br /><b>Form framför vokal:</b> <span class="gr-grek">ἐξ</span> står för <span class="gr-grek">ἐκ</span> framför vokal; de flesta prepositioner på vokal <b>elideras</b> (<span class="gr-grek">ἀπ' αὐτοῦ, κατ' οἶκον</span>), och framför <b>sträv anda</b> aspireras slutkonsonanten <span class="gr-grek">π→φ, τ→θ</span> (<span class="gr-grek">ἀφ' ἡμῶν, καθ' ἡμέραν</span>). <span class="gr-grek">διά</span> elideras till <span class="gr-grek">δι'</span> men aspireras inte (δ saknar aspirat). Samma ljudlag styr negationen <a href="#negation">οὐκ / οὐχ</a>.
+            <br />Substantivet efter en preposition tar inte alltid artikel: <span class="gr-grek">ἐν ἀρχῇ</span> ”i begynnelsen”.
+          </div>
         </section>
 
         <!-- ══ Negationen οὐ ══ -->
@@ -1454,7 +1531,7 @@
               <tr><td class="gr-el">οὐχ</td><td>vokal med spiritus asper</td><td class="gr-grek">οὐχ εὑρίσκομεν τὸν ἀδελφόν</td></tr>
             </tbody>
           </table>
-          <div class="gr-rule">Formen styrs av ordet <b>efter</b> negationen: <span class="gr-grek">οὐκ</span> före mjuk anda, <span class="gr-grek">οὐχ</span> före sträv anda (h-ljud).</div>
+          <div class="gr-rule">Formen styrs av ordet <b>efter</b> negationen: <span class="gr-grek">οὐκ</span> före mjuk anda, <span class="gr-grek">οὐχ</span> före sträv anda (h-ljud). Samma ljudlag som prepositionernas <a href="#prepositioner">elision &amp; aspiration</a> (<span class="gr-grek">ἀφ', καθ'</span>).</div>
         </section>
 
         <!-- ══ Satsanalys ══ -->
