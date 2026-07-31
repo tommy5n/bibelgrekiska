@@ -146,6 +146,11 @@ td.end { font-family: "Cardo", "Spectral", serif; }
 table.gr td.gr-el { font-size: 10.6pt; line-height: 1.1; }
 table.gr td.gr-el .sv { display: block; font-size: 6.9pt; line-height: 1.05; color: #555; }
 table.gr td.end   { font-size: 10pt; }
+/* Artikel bredvid ändelsen — lär in båda samtidigt */
+td.art { font-family: "Cardo", "Spectral", serif; font-size: 10pt; font-weight: 600; padding-right: 1mm; }
+td.art.tom { color: #999; font-weight: 400; }
+table.gr td.end { padding-left: 1mm; }
+table.gr thead th.sub { font-weight: 400; font-size: 7.4pt; }
 table.gr caption  { font-size: 9.9pt; }
 .gr-grek          { font-size: 1.12em; }   /* inline i löptext + grekiska kolumnrubriker */
 .gr-card h3 .ex   { font-size: 9.6pt; }
@@ -237,6 +242,10 @@ b { font-weight: 600; }
               </tbody>
             </table>
           </div>
+          <div class="gr-tip">
+            <span class="tip-label">Lär in den med ändelsen</span>
+            I 1:a och 2:a deklinationen är artikeln nästan <b>τ + substantivets ändelse</b>: <span class="end">τοῦ · -ου</span>, <span class="end">τῷ · -ῳ</span>, <span class="end">τῶν · -ων</span>, <span class="end">τοῖς · -οις</span> · femininum <span class="end">τῆς · -ης</span>, <span class="end">τῇ · -ῃ</span>, <span class="end">τὴν · -ην</span>. Därför står artikeln bredvid ändelsen i tabellerna nedan — nöt dem som ett par. (De obestämda formerna <span class="gr-grek">ὁ, ἡ, οἱ, αἱ</span> saknar τ och måste läras separat.)
+          </div>
         </section>
 
         <!-- ══ Kasus & satsdelar ══ -->
@@ -310,14 +319,17 @@ b { font-weight: 600; }
               </tbody>
             </table>
             <table class="gr">
-              <caption>Ändelser</caption>
-              <thead><tr><th class="kasus">Kasus</th><th>Sg</th><th>Pl</th></tr></thead>
+              <caption>Artikel + ändelse</caption>
+              <thead>
+                <tr><th class="kasus" rowspan="2">Kasus</th><th colspan="2">Singular</th><th colspan="2">Plural</th></tr>
+                <tr><th class="sub">art</th><th class="sub">änd.</th><th class="sub">art</th><th class="sub">änd.</th></tr>
+              </thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="end">-ος</td><td class="end">-οι</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="end">-ου</td><td class="end">-ων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="end">-ῳ</td><td class="end">-οις</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="end">-ον</td><td class="end">-ους</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="end">-ε</td><td class="end">-οι</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="art">ὁ</td><td class="end">-ος</td><td class="art">οἱ</td><td class="end">-οι</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="art">τοῦ</td><td class="end">-ου</td><td class="art">τῶν</td><td class="end">-ων</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="art">τῷ</td><td class="end">-ῳ</td><td class="art">τοῖς</td><td class="end">-οις</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="art">τὸν</td><td class="end">-ον</td><td class="art">τοὺς</td><td class="end">-ους</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="art tom">—</td><td class="end">-ε</td><td class="art tom">—</td><td class="end">-οι</td></tr>
               </tbody>
             </table>
           </div>
@@ -342,14 +354,17 @@ b { font-weight: 600; }
               </tbody>
             </table>
             <table class="gr">
-              <caption>Ändelser</caption>
-              <thead><tr><th class="kasus">Kasus</th><th>Sg</th><th>Pl</th></tr></thead>
+              <caption>Artikel + ändelse</caption>
+              <thead>
+                <tr><th class="kasus" rowspan="2">Kasus</th><th colspan="2">Singular</th><th colspan="2">Plural</th></tr>
+                <tr><th class="sub">art</th><th class="sub">änd.</th><th class="sub">art</th><th class="sub">änd.</th></tr>
+              </thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="end">-ον</td><td class="end">-α</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="end">-ου</td><td class="end">-ων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="end">-ῳ</td><td class="end">-οις</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="end">-ον</td><td class="end">-α</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="end">-ον</td><td class="end">-α</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="art">τὸ</td><td class="end">-ον</td><td class="art">τὰ</td><td class="end">-α</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="art">τοῦ</td><td class="end">-ου</td><td class="art">τῶν</td><td class="end">-ων</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="art">τῷ</td><td class="end">-ῳ</td><td class="art">τοῖς</td><td class="end">-οις</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="art">τὸ</td><td class="end">-ον</td><td class="art">τὰ</td><td class="end">-α</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="art tom">—</td><td class="end">-ον</td><td class="art tom">—</td><td class="end">-α</td></tr>
               </tbody>
             </table>
           </div>
@@ -364,9 +379,11 @@ b { font-weight: 600; }
             <thead>
               <tr>
                 <th class="kasus" rowspan="2">Kasus</th>
+                <th class="sub" rowspan="2">art&nbsp;sg</th>
                 <th colspan="1">-α efter ε/ι/ρ</th>
                 <th colspan="1">-η</th>
                 <th colspan="1">-α (annan bokstav)</th>
+                <th class="sub" rowspan="2">art&nbsp;pl</th>
                 <th colspan="1">Plural (alla)</th>
               </tr>
               <tr>
@@ -377,11 +394,11 @@ b { font-weight: 600; }
               </tr>
             </thead>
             <tbody>
-              <tr class="k-nom"><th class="kasus">nom</th><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="end">-αι</td></tr>
-              <tr class="k-gen"><th class="kasus">gen</th><td class="end">-ας</td><td class="end">-ης</td><td class="end">-ης</td><td class="end">-ῶν</td></tr>
-              <tr class="k-dat"><th class="kasus">dat</th><td class="end">-ᾳ</td><td class="end">-ῃ</td><td class="end">-ῃ</td><td class="end">-αις</td></tr>
-              <tr class="k-ack"><th class="kasus">ack</th><td class="end">-αν</td><td class="end">-ην</td><td class="end">-αν</td><td class="end">-ας</td></tr>
-              <tr class="k-vok"><th class="kasus">vok</th><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="end">-αι</td></tr>
+              <tr class="k-nom"><th class="kasus">nom</th><td class="art">ἡ</td><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="art">αἱ</td><td class="end">-αι</td></tr>
+              <tr class="k-gen"><th class="kasus">gen</th><td class="art">τῆς</td><td class="end">-ας</td><td class="end">-ης</td><td class="end">-ης</td><td class="art">τῶν</td><td class="end">-ῶν</td></tr>
+              <tr class="k-dat"><th class="kasus">dat</th><td class="art">τῇ</td><td class="end">-ᾳ</td><td class="end">-ῃ</td><td class="end">-ῃ</td><td class="art">ταῖς</td><td class="end">-αις</td></tr>
+              <tr class="k-ack"><th class="kasus">ack</th><td class="art">τὴν</td><td class="end">-αν</td><td class="end">-ην</td><td class="end">-αν</td><td class="art">τὰς</td><td class="end">-ας</td></tr>
+              <tr class="k-vok"><th class="kasus">vok</th><td class="art tom">—</td><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="art tom">—</td><td class="end">-αι</td></tr>
             </tbody>
           </table>
           <div class="gr-rule">

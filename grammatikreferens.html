@@ -125,6 +125,13 @@
         color: var(--ink-soft);
       }
       table.gr td.end { color: var(--gold); font-weight: 600; }
+      /* Artikel bredvid ändelsen — för att lära in båda samtidigt */
+      table.gr td.art { color: var(--ink-soft); font-weight: 600; }
+      table.gr td.art.tom { color: var(--line); }
+      table.gr thead th.sub { font-weight: 500; font-size: var(--fs-3xs); }
+      table.gr td.end, table.gr td.art { border-left: none; }
+      table.gr td.art { padding-right: 0.35rem; }
+      table.gr td.end { padding-left: 0.35rem; }
       table.gr tr:last-child td { border-bottom: none; }
       table.gr tr.total td { border-top: 2px solid var(--line); }
       /* subtil kasus-markör i första kolumnen */
@@ -163,6 +170,18 @@
       .gr-inline-ex .gr-el { font-size: var(--fs-lg); color: var(--ink); }
 
       mark { background: #f6e6a8; color: inherit; border-radius: 3px; padding: 0 2px; }
+
+      /* Toggle: artikel framför de böjda formerna */
+      .gr-art { color: var(--ink-soft); font-weight: 600; }
+      table.gr .gr-art { display: none; }
+      body.show-artikel table.gr .gr-art { display: inline; }
+      .gr-arttoggle {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        margin: -0.6rem 0 1.8rem; cursor: pointer;
+        font-size: var(--fs-sm); color: var(--ink-soft); user-select: none;
+      }
+      .gr-arttoggle input { accent-color: var(--gold); width: 1rem; height: 1rem; cursor: pointer; }
+      .gr-arttoggle b { color: var(--gold); font-weight: 600; }
 
       @media (max-width: 900px) {
         .gr-layout { grid-template-columns: 1fr; }
@@ -237,6 +256,10 @@
           exempel, samlat för snabb uppslagning. Kasus ordnas alltid
           <b>nom · gen · dat · ack · vok</b>.
         </p>
+        <label class="gr-arttoggle">
+          <input type="checkbox" id="gr-arttoggle" />
+          Visa <b>artikeln</b> framför formerna (<span class="gr-grek">ὁ ἄνθρωπος, τοῦ ἀνθρώπου …</span>) — så möter du dem i texten
+        </label>
 
         <!-- ══ Bestämd artikel ══ -->
         <section class="gr-card" id="artikel" style="--accent:#a8842c">
@@ -273,6 +296,10 @@
                 <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">τὴν</td><td class="gr-el">τὰς</td></tr>
               </tbody>
             </table>
+          </div>
+          <div class="gr-tip">
+            <span class="tip-label">Lär in den med ändelsen</span>
+            I 1:a och 2:a deklinationen är artikeln nästan <b>τ&nbsp;+&nbsp;substantivets ändelse</b>: <span class="end">τοῦ&nbsp;·&nbsp;-ου</span>, <span class="end">τῷ&nbsp;·&nbsp;-ῳ</span>, <span class="end">τῶν&nbsp;·&nbsp;-ων</span>, <span class="end">τοῖς&nbsp;·&nbsp;-οις</span> · femininum <span class="end">τῆς&nbsp;·&nbsp;-ης</span>, <span class="end">τῇ&nbsp;·&nbsp;-ῃ</span>, <span class="end">τὴν&nbsp;·&nbsp;-ην</span>. Därför står artikeln bredvid ändelsen i tabellerna nedan — nöt dem som ett par. (De obestämda formerna <span class="gr-grek">ὁ, ἡ, οἱ, αἱ</span> saknar τ och måste läras separat.)
           </div>
         </section>
 
@@ -335,7 +362,7 @@
           <h3>2:a deklinationen, maskulinum <span class="ex">ἄνθρωπος · människa</span> <span class="sem">Sem 2 · B § 61–64</span></h3>
           <p class="note">Maskulina substantiv på <b>-ος</b>. Genus-signal: artikeln <span class="gr-grek">ὁ</span>.</p>
           <div class="gr-tables">
-            <table class="gr">
+            <table class="gr" data-artikel="m">
               <caption>ἄνθρωπος</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
@@ -347,14 +374,17 @@
               </tbody>
             </table>
             <table class="gr">
-              <caption>Ändelser</caption>
-              <thead><tr><th class="kasus">Kasus</th><th>Sg</th><th>Pl</th></tr></thead>
+              <caption>Artikel + ändelse</caption>
+              <thead>
+                <tr><th class="kasus" rowspan="2">Kasus</th><th colspan="2">Singular</th><th colspan="2">Plural</th></tr>
+                <tr><th class="sub">art</th><th class="sub">änd.</th><th class="sub">art</th><th class="sub">änd.</th></tr>
+              </thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="end">-ος</td><td class="end">-οι</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="end">-ου</td><td class="end">-ων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="end">-ῳ</td><td class="end">-οις</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="end">-ον</td><td class="end">-ους</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="end">-ε</td><td class="end">-οι</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="art">ὁ</td><td class="end">-ος</td><td class="art">οἱ</td><td class="end">-οι</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="art">τοῦ</td><td class="end">-ου</td><td class="art">τῶν</td><td class="end">-ων</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="art">τῷ</td><td class="end">-ῳ</td><td class="art">τοῖς</td><td class="end">-οις</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="art">τὸν</td><td class="end">-ον</td><td class="art">τοὺς</td><td class="end">-ους</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="art tom">—</td><td class="end">-ε</td><td class="art tom">—</td><td class="end">-οι</td></tr>
               </tbody>
             </table>
           </div>
@@ -367,7 +397,7 @@
           <h3>2:a deklinationen, neutrum <span class="ex">ἔργον · verk</span> <span class="sem">Sem 3 · B § 61–64</span></h3>
           <p class="note">Neutrala substantiv på <b>-ον</b>. Genus-signal: artikeln <span class="gr-grek">τὸ</span>.</p>
           <div class="gr-tables">
-            <table class="gr">
+            <table class="gr" data-artikel="n">
               <caption>ἔργον</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
@@ -379,14 +409,17 @@
               </tbody>
             </table>
             <table class="gr">
-              <caption>Ändelser</caption>
-              <thead><tr><th class="kasus">Kasus</th><th>Sg</th><th>Pl</th></tr></thead>
+              <caption>Artikel + ändelse</caption>
+              <thead>
+                <tr><th class="kasus" rowspan="2">Kasus</th><th colspan="2">Singular</th><th colspan="2">Plural</th></tr>
+                <tr><th class="sub">art</th><th class="sub">änd.</th><th class="sub">art</th><th class="sub">änd.</th></tr>
+              </thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="end">-ον</td><td class="end">-α</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="end">-ου</td><td class="end">-ων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="end">-ῳ</td><td class="end">-οις</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="end">-ον</td><td class="end">-α</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="end">-ον</td><td class="end">-α</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="art">τὸ</td><td class="end">-ον</td><td class="art">τὰ</td><td class="end">-α</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="art">τοῦ</td><td class="end">-ου</td><td class="art">τῶν</td><td class="end">-ων</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="art">τῷ</td><td class="end">-ῳ</td><td class="art">τοῖς</td><td class="end">-οις</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="art">τὸ</td><td class="end">-ον</td><td class="art">τὰ</td><td class="end">-α</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="art tom">—</td><td class="end">-ον</td><td class="art tom">—</td><td class="end">-α</td></tr>
               </tbody>
             </table>
           </div>
@@ -401,9 +434,11 @@
             <thead>
               <tr>
                 <th class="kasus" rowspan="2">Kasus</th>
+                <th class="sub" rowspan="2">art&nbsp;sg</th>
                 <th colspan="1">-α efter ε/ι/ρ</th>
                 <th colspan="1">-η</th>
                 <th colspan="1">-α (annan bokstav)</th>
+                <th class="sub" rowspan="2">art&nbsp;pl</th>
                 <th colspan="1">Plural (alla)</th>
               </tr>
               <tr>
@@ -414,11 +449,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="k-nom"><th class="kasus">nom</th><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="end">-αι</td></tr>
-              <tr class="k-gen"><th class="kasus">gen</th><td class="end">-ας</td><td class="end">-ης</td><td class="end">-ης</td><td class="end">-ῶν</td></tr>
-              <tr class="k-dat"><th class="kasus">dat</th><td class="end">-ᾳ</td><td class="end">-ῃ</td><td class="end">-ῃ</td><td class="end">-αις</td></tr>
-              <tr class="k-ack"><th class="kasus">ack</th><td class="end">-αν</td><td class="end">-ην</td><td class="end">-αν</td><td class="end">-ας</td></tr>
-              <tr class="k-vok"><th class="kasus">vok</th><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="end">-αι</td></tr>
+              <tr class="k-nom"><th class="kasus">nom</th><td class="art">ἡ</td><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="art">αἱ</td><td class="end">-αι</td></tr>
+              <tr class="k-gen"><th class="kasus">gen</th><td class="art">τῆς</td><td class="end">-ας</td><td class="end">-ης</td><td class="end">-ης</td><td class="art">τῶν</td><td class="end">-ῶν</td></tr>
+              <tr class="k-dat"><th class="kasus">dat</th><td class="art">τῇ</td><td class="end">-ᾳ</td><td class="end">-ῃ</td><td class="end">-ῃ</td><td class="art">ταῖς</td><td class="end">-αις</td></tr>
+              <tr class="k-ack"><th class="kasus">ack</th><td class="art">τὴν</td><td class="end">-αν</td><td class="end">-ην</td><td class="end">-αν</td><td class="art">τὰς</td><td class="end">-ας</td></tr>
+              <tr class="k-vok"><th class="kasus">vok</th><td class="art tom">—</td><td class="end">-α</td><td class="end">-η</td><td class="end">-α</td><td class="art tom">—</td><td class="end">-αι</td></tr>
             </tbody>
           </table>
           <div class="gr-rule">
@@ -436,7 +471,7 @@
           <h3>2:a deklinationen, feminina <span class="ex">ὁδός · väg</span> <span class="sem">Sem 5 · B § 60</span></h3>
           <p class="note">Ett fåtal <b>feminina</b> substantiv böjs som maskulina <b>-ος</b>-ord. Bara artikeln <span class="gr-grek">ἡ</span> avslöjar genus.</p>
           <div class="gr-tables">
-            <table class="gr">
+            <table class="gr" data-artikel="f">
               <caption>ὁδός</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
@@ -456,7 +491,7 @@
           <h3>1:a deklinationen, maskulina <span class="ex">μαθητής · lärjunge</span> <span class="sem">Sem 5 · B § 56–58</span></h3>
           <p class="note">Maskulina substantiv i första deklinationen. Artikeln är <span class="gr-grek">ὁ</span>; ändelserna är feminina utom genitiv singular (<b>-ου</b>).</p>
           <div class="gr-tables">
-            <table class="gr">
+            <table class="gr" data-artikel="m">
               <caption>μαθητής (η-typ)</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
@@ -467,7 +502,7 @@
                 <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">μαθητά</td><td class="gr-el">μαθηταί</td></tr>
               </tbody>
             </table>
-            <table class="gr">
+            <table class="gr" data-artikel="m">
               <caption>νεανίας (α-typ)</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
@@ -487,7 +522,7 @@
           <h3>3:e deklinationen <span class="ex">ἡγεμών · ståthållare</span> <span class="sem">Sem 7–9</span></h3>
           <p class="note">Rymmer alla tre genus och mest <b>konsonantstammar</b>. Nominativ döljer ofta stammen — den syns först i <b>genitiv</b> (ta bort <b>-ος</b>). Lär därför in orden som par, nominativ + genitiv: <span class="gr-grek">ἡγεμών, ἡγεμόνος</span>. Genus röjs av artikeln.</p>
           <div class="gr-tables">
-            <table class="gr">
+            <table class="gr" data-artikel="m">
               <caption>ἡγεμών (ἡγεμον-) · ståthållare, mask.</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
@@ -498,7 +533,7 @@
                 <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἡγεμών</td><td class="gr-el">ἡγεμόνες</td></tr>
               </tbody>
             </table>
-            <table class="gr">
+            <table class="gr" data-artikel="n">
               <caption>ὄνομα (ὀνοματ-) · namn, neutr.</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
@@ -1471,6 +1506,39 @@
     </div>
 
     <script>
+      // Artikel-toggle: klistra genus-matchad artikel framför varje böjd form.
+      const ART = {
+        m: { sg: { nom: 'ὁ', gen: 'τοῦ', dat: 'τῷ', ack: 'τὸν', vok: '' },
+             pl: { nom: 'οἱ', gen: 'τῶν', dat: 'τοῖς', ack: 'τοὺς', vok: '' } },
+        n: { sg: { nom: 'τὸ', gen: 'τοῦ', dat: 'τῷ', ack: 'τὸ', vok: '' },
+             pl: { nom: 'τὰ', gen: 'τῶν', dat: 'τοῖς', ack: 'τὰ', vok: '' } },
+        f: { sg: { nom: 'ἡ', gen: 'τῆς', dat: 'τῇ', ack: 'τὴν', vok: '' },
+             pl: { nom: 'αἱ', gen: 'τῶν', dat: 'ταῖς', ack: 'τὰς', vok: '' } },
+      };
+      const KAS = { 'k-nom': 'nom', 'k-gen': 'gen', 'k-dat': 'dat', 'k-ack': 'ack', 'k-vok': 'vok' };
+      document.querySelectorAll('table.gr[data-artikel]').forEach((tbl) => {
+        const g = tbl.getAttribute('data-artikel');
+        tbl.querySelectorAll('tbody tr').forEach((tr) => {
+          const kcls = [...tr.classList].find((c) => KAS[c]);
+          if (!kcls) return;
+          const kasus = KAS[kcls];
+          const cells = tr.querySelectorAll('td.gr-el');
+          ['sg', 'pl'].forEach((num, i) => {
+            const cell = cells[i];
+            const art = cell && ART[g][num][kasus];
+            if (!art) return;
+            const span = document.createElement('span');
+            span.className = 'gr-art';
+            span.textContent = art + ' ';
+            cell.insertBefore(span, cell.firstChild);
+          });
+        });
+      });
+      const artToggle = document.getElementById('gr-arttoggle');
+      artToggle.addEventListener('change', () => {
+        document.body.classList.toggle('show-artikel', artToggle.checked);
+      });
+
       // Scrollspy: markera aktivt avsnitt i innehållsförteckningen.
       const links = [...document.querySelectorAll('#toc a')];
       const byId = new Map(links.map((a) => [a.getAttribute('href').slice(1), a]));
