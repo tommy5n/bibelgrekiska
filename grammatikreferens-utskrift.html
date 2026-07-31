@@ -203,6 +203,13 @@ th.h-gen, th.h-dat, th.h-ack { font-weight: 600; }
 .pcard.attr .reach { border-bottom: 1.5pt solid #000; border-radius: 0 0 3px 3px; padding: 0 0.5mm 0.5mm; }
 .gr-pos .adjmark { padding: 0 0.6mm; background: #e2e2e2; border-radius: 2px; }
 .gr-pos .psv { font-size: 8.5pt; color: #555; margin-top: 1mm; }
+
+/* Prosa-introduktion (löptext med exempelmeningar) */
+.gr-prose > p { margin: 0 0 2mm; line-height: 1.5; }
+.gr-prose > p:last-child { margin-bottom: 0; }
+.gr-ex { margin: 2mm 0; padding: 1.5mm 2.5mm; border-left: 1.5pt solid #000; }
+.gr-ex .el { font-family: "Cardo","Spectral",serif; font-size: 12pt; }
+.gr-ex .sv { display: block; color: #555; font-size: 9pt; margin-top: 0.8mm; line-height: 1.4; }
 .gr-grek          { font-size: 1.12em; }   /* inline i löptext + grekiska kolumnrubriker */
 .gr-card h3 .ex   { font-size: 9.6pt; }
 
@@ -251,7 +258,7 @@ b { font-weight: 600; }
 <div class="toc-group"><span class="toc-h">Grunder</span><span class="toc-item">Bestämd artikel</span><span class="toc-item">Kasus &amp; satsdelar</span><span class="toc-item">Accenter &amp; enklitika</span></div>
 <div class="toc-group"><span class="toc-h">Substantiv</span><span class="toc-item">2:a deklinationen, maskulinum</span><span class="toc-item">2:a deklinationen, neutrum</span><span class="toc-item">1:a deklinationen, femininum</span><span class="toc-item">2:a deklinationen, feminina (-ος)</span><span class="toc-item">1:a deklinationen, maskulina (-ης/-ας)</span><span class="toc-item">3:e deklinationen</span><span class="toc-item">Jämför deklinationerna</span></div>
 <div class="toc-group"><span class="toc-h">Adjektiv</span><span class="toc-item">Adjektiv 2-1-2</span><span class="toc-item">Kongruens-exempel</span><span class="toc-item">πᾶς πᾶσα πᾶν</span><span class="toc-item">μέγας &amp; πολύς</span></div>
-<div class="toc-group"><span class="toc-h">Verb</span><span class="toc-item">Tempus, aspekt &amp; uppbyggnad</span><span class="toc-item">ω-verb, presens aktiv indikativ</span><span class="toc-item">Kontraherade verb på -έω</span><span class="toc-item">εἰμί (vara) — presens &amp; imperfekt</span><span class="toc-item">Futurum aktiv indikativ</span><span class="toc-item">Infinitiv</span><span class="toc-item">Presens aktiv imperativ</span><span class="toc-item">Imperfekt aktiv indikativ</span><span class="toc-item">Likvidaverb: futurum &amp; aorist</span><span class="toc-item">μι-verb</span></div>
+<div class="toc-group"><span class="toc-h">Verb</span><span class="toc-item">Verb — hur de fungerar</span><span class="toc-item">Tempus, aspekt &amp; uppbyggnad</span><span class="toc-item">ω-verb, presens aktiv indikativ</span><span class="toc-item">Kontraherade verb på -έω</span><span class="toc-item">εἰμί (vara) — presens &amp; imperfekt</span><span class="toc-item">Futurum aktiv indikativ</span><span class="toc-item">Infinitiv</span><span class="toc-item">Presens aktiv imperativ</span><span class="toc-item">Imperfekt aktiv indikativ</span><span class="toc-item">Likvidaverb: futurum &amp; aorist</span><span class="toc-item">μι-verb</span></div>
 <div class="toc-group"><span class="toc-h">Pronomen</span><span class="toc-item">Personliga pronomen</span><span class="toc-item">Personligt pronomen 3:e person (αὐτός)</span><span class="toc-item">Demonstrativa pronomen</span><span class="toc-item">Interrogativa pronomen &amp; adverb</span><span class="toc-item">Possessiva pronomen</span><span class="toc-item">Indefinita pronomen &amp; adverb</span><span class="toc-item">Relativpronomen</span></div>
 <div class="toc-group"><span class="toc-h">Adverb</span><span class="toc-item">Adverb</span></div>
 <div class="toc-group"><span class="toc-h">Syntax</span><span class="toc-item">Placering av attribut</span><span class="toc-item">Prepositioner</span><span class="toc-item">Negationen οὐ</span><span class="toc-item">Satsanalys</span></div>
@@ -709,6 +716,35 @@ b { font-weight: 600; }
             <br /><b>Allt annat är vanligt 2-1-2</b> på de långa stammarna <span class="gr-grek">μεγαλ-</span> och <span class="gr-grek">πολλ-</span>: maskulinum och neutrum efter 2:a deklinationen, femininum efter 1:a.
             <br /><b>πολύς byter betydelse med numerus:</b> singular ”mycken, stor” (<span class="gr-grek">πολὺς καρπός</span> ”mycket frukt”, <span class="gr-grek">ὁ πολὺς ὄχλος</span> ”den stora folkhopen”), plural ”många” (<span class="gr-grek">πολλὰ σημεῖα</span> ”många tecken”).
             <br /><b>Kongruens som vanligt:</b> <span class="gr-grek">ὁ μέγας οἶκος</span> (det stora huset), <span class="gr-grek">μεγάλη ἁμαρτία</span> (en stor synd), <span class="gr-grek">μέγα σημεῖον</span> (ett stort tecken).
+          </div>
+        </section>
+
+        <!-- ══ Verb: introduktion (löptext) ══ -->
+        <section class="gr-card" id="verb-intro">
+          <h3>Verb — hur de fungerar <span class="sem">Sem 2–9</span></h3>
+          <div class="gr-prose">
+            <p>Ett grekiskt verb är en hel liten sats i sig. I en enda form ligger inte bara handlingen, utan också <b>vem</b> som utför den (person), <b>hur många</b> de är (numerus), <b>när</b> det sker (tempus), <b>hur</b> talaren ser på handlingen (aspekt och modus) och om subjektet <b>handlar självt eller berörs</b> (diates). Eftersom personen redan sitter i ändelsen behövs sällan något utsatt subjektspronomen: <span class="gr-grek">γράφω</span> betyder redan ”jag skriver”, <span class="gr-grek">πιστεύομεν</span> ”vi tror”, <span class="gr-grek">ἀκούετε</span> ”ni hör”. Vill man ändå betona vem det gäller lägger man till pronomenet — <span class="gr-grek">ἐγὼ γράφω</span> ”det är <i>jag</i> som skriver”.</p>
+
+            <div class="gr-ex"><span class="el">ὁ θεὸς ἀγάπη ἐστίν.</span> <span class="sv">”Gud är kärlek.” — det lilla <span class="gr-grek">ἐστίν</span> bär person (3:e), numerus (singular) och tempus (presens) på en gång.</span></div>
+
+            <p>Att läsa ändelsen är därför halva arbetet. Sitter de sex personändelserna — <span class="gr-grek">-ω, -εις, -ει</span> i singular, <span class="gr-grek">-ομεν, -ετε, -ουσι(ν)</span> i plural — kan du plocka fram subjektet ur vilket verb som helst. I <span class="gr-grek">βλέπει τὸν ἀδελφόν</span> ”han ser brodern” röjer <span class="gr-grek">-ει</span> att subjektet är ett ”han/hon/det”, fastän inget står utskrivet; objektet <span class="gr-grek">τὸν ἀδελφόν</span> står i ackusativ.</p>
+
+            <p>Tempus talar om <b>när</b>, men minst lika viktig är <b>aspekten</b> — själva synsättet på handlingen. Presens och imperfekt målar den som pågående eller upprepad, medan aoristen sammanfattar den som en avslutad helhet. Skillnaden syns tydligast i dåtid, där grekiskan har två tempus för samma tidpunkt:</p>
+
+            <div class="gr-ex"><span class="el">ὁ Ἰησοῦς ἐδίδασκεν τοὺς μαθητάς.</span> <span class="sv">imperfekt — ”Jesus undervisade lärjungarna” i betydelsen <i>höll på att</i> eller <i>brukade</i> undervisa.</span></div>
+            <div class="gr-ex"><span class="el">ὁ Ἰησοῦς ἐδίδαξεν τοὺς μαθητάς.</span> <span class="sv">aorist — ”Jesus undervisade lärjungarna” som en <i>avslutad helhet</i>, sedd utifrån.</span></div>
+
+            <p>Presens beskriver nuet eller det allmängiltiga: <span class="gr-grek">ὁ θεὸς ἀγαπᾷ τὸν κόσμον</span> ”Gud älskar världen”. Och futurum pekar framåt: <span class="gr-grek">ὁ κύριος πέμψει τοὺς ἀγγέλους αὐτοῦ</span> ”Herren ska sända sina änglar”.</p>
+
+            <p>Samma stam kan uttrycka olika hållningar till handlingen — det kallas <b>modus</b>. Indikativen konstaterar ett faktum: <span class="gr-grek">ἀκούεις τὸν λόγον</span> ”du hör ordet”. Imperativen uttrycker talarens vilja, en uppmaning eller befallning: <span class="gr-grek">ἀκούετε τὸν λόγον</span> ”hör ordet!”, <span class="gr-grek">μένε ἐν ἐμοί</span> ”förbli i mig”. Här lurar en tvetydighet: <span class="gr-grek">ἀκούετε</span> är både ”ni hör” (indikativ) och ”hör!” (imperativ) — bara sammanhanget skiljer dem. Infinitiven, slutligen, ger verbet i sin oböjda grundform, oftast som komplement till ett annat verb: <span class="gr-grek">θέλω ἀκούειν τὸν λόγον</span> ”jag vill höra ordet”, <span class="gr-grek">μέλλει κηρύσσειν</span> ”han tänker predika”.</p>
+
+            <p>Diatesen visar om subjektet självt utför handlingen (<b>aktiv</b>) eller berörs av den (<b>medium</b> och <b>passiv</b>). I Bibelgrekiska I möter du framför allt aktiva former, där subjektet är den handlande: <span class="gr-grek">ὁ ἀπόστολος πέμπει τὸν δοῦλον</span> ”aposteln sänder tjänaren”. Medium och passiv — där subjektet handlar för egen räkning eller tar emot handlingen, <span class="gr-grek">ὁ δοῦλος πέμπεται</span> ”tjänaren blir sänd” — byggs ut senare; ett litet förskott är futurum av <span class="gr-grek">εἰμί</span>, <span class="gr-grek">ἔσομαι</span> ”jag ska vara”, som har medium-ändelser men aktiv betydelse.</p>
+
+            <p>Att analysera en grekisk mening börjar därför nästan alltid med att hitta verbet.</p>
+
+            <div class="gr-ex"><span class="el">οἱ μαθηταὶ ἀκούουσι τοὺς λόγους τοῦ διδασκάλου.</span> <span class="sv">”Lärjungarna hör lärarens ord.” Verbet <span class="gr-grek">ἀκούουσι</span> är kärnan: <span class="gr-grek">-ουσι(ν)</span> säger 3:e person plural, så subjektet är ett ”de” — här utskrivet <span class="gr-grek">οἱ μαθηταί</span> (nominativ). Objektet <span class="gr-grek">τοὺς λόγους</span> står i ackusativ, och genitiven <span class="gr-grek">τοῦ διδασκάλου</span> ”lärarens” hänger på <span class="gr-grek">λόγους</span>.</span></div>
+
+            <p>Ordföljden kan kastas om utan att rollerna ändras — <span class="gr-grek">τοὺς λόγους ἀκούουσιν οἱ μαθηταί</span> betyder precis samma sak — eftersom det är <b>ändelser och kasus</b>, inte ordningen, som bär grammatiken. De följande korten tar sedan en form i taget. Kartan över hur tempusen förhåller sig till varandra finns i nästa kort, <b>Tempus, aspekt &amp; uppbyggnad</b>, med tidslinjen och byggblocken; därefter kan du nöta varje böjning för sig.</p>
           </div>
         </section>
 
