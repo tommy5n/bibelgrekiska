@@ -66,6 +66,9 @@
       .gr-card > h3 { margin: 0 0 0.2rem; font-size: var(--fs-2xl); color: var(--ink);
         display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
       .gr-card > h3 .antal { font-size: var(--fs-xs); color: var(--ink-soft); font-weight: 600; }
+      .gr-card > h3 .pv-grlink { margin-left: auto; font-size: var(--fs-xs); font-weight: 600;
+        color: var(--gold); text-decoration: none; white-space: nowrap; }
+      @media (hover: hover) { .gr-card > h3 .pv-grlink:hover { text-decoration: underline; } }
       .gr-card > .note { color: var(--ink-soft); font-size: var(--fs-xs); margin: 0.1rem 0 0.9rem; }
       .gr-card .sem { font-size: var(--fs-3xs); color: var(--ink-soft);
         border: 1px solid var(--line); border-radius: 999px; padding: 0.05rem 0.55rem;
@@ -286,6 +289,15 @@
         "Subjunktioner": "#4a6a8a", "Verb": "#3f7a4f", "Substantiv": "#a8842c",
         "Adjektiv": "#b0642f", "Prepositioner": "#8a5a86", "Blandade småord": "#6a7a4a",
       };
+      // Djuplänk till det kort i grammatikreferensen som förklarar kategorin.
+      const KAT_LANK = {
+        "Subjunktioner": ["bisatser", "Bisatser &amp; subjunktioner"],
+        "Verb": ["verb-intro", "Verb — böjningen"],
+        "Substantiv": ["subst-jmf", "Deklinationerna"],
+        "Adjektiv": ["adjektiv", "Adjektiv 2-1-2"],
+        "Prepositioner": ["prepositioner", "Prepositioner"],
+        "Blandade småord": ["negation", "Negationen οὐ"],
+      };
       const esc = (s) =>
         s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
@@ -296,8 +308,10 @@
             o.gen ? `<span class="gen">${esc(o.gen)}</span>` : ""
           }<span class="sv">${esc(o.sv)}</span></div>`
         ).join("");
+        const [ank, txt] = KAT_LANK[g.kat];
         return `<section class="gr-card" id="${KAT_ID[g.kat]}" style="--accent:${KAT_ACCENT[g.kat]}">
-          <h3>${esc(g.kat)} <span class="antal">${g.ord.length} ord</span></h3>
+          <h3>${esc(g.kat)} <span class="antal">${g.ord.length} ord</span>
+            <a class="pv-grlink" href="grammatikreferens.html#${ank}">§ ${txt} →</a></h3>
           <p class="note">${esc(g.not)}</p>
           <div class="pv-ord">${rader}</div>
         </section>`;
