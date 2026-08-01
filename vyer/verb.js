@@ -150,6 +150,10 @@ const STYLE = `
 .vy-verb .opt:disabled{ cursor:default; }
 .vy-verb .opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
 .vy-verb .opt.wrong{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
+/* Svenska svarsalternativ (översätt-lägena): latinsk text, en kolumn — fraser
+   som "de kommer att vara" ryms inte snyggt i två smala kolumner. */
+.vy-verb .options.sv{ grid-template-columns:1fr; }
+.vy-verb .opt.sv{ font-family:"Spectral",serif; font-size:var(--fs-lg); }
 .vy-verb .streak{ font-family:"Spectral",serif; color:var(--ink-soft); font-size:var(--fs-sm); }
 .vy-verb .modes{ display:flex; gap:.5rem; justify-content:center; margin:.4rem 0 0; }
 .vy-verb .mode{ font-family:"Spectral",serif; font-size:var(--fs-sm); padding:.35rem .9rem;
@@ -169,6 +173,8 @@ const MARKUP = `<div class="vy vy-verb">
 <div class="modes" role="group" aria-label="Spelläge">
   <button class="mode" id="mode-vand" aria-pressed="true">Vänd-kort</button>
   <button class="mode" id="mode-flerval" aria-pressed="false">Flerval</button>
+  <button class="mode" id="mode-oversatt" aria-pressed="false">Översätt</button>
+  <button class="mode" id="mode-lasa" aria-pressed="false">Läs ordet</button>
 </div>
 
 <div class="stage">
@@ -313,7 +319,7 @@ export function render(root){
   function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({
     mode:state.mode, tempus:state.tempus, modus:state.modus, valdaVerb:[...state.valdaVerb], valdaSem:[...state.valdaSem], valdaPN:[...state.valdaPN], best:state.best })); }catch(e){} }
   function ladda(){ try{ const r = JSON.parse(localStorage.getItem(LAGER)); if(!r) return;
-    if(r.mode) state.mode = r.mode;
+    if(["vand","flerval","oversatt","lasa"].includes(r.mode)) state.mode = r.mode;
     if(r.tempus && (TEMPUS[r.tempus] || r.tempus==="alla")) state.tempus = r.tempus;
     if(r.modus && (MODUS[r.modus] || r.modus==="alla")) state.modus = r.modus;
     if(Array.isArray(r.valdaVerb)) state.valdaVerb = new Set(r.valdaVerb.filter(l => verb.some(v=>v.lemma===l)));
@@ -346,18 +352,67 @@ export function render(root){
     return shuffle([rätt, ...shuffle(distraktorer).slice(0,3)]);
   }
 
+  // Översätt-lägena visar en grekisk form och låter spelaren välja rätt SVENSK
+  // översättning. "oversatt" = distraktorer ur SAMMA verbs andra böjningar
+  // (tränar ändelse→grammatik); "lasa" = samma form av ANDRA verb (tränar
+  // vokabulär). Båda väljer svenska svar.
+  const oversattLage = () => state.mode==="oversatt" || state.mode==="lasa";
+  // Svensk fras för en (verb, nyckel, person)-cell (null om ingen rimlig form).
+  const frasFor = (v, k, p) =>
+    svenskFras({ svenska:v.svenska, pn:p, tempus:tempusAv(k), modus:modusAv(k) });
+
+  function byggSvenskaOptioner(v, k, p, rätt){
+    // Alternativen är DISTINKTA svenska strängar; sammanfallande former (aorist
+    // och imperfekt → "de löste", imperativ 2sg/2pl → "lös!") viks ihop så att
+    // det rätta svaret aldrig blir tvetydigt.
+    const sedda = new Set([rätt]);
+    const ut = [];
+    const lägg = s => { if(s && !sedda.has(s)){ sedda.add(s); ut.push(s); } };
+    if(state.mode === "oversatt"){
+      cellerFor(k).forEach(pp => lägg(frasFor(v, k, pp)));            // först samma nyckel, bara personen skiljer
+      Object.keys(v.former).filter(n => n!==k)                        // sedan verbets övriga former
+        .forEach(n => cellerFor(n).forEach(pp => { if(v.former[n][pp]!==undefined) lägg(frasFor(v, n, pp)); }));
+    } else {
+      const andra = o => o.lemma!==v.lemma;
+      const nära = aktivaVerb().filter(andra);                        // helst verb ur urvalet
+      const alla = verb.filter(andra);
+      const källa = nära.length >= 3 ? nära : alla;
+      källa.forEach(o => { const c = o.former[k]; if(c && c[p]!==undefined) lägg(frasFor(o, k, p)); });
+      if(ut.length < 3)                                               // sällsynt form → fyll ur presens
+        källa.forEach(o => { const c = o.former["pres.ind"]; if(c) PN_ORDNING.forEach(pp => { if(c[pp]!==undefined) lägg(frasFor(o, "pres.ind", pp)); }); });
+    }
+    return shuffle([rätt, ...shuffle(ut).slice(0,3)]);
+  }
+
   function uppdateraAntal(){ const el = $("verb-count"); if(el) el.textContent = "(" + aktivaVerb().length + " verb)"; }
   function newQuestion(){
     uppdateraAntal();
     const _id = rkNasta();
     const v = verb.find(o => o.lemma === _id) || pick(aktivaVerb());
-    const k = pick(nycklarFor(v)), p = pick(aktivaPN(k));
-    const rätta = new Set(accepterade(v, k, p));
+    let k, p;
+    if(oversattLage()){
+      // Bara celler som faktiskt har en svensk översättning (hoppar t.ex. över
+      // imperativ av "vilja"). Faller tillbaka på alla översättbara celler om
+      // person/numerus-filtret skulle lämna ingen.
+      const kandidater = [];
+      nycklarFor(v).forEach(n => aktivaPN(n).forEach(pp => {
+        if(v.former[n][pp]!==undefined && frasFor(v, n, pp)) kandidater.push([n, pp]); }));
+      if(!kandidater.length) nycklarFor(v).forEach(n => cellerFor(n).forEach(pp => {
+        if(v.former[n][pp]!==undefined && frasFor(v, n, pp)) kandidater.push([n, pp]); }));
+      [k, p] = pick(kandidater);
+    } else {
+      k = pick(nycklarFor(v)); p = pick(aktivaPN(k));
+    }
+    const grekRätta = new Set(accepterade(v, k, p));
+    const svensk = oversattLage() ? frasFor(v, k, p) : null;
     state.card = {
       lemma: v.lemma, glosa: v.glosa, svenska: v.svenska, pn: p, nyckel: k,
       tempus: tempusAv(k), modus: modusAv(k),
-      form: v.former[k][p], varianter: variantformer(v, k, p), rätta,
-      optioner: state.mode === "flerval" ? byggOptioner(v, k, rätta) : null,
+      form: v.former[k][p], varianter: variantformer(v, k, p),
+      rätta: oversattLage() ? new Set([svensk]) : grekRätta, svenskaRätt: svensk,
+      optioner: state.mode === "flerval" ? byggOptioner(v, k, grekRätta)
+              : oversattLage()           ? byggSvenskaOptioner(v, k, p, svensk)
+              : null,
     };
     state.besvarad = false; state.valt = null;
     render2();
@@ -365,36 +420,45 @@ export function render(root){
 
   function render2(){
     const c = state.card;
-    $("prompt").textContent = c.lemma;
-    $("glosa").textContent = c.glosa;
-    // Målet = den svenska översättningen ("de är"), central och framhävd. Den
-    // grammatiska beskrivningen ("3:e person plural") följer i parentes. Tempus/
-    // modus läggs till i parentesen bara när respektive filter är fritt (annars
-    // är de konstanta i rundan och redan tydliga ur den svenska frasen).
-    const sv = svenskFras(c);
-    const beskr = [];
-    if(state.tempus==="alla") beskr.push(TEMPUS[c.tempus]);
-    if(c.modus==="inf"){
-      beskr.push("infinitiv");
+    if(oversattLage()){
+      // Motsatt riktning: den grekiska FORMEN är frågan, svaret är betydelsen.
+      // "oversatt" visar uppslagsform + glosa som stöd (ren parsning); "lasa"
+      // döljer dem (läs ordet och känn igen både verb och form).
+      $("prompt").textContent = c.form;
+      $("glosa").textContent = state.mode==="oversatt" ? c.lemma + " · " + c.glosa : "";
+      $("target").innerHTML = "";
     } else {
-      if(state.modus==="alla") beskr.push(MODUS[c.modus]);
-      beskr.push(PN[c.pn].namn);
-    }
-    if(sv){
-      $("target").innerHTML = "→ <b>" + sv + "</b>"
-        + (beskr.length ? " <span class=\"desc\">(" + beskr.join(" · ") + ")</span>" : "");
-    } else {
-      // Ingen svensk form (t.ex. imperativ av "vilja") → ren grammatisk etikett.
-      const delar = [];
-      if(state.tempus==="alla") delar.push("<b>" + TEMPUS[c.tempus] + "</b>");
+      $("prompt").textContent = c.lemma;
+      $("glosa").textContent = c.glosa;
+      // Målet = den svenska översättningen ("de är"), central och framhävd. Den
+      // grammatiska beskrivningen ("3:e person plural") följer i parentes. Tempus/
+      // modus läggs till i parentesen bara när respektive filter är fritt (annars
+      // är de konstanta i rundan och redan tydliga ur den svenska frasen).
+      const sv = svenskFras(c);
+      const beskr = [];
+      if(state.tempus==="alla") beskr.push(TEMPUS[c.tempus]);
       if(c.modus==="inf"){
-        if(state.tempus!=="alla") delar.push(TEMPUS[c.tempus]);
-        delar.push("<b>infinitiv</b>");
+        beskr.push("infinitiv");
       } else {
-        if(state.modus==="alla") delar.push("<b>" + MODUS[c.modus] + "</b>");
-        delar.push("<b>" + PN[c.pn].namn + "</b> (" + PN[c.pn].pron + ")");
+        if(state.modus==="alla") beskr.push(MODUS[c.modus]);
+        beskr.push(PN[c.pn].namn);
       }
-      $("target").innerHTML = "→ " + delar.join(" · ");
+      if(sv){
+        $("target").innerHTML = "→ <b>" + sv + "</b>"
+          + (beskr.length ? " <span class=\"desc\">(" + beskr.join(" · ") + ")</span>" : "");
+      } else {
+        // Ingen svensk form (t.ex. imperativ av "vilja") → ren grammatisk etikett.
+        const delar = [];
+        if(state.tempus==="alla") delar.push("<b>" + TEMPUS[c.tempus] + "</b>");
+        if(c.modus==="inf"){
+          if(state.tempus!=="alla") delar.push(TEMPUS[c.tempus]);
+          delar.push("<b>infinitiv</b>");
+        } else {
+          if(state.modus==="alla") delar.push("<b>" + MODUS[c.modus] + "</b>");
+          delar.push("<b>" + PN[c.pn].namn + "</b> (" + PN[c.pn].pron + ")");
+        }
+        $("target").innerHTML = "→ " + delar.join(" · ");
+      }
     }
     $("streak").textContent = state.streak;
     $("best").textContent = state.best;
@@ -415,30 +479,39 @@ export function render(root){
     }
     resultatram();
   }
-  // Grön/amber ram: bara i flerval där svaret rättas automatiskt (vänd-läget
+  // Grön/amber ram: i alla flervalslägen där svaret rättas automatiskt (vänd-läget
   // självbedöms och går vidare direkt, så ingen ram där).
   function resultatram(){
     const kort = document.querySelector(".vy-verb .card"); if(!kort) return;
-    const rätt = state.mode==="flerval" && state.besvarad && state.valt!=null && state.card.rätta.has(state.valt);
-    const fel  = state.mode==="flerval" && state.besvarad && state.valt!=null && !state.card.rätta.has(state.valt);
+    const rätt = state.mode!=="vand" && state.besvarad && state.valt!=null && state.card.rätta.has(state.valt);
+    const fel  = state.mode!=="vand" && state.besvarad && state.valt!=null && !state.card.rätta.has(state.valt);
     kort.classList.toggle("svar-ratt", rätt);
     kort.classList.toggle("svar-fel", fel);
   }
   function visaSvar(){
     const c = state.card;
-    $("svar").textContent = c.form;
     // Facit-etiketten är alltid fullständig (tempus · modus · person), oavsett filter.
     let label = c.lemma + " · " + TEMPUS[c.tempus] + " " + MODUS[c.modus]
               + (c.modus==="inf" ? "" : " · " + PN[c.pn].namn);
-    if(c.varianter.length) label += " · äv. " + c.varianter.join(", ");
+    if(oversattLage()){
+      // Frågan var den grekiska formen → facit visar betydelsen och (i läsläget)
+      // vilket verb det var. Glosan tas med så att uppslagsordet alltid syns.
+      $("svar").textContent = c.svenskaRätt;
+      label = c.lemma + " (" + c.glosa + ") · " + label.slice(label.indexOf("· ") + 2);
+    } else {
+      $("svar").textContent = c.form;
+      if(c.varianter.length) label += " · äv. " + c.varianter.join(", ");
+    }
     $("svarlabel").textContent = label;
     $("reveal").classList.remove("hidden");
   }
   function renderOptioner(){
     const box = $("options"); box.innerHTML = ""; box.classList.add("no-hover"); box.addEventListener("pointermove", () => box.classList.remove("no-hover"), { once: true });
+    const sv = oversattLage();
+    box.classList.toggle("sv", sv);
     state.card.optioner.forEach(f => {
       const b = document.createElement("button");
-      b.className = "opt"; b.textContent = f;
+      b.className = sv ? "opt sv" : "opt"; b.textContent = f;
       if(state.besvarad){
         b.disabled = true;
         if(state.card.rätta.has(f)) b.classList.add("correct");
@@ -527,8 +600,8 @@ export function render(root){
     });
     uppdateraPNChips();
   }
-  function uppdateraLäge(){ $("mode-vand").setAttribute("aria-pressed", state.mode==="vand");
-    $("mode-flerval").setAttribute("aria-pressed", state.mode==="flerval"); }
+  function uppdateraLäge(){ ["vand","flerval","oversatt","lasa"].forEach(m =>
+    $("mode-" + m).setAttribute("aria-pressed", state.mode===m)); }
   // "presens indikativ" / "imperfekt" / "infinitiv" … efter vad filtren låser fast.
   function beskrivning(){
     const t = state.tempus==="alla" ? "" : TEMPUS[state.tempus];
@@ -537,7 +610,12 @@ export function render(root){
   }
   function uppdateraSub(){
     const b = beskrivning();
-    const mal = state.modus==="inf" ? "Uppslagsform + svensk översättning. Ge infinitiven."
+    let mal;
+    if(state.mode === "oversatt")
+      mal = "Grekisk form + uppslagsord. Välj den rätta översättningen.";
+    else if(state.mode === "lasa")
+      mal = "Grekisk form. Läs ordet och välj den rätta översättningen.";
+    else mal = state.modus==="inf" ? "Uppslagsform + svensk översättning. Ge infinitiven."
       : b ? "Uppslagsform + svensk översättning. Ge den rätta " + b + "formen."
           : "Uppslagsform + svensk översättning. Ge den rätta formen.";
     $("sub").textContent = mal;
@@ -548,8 +626,11 @@ export function render(root){
   function uppdateraPNChips(){ document.querySelectorAll("[data-pn]").forEach(b =>
     b.setAttribute("aria-pressed", setEq(state.valdaPN, new Set(PN_GRUPPER[b.dataset.pn] || [])))); }
 
-  $("mode-vand").onclick    = () => { state.mode="vand"; uppdateraLäge(); spara(); newQuestion(); };
-  $("mode-flerval").onclick = () => { state.mode="flerval"; uppdateraLäge(); spara(); newQuestion(); };
+  const bytLäge = m => { state.mode=m; uppdateraLäge(); uppdateraSub(); spara(); newQuestion(); };
+  $("mode-vand").onclick     = () => bytLäge("vand");
+  $("mode-flerval").onclick  = () => bytLäge("flerval");
+  $("mode-oversatt").onclick = () => bytLäge("oversatt");
+  $("mode-lasa").onclick     = () => bytLäge("lasa");
   $("btn-vand").onclick     = () => { state.besvarad=true; render2(); };
   $("btn-kunde").onclick    = () => { registrera(true); rkKlarad(); newQuestion(); };
   $("btn-missade").onclick  = () => { registrera(false); newQuestion(); };
@@ -566,8 +647,8 @@ export function render(root){
 
   __vh = e => {
     if(e.code==="Space" && state.mode==="vand" && !state.besvarad){ e.preventDefault(); state.besvarad=true; render2(); }
-    else if(e.key==="Enter" && state.besvarad && state.mode==="flerval"){ newQuestion(); }
-    else if(state.mode==="flerval" && !state.besvarad && /^[1-4]$/.test(e.key)){
+    else if(e.key==="Enter" && state.besvarad && state.mode!=="vand"){ newQuestion(); }
+    else if(state.mode!=="vand" && !state.besvarad && /^[1-4]$/.test(e.key)){
       const f = state.card.optioner[+e.key-1]; if(f) svara(f); }
   };
   document.addEventListener("keydown", __vh);
