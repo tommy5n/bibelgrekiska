@@ -285,6 +285,25 @@
       .gr-ex .el { font-family: "Cardo","Spectral",serif; font-size: var(--fs-xl); }
       .gr-ex .sv { display: block; color: var(--ink-soft); font-size: var(--fs-sm); margin-top: 0.25rem; line-height: 1.5; }
 
+      /* ── Exempelmeningar i sammanhang (per kort) ────────────────────── */
+      .gr-exempel { margin-top: 0.95rem; }
+      .gr-exempel .gr-exlabel {
+        color: var(--gold); font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.07em; font-size: var(--fs-2xs); display: block; margin-bottom: 0.15rem;
+      }
+      .gr-exempel .gr-ex { margin: 0.5rem 0; border-left-color: var(--accent, var(--gold)); }
+      .gr-ex .el b { color: var(--accent, var(--gold)); font-weight: 700; }
+      .gr-ex .src {
+        font-weight: 600; font-style: normal; color: var(--ink-soft);
+        font-size: var(--fs-3xs); letter-spacing: 0.02em; margin-left: 0.4rem;
+        white-space: nowrap;
+      }
+      .gr-ex .flagga {
+        display: block; margin-top: 0.25rem; font-style: italic;
+        font-size: var(--fs-2xs); color: var(--ink-soft);
+      }
+      .gr-ex .flagga::before { content: "⚑ "; font-style: normal; color: var(--gold); }
+
       @media (max-width: 900px) {
         .gr-layout { grid-template-columns: 1fr; }
         .gr-toc { position: static; max-height: none; margin-bottom: 1rem; }
@@ -418,6 +437,11 @@
             <span class="tip-label">Lär in den med ändelsen</span>
             I 1:a och 2:a deklinationen är artikeln nästan <b>τ&nbsp;+&nbsp;substantivets ändelse</b>: <span class="end">τοῦ&nbsp;·&nbsp;-ου</span>, <span class="end">τῷ&nbsp;·&nbsp;-ῳ</span>, <span class="end">τῶν&nbsp;·&nbsp;-ων</span>, <span class="end">τοῖς&nbsp;·&nbsp;-οις</span> · femininum <span class="end">τῆς&nbsp;·&nbsp;-ης</span>, <span class="end">τῇ&nbsp;·&nbsp;-ῃ</span>, <span class="end">τὴν&nbsp;·&nbsp;-ην</span>. Därför står artikeln bredvid ändelsen i tabellerna nedan — nöt dem som ett par. (De obestämda formerna <span class="gr-grek">ὁ, ἡ, οἱ, αἱ</span> saknar τ och måste läras separat.)
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el"><b>ὁ</b> ἄνθρωπος βλέπει <b>τὸν</b> οἶκον.</span> <span class="sv">”Människan ser huset.” — <span class="gr-grek">ὁ</span> (nom) röjer subjektet, <span class="gr-grek">τὸν</span> (ack) objektet.</span></div>
+            <div class="gr-ex"><span class="el">ἀκούει <b>ὁ</b> λαὸς <b>τοὺς</b> λόγους <b>τοῦ</b> ἀποστόλου.</span> <span class="sv">”Folket hör apostelns ord.” — samma artikel i tre kasus: nom <span class="gr-grek">ὁ</span>, ack pl <span class="gr-grek">τοὺς</span>, gen <span class="gr-grek">τοῦ</span>.</span></div>
+          </div>
         </section>
 
         <!-- ══ Kasus & satsdelar ══ -->
@@ -434,6 +458,11 @@
               <tr class="k-vok"><th class="kasus">vokativ</th><td>tilltal</td><td>vem tilltalas?</td><td><span class="gr-grek">ὦ</span> är en interjektion, inte en artikel.</td></tr>
             </tbody>
           </table>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el"><b>τὸν ἄνθρωπον</b> βλέπει <b>ὁ θεός</b>.</span> <span class="sv">”Gud ser människan.” — objektet <span class="gr-grek">τὸν ἄνθρωπον</span> (ack) står först och subjektet <span class="gr-grek">ὁ θεός</span> (nom) sist. Kasus, inte ordföljden, avgör rollen.</span></div>
+            <div class="gr-ex"><span class="el">πέμπει <b>τοὺς δούλους</b> <b>τῷ ἀδελφῷ</b>.</span> <span class="sv">”Han skickar slavarna till brodern.” — direkt objekt i ackusativ, indirekt objekt i dativ.</span></div>
+          </div>
         </section>
 
 <!-- ══ Accenter & enklitika ══ -->
@@ -472,6 +501,11 @@
             <br /><b>Recessiv vs. fast betoning:</b> <b>verb</b> har recessiv accent — så långt tillbaka som sista stavelsens längd tillåter (<span class="gr-grek">λύομεν, ἀκούω</span>). <b>Substantiv och adjektiv</b> har fast accent — den sitter kvar där nominativ har den, så långt reglerna medger, och tvingas framåt när ultima blir lång (<span class="gr-grek">ἄνθρωπος → ἀνθρώπου</span>).
             <br /><b>Enklitika</b> är småord som lutar sig mot föregående ord och normalt tappar sin egen accent: presens av <span class="gr-grek">εἰμί</span> (utom <span class="gr-grek">εἶ</span>), de obetonade pronomenformerna <span class="gr-grek">μου, μοι, με</span> och det obestämda <span class="gr-grek">τις, τι</span>. Värdordet kan då få en extra akut: <span class="gr-grek">ἄνθρωπός τις</span> ”en viss människa”.
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">Enklitika i sammanhang</span>
+            <div class="gr-ex"><span class="el">κηρύσσο<b>μέν</b> σοι.</span> <span class="sv">”Vi predikar för dig.” — enklitiskt <span class="gr-grek">σοι</span> kastar en extra akut bakåt: <span class="gr-grek">κηρύσσομεν + σοι → κηρύσσομέν σοι</span>.</span></div>
+            <div class="gr-ex"><span class="el">οὗτό<b>ς</b> ἐστιν Ἰωάννης ὁ βαπτιστής.</span> <span class="sv">”Denne är Johannes Döparen.” — den andra akuten på <span class="gr-grek">οὗτός</span> kommer från det enklitiska <span class="gr-grek">ἐστιν</span>.</span></div>
+          </div>
         </section>
 
         <!-- ══ Substantiv 2 dekl mask ══ -->
@@ -507,6 +541,11 @@
           </div>
           <div class="gr-rule">Vokativ pl = nom pl. Många maskulina egennamn och ord som <span class="gr-grek">λόγος</span> (ord), <span class="gr-grek">κύριος</span> (herre), <span class="gr-grek">θεός</span> (Gud), <span class="gr-grek">υἱός</span> (son), <span class="gr-grek">Χριστός</span> (Kristus) följer samma mönster.
             <br /><b>Fälla:</b> nominativ plural <span class="gr-grek">-οι</span> (<span class="gr-grek">ἄνθρωποι</span>) är <i>inte</i> dativ — låt inte iota:t lura dig. Dativ är <span class="gr-grek">-ῳ</span> i singular (<span class="gr-grek">ἀνθρώπῳ</span>) och <span class="gr-grek">-οις</span> i plural (<span class="gr-grek">ἀνθρώποις</span>). Artikeln avgör: <span class="gr-grek">οἱ ἄνθρωποι</span> (nom pl) mot <span class="gr-grek">τοῖς ἀνθρώποις</span> (dat pl).</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ὁ <b>ἄνθρωπος</b> βλέπει τὸν <b>ἄγγελον</b>.</span> <span class="sv">”Människan ser ängeln.” — <span class="gr-grek">-ος</span> som subjekt (nom), <span class="gr-grek">-ον</span> som objekt (ack).</span></div>
+            <div class="gr-ex"><span class="el">ἀκούουσιν οἱ <b>κύριοι</b> τὸν <b>λόγον</b> τοῦ <b>δούλου</b>.</span> <span class="sv">”Herrarna hör slavens ord.” — nom pl <span class="gr-grek">-οι</span>, ack sg <span class="gr-grek">-ον</span>, gen sg <span class="gr-grek">-ου</span> i en och samma sats.</span></div>
+          </div>
         </section>
 
         <!-- ══ Substantiv 2 dekl neutrum ══ -->
@@ -541,6 +580,11 @@
             </table>
           </div>
           <div class="gr-rule"><b>Neutrumregeln:</b> nominativ, ackusativ och vokativ är alltid lika — i plural på <b>-α</b>. Gen/dat är identiska med maskulinum. Jfr <span class="gr-grek">τέκνον</span> (barn), <span class="gr-grek">εὐαγγέλιον</span> (evangelium), <span class="gr-grek">ἱερόν</span> (tempel), <span class="gr-grek">σημεῖον</span> (tecken), <span class="gr-grek">πλοῖον</span> (båt), <span class="gr-grek">σάββατον</span> (sabbat).</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">τὸ <b>ἔργον</b> ἦν καλόν · τὰ <b>ἔργα</b> ἦν καλά.</span> <span class="sv">”Verket var vackert · verken var vackra.” — neutrum plural <span class="gr-grek">-α</span>, och plural­subjektet tar singularverb (<span class="gr-grek">ἦν</span>).</span></div>
+            <div class="gr-ex"><span class="el">βλέπομεν τὸ <b>σημεῖον</b> τοῦ θεοῦ.</span> <span class="sv">”Vi ser Guds tecken.” — <span class="gr-grek">σημεῖον</span> (nom = ack) står här som direkt objekt.</span></div>
+          </div>
         </section>
 
         <!-- ══ Substantiv 1 dekl femininum ══ -->
@@ -581,6 +625,11 @@
               <li>Exempelord: <span class="gr-grek">ἐκκλησία</span> (församling), <span class="gr-grek">ἡμέρα</span> (dag), <span class="gr-grek">βασιλεία</span> (rike), <span class="gr-grek">ἀλήθεια</span> (sanning) — α-typ · <span class="gr-grek">ἀρχή</span> (begynnelse), <span class="gr-grek">φωνή</span> (röst), <span class="gr-grek">ζωή</span> (liv), <span class="gr-grek">ἀγάπη</span> (kärlek), <span class="gr-grek">εἰρήνη</span> (fred) — η-typ.</li>
             </ul>
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ἐν <b>ἀρχῇ</b> ἦν ὁ λόγος.</span> <span class="sv">”I begynnelsen var Ordet.” — <span class="gr-grek">ἀρχή</span> i dativ efter <span class="gr-grek">ἐν</span>.<span class="src">Joh 1:1</span></span></div>
+            <div class="gr-ex"><span class="el">ζητοῦσιν αἱ <b>ἀδελφαὶ</b> τὴν <b>βασιλείαν</b> τοῦ θεοῦ.</span> <span class="sv">”Systrarna söker Guds rike.” — nom pl <span class="gr-grek">-αι</span> och ack sg <span class="gr-grek">-αν</span> (α-typ).</span></div>
+          </div>
         </section>
 
         <!-- ══ Substantiv 2 dekl feminina ══ -->
@@ -601,6 +650,11 @@
             </table>
           </div>
           <div class="gr-rule">Ändelserna är maskulinums (<span class="gr-grek">-ος, -ου, -ῳ, -ον</span>), men genus är feminint → artikel och adjektiv i femininum: <span class="gr-grek">ἡ μακρὰ ὁδός</span> "den långa vägen". Jfr <span class="gr-grek">ἡ νόσος</span> (sjukdom), <span class="gr-grek">ἡ ἔρημος</span> (öken), <span class="gr-grek">ἡ παρθένος</span> (flicka).</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ἡ μακρὰ <b>ὁδός</b>.</span> <span class="sv">”Den långa vägen.” — ändelsen <span class="gr-grek">-ος</span> ser maskulin ut, men artikeln <span class="gr-grek">ἡ</span> och adjektivet <span class="gr-grek">μακρά</span> avslöjar femininum.</span></div>
+            <div class="gr-ex"><span class="el"><b>ὁδὸν</b> ὑμῖν δείκνυμι.</span> <span class="sv">”En väg visar jag för er.” — <span class="gr-grek">ὁδόν</span> (ack) böjs som ett maskulint <span class="gr-grek">-ος</span>-ord.<span class="src">1 Kor 12:31</span></span></div>
+          </div>
         </section>
 
         <!-- ══ Substantiv 1 dekl maskulina ══ -->
@@ -632,6 +686,11 @@
             </table>
           </div>
           <div class="gr-rule">Genitiv singular på <b>-ου</b> (som maskulinum i 2:a dekl.), gen.pl alltid <span class="gr-grek">-ῶν</span>. Jfr <span class="gr-grek">ὁ προφήτης</span> (profet), <span class="gr-grek">ὁ οἰκοδεσπότης</span> (husbonde). α-typen (<span class="gr-grek">νεανίας</span>) har -ας i nom och -ου i gen.</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">Ἰωάννης ἐδίδαξεν τοὺς <b>μαθητάς</b>.</span> <span class="sv">”Johannes undervisade lärjungarna.” — <span class="gr-grek">μαθητάς</span> (ack pl <span class="gr-grek">-άς</span>), maskulint trots första deklinationen.<span class="src">Luk 11:1</span></span></div>
+            <div class="gr-ex"><span class="el">καλεῖτε τοὺς <b>νεανίας</b> πρὸ τοῦ σαββάτου.</span> <span class="sv">”Ni kallar på ynglingarna före sabbaten.” — <span class="gr-grek">νεανίας</span> är α-typen (nom <span class="gr-grek">-ας</span>).</span></div>
+          </div>
         </section>
 
         <!-- ══ Substantiv 3 dekl ══ -->
@@ -681,6 +740,11 @@
               <li><b>Stamväxling (§ 80–81):</b> <span class="gr-grek">ὁ πατήρ</span> fader växlar stam i singular — <span class="gr-grek">πατήρ, πατρός, πατρί, πατέρα</span> (vok <span class="gr-grek">πάτερ</span>), pl <span class="gr-grek">πατέρες, πατέρων, πατράσι(ν), πατέρας</span>. Likadant <span class="gr-grek">ἡ μήτηρ (μητρός)</span> mor, <span class="gr-grek">ἡ θυγάτηρ (θυγατρός)</span> dotter, <span class="gr-grek">ὁ ἀνήρ (ἀνδρός)</span> man — den senare med δ-inskott.</li>
             </ul>
             Jfr <span class="gr-grek">ἡ σάρξ (σαρκός)</span> kött, <span class="gr-grek">ἡ ἐλπίς (ἐλπίδος)</span> hopp, <span class="gr-grek">ὁ αἰών (αἰῶνος)</span> tidsålder, <span class="gr-grek">ἡ χάρις (χάριτος)</span> nåd, <span class="gr-grek">τὸ σῶμα (σώματος)</span> kropp, <span class="gr-grek">τὸ πνεῦμα (πνεύματος)</span> ande, <span class="gr-grek">τὸ ὄρος (ὄρους)</span> berg, <span class="gr-grek">ὁ ἄρχων (ἄρχοντος)</span> härskare. Neutra på <b>-ος</b> (σ-stam) som <span class="gr-grek">ὄρος</span> kontraherar: gen. sg. <span class="gr-grek">ὄρους</span>, pl. <span class="gr-grek">ὄρη</span>; gen. pl. skrivs i NT <span class="gr-grek">ὀρέων</span> (presentationen ger den kortare formen <span class="gr-grek">ὄρων</span>).
+          </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">πολλοὶ ἐπίστευσαν εἰς τὸ <b>ὄνομα</b> αὐτοῦ.</span> <span class="sv">”Många trodde på hans namn.” — <span class="gr-grek">ὄνομα</span> (neutr., stam <span class="gr-grek">ὀνοματ-</span>) i ackusativ = nominativ.<span class="src">Joh 2:23</span></span></div>
+            <div class="gr-ex"><span class="el">τίνα τῶν προφητῶν οὐκ ἐδίωξαν οἱ <b>πατέρες</b> ὑμῶν;</span> <span class="sv">”Vem av profeterna förföljde inte era fäder?” — <span class="gr-grek">πατέρες</span> (nom pl av <span class="gr-grek">πατήρ, πατρός</span>) med stamväxling.<span class="src">Apg 7:52</span></span></div>
           </div>
         </section>
 
@@ -737,6 +801,11 @@
             Oxytona adjektiv (<span class="gr-grek">ἀγαθός</span>-typ) har cirkumflex i genitiv och dativ. Feminin gen.pl följer maskulinums accent (<span class="gr-grek">ἀγαθῶν</span>), inte substantivens. Jfr <span class="gr-grek">πονηρός</span> (ond), <span class="gr-grek">δίκαιος</span> (rättfärdig), <span class="gr-grek">ἅγιος</span> (helig), <span class="gr-grek">πρῶτος</span> (första).
             <br /><b>Två slut (Sem 5):</b> vissa adjektiv har bara två former — den maskulina används även för femininum: <span class="gr-grek">αἰώνιος, αἰώνιον</span> "evig". <b>Substantiverade:</b> adjektiv med artikel blir substantiv: <span class="gr-grek">ὁ πτωχός</span> "den fattige/tiggaren", <span class="gr-grek">ὁ ἁμαρτωλός</span> "syndaren".
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">οἱ <b>πονηροὶ</b> ἄνθρωποι ἀκούουσι τὸ <b>καλὸν</b> εὐαγγέλιον.</span> <span class="sv">”De onda människorna hör det vackra evangeliet.” — <span class="gr-grek">πονηροὶ</span> (mask pl) och <span class="gr-grek">καλὸν</span> (neutr sg) kongruerar med var sitt substantiv.</span></div>
+            <div class="gr-ex"><span class="el">ἐσθίομεν τὸν <b>ἀγαθὸν</b> ἄρτον.</span> <span class="sv">”Vi äter det goda brödet.” — <span class="gr-grek">ἀγαθὸν</span> tar substantivets genus, kasus och numerus (mask · ack · sg).</span></div>
+          </div>
         </section>
 
         <!-- ══ Kongruens-exempel ══ -->
@@ -754,6 +823,11 @@
               <tr><td class="gr-el">τῇ __ βασιλείᾳ</td><td>dat · fem · sg</td><td class="gr-el">ἀγαθῇ</td><td class="gr-el">δικαίᾳ</td><td>till det goda kungadömet</td></tr>
             </tbody>
           </table>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">τὰ <b>μικρὰ</b> τέκνα βαπτίζετε.</span> <span class="sv">”Ni döper de små barnen.” — <span class="gr-grek">μικρὰ</span> följer <span class="gr-grek">τέκνα</span> i neutrum plural.</span></div>
+            <div class="gr-ex"><span class="el">ὁ <b>καλὸς</b> ἀδελφὸς λέγει.</span> <span class="sv">”Den vackre brodern talar.” — <span class="gr-grek">καλὸς</span> i maskulinum singular nominativ, som huvudordet.</span></div>
+          </div>
         </section>
 
         <!-- ══ πᾶς πᾶσα πᾶν ══ -->
@@ -774,6 +848,11 @@
             </tbody>
           </table>
           <div class="gr-rule">Bruk: <span class="gr-grek">πᾶς ἄνθρωπος</span> ”varje människa”, <span class="gr-grek">πᾶσα Ἱεροσόλυμα</span> ”hela Jerusalem”, <span class="gr-grek">πάντες ἄνθρωποι</span> ”alla människor”. Dativ pl <span class="gr-grek">πᾶσι(ν)</span> har rörligt <b>ν</b>. Tredje deklinationen (m/n) behandlas systematiskt i ett senare seminarium.</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el"><b>πάντες</b> δὲ ὑμεῖς ἀδελφοί ἐστε.</span> <span class="sv">”Och alla ni är bröder.” — <span class="gr-grek">πάντες</span> (nom pl mask) = ”alla”.<span class="src">Matt 23:8</span></span></div>
+            <div class="gr-ex"><span class="el">καὶ ἐθεράπευσεν αὐτοὺς <b>πάντας</b>.</span> <span class="sv">”Och han helade dem alla.” — <span class="gr-grek">πάντας</span> (ack pl mask) kongruerar med <span class="gr-grek">αὐτούς</span>.<span class="src">Matt 12:15</span></span></div>
+          </div>
         </section>
 
         <section class="gr-card" id="adj-megas" style="--accent:#8a5a86">
@@ -830,6 +909,11 @@
             <br /><b>Allt annat är vanligt 2-1-2</b> på de långa stammarna <span class="gr-grek">μεγαλ-</span> och <span class="gr-grek">πολλ-</span>: maskulinum och neutrum efter 2:a deklinationen, femininum efter 1:a.
             <br /><b>πολύς byter betydelse med numerus:</b> singular ”mycken, stor” (<span class="gr-grek">πολὺς καρπός</span> ”mycket frukt”, <span class="gr-grek">ὁ πολὺς ὄχλος</span> ”den stora folkhopen”), plural ”många” (<span class="gr-grek">πολλὰ σημεῖα</span> ”många tecken”).
             <br /><b>Kongruens som vanligt:</b> <span class="gr-grek">ὁ μέγας οἶκος</span> (det stora huset), <span class="gr-grek">μεγάλη ἁμαρτία</span> (en stor synd), <span class="gr-grek">μέγα σημεῖον</span> (ett stort tecken).
+          </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ἠκολούθει αὐτῷ ὄχλος <b>πολύς</b>.</span> <span class="sv">”En stor folkhop följde honom.” — <span class="gr-grek">πολύς</span> i singular = ”stor, mycken”.<span class="src">Mark 5:24</span></span></div>
+            <div class="gr-ex"><span class="el">ἤκουσαν φωνῆς <b>μεγάλης</b> ἐκ τοῦ οὐρανοῦ.</span> <span class="sv">”De hörde en hög röst ur himlen.” — femininum bygger på den långa stammen <span class="gr-grek">μεγαλ-</span> (gen sg <span class="gr-grek">μεγάλης</span>).<span class="src">Upp 11:12</span></span></div>
           </div>
         </section>
 
@@ -952,6 +1036,11 @@
           </div>
           <div class="gr-rule">Rörligt <b>ν</b> i 3 pl (<span class="gr-grek">λύουσιν</span>) framför vokal eller vid satsslut. Samma ändelser i <span class="gr-grek">βλέπω</span> (se), <span class="gr-grek">ἀκούω</span> (höra), <span class="gr-grek">λέγω</span> (säga), <span class="gr-grek">γράφω</span> (skriva), <span class="gr-grek">πιστεύω</span> (tro)…</div>
           <div class="gr-tip"><span class="tip-label">Studietips</span>Ett ekonomiskt sätt att plugga verb är att memorera <b>ändelserna</b> — <span class="end">-ω, -εις, -ει, -ομεν, -ετε, -ουσι(ν)</span> — i stället för varje hel form. Sitter de en gång böjer du vilket ω-verb som helst genom att bara byta stam.</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">οἱ δοῦλοι λαμβάν<b>ουσι</b> τὸν καρπὸν τοῦ κυρίου.</span> <span class="sv">”Slavarna griper herrens frukt.” — 3:e person plural på <span class="gr-grek">-ουσι(ν)</span>.</span></div>
+            <div class="gr-ex"><span class="el">ὦ ἄγγελε, βλέπ<b>εις</b> τὸν οἶκον τοῦ ἀποστόλου.</span> <span class="sv">”Du, o ängel, ser apostelns hus.” — 2:a person singular på <span class="gr-grek">-εις</span>.</span></div>
+          </div>
         </section>
 
         <!-- ══ Kontraherade verb ══ -->
@@ -982,6 +1071,11 @@
             Jfr <span class="gr-grek">ζητέω</span> (söka), <span class="gr-grek">καλέω</span> (kalla), <span class="gr-grek">λαλέω</span> (tala), <span class="gr-grek">ποιέω</span> (göra), <span class="gr-grek">τηρέω</span> (bevara), <span class="gr-grek">μαρτυρέω</span> (vittna).
           </div>
           <div class="gr-tip"><span class="tip-label">Studietips</span>Samma knep som för ω-verben — lär <b>ändelserna</b>, inte formerna. De kontraherade ändelserna är <span class="end">-ῶ, -εῖς, -εῖ, -οῦμεν, -εῖτε, -οῦσι(ν)</span>; cirkumflexen sitter där stamvokalen ε drogs samman med ändelsen.</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ζητ<b>οῦσιν</b> αἱ ἀδελφαὶ τὴν βασιλείαν τοῦ θεοῦ· φιλ<b>οῦσι</b> γὰρ τὴν ἀλήθειαν.</span> <span class="sv">”Systrarna söker Guds rike; ty de älskar sanningen.” — <span class="gr-grek">ζητέω</span> och <span class="gr-grek">φιλέω</span>, båda kontraherade (<span class="gr-grek">-έ-ουσι → -οῦσι</span>).</span></div>
+            <div class="gr-ex"><span class="el">ὁ Ἰησοῦς ποι<b>εῖ</b> καλὰ σημεῖα.</span> <span class="sv">”Jesus gör sköna tecken.” — <span class="gr-grek">ποιέ-ει → ποιεῖ</span> med cirkumflex.</span></div>
+          </div>
         </section>
 
         <!-- ══ εἰμί ══ -->
@@ -1004,6 +1098,11 @@
           </div>
           <div class="gr-rule"><b>Predikatsfyllnad:</b> εἰμί binder ihop subjekt och en beskrivning som står i nominativ — <span class="gr-grek">ὁ λόγος ἀγαθός ἐστιν</span> ”ordet är gott”.</div>
           <div class="gr-rule"><b>Enklitisk</b> betyder att ordet saknar egen betoning och uttalas ihop med ordet före som en enhet (grek. <i>enklínein</i> ”luta bakåt”). Presensformerna <span class="gr-grek">εἰμί, ἐστί(ν), ἐσμέν, ἐστέ, εἰσί(ν)</span> är obetonade och kastar ofta en <b>extra akut</b> bakåt på ordet före: <span class="gr-grek">ὁ ἄνθρωπός ἐστιν</span> ”människan är” — den andra akuten på <span class="gr-grek">ἄνθρωπος</span> kommer från <span class="gr-grek">ἐστιν</span>. <b>Undantag:</b> 2 sg <span class="gr-grek">εἶ</span> behåller egen accent, och 3 sg betonas <span class="gr-grek">ἔστιν</span> satsinitialt, i betydelsen ”det finns / är möjligt”, samt efter <span class="gr-grek">οὐκ, εἰ, ὡς, καί, ἀλλά</span> — <span class="gr-grek">οὐκ ἔστιν</span> ”det finns inte”.</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el"><b>ἐσμὲν</b> τέκνα θεοῦ.</span> <span class="sv">”Vi är Guds barn.” — <span class="gr-grek">ἐσμέν</span> (presens 1 pl); predikatsfyllnaden <span class="gr-grek">τέκνα</span> står i nominativ.<span class="src">Rom 8:16</span></span></div>
+            <div class="gr-ex"><span class="el">ὁ Ἰησοῦς <b>ἦν</b> ὁ υἱὸς τοῦ θεοῦ.</span> <span class="sv">”Jesus var Guds son.” — <span class="gr-grek">ἦν</span> är imperfekt (3 sg) ”var”.</span></div>
+          </div>
         </section>
 
         <!-- ══ Futurum ══ -->
@@ -1062,6 +1161,11 @@
             <br />&nbsp;&nbsp;&nbsp;&nbsp;<b>τ, θ, δ</b> eller <b>ζ</b> + σ = <b>σ</b> — <span class="gr-grek">πείθω → πείσω</span> (övertyga), <span class="gr-grek">βαπτίζω → βαπτίσω</span> (döpa)
             <br />ξ och ψ är bara skrivsätt: <span class="gr-grek">ξ</span> = κσ, <span class="gr-grek">ψ</span> = πσ.
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">οὗτος <b>σώσει</b> τὸν λαὸν ἀπὸ τῶν ἁμαρτιῶν αὐτῶν.</span> <span class="sv">”Denne ska rädda folket från deras synder.” — <span class="gr-grek">σῴζω → σώσει</span>, futurum med <span class="gr-grek">σ</span>.<span class="src">Matt 1:21</span></span></div>
+            <div class="gr-ex"><span class="el"><b>πέμψει</b> ὁ κύριος ἡμῶν τὸ πλοῖον πρὸς ὑμᾶς.</span> <span class="sv">”Vår herre ska skicka båten till er.” — <span class="gr-grek">πέμπ + σ = πέμψ</span> (π&nbsp;+&nbsp;σ&nbsp;=&nbsp;ψ).</span></div>
+          </div>
         </section>
 
         <!-- ══ Presens infinitiv ══ -->
@@ -1099,6 +1203,11 @@
             <br /><span class="gr-grek">θέλω</span> (jag vill): <span class="gr-grek">θέλω κηρύσσειν ὑμῖν</span> ”jag vill predika för er”, <span class="gr-grek">θέλει ἀγαθὸς εἶναι</span> ”han vill vara god”.
             <br /><span class="gr-grek">μέλλω</span> (jag tänker, ämnar): <span class="gr-grek">μέλλω κηρύσσειν ὑμῖν</span> ”jag tänker predika för er”, <span class="gr-grek">τί μέλλεις ποιεῖν;</span> ”vad tänker du göra?”.
             <br />Har infinitiven ett <i>eget</i> subjekt står det i <b>ackusativ</b> (ackusativ med infinitiv): <span class="gr-grek">θέλω αὐτὸν ἀκούειν</span> ”jag vill <i>att han</i> ska höra”. Negeras med <span class="gr-grek">μή</span>, inte <span class="gr-grek">οὐ</span>.
+          </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ἔπεμψαν αὐτὸν εἰς τοὺς ἀγροὺς αὐτοῦ <b>βόσκειν</b> χοίρους.</span> <span class="sv">”De skickade honom till sina fält för att vakta svin.” — infinitiven <span class="gr-grek">βόσκειν</span> anger målet: ”för att…”.<span class="src">Luk 15:15</span></span></div>
+            <div class="gr-ex"><span class="el">οὐκ ἔστιν καλὸν <b>λαμβάνειν</b> τὸν ἄρτον τῶν τέκνων καὶ <b>βάλλειν</b> τοῖς κυναρίοις.</span> <span class="sv">”Det är inte rätt att ta barnens bröd och kasta det till hundarna.” — två infinitiver som subjekt till <span class="gr-grek">οὐκ ἔστιν καλόν</span>.<span class="src">Matt 15:26</span></span></div>
           </div>
         </section>
 
@@ -1145,6 +1254,11 @@
             <br /><b>Negationen är μή, aldrig οὐ:</b> <span class="gr-grek">μὴ μένετε</span> ”stanna inte!”. Det är modus som avgör — jfr indikativens <span class="gr-grek">οὐ μένετε</span> ”ni stannar inte”.
             <br /><b>3:e person</b> saknar motsvarighet i svenskan och återges med ”han/de ska …” (B § 265:2).
             <br />3 pl <span class="gr-grek">-έτωσαν</span> är koinéformen; klassisk grekiska har <span class="gr-grek">-όντων</span> (<span class="gr-grek">λυόντων</span>).
+          </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el"><b>Ἄκουε</b>, Ἰσραήλ, κύριος ὁ θεὸς ἡμῶν κύριος εἷς ἐστιν.</span> <span class="sv">”Lyssna, Israel: Herren, vår Gud, är en enda Herre.” — <span class="gr-grek">Ἄκουε</span> är imperativ 2 sg (stam + <span class="gr-grek">-ε</span>), inte indikativ <span class="gr-grek">ἀκούεις</span>.<span class="src">Mark 12:29</span></span></div>
+            <div class="gr-ex"><span class="el"><b>ἀκούετε</b> καὶ <b>βλέπετε</b>.</span> <span class="sv">”Lyssna och se!” — formen är identisk med indikativens 2 pl; bara sammanhanget gör den till en uppmaning.</span></div>
           </div>
         </section>
 
@@ -1194,6 +1308,11 @@
             <br /><b>Sammansatta verb</b> får inre augment, mellan prefixet och verbet: <span class="gr-grek">ἐκ + ἔβαλλον → ἐξέβαλλον</span> (ἐκ blir ἐξ framför vokal), <span class="gr-grek">ὑπάγω → ὑπῆγον</span>, <span class="gr-grek">προσκυνέω → προσεκύνουν</span> (B § 138:7).
             <br />Oregelbundet: <span class="gr-grek">θέλω → ἤθελον</span> (verbet är ursprungligen <span class="gr-grek">ἐθέλω</span>).
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ὁ Ἰωάννης <b>ἐβάπτιζε</b> πολλοὺς ἀνθρώπους.</span> <span class="sv">”Johannes döpte (höll på att döpa) många människor.” — augmentet <span class="gr-grek">ἐ-</span> framför konsonant: <span class="gr-grek">βαπτίζω → ἐβάπτιζε</span>.</span></div>
+            <div class="gr-ex"><span class="el">πολλοὶ <b>ἤκουον</b> αὐτοῦ καὶ <b>ἐπίστευον</b> αὐτῷ.</span> <span class="sv">”Många hörde honom och trodde på honom.” — augment vid vokalstam: <span class="gr-grek">ἀκούω → ἤκουον</span> (ἐ&nbsp;+&nbsp;ἀ&nbsp;=&nbsp;η).</span></div>
+          </div>
         </section>
 
         <!-- ══ Personliga pronomen ══ -->
@@ -1238,6 +1357,11 @@
           <div class="gr-rule">
             <b>Kännetecknet är σα, inte augmentet.</b> Bara indikativen syftar på förfluten tid och bär därför augment; i imperativ (<span class="gr-grek">λῦσον</span>) och infinitiv (<span class="gr-grek">λῦσαι</span>) uttrycker aoristen ren <b>aspekt</b> (handlingen som helhet), inte dåtid — <span class="gr-grek">λῦσον</span> betyder ”lös!”, inte något förflutet. <b>Fälla:</b> <span class="gr-grek">καλέω</span> avviker — aoristen är <span class="gr-grek">ἐκάλεσα</span> (kort ε), inte <span class="gr-grek">ἐκάλησα</span>. Verb med sigmatisk framtid men <i>annan</i> aorist (t.ex. <span class="gr-grek">ἄγω → ἤγαγον</span>, <span class="gr-grek">λαμβάνω → ἔλαβον</span>) tas upp i seminarium 9 (”aorist utan sigma”).
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el"><b>ἐλάλησεν</b> αὐτοῖς ἐν παραβολαῖς.</span> <span class="sv">”Han talade med dem i liknelser.” — sigmatisk aorist av <span class="gr-grek">λαλέω</span> (<span class="gr-grek">ε → η</span> före σ).<span class="src">Matt 13:3</span></span></div>
+            <div class="gr-ex"><span class="el">Ἐξ Αἰγύπτου <b>ἐκάλεσα</b> τὸν υἱόν μου.</span> <span class="sv">”Ut ur Egypten kallade jag min son.” — fällan: <span class="gr-grek">καλέω</span> ger <span class="gr-grek">ἐκάλεσα</span> (kort ε), inte <span class="gr-grek">*ἐκάλησα</span>.<span class="src">Matt 2:15</span></span></div>
+          </div>
         </section>
 
         <section class="gr-card" id="verb-particip" style="--accent:#6a8a4a">
@@ -1269,6 +1393,11 @@
           </div>
           <div class="gr-rule">
             <b>Som alla neutra: nom = ack.</b> Mask. och neutr. delar former utom i nom/ack. Kontraherade -έω ger cirkumflex: <span class="gr-grek">ποιέω → ποιῶν, ποιοῦσα, ποιοῦν</span>. Participet är grekiskans mest använda konstruktion — det byggs ut i seminarium 9 (particip med huvudord).
+          </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ὁ <b>πιστεύων</b> εἰς τὸν υἱὸν ἔχει ζωὴν αἰώνιον.</span> <span class="sv">”Den som tror på sonen har evigt liv.” — substantiverat particip (artikel + particip) = ”den som …”; det är satsens subjekt.<span class="src">Joh 3:3</span><span class="flagga">Seminariets referens (Joh 3:3) behållen; texten återfinns i Joh 3:36.</span></span></div>
+            <div class="gr-ex"><span class="el">ὁ <b>τρώγων</b> μου τὴν σάρκα καὶ <b>πίνων</b> μου τὸ αἷμα ἔχει ζωὴν αἰώνιον.</span> <span class="sv">”Den som äter mitt kött och dricker mitt blod har evigt liv.” — två samordnade particip med var sitt objekt.<span class="src">Joh 6:54</span></span></div>
           </div>
         </section>
 
@@ -1304,6 +1433,11 @@
           <div class="gr-rule"><b>Futurum:</b> sigmat faller och verbet böjs som det kontraherade <span class="gr-grek">φιλέω</span> i presens (<span class="gr-grek">-ῶ, -εῖς, -εῖ, -οῦμεν, -εῖτε, -οῦσι(ν)</span>). Formen liknar presens sånär som på accenten: <span class="gr-grek">κρίνω</span> ”jag dömer” → <span class="gr-grek">κρινῶ</span> ”jag ska döma”.</div>
           <div class="gr-rule"><b>Aorist:</b> sigmat faller och den föregående vokalen <b>förlängs som kompensation</b> — <span class="gr-grek">ἀπεστελ-σ- → ἀπέστειλα</span> (ε→ει), <span class="gr-grek">ἐκρῐν-σ- → ἔκρῑνα</span> (ῐ→ῑ, hörs men syns ej i skrift). <span class="gr-grek">ἀποστέλλω</span> har <span class="gr-grek">-λλ-</span> bara i presens, <span class="gr-grek">-λ-</span> i aorist.</div>
           <div class="gr-rule"><b>Studietips:</b> lär in likvidaverb i tre former — <span class="gr-grek">ἀγγέλλω, ἀγγελῶ, ἤγγειλα</span> (meddela); <span class="gr-grek">ἀποστέλλω, ἀποστελῶ, ἀπέστειλα</span> (sända); <span class="gr-grek">κρίνω, κρινῶ, ἔκρῑνα</span> (döma).</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">Ἰωάννης ὁ βαπτιστὴς <b>ἀπέστειλεν</b> ἡμᾶς πρὸς σέ.</span> <span class="sv">”Johannes Döparen sände oss till dig.” — aorist utan sigma: <span class="gr-grek">ἀπεστελ-σ- → ἀπέστειλε</span> (σ faller, ε→ει).<span class="src">Luk 7:20</span></span></div>
+            <div class="gr-ex"><span class="el">καθὼς ἐμὲ <b>ἀπέστειλας</b> εἰς τὸν κόσμον, κἀγὼ <b>ἀπέστειλα</b> αὐτοὺς εἰς τὸν κόσμον.</span> <span class="sv">”Såsom du sände mig till världen, sände också jag dem till världen.” — samma aoriststam i 2 sg och 1 sg.<span class="src">Joh 17:18</span></span></div>
+          </div>
         </section>
 
                 <section class="gr-card" id="verb-mi" style="--accent:#b0642f">
@@ -1349,6 +1483,11 @@
           </div>
           <div class="gr-rule"><b>Stamväxling:</b> lång stamvokal i singular (<span class="gr-grek">διδω-</span>), kort i plural (<span class="gr-grek">διδο-</span>). <span class="gr-grek">δείκνυ-</span> är däremot samma i båda.</div>
           <div class="gr-rule"><b>I koinen</b> tränger ω-verbens ändelser in: <span class="gr-grek">δεικνύεις</span> i st.f. <span class="gr-grek">δείκνυς</span> (Joh 2:18). Vanliga μι-verb i NT: <span class="gr-grek">εἰμί</span> vara, <span class="gr-grek">δίδωμι</span> ge, <span class="gr-grek">τίθημι</span> ställa, <span class="gr-grek">ἵστημι</span> ställa, <span class="gr-grek">ἀπόλλυμι</span> förgöra, <span class="gr-grek">δείκνυμι</span> visa.</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">Ἰησοῦς λαμβάνει τὸν ἄρτον καὶ <b>δίδωσιν</b> αὐτοῖς.</span> <span class="sv">”Jesus tar brödet och ger åt dem.” — <span class="gr-grek">δίδωσιν</span> är 3 sg presens av <span class="gr-grek">δίδωμι</span> (<span class="gr-grek">-σι(ν)</span>).<span class="src">Joh 21:13</span></span></div>
+            <div class="gr-ex"><span class="el">εἰρήνην τὴν ἐμὴν <b>δίδωμι</b> ὑμῖν.</span> <span class="sv">”Min frid ger jag er.” — <span class="gr-grek">δίδωμι</span> är 1 sg presens (<span class="gr-grek">-μι</span>).<span class="src">Joh 14:27</span></span></div>
+          </div>
         </section>
 
                 <section class="gr-card" id="pronomen" style="--accent:#8a5a86">
@@ -1388,6 +1527,11 @@
             <span class="tip-label">Enklitisk = betonad minus ἐ</span>
             Du behöver inte memorera två kolumner. <b>1:a person:</b> stryk begynnelse-<span class="gr-grek">ἐ</span> och accenten — <span class="gr-grek">ἐμοῦ→μου, ἐμοί→μοι, ἐμέ→με</span>. <b>2:a person:</b> bara accenten faller — <span class="gr-grek">σοῦ→σου, σοί→σοι, σέ→σε</span>. Nominativ (<span class="gr-grek">ἐγώ, σύ</span>) och hela pluralen har ingen enklitisk form.
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">λέγει περὶ <b>σοῦ</b>.</span> <span class="sv">”Han talar om dig.” — efter preposition krävs den betonade formen <span class="gr-grek">σοῦ</span>, inte enklitiska <span class="gr-grek">σου</span>.</span></div>
+            <div class="gr-ex"><span class="el"><b>ἡμεῖς</b> μὲν λέγομεν, <b>ὑμεῖς</b> δὲ ἀκούετε.</span> <span class="sv">”Vi talar och ni lyssnar.” — betonade <span class="gr-grek">ἡμεῖς … ὑμεῖς</span> i en <span class="gr-grek">μέν … δέ</span>-motsats.</span></div>
+          </div>
         </section>
 
         <!-- ══ Personligt pronomen 3:e person (αὐτός) ══ -->
@@ -1416,6 +1560,11 @@
             αὐτός, οὗτος, ἐκεῖνος, relativet <span class="gr-grek">ὅς</span> och frågande <span class="gr-grek">τίς</span> tar alla <b>samma ändelser som den bestämda artikeln</b> (2-1-2-mönstret). Jämför stammen <span class="gr-grek">αὐτ-</span> med artikeln: <span class="gr-grek">αὐτοῦ·τοῦ, αὐτῷ·τῷ, αὐτόν·τόν, αὐτῶν·τῶν, αὐτοῖς·τοῖς, αὐτούς·τούς</span> · fem <span class="gr-grek">αὐτῆς·τῆς, αὐτῇ·τῇ, αὐτήν·τήν</span>. Lär stammen och häng på artikeländelserna.
           </div>
           <div class="gr-rule">Exempel: <span class="gr-grek">βλέπομεν αὐτόν</span> ”vi ser honom”, <span class="gr-grek">κηρύσσομεν αὐτῇ</span> ”vi predikar för henne”, <span class="gr-grek">λέγομεν αὐτοῖς / πρὸς αὐτούς</span> ”vi säger till dem”. <b>Attributiv ställning</b> = mellan artikel och substantiv (adjektivet hör ihop med substantivet); <b>predikativ ställning</b> = utanför den positionen (adjektivet säger något om substantivet). <b>Nominativens ställning:</b> med artikel = ”samme” (<span class="gr-grek">ὁ αὐτὸς λόγος</span>, attributiv), utan artikel bredvid ett bestämt substantiv = ”själv” (<span class="gr-grek">αὐτὸς ὁ λόγος</span> ”ordet självt”, predikativ). För ett <b>betonat</b> subjekt-”han/hon/det” används i stället de demonstrativa <span class="gr-grek">οὗτος</span> och <span class="gr-grek">ἐκεῖνος</span>. <span class="swe-inline">Se schemat under <a href="#attribut">Placering av attribut</a>.</span></div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ὁ Ἰησοῦς … εὑρίσκει <b>αὐτοὺς</b> ἐν τῇ ἐρήμῳ καὶ λέγει <b>αὐτοῖς</b>· εἰρήνη ὑμῖν.</span> <span class="sv">”Jesus … finner dem i öknen och säger till dem: frid vare med er.” — <span class="gr-grek">αὐτούς</span> (ack) objekt, <span class="gr-grek">αὐτοῖς</span> (dat) mottagare.</span></div>
+            <div class="gr-ex"><span class="el">βαπτίσει ἡ ἀδελφὴ <b>αὐτῶν</b> ἡμᾶς.</span> <span class="sv">”Deras syster ska döpa oss.” — <span class="gr-grek">αὐτῶν</span> (gen) är possessivt ”deras”, inte objekt.</span></div>
+          </div>
         </section>
 
         <!-- ══ Demonstrativa pronomen ══ -->
@@ -1457,6 +1606,11 @@
             <span class="tip-label">οὗτος speglar artikeln</span>
             Kan du artikeln kan du <span class="gr-grek">οὗτος</span>: pronomenet har <b>sträv anda</b> exakt där artikeln har det (<span class="gr-grek">οὗτος/ὁ, αὕτη/ἡ, οὗτοι/οἱ, αὗται/αἱ</span>) och <b>τ-</b> exakt där artikeln har τ- (<span class="gr-grek">τούτου/τοῦ, ταύτης/τῆς, τοῦτο/τό, ταῦτα/τά …</span>). Bara stamvokalen (ου/αυ) skiljer.
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">τίς ἐστιν <b>οὗτος</b>;</span> <span class="sv">”Vem är denne?” — <span class="gr-grek">οὗτος</span> pekar ut det som är nära talaren.</span></div>
+            <div class="gr-ex"><span class="el">οἱ Ἰουδαῖοι ἐζήτουν αὐτὸν … καὶ ἔλεγον· Ποῦ ἐστιν <b>ἐκεῖνος</b>;</span> <span class="sv">”Judarna sökte honom … och sade: Var är den där?” — <span class="gr-grek">ἐκεῖνος</span> pekar ut det som är längre bort.<span class="src">Joh 7:11</span></span></div>
+          </div>
         </section>
 
         <!-- ══ Interrogativa pronomen & adverb ══ -->
@@ -1478,6 +1632,11 @@
           <div class="gr-rule">
             <b>Självständigt:</b> <span class="gr-grek">τίς ἐστιν;</span> ”vem är det?”, <span class="gr-grek">τί ποιεῖς;</span> ”vad gör du?”. <b>Förenat:</b> <span class="gr-grek">τίς ἄνθρωπος;</span> ”vilken människa?”, <span class="gr-grek">τίνα οἶνον πίνεις;</span> ”vilket vin dricker du?”. Frågan avslutas med <b>semikolon</b> (<span class="gr-grek">;</span>), som motsvarar vårt frågetecken.
             <br /><b>Interrogativa adverb:</b> <span class="gr-grek">ποῦ;</span> var? · <span class="gr-grek">ποῖ;</span> vart? · <span class="gr-grek">πόθεν;</span> varifrån? · <span class="gr-grek">πότε;</span> när?
+          </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el"><b>Τίς</b> ἐστιν ἡ μήτηρ μου, καὶ <b>τίνες</b> εἰσὶν οἱ ἀδελφοί μου;</span> <span class="sv">”Vem är min mor, och vilka är mina bröder?” — <span class="gr-grek">τίς</span> (sg) och <span class="gr-grek">τίνες</span> (pl), alltid med akut på iota.<span class="src">Matt 12:48</span></span></div>
+            <div class="gr-ex"><span class="el">σὺ δὲ <b>τί</b> κρίνεις τὸν ἀδελφόν σου;</span> <span class="sv">”Men varför dömer du din bror?” — <span class="gr-grek">τί</span> självständigt kan betyda ”varför”.<span class="src">Rom 14:10</span></span></div>
           </div>
         </section>
 
@@ -1525,6 +1684,11 @@
             <br /><b>1:a och 2:a person</b> har egna betonade ord (<span class="gr-grek">ἐμός, σός, ἡμέτερος, ὑμέτερος</span>) som böjs som vanliga 2-1-2-adjektiv och kongruerar med huvudordet. <b>3:e person</b> har inget eget ord — där används genitiv av <span class="gr-grek">οὗτος</span> eller <span class="gr-grek">ἐκεῖνος</span>: <span class="gr-grek">ὁ τούτου οἶκος</span> ”hans hus”.
             <br /><b>Eftertrycket:</b> <span class="gr-grek">οἱ ἀδελφοὶ ἡμῶν</span> ”våra bröder” — men <span class="gr-grek">οἱ ἡμέτεροι ἀδελφοί</span> ”<i>våra</i> bröder (inte era)”.
             <br /><b>Fälla:</b> samma <span class="gr-grek">αὐτ-</span>-ord i två roller. <span class="gr-grek">ἐδίδασκεν αὐτοὺς ἐν τῇ συναγωγῇ αὐτῶν</span> — <span class="gr-grek">αὐτούς</span> (ackusativ) är objekt ”dem”, <span class="gr-grek">αὐτῶν</span> (genitiv) är possessivt ”deras”. Kasus avgör.
+          </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ὁ ἀδελφός <b>μου</b> λαλεῖ σοι.</span> <span class="sv">”Min bror talar med dig.” — obetonat <span class="gr-grek">μου</span> står efter substantivet = ”min”.</span></div>
+            <div class="gr-ex"><span class="el">ἐπὶ ταύτῃ τῇ πέτρᾳ οἰκοδομήσω <b>μου</b> τὴν ἐκκλησίαν.</span> <span class="sv">”På denna klippa ska jag bygga min kyrka.” — undantag: det obetonade <span class="gr-grek">μου</span> kan också stå före substantivet.<span class="src">Matt 16:18</span></span></div>
           </div>
         </section>
 
@@ -1578,6 +1742,11 @@
             <br /><b>Grekiskan saknar obestämd artikel.</b> ”En” kan uttryckas med <span class="gr-grek">τις</span>, med räkneordet <span class="gr-grek">εἷς, μία, ἕν</span> (B § 224:7) — eller inte alls: ett substantiv utan artikel översätts också med ”en” (<span class="gr-grek">τὸ πλοῖον</span> ”båten”, men <span class="gr-grek">πλοῖον</span> ”en båt”).
             <br />Samma princip som pronomenet: de indefinita adverben är de interrogativa <b>utan accent</b>.
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">ἄνθρωπός <b>τις</b> κατέβαινεν ἀπὸ Ἰερουσαλὴμ εἰς Ἰεριχώ.</span> <span class="sv">”En människa gick ned från Jerusalem till Jeriko.” — <span class="gr-grek">τις</span> = obestämt ”en, någon”; enklitiskt kastar det en akut bakåt.<span class="src">Luk 10:30</span></span></div>
+            <div class="gr-ex"><span class="el">εἴ <b>τις</b> θέλει πρῶτος εἶναι, ἔσται πάντων διάκονος.</span> <span class="sv">”Om någon vill vara först, ska han vara allas tjänare.” — <span class="gr-grek">τις</span> utan accent på iota = ”någon” (jfr frågande <span class="gr-grek">τίς</span>).<span class="src">Mark 9:35</span></span></div>
+          </div>
         </section>
 
         <!-- ══ Adverb ══ -->
@@ -1613,6 +1782,11 @@
             </ul>
             Ex: <span class="gr-grek">τὸ πρόβατον φεύγει τὸν λύκον, ὃς ἐστι πονηρός</span> ”fåret flyr vargen, som är ond” — <span class="gr-grek">ὅς</span> är mask. sg. (efter <span class="gr-grek">λύκον</span>) men <b>nominativ</b> (subjekt i bisatsen).</div>
           <div class="gr-rule"><b>Förväxla inte</b> relativpronomenet med bestämda artikeln: <span class="gr-grek">ὅς ἥ ὅ</span> har accent och asper, medan artikeln <span class="gr-grek">ὁ ἡ τό</span> saknar accent i nominativ och har <span class="gr-grek">τ-</span> i de flesta former (<span class="gr-grek">τοῦ, τῷ, τόν</span> mot <span class="gr-grek">οὗ, ᾧ, ὅν</span>).</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">οἱ μαθηταὶ ἐπίστευσαν τῷ λόγῳ <b>ὃν</b> ἔλεγεν ὁ Ἰησοῦς.</span> <span class="sv">”Lärjungarna trodde på ordet som Jesus sade.” — korrelatet <span class="gr-grek">λόγῳ</span> är dativ, men <span class="gr-grek">ὅν</span> är ackusativ: objekt i sin egen bisats.<span class="src">Joh 2:22</span></span></div>
+            <div class="gr-ex"><span class="el">εἰσὶν ἐξ ὑμῶν τινες <b>οἳ</b> οὐ πιστεύουσιν.</span> <span class="sv">”Det finns några bland er som inte tror.” — <span class="gr-grek">οἵ</span> (mask pl) är subjekt i bisatsen → nominativ.<span class="src">Joh 6:64</span></span></div>
+          </div>
         </section>
 
                 <section class="gr-card" id="adverb" style="--accent:#7a6a3a">
@@ -1655,6 +1829,11 @@
           </table>
           <div class="gr-rule"><b>Attributiv ställning:</b> attributet står <b>innanför</b> artikelns räckvidd — mellan artikel och substantiv, eller efter substantivet med en <b>upprepad</b> artikel. Alla varianterna ger ”den heliga Anden” / ”apostelns hus”.</div>
           <div class="gr-rule"><b>Jämför predikativ ställning</b> (ingen artikel framför attributet): <span class="gr-grek">τὸ πνεῦμα ἅγιον</span> ”Anden är helig” — där blir adjektivet predikatsfyllnad, inte attribut. Artikelns placering avgör alltså om det står ”den heliga Anden” eller ”Anden är helig”.</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">I sammanhang</span>
+            <div class="gr-ex"><span class="el">οὗτός ἐστιν ὁ υἱός μου <b>ὁ ἀγαπητός</b>.</span> <span class="sv">”Denne är min älskade son.” — attributivt adjektiv i efterställd, upprepad artikel: <span class="gr-grek">ὁ υἱός … ὁ ἀγαπητός</span>.<span class="src">Matt 3:17</span></span></div>
+            <div class="gr-ex"><span class="el"><b>δίκαιος</b> καὶ <b>ἅγιός</b> ἐστιν οὗτος ὁ προφήτης.</span> <span class="sv">”Rättrådig och helig är denne profet.” — <span class="gr-grek">δίκαιος</span> och <span class="gr-grek">ἅγιος</span> står utanför artikeln → predikativt.</span></div>
+          </div>
         </section>
 
                 <section class="gr-card" id="prepositioner" style="--accent:#8a5a86">
@@ -1740,6 +1919,11 @@
             <br /><b>Form framför vokal:</b> <span class="gr-grek">ἐξ</span> står för <span class="gr-grek">ἐκ</span> framför vokal; de flesta prepositioner på vokal <b>elideras</b> (<span class="gr-grek">ἀπ' αὐτοῦ, κατ' οἶκον</span>), och framför <b>sträv anda</b> aspireras slutkonsonanten <span class="gr-grek">π→φ, τ→θ</span> (<span class="gr-grek">ἀφ' ἡμῶν, καθ' ἡμέραν</span>). <span class="gr-grek">διά</span> elideras till <span class="gr-grek">δι'</span> men aspireras inte (δ saknar aspirat). Samma ljudlag styr negationen <a href="#negation">οὐκ / οὐχ</a>.
             <br />Substantivet efter en preposition tar inte alltid artikel: <span class="gr-grek">ἐν ἀρχῇ</span> ”i begynnelsen”.
           </div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">Hela satser</span>
+            <div class="gr-ex"><span class="el"><b>ἐν</b> ἀρχῇ ποιεῖ ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν.</span> <span class="sv">”I begynnelsen skapar Gud himlen och jorden.” — <span class="gr-grek">ἐν</span> + dativ (var).<span class="src">1 Mos 1:1</span><span class="flagga">Seminariets form behållen: presens <span class="gr-grek">ποιεῖ</span>; Septuaginta har aorist <span class="gr-grek">ἐποίησεν</span>.</span></span></div>
+            <div class="gr-ex"><span class="el">οἱ ἀδελφοὶ ἄγουσι τὰ τέκνα <b>εἰς</b> τὸν οἶκον.</span> <span class="sv">”Bröderna leder barnen till huset.” — <span class="gr-grek">εἰς</span> + ackusativ (vart).</span></div>
+          </div>
         </section>
 
         <!-- ══ Negationen οὐ ══ -->
@@ -1755,6 +1939,12 @@
             </tbody>
           </table>
           <div class="gr-rule">Formen styrs av ordet <b>efter</b> negationen: <span class="gr-grek">οὐκ</span> före mjuk anda, <span class="gr-grek">οὐχ</span> före sträv anda (h-ljud). Samma ljudlag som prepositionernas <a href="#prepositioner">elision &amp; aspiration</a> (<span class="gr-grek">ἀφ', καθ'</span>).</div>
+          <div class="gr-exempel">
+            <span class="gr-exlabel">Alla tre formerna i sammanhang</span>
+            <div class="gr-ex"><span class="el">οἱ φίλοι <b>οὐ</b> πιστεύουσιν.</span> <span class="sv">”Vännerna tror inte.” — <span class="gr-grek">οὐ</span> före konsonant (<span class="gr-grek">π</span>).</span></div>
+            <div class="gr-ex"><span class="el">οἱ φίλοι <b>οὐκ</b> ἀκούουσιν.</span> <span class="sv">”Vännerna hör inte.” — <span class="gr-grek">οὐκ</span> före vokal med mjuk anda (<span class="gr-grek">ἀ</span>).</span></div>
+            <div class="gr-ex"><span class="el">οἱ φίλοι <b>οὐχ</b> ἁμαρτάνουσιν.</span> <span class="sv">”Vännerna syndar inte.” — <span class="gr-grek">οὐχ</span> före vokal med sträv anda (<span class="gr-grek">ἁ</span>, h-ljud).</span></div>
+          </div>
         </section>
 
         <!-- ══ Satsanalys ══ -->
