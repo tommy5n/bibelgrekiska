@@ -139,7 +139,7 @@ const satser = [
     sv:"Han talar om henne",
     ord:["οὗτος", "λέγει", "περὶ", "αὐτῆς"],
     mal:[
-      { i:0, form:"οὗτος", lemma:"οὗτος", modell:"genus", num:"sg", kas:"nom", bet:null, genus:"m", roll:"subj", sv:"han", alt:["denne"] },
+      { i:0, form:"οὗτος", lemma:"οὗτος", modell:"genus", num:"sg", kas:"nom", bet:null, genus:"m", roll:"subj", sv:"han", alt:["denne"], not:"Varför οὗτος och inte αὐτός? Grekiskan har inget neutralt 'han' i nominativ — subjektet ligger redan i verbändelsen (λέγει). Vill man ändå sätta ut subjektet använder man ett demonstrativt (οὗτος 'denne', ἐκεῖνος 'den där'). αὐτός i nominativ är däremot emfatiskt: 'han själv'. I oblika kasus är det tvärtom αὐτός som är det vanliga personliga pronomenet — jfr αὐτῆς 'henne' i samma mening." },
       { i:3, form:"αὐτῆς", lemma:"αὐτός", modell:"genus", num:"sg", kas:"gen", bet:null, genus:"f", roll:"prep", sv:"henne", not:"Här är αὐτῆς styrd av περί och blir 'henne' — inte 'hennes' som i p6-03. Rollen avgör." } ] },
   { id:"p6-08", sem:6, skapad:false,
     kalla:"Breakout rooms 6, s. 1",
