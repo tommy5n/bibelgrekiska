@@ -69,9 +69,13 @@ def bygg_rad(v):
                 f'{jsstr(p)}:[{", ".join(jsstr(x) for x in ex)}]' for p, ex in extra.items()
             ) + "}"
 
+    sv = v.get("svenska") or {}
+    sv_js = "{" + ", ".join(f"{jsstr(kk)}:{jsstr(vv)}" for kk, vv in sv.items()) + "}"
+
     bitar = [
         f"lemma:{jsstr(lemma)}",
         f'glosa:{jsstr(v["glosa"])}',
+        f"svenska:{sv_js}",
         f'klass:{jsstr(v["klass"])}',
         "kortlekar:[" + ", ".join(jsstr(x) for x in v["kortlekar"]) + "]",
         "sem:[" + ", ".join(str(s) for s in v["seminarium"]) + "]",

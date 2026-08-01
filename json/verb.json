@@ -154,6 +154,7 @@
  "_falt": {
   "lemma": "Uppslagsform (1sg pres ind akt).",
   "glosa": "Svensk betydelse.",
+  "svenska": "Böjda svenska ledtrådsformer för verbspelet: {inf, pres, pret, imp}. Svenskan böjs ej efter person → en form per tempus/modus, pronomenet byts i spelet. pret täcker både imperfekt och aorist; futurum bildas som \"kommer att\"+inf; 3:e person imperativ som \"må <pron> <inf>\". imp utelämnas där svensk imperativ saknas (t.ex. vilja).",
   "klass": "omega / kontrakt_e / oregelbunden (se _klasser).",
   "stam": "Del före ändelsen.",
   "seminarium": "Seminarier där ordet införs.",
@@ -170,6 +171,12 @@
   {
    "lemma": "λύω",
    "glosa": "lösa",
+   "svenska": {
+    "inf": "lösa",
+    "pres": "löser",
+    "pret": "löste",
+    "imp": "lös"
+   },
    "klass": "omega",
    "stam": "λύ",
    "seminarium": [
@@ -260,6 +267,12 @@
   {
    "lemma": "βλέπω",
    "glosa": "se",
+   "svenska": {
+    "inf": "se",
+    "pres": "ser",
+    "pret": "såg",
+    "imp": "se"
+   },
    "klass": "omega",
    "stam": "βλέπ",
    "seminarium": [
@@ -344,6 +357,12 @@
   {
    "lemma": "ἀκούω",
    "glosa": "höra",
+   "svenska": {
+    "inf": "höra",
+    "pres": "hör",
+    "pret": "hörde",
+    "imp": "hör"
+   },
    "klass": "omega",
    "stam": "ἀκού",
    "seminarium": [
@@ -426,6 +445,12 @@
   {
    "lemma": "λέγω",
    "glosa": "säga",
+   "svenska": {
+    "inf": "säga",
+    "pres": "säger",
+    "pret": "sa",
+    "imp": "säg"
+   },
    "klass": "omega",
    "stam": "λέγ",
    "seminarium": [
@@ -475,6 +500,12 @@
   {
    "lemma": "γράφω",
    "glosa": "skriva",
+   "svenska": {
+    "inf": "skriva",
+    "pres": "skriver",
+    "pret": "skrev",
+    "imp": "skriv"
+   },
    "klass": "omega",
    "stam": "γράφ",
    "seminarium": [
@@ -555,6 +586,12 @@
   {
    "lemma": "ἐσθίω",
    "glosa": "äta",
+   "svenska": {
+    "inf": "äta",
+    "pres": "äter",
+    "pret": "åt",
+    "imp": "ät"
+   },
    "klass": "omega",
    "stam": "ἐσθί",
    "seminarium": [
@@ -602,6 +639,12 @@
   {
    "lemma": "κηρύσσω",
    "glosa": "predika",
+   "svenska": {
+    "inf": "predika",
+    "pres": "predikar",
+    "pret": "predikade",
+    "imp": "predika"
+   },
    "klass": "omega",
    "stam": "κηρύσσ",
    "seminarium": [
@@ -682,6 +725,12 @@
   {
    "lemma": "λαμβάνω",
    "glosa": "ta, gripa",
+   "svenska": {
+    "inf": "ta",
+    "pres": "tar",
+    "pret": "tog",
+    "imp": "ta"
+   },
    "klass": "omega",
    "stam": "λαμβάν",
    "seminarium": [
@@ -738,6 +787,12 @@
   {
    "lemma": "παιδεύω",
    "glosa": "uppfostra",
+   "svenska": {
+    "inf": "uppfostra",
+    "pres": "uppfostrar",
+    "pret": "uppfostrade",
+    "imp": "uppfostra"
+   },
    "klass": "omega",
    "stam": "παιδεύ",
    "seminarium": [
@@ -822,6 +877,12 @@
   {
    "lemma": "πέμπω",
    "glosa": "skicka",
+   "svenska": {
+    "inf": "skicka",
+    "pres": "skickar",
+    "pret": "skickade",
+    "imp": "skicka"
+   },
    "klass": "omega",
    "stam": "πέμπ",
    "seminarium": [
@@ -905,6 +966,12 @@
   {
    "lemma": "εὑρίσκω",
    "glosa": "finna",
+   "svenska": {
+    "inf": "finna",
+    "pres": "finner",
+    "pret": "fann",
+    "imp": "finn"
+   },
    "klass": "omega",
    "stam": "εὑρίσκ",
    "seminarium": [
@@ -952,6 +1019,12 @@
   {
    "lemma": "πιστεύω",
    "glosa": "tro (på)",
+   "svenska": {
+    "inf": "tro",
+    "pres": "tror",
+    "pret": "trodde",
+    "imp": "tro"
+   },
    "klass": "omega",
    "stam": "πιστεύ",
    "seminarium": [
@@ -1037,6 +1110,12 @@
   {
    "lemma": "βαπτίζω",
    "glosa": "döpa",
+   "svenska": {
+    "inf": "döpa",
+    "pres": "döper",
+    "pret": "döpte",
+    "imp": "döp"
+   },
    "klass": "omega",
    "stam": "βαπτίζ",
    "seminarium": [
@@ -1117,6 +1196,12 @@
   {
    "lemma": "σῴζω",
    "glosa": "rädda",
+   "svenska": {
+    "inf": "rädda",
+    "pres": "räddar",
+    "pret": "räddade",
+    "imp": "rädda"
+   },
    "klass": "omega",
    "stam": "σῴζ",
    "seminarium": [
@@ -1194,6 +1279,12 @@
   {
    "lemma": "κλέπτω",
    "glosa": "stjäla",
+   "svenska": {
+    "inf": "stjäla",
+    "pres": "stjäl",
+    "pret": "stal",
+    "imp": "stjäl"
+   },
    "klass": "omega",
    "stam": "κλέπτ",
    "seminarium": [
@@ -1269,6 +1360,12 @@
   {
    "lemma": "ἄγω",
    "glosa": "leda",
+   "svenska": {
+    "inf": "leda",
+    "pres": "leder",
+    "pret": "ledde",
+    "imp": "led"
+   },
    "klass": "omega",
    "stam": "ἄγ",
    "seminarium": [
@@ -1329,6 +1426,12 @@
   {
    "lemma": "φιλέω",
    "glosa": "älska, gilla",
+   "svenska": {
+    "inf": "älska",
+    "pres": "älskar",
+    "pret": "älskade",
+    "imp": "älska"
+   },
    "klass": "kontrakt_e",
    "stam": "φιλ",
    "seminarium": [
@@ -1420,6 +1523,12 @@
   {
    "lemma": "ζητέω",
    "glosa": "söka",
+   "svenska": {
+    "inf": "söka",
+    "pres": "söker",
+    "pret": "sökte",
+    "imp": "sök"
+   },
    "klass": "kontrakt_e",
    "stam": "ζητ",
    "seminarium": [
@@ -1503,6 +1612,12 @@
   {
    "lemma": "καλέω",
    "glosa": "kalla",
+   "svenska": {
+    "inf": "kalla",
+    "pres": "kallar",
+    "pret": "kallade",
+    "imp": "kalla"
+   },
    "klass": "kontrakt_e",
    "stam": "καλ",
    "seminarium": [
@@ -1569,6 +1684,12 @@
   {
    "lemma": "λαλέω",
    "glosa": "tala",
+   "svenska": {
+    "inf": "tala",
+    "pres": "talar",
+    "pret": "talade",
+    "imp": "tala"
+   },
    "klass": "kontrakt_e",
    "stam": "λαλ",
    "seminarium": [
@@ -1651,6 +1772,12 @@
   {
    "lemma": "μαρτυρέω",
    "glosa": "vittna om",
+   "svenska": {
+    "inf": "vittna om",
+    "pres": "vittnar om",
+    "pret": "vittnade om",
+    "imp": "vittna om"
+   },
    "klass": "kontrakt_e",
    "stam": "μαρτυρ",
    "seminarium": [
@@ -1732,6 +1859,12 @@
   {
    "lemma": "ποιέω",
    "glosa": "göra",
+   "svenska": {
+    "inf": "göra",
+    "pres": "gör",
+    "pret": "gjorde",
+    "imp": "gör"
+   },
    "klass": "kontrakt_e",
    "stam": "ποι",
    "seminarium": [
@@ -1814,6 +1947,12 @@
   {
    "lemma": "τηρέω",
    "glosa": "bevaka, bevara",
+   "svenska": {
+    "inf": "bevara",
+    "pres": "bevarar",
+    "pret": "bevarade",
+    "imp": "bevara"
+   },
    "klass": "kontrakt_e",
    "stam": "τηρ",
    "seminarium": [
@@ -1898,6 +2037,12 @@
   {
    "lemma": "εἰμί",
    "glosa": "vara",
+   "svenska": {
+    "inf": "vara",
+    "pres": "är",
+    "pret": "var",
+    "imp": "var"
+   },
    "klass": "oregelbunden",
    "stam": null,
    "seminarium": [
@@ -1991,6 +2136,12 @@
   {
    "lemma": "αἰτέω",
    "glosa": "be om",
+   "svenska": {
+    "inf": "be om",
+    "pres": "ber om",
+    "pret": "bad om",
+    "imp": "be om"
+   },
    "klass": "kontrakt_e",
    "stam": "αἰτ",
    "seminarium": [
@@ -2071,6 +2222,12 @@
   {
    "lemma": "θεραπεύω",
    "glosa": "hela, bota",
+   "svenska": {
+    "inf": "bota",
+    "pres": "botar",
+    "pret": "botade",
+    "imp": "bota"
+   },
    "klass": "omega",
    "stam": "θεραπευ",
    "seminarium": [
@@ -2151,6 +2308,12 @@
   {
    "lemma": "ἁμαρτάνω",
    "glosa": "synda",
+   "svenska": {
+    "inf": "synda",
+    "pres": "syndar",
+    "pret": "syndade",
+    "imp": "synda"
+   },
    "klass": "omega",
    "stam": "ἁμαρταν",
    "seminarium": [
@@ -2197,6 +2360,12 @@
   {
    "lemma": "λατρεύω",
    "glosa": "tjäna (med dativ)",
+   "svenska": {
+    "inf": "tjäna",
+    "pres": "tjänar",
+    "pret": "tjänade",
+    "imp": "tjäna"
+   },
    "klass": "omega",
    "stam": "λατρεύ",
    "seminarium": [
@@ -2274,6 +2443,12 @@
   {
    "lemma": "προσκυνέω",
    "glosa": "tillbedja",
+   "svenska": {
+    "inf": "tillbe",
+    "pres": "tillber",
+    "pret": "tillbad",
+    "imp": "tillbe"
+   },
    "klass": "kontrakt_e",
    "stam": "προσκυνέ",
    "seminarium": [
@@ -2352,6 +2527,12 @@
   {
    "lemma": "διώκω",
    "glosa": "förfölja",
+   "svenska": {
+    "inf": "förfölja",
+    "pres": "förföljer",
+    "pret": "förföljde",
+    "imp": "förfölj"
+   },
    "klass": "omega",
    "stam": "διωκ",
    "seminarium": [
@@ -2427,6 +2608,12 @@
   {
    "lemma": "πείθω",
    "glosa": "övertyga",
+   "svenska": {
+    "inf": "övertyga",
+    "pres": "övertygar",
+    "pret": "övertygade",
+    "imp": "övertyga"
+   },
    "klass": "omega",
    "stam": "πειθ",
    "seminarium": [
@@ -2502,6 +2689,12 @@
   {
    "lemma": "ὑπάγω",
    "glosa": "gå (bort), föra bort",
+   "svenska": {
+    "inf": "gå bort",
+    "pres": "går bort",
+    "pret": "gick bort",
+    "imp": "gå bort"
+   },
    "klass": "omega",
    "stam": "ὑπαγ",
    "seminarium": [
@@ -2560,6 +2753,12 @@
   {
    "lemma": "διδάσκω",
    "glosa": "undervisa",
+   "svenska": {
+    "inf": "undervisa",
+    "pres": "undervisar",
+    "pret": "undervisade",
+    "imp": "undervisa"
+   },
    "klass": "omega",
    "stam": "διδασκ",
    "seminarium": [
@@ -2637,6 +2836,12 @@
   {
    "lemma": "μένω",
    "glosa": "stanna, förbli",
+   "svenska": {
+    "inf": "stanna",
+    "pres": "stannar",
+    "pret": "stannade",
+    "imp": "stanna"
+   },
    "klass": "omega",
    "stam": "μεν",
    "seminarium": [
@@ -2682,6 +2887,12 @@
   {
    "lemma": "βάλλω",
    "glosa": "kasta",
+   "svenska": {
+    "inf": "kasta",
+    "pres": "kastar",
+    "pret": "kastade",
+    "imp": "kasta"
+   },
    "klass": "omega",
    "stam": "βαλλ",
    "seminarium": [
@@ -2729,6 +2940,11 @@
   {
    "lemma": "θέλω",
    "glosa": "vilja",
+   "svenska": {
+    "inf": "vilja",
+    "pres": "vill",
+    "pret": "ville"
+   },
    "klass": "omega",
    "stam": "θελ",
    "seminarium": [
@@ -2774,6 +2990,11 @@
   {
    "lemma": "μέλλω",
    "glosa": "tänka, ämna, komma att",
+   "svenska": {
+    "inf": "ämna",
+    "pres": "ämnar",
+    "pret": "ämnade"
+   },
    "klass": "omega",
    "stam": "μελλ",
    "seminarium": [
@@ -2820,6 +3041,12 @@
   {
    "lemma": "δίδωμι",
    "glosa": "ge",
+   "svenska": {
+    "inf": "ge",
+    "pres": "ger",
+    "pret": "gav",
+    "imp": "ge"
+   },
    "klass": "mi",
    "stam": "διδο",
    "seminarium": [
@@ -2853,6 +3080,12 @@
   {
    "lemma": "δείκνυμι",
    "glosa": "visa",
+   "svenska": {
+    "inf": "visa",
+    "pres": "visar",
+    "pret": "visade",
+    "imp": "visa"
+   },
    "klass": "mi",
    "stam": "δεικνυ",
    "seminarium": [
@@ -2886,6 +3119,12 @@
   {
    "lemma": "ἀποστέλλω",
    "glosa": "sända ut",
+   "svenska": {
+    "inf": "sända ut",
+    "pres": "sänder ut",
+    "pret": "sände ut",
+    "imp": "sänd ut"
+   },
    "klass": "omega",
    "stam": "ἀποστελ",
    "seminarium": [
@@ -2937,6 +3176,12 @@
   {
    "lemma": "κρίνω",
    "glosa": "döma",
+   "svenska": {
+    "inf": "döma",
+    "pres": "dömer",
+    "pret": "dömde",
+    "imp": "döm"
+   },
    "klass": "omega",
    "stam": "κριν",
    "seminarium": [
@@ -2984,6 +3229,12 @@
   {
    "lemma": "ἀγγέλλω",
    "glosa": "meddela, förkunna",
+   "svenska": {
+    "inf": "förkunna",
+    "pres": "förkunnar",
+    "pret": "förkunnade",
+    "imp": "förkunna"
+   },
    "klass": "omega",
    "stam": "ἀγγελ",
    "seminarium": [
