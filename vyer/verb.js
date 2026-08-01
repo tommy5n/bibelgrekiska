@@ -244,7 +244,7 @@ const MARKUP = `<div class="vy vy-verb">
   </div>
 </div>
 
-<footer>Svenskan böjs inte efter person (<em>jag/du/de är</em>) — bara pronomenet byts; preteritum (<em>var, löste</em>) återger både imperfekt och aorist. Distraktorerna i flerval är andra former av <em>samma</em> verb — de tränar ändelserna, inte gissning. Indikativ konstaterar (<em>βλέπεις</em> du ser), imperativ uttrycker vilja (<em>βλέπε</em> titta!).</footer>
+<footer>Svenskan böjs inte efter person (<em>jag/du/de är</em>) — bara pronomenet byts; preteritum (<em>var, löste</em>) återger både imperfekt och aorist. Distraktorerna i flerval är andra former av <em>samma</em> verb — de tränar ändelserna, inte gissning. I <em>Översätt</em> och <em>Läs ordet</em> går det åt andra hållet: en grekisk form visas och du väljer betydelsen — Översätt kontrasterar samma verbs böjningar (parsa formen), Läs ordet samma form av olika verb (känn igen ordet). Indikativ konstaterar (<em>βλέπεις</em> du ser), imperativ uttrycker vilja (<em>βλέπε</em> titta!).</footer>
 </div>`;
 
 export function render(root){
