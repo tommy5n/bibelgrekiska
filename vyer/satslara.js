@@ -14,20 +14,22 @@ export function teardown(){ if(__kh){ document.removeEventListener("keydown", __
 // (.modes/.card/.reveal/.controls/.streak) + globala tokens; här bara det
 // spelspecifika. Grön = rätt (--cbg/--cbd/--c, samma "rätt"-trio som satsanalys).
 const CSS = `
-.vy-satslara .modes { display: flex; gap: 0.5rem; justify-content: center; margin: 0.9rem 0 0.2rem; }
+.vy-satslara .modes { display: flex; gap: 0.6rem; justify-content: center; margin: 1.2rem 0 0.6rem; }
 .vy-satslara .mode {
   font-family: inherit; font-size: var(--fs-sm); color: var(--ink-soft); background: var(--card);
-  border: 1.5px solid var(--line); border-radius: 999px; padding: 0.3rem 0.9rem; cursor: pointer; transition: 0.15s;
+  border: 1.5px solid var(--line); border-radius: 999px; padding: 0.4rem 1.05rem; cursor: pointer; transition: 0.15s;
 }
 /* .mode pressed-svart + hover ärvs från de delade reglerna i app.css. */
 .vy-satslara .sats {
-  display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center;
-  margin: 1.5rem 0 0.4rem; min-height: 3.2rem; align-items: flex-end;
+  display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center;
+  margin: 2rem 0 0.5rem; min-height: 3.2rem; align-items: flex-end;
 }
+/* Bibelstället: liten och dämpad, UNDER den grekiska texten (kommer efter .sats i DOM:en). */
+.vy-satslara .kalla { font-size: var(--fs-xs); color: var(--ink-soft); text-align: center; margin: 0 0 0.5rem; letter-spacing: 0.03em; }
 .vy-satslara .chunk {
   font-family: inherit; font-size: 1.5rem; line-height: 1.15;
   color: var(--ink); background: var(--card); border: 1.5px solid var(--line);
-  border-radius: 12px; padding: 0.35rem 0.7rem 0.3rem; cursor: pointer; transition: 0.15s;
+  border-radius: 12px; padding: 0.45rem 0.85rem 0.4rem; cursor: pointer; transition: 0.15s;
 }
 @media (hover: hover) { .vy-satslara .chunk:hover:not(:disabled) { border-color: var(--gold); } }
 .vy-satslara .chunk:disabled { cursor: default; }
@@ -36,25 +38,31 @@ const CSS = `
 .vy-satslara .chunk.vald { background: color-mix(in srgb, var(--gold) 12%, var(--card)); border-color: var(--gold); color: var(--ink); }
 .vy-satslara .chunk.bisats { background: var(--good-bg); border-color: var(--good); color: var(--good); }
 .vy-satslara .chunk.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
-.vy-satslara .fraga { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; margin: 1.4rem 0 0.6rem; }
+.vy-satslara .fraga { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin: 2rem 0 0.9rem; }
 .vy-satslara .subj-stor { font-size: 2.4rem; color: var(--ink); }
 .vy-satslara .subj-fraga { font-size: var(--fs-sm); color: var(--ink-soft); }
-.vy-satslara .options { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0.4rem 0 0.6rem; }
+.vy-satslara .options { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin: 0.8rem 0 0.6rem; }
 .vy-satslara .opt {
   font-family: inherit; font-size: var(--fs-lg); color: var(--ink); background: var(--card);
-  border: 1.5px solid var(--line); border-radius: 12px; padding: 0.5rem 1rem; cursor: pointer; transition: 0.15s;
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 0.6rem 1.15rem; cursor: pointer; transition: 0.15s;
 }
 @media (hover: hover) { .vy-satslara .options:not(.no-hover) .opt:hover:not(:disabled) { border-color: var(--gold); } }
 .vy-satslara .opt:disabled { cursor: default; }
-.vy-satslara .opt.ratt { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
+/* samma undefined-var-bugg som .chunk.bisats hade → globala good-vars. */
+.vy-satslara .opt.ratt { background: var(--good-bg); border-color: var(--good); color: var(--good); }
 .vy-satslara .opt.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
-.vy-satslara .controls { display: flex; gap: 0.6rem; justify-content: center; margin-top: 0.6rem; }
+/* Facit-rutan: luftigare och centrerad, tydlig skillnad översättning/notis. */
+.vy-satslara .reveal { display: flex; flex-direction: column; gap: 0.55rem; margin: 1.4rem auto 0; max-width: 44ch; text-align: center; }
+.vy-satslara .reveal .sv { font-size: var(--fs-lg); color: var(--ink); }
+.vy-satslara .reveal .not { font-size: var(--fs-sm); color: var(--ink-soft); line-height: 1.45; }
+.vy-satslara .controls { display: flex; gap: 0.8rem; justify-content: center; margin-top: 1.6rem; }
 .vy-satslara .ctl {
   font-family: inherit; font-size: var(--fs-sm); color: var(--ink); background: var(--card);
-  border: 1.5px solid var(--line); border-radius: 10px; padding: 0.45rem 1rem; cursor: pointer; transition: 0.15s;
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 0.55rem 1.3rem; cursor: pointer; transition: 0.15s;
 }
 @media (hover: hover) { .vy-satslara .ctl:hover { border-color: var(--gold); } }
 .vy-satslara .ctl.primar { background: var(--gold); border-color: var(--gold); color: #fff; }
+.vy-satslara .streak { margin-top: 1.5rem; }
 `;
 
 const MARKUP = `<div class="vy vy-satslara"><style>${CSS}</style>
@@ -70,8 +78,8 @@ const MARKUP = `<div class="vy vy-satslara"><style>${CSS}</style>
 
 <div class="stage">
   <div class="card">
-    <div class="kalla" id="kalla"></div>
     <div class="sats" id="sats"></div>
+    <div class="kalla" id="kalla"></div>
     <div class="fraga hidden" id="fraga"></div>
     <div class="options hidden" id="options"></div>
     <div class="reveal hidden" id="reveal">
