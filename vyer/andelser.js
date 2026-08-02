@@ -37,7 +37,7 @@ const MARKUP = `<div class="vy vy-andelser">
       </div>
     </div>
 
-    <div class="opts hidden" id="opts-parse"></div>
+    <div class="opts parse hidden" id="opts-parse"></div>
 
     <div class="reveal hidden" id="reveal">
       <div class="form" id="r-form"></div>
@@ -387,9 +387,9 @@ function svaraLasa(valt){
 function renderLasa(c){
   $("answers").classList.add("hidden");
   $("opts-parse").classList.remove("hidden");
+  $("slot").style.display = "none";              // luckan hör till bygg-läget; tom ruta visar annars bara sina ramlinjer
   $("lemma").textContent = c.formFull;
   $("tag").textContent = "Vilket kasus och numerus?";
-  $("slot").textContent = "";
 
   const box = $("opts-parse"); box.innerHTML = "";
   box.classList.add("no-hover"); box.addEventListener("pointermove", () => box.classList.remove("no-hover"), { once: true });
@@ -430,6 +430,7 @@ function render(){
   $("answers").classList.remove("hidden");
   $("opts-parse").classList.add("hidden");
   $("btn-go").classList.remove("hidden");
+  $("slot").style.display = "";
   $("lemma").textContent = c.lemma;
   $("tag").textContent = c.tag;
   $("slot").textContent = c.slot;

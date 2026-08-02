@@ -25,14 +25,16 @@ const CSS = `
   margin: 1.5rem 0 0.4rem; min-height: 3.2rem; align-items: flex-end;
 }
 .vy-satslara .chunk {
-  font-family: inherit; font-size: 1.85rem; line-height: 1.15;
+  font-family: inherit; font-size: 1.5rem; line-height: 1.15;
   color: var(--ink); background: var(--card); border: 1.5px solid var(--line);
   border-radius: 12px; padding: 0.35rem 0.7rem 0.3rem; cursor: pointer; transition: 0.15s;
 }
 @media (hover: hover) { .vy-satslara .chunk:hover:not(:disabled) { border-color: var(--gold); } }
 .vy-satslara .chunk:disabled { cursor: default; }
-.vy-satslara .chunk.vald { background: var(--cbg); border-color: var(--gold); color: var(--ink); }
-.vy-satslara .chunk.bisats { background: var(--cbg); border-color: var(--cbd); color: var(--c); }
+/* --c/--cbg/--cbd var bara definierade i .vy-satsanalys → odefinierade här: border
+   föll tillbaka till currentColor (svart ram). Använd de globala good/gold-vars. */
+.vy-satslara .chunk.vald { background: color-mix(in srgb, var(--gold) 12%, var(--card)); border-color: var(--gold); color: var(--ink); }
+.vy-satslara .chunk.bisats { background: var(--good-bg); border-color: var(--good); color: var(--good); }
 .vy-satslara .chunk.fel { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); }
 .vy-satslara .fraga { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; margin: 1.4rem 0 0.6rem; }
 .vy-satslara .subj-stor { font-size: 2.4rem; color: var(--ink); }

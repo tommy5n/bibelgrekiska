@@ -1963,6 +1963,9 @@ body {
   align-items: center;
   gap: 0.15rem;
 }
+/* Läs frasen: alternativen är svenska analyssträngar ("dativ · plural"),
+   inte grekiska former — mindre font så de får plats på mobilen. */
+.vy-kongruens .alternativ.lasa .opt { font-size: var(--fs-md); }
 @media (hover: hover) {
 .vy-kongruens .alternativ:not(.no-hover) .opt:hover:not(:disabled) {
   border-color: var(--gold);
@@ -2928,6 +2931,10 @@ body {
   transition: 0.15s;
   min-width: 3rem;
 }
+/* Läs formen: alternativen är svenska analyssträngar, inte grekiska ändelser —
+   ärvd sans-font i normalstorlek i stället för stor Cardo. */
+.vy-andelser .opts.parse { gap: 0.55rem; }
+.vy-andelser .opts.parse .optx { font-family: "Spectral", serif; font-size: var(--fs-md); min-width: 0; padding: 0.5rem 0.9rem; }
 @media (hover: hover) {
 .vy-andelser .opts:not(.no-hover) .optx:hover:not(:disabled) {
   border-color: var(--gold);
