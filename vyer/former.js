@@ -125,6 +125,8 @@ const STYLE = `
 .vy-former .opt:disabled{ cursor:default; }
 .vy-former .opt.correct{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
 .vy-former .opt.wrong{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
+.vy-former .options.las{ grid-template-columns:1fr 1fr; }
+.vy-former .options.las .opt{ font-family:"Spectral",serif; font-size:var(--fs-md); padding:.55rem .6rem; line-height:1.2; }
 .vy-former .controls{ display:flex; gap:.6rem; justify-content:center; }
 .vy-former .btn{ font-family:"Spectral",serif; font-size:var(--fs-md); padding:.55rem 1.2rem;
   border:1px solid var(--line); border-radius:10px; background:var(--card); color:var(--ink); cursor:pointer; }
@@ -140,11 +142,12 @@ const STYLE = `
 const MARKUP = `<div class="vy vy-former">
 <header>
   <h1>Grekiska — formverkstaden</h1>
-  <div class="sub" id="sub">Läs av formen och bygg om den.</div>
+  <div class="sub" id="sub">Läs formen och ange tempus, modus och person.</div>
 </header>
 
 <div class="modes" role="group" aria-label="Spelläge">
-  <button class="mode" id="mode-bygg" aria-pressed="true">Bygg om formen</button>
+  <button class="mode" id="mode-las" aria-pressed="true">Läs formen</button>
+  <button class="mode" id="mode-bygg" aria-pressed="false">Bygg om formen</button>
   <button class="mode" id="mode-neg" aria-pressed="false">Vilken negation?</button>
 </div>
 
@@ -199,7 +202,7 @@ const MARKUP = `<div class="vy vy-former">
 <div class="gr-lank"><a href="grammatikreferens.html#verb-imperfekt">§ Imperfekt</a> · <a href="grammatikreferens.html#verb-imperativ">§ Imperativ</a> · <a href="grammatikreferens.html#verb-futurum">§ Futurum</a> · <a href="grammatikreferens.html#verb-aorist">§ Aorist</a></div></footer>
 </div>`;
 
-export function render(root){
+export function render(root, opts = {}){
   if(!document.getElementById("vy-former-style")){
     const st = document.createElement("style"); st.id = "vy-former-style"; st.textContent = STYLE;
     document.head.appendChild(st);
@@ -209,7 +212,7 @@ export function render(root){
   const LAGER = "grekiska-formverkstaden";
   const BLADET = ["fut","imp","ind","impf","aor","pres"];   // övningsbladets a–e + sem 8 aorist
   const state = {
-    mode: "bygg",
+    mode: "las",   // "las" (receptivt: läs formen → parsa) | "bygg" | "neg" (produktivt)
     valdaSem: new Set(SEMINARIER),
     valdaOmv: new Set(BLADET),
     valdaKlass: new Set(Object.keys(KLASSER)),
@@ -332,11 +335,34 @@ export function render(root){
     };
   }
 
+  // Receptivt läge: visa en verbform, läs av tempus·modus·person. Formen kan vara
+  // tvetydig (ἔλυον = 1sg el. 3pl imperfekt; 2pl ind = 2pl imp) — då är ALLA
+  // analyser rätta, precis som bygg-läget godtar flera former.
+  const lasLabel = (k, p) => NYCKEL_NAMN[k] + (p === "inf" ? "" : " · " + PN_NAMN[p]);
+  function nyLas(vIn){
+    const v = vIn || pick(kandidatVerb());
+    const nycklar = Object.keys(v.former).filter(k => NYCKEL_NAMN[k]);
+    const nyckel = pick(nycklar);
+    const pn = pick(cellerFor(nyckel));
+    const form = v.former[nyckel][pn];
+    // Alla (nyckel, cell) i verbet vars form är exakt denna → tvetydighetens rätta svar.
+    const ratta = new Set();
+    nycklar.forEach(k => cellerFor(k).forEach(p => { if(v.former[k][p] === form) ratta.add(lasLabel(k, p)); }));
+    // Distraktorer: andra analyser ur SAMMA verbs paradigm (plausibla, inte gissning).
+    const pool = [];
+    nycklar.forEach(k => cellerFor(k).forEach(p => { if(v.former[k][p] !== undefined) pool.push(lasLabel(k, p)); }));
+    const distr = [...new Set(pool)].filter(l => !ratta.has(l));
+    state.card = {
+      typ:"las", lemma:v.lemma, glosa:v.glosa, form, nyckel, pn, ratta,
+      optioner: shuffle([pick([...ratta]), ...shuffle(distr).slice(0,3)]),
+    };
+  }
+
   function newQuestion(){
     uppdateraAntal();
     const _id = rkNasta();
     const v = verb.find(x => x.lemma === _id);
-    state.mode === "neg" ? nyNeg(v) : nyBygg(v);
+    state.mode === "las" ? nyLas(v) : state.mode === "neg" ? nyNeg(v) : nyBygg(v);
     state.besvarad = false; state.valt = null;
     render2();
   }
@@ -347,8 +373,14 @@ export function render(root){
     $("reveal").classList.add("hidden");
     $("controls-next").classList.add("hidden");
     $("options").classList.toggle("neg", c.typ==="neg");
+    $("options").classList.toggle("las", c.typ==="las");
 
-    if(c.typ === "bygg"){
+    if(c.typ === "las"){
+      $("kalla").textContent = "Läs av formen";
+      $("prompt").textContent = c.form;
+      $("lemma").textContent = c.lemma + " — " + c.glosa;
+      $("pil").innerHTML = "→ <b>tempus · modus · person</b>";
+    } else if(c.typ === "bygg"){
       $("kalla").textContent = NYCKEL_NAMN[c.omv.from] + (c.pn==="inf" ? "" : " · " + PN_NAMN[c.pn]);
       $("prompt").textContent = c.kalla;
       $("lemma").textContent = c.lemma + " — " + c.glosa;
@@ -372,6 +404,15 @@ export function render(root){
   function visaSvar(){
     const c = state.card;
     const facit = [...c.ratta];
+    if(c.typ === "las"){
+      $("svar").textContent = facit.join("  ·  ");
+      $("svarlabel").textContent = c.lemma + " ”" + c.glosa + "” — " + c.form;
+      $("regel").textContent = facit.length > 1
+        ? "Formen " + c.form + " är tvetydig — flera analyser är rätta."
+        : "";
+      $("reveal").classList.remove("hidden");
+      return;
+    }
     if(c.typ === "bygg"){
       $("svar").textContent = facit.join(" / ");
       const personer = c.omv.to.endsWith(".inf") ? "" :
@@ -468,15 +509,19 @@ export function render(root){
     document.querySelector("[data-omv-blad]").setAttribute("aria-pressed", setEq(state.valdaOmv, new Set(BLADET)));
   }
   function uppdateraLage(){
+    $("mode-las").setAttribute("aria-pressed", state.mode==="las");
     $("mode-bygg").setAttribute("aria-pressed", state.mode==="bygg");
     $("mode-neg").setAttribute("aria-pressed", state.mode==="neg");
-    // Negationsläget bryr sig inte om vilken omvandling som är vald.
-    $("sec-omv").classList.toggle("hidden", state.mode==="neg");
+    // Omvandlingsfiltret gäller bara bygg-läget (läs/negation bryr sig inte).
+    $("sec-omv").classList.toggle("hidden", state.mode!=="bygg");
     $("sub").textContent = state.mode==="neg"
       ? "Modus avgör negationen — och vid indikativ avgör ljudet formen."
+      : state.mode==="las"
+      ? "Läs formen och ange tempus, modus och person."
       : "Läs av formen och bygg om den.";
   }
 
+  $("mode-las").onclick  = () => { state.mode="las";  state.streak=0; uppdateraLage(); spara(); newQuestion(); };
   $("mode-bygg").onclick = () => { state.mode="bygg"; state.streak=0; uppdateraLage(); spara(); newQuestion(); };
   $("mode-neg").onclick  = () => { state.mode="neg";  state.streak=0; uppdateraLage(); spara(); newQuestion(); };
   $("btn-next").onclick  = () => newQuestion();
@@ -498,7 +543,10 @@ export function render(root){
   };
   document.addEventListener("keydown", __fh);
 
-  ladda(); uppdateraLage(); byggGridSem(); byggGridOmv(); byggGridKlass();
+  ladda();
+  // Djuplänk kan förvälja läge (#/former/las) — vinner över persistensen.
+  if(["las","bygg","neg"].includes(opts.mode)) state.mode = opts.mode;
+  uppdateraLage(); byggGridSem(); byggGridOmv(); byggGridKlass();
   $("streak").textContent = state.streak; $("best").textContent = state.best;
   newQuestion();
 }

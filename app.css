@@ -1875,6 +1875,23 @@ body {
   font-size: var(--fs-md);
   font-style: italic;
 }
+.vy-kongruens .modes {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 0 0 1.1rem;
+}
+.vy-kongruens .mode {
+  font-family: inherit;
+  font-size: var(--fs-md);
+  color: var(--ink-soft);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.45rem 1.05rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
 .vy-kongruens .stage {
   width: min(560px, 100%);
   display: flex;

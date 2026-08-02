@@ -4,8 +4,13 @@ export function teardown(){ if(__kh){ document.removeEventListener("keydown", __
 const MARKUP = `<div class="vy vy-kongruens">
 <header>
   <h1>Grekiska — kongruens</h1>
-  <div class="sub" id="sub">Adjektivet rättar sig efter sitt huvudord — i genus, numerus och kasus.</div>
+  <div class="sub" id="sub">Läs frasen och ange adjektivets genus, kasus och numerus.</div>
 </header>
+
+<div class="modes" role="group" aria-label="Spelläge">
+  <button class="mode" id="mode-lasa" aria-pressed="true">Läs frasen</button>
+  <button class="mode" id="mode-bygg" aria-pressed="false">Bygg formen</button>
+</div>
 
 <div class="stage">
   <div class="card">
@@ -36,7 +41,7 @@ const MARKUP = `<div class="vy vy-kongruens">
     <span>Anpassa övningen</span><span class="chev">▾</span>
   </button>
   <div class="picker-body hidden" id="picker-body">
-    <div class="picker-section">
+    <div class="picker-section" id="sek-konstr">
       <h2>Konstruktion</h2>
       <div class="seg" id="seg-konstr" role="group" aria-label="Konstruktion">
         <button data-v="attributiv" aria-pressed="true">attributiv</button>
@@ -101,7 +106,7 @@ const MARKUP = `<div class="vy vy-kongruens">
   Femininum (1:a deklinationen) ingår, δίκαιος medräknad. Feminin gen.pl följer maskulinums accent (ἁγίων), inte substantivens -ῶν.
 </footer>
 </div>`;
-export function render(root){
+export function render(root, opts = {}){
   root.innerHTML = MARKUP;
 
 const ADJEKTIV = [
@@ -298,6 +303,7 @@ const semNamn = s => s === 0 ? "Övriga" : "Sem " + s;
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
 const LAGER = "grekiska-kongruens-v1";
 const state = {
+  mode:"lasa",                 // "lasa" (receptivt: läs frasen → parsa) | "bygg" (produktivt: välj formen)
   adjDeck:"alla", substSet:"alla", valdaSem:new Set(SEM_VARDEN), vokativ:false,
   konstruktion:"attributiv", tempus:"blandat", verblucka:false,
   streak:0, best:0,
@@ -318,6 +324,7 @@ const state = {
 function spara(){
   try{
     localStorage.setItem(LAGER, JSON.stringify({
+      mode:state.mode,
       adjDeck:state.adjDeck, substSet:state.substSet, valdaSem:[...state.valdaSem], vokativ:state.vokativ,
       konstruktion:state.konstruktion, tempus:state.tempus, verblucka:state.verblucka,
       best:state.best,
@@ -327,6 +334,7 @@ function spara(){
 function ladda(){
   try{
     const r = JSON.parse(localStorage.getItem(LAGER)); if(!r) return;
+    if(r.mode==="lasa"||r.mode==="bygg") state.mode = r.mode;
     if(r.adjDeck)  state.adjDeck  = r.adjDeck;
     if(r.substSet) state.substSet = r.substSet;
     if(Array.isArray(r.valdaSem)) state.valdaSem = new Set(r.valdaSem.filter(s => SEM_VARDEN.includes(s)));
@@ -376,7 +384,8 @@ function newQuestion(){
   state.klar = false; state.smutsig = false; state.sistFel = null;
   const _id = rkNasta();
   const subst = SUBSTANTIV.find(s => s.lemma === _id) || pick(aktivaSubst());
-  if(state.konstruktion === "predikativ") nyttPredikativt(subst);
+  if(state.mode === "lasa") nyttLasa(subst);
+  else if(state.konstruktion === "predikativ") nyttPredikativt(subst);
   else nyttAttributivt(subst);
   render();
 }
@@ -394,6 +403,46 @@ function byggAlternativ(korrekt, kand, fyllPool){
     }
   }
   state.alternativ = shuffle([...set.values()]);
+}
+
+/* ── LÄS FRASEN (receptivt: τῷ ἁγίῳ ἀνθρώπῳ → parsa) ─────────────────────
+   Hela frasen visas (artikel + adjektiv + substantiv, ingen lucka); uppgiften
+   är att LÄSA av kasus och numerus. Artikeln + substantivet disambiguerar
+   adjektivformen (det är hela poängen: ἀγαθοῦ ensamt är gen sg m ELLER n, men
+   τοῦ ἀγαθοῦ ἀνθρώπου är entydigt). Enda kvarvarande synkretism är neutrum
+   nom = ack (τὸ ἅγιον ἔργον) — där slås svaret ihop till "nom./ack.".
+   Alltid attributivt: predikativt vore trivialt (allt nominativ). */
+function nyttLasa(substIn){
+  const adjPool = aktivaAdj();
+  const kasusVal = state.vokativ ? [...KASUS,"vok"] : KASUS.slice();
+  const subst = substIn || pick(aktivaSubst());
+  const adj = pick(adjPool);
+  const kasus = pick(kasusVal), num = pick(["sg","pl"]);
+  const g = subst.genus, ni = idx(num);
+
+  const artikel = ARTIKEL[g][kasus][ni], adjForm = adj[g][kasus][ni], substForm = subst.former[kasus][ni];
+  state.subst = subst; state.adj = adj; state.kasus = kasus; state.num = num; state.genus = g;
+  state.lucka = "adj"; state.artikel = artikel; state.substForm = substForm;
+
+  const neutSyncr = g==="n" && (kasus==="nom" || kasus==="ack");
+  const kNamn = neutSyncr ? "nom./ack." : KASUS_NAMN[kasus];
+  const ratt = kNamn + " · " + NUM_NAMN[num];
+  state.ratt = ratt;
+
+  state.fras = [ {text:artikel}, {text:adjForm}, {text:substForm} ];   // hel fras, ingen lucka
+  state.prompt = `Vilket <b>kasus</b> och <b>numerus</b> står frasen i?`;
+  state.analys = GEN_NAMN[g] + " · " + (neutSyncr ? "nominativ/ackusativ" : KASUS_NAMN[kasus]) + " · " + NUM_NAMN[num];
+  state.not = `${adj.lemma} ”${adj.glosa}” · ${subst.lemma} ”${subst.glosa}”`;
+
+  // Alternativ = kasus×numerus-etiketter; neutrum nom/ack viks ihop så ingen
+  // distraktor är en lika giltig läsning av den visade frasen.
+  const combos = new Set();
+  for(const k of kasusVal) for(const nn of ["sg","pl"]){
+    const syncr = g==="n" && (k==="nom" || k==="ack");
+    combos.add((syncr ? "nom./ack." : KASUS_NAMN[k]) + " · " + NUM_NAMN[nn]);
+  }
+  const distr = shuffle([...combos].filter(x => x !== ratt)).slice(0,3);
+  state.alternativ = shuffle([ratt, ...distr]).map(s => ({ form:s, axel:"", korrekt:s===ratt, klickad:false }));
 }
 
 /* ── ATTRIBUTIV (ὁ ἀγαθὸς ἀδελφός) ──────────────────────────────────── */
@@ -600,19 +649,33 @@ function uppdateraSnabbChips(){
   if(none) none.setAttribute("aria-pressed", v.size === 0);
 }
 
-/* visar rätt inställningssektioner för aktuell konstruktion */
+/* visar rätt inställningssektioner för aktuellt läge + konstruktion */
 function syncPickerSynlighet(){
+  const lasa = state.mode === "lasa";
   const pred = state.konstruktion === "predikativ";
-  $("sek-kasus").classList.toggle("hidden", pred);       // kasus irrelevant predikativt
-  $("sek-tempus").classList.toggle("hidden", !pred);
-  $("sek-verblucka").classList.toggle("hidden", !pred);
-  $("sub").textContent = pred
+  // Läs-läget är alltid attributivt → konstruktion/tempus/verblucka är irrelevanta.
+  $("sek-konstr").classList.toggle("hidden", lasa);
+  $("sek-kasus").classList.toggle("hidden", !lasa && pred);   // kasus irrelevant predikativt
+  $("sek-tempus").classList.toggle("hidden", lasa || !pred);
+  $("sek-verblucka").classList.toggle("hidden", lasa || !pred);
+  $("sub").textContent = lasa
+    ? "Läs frasen och ange adjektivets kasus och numerus — artikeln och substantivet visar vägen."
+    : pred
     ? "Predikatsfyllnaden står i nominativ och rättar sig efter subjektet i genus och numerus."
     : "Adjektivet rättar sig efter sitt huvudord — i genus, numerus och kasus.";
+}
+function syncLägesknappar(){
+  $("mode-lasa").setAttribute("aria-pressed", String(state.mode === "lasa"));
+  $("mode-bygg").setAttribute("aria-pressed", String(state.mode === "bygg"));
 }
 
 function init(){
   ladda();
+  // Djuplänk kan förvälja läge (#/kongruens/lasa) — vinner över persistensen.
+  if(opts.mode === "lasa" || opts.mode === "bygg") state.mode = opts.mode;
+  syncLägesknappar();
+  $("mode-lasa").addEventListener("click", () => { if(state.mode==="lasa") return; state.mode="lasa"; syncLägesknappar(); syncPickerSynlighet(); spara(); newQuestion(); });
+  $("mode-bygg").addEventListener("click", () => { if(state.mode==="bygg") return; state.mode="bygg"; syncLägesknappar(); syncPickerSynlighet(); spara(); newQuestion(); });
   segVal($("seg-konstr"), state.konstruktion);
   segVal($("seg-adj"),    state.adjDeck);
   segVal($("seg-subst"),  state.substSet);

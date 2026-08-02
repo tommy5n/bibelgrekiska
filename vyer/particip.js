@@ -134,7 +134,7 @@ export function render(root){
 
   /* ── TILLSTÅND ────────────────────────────────────────────────────────── */
   const LAGER = "grekiska-particip";
-  const state = { mode:"kongruens", streak:0, best:0, q:null, besvarad:false, ko:[], forra:null };
+  const state = { mode:"densom", streak:0, best:0, q:null, besvarad:false, ko:[], forra:null };  // receptivt default (grek→sv): läs participet, välj "den som …"; ladda() respekterar tidigare val
 
   const $ = id => document.getElementById(id);
   const pick = arr => arr[Math.floor(Math.random()*arr.length)];

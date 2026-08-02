@@ -11,11 +11,12 @@ export function teardown(){ if(__kh){ document.removeEventListener("keydown", __
 const MARKUP = `<div class="vy vy-andelser">
 <header>
   <h1>Grekiska — artiklar &amp; ändelser</h1>
-  <div class="sub">Bygg formen: välj rätt artikel och ändelse för kasuset.</div>
+  <div class="sub" id="sub">Läs formen och ange kasus och numerus — artikeln visar vägen.</div>
 </header>
 
-<div class="modes" role="group" aria-label="Svårighet">
-  <button class="mode" id="mode-full" aria-pressed="true">Artikel + ändelse</button>
+<div class="modes" role="group" aria-label="Läge">
+  <button class="mode" id="mode-lasa" aria-pressed="true">Läs formen</button>
+  <button class="mode" id="mode-full" aria-pressed="false">Artikel + ändelse</button>
   <button class="mode" id="mode-end" aria-pressed="false">Bara ändelse</button>
 </div>
 
@@ -35,6 +36,8 @@ const MARKUP = `<div class="vy vy-andelser">
         <div class="opts" id="opts-end"></div>
       </div>
     </div>
+
+    <div class="opts hidden" id="opts-parse"></div>
 
     <div class="reveal hidden" id="reveal">
       <div class="form" id="r-form"></div>
@@ -114,7 +117,7 @@ const MARKUP = `<div class="vy vy-andelser">
   nominativ avslöjar: <code>ἀρχή</code> (η), <code>ἡμέρα</code> (ren α), <code>θάλασσα</code> (blandad α).
 </footer>
 </div>`;
-export function render(root){
+export function render(root, opts = {}){
   root.innerHTML = MARKUP;
 
 /* ── DATA ─────────────────────────────────────────────────────────────
@@ -218,13 +221,13 @@ function byggNot(o, pk, k, n){
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
 const LAGER = "grekiska-andelsespel";
 const state = {
-  mode: "full",                                   // "full" | "end"
+  mode: "lasa",                                   // "lasa" (receptivt: läs formen → parsa) | "full" | "end" (produktivt: bygg)
   numerus: "sg",                                  // "sg" | "pl" | "blandat"
   valdaOrd: new Set(ord.map(o => o.lemma)),
   valdaSem: new Set(SEM_VARDEN),
   valdaKasus: new Set(KASUS_ORDNING),
   streak: 0, best: 0,
-  card: null, besvarad: false,
+  card: null, besvarad: false, valt: null,
   selArt: null, selEnd: null, forraKort: null,
   rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
 };
@@ -286,9 +289,38 @@ function newQuestion(){
   const n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
 
   const pk = paradigmKey(o), g = o.genus;
+  const form = o.former[k][n];
+
+  // Receptivt läge: visa hela formen (artikel + substantiv), läs av kasus & numerus.
+  // Artikeln disambiguerar (τῷ λόγῳ = entydigt dativ sg); enda synkretismen är
+  // neutrum nom = ack, som viks ihop till "nom./ack." så ingen distraktor är rätt.
+  if(state.mode === "lasa"){
+    const numN = n === "sg" ? "singular" : "plural";
+    const neutSyncr = pk === "n2" && (k === "nom" || k === "ack");
+    const ratt = (neutSyncr ? "nom./ack." : KASUS[k].namn) + " · " + numN;
+    const kombo = (kk, nn) => ((pk === "n2" && (kk === "nom" || kk === "ack")) ? "nom./ack." : KASUS[kk].namn) + " · " + (nn === "sg" ? "singular" : "plural");
+    const combos = new Set(); for(const kk of kasusLista) for(const nn of ["sg","pl"]) combos.add(kombo(kk, nn));
+    let distr = shuffle([...combos].filter(x => x !== ratt)).slice(0, 3);
+    if(distr.length < 3){                                   // för smalt kasusurval → fyll ur alla kasus
+      const alla = new Set(); for(const kk of KASUS_ORDNING) for(const nn of ["sg","pl"]) alla.add(kombo(kk, nn));
+      const extra = shuffle([...alla].filter(x => x !== ratt && !distr.includes(x)));
+      while(distr.length < 3 && extra.length) distr.push(extra.shift());
+    }
+    state.card = {
+      lasa: true, lemma: o.lemma, genus: g, pk, kasus: k, numerus: n,
+      formFull: ARTIKEL[g][k][n] + " " + form,
+      analys: GENUS_NAMN[g] + " · " + (neutSyncr ? "nominativ/ackusativ" : KASUS[k].namn) + " · " + numN,
+      glosa: glosaMedKasus(o, k, n),
+      not: byggNot(o, pk, k, n),
+      parseRatt: ratt, parseOpt: shuffle([ratt, ...distr]),
+    };
+    state.valt = null; state.besvarad = false;
+    render();
+    return;
+  }
+
   const eo = andelseOptioner(pk, k, n, 6);
   const ao = artikelOptioner(g, k, n, 6);
-  const form = o.former[k][n];
 
   state.card = {
     lemma:o.lemma, genus:g, pk:pk, kasus:k, numerus:n,
@@ -344,14 +376,64 @@ function renderOpts(){
 }
 function uppdateraGo(){ if(!state.besvarad) $("btn-go").disabled = !klar(); }
 
+function svaraLasa(valt){
+  if(state.besvarad) return;
+  state.valt = valt; state.besvarad = true;
+  const rätt = valt === state.card.parseRatt;
+  registrera(rätt);
+  if(rätt) rkKlarad();
+  render();
+}
+function renderLasa(c){
+  $("answers").classList.add("hidden");
+  $("opts-parse").classList.remove("hidden");
+  $("lemma").textContent = c.formFull;
+  $("tag").textContent = "Vilket kasus och numerus?";
+  $("slot").textContent = "";
+
+  const box = $("opts-parse"); box.innerHTML = "";
+  box.classList.add("no-hover"); box.addEventListener("pointermove", () => box.classList.remove("no-hover"), { once: true });
+  c.parseOpt.forEach(s => {
+    const b = document.createElement("button");
+    b.className = "optx"; b.textContent = s;
+    if(state.besvarad){
+      b.disabled = true;
+      if(s === c.parseRatt) b.classList.add("correct");
+      else if(s === state.valt) b.classList.add("wrong");
+    } else { b.onclick = () => svaraLasa(s); }
+    box.appendChild(b);
+  });
+
+  const kort = document.querySelector(".vy-andelser .card");
+  const rätt = state.besvarad && state.valt === c.parseRatt;
+  kort.classList.toggle("svar-ratt", state.besvarad && rätt);
+  kort.classList.toggle("svar-fel",  state.besvarad && !rätt);
+
+  if(state.besvarad){
+    $("r-form").textContent = c.formFull + " — " + c.analys;
+    $("r-glosa").textContent = c.glosa;
+    if(c.not){ $("r-not").textContent = c.not; $("r-not").classList.remove("hidden"); }
+    else $("r-not").classList.add("hidden");
+    $("reveal").classList.remove("hidden");
+    $("btn-go").classList.remove("hidden"); $("btn-go").textContent = "Nästa"; $("btn-go").disabled = false;
+  } else {
+    $("reveal").classList.add("hidden");
+    $("btn-go").classList.add("hidden");
+  }
+}
+
 function render(){
   const c = state.card;
+  $("streak").textContent = state.streak; $("best").textContent = state.best;
+  $("runda-kvar").textContent = state.rk.kvar;
+  if(c.lasa){ renderLasa(c); return; }
+  $("answers").classList.remove("hidden");
+  $("opts-parse").classList.add("hidden");
+  $("btn-go").classList.remove("hidden");
   $("lemma").textContent = c.lemma;
   $("tag").textContent = c.tag;
   $("slot").textContent = c.slot;
   $("block-art").classList.toggle("hidden", false);
-  $("streak").textContent = state.streak; $("best").textContent = state.best;
-  $("runda-kvar").textContent = state.rk.kvar;
   renderOpts();
 
   // Resultat-ram runt kortet: grön vid rätt, amber vid fel (satsanalys-modellen).
@@ -437,8 +519,15 @@ function uppdateraNumKnappar(){
     b.setAttribute("aria-pressed", b.dataset.num === state.numerus));
 }
 function uppdateraLägesknappar(){
+  $("mode-lasa").setAttribute("aria-pressed", state.mode === "lasa");
   $("mode-full").setAttribute("aria-pressed", state.mode === "full");
   $("mode-end").setAttribute("aria-pressed", state.mode === "end");
+}
+function uppdateraSub(){
+  $("sub").textContent =
+    state.mode === "lasa" ? "Läs formen och ange kasus och numerus — artikeln visar vägen." :
+    state.mode === "end"  ? "Bygg formen: välj rätt ändelse (artikeln är given)." :
+                            "Bygg formen: välj rätt artikel och ändelse för kasuset.";
 }
 /* Kategori-chipsen (Oxytona/Neutrum/Feminina) blir svarta när ordurvalet exakt
    motsvarar deras deck — som snabbvals-chipsen i satsanalys. */
@@ -448,8 +537,9 @@ function uppdateraKategoriChips(){
 }
 
 /* ── HÄNDELSER ───────────────────────────────────────────────────────── */
-$("mode-full").onclick = () => { state.mode="full"; uppdateraLägesknappar(); spara(); newQuestion(); };
-$("mode-end").onclick  = () => { state.mode="end";  uppdateraLägesknappar(); spara(); newQuestion(); };
+$("mode-lasa").onclick = () => { state.mode="lasa"; uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
+$("mode-full").onclick = () => { state.mode="full"; uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
+$("mode-end").onclick  = () => { state.mode="end";  uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
 $("btn-go").onclick = () => { if(state.besvarad) newQuestion(); else rätta(); };
 
 $("picker-toggle").onclick = () => {
@@ -483,7 +573,10 @@ __kh = e => {
   document.addEventListener("keydown", __kh);;
 
 /* ── START ───────────────────────────────────────────────────────────── */
-ladda(); uppdateraLägesknappar(); uppdateraNumKnappar();
+ladda();
+// Djuplänk kan förvälja läge (#/andelser/lasa) — vinner över persistensen.
+if(["lasa","full","end"].includes(opts.mode)) state.mode = opts.mode;
+uppdateraLägesknappar(); uppdateraSub(); uppdateraNumKnappar();
 byggGridOrd(); byggGridKasus(); byggGridSem(); newQuestion();
 
 }

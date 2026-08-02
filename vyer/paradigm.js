@@ -53,6 +53,17 @@ const CSS = `
 .vy-paradigm .seg button + button{ border-left:1px solid var(--line); }
 .vy-paradigm footer{ max-width:640px; margin:1.4rem auto 0; color:var(--ink-soft); font-size:var(--fs-sm); line-height:1.5; }
 .vy-paradigm footer code{ font-size:var(--fs-md); }
+/* Läs-läget: en form + fyra kasus·numerus-alternativ */
+.vy-paradigm .las-box{ display:flex; flex-direction:column; align-items:center; gap:1rem; padding:1.4rem 0 0.6rem; }
+.vy-paradigm .las-form{ font-family:"Cardo",serif; font-size:var(--fs-4xl); color:var(--ink); line-height:1.1; }
+.vy-paradigm .las-fraga{ font-size:var(--fs-sm); color:var(--ink-soft); }
+.vy-paradigm .las-opts{ display:grid; grid-template-columns:1fr 1fr; gap:.6rem; width:min(26rem,90vw); }
+.vy-paradigm .las-opt{ font-family:"Spectral",serif; font-size:var(--fs-md); padding:.6rem .5rem; cursor:pointer;
+  background:var(--card); color:var(--ink); border:1px solid var(--line); border-radius:10px; transition:.15s; }
+@media (hover:hover){ .vy-paradigm .las-opt:not(:disabled):hover{ border-color:var(--gold); } }
+.vy-paradigm .las-opt:disabled{ cursor:default; }
+.vy-paradigm .las-opt.good{ background:var(--good-bg); border-color:var(--good); color:var(--good); }
+.vy-paradigm .las-opt.bad{ background:var(--bad-bg); border-color:var(--bad); color:var(--bad); }
 /* .mode/.seg "valt"-svart + .hidden ärvs nu från de delade reglerna i app.css. */
 `;
 
@@ -60,11 +71,12 @@ const MARKUP = `<div class="vy vy-paradigm">
 <style>${CSS}</style>
 <header>
   <h1>Grekiska — paradigm</h1>
-  <div class="sub">Fyll i hela böjningstabellen: alla kasus i singular och plural.</div>
+  <div class="sub" id="sub">Läs formen och ange vilket kasus och numerus den står i.</div>
 </header>
 
 <div class="modes" role="group" aria-label="Läge">
-  <button class="mode" id="mode-fyll" aria-pressed="true">Fyll i</button>
+  <button class="mode" id="mode-las" aria-pressed="true">Läs formen</button>
+  <button class="mode" id="mode-fyll" aria-pressed="false">Fyll i</button>
   <button class="mode" id="mode-studera" aria-pressed="false">Studera</button>
 </div>
 
@@ -74,7 +86,13 @@ const MARKUP = `<div class="vy vy-paradigm">
     <div class="tag" id="tag"></div>
     <div class="glosa" id="glosa"></div>
 
-    <table class="par">
+    <div class="las-box hidden" id="las-box">
+      <div class="las-form" id="las-form"></div>
+      <div class="las-fraga">Vilket kasus och numerus?</div>
+      <div class="las-opts" id="las-opts"></div>
+    </div>
+
+    <table class="par" id="par-table">
       <thead>
         <tr><th class="rowlab"></th><th>singular</th><th>plural</th></tr>
       </thead>
@@ -153,7 +171,7 @@ const MARKUP = `<div class="vy vy-paradigm">
 </footer>
 </div>`;
 
-export function render(root){
+export function render(root, opts = {}){
   root.innerHTML = MARKUP;
 
 /* ── DATA (samma ögonblicksbild som ändelsespelet) ───────────────────── */
@@ -210,7 +228,7 @@ function setEq(a,b){ return a.size===b.size && [...a].every(x=>b.has(x)); }
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
 const LAGER = "grekiska-paradigmspel";
 const state = {
-  mode: "fyll",                                   // "fyll" | "studera"
+  mode: "las",                                    // "las" (receptivt: läs formen → parsa) | "fyll" | "studera"
   medVok: false,
   valdaOrd: new Set(ord.map(o => o.lemma)),
   valdaSem: new Set(SEM_VARDEN),
@@ -218,6 +236,7 @@ const state = {
   ord: null, pk: null,
   svar: {},                                        // "k|n" -> vald ändelse
   aktiv: null,                                     // "k|n" som fylls just nu
+  lasK: null, lasN: null, lasRatt: null, lasOpt: [], valt: null,   // läs-läget
   besvarad: false,
   rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
 };
@@ -280,7 +299,26 @@ function nyttOrd(){
   state.besvarad = false;
   state.svarRatt = null;
   state.aktiv = state.mode === "fyll" ? celler()[0] : null;
+  if(state.mode === "las") nyttLas();
   render();
+}
+
+// Receptivt läge: dra en cell ur paradigmet, visa formen (artikel + ord), läs av
+// kasus & numerus. Neutrum nom = ack är genuint samma → viks ihop till "nom./ack.".
+const numNamn = n => n === "sg" ? "singular" : "plural";
+function lasKombo(k, n){
+  const syncr = state.ord.genus === "n" && (k === "nom" || k === "ack");
+  return (syncr ? "nom./ack." : KASUS[k]) + " · " + numNamn(n);
+}
+function nyttLas(){
+  const kas = aktivaKasus();
+  const k = pick(kas), n = pick(["sg","pl"]);
+  state.lasK = k; state.lasN = n; state.valt = null;
+  state.lasRatt = lasKombo(k, n);
+  const combos = new Set();
+  for(const kk of kas) for(const nn of ["sg","pl"]) combos.add(lasKombo(kk, nn));
+  const distr = shuffle([...combos].filter(x => x !== state.lasRatt)).slice(0, 3);
+  state.lasOpt = shuffle([state.lasRatt, ...distr]);
 }
 
 function nastaTom(){
@@ -359,9 +397,40 @@ function renderPalett(){
 
 function uppdateraGo(){
   const go = $("btn-go");
+  if(state.mode === "las"){
+    if(state.besvarad){ go.style.display = ""; go.textContent = "Nästa"; go.disabled = false; }
+    else go.style.display = "none";                 // läs-läget svarar på klick
+    return;
+  }
+  go.style.display = "";
   if(state.mode === "studera"){ go.textContent = "Nästa ord"; go.disabled = false; return; }
   if(state.besvarad){ go.textContent = "Nästa"; go.disabled = false; return; }
   go.textContent = "Rätta"; go.disabled = !allaIfyllda();
+}
+
+function renderLas(){
+  const o = state.ord;
+  $("las-form").textContent = ARTIKEL[o.genus][state.lasK][state.lasN] + " " + o.former[state.lasK][state.lasN];
+  const box = $("las-opts"); box.innerHTML = "";
+  state.lasOpt.forEach(s => {
+    const b = document.createElement("button");
+    b.className = "las-opt"; b.textContent = s;
+    if(state.besvarad){
+      b.disabled = true;
+      if(s === state.lasRatt) b.classList.add("good");
+      else if(s === state.valt) b.classList.add("bad");
+    } else { b.onclick = () => svaraLas(s); }
+    box.appendChild(b);
+  });
+}
+function svaraLas(s){
+  if(state.besvarad) return;
+  state.valt = s; state.besvarad = true;
+  const ratt = s === state.lasRatt;
+  state.svarRatt = ratt;
+  if(ratt){ rkKlarad(); state.streak++; if(state.streak > state.best){ state.best = state.streak; spara(); } }
+  else state.streak = 0;
+  render();
 }
 
 function render(){
@@ -371,7 +440,12 @@ function render(){
   $("glosa").textContent = o.glosa;
   $("streak").textContent = state.streak; $("best").textContent = state.best;
   $("runda-kvar").textContent = state.rk.kvar;
-  renderTabell(); renderPalett(); uppdateraGo();
+  const lasa = state.mode === "las";
+  $("las-box").classList.toggle("hidden", !lasa);
+  $("par-table").classList.toggle("hidden", lasa);
+  if(lasa){ $("palette-wrap").style.display = "none"; renderLas(); }
+  else { renderTabell(); renderPalett(); }
+  uppdateraGo();
 
   // Grön/amber ram: grön när hela tabellen är rätt, amber annars.
   const kort = document.querySelector(".vy-paradigm .card");
@@ -432,11 +506,17 @@ function uppdateraVokKnappar(){
     b.setAttribute("aria-pressed", (b.dataset.vok === "1") === state.medVok));
 }
 function uppdateraLagesknappar(){
+  $("mode-las").setAttribute("aria-pressed", state.mode === "las");
   $("mode-fyll").setAttribute("aria-pressed", state.mode === "fyll");
   $("mode-studera").setAttribute("aria-pressed", state.mode === "studera");
+  $("sub").textContent =
+    state.mode === "las"     ? "Läs formen och ange vilket kasus och numerus den står i." :
+    state.mode === "studera" ? "Studera det färdiga paradigmet — alla kasus i singular och plural." :
+                               "Fyll i hela böjningstabellen: alla kasus i singular och plural.";
 }
 
 /* ── HÄNDELSER ───────────────────────────────────────────────────────── */
+$("mode-las").onclick     = () => { state.mode="las";     uppdateraLagesknappar(); spara(); nyttOrd(); };
 $("mode-fyll").onclick    = () => { state.mode="fyll";    uppdateraLagesknappar(); spara(); nyttOrd(); };
 $("mode-studera").onclick = () => { state.mode="studera"; uppdateraLagesknappar(); spara(); nyttOrd(); };
 $("btn-go").onclick = () => {
@@ -469,7 +549,10 @@ __kh = e => {
 document.addEventListener("keydown", __kh);
 
 /* ── START ───────────────────────────────────────────────────────────── */
-ladda(); uppdateraLagesknappar(); uppdateraVokKnappar();
+ladda();
+// Djuplänk kan förvälja läge (#/paradigm/las) — vinner över persistensen.
+if(["las","fyll","studera"].includes(opts.mode)) state.mode = opts.mode;
+uppdateraLagesknappar(); uppdateraVokKnappar();
 byggGridOrd(); byggGridSem(); nyttOrd();
 
 }
