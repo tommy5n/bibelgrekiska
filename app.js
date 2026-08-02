@@ -37,7 +37,7 @@ const SPEL = [
   {
     nr: 4,
     namn: "Kasusigenkänning",
-    desc: "Genus, kasus och bestämd artikel",
+    desc: "Läs kasus ur formen — eller översätt substantivet till svenska",
     route: "#/kasus",
   },
   {

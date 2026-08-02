@@ -1216,6 +1216,15 @@ body {
   border-color: var(--bad);
   color: var(--bad);
 }
+/* Svenska svarsalternativ (översätt-lägena): en kolumn — fraser som "till människa"
+   ryms inte snyggt i två smala kolumner — och Spectral för latinsk löptext. */
+.vy-kasus .options.sv {
+  grid-template-columns: 1fr;
+}
+.vy-kasus .opt.sv {
+  font-family: "Spectral", Georgia, serif;
+  font-size: var(--fs-lg);
+}
 .vy-kasus .streak {
   margin-top: 1.2rem;
   color: var(--ink-soft);

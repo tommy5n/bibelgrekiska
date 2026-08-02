@@ -4,12 +4,14 @@ export function teardown(){ if(__kh){ document.removeEventListener("keydown", __
 const MARKUP = `<div class="vy vy-kasus">
 <header>
   <h1>Grekiska — kasusigenkänning</h1>
-  <div class="sub">Läs formen, säg kasus. Tre genus, artikeln visar vägen.</div>
+  <div class="sub" id="sub">Läs formen, säg kasus. Tre genus, artikeln visar vägen.</div>
 </header>
 
 <div class="modes" role="group" aria-label="Spelläge">
   <button class="mode" id="mode-vand" aria-pressed="true">Vänd-kort</button>
   <button class="mode" id="mode-flerval" aria-pressed="false">Flerval</button>
+  <button class="mode" id="mode-oversatt" aria-pressed="false">Översätt</button>
+  <button class="mode" id="mode-lasa" aria-pressed="false">Läs ordet</button>
 </div>
 
 <div class="stage">
@@ -111,6 +113,9 @@ const MARKUP = `<div class="vy vy-kasus">
   Tomt urval = allt. Artikeln (<code>ὁ</code> mask., <code>τὸ</code> neutr., <code>ἡ</code> fem.) visas alltid och
   avslöjar genus — den skiljer t.ex. nominativ <code>οἱ ἄνθρωποι</code> från vokativ <code>ὦ ἄνθρωποι</code>.
   Undantag: i neutrum är <code>τὸ ἔργον</code> både nominativ och ackusativ — där godtas båda svaren.
+  I <i>Översätt</i> och <i>Läs ordet</i> går det åt andra hållet: en grekisk form visas och du väljer
+  den svenska betydelsen. Översätt kontrasterar samma ords andra kasus (<code>till människa</code> vs
+  <code>människas</code> — parsa formen); Läs ordet samma form av andra ord (känn igen glosan).
 </footer>
 </div>`;
 export function render(root){
@@ -458,6 +463,34 @@ function glosaMedKasus(w, k, n){
   return bas;                                                   // nom, ack
 }
 
+/* Översätt-lägena vänder frågan: den grekiska FORMEN visas, svaret är den svenska
+   betydelsen. "oversatt" = distraktorer ur SAMMA ords andra kasus (parsa formen
+   via svenskan: "till människa" vs "människas"); "lasa" = samma form av ANDRA ord
+   (känn igen glosan). Svaren är alltid distinkta strängar — nom och ack ger samma
+   svenska ("människa") och viks då ihop, så det rätta svaret aldrig blir tvetydigt. */
+function oversattLage(){ return state.mode === "oversatt" || state.mode === "lasa"; }
+
+function byggSvenskaOversatt(w, k, n, rätt){
+  const sedda = new Set([rätt]); const ut = [];
+  const lägg = s => { if(s && !sedda.has(s)){ sedda.add(s); ut.push(s); } };
+  KASUS_ORDNING.forEach(kk => lägg(glosaMedKasus(w, kk, n)));    // samma ord, andra kasus (samma numerus)
+  if(ut.length < 3){                                             // för få distinkta → ta in andra numerus
+    const n2 = n === "sg" ? "pl" : "sg";
+    KASUS_ORDNING.forEach(kk => lägg(glosaMedKasus(w, kk, n2)));
+  }
+  return shuffle([rätt, ...shuffle(ut).slice(0,3)]);
+}
+function byggSvenskaLasa(w, k, n, rätt){
+  const sedda = new Set([rätt]); const ut = [];
+  const lägg = s => { if(s && !sedda.has(s)){ sedda.add(s); ut.push(s); } };
+  const andra = o => o.lemma !== w.lemma;
+  const nära = aktivaOrd().filter(andra), alla = ord.filter(andra);
+  const källa = nära.length >= 3 ? nära : alla;                 // helst ord ur urvalet
+  shuffle(källa).forEach(o => lägg(glosaMedKasus(o, k, n)));    // andra ord, samma form
+  if(ut.length < 3) shuffle(källa).forEach(o => lägg(glosaMedKasus(o, "nom", "sg")));  // sällsynt kollision → fyll ur nom sg
+  return shuffle([rätt, ...shuffle(ut).slice(0,3)]);
+}
+
 function uppdateraAntal(){
   const n = aktivaOrd().length;
   const el = $("ord-count"); if(el) el.textContent = "(" + n + " ord)";
@@ -473,6 +506,27 @@ function newQuestion(){
   const w = ord.find(o => o.lemma === _id) || pick(ordLista);
   const k = pick(kasusLista);
   const n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
+
+  // Översätt/Läs ordet: grekisk form → svensk betydelse. Neutrum nom/ack ger samma
+  // svenska, så tvetydigheten löser sig av sig själv (ett svarsalternativ).
+  if(oversattLage()){
+    const svRätt = glosaMedKasus(w, k, n);
+    const parse  = (w.genus === "n" && (k === "nom" || k === "ack"))
+      ? "nominativ / ackusativ · " + n
+      : KASUS[k].namn + " · " + n;
+    state.card = {
+      oversatt: true, laslage: state.mode === "lasa",
+      visa:    ARTIKEL[w.genus][k][n] + " " + w.former[k][n],
+      lemma:   w.lemma, glosa: w.glosa,
+      facit:   k, numerus: n, genus: w.genus, parse,
+      svenskaRätt: svRätt,
+      facitSet: [svRätt],                                       // rättas som sträng — svaraFlerval är generisk
+      optioner: state.mode === "oversatt" ? byggSvenskaOversatt(w, k, n, svRätt)
+                                          : byggSvenskaLasa(w, k, n, svRätt),
+    };
+    state.valt = null; state.besvarad = false; render();
+    return;
+  }
 
   // Neutrum: nom och ack är identiska (τὸ ἔργον = τὸ ἔργον) även med artikel
   // — bägge svaren gäller. Övriga genus skiljs alltid av artikeln.
@@ -499,8 +553,16 @@ const $ = id => document.getElementById(id);
 function render(){
   const c = state.card;
   $("form").textContent = c.visa;
-  $("glosa").textContent = c.glosa;
-  $("glosa").classList.toggle("hidden", !state.besvarad);   // visas först vid vändning/svar
+  if(c.oversatt){
+    // Översätt visar uppslagsord + glosa som stöd (ren parsning). Läs ordet döljer
+    // dem — hela poängen är att känna igen glosan ur formen; ordet röjs först i facit.
+    const stöd = c.laslage ? "" : (c.lemma + " · " + c.glosa);
+    $("glosa").textContent = stöd;
+    $("glosa").classList.toggle("hidden", !stöd);
+  } else {
+    $("glosa").textContent = c.glosa;
+    $("glosa").classList.toggle("hidden", !state.besvarad); // visas först vid vändning/svar
+  }
 
   $("streak").textContent = state.streak;
   $("best").textContent = state.best;
@@ -540,6 +602,18 @@ function render(){
 
 function visaFacit(){
   const c = state.card;
+  if(c.oversatt){                       // frågan var formen → facit visar betydelsen + ordet
+    $("r-kasus").textContent   = c.svenskaRätt;
+    $("r-satsdel").textContent = c.lemma + " · " + c.glosa;
+    $("r-fraga").textContent   = "(" + c.parse + ")";
+    const not = c.genus === "n" && (c.facit === "nom" || c.facit === "ack")
+      ? "I neutrum är nominativ och ackusativ alltid lika — bara sammanhanget avgör vilket."
+      : KASUS[c.facit].not;
+    if(not){ $("r-not").textContent = not; $("r-not").classList.remove("hidden"); }
+    else $("r-not").classList.add("hidden");
+    $("reveal").classList.remove("hidden");
+    return;
+  }
   if(c.facitSet.length > 1){            // neutrum: nom = ack
     $("r-kasus").textContent   = "nominativ / ackusativ · " + c.numerus;
     $("r-satsdel").textContent = "subjekt eller direkt objekt";
@@ -559,15 +633,18 @@ function visaFacit(){
 
 function renderOptioner(){
   const box = $("options"); box.innerHTML = ""; box.classList.add("no-hover"); box.addEventListener("pointermove", () => box.classList.remove("no-hover"), { once: true });
-  state.card.optioner.forEach(k => {
+  const sv = !!state.card.oversatt;
+  box.classList.toggle("sv", sv);                 // svenska fraser: en kolumn, latinsk text
+  state.card.optioner.forEach(v => {
     const b = document.createElement("button");
-    b.className = "opt"; b.textContent = KASUS[k].namn; b.dataset.kasus = k;
+    b.className = sv ? "opt sv" : "opt";
+    b.textContent = sv ? v : KASUS[v].namn;       // svensk sträng resp. kasusnamn
     if(state.besvarad){
       b.disabled = true;
-      if(state.card.facitSet.includes(k)) b.classList.add("correct");
-      else if(k === state.valt) b.classList.add("wrong");
+      if(state.card.facitSet.includes(v)) b.classList.add("correct");
+      else if(v === state.valt) b.classList.add("wrong");
     }else{
-      b.onclick = () => svaraFlerval(k);
+      b.onclick = () => svaraFlerval(v);
     }
     box.appendChild(b);
   });
@@ -644,13 +721,23 @@ function uppdateraNumKnappar(){
     b.setAttribute("aria-pressed", b.dataset.num === state.numerus));
 }
 function uppdateraLägesknappar(){
-  $("mode-vand").setAttribute("aria-pressed", state.mode === "vand");
-  $("mode-flerval").setAttribute("aria-pressed", state.mode === "flerval");
+  ["vand","flerval","oversatt","lasa"].forEach(m =>
+    $("mode-" + m).setAttribute("aria-pressed", state.mode === m));
+}
+function uppdateraSub(){
+  const t = { vand:    "Läs formen, säg kasus. Tre genus, artikeln visar vägen.",
+              flerval: "Läs formen, välj rätt kasus bland alternativen.",
+              oversatt:"Grekisk form + uppslagsord. Välj den rätta översättningen.",
+              lasa:    "Grekisk form. Läs ordet och välj den rätta översättningen." };
+  $("sub").textContent = t[state.mode] || t.vand;
 }
 
 /* ── HÄNDELSER ───────────────────────────────────────────────────────── */
-$("mode-vand").onclick = () => { state.mode="vand"; uppdateraLägesknappar(); spara(); newQuestion(); };
-$("mode-flerval").onclick = () => { state.mode="flerval"; uppdateraLägesknappar(); spara(); newQuestion(); };
+const bytLäge = m => { state.mode = m; uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
+$("mode-vand").onclick     = () => bytLäge("vand");
+$("mode-flerval").onclick  = () => bytLäge("flerval");
+$("mode-oversatt").onclick = () => bytLäge("oversatt");
+$("mode-lasa").onclick     = () => bytLäge("lasa");
 
 $("btn-vand").onclick = () => { state.besvarad = true; render(); };
 $("btn-kunde").onclick = () => { registrera(true); rkKlarad(); newQuestion(); };
@@ -680,8 +767,8 @@ document.querySelectorAll("#seg-num button").forEach(b =>
 // tangentbord: mellanslag vänder, siffror svarar i flerval
 __kh = e => {
   if(e.code === "Space" && state.mode === "vand" && !state.besvarad){ e.preventDefault(); state.besvarad = true; render(); }
-  else if(e.key === "Enter" && state.besvarad){ if(state.mode==="flerval") newQuestion(); }
-  else if(state.mode === "flerval" && !state.besvarad && /^[1-4]$/.test(e.key)){
+  else if(e.key === "Enter" && state.besvarad){ if(state.mode !== "vand") newQuestion(); }
+  else if(state.mode !== "vand" && !state.besvarad && /^[1-4]$/.test(e.key)){
     const k = state.card.optioner[+e.key - 1]; if(k) svaraFlerval(k);
   }
 };
@@ -690,6 +777,7 @@ __kh = e => {
 /* ── START ───────────────────────────────────────────────────────────── */
 ladda();
 uppdateraLägesknappar();
+uppdateraSub();
 uppdateraNumKnappar();
 byggGridOrd();
 byggGridKasus();
