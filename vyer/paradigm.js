@@ -164,9 +164,10 @@ const MARKUP = `<div class="vy vy-paradigm">
 </div>
 
 <footer>
-  Du får lemmat (nominativ) och en tom tabell — fyll varje ruta med rätt ändelse, så visas
-  hela det attesterade paradigmet. Sviten räknas bara upp när <b>hela</b> tabellen är rätt.
-  I <i>studera</i>-läget visas paradigmet färdigt att läsa. Deklination 1 har tre singular-typer
+  I <i>läs formen</i>-läget visas en böjd form — läs av kasus och numerus (så mycket provet kräver).
+  I <i>fyll i</i> får du lemmat (nominativ) och en tom tabell — fyll varje ruta med rätt ändelse, så
+  visas hela det attesterade paradigmet; sviten räknas bara upp när <b>hela</b> tabellen är rätt.
+  I <i>studera</i> visas paradigmet färdigt att läsa. Deklination 1 har tre singular-typer
   som bara nominativ avslöjar: <code>ἀρχή</code> (η), <code>ἡμέρα</code> (ren α), <code>θάλασσα</code> (blandad α).
 </footer>
 </div>`;
