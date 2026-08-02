@@ -247,7 +247,7 @@ const MARKUP = `<div class="vy vy-verb">
 <footer>Svenskan böjs inte efter person (<em>jag/du/de är</em>) — bara pronomenet byts; preteritum (<em>var, löste</em>) återger både imperfekt och aorist. Distraktorerna i flerval är andra former av <em>samma</em> verb — de tränar ändelserna, inte gissning. I <em>Översätt</em> och <em>Läs ordet</em> går det åt andra hållet: en grekisk form visas och du väljer betydelsen — Översätt kontrasterar samma verbs böjningar (parsa formen), Läs ordet samma form av olika verb (känn igen ordet). Indikativ konstaterar (<em>βλέπεις</em> du ser), imperativ uttrycker vilja (<em>βλέπε</em> titta!).</footer>
 </div>`;
 
-export function render(root){
+export function render(root, opts = {}){
   if(!document.getElementById("vy-verb-style")){
     const st = document.createElement("style"); st.id = "vy-verb-style"; st.textContent = STYLE;
     document.head.appendChild(st);
@@ -256,7 +256,7 @@ export function render(root){
 
   const LAGER = "grekiska-verbspel";
   const state = {
-    mode: "vand",
+    mode: "oversatt",   // provet är receptivt (grek→sv) — nya spelare startar där; ladda() respekterar tidigare val
     tempus: "pres",
     modus: "ind",
     valdaVerb: new Set(verb.map(v => v.lemma)),
@@ -653,5 +653,8 @@ export function render(root){
   };
   document.addEventListener("keydown", __vh);
 
-  ladda(); uppdateraLäge(); byggGridSem(); byggGridTempus(); byggGridModus(); byggGridVerb(); byggGridPN(); uppdateraSub(); newQuestion();
+  ladda();
+  // Djuplänk från provöversikten kan förvälja läge (#/verb/oversatt) — vinner över persistensen.
+  if(["vand","flerval","oversatt","lasa"].includes(opts.mode)) state.mode = opts.mode;
+  uppdateraLäge(); byggGridSem(); byggGridTempus(); byggGridModus(); byggGridVerb(); byggGridPN(); uppdateraSub(); newQuestion();
 }

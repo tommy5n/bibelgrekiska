@@ -95,7 +95,7 @@ const MARKUP = `<div class="vy vy-ordbok">
 <div class="resultat" id="resultat"></div>
 </div>`;
 
-export function render(root){
+export function render(root, opts = {}){
   root.innerHTML = MARKUP;
 
 /* ── DATA (snapshot ur glosor.json + prepositioner.json; korta nycklar, se generatorn) ─ */
@@ -689,6 +689,8 @@ document.querySelectorAll("[data-quick]").forEach(btn => {
 
 /* ── INIT ────────────────────────────────────────────────────────────── */
 ladda();
+// Djuplänk från provöversikten kan förvälja kortlek (#/ordbok/prov) — vinner över persistensen.
+if(DECK_IDS.includes(opts.mode)) state.deck = opts.mode;
 sok.value = state.sok;
 byggPicker();
 renderLista();

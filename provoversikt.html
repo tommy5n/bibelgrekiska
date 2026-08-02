@@ -102,6 +102,23 @@
         .pv-link.ova:hover { background: color-mix(in srgb, var(--gold) 12%, var(--card)); }
       }
 
+      /* Studieordning-ruta */
+      .pv-order { background: var(--paper-2); border-radius: 12px; padding: 0.95rem 1.15rem 1.05rem; margin: 0 0 1.4rem; }
+      .pv-order h2 { margin: 0 0 0.15rem; font-size: var(--fs-lg); color: var(--ink); }
+      .pv-order > .intro { margin: 0 0 0.8rem; font-size: var(--fs-xs); color: var(--ink-soft); max-width: 60ch; }
+      .pv-order ol { margin: 0; padding: 0; list-style: none; counter-reset: steg; display: grid; gap: 0.55rem; }
+      .pv-order li { counter-increment: steg; display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.65rem; align-items: baseline; }
+      .pv-order li::before { content: counter(steg); grid-row: span 2;
+        display: grid; place-items: center; width: 1.5rem; height: 1.5rem; align-self: start;
+        border-radius: 50%; background: var(--gold); color: var(--paper);
+        font-size: var(--fs-2xs); font-weight: 700; }
+      .pv-order .step-link { font-size: var(--fs-sm); font-weight: 600; color: var(--gold); text-decoration: none; }
+      @media (hover: hover) { .pv-order .step-link:hover { text-decoration: underline; } }
+      .pv-order .why { grid-column: 2; font-size: var(--fs-2xs); color: var(--ink-soft); }
+      .pv-order .why b { color: var(--ink); font-weight: 600; }
+      .pv-order .foot { margin: 0.85rem 0 0; font-size: var(--fs-2xs); color: var(--ink-soft);
+        border-top: 1px solid var(--line); padding-top: 0.7rem; }
+
       /* Gloslistan (punkt 4) */
       .pv-ord { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
         gap: 0.15rem 1.4rem; }
@@ -148,6 +165,7 @@
           <li><a href="#p2">2 · Pronomen</a></li>
           <li><a href="#p3">3 · Verb</a></li>
           <li class="group"><span>Glosor (4)</span></li>
+          <li><a href="#p4">Öva &amp; testa</a></li>
           <li><a href="#g-subjunktioner">Subjunktioner</a></li>
           <li><a href="#g-verb">Verb</a></li>
           <li><a href="#g-substantiv">Substantiv</a></li>
@@ -170,6 +188,22 @@
           (personändelser i olika tempus, infinitiv, imperativ) · <b>4.</b> följande glosor.
         </div>
 
+        <div class="pv-order">
+          <h2>En möjlig ordning att öva</h2>
+          <p class="intro">Provet går åt ett håll: du ser en grekisk form och ska återge den på svenska. Öva därför i den riktningen — lägg grunden först och tag pronomina sist.</p>
+          <ol>
+            <li><a class="step-link" href="index.html#/glosor/prov">Glosorna</a>
+              <span class="why"><b>Punkt 4.</b> Kan du inte orden betyder formerna ingenting — börja här (däcket <b>Inför provet</b>).</span></li>
+            <li><a class="step-link" href="index.html#/kasus/oversatt">Substantiv, adjektiv &amp; artikel</a>
+              <span class="why"><b>Punkt 1.</b> Läs av kasus och numerus ur formen och översätt den.</span></li>
+            <li><a class="step-link" href="index.html#/verb/oversatt">Verbformerna</a>
+              <span class="why"><b>Punkt 3.</b> Känn igen tempus, modus och person — och översätt.</span></li>
+            <li><a class="step-link" href="index.html#/pronomen/grsv">Pronomina i kontext</a>
+              <span class="why"><b>Punkt 2.</b> Svårast: samma form kan betyda flera saker, så kontexten avgör.</span></li>
+          </ol>
+          <p class="foot">Vill du dessutom kunna <em>bilda</em> formerna själv, inte bara läsa dem: befäst med Ändelser, Paradigm, Kongruens och Formverkstaden — de bygger formen i stället för att översätta den.</p>
+        </div>
+
         <div class="pv-controls">
           <label class="pv-toggle">
             <input type="checkbox" id="pv-testtoggle" />
@@ -181,7 +215,7 @@
         <!-- ══ 1. Artikel, substantiv & adjektiv ══ -->
         <section class="gr-card" id="p1" style="--accent:#a8842c">
           <h3>1 · Artikel, substantiv &amp; adjektiv <span class="sem">kasus &amp; numerus</span></h3>
-          <p class="note">Kunna översätta artikeln och böja substantiv och adjektiv i alla kasus och numerus. Slå upp tabellerna:</p>
+          <p class="note">Kunna översätta artikeln, substantiven och adjektiven i alla kasus och numerus — läsa av formen och återge den på svenska. Slå upp tabellerna:</p>
           <div class="pv-links">
             <span class="lbl">Grunderna</span>
             <a class="pv-link" href="grammatikreferens.html#artikel">Bestämd artikel</a>
@@ -206,6 +240,7 @@
           </div>
           <div class="pv-links ova">
             <span class="lbl">Öva</span>
+            <a class="pv-link ova" href="index.html#/kasus/oversatt">Kasus – läs &amp; översätt</a>
             <a class="pv-link ova" href="index.html#/andelser">Ändelser</a>
             <a class="pv-link ova" href="index.html#/paradigm">Paradigm</a>
             <a class="pv-link ova" href="index.html#/kongruens">Kongruens</a>
@@ -227,7 +262,7 @@
           </div>
           <div class="pv-links ova">
             <span class="lbl">Öva</span>
-            <a class="pv-link ova" href="index.html#/pronomen">Pronomen</a>
+            <a class="pv-link ova" href="index.html#/pronomen/grsv">Pronomen – översätt formen</a>
           </div>
         </section>
 
@@ -259,12 +294,23 @@
           </div>
           <div class="pv-links ova">
             <span class="lbl">Öva</span>
-            <a class="pv-link ova" href="index.html#/verb">Verb</a>
+            <a class="pv-link ova" href="index.html#/verb/oversatt">Verb – översätt formen</a>
             <a class="pv-link ova" href="index.html#/former">Formverkstaden</a>
           </div>
         </section>
 
-        <!-- ══ 4. Glosorna renderas ur PROV-arrayen (gen_provoversikt.py) ══ -->
+        <!-- ══ 4. Glosorna — intro + öva; kategorikorten renderas ur PROV nedan ══ -->
+        <section class="gr-card" id="p4" style="--accent:#a8842c">
+          <h3>4 · Glosorna <span class="sem">utantill</span></h3>
+          <p class="note">Följande ord ska sitta utantill (grekiska → svenska). Slå på <b>Dölj översättningar</b> längst upp och testa dig själv på listan nedan — eller öva i appen med provets eget urval:</p>
+          <div class="pv-links ova">
+            <span class="lbl">Öva</span>
+            <a class="pv-link ova" href="index.html#/glosor/prov">Glosor – Inför provet</a>
+            <a class="pv-link ova" href="index.html#/ordbok/prov">Uppslagsbok – Inför provet</a>
+          </div>
+        </section>
+
+        <!-- Kategorikorten renderas ur PROV-arrayen (gen_provoversikt.py) -->
         <div id="glosor-mount"></div>
       </main>
     </div>

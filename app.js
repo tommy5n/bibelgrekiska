@@ -168,7 +168,13 @@ function renderHub(root) {
 }
 
 async function navigate() {
-  const hash = location.hash.replace(/^#/, "") || "/";
+  // Rutten kan bära ett valfritt läges-segment: "/verb/oversatt" → rutt "/verb",
+  // läge "oversatt". Provöversikten djuplänkar så att eleven landar direkt i det
+  // receptiva läge (grekisk form → svenska) som ordkunskapsprovet faktiskt mäter,
+  // i stället för i spelets produktiva standardläge. Naket "#/verb" ger mode=null.
+  const segs = (location.hash.replace(/^#/, "") || "/").split("/").filter(Boolean);
+  const route = "/" + (segs[0] || "");
+  const mode = segs[1] || null;
   const vy = document.getElementById("vy");
   const bar = document.getElementById("app-bar");
 
@@ -176,19 +182,19 @@ async function navigate() {
   current = null;
   vy.innerHTML = "";
 
-  if (hash === "/" || hash === "") {
+  if (route === "/") {
     bar.style.display = "none";
     renderHub(vy);
     window.scrollTo(0, 0);
     return;
   }
 
-  const loader = ROUTES[hash];
+  const loader = ROUTES[route];
   if (loader) {
     bar.style.display = "";
     try {
       const mod = await loader();
-      mod.render(vy);
+      mod.render(vy, { mode });
       current = mod;
       window.scrollTo(0, 0);
     } catch (e) {

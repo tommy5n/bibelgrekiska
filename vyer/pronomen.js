@@ -869,7 +869,7 @@ const MARKUP = `<div class="vy vy-pron">
 <div class="gr-lank"><a href="grammatikreferens.html#pronomen">§ Pronomen i grammatikreferensen →</a></div></footer>
 </div>`;
 
-export function render(root){
+export function render(root, opts = {}){
   if(!document.getElementById("vy-pron-style")){
     const st = document.createElement("style"); st.id = "vy-pron-style"; st.textContent = STYLE;
     document.head.appendChild(st);
@@ -878,7 +878,7 @@ export function render(root){
 
   const LAGER = "grekiska-pronomenspel";
   const state = {
-    riktning: "sv-gr",                    // "sv-gr" (ge formen) | "gr-sv" (översätt i kontext)
+    riktning: "gr-sv",                    // "sv-gr" (ge formen) | "gr-sv" (översätt i kontext); provet är receptivt → default gr-sv (ladda() respekterar tidigare val)
     mode: "vand",                         // "vand" | "flerval" — gäller båda riktningarna
     valdaSem:   new Set(SEMINARIER),
     valdaPron:  new Set(pronomen.map(p => p.lemma)),
@@ -1264,5 +1264,9 @@ export function render(root){
   };
   document.addEventListener("keydown", __ph);
 
-  ladda(); uppdateraLäge(); byggPickers(); newQuestion();
+  ladda();
+  // Djuplänk från provöversikten kan förvälja riktning (#/pronomen/grsv) — vinner över persistensen.
+  const rikt = { grsv:"gr-sv", "gr-sv":"gr-sv", svgr:"sv-gr", "sv-gr":"sv-gr" }[opts.mode];
+  if(rikt) state.riktning = rikt;
+  uppdateraLäge(); byggPickers(); newQuestion();
 }

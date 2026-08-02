@@ -61,7 +61,7 @@ const MARKUP = `<div class="vy vy-glosor">
   </div>
 </div>
 </div>`;
-export function render(root){
+export function render(root, opts = {}){
   root.innerHTML = MARKUP;
 
 /* ── DATA (snapshot ur glosor.json: hela uppsättningen, d=kortlek ["sem"|"60"], f=effektiv frekvens) ─ */
@@ -1059,6 +1059,9 @@ __kh = (e) => {
 
 /* ── INIT ────────────────────────────────────────────────────────────── */
 ladda();
+// Djuplänk från provöversikten: token är antingen ett kortlek-id (#/glosor/prov) eller ett läge.
+if(DECK_IDS.includes(opts.mode)) state.deck = opts.mode;
+if(["flashcard","flerval","former"].includes(opts.mode)) state.mode = opts.mode;
 if(state.mode === "former" && !basAktiva().some(harParadigm)) state.mode = "flashcard";
 byggPicker();
 if(state.mode !== "flerval") fyllKo();

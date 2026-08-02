@@ -118,7 +118,7 @@ const MARKUP = `<div class="vy vy-kasus">
   <code>människas</code> — parsa formen); Läs ordet samma form av andra ord (känn igen glosan).
 </footer>
 </div>`;
-export function render(root){
+export function render(root, opts = {}){
   root.innerHTML = MARKUP;
 
 /* ── DATA ─────────────────────────────────────────────────────────────
@@ -776,6 +776,8 @@ __kh = e => {
 
 /* ── START ───────────────────────────────────────────────────────────── */
 ladda();
+// Djuplänk från provöversikten kan förvälja läge (#/kasus/oversatt) — vinner över persistensen.
+if(["vand","flerval","oversatt","lasa"].includes(opts.mode)) state.mode = opts.mode;
 uppdateraLägesknappar();
 uppdateraSub();
 uppdateraNumKnappar();
