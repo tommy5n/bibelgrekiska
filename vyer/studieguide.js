@@ -524,14 +524,14 @@ const SEMINARIER = [
 // i respektive spel); det fjärde är en sluten gloslista som ska sitta utantill
 // och som har ett eget "Inför provet"-däck i Glosor och Uppslagsboken.
 const PROV = {
-  intro:"Provet prövar <b>ordkunskap</b> i fyra delar. De tre första är formigenkänning över hela kursen — öva dem genom att välja <b>alla seminarier</b> i respektive spel. Den fjärde är en sluten gloslista som ska kunnas utantill; den har ett eget däck <b>Inför provet</b> i Glosor och Uppslagsboken.",
+  intro:"Provet prövar <b>ordkunskap</b> i fyra delar. De tre första är formigenkänning över hela kursen — öva dem genom att välja <b>alla seminarier</b> i respektive spel. Den fjärde är en sluten gloslista som ska kunnas utantill; den har ett eget däck <b>Inför provet</b> i Glosor och Uppslagsboken.<br>Spelen öppnar numera i sitt <b>receptiva läge</b> (grekisk form → svenska), samma riktning som provet: <i>Läs formen</i>/<i>Läs frasen</i> i böjningsspelen, <i>Översätt</i> i Verb, <i>Grekiska → svenska</i> i Pronomen. De produktiva lägena (bygg formen) finns kvar som val.",
   delar:[
     { rubrik:"1. Artikelns, substantivens och adjektivens former",
       text:"Kunna översätta bestämd artikel, substantiv och adjektiv i <b>alla kasus och numerus</b>, alla tre deklinationerna.",
       ova:[
-        { spel:"Kasus", route:"#/kasus", filter:"alla seminarier", vad:"genus, kasus och bestämd artikel" },
-        { spel:"Artiklar & ändelser", route:"#/andelser", vad:"bygg formen i rätt deklination" },
-        { spel:"Kongruens", route:"#/kongruens", vad:"adjektivets böjning och överensstämmelse" },
+        { spel:"Kasus", route:"#/kasus", filter:"Översätt / Läs ordet", vad:"läs formen och översätt — genus, kasus och bestämd artikel" },
+        { spel:"Artiklar & ändelser", route:"#/andelser", filter:"Läs formen", vad:"läs av kasus och numerus ur formen — eller bygg den själv" },
+        { spel:"Kongruens", route:"#/kongruens", filter:"Läs frasen", vad:"läs av adjektivets kasus och numerus — eller bygg formen" },
       ],
       slaupp:[
         { text:"Bestämd artikel", anchor:"artikel" },
@@ -541,7 +541,7 @@ const PROV = {
     { rubrik:"2. Alla pronomenformer",
       text:"Kunna översätta samtliga pronomenformer kursen tagit upp — personliga, possessiva, demonstrativa, interrogativa, indefinita och relativa.",
       ova:[
-        { spel:"Pronomen", route:"#/pronomen", filter:"alla seminarier", vad:"form → betydelse, med kontextläge" },
+        { spel:"Pronomen", route:"#/pronomen", filter:"Grekiska → svenska", vad:"form → betydelse i kontext, över alla seminarier" },
       ],
       slaupp:[
         { text:"Personliga pronomen", anchor:"pronomen" },
@@ -551,9 +551,9 @@ const PROV = {
     { rubrik:"3. Alla verbformer",
       text:"Kunna översätta personändelserna i alla tempus (presens, imperfekt, futurum, aorist), samt infinitiv och imperativ.",
       ova:[
-        { spel:"Verbböjning", route:"#/verb", filter:"alla tempus", vad:"personändelser i alla tempus och modus" },
-        { spel:"Formverkstaden", route:"#/former", vad:"bygg om formen mellan tempus och modus" },
-        { spel:"Presens particip", route:"#/particip", vad:"verbaladjektivet och ’den som …’" },
+        { spel:"Verbböjning", route:"#/verb", filter:"Översätt", vad:"läs formen och översätt — personändelser i alla tempus och modus" },
+        { spel:"Formverkstaden", route:"#/former", filter:"Läs formen", vad:"läs av tempus, modus och person — eller bygg om formen" },
+        { spel:"Presens particip", route:"#/particip", filter:"Den som …", vad:"det substantiverade participet: ὁ πιστεύων ’den som tror’" },
       ],
       slaupp:[
         { text:"ω-verb", anchor:"verb-omega" },
