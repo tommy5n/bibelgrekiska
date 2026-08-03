@@ -259,6 +259,16 @@
       .gr-build .blegend .tense { background: color-mix(in srgb, #3f7a4f 60%, transparent); }
       .gr-build .blegend .end { background: color-mix(in srgb, #8a5a86 55%, transparent); }
 
+      /* ── V2b Personändelse-matris (självtest-fusklapp) ──────────────── */
+      .gr-andmatris .amtable-wrap { overflow-x: auto; margin: 0.4rem 0 0.9rem; }
+      .gr-andmatris table.gr { min-width: 100%; }
+      .gr-andmatris table.gr th.tempus { text-align: left; white-space: nowrap; color: var(--ink); font-weight: 600; }
+      .gr-andmatris table.gr thead th { text-align: center; font-weight: 600; color: var(--ink-soft); font-size: var(--fs-2xs); }
+      .gr-andmatris table.gr td.gr-el { text-align: center; color: var(--gold); font-weight: 600; font-size: var(--fs-base); white-space: nowrap; }
+      .gr-andmatris table.gr td.tom { text-align: center; color: var(--line); }
+      .gr-andmatris table.gr tr.eimi td.gr-el { color: #b0642f; }
+      .gr-andmatris .tsign { color: #3f7a4f; font-weight: 700; }
+
       /* ── V3 Attributiv vs predikativ ställning ──────────────────────── */
       .gr-pos { display: flex; flex-wrap: wrap; gap: 1rem 1.4rem; margin: 0.7rem 0 0.2rem; }
       .gr-pos .pcard { flex: 1 1 240px; border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.9rem; }
@@ -343,6 +353,7 @@
           <li class="group"><span>Verb</span></li>
           <li><a href="#verb-intro">Verb — hur de fungerar</a></li>
           <li><a href="#verb-oversikt">Tempus, aspekt &amp; uppbyggnad</a></li>
+          <li><a href="#verb-andelser">Personändelser — översikt</a></li>
           <li><a href="#verb-omega">ω-verb, presens</a></li>
           <li><a href="#verb-kontrakt">Kontraherade -έω</a></li>
           <li><a href="#verb-eimi">εἰμί (vara)</a></li>
@@ -1014,6 +1025,60 @@
             </div>
           </div>
           <div class="gr-rule"><b>Läs blocken:</b> <span class="gr-grek">σ</span> framför ändelsen = framtid (futurum) eller helhet (aorist); <span class="gr-grek">ἐ-</span> framför stammen = dåtid (imperfekt, aorist). Presens är stammen naken. Detaljerna för varje tempus står i korten nedan.</div>
+        </section>
+
+        <!-- ══ Personändelser — översikt (självtest-fusklapp) ══ -->
+        <section class="gr-card gr-andmatris" id="verb-andelser" style="--accent:#8a5a86">
+          <h3>Personändelser — hela översikten <span class="ex">λύω · φιλέω</span> <span class="sem">Sem 2–4</span></h3>
+          <p class="note">Alla personändelser ni gått igenom, samlade på ett ställe — samma sammanställning som lärarens två bilder. Slå på <b>”Testa dig själv”</b> högst upp för att sudda ändelserna; klicka på en cell för att avslöja. Nöta <b>nedåt</b> i en kolumn (samma person genom alla tempus) och <b>tvärs</b> en rad (hela paradigmet).</p>
+
+          <div class="amtable-wrap">
+            <table class="gr">
+              <caption>Okontraherade verb (ω-verb) · stam <span class="gr-grek">λυ-</span></caption>
+              <thead><tr><th class="tempus">Tempus / modus</th><th>1 sg</th><th>2 sg</th><th>3 sg</th><th>1 pl</th><th>2 pl</th><th>3 pl</th></tr></thead>
+              <tbody>
+                <tr><th class="tempus">Presens ind.</th><td class="gr-el">-ω</td><td class="gr-el">-εις</td><td class="gr-el">-ει</td><td class="gr-el">-ομεν</td><td class="gr-el">-ετε</td><td class="gr-el">-ουσι(ν)</td></tr>
+                <tr><th class="tempus">Presens imp.</th><td class="tom">—</td><td class="gr-el">-ε</td><td class="gr-el">-έτω</td><td class="tom">—</td><td class="gr-el">-ετε</td><td class="gr-el">-έτωσαν</td></tr>
+                <tr><th class="tempus">Futurum ind.</th><td class="gr-el">-<span class="tsign">σ</span>ω</td><td class="gr-el">-<span class="tsign">σ</span>εις</td><td class="gr-el">-<span class="tsign">σ</span>ει</td><td class="gr-el">-<span class="tsign">σ</span>ομεν</td><td class="gr-el">-<span class="tsign">σ</span>ετε</td><td class="gr-el">-<span class="tsign">σ</span>ουσι(ν)</td></tr>
+                <tr><th class="tempus">Imperfekt ind.</th><td class="gr-el">-ον</td><td class="gr-el">-ες</td><td class="gr-el">-ε(ν)</td><td class="gr-el">-ομεν</td><td class="gr-el">-ετε</td><td class="gr-el">-ον</td></tr>
+                <tr><th class="tempus">Aorist ind.</th><td class="gr-el">-<span class="tsign">σ</span>α</td><td class="gr-el">-<span class="tsign">σ</span>ας</td><td class="gr-el">-<span class="tsign">σ</span>ε(ν)</td><td class="gr-el">-<span class="tsign">σ</span>αμεν</td><td class="gr-el">-<span class="tsign">σ</span>ατε</td><td class="gr-el">-<span class="tsign">σ</span>αν</td></tr>
+                <tr><th class="tempus">Aorist imp.</th><td class="tom">—</td><td class="gr-el">-<span class="tsign">σ</span>ον</td><td class="gr-el">-<span class="tsign">σ</span>άτω</td><td class="tom">—</td><td class="gr-el">-<span class="tsign">σ</span>ατε</td><td class="gr-el">-<span class="tsign">σ</span>άτωσαν</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note" style="margin-top:-0.4rem"><b>Infinitiv:</b> presens <span class="end">-ειν</span> · futurum <span class="end">-σειν</span> · aorist <span class="end">-σαι</span>.</p>
+
+          <div class="amtable-wrap">
+            <table class="gr">
+              <caption>Kontraherade verb (-έω) · stam <span class="gr-grek">φιλε-</span></caption>
+              <thead><tr><th class="tempus">Tempus / modus</th><th>1 sg</th><th>2 sg</th><th>3 sg</th><th>1 pl</th><th>2 pl</th><th>3 pl</th></tr></thead>
+              <tbody>
+                <tr><th class="tempus">Presens ind.</th><td class="gr-el">-ῶ</td><td class="gr-el">-εῖς</td><td class="gr-el">-εῖ</td><td class="gr-el">-οῦμεν</td><td class="gr-el">-εῖτε</td><td class="gr-el">-οῦσι(ν)</td></tr>
+                <tr><th class="tempus">Presens imp.</th><td class="tom">—</td><td class="gr-el">-ει</td><td class="gr-el">-είτω</td><td class="tom">—</td><td class="gr-el">-εῖτε</td><td class="gr-el">-είτωσαν</td></tr>
+                <tr><th class="tempus">Imperfekt ind.</th><td class="gr-el">-ουν</td><td class="gr-el">-εις</td><td class="gr-el">-ει</td><td class="gr-el">-οῦμεν</td><td class="gr-el">-εῖτε</td><td class="gr-el">-ουν</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="amtable-wrap">
+            <table class="gr">
+              <caption><span class="gr-grek">εἰμί</span> (vara) · oregelbundet — hela former, inte ändelser</caption>
+              <thead><tr><th class="tempus">Tempus / modus</th><th>1 sg</th><th>2 sg</th><th>3 sg</th><th>1 pl</th><th>2 pl</th><th>3 pl</th></tr></thead>
+              <tbody>
+                <tr class="eimi"><th class="tempus">Presens ind.</th><td class="gr-el">εἰμί</td><td class="gr-el">εἶ</td><td class="gr-el">ἐστί(ν)</td><td class="gr-el">ἐσμέν</td><td class="gr-el">ἐστέ</td><td class="gr-el">εἰσί(ν)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="gr-rule">
+            <ul>
+              <li><b>σ = tempustecken.</b> Futurum och aorist skjuter in <span class="gr-grek">σ</span> mellan stam och ändelse — personändelserna är i övrigt desamma som presens resp. imperfekt.</li>
+              <li><b>Augment ἐ-</b> läggs framför stammen i <b>imperfekt och aorist indikativ</b> (dåtid), aldrig i imperativ.</li>
+              <li><b>Kontraherade saknar egna futurum-/aoristformer:</b> σ upphäver mötet mellan stamvokalen ε och ändelsen, så där böjs de som vanliga ω-verb.</li>
+              <li><b>Accenter:</b> lärarens bilder utelämnar dem. Här sitter cirkumflexen där kontraktionen bär betoningen (<span class="gr-grek">-ῶ, -εῖς, -οῦμεν, -εῖτε</span> …); i övrigt är betoningen recessiv. <span class="gr-grek">εἰμί</span> är enklitiskt och böjs för sig — se <a href="#verb-eimi">εἰμί-kortet</a>.</li>
+            </ul>
+          </div>
+          <div class="gr-tip"><span class="tip-label">Studietips</span>Läs varje rad högt som en ramsa — ”o, eis, ei, omen, ete, ousi” — precis som läraren tänker sig. Testa sedan baklänges: dölj tempus-etiketten i huvudet och avgör tempus enbart ur ändelsen (t.ex. <span class="end">-σα</span> → aorist, <span class="end">-ον</span> i 1 sg → imperfekt).</div>
         </section>
 
         <!-- ══ ω-verb ══ -->
