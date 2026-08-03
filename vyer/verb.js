@@ -18,6 +18,7 @@ export function teardown(){
 export const verb = [
   { lemma:"λύω", glosa:"lösa", svenska:{"inf":"lösa", "pres":"löser", "pret":"löste", "imp":"lös"}, klass:"omega", kortlekar:["sem2", "sem6", "sem7", "sem8"], sem:[2, 6, 7, 8], former:{ "pres.ind":{"1sg":"λύω", "2sg":"λύεις", "3sg":"λύει", "1pl":"λύομεν", "2pl":"λύετε", "3pl":"λύουσι(ν)"}, "fut.ind":{"1sg":"λύσω", "2sg":"λύσεις", "3sg":"λύσει", "1pl":"λύσομεν", "2pl":"λύσετε", "3pl":"λύσουσι(ν)"}, "pres.inf":{"inf":"λύειν"}, "pres.imp":{"2sg":"λῦε", "3sg":"λυέτω", "2pl":"λύετε", "3pl":"λυέτωσαν"}, "impf.ind":{"1sg":"ἔλυον", "2sg":"ἔλυες", "3sg":"ἔλυε(ν)", "1pl":"ἐλύομεν", "2pl":"ἐλύετε", "3pl":"ἔλυον"}, "fut.inf":{"inf":"λύσειν"}, "aor.ind":{"1sg":"ἔλυσα", "2sg":"ἔλυσας", "3sg":"ἔλυσε(ν)", "1pl":"ἐλύσαμεν", "2pl":"ἐλύσατε", "3pl":"ἔλυσαν"}, "aor.imp":{"2sg":"λῦσον", "3sg":"λυσάτω", "2pl":"λύσατε", "3pl":"λυσάτωσαν"}, "aor.inf":{"inf":"λῦσαι"} } },
   { lemma:"βλέπω", glosa:"se", svenska:{"inf":"se", "pres":"ser", "pret":"såg", "imp":"se"}, klass:"omega", kortlekar:["sem2", "sem7", "sem8"], sem:[2, 5, 7, 8], former:{ "pres.ind":{"1sg":"βλέπω", "2sg":"βλέπεις", "3sg":"βλέπει", "1pl":"βλέπομεν", "2pl":"βλέπετε", "3pl":"βλέπουσι(ν)"}, "fut.ind":{"1sg":"βλέψω", "2sg":"βλέψεις", "3sg":"βλέψει", "1pl":"βλέψομεν", "2pl":"βλέψετε", "3pl":"βλέψουσι(ν)"}, "pres.inf":{"inf":"βλέπειν"}, "pres.imp":{"2sg":"βλέπε", "3sg":"βλεπέτω", "2pl":"βλέπετε", "3pl":"βλεπέτωσαν"}, "impf.ind":{"1sg":"ἔβλεπον", "2sg":"ἔβλεπες", "3sg":"ἔβλεπε(ν)", "1pl":"ἐβλέπομεν", "2pl":"ἐβλέπετε", "3pl":"ἔβλεπον"}, "fut.inf":{"inf":"βλέψειν"}, "aor.ind":{"1sg":"ἔβλεψα", "2sg":"ἔβλεψας", "3sg":"ἔβλεψε(ν)", "1pl":"ἐβλέψαμεν", "2pl":"ἐβλέψατε", "3pl":"ἔβλεψαν"}, "aor.imp":{"2sg":"βλέψον", "3sg":"βλεψάτω", "2pl":"βλέψατε", "3pl":"βλεψάτωσαν"}, "aor.inf":{"inf":"βλέψαι"} } },
+  { lemma:"ἀκολουθέω", glosa:"följa", svenska:{"inf":"följa", "pres":"följer", "pret":"följde", "imp":"följ"}, klass:"kontrakt_e", kortlekar:["sem8"], sem:[8], former:{ "pres.ind":{"1sg":"ἀκολουθῶ", "2sg":"ἀκολουθεῖς", "3sg":"ἀκολουθεῖ", "1pl":"ἀκολουθοῦμεν", "2pl":"ἀκολουθεῖτε", "3pl":"ἀκολουθοῦσι(ν)"}, "fut.ind":{"1sg":"ἀκολουθήσω", "2sg":"ἀκολουθήσεις", "3sg":"ἀκολουθήσει", "1pl":"ἀκολουθήσομεν", "2pl":"ἀκολουθήσετε", "3pl":"ἀκολουθήσουσι(ν)"}, "pres.inf":{"inf":"ἀκολουθεῖν"}, "pres.imp":{"2sg":"ἀκολούθει", "3sg":"ἀκολουθείτω", "2pl":"ἀκολουθεῖτε", "3pl":"ἀκολουθείτωσαν"}, "impf.ind":{"1sg":"ἠκολούθουν", "2sg":"ἠκολούθεις", "3sg":"ἠκολούθει", "1pl":"ἠκολουθοῦμεν", "2pl":"ἠκολουθεῖτε", "3pl":"ἠκολούθουν"}, "fut.inf":{"inf":"ἀκολουθήσειν"}, "aor.ind":{"1sg":"ἠκολούθησα", "2sg":"ἠκολούθησας", "3sg":"ἠκολούθησε(ν)", "1pl":"ἠκολουθήσαμεν", "2pl":"ἠκολουθήσατε", "3pl":"ἠκολούθησαν"}, "aor.imp":{"2sg":"ἀκολούθησον", "3sg":"ἀκολουθησάτω", "2pl":"ἀκολουθήσατε", "3pl":"ἀκολουθησάτωσαν"}, "aor.inf":{"inf":"ἀκολουθῆσαι"} } },
   { lemma:"ἀκούω", glosa:"höra", svenska:{"inf":"höra", "pres":"hör", "pret":"hörde", "imp":"hör"}, klass:"omega", kortlekar:["sem2", "sem6", "sem7", "sem8"], sem:[2, 5, 6, 7, 8], former:{ "pres.ind":{"1sg":"ἀκούω", "2sg":"ἀκούεις", "3sg":"ἀκούει", "1pl":"ἀκούομεν", "2pl":"ἀκούετε", "3pl":"ἀκούουσι(ν)"}, "fut.ind":{"1sg":"ἀκούσω", "2sg":"ἀκούσεις", "3sg":"ἀκούσει", "1pl":"ἀκούσομεν", "2pl":"ἀκούσετε", "3pl":"ἀκούσουσι(ν)"}, "pres.inf":{"inf":"ἀκούειν"}, "pres.imp":{"2sg":"ἄκουε", "3sg":"ἀκουέτω", "2pl":"ἀκούετε", "3pl":"ἀκουέτωσαν"}, "impf.ind":{"1sg":"ἤκουον", "2sg":"ἤκουες", "3sg":"ἤκουε(ν)", "1pl":"ἠκούομεν", "2pl":"ἠκούετε", "3pl":"ἤκουον"}, "fut.inf":{"inf":"ἀκούσειν"}, "aor.ind":{"1sg":"ἤκουσα", "2sg":"ἤκουσας", "3sg":"ἤκουσε(ν)", "1pl":"ἠκούσαμεν", "2pl":"ἠκούσατε", "3pl":"ἤκουσαν"}, "aor.imp":{"2sg":"ἄκουσον", "3sg":"ἀκουσάτω", "2pl":"ἀκούσατε", "3pl":"ἀκουσάτωσαν"}, "aor.inf":{"inf":"ἀκοῦσαι"} } },
   { lemma:"λέγω", glosa:"säga", svenska:{"inf":"säga", "pres":"säger", "pret":"sa", "imp":"säg"}, klass:"omega", kortlekar:["sem2", "sem7"], sem:[2, 5, 7], former:{ "pres.ind":{"1sg":"λέγω", "2sg":"λέγεις", "3sg":"λέγει", "1pl":"λέγομεν", "2pl":"λέγετε", "3pl":"λέγουσι(ν)"}, "pres.inf":{"inf":"λέγειν"}, "pres.imp":{"2sg":"λέγε", "3sg":"λεγέτω", "2pl":"λέγετε", "3pl":"λεγέτωσαν"}, "impf.ind":{"1sg":"ἔλεγον", "2sg":"ἔλεγες", "3sg":"ἔλεγε(ν)", "1pl":"ἐλέγομεν", "2pl":"ἐλέγετε", "3pl":"ἔλεγον"} } },
   { lemma:"γράφω", glosa:"skriva", svenska:{"inf":"skriva", "pres":"skriver", "pret":"skrev", "imp":"skriv"}, klass:"omega", kortlekar:["sem2", "sem7", "sem8"], sem:[2, 5, 7, 8], former:{ "pres.ind":{"1sg":"γράφω", "2sg":"γράφεις", "3sg":"γράφει", "1pl":"γράφομεν", "2pl":"γράφετε", "3pl":"γράφουσι(ν)"}, "fut.ind":{"1sg":"γράψω", "2sg":"γράψεις", "3sg":"γράψει", "1pl":"γράψομεν", "2pl":"γράψετε", "3pl":"γράψουσι(ν)"}, "pres.inf":{"inf":"γράφειν"}, "pres.imp":{"2sg":"γράφε", "3sg":"γραφέτω", "2pl":"γράφετε", "3pl":"γραφέτωσαν"}, "impf.ind":{"1sg":"ἔγραφον", "2sg":"ἔγραφες", "3sg":"ἔγραφε(ν)", "1pl":"ἐγράφομεν", "2pl":"ἐγράφετε", "3pl":"ἔγραφον"}, "fut.inf":{"inf":"γράψειν"}, "aor.ind":{"1sg":"ἔγραψα", "2sg":"ἔγραψας", "3sg":"ἔγραψε(ν)", "1pl":"ἐγράψαμεν", "2pl":"ἐγράψατε", "3pl":"ἔγραψαν"}, "aor.imp":{"2sg":"γράψον", "3sg":"γραψάτω", "2pl":"γράψατε", "3pl":"γραψάτωσαν"}, "aor.inf":{"inf":"γράψαι"} } },
@@ -117,6 +118,14 @@ const LEKAR = {
   eimi:  verb.filter(v => v.kortlekar.includes("eimi")).map(v => v.lemma),
   mi:    verb.filter(v => v.kortlekar.includes("mi")).map(v => v.lemma),
 };
+
+/* Inför provet — provets verblista (ORDKUNSKAP 1–10, punkt 4b; källa:
+   json/glosor.json listor:"prov"). Fokusurval: personändelser i alla tempus/
+   modus prövas ändå, men på just de 16 verb examinatorn räknar upp (λύω-modell,
+   kontraktverb, μι-verbet δίδωμι, εἰμί, likvidaverbet ἀποστέλλω). Snittas mot
+   verb[] så chipet aldrig blir tomt. */
+const PROV_VERB_LISTA = ["ἀκολουθέω","ἀκούω","ἀποστέλλω","βαπτίζω","βλέπω","γράφω","δίδωμι","εἰμί","καλέω","κηρύσσω","λαλέω","λέγω","λύω","πέμπω","πιστεύω","ποιέω"];
+const PROV_VERB = new Set(PROV_VERB_LISTA.filter(l => verb.some(v => v.lemma === l)));
 
 /* Seminarie-axel: varje verb bär sem:[…] ur verb.json. Skalar till fler
    seminarier — chipsen radbryts. */
@@ -222,6 +231,10 @@ const MARKUP = `<div class="vy vy-verb">
     </div>
     <div>
       <h2>Verb</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Prov:</span>
+        <button class="chip chip-prov" data-prov title="Provets 16 verb (ORDKUNSKAP 4b) i alla tempus och modus">Inför provet</button>
+      </div>
       <div class="quickrow">
         <span class="quicklabel">Klass:</span>
         <button class="chip" data-lek="alla">alla</button>
@@ -622,7 +635,11 @@ export function render(root, opts = {}){
   }
   // Guldram på den kvickvals-chip vars grupp exakt motsvarar nuvarande urval (annars ingen).
   function uppdateraVerbChips(){ document.querySelectorAll("[data-lek]").forEach(b =>
-    b.setAttribute("aria-pressed", setEq(state.valdaVerb, new Set(LEKAR[b.dataset.lek] || [])))); }
+    b.setAttribute("aria-pressed", setEq(state.valdaVerb, new Set(LEKAR[b.dataset.lek] || []))));
+    const provChip = document.querySelector("[data-prov]");
+    if(provChip) provChip.setAttribute("aria-pressed", ärProvUrval()); }
+  function ärProvUrval(){ return setEq(state.valdaSem, new Set(SEMINARIER)) && setEq(state.valdaVerb, PROV_VERB); }
+  function valjProv(){ state.valdaSem = new Set(SEMINARIER); state.valdaVerb = new Set(PROV_VERB); }
   function uppdateraPNChips(){ document.querySelectorAll("[data-pn]").forEach(b =>
     b.setAttribute("aria-pressed", setEq(state.valdaPN, new Set(PN_GRUPPER[b.dataset.pn] || [])))); }
 
@@ -640,6 +657,7 @@ export function render(root, opts = {}){
 
   document.querySelectorAll("[data-lek]").forEach(b => b.onclick = () => {
     state.valdaVerb = new Set(LEKAR[b.dataset.lek] || []); byggGridVerb(); spara(); newQuestion(); });
+  document.querySelector("[data-prov]").onclick = () => { valjProv(); byggGridSem(); byggGridVerb(); spara(); newQuestion(); };
   document.querySelectorAll("[data-pn]").forEach(b => b.onclick = () => {
     state.valdaPN = new Set(PN_GRUPPER[b.dataset.pn] || PN_ORDNING); byggGridPN(); spara(); newQuestion(); });
   document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEMINARIER); byggGridSem(); byggGridVerb(); spara(); newQuestion(); };
@@ -655,6 +673,8 @@ export function render(root, opts = {}){
 
   ladda();
   // Djuplänk från provöversikten kan förvälja läge (#/verb/oversatt) — vinner över persistensen.
+  // #/verb/prov landar i det receptiva läget MED provets verburval förvalt.
   if(["vand","flerval","oversatt","lasa"].includes(opts.mode)) state.mode = opts.mode;
+  if(opts.mode === "prov"){ state.mode = "oversatt"; valjProv(); }
   uppdateraLäge(); byggGridSem(); byggGridTempus(); byggGridModus(); byggGridVerb(); byggGridPN(); uppdateraSub(); newQuestion();
 }

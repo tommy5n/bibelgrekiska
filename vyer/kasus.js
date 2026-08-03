@@ -66,6 +66,10 @@ const MARKUP = `<div class="vy vy-kasus">
     <div class="picker-section">
       <h2>Ord</h2>
       <div class="quickrow">
+        <span class="quicklabel">Prov:</span>
+        <button class="chip chip-prov" data-prov title="Provets substantivlista (ORDKUNSKAP 4c) i alla kasus och numerus">Inför provet</button>
+      </div>
+      <div class="quickrow">
         <button class="chip" data-ord-all>alla</button>
         <button class="chip" data-ord-clear>rensa</button>
       </div>
@@ -258,6 +262,8 @@ const ord = [
     nom:{sg:"παρθένος",pl:"παρθένοι"}, gen:{sg:"παρθένου",pl:"παρθένων"}, dat:{sg:"παρθένῳ",pl:"παρθένοις"}, ack:{sg:"παρθένον",pl:"παρθένους"}, vok:{sg:"παρθένε",pl:"παρθένοι"} }},
   { lemma:"μαθητής", glosa:"lärjunge, elev", glosaGen:"lärjunges", glosaPl:"lärjungar", genus:"m", sem:[5], former:{
     nom:{sg:"μαθητής",pl:"μαθηταί"}, gen:{sg:"μαθητοῦ",pl:"μαθητῶν"}, dat:{sg:"μαθητῇ",pl:"μαθηταῖς"}, ack:{sg:"μαθητήν",pl:"μαθητάς"}, vok:{sg:"μαθητά",pl:"μαθηταί"} }},
+  { lemma:"βαπτιστής", glosa:"döpare", glosaGen:"döpares", glosaPl:"döpare", genus:"m", sem:[6], former:{
+    nom:{sg:"βαπτιστής",pl:"βαπτισταί"}, gen:{sg:"βαπτιστοῦ",pl:"βαπτιστῶν"}, dat:{sg:"βαπτιστῇ",pl:"βαπτισταῖς"}, ack:{sg:"βαπτιστήν",pl:"βαπτιστάς"}, vok:{sg:"βαπτιστά",pl:"βαπτισταί"} }},
   { lemma:"προφήτης", glosa:"profet", glosaGen:"profets", glosaPl:"profeter", genus:"m", sem:[5], former:{
     nom:{sg:"προφήτης",pl:"προφῆται"}, gen:{sg:"προφήτου",pl:"προφητῶν"}, dat:{sg:"προφήτῃ",pl:"προφήταις"}, ack:{sg:"προφήτην",pl:"προφήτας"}, vok:{sg:"προφῆτα",pl:"προφῆται"} }},
   { lemma:"νεανίας", glosa:"yngling", glosaGen:"ynglings", glosaPl:"ynglingar", genus:"m", sem:[5], former:{
@@ -326,6 +332,16 @@ const KATEGORIER = {
   m1: o => paradigmKeyK(o) === "m1",                           // 1:a dekl. mask. (μαθητής-typ)
 };
 const katLemman = key => new Set(ord.filter(KATEGORIER[key]).map(o => o.lemma));
+
+/* Inför provet — provets substantivlista (ORDKUNSKAP 1–10, punkt 4c; källa:
+   json/glosor.json listor:"prov"). Ett fokusurval: samma parsning som "alla
+   seminarier" prövar, men enbart på de ord examinatorn pekat ut — vilket också
+   är de knepigaste paradigmen (πατήρ/ἀνήρ/μήτηρ stamväxlar, ὁδός fem. på -ος,
+   3:e dekl. πνεῦμα/ὕδωρ/φῶς/ὄρος). Snittas mot ord[] så chipet aldrig blir tomt. */
+const PROV_SUBST = ["ἄγγελος","ἀδελφός","ἀνήρ","ἄνθρωπος","ἀπόστολος","δοῦλος","ἐκκλησία","ἔργον","ζωή","θεός","ἱερόν","κύριος","λόγος","μαθητής","μήτηρ","ὁδός","οἶκος","ὄρος","οὐρανός","πατήρ","πλοῖον","πνεῦμα","προφήτης","τέκνον","ὕδωρ","υἱός","φῶς","ἀδελφή","ἀρχή","βαπτιστής"];
+const PROV_ORD = new Set(PROV_SUBST.filter(l => ord.some(o => o.lemma === l)));
+function ärProvUrval(){ return setEq(state.valdaSem, new Set(SEM_VARDEN)) && setEq(state.valdaOrd, PROV_ORD); }
+function valjProv(){ state.valdaSem = new Set(SEM_VARDEN); state.valdaOrd = new Set(PROV_ORD); }
 
 /* Seminarie-axel: varje ord bär sem:[…] ur ord.json. 0 = "Övriga" (ord utan
    seminarietaggning, t.ex. högfrekventa NT-ord). Skalar till fler seminarier —
@@ -683,6 +699,8 @@ function byggGridOrd(){
 function uppdateraKatChips(){
   document.querySelectorAll("[data-cat]").forEach(b =>
     b.setAttribute("aria-pressed", setEq(state.valdaOrd, katLemman(b.dataset.cat))));
+  const provChip = document.querySelector("[data-prov]");
+  if(provChip) provChip.setAttribute("aria-pressed", ärProvUrval());
 }
 function byggGridKasus(){
   const g = $("grid-kasus"); g.innerHTML = "";
@@ -755,6 +773,7 @@ document.querySelector("[data-ord-clear]").onclick = () => { state.valdaOrd = ne
 document.querySelectorAll("[data-cat]").forEach(b => {
   b.onclick = () => { state.valdaOrd = katLemman(b.dataset.cat); byggGridOrd(); spara(); newQuestion(); };
 });
+document.querySelector("[data-prov]").onclick = () => { valjProv(); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };
 document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEM_VARDEN); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };
 document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); byggGridOrd(); spara(); newQuestion(); };
 document.querySelector("[data-kasus-all]").onclick   = () => { state.valdaKasus = new Set(KASUS_ORDNING); byggGridKasus(); spara(); newQuestion(); };
@@ -777,7 +796,9 @@ __kh = e => {
 /* ── START ───────────────────────────────────────────────────────────── */
 ladda();
 // Djuplänk från provöversikten kan förvälja läge (#/kasus/oversatt) — vinner över persistensen.
+// #/kasus/prov landar i det receptiva läget MED provets substantivurval förvalt.
 if(["vand","flerval","oversatt","lasa"].includes(opts.mode)) state.mode = opts.mode;
+if(opts.mode === "prov"){ state.mode = "oversatt"; valjProv(); }
 uppdateraLägesknappar();
 uppdateraSub();
 uppdateraNumKnappar();

@@ -96,6 +96,14 @@ const SEMINARIER = [...new Set(verb.flatMap(v => v.sem))].sort((a,b) => a - b);
 const semNamn = s => "Sem " + s;
 const KLASSER = { omega:"ω-verb", kontrakt_e:"kontraherade -έω", oregelbunden:"εἰμί" };
 
+/* Inför provet — provets verblista (ORDKUNSKAP 1–10, punkt 4b; källa:
+   json/glosor.json listor:"prov"). Formverkstaden omvandlar former för ω-verb,
+   kontraktverb och εἰμί; μι-verbet δίδωμι ligger utanför omvandlingsklasserna
+   och faller därför bort (15/16). Ett rent lemmafilter ovanpå sem/klass. */
+const PROV_VERB = new Set(
+  ["ἀκολουθέω","ἀκούω","ἀποστέλλω","βαπτίζω","βλέπω","γράφω","δίδωμι","εἰμί","καλέω","κηρύσσω","λαλέω","λέγω","λύω","πέμπω","πιστεύω","ποιέω"]
+    .filter(l => verb.some(v => v.lemma === l)));
+
 const STYLE = `
 .vy-former .modes{ display:flex; gap:.5rem; justify-content:center; margin:1rem 0 0; flex-wrap:wrap; }
 .vy-former .mode{ font-family:"Spectral",serif; font-size:var(--fs-sm); padding:.35rem .9rem;
@@ -193,6 +201,10 @@ const MARKUP = `<div class="vy vy-former">
     </div>
     <div>
       <h2>Verbklass</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Prov:</span>
+        <button class="chip chip-prov" data-prov title="Provets verb (ORDKUNSKAP 4b) — omvandla deras former">Inför provet</button>
+      </div>
       <div class="grid" id="grid-klass"></div>
     </div>
   </div>
@@ -216,6 +228,7 @@ export function render(root, opts = {}){
     valdaSem: new Set(SEMINARIER),
     valdaOmv: new Set(BLADET),
     valdaKlass: new Set(Object.keys(KLASSER)),
+    provOnly: false,   // "Inför provet": snäva verburvalet till provets lista (ANDas med sem/klass)
     streak: 0, best: 0, card: null, besvarad: false, valt: null, forra: null,
     rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
   };
@@ -227,8 +240,9 @@ export function render(root, opts = {}){
 
   const semMatch   = v => v.sem.some(s => state.valdaSem.has(s));
   const klassMatch = v => state.valdaKlass.has(v.klass);
+  const provMatch  = v => !state.provOnly || PROV_VERB.has(v.lemma);
   const kandidatVerb = () => {
-    const v = verb.filter(o => semMatch(o) && klassMatch(o));
+    const v = verb.filter(o => semMatch(o) && klassMatch(o) && provMatch(o));
     return v.length ? v : verb;
   };
   const aktivaOmv = () => {
@@ -266,7 +280,7 @@ export function render(root, opts = {}){
 
   function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({
     mode:state.mode, valdaSem:[...state.valdaSem], valdaOmv:[...state.valdaOmv],
-    valdaKlass:[...state.valdaKlass], best:state.best })); }catch(e){} }
+    valdaKlass:[...state.valdaKlass], provOnly:state.provOnly, best:state.best })); }catch(e){} }
   function ladda(){ try{ const r = JSON.parse(localStorage.getItem(LAGER)); if(!r) return;
     if(r.mode) state.mode = r.mode;
     if(Array.isArray(r.valdaSem))   state.valdaSem   = new Set(r.valdaSem.filter(s => SEMINARIER.includes(s)));
@@ -274,6 +288,7 @@ export function render(root, opts = {}){
     if(Array.isArray(r.valdaKlass)) state.valdaKlass = new Set(r.valdaKlass.filter(k => KLASSER[k]));
     if(!state.valdaSem.size)   state.valdaSem   = new Set(SEMINARIER);
     if(!state.valdaKlass.size) state.valdaKlass = new Set(Object.keys(KLASSER));
+    if(typeof r.provOnly === "boolean") state.provOnly = r.provOnly;
     if(typeof r.best === "number") state.best = r.best;
   }catch(e){} }
 
@@ -502,6 +517,11 @@ export function render(root, opts = {}){
         b.setAttribute("aria-pressed", state.valdaKlass.has(k)); byggGridOmv(); spara(); newQuestion(); };
       g.appendChild(b);
     });
+    uppdateraProvChip();
+  }
+  function uppdateraProvChip(){
+    const b = document.querySelector("[data-prov]");
+    if(b) b.setAttribute("aria-pressed", String(state.provOnly));
   }
   function uppdateraOmvChips(){
     const alla = new Set(OMVANDLINGAR.map(o=>o.id));
@@ -533,6 +553,12 @@ export function render(root, opts = {}){
   document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); spara(); newQuestion(); };
   document.querySelector("[data-omv-all]").onclick  = () => { state.valdaOmv = new Set(OMVANDLINGAR.map(o=>o.id)); byggGridOmv(); spara(); newQuestion(); };
   document.querySelector("[data-omv-blad]").onclick = () => { state.valdaOmv = new Set(BLADET); byggGridOmv(); spara(); newQuestion(); };
+  // Prov-toggle: på → snäv till provlistan och nollställ sem/klass så inget döljs dubbelt.
+  document.querySelector("[data-prov]").onclick = () => {
+    state.provOnly = !state.provOnly;
+    if(state.provOnly){ state.valdaSem = new Set(SEMINARIER); state.valdaKlass = new Set(Object.keys(KLASSER)); }
+    byggGridSem(); byggGridKlass(); spara(); newQuestion();
+  };
 
   __fh = e => {
     if(e.key === "Enter" && state.besvarad){ e.preventDefault(); newQuestion(); return; }
@@ -545,7 +571,9 @@ export function render(root, opts = {}){
 
   ladda();
   // Djuplänk kan förvälja läge (#/former/las) — vinner över persistensen.
+  // #/former/prov landar i det receptiva läslägget MED provets verburval förvalt.
   if(["las","bygg","neg"].includes(opts.mode)) state.mode = opts.mode;
+  if(opts.mode === "prov"){ state.mode = "las"; state.provOnly = true; state.valdaSem = new Set(SEMINARIER); state.valdaKlass = new Set(Object.keys(KLASSER)); }
   uppdateraLage(); byggGridSem(); byggGridOmv(); byggGridKlass();
   $("streak").textContent = state.streak; $("best").textContent = state.best;
   newQuestion();

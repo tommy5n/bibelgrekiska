@@ -51,6 +51,10 @@ const MARKUP = `<div class="vy vy-kongruens">
     </div>
     <div class="picker-section">
       <h2>Adjektivhög</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Prov:</span>
+        <button class="chip chip-prov" data-prov title="Provets adjektiv (ORDKUNSKAP 4d) — kongruens i alla kasus och numerus">Inför provet</button>
+      </div>
       <div class="seg" id="seg-adj" role="group" aria-label="Adjektivhög">
         <button data-v="oxytona" aria-pressed="false">oxytona</button>
         <button data-v="ovriga"  aria-pressed="false">förskjutande</button>
@@ -348,8 +352,16 @@ function ladda(){
 }
 
 /* ── URVAL ───────────────────────────────────────────────────────────── */
+/* Inför provet — provets adjektivlista (ORDKUNSKAP 1–10, punkt 4d; källa:
+   json/glosor.json listor:"prov"). πᾶς räknas som pron.adj och ligger utanför
+   adjektivhögen (6/7); de oregelbundna μέγας/πολύς finns med. Fokusdrill på just
+   dessa adjektivs kongruens. Snittas mot ADJEKTIV så urvalet aldrig blir tomt. */
+const PROV_ADJ = new Set(
+  ["ἀγαθός","ἅγιος","δίκαιος","μέγας","πολύς","πονηρός"].filter(l => ADJEKTIV.some(a => a.lemma === l)));
 function aktivaAdj(){
-  const p = ADJEKTIV.filter(a => state.adjDeck==="alla" || a.kortlek===state.adjDeck);
+  const p = state.adjDeck==="prov"
+    ? ADJEKTIV.filter(a => PROV_ADJ.has(a.lemma))
+    : ADJEKTIV.filter(a => state.adjDeck==="alla" || a.kortlek===state.adjDeck);
   return p.length ? p : ADJEKTIV.slice();
 }
 const semMatch = s => s.sem.length ? s.sem.some(x => state.valdaSem.has(x)) : state.valdaSem.has(0);
@@ -672,7 +684,9 @@ function syncLägesknappar(){
 function init(){
   ladda();
   // Djuplänk kan förvälja läge (#/kongruens/lasa) — vinner över persistensen.
+  // #/kongruens/prov landar i läsläget MED provets adjektivurval förvalt.
   if(opts.mode === "lasa" || opts.mode === "bygg") state.mode = opts.mode;
+  if(opts.mode === "prov"){ state.mode = "lasa"; state.adjDeck = "prov"; state.substSet = "alla"; state.valdaSem = new Set(SEM_VARDEN); }
   syncLägesknappar();
   $("mode-lasa").addEventListener("click", () => { if(state.mode==="lasa") return; state.mode="lasa"; syncLägesknappar(); syncPickerSynlighet(); spara(); newQuestion(); });
   $("mode-bygg").addEventListener("click", () => { if(state.mode==="bygg") return; state.mode="bygg"; syncLägesknappar(); syncPickerSynlighet(); spara(); newQuestion(); });
@@ -686,6 +700,16 @@ function init(){
 
   bindSeg("seg-adj",   () => state.adjDeck,  v => state.adjDeck  = v);
   bindSeg("seg-subst", () => state.substSet, v => state.substSet = v);
+  // Prov-chipet speglar adjDeck==="prov"; ett klick på adjektiv-segmentet lämnar provläget.
+  const provChip = document.querySelector("[data-prov]");
+  const uppdateraProvChip = () => provChip.setAttribute("aria-pressed", String(state.adjDeck==="prov"));
+  $("seg-adj").addEventListener("click", uppdateraProvChip);
+  provChip.addEventListener("click", () => {
+    state.adjDeck = "prov"; state.substSet = "alla"; state.valdaSem = new Set(SEM_VARDEN);
+    segVal($("seg-adj"), state.adjDeck); segVal($("seg-subst"), state.substSet);
+    byggGridSem(); uppdateraProvChip(); spara(); newQuestion();
+  });
+  uppdateraProvChip();
   bindSeg("seg-tempus",() => state.tempus,   v => state.tempus   = v);
   $("seg-konstr").addEventListener("click", e => {
     const b = e.target.closest("button"); if(!b) return;

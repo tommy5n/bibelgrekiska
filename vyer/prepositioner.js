@@ -147,6 +147,13 @@ const KASUS_ORDNING = ["gen","dat","ack"];
 const GRUPP = { 1:"ett kasus", 2:"två kasus", 3:"tre kasus" };
 const GRUPP_ORDNING = [1,2,3];
 
+/* Inför provet — provets prepositioner (ORDKUNSKAP 1–10, punkt 4e; källa:
+   json/glosor.json listor:"prov"). De sex spänner över alla tre kasus-grupperna
+   (ἐν/εἰς/ἐκ/σύν = ett kasus, περί = två, πρός = tre), så preseten öppnar alla
+   grupper och seminarier. Snittas mot mastern så urvalet aldrig blir tomt. */
+const PROV_PREP = new Set(
+  ["ἐν","εἰς","ἐκ","περί","πρός","σύν"].filter(l => prepositioner.some(p => p.lemma === l)));
+
 /* Seminarie-axel: varje preposition bär sem:[…] ur mastern. */
 const SEMINARIER = [...new Set(prepositioner.flatMap(p => p.sem))].sort((a,b) => a - b);
 const semNamn = s => "Sem " + s;
@@ -246,6 +253,10 @@ const MARKUP = `<div class="vy vy-prep">
     </div>
     <div>
       <h2>Prepositioner</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Prov:</span>
+        <button class="chip chip-prov" data-prov title="Provets prepositioner (ORDKUNSKAP 4e): ἐν, εἰς, ἐκ/ἐξ, περί, πρός, σύν">Inför provet</button>
+      </div>
       <div class="grid" id="grid-prep"></div>
     </div>
     <div id="sec-kas">
@@ -259,7 +270,7 @@ const MARKUP = `<div class="vy vy-prep">
 <div class="gr-lank"><a href="grammatikreferens.html#prepositioner">§ Prepositioner i grammatikreferensen →</a></div></footer>
 </div>`;
 
-export function render(root){
+export function render(root, opts = {}){
   if(!document.getElementById("vy-prep-style")){
     const st = document.createElement("style"); st.id = "vy-prep-style"; st.textContent = STYLE;
     document.head.appendChild(st);
@@ -455,11 +466,15 @@ export function render(root){
         if(state.valdaPrep.has(p.lemma)){ if(state.valdaPrep.size>1) state.valdaPrep.delete(p.lemma); }
         else state.valdaPrep.add(p.lemma);
         b.setAttribute("aria-pressed", state.valdaPrep.has(p.lemma));
-        spara(); newQuestion();
+        uppdateraProvChip(); spara(); newQuestion();
       };
       g.appendChild(b);
     });
+    uppdateraProvChip();
   }
+  function ärProvUrval(){ return setEq(state.valdaSem, new Set(SEMINARIER)) && setEq(state.valdaGrupp, new Set(GRUPP_ORDNING)) && setEq(state.valdaPrep, PROV_PREP); }
+  function valjProv(){ state.valdaSem = new Set(SEMINARIER); state.valdaGrupp = new Set(GRUPP_ORDNING); state.valdaPrep = new Set(PROV_PREP); }
+  function uppdateraProvChip(){ const b = document.querySelector("[data-prov]"); if(b) b.setAttribute("aria-pressed", String(ärProvUrval())); }
   function byggGridSem(){
     const g = $("grid-sem"); g.innerHTML = "";
     SEMINARIER.forEach(s => {
@@ -508,6 +523,7 @@ export function render(root){
     $("picker-toggle").setAttribute("aria-expanded", !o); $("picker-body").classList.toggle("hidden", o); };
   document.querySelector("[data-sem-all]").onclick  = () => { state.valdaSem = new Set(SEMINARIER); byggGridSem(); byggGridPrep(); spara(); newQuestion(); };
   document.querySelector("[data-sem-none]").onclick = () => { state.valdaSem = new Set(); byggGridSem(); byggGridPrep(); spara(); newQuestion(); };
+  document.querySelector("[data-prov]").onclick = () => { valjProv(); byggPickers(); spara(); newQuestion(); };
 
   __ph = e => {
     if(e.key==="Enter" && state.besvarad){ newQuestion(); }
@@ -516,5 +532,9 @@ export function render(root){
   };
   document.addEventListener("keydown", __ph);
 
-  ladda(); uppdateraLage(); byggPickers(); newQuestion();
+  ladda();
+  // #/prepositioner/prov landar i "Välj betydelse" MED provets prepositionsurval förvalt.
+  if(opts.mode === "valj" || opts.mode === "kasus") state.mode = opts.mode;
+  if(opts.mode === "prov"){ state.mode = "valj"; valjProv(); }
+  uppdateraLage(); byggPickers(); newQuestion();
 }

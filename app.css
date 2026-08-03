@@ -528,6 +528,14 @@ body {
   border-color: var(--gold);
 }
 }
+/* "Inför provet"-chipet (data-prov) i böjningsspelens picker: guldtonad i vilo-
+   läge så provets fokusurval sticker ut bland snabbvalen. Vald (aria-pressed)
+   ärver det svarta tillståndet från regeln ovan. Delad av alla spel med provurval. */
+.picker .chip-prov:not([aria-pressed="true"]) {
+  border-color: var(--gold);
+  color: var(--gold);
+  font-weight: 600;
+}
 .picker .toggle:disabled { opacity: 0.4; cursor: default; }
 .picker .toggle .n { opacity: 0.6; font-size: var(--fs-xs); margin-left: 0.3rem; }
 
