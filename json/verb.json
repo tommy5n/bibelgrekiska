@@ -73,6 +73,24 @@
     },
     "fut.inf.akt": {
      "inf": "-σειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "-σα",
+     "2sg": "-σας",
+     "3sg": "-σε(ν)",
+     "1pl": "-σαμεν",
+     "2pl": "-σατε",
+     "3pl": "-σαν",
+     "augment": "ἐ- som i imperfekt; sigmatisk aorist = augment + stam + σ + ändelse (ἔ-λυ-σ-α)"
+    },
+    "aor.imp.akt": {
+     "2sg": "-σον",
+     "3sg": "-σάτω",
+     "2pl": "-σατε",
+     "3pl": "-σάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "-σαι"
     }
    }
   },
@@ -115,6 +133,24 @@
     },
     "fut.inf.akt": {
      "inf": "-ήσειν"
+    },
+    "aor.ind.akt": {
+     "1sg": "-ησα",
+     "2sg": "-ησας",
+     "3sg": "-ησε(ν)",
+     "1pl": "-ησαμεν",
+     "2pl": "-ησατε",
+     "3pl": "-ησαν",
+     "not": "σ upphäver kontraktionen; ε förlängs till η som i futurum (φιλέ→ἐφίλη-σ-α)"
+    },
+    "aor.imp.akt": {
+     "2sg": "-ησον",
+     "3sg": "-ησάτω",
+     "2pl": "-ησατε",
+     "3pl": "-ησάτωσαν"
+    },
+    "aor.inf.akt": {
+     "inf": "-ῆσαι"
     }
    },
    "kontraktionsregler": [

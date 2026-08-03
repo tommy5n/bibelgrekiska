@@ -436,6 +436,7 @@ const SEMINARIER = [
     ],
     ova:[
       { spel:"Verb", route:"#/verb", filter:"tempus: aorist", vad:"den sigmatiska aoristen på hela verbinventariet — ind./imp./inf." },
+      { spel:"Verbändelser", route:"#/verbandelser", filter:"läs personen ur ändelsen", vad:"nöt alla personändelser du lärt dig — presens till aorist, receptivt" },
       { spel:"Formverkstaden", route:"#/former", filter:"presens → aorist", vad:"bygg om formen: augment + σ + α-ändelser" },
       { spel:"Kasus", route:"#/kasus", filter:"Dekl. 3", vad:"τὸ πνεῦμα-typen och ἡγεμών — sikta på nom = ack och dativ pl. -σι(ν)" },
       { spel:"Satsläran", route:"#/satslara", vad:"hitta bisatsen och nöt subjunktionernas betydelse" },

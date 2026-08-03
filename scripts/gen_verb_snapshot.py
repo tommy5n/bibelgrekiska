@@ -22,6 +22,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 MASTER = ROOT / "json" / "verb.json"
 VY = ROOT / "vyer" / "verb.js"
+ANDELSE_VY = ROOT / "vyer" / "verb-andelser-data.js"
+
+# Personändelse-spelet drillar lärarens två bilder: okontraherade (ω-verb) och
+# kontraherade (-έω). μι-verb och εἰμί (oregelbunden) har egna system och hålls
+# utanför ändelse-kartan — de dyker ändå upp i spelet som HELA former att parsa.
+ANDELSE_KLASSER = ["omega", "kontrakt_e"]
 
 PN6 = ["1sg", "2sg", "3sg", "1pl", "2pl", "3pl"]
 IMP4 = ["2sg", "3sg", "2pl", "3pl"]
@@ -86,6 +92,60 @@ def bygg_rad(v):
     return "  { " + ", ".join(bitar) + " },"
 
 
+# Mastern annoterar en del ändelser ("-έτωσαν (koine; klass. -όντων)", "-ει (< -εε)")
+# och blandar in meta-nycklar (augment/not). Spelet vill ha rena strängar: klipp
+# vid " (" (så det meningsbärande rörliga "(ν)" utan blanksteg bevaras) och
+# behåll bara person/numerus- och infinitiv-celler.
+def stada(v):
+    return v.split(" (")[0].strip()
+
+
+def bygg_andelser(d):
+    ut = collections.OrderedDict()
+    for kl in ANDELSE_KLASSER:
+        block = (d["_klasser"].get(kl) or {}).get("andelser")
+        if not block:
+            continue
+        former = collections.OrderedDict()
+        for k3, celler in block.items():
+            key = ".".join(k3.split(".")[:2])                 # "pres.ind.akt" → "pres.ind"
+            rad = collections.OrderedDict(
+                (p, stada(celler[p])) for p in celler_for(k3) if p in celler
+            )
+            if rad:
+                former[key] = rad
+        if former:
+            ut[kl] = former
+    return ut
+
+
+def rendera_andelser(ut):
+    klassbitar = []
+    for kl, former in ut.items():
+        rader = [
+            "    " + jsstr(key) + ": {"
+            + ", ".join(f"{jsstr(p)}:{jsstr(val)}" for p, val in celler.items()) + "}"
+            for key, celler in former.items()
+        ]
+        klassbitar.append("  " + jsstr(kl) + ": {\n" + ",\n".join(rader) + "\n  }")
+    return "export const VERB_ANDELSER = {\n" + ",\n".join(klassbitar) + "\n};\n"
+
+
+def skriv_andelser(d):
+    ut = bygg_andelser(d)
+    huvud = (
+        "// GENERERAD av scripts/gen_verb_snapshot.py ur json/verb.json "
+        "(_klasser[*].andelser).\n"
+        "// Personändelser per verbklass × tempus.modus × person — okontraherade\n"
+        "// (ω-verb) och kontraherade (-έω), samma sammanställning som lärarens två\n"
+        "// bilder och grammatikreferensens översiktskort. Redigera ALDRIG här —\n"
+        "// ändra i mastern och kör: python3 scripts/gen_verb_snapshot.py\n"
+    )
+    ANDELSE_VY.write_text(huvud + rendera_andelser(ut))
+    antal = sum(len(f) for f in ut.values())
+    print(f"Skrev {ANDELSE_VY.relative_to(ROOT)} — {len(ut)} klasser, {antal} formnycklar.")
+
+
 def main():
     d = json.loads(MASTER.read_text())
     rader = [bygg_rad(v) for v in d["verb"]]
@@ -103,6 +163,8 @@ def main():
         for k in v["former"]:
             if (v["lemma"], k) not in UTESLUT:
                 st[".".join(k.split(".")[:2])] += 1
+    skriv_andelser(d)
+
     print(f"Skrev {VY.relative_to(ROOT)} — {len(rader)} verb.")
     for k, antal in sorted(st.items()):
         print(f"  {k:9s} {antal} verb")

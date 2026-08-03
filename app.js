@@ -106,6 +106,12 @@ const SPEL = [
     desc: "Verbaladjektivet som kongruerar: λύων, λύουσα, λῦον",
     route: "#/particip",
   },
+  {
+    nr: 16,
+    namn: "Verbändelser",
+    desc: "Receptivt: läs personen, tempus och modus ur ändelsen",
+    route: "#/verbandelser",
+  },
 ];
 
 const ROUTES = {
@@ -124,6 +130,7 @@ const ROUTES = {
   "/prepositioner": () => import(`./vyer/prepositioner.js${vv}`),
   "/former": () => import(`./vyer/former.js${vv}`),
   "/ordbok": () => import(`./vyer/ordbok.js${vv}`),
+  "/verbandelser": () => import(`./vyer/verbandelser.js${vv}`),
 };
 
 let current = null;
