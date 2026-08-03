@@ -140,6 +140,7 @@ const MARKUP = `<div class="vy vy-paradigm">
         <span class="quicklabel">Deklination:</span>
         <button class="chip" data-cat="d1">Dekl. 1</button>
         <button class="chip" data-cat="d2">Dekl. 2</button>
+        <button class="chip" data-cat="d3" title="Tredje deklinationen — bara i Läs formen och Studera">Dekl. 3</button>
       </div>
       <div class="quickrow">
         <span class="quicklabel">Typ:</span>
@@ -187,6 +188,7 @@ const KASUS_ORDNING = ["nom","gen","dat","ack","vok"];
 const KATEGORIER = {
   d1: o => ["f1h","f1a","f1m"].includes(paradigmKey(o)),   // hela deklination 1
   d2: o => ["m2","n2"].includes(paradigmKey(o)),           // hela deklination 2
+  d3: o => o.dekl === 3,                                    // hela deklination 3 (bara Läs formen / Studera)
   m:  o => paradigmKey(o) === "m2",                        // mask. -ος
   n:  o => paradigmKey(o) === "n2",                        // neutr. -ον
   fh: o => paradigmKey(o) === "f1h",                       // fem. η-stam
@@ -218,13 +220,11 @@ const ANDELSER_ALLA = (() => {
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function setEq(a,b){ return a.size===b.size && [...a].every(x=>b.has(x)); }
-/* Härleder paradigm ur GENUS + nominativens/genitivens utljud. Det fungerar
-   bara för deklination 1 och 2.
-   VARNING: ord ur deklination 3 (ἡγεμών, ἀμπελών — sem 7) får ALDRIG in i
-   `ord`-snapshoten ovan. De böjs på genitivstammen, inte ur genus, så de skulle
-   tyst få paradigmKey "m2" och ge fel facit. Samma skäl som 2:a-dekl-feminina
-   och 1:a-dekl-maskulina utelämnas. De övas i kasus- och kongruensspelen, där
-   explicita former läses. Se json/ord.json → _tredjeklasser._om. */
+/* paradigmKey härleder paradigm ur GENUS (dekl. 1–2). Tredje deklinationen finns
+   i snapshoten (dekl:3) och får m3/n3/f3 — men bara för etikett/neutrum-synkretism.
+   Den syns i Läs formen och Studera (attesterade former); Fyll i döljer den via
+   synligaOrd(), så END aldrig slås upp för m3/n3/f3. 2:a-dekl-feminina och
+   1:a-dekl-maskulina utelämnas helt av generatorn. Se json/ord.json → _tredjeklasser. */
 
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
 const LAGER = "grekiska-paradigmspel";
@@ -244,7 +244,15 @@ const state = {
 
 function aktivaKasus(){ return state.medVok ? KASUS_ORDNING : KASUS_ORDNING.filter(k => k !== "vok"); }
 function celler(){ const ut = []; for(const k of aktivaKasus()) for(const n of ["sg","pl"]) ut.push(k+"|"+n); return ut; }
-function synligaOrd(){ const p = ord.filter(semMatch); return p.length ? p : ord; }
+// "Fyll i" bygger facit ur END[paradigmKey] (dekl. 1–2). Tredje deklinationen
+// böjs på genitivstammen och går inte att mekanisera så, därför göms dekl:3 där —
+// den övas i "Läs formen" och "Studera", som läser de attesterade formerna.
+function produktiv(){ return state.mode === "fyll"; }
+function synligaOrd(){
+  const pool = produktiv() ? ord.filter(o => o.dekl !== 3) : ord;
+  const p = pool.filter(semMatch);
+  return p.length ? p : pool;
+}
 function aktivaOrd(){
   const v = synligaOrd().filter(o => state.valdaOrd.has(o.lemma));
   return v.length ? v : synligaOrd();
@@ -501,6 +509,8 @@ function byggGridOrd(){
 function uppdateraKatChips(){
   document.querySelectorAll("[data-cat]").forEach(b =>
     b.setAttribute("aria-pressed", setEq(state.valdaOrd, katLemman(b.dataset.cat))));
+  const d3 = document.querySelector('[data-cat="d3"]');   // dekl. 3 finns bara i Läs formen / Studera
+  if(d3) d3.disabled = produktiv();
 }
 function uppdateraVokKnappar(){
   document.querySelectorAll("#seg-vok button").forEach(b =>
@@ -517,9 +527,10 @@ function uppdateraLagesknappar(){
 }
 
 /* ── HÄNDELSER ───────────────────────────────────────────────────────── */
-$("mode-las").onclick     = () => { state.mode="las";     uppdateraLagesknappar(); spara(); nyttOrd(); };
-$("mode-fyll").onclick    = () => { state.mode="fyll";    uppdateraLagesknappar(); spara(); nyttOrd(); };
-$("mode-studera").onclick = () => { state.mode="studera"; uppdateraLagesknappar(); spara(); nyttOrd(); };
+// Ordrutnätet beror på läget (dekl:3 göms i Fyll i), så det byggs om vid lägesbyte.
+$("mode-las").onclick     = () => { state.mode="las";     uppdateraLagesknappar(); byggGridOrd(); spara(); nyttOrd(); };
+$("mode-fyll").onclick    = () => { state.mode="fyll";    uppdateraLagesknappar(); byggGridOrd(); spara(); nyttOrd(); };
+$("mode-studera").onclick = () => { state.mode="studera"; uppdateraLagesknappar(); byggGridOrd(); spara(); nyttOrd(); };
 $("btn-go").onclick = () => {
   if(state.mode === "studera") nyttOrd();
   else if(state.besvarad) nyttOrd();

@@ -35,10 +35,15 @@ def spelbar(o):
 
     paradigmKey ser bara genus och ändelser — aldrig deklination. Den mappar
     m→m2, n→n2, f→1:a deklinationen. Ord där den mappningen är fel måste ut,
-    annars rättar spelet mot fel paradigm utan att någon märker det."""
+    annars rättar spelet mot fel paradigm utan att någon märker det.
+
+    UNDANTAG: 3:e deklinationen släpps NU igenom (dekl:3 skrivs i snapshoten),
+    men BARA för de receptiva lägena — spelen läser de attesterade formerna och
+    döljer dem ur ändelse-plockaren, eftersom 'stam + ändelse' inte återger dem
+    mekaniskt (dat.pl -σι sväljer stamkonsonanten: πνευματ+σι → πνεύμασι; πατήρ
+    växlar stam). paradigmKey ger dem m3/n3/f3 enbart för etikett + neutrum-
+    synkretism, aldrig för ett END-uppslag."""
     g, d = o["genus"], o.get("deklination")
-    if d == 3:
-        return False, "3:e deklinationen (paradigmKey ger m2/n2 → fel facit; ἡγεμών m → 'm2')"
     if g == "femininum" and d == 2:
         return False, "2:a deklinationens femininer (böjs som m2, men paradigmKey ser f → 1:a dekl)"
     if g == "maskulinum" and d == 1:
@@ -56,6 +61,8 @@ def rad_ord(o):
         if o.get(k):
             falt.append(f"{k}:{jsstr(o[k])}")
     falt.append(f'genus:{jsstr(GENUS[o["genus"]])}')
+    if o.get("deklination") == 3:
+        falt.append("dekl:3")   # markör: bara receptiva lägen, se spelbar()-docstring
     falt.append("sem:[" + ", ".join(str(s) for s in o.get("seminarium", [])) + "]")
     former = ", ".join(
         f'{k}:{{sg:{jsstr(o["former"][k]["sg"])},pl:{jsstr(o["former"][k]["pl"])}}}'
@@ -68,8 +75,9 @@ HUVUD = '''// Delad orddata för ändelsespelet (#7) och paradigmspelet (#10).
 //     python3 scripts/gen_ord_snapshot.py
 //
 // Låg tidigare som verbatim-kopia i båda vyerna. Ordurvalet är INTE hela
-// ord.json: paradigmKey härleder paradigmet ur genus, så ord där den mappningen
-// blir fel är undantagna av generatorn. Se dess docstring för regeln och skälen.
+// ord.json: paradigmKey härleder paradigmet ur genus, så 2:a-dekl femininer och
+// 1:a-dekl maskulina (fel mappning) undantas. 3:e deklinationen finns med men
+// bär dekl:3 — spelen visar den bara receptivt. Se generatorns docstring.
 '''
 
 SVANS = '''
@@ -87,7 +95,8 @@ export const END = {
   f1m:{nom:{sg:"α",pl:"αι"},  gen:{sg:"ης",pl:"ων"}, dat:{sg:"ῃ",pl:"αις"}, ack:{sg:"αν",pl:"ας"},  vok:{sg:"α",pl:"αι"} },
 };
 export const PARADIGM_NAMN = { m2:"deklination 2 (-ος)", n2:"deklination 2, neutrum (-ον)",
-  f1h:"deklination 1, η-stam", f1a:"deklination 1, ren α", f1m:"deklination 1, blandad α" };
+  f1h:"deklination 1, η-stam", f1a:"deklination 1, ren α", f1m:"deklination 1, blandad α",
+  m3:"deklination 3", n3:"deklination 3", f3:"deklination 3" };
 
 // Exakt samma teckenuppsättning som vyerna hade var för sig: grav, akut,
 // cirkumflex, båda andetecknen, trema, makron, breve. INTE ett intervall
@@ -97,9 +106,11 @@ export const PARADIGM_NAMN = { m2:"deklination 2 (-ος)", n2:"deklination 2, ne
 const strip = s => s.normalize("NFD").replace(/[\\u0300\\u0301\\u0342\\u0313\\u0314\\u0308\\u0304\\u0306]/g, "").normalize("NFC");
 
 // FÄLLA: härleder paradigmet ur GENUS, inte ur deklination. Fungerar bara för
-// orden generatorn släpper igenom — 3:e deklinationen, 2:a-dekl femininer och
-// 1:a-dekl maskulina får tyst fel facit och är därför undantagna i ord-data.
+// deklination 1–2. Tredje deklinationen (dekl:3) bär m3/n3/f3 — ENBART för
+// etikett och neutrum-synkretism (n3 = nom/ack lika); den slås aldrig upp i END,
+// eftersom spelen döljer dekl:3 ur de produktiva ändelse-lägena.
 export function paradigmKey(o){
+  if(o.dekl===3) return o.genus==="m" ? "m3" : o.genus==="n" ? "n3" : "f3";
   if(o.genus==="m") return "m2";
   if(o.genus==="n") return "n2";
   if(strip(o.former.nom.sg).endsWith("η")) return "f1h";

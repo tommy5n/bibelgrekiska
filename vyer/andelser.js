@@ -83,6 +83,7 @@ const MARKUP = `<div class="vy vy-andelser">
         <button class="chip" data-deck="oxytona">Oxytona</button>
         <button class="chip" data-deck="neutrum">Neutrum</button>
         <button class="chip" data-deck="feminina">Feminina</button>
+        <button class="chip" data-deck="tredje" title="Tredje deklinationen — bara i Läs formen">Dekl. 3</button>
       </div>
       <div class="grid" id="grid-ord"></div>
     </div>
@@ -138,6 +139,9 @@ const KORTLEKAR = {
   oxytona: ["θεός","ἀδελφός","καιρός","καρπός","λαός","οὐρανός","ὀφθαλμός","υἱός","Χριστός","ἱερόν","ἀρχή","φωνή","ψυχή","ζωή","ἐντολή","ἀδελφή","κεφαλή","συναγωγή","ὁδός","μαθητής"],
   neutrum: ["ἔργον","τέκνον","εὐαγγέλιον","ἱερόν","σημεῖον","πλοῖον","σάββατον","δαιμόνιον"],
   feminina: ["ἀρχή","φωνή","ψυχή","ζωή","ἐντολή","ἀδελφή","κεφαλή","συναγωγή","ἀγάπη","εἰρήνη","δικαιοσύνη","ἐκκλησία","ἡμέρα","ἁμαρτία","ἐξουσία","καρδία","βασιλεία","ὥρα","ἀλήθεια","θάλασσα","κώμη","δόξα","νόσος","ὁδός","ἔρημος","παρθένος"],
+  // Härleds ur snapshoten (dekl:3) — bara meningsfull i Läs formen, chippet
+  // avaktiveras i de produktiva lägena.
+  tredje: ord.filter(o => o.dekl === 3).map(o => o.lemma),
 };
 
 /* Kategori-deck ∩ snapshoten: decken listar även ord som generatorn utelämnar
@@ -159,13 +163,12 @@ const semMatch = o => o.sem.length
 /* ── HJÄLPARE ────────────────────────────────────────────────────────── */
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
-/* Härleder paradigm ur GENUS + nominativens/genitivens utljud. Det fungerar
-   bara för deklination 1 och 2.
-   VARNING: ord ur deklination 3 (ἡγεμών, ἀμπελών — sem 7) får ALDRIG in i
-   `ord`-snapshoten ovan. De böjs på genitivstammen, inte ur genus, så de skulle
-   tyst få paradigmKey "m2" och ge fel facit. Samma skäl som 2:a-dekl-feminina
-   och 1:a-dekl-maskulina utelämnas. De övas i kasus- och kongruensspelen, där
-   explicita former läses. Se json/ord.json → _tredjeklasser._om. */
+/* END-baserad ändelselära: härleder paradigm ur GENUS + ut­ljud, fungerar bara
+   för deklination 1–2. Tredje deklinationen finns numera i snapshoten (dekl:3)
+   men når ALDRIG hit — synligaOrd() gömmer den i de produktiva lägena, så
+   andelseOptioner/END slår aldrig upp m3/n3/f3. Den övas receptivt (Läs formen)
+   här och i paradigmspelet. 2:a-dekl-feminina och 1:a-dekl-maskulina utelämnas
+   fortfarande helt av generatorn. Se json/ord.json → _tredjeklasser._om. */
 
 /* Distraktorer: most-constrained-first. Tier 1 = rätt slot men FEL paradigm/
    genus (den vassaste förväxlingen), tier 2 = samma paradigm men annan slot,
@@ -232,8 +235,17 @@ const state = {
   rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
 };
 
+// De produktiva lägena (bygg formen) grundar sig på END[paradigmKey] — en ändelse
+// som läggs på EN stam. Det går bara för dekl. 1–2; 3:e deklinationen böjs på
+// genitivstammen och sväljer stamkonsonanten i dat.pl (πνευματ+σι → πνεύμασι),
+// så den visas bara i "Läs formen". Därför gömmer produktiva lägen dekl:3.
+function produktiv(){ return state.mode === "full" || state.mode === "end"; }
 // Seminarie-urvalet styr vilka ord som visas i rutnätet; ordrutnätet finjusterar.
-function synligaOrd(){ const p = ord.filter(semMatch); return p.length ? p : ord; }
+function synligaOrd(){
+  const pool = produktiv() ? ord.filter(o => o.dekl !== 3) : ord;
+  const p = pool.filter(semMatch);
+  return p.length ? p : pool;
+}
 function aktivaOrd(){
   const v = synligaOrd().filter(o => state.valdaOrd.has(o.lemma));
   return v.length ? v : synligaOrd();
@@ -296,9 +308,10 @@ function newQuestion(){
   // neutrum nom = ack, som viks ihop till "nom./ack." så ingen distraktor är rätt.
   if(state.mode === "lasa"){
     const numN = n === "sg" ? "singular" : "plural";
-    const neutSyncr = pk === "n2" && (k === "nom" || k === "ack");
+    const neutrum = pk === "n2" || pk === "n3";   // neutrum nom = ack i BÅDA numerus (även 3:e dekl.)
+    const neutSyncr = neutrum && (k === "nom" || k === "ack");
     const ratt = (neutSyncr ? "nom./ack." : KASUS[k].namn) + " · " + numN;
-    const kombo = (kk, nn) => ((pk === "n2" && (kk === "nom" || kk === "ack")) ? "nom./ack." : KASUS[kk].namn) + " · " + (nn === "sg" ? "singular" : "plural");
+    const kombo = (kk, nn) => ((neutrum && (kk === "nom" || kk === "ack")) ? "nom./ack." : KASUS[kk].namn) + " · " + (nn === "sg" ? "singular" : "plural");
     const combos = new Set(); for(const kk of kasusLista) for(const nn of ["sg","pl"]) combos.add(kombo(kk, nn));
     let distr = shuffle([...combos].filter(x => x !== ratt)).slice(0, 3);
     if(distr.length < 3){                                   // för smalt kasusurval → fyll ur alla kasus
@@ -535,12 +548,16 @@ function uppdateraSub(){
 function uppdateraKategoriChips(){
   document.querySelectorAll("[data-deck]").forEach(b =>
     b.setAttribute("aria-pressed", setEq(state.valdaOrd, new Set(deckLemman(b.dataset.deck)))));
+  // Dekl. 3 finns bara i Läs formen — avaktivera chippet i de produktiva lägena.
+  const tredje = document.querySelector('[data-deck="tredje"]');
+  if(tredje) tredje.disabled = produktiv();
 }
 
 /* ── HÄNDELSER ───────────────────────────────────────────────────────── */
-$("mode-lasa").onclick = () => { state.mode="lasa"; uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
-$("mode-full").onclick = () => { state.mode="full"; uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
-$("mode-end").onclick  = () => { state.mode="end";  uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
+// Ordrutnätet beror på läget (dekl:3 göms produktivt), så det byggs om vid lägesbyte.
+$("mode-lasa").onclick = () => { state.mode="lasa"; uppdateraLägesknappar(); uppdateraSub(); byggGridOrd(); spara(); newQuestion(); };
+$("mode-full").onclick = () => { state.mode="full"; uppdateraLägesknappar(); uppdateraSub(); byggGridOrd(); spara(); newQuestion(); };
+$("mode-end").onclick  = () => { state.mode="end";  uppdateraLägesknappar(); uppdateraSub(); byggGridOrd(); spara(); newQuestion(); };
 $("btn-go").onclick = () => { if(state.besvarad) newQuestion(); else rätta(); };
 
 $("picker-toggle").onclick = () => {

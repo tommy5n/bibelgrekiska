@@ -3,8 +3,9 @@
 //     python3 scripts/gen_ord_snapshot.py
 //
 // Låg tidigare som verbatim-kopia i båda vyerna. Ordurvalet är INTE hela
-// ord.json: paradigmKey härleder paradigmet ur genus, så ord där den mappningen
-// blir fel är undantagna av generatorn. Se dess docstring för regeln och skälen.
+// ord.json: paradigmKey härleder paradigmet ur genus, så 2:a-dekl femininer och
+// 1:a-dekl maskulina (fel mappning) undantas. 3:e deklinationen finns med men
+// bär dekl:3 — spelen visar den bara receptivt. Se generatorns docstring.
 export const ord = [
   { lemma:"ἄνθρωπος", glosa:"människa", glosaGen:"människas", glosaPl:"människor", genus:"m", sem:[2], former:{
     nom:{sg:"ἄνθρωπος",pl:"ἄνθρωποι"}, gen:{sg:"ἀνθρώπου",pl:"ἀνθρώπων"}, dat:{sg:"ἀνθρώπῳ",pl:"ἀνθρώποις"}, ack:{sg:"ἄνθρωπον",pl:"ἀνθρώπους"}, vok:{sg:"ἄνθρωπε",pl:"ἄνθρωποι"} }},
@@ -127,7 +128,33 @@ export const ord = [
   { lemma:"οἶνος", glosa:"vin", glosaGen:"vins", glosaPl:"viner", genus:"m", sem:[6], former:{
     nom:{sg:"οἶνος",pl:"οἶνοι"}, gen:{sg:"οἴνου",pl:"οἴνων"}, dat:{sg:"οἴνῳ",pl:"οἴνοις"}, ack:{sg:"οἶνον",pl:"οἴνους"}, vok:{sg:"οἶνε",pl:"οἶνοι"} }},
   { lemma:"παραβολή", glosa:"liknelse, parabel", glosaGen:"liknelses", glosaPl:"liknelser", genus:"f", sem:[6], former:{
-    nom:{sg:"παραβολή",pl:"παραβολαί"}, gen:{sg:"παραβολῆς",pl:"παραβολῶν"}, dat:{sg:"παραβολῇ",pl:"παραβολαῖς"}, ack:{sg:"παραβολήν",pl:"παραβολάς"}, vok:{sg:"παραβολή",pl:"παραβολαί"} }}
+    nom:{sg:"παραβολή",pl:"παραβολαί"}, gen:{sg:"παραβολῆς",pl:"παραβολῶν"}, dat:{sg:"παραβολῇ",pl:"παραβολαῖς"}, ack:{sg:"παραβολήν",pl:"παραβολάς"}, vok:{sg:"παραβολή",pl:"παραβολαί"} }},
+  { lemma:"ἡγεμών", glosa:"ståthållare, landshövding", glosaGen:"ståthållares", glosaPl:"ståthållare", genus:"m", dekl:3, sem:[7], former:{
+    nom:{sg:"ἡγεμών",pl:"ἡγεμόνες"}, gen:{sg:"ἡγεμόνος",pl:"ἡγεμόνων"}, dat:{sg:"ἡγεμόνι",pl:"ἡγεμόσι(ν)"}, ack:{sg:"ἡγεμόνα",pl:"ἡγεμόνας"}, vok:{sg:"ἡγεμών",pl:"ἡγεμόνες"} }},
+  { lemma:"ἀμπελών", glosa:"vingård", glosaGen:"vingårds", glosaPl:"vingårdar", genus:"m", dekl:3, sem:[7], former:{
+    nom:{sg:"ἀμπελών",pl:"ἀμπελῶνες"}, gen:{sg:"ἀμπελῶνος",pl:"ἀμπελώνων"}, dat:{sg:"ἀμπελῶνι",pl:"ἀμπελῶσι(ν)"}, ack:{sg:"ἀμπελῶνα",pl:"ἀμπελῶνας"}, vok:{sg:"ἀμπελών",pl:"ἀμπελῶνες"} }},
+  { lemma:"πνεῦμα", glosa:"ande", glosaGen:"andes", glosaPl:"andar", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"πνεῦμα",pl:"πνεύματα"}, gen:{sg:"πνεύματος",pl:"πνευμάτων"}, dat:{sg:"πνεύματι",pl:"πνεύμασι(ν)"}, ack:{sg:"πνεῦμα",pl:"πνεύματα"}, vok:{sg:"πνεῦμα",pl:"πνεύματα"} }},
+  { lemma:"σῶμα", glosa:"kropp", glosaGen:"kropps", glosaPl:"kroppar", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"σῶμα",pl:"σώματα"}, gen:{sg:"σώματος",pl:"σωμάτων"}, dat:{sg:"σώματι",pl:"σώμασι(ν)"}, ack:{sg:"σῶμα",pl:"σώματα"}, vok:{sg:"σῶμα",pl:"σώματα"} }},
+  { lemma:"αἷμα", glosa:"blod", glosaGen:"blods", glosaPl:"blod", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"αἷμα",pl:"αἵματα"}, gen:{sg:"αἵματος",pl:"αἱμάτων"}, dat:{sg:"αἵματι",pl:"αἵμασι(ν)"}, ack:{sg:"αἷμα",pl:"αἵματα"}, vok:{sg:"αἷμα",pl:"αἵματα"} }},
+  { lemma:"ὄνομα", glosa:"namn", glosaGen:"namns", glosaPl:"namn", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"ὄνομα",pl:"ὀνόματα"}, gen:{sg:"ὀνόματος",pl:"ὀνομάτων"}, dat:{sg:"ὀνόματι",pl:"ὀνόμασι(ν)"}, ack:{sg:"ὄνομα",pl:"ὀνόματα"}, vok:{sg:"ὄνομα",pl:"ὀνόματα"} }},
+  { lemma:"φῶς", glosa:"ljus", glosaGen:"ljus", glosaPl:"ljus", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"φῶς",pl:"φῶτα"}, gen:{sg:"φωτός",pl:"φώτων"}, dat:{sg:"φωτί",pl:"φωσί(ν)"}, ack:{sg:"φῶς",pl:"φῶτα"}, vok:{sg:"φῶς",pl:"φῶτα"} }},
+  { lemma:"ὕδωρ", glosa:"vatten", glosaGen:"vattens", glosaPl:"vatten", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"ὕδωρ",pl:"ὕδατα"}, gen:{sg:"ὕδατος",pl:"ὑδάτων"}, dat:{sg:"ὕδατι",pl:"ὕδασι(ν)"}, ack:{sg:"ὕδωρ",pl:"ὕδατα"}, vok:{sg:"ὕδωρ",pl:"ὕδατα"} }},
+  { lemma:"ὄρος", glosa:"berg", glosaGen:"bergs", glosaPl:"berg", genus:"n", dekl:3, sem:[8], former:{
+    nom:{sg:"ὄρος",pl:"ὄρη"}, gen:{sg:"ὄρους",pl:"ὄρων"}, dat:{sg:"ὄρει",pl:"ὄρεσι(ν)"}, ack:{sg:"ὄρος",pl:"ὄρη"}, vok:{sg:"ὄρος",pl:"ὄρη"} }},
+  { lemma:"πατήρ", glosa:"fader", glosaGen:"faders", glosaPl:"fäder", genus:"m", dekl:3, sem:[9], former:{
+    nom:{sg:"πατήρ",pl:"πατέρες"}, gen:{sg:"πατρός",pl:"πατέρων"}, dat:{sg:"πατρί",pl:"πατράσι(ν)"}, ack:{sg:"πατέρα",pl:"πατέρας"}, vok:{sg:"πάτερ",pl:"πατέρες"} }},
+  { lemma:"μήτηρ", glosa:"moder", glosaGen:"moders", glosaPl:"mödrar", genus:"f", dekl:3, sem:[9], former:{
+    nom:{sg:"μήτηρ",pl:"μητέρες"}, gen:{sg:"μητρός",pl:"μητέρων"}, dat:{sg:"μητρί",pl:"μητράσι(ν)"}, ack:{sg:"μητέρα",pl:"μητέρας"}, vok:{sg:"μῆτερ",pl:"μητέρες"} }},
+  { lemma:"θυγάτηρ", glosa:"dotter", glosaGen:"dotters", glosaPl:"döttrar", genus:"f", dekl:3, sem:[9], former:{
+    nom:{sg:"θυγάτηρ",pl:"θυγατέρες"}, gen:{sg:"θυγατρός",pl:"θυγατέρων"}, dat:{sg:"θυγατρί",pl:"θυγατράσι(ν)"}, ack:{sg:"θυγατέρα",pl:"θυγατέρας"}, vok:{sg:"θύγατερ",pl:"θυγατέρες"} }},
+  { lemma:"ἀνήρ", glosa:"man", glosaGen:"mans", glosaPl:"män", genus:"m", dekl:3, sem:[9], former:{
+    nom:{sg:"ἀνήρ",pl:"ἄνδρες"}, gen:{sg:"ἀνδρός",pl:"ἀνδρῶν"}, dat:{sg:"ἀνδρί",pl:"ἀνδράσι(ν)"}, ack:{sg:"ἄνδρα",pl:"ἄνδρας"}, vok:{sg:"ἄνερ",pl:"ἄνδρες"} }}
 ];
 
 // Bestämd artikel. Bor här, inte i json/ — den är oböjlig och delas av vyerna.
@@ -144,7 +171,8 @@ export const END = {
   f1m:{nom:{sg:"α",pl:"αι"},  gen:{sg:"ης",pl:"ων"}, dat:{sg:"ῃ",pl:"αις"}, ack:{sg:"αν",pl:"ας"},  vok:{sg:"α",pl:"αι"} },
 };
 export const PARADIGM_NAMN = { m2:"deklination 2 (-ος)", n2:"deklination 2, neutrum (-ον)",
-  f1h:"deklination 1, η-stam", f1a:"deklination 1, ren α", f1m:"deklination 1, blandad α" };
+  f1h:"deklination 1, η-stam", f1a:"deklination 1, ren α", f1m:"deklination 1, blandad α",
+  m3:"deklination 3", n3:"deklination 3", f3:"deklination 3" };
 
 // Exakt samma teckenuppsättning som vyerna hade var för sig: grav, akut,
 // cirkumflex, båda andetecknen, trema, makron, breve. INTE ett intervall
@@ -154,9 +182,11 @@ export const PARADIGM_NAMN = { m2:"deklination 2 (-ος)", n2:"deklination 2, ne
 const strip = s => s.normalize("NFD").replace(/[\u0300\u0301\u0342\u0313\u0314\u0308\u0304\u0306]/g, "").normalize("NFC");
 
 // FÄLLA: härleder paradigmet ur GENUS, inte ur deklination. Fungerar bara för
-// orden generatorn släpper igenom — 3:e deklinationen, 2:a-dekl femininer och
-// 1:a-dekl maskulina får tyst fel facit och är därför undantagna i ord-data.
+// deklination 1–2. Tredje deklinationen (dekl:3) bär m3/n3/f3 — ENBART för
+// etikett och neutrum-synkretism (n3 = nom/ack lika); den slås aldrig upp i END,
+// eftersom spelen döljer dekl:3 ur de produktiva ändelse-lägena.
 export function paradigmKey(o){
+  if(o.dekl===3) return o.genus==="m" ? "m3" : o.genus==="n" ? "n3" : "f3";
   if(o.genus==="m") return "m2";
   if(o.genus==="n") return "n2";
   if(strip(o.former.nom.sg).endsWith("η")) return "f1h";
