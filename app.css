@@ -1216,14 +1216,22 @@ body {
   border-color: var(--bad);
   color: var(--bad);
 }
-/* Svenska svarsalternativ (översätt-lägena): en kolumn — fraser som "till människa"
-   ryms inte snyggt i två smala kolumner — och Spectral för latinsk löptext. */
+/* Svenska svarsalternativ (översätt-lägena): auto-fit i två kolumner så det inte
+   tar så mycket vertikalt utrymme. Minsta bredden (9.5rem) är avstämd mot iPhone 13
+   Pro (390 px): korta fraser ligger två-och-två, och blir bredden för smal faller
+   allt tillbaka på en kolumn. Spectral för latinsk löptext. */
 .vy-kasus .options.sv {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  align-items: stretch;                 /* radgrannar blir lika höga trots radbrytning */
 }
 .vy-kasus .opt.sv {
   font-family: "Spectral", Georgia, serif;
   font-size: var(--fs-lg);
+  display: flex;                        /* centrera texten även när den radbryter till två rader */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  hyphens: none;
 }
 .vy-kasus .streak {
   margin-top: 1.2rem;
