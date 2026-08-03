@@ -4,10 +4,12 @@
 // Kasus→betydelse-kartan speglar grammatikreferensens prepositionskort
 // (#prepositioner) — håll dem i synk vid ändring i mastern.
 //
-// Spelmekanik (ett läge): visa en verklig prepositionsfras där kasus syns på
-// artikel/ändelse (διὰ τῆς θαλάσσης [gen] vs διὰ τὸν λόγον [ack]). Spelaren väljer
-// prepositionens betydelse. Distraktorerna är i första hand SAMMA prepositions
-// betydelse i andra kasus — så valet kräver att man läser kasus, inte gissar.
+// Spelmekanik (två lägen, båda över samma frasbank; kasus syns på artikel/ändelse,
+// διὰ τῆς θαλάσσης [gen] vs διὰ τὸν λόγον [ack]):
+//  • "Välj betydelse": visa frasen, välj prepositionens betydelse. Distraktorerna är i
+//    första hand SAMMA prepositions betydelse i andra kasus — valet kräver att man läser kasus.
+//  • "Vilket kasus?": visa frasen, läs av kasuset på artikeln/ändelsen. Poängen är rektionen:
+//    det är prepositionen, inte verbet, som styr kasuset. Facit visar kasus → betydelse.
 // Självförsörjande: injicerar egen .vy-prep-stil (designvariabler från app.css) och städar i teardown.
 let __ph = null;
 
@@ -144,11 +146,6 @@ const KASUS = { gen:"genitiv", dat:"dativ", ack:"ackusativ" };
 const KASUS_ORDNING = ["gen","dat","ack"];
 const GRUPP = { 1:"ett kasus", 2:"två kasus", 3:"tre kasus" };
 const GRUPP_ORDNING = [1,2,3];
-
-/* Fasta prepositioner = styr bara ett kasus (ingen betydelseglidning). Bär
-   "Vilket kasus?"-läget. endaKasus() ger deras enda kasusnyckel. */
-const FASTA = prepositioner.filter(p => p.grupp === 1);
-const endaKasus = p => Object.keys(p.kasus)[0];
 
 /* Seminarie-axel: varje preposition bär sem:[…] ur mastern. */
 const SEMINARIER = [...new Set(prepositioner.flatMap(p => p.sem))].sort((a,b) => a - b);
@@ -295,35 +292,21 @@ export function render(root){
     const v = syn.filter(p => state.valdaPrep.has(p.lemma));
     return v.length ? v : syn;
   }
-  // Aktiva fraser = fraser vars preposition är aktiv och vars kasus valts.
+  // Aktiva fraser = fraser vars preposition är aktiv. I "valj"-läget filtreras även på
+  // valt kasus; i "kasus"-läget ignoreras det — kasuset ÄR frågan, alla tre ska kunna dyka upp.
   function aktivaFraser(){
     const lem = new Set(aktivPrep().map(p => p.lemma));
     const bas = fraser.filter(f => lem.has(f.lemma));
+    if(state.mode === "kasus") return bas.length ? bas : fraser;
     const k = bas.filter(f => state.valdaKas.has(f.kasus));
     return k.length ? k : (bas.length ? bas : fraser);
-  }
-  // "Vilket kasus?"-läget: bara fasta prepositioner i valda seminarier ∩ valda
-  // lemman (fallback: fasta i sem, sedan alla fasta).
-  function fastaAktiv(){
-    const inSem = FASTA.filter(p => p.sem.some(s => state.valdaSem.has(s)));
-    const bas = inSem.length ? inSem : FASTA;
-    const v = bas.filter(p => state.valdaPrep.has(p.lemma));
-    return v.length ? v : bas;
-  }
-  // Prepositions-grid: fasta prep. i "kasus"-läget, annars synliga (sem ∩ grupp).
-  function gridPrepList(){
-    if(state.mode === "kasus"){
-      const l = FASTA.filter(p => p.sem.some(s => state.valdaSem.has(s)));
-      return l.length ? l : FASTA;
-    }
-    return synligaPrep();
   }
 
   /* Rundkö (glosmodell, som satsanalys): gå igenom urvalet en gång; ett item som
      missas läggs sist och återkommer inom rundan; tom kö → ny omblandad runda.
      Item = fras (valj-läget) resp. preposition (kasus-läget); fylls om automatiskt
      när urvalet/läget ändras. "kvar i rundan" räknar distinkta item kvar. */
-  const rkIds = () => state.mode === "kasus" ? fastaAktiv().map(p => p.lemma) : aktivaFraser().map(f => f.gr);
+  const rkIds = () => aktivaFraser().map(f => f.gr);
   const rkSig = () => state.mode + "|" + rkIds().join("");
   function rkFyll(){ const ids = rkIds(); state.rk.ko = shuffle(ids); state.rk.kvar = ids.length; state.rk.bas = rkSig(); }
   function rkNasta(){
@@ -371,22 +354,18 @@ export function render(root){
 
   function newQuestion(){
     const id = rkNasta();
-    if(state.mode === "kasus"){ newQuestionKasus(id); return; }
     const fr = aktivaFraser();
     const f = fr.find(x => x.gr === id) || pick(fr);
+    if(state.mode === "kasus"){ newQuestionKasus(f); return; }
     const ratt = prep(f.lemma).kasus[f.kasus];
     state.card = { mode:"valj", ...f, ratt, optioner: byggOptioner(f, ratt) };
     state.besvarad = false; state.valt = null;
     render2();
   }
-  // "Vilket kasus?": visa en fast preposition + dess betydelse, välj kasus.
-  function newQuestionKasus(id){
-    const ps = fastaAktiv();
-    const p = ps.find(x => x.lemma === id) || pick(ps);
-    const kas = endaKasus(p);
-    const ex = fraser.find(f => f.lemma === p.lemma) || null;
-    state.card = { mode:"kasus", lemma:p.lemma, kas, betyd:p.kasus[kas], ratt:KASUS[kas],
-      optioner: KASUS_ORDNING.map(k => KASUS[k]), ex };
+  // "Vilket kasus?": visa en verklig fras, läs av kasuset (svarsalternativ = de tre kasusen).
+  function newQuestionKasus(f){
+    state.card = { mode:"kasus", ...f, ratt:KASUS[f.kasus],
+      optioner: KASUS_ORDNING.map(k => KASUS[k]) };
     state.besvarad = false; state.valt = null;
     render2();
   }
@@ -401,8 +380,8 @@ export function render(root){
   function render2(){
     const c = state.card;
     if(c.mode === "kasus"){
-      $("prompt").textContent = c.lemma;
-      $("fraga").innerHTML = "<b>" + c.betyd + "</b> — vilket kasus styr den?";
+      $("prompt").innerHTML = promptHTML(c);
+      $("fraga").innerHTML = "Vilket kasus styr <b>" + c.lemma + "</b> här?";
     } else {
       $("prompt").innerHTML = promptHTML(c);
       $("fraga").innerHTML = "Vad betyder <b>" + c.lemma + "</b> här?";
@@ -424,15 +403,8 @@ export function render(root){
 
   function visaSvar(){
     const c = state.card;
-    if(c.mode === "kasus"){
-      $("svar").innerHTML = c.lemma + " styr <span class=\"kas\">" + KASUS[c.kas] + "</span> → " + c.betyd;
-      $("oversatt").innerHTML = c.ex ? (c.ex.gr + " = <b>" + c.ex.sv + "</b>") : "";
-      $("tabell").innerHTML = "";
-      $("reveal").classList.remove("hidden");
-      return;
-    }
     const p = prep(c.lemma);
-    $("svar").innerHTML = c.lemma + " + <span class=\"kas\">" + KASUS[c.kasus] + "</span> → " + c.ratt;
+    $("svar").innerHTML = c.lemma + " + <span class=\"kas\">" + KASUS[c.kasus] + "</span> → " + p.kasus[c.kasus];
     $("oversatt").innerHTML = c.gr + " = <b>" + c.sv + "</b>";
     // Hela prepositionens kasus→betydelse (aktivt kasus markerat) — så kontrasten syns.
     const rader = KASUS_ORDNING.filter(k => p.kasus[k]).map(k =>
@@ -472,10 +444,10 @@ export function render(root){
       g.appendChild(b);
     });
   }
-  // Prepositions-griden visar prep. som är relevanta för läget (se gridPrepList).
+  // Prepositions-griden visar prep. som är synliga givet sem ∩ grupp (samma i båda lägena).
   function byggGridPrep(){
     const g = $("grid-prep"); g.innerHTML = "";
-    gridPrepList().forEach(p => {
+    synligaPrep().forEach(p => {
       const b = document.createElement("button");
       b.className="toggle"; b.textContent = p.lemma;
       b.setAttribute("aria-pressed", state.valdaPrep.has(p.lemma));
@@ -517,13 +489,11 @@ export function render(root){
     byggGrid("grid-kas", KASUS_ORDNING, k => KASUS[k], state.valdaKas);
   }
 
-  // Läge: uppdatera knappar + dölj de picker-sektioner som inte gäller "kasus".
+  // Läge: uppdatera knappar + dölj "Kasus i frasen"-sektionen i kasus-läget (kasuset är svaret).
   function uppdateraLage(){
     $("mode-valj").setAttribute("aria-pressed", state.mode === "valj");
     $("mode-kasus").setAttribute("aria-pressed", state.mode === "kasus");
-    const k = state.mode === "kasus";
-    $("sec-grupp").classList.toggle("hidden", k);
-    $("sec-kas").classList.toggle("hidden", k);
+    $("sec-kas").classList.toggle("hidden", state.mode === "kasus");
   }
   function bytLage(m){
     if(state.mode === m) return;
