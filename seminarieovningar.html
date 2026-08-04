@@ -104,8 +104,28 @@
       }
       .ov-toggle:hover { border-color: var(--gold); color: var(--gold); }
       .ov-toggle[aria-expanded="true"] { background: transparent; color: var(--gold); border-color: var(--gold); }
+      .ov-gloss {
+        grid-row: 2; grid-column: 2 / 4; margin: 0.1rem 0 0.15rem;
+        font-size: var(--fs-xs); color: var(--ink-soft); line-height: 1.5;
+      }
+      .ov-gloss .ov-gloss-h {
+        font-weight: 700; font-size: var(--fs-3xs); text-transform: uppercase;
+        letter-spacing: 0.05em; color: var(--ink-soft); margin-right: 0.5rem;
+      }
+      .ov-gloss .rad { display: block; color: var(--ink); }
+      .ov-ordlista {
+        margin: 0 0 1.1rem; padding: 0.7rem 0.9rem;
+        background: var(--paper-2); border-radius: 10px; font-size: var(--fs-sm);
+        line-height: 1.55;
+      }
+      .ov-ordlista .ov-ordlista-h {
+        display: block; font-weight: 700; font-size: var(--fs-3xs);
+        text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft);
+        margin-bottom: 0.35rem;
+      }
+      .ov-ordlista .rad { display: block; color: var(--ink); }
       .ov-facit {
-        grid-row: 2; grid-column: 2 / 4; margin: 0.15rem 0 0.1rem;
+        grid-row: 3; grid-column: 2 / 4; margin: 0.15rem 0 0.1rem;
         padding: 0.7rem 0.9rem; background: var(--paper-2); border-radius: 10px;
         font-size: var(--fs-sm); display: flex; flex-direction: column; gap: 0.5rem;
       }
@@ -122,8 +142,9 @@
         .gr-layout { grid-template-columns: 1fr; }
         .gr-toc { position: static; max-height: none; margin-bottom: 1rem; }
         .ov-item { grid-template-columns: 1.4rem 1fr; }
-        .ov-toggle { grid-row: 2; grid-column: 2; justify-self: start; margin-top: 0.2rem; }
-        .ov-facit { grid-row: 3; grid-column: 1 / 3; }
+        .ov-gloss { grid-row: 2; grid-column: 1 / 3; }
+        .ov-toggle { grid-row: 3; grid-column: 2; justify-self: start; margin-top: 0.2rem; }
+        .ov-facit { grid-row: 4; grid-column: 1 / 3; }
       }
     </style>
   </head>
@@ -205,6 +226,7 @@
         <section class="gr-card ov-card" id="sem2-verbformer" style="--accent:#3f7a4f">
           <h3>Verbformer <span class="ov-tema">Presens indikativ</span> <span class="sem">Sem 2</span></h3>
           <p class="note">Skriv av, läs högt och översätt. Personändelsen avslöjar vem som handlar — subjektet behöver inte skrivas ut.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">ἀκούω jag hör</span><span class="rad">λέγω jag säger</span><span class="rad">βλέπω jag ser</span><span class="rad">γράφω jag skriver</span><span class="rad">ἐσθίω jag äter</span><span class="rad">κηρύσσω jag predikar</span><span class="rad">λαμβάνω jag tar, jag griper</span><span class="rad">παιδεύω jag uppfostrar</span><span class="rad">πέμπω jag skickar</span><span class="rad">εὑρίσκω jag finner</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">βλέπεις</div>
@@ -332,6 +354,7 @@
         <section class="gr-card ov-card" id="sem2-breakout" style="--accent:#3f7a4f">
           <h3>Breakout <span class="ov-tema">Satsdelar &amp; översättning</span> <span class="sem">Sem 2</span></h3>
           <p class="note">Identifiera satsdelar och översätt till svenska; läs meningarna för varandra.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">ἄνθρωπος människa</span><span class="rad">βλέπω se</span><span class="rad">οἶκος hus</span><span class="rad">ἄγγελος budbärare, ängel</span><span class="rad">γράφω skriva</span><span class="rad">ἀδελφός bror</span><span class="rad">ἀπόστολος apostel</span><span class="rad">θεός gud</span><span class="rad">οὐρανός himmel</span><span class="rad">κύριος herre</span><span class="rad">δοῦλος slav</span><span class="rad">λόγος ord, berättelse</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ὁ ἄνθρωπος βλέπει τὸν οἶκον.</div>
@@ -418,10 +441,12 @@
         <section class="gr-card ov-card" id="sem3-satser" style="--accent:#a8842c">
           <h3>Satser <span class="ov-tema">Satsdelar &amp; översättning</span> <span class="sem">Sem 3</span></h3>
           <p class="note">Läs högt, ta ut satsdelar och översätt. Kasus — inte ordföljden — avgör vilken satsdel ett ord är.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">ὁ δοῦλος ’slav’</span><span class="rad">βλέπω ’titta’</span><span class="rad">ὁ οἶκος ’hus’</span><span class="rad">σῴζω ’rädda’</span><span class="rad">ὁ ἀδελφός ’broder’</span><span class="rad">λέγω ’säga’</span><span class="rad">γράφω ’skriva’</span><span class="rad">ὁ λόγος ’ord’</span><span class="rad">τὸ εὐαγγέλιον ’glatt budskap, evangelium’</span><span class="rad">εὑρίσκω ’finna’</span><span class="rad">πέμπω ’skicka’</span><span class="rad">τὸ πλοῖον ’båt’</span><span class="rad">τὸ σημεῖον ’tecken’ (jfr. semantik)</span><span class="rad">τὸ τέκνον ’barn’</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">οἱ πονηροὶ ἄνθρωποι ἀκούουσι τὸ καλὸν εὐαγγέλιον.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἀκούω höra</span><span class="rad">πονηρός ond, fördärvad</span><span class="rad">καλός vacker</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">De onda människorna lyssnar till det vackra evangeliet.</div>
             </div>
@@ -429,6 +454,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">τῷ θεῷ πιστεύουσιν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">πιστεύω tro (konstrueras med dativ för den man tror på)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">De tror på Gud.</div>
             </div>
@@ -496,6 +522,7 @@
         <section class="gr-card ov-card" id="sem3-substantivfraser" style="--accent:#4a6a8a">
           <h3>Substantivfraser <span class="ov-tema">Bestäm kasus</span> <span class="sem">Sem 3</span></h3>
           <p class="note">Bestäm kasus, genus och numerus och översätt. Flera former är tvetydiga och avgörs bara av sammanhanget.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">ἅγιος (adj.) ’helig’</span><span class="rad">πονηρός (adj.) ’ond’</span><span class="rad">καλός (adj.) ’vacker’</span><span class="rad">ἀγαθός (adj.) ’god’</span><span class="rad">ὁ ἄγγελος (subst. mask.) ’ängel, budbärare’</span><span class="rad">ὁ δοῦλος (subst. mask.) ’slav’</span><span class="rad">ὁ ἀδελφός (subst. mask.) ’bror’</span><span class="rad">ὁ οὐρανός (subst. mask.) ’himmel’</span><span class="rad">ὁ θεός (subst. mask.) ’Gud’</span><span class="rad">τὸ εὐαγγέλιον (subst. neutr.) ’evangelium’</span><span class="rad">τὸ ἱερόν (subst. neutr.) ’tempel’</span><span class="rad">τὸ τέκνον (subst. neutr.) ’barn’</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ὁ ἅγιος ἄγγελος</div>
@@ -610,6 +637,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ὁ καλὸς ἀδελφὸς λέγει.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">καλός vacker</span><span class="rad">ὁ ἀδελφός bror</span><span class="rad">λέγω säga</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Den vackre brodern talar.</div>
             </div>
@@ -617,6 +645,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">οἱ πιστοὶ ἀπόστολοι κηρύσσουσι τὸ ἅγιον εὐαγγέλιον.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">πιστός trogen</span><span class="rad">κηρύσσω predika</span><span class="rad">ἅγιος helig</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">De trogna apostlarna predikar det heliga evangeliet.</div>
             </div>
@@ -624,6 +653,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">τὰ μικρὰ τέκνα βαπτίζετε.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τὸ τέκνον barn</span><span class="rad">μικρός liten</span><span class="rad">βαπτίζω döpa</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Ni döper de små barnen.</div>
             </div>
@@ -631,6 +661,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">ἐσθίομεν τὸν ἀγαθὸν ἄρτον.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἐσθίω äta</span><span class="rad">ὁ ἄρτος bröd</span><span class="rad">ἀγαθός god</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Vi äter det goda brödet.</div>
             </div>
@@ -638,6 +669,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">τὸν υἱὸν ὁ θεὸς πέμπει τοῖς ἀνθρώποις.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ υἱός son</span><span class="rad">πέμπω skicka (konstrueras med dativ för den som man skickar något till)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Gud skickar sin son till människorna.</div>
             </div>
@@ -695,6 +727,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">πιστεύω tro på (med dativ för det man tror på)</span><span class="rad">ἡ ἐντολή bud, uppdrag</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Du, o broder, tror på änglarnas vackra bud.</div>
             </div>
@@ -702,6 +735,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">κλέπτω stjäla</span><span class="rad">πονηρός -ά -όν ond</span><span class="rad">τὸ ἀργύριον pengar</span><span class="rad">πτωχός -ή -όν fattig</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">De onda barnen stjäl de fattiga slavarnas pengar.</div>
             </div>
@@ -709,6 +743,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">τηρεῖ καὶ σῴζει ὁ Κύριος τὸν κόσμον.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τηρέω bevaka</span><span class="rad">καί och</span><span class="rad">σῴζω rädda, beskydda</span><span class="rad">ὁ κόσμος värld</span><span class="rad">ὁ Κύριος Herren</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Herren bevakar och beskyddar världen.</div>
             </div>
@@ -716,6 +751,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">λαλέω tala</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Änglarna talar Guds ord.</div>
             </div>
@@ -723,6 +759,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">ζητοῦμεν ἐν τῷ ἀγρῷ τοὺς δούλους τοῦ κυρίου.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ζητέω söka</span><span class="rad">ἐν i (preposition som kräver dativ)</span><span class="rad">ὁ ἀγρός fält</span><span class="rad">ὁ κύριος herre, husbonde</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Vi söker husbondens slavar på fältet.</div>
             </div>
@@ -730,6 +767,7 @@
           <li class="ov-item">
             <span class="ov-num">6</span><div class="ov-grek gr-grek">οἱ ἀδελφοὶ ἄγουσι τὰ τέκνα εἰς τὸν οἶκον.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἄγω leda</span><span class="rad">ὁ οἶκος hus</span><span class="rad">εἰς till (preposition som kräver ackusativ)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Bröderna leder barnen till huset.</div>
             </div>
@@ -737,6 +775,7 @@
           <li class="ov-item">
             <span class="ov-num">7</span><div class="ov-grek gr-grek">ζητοῦσιν αἱ ἀδελφαὶ τὴν βασιλείαν τοῦ Θεοῦ· φιλοῦσι γὰρ τὴν ἀλήθειαν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τοῦ Θεοῦ· φιλοῦσι: Notera att en hög punkt ( · ) i grekiskan motsvarar kolon ( : ) eller semikolon ( ; ) i svenskan.</span><span class="rad">ζητέω söka efter</span><span class="rad">ἡ ἀδελφή syster</span><span class="rad">ἡ βασιλεία rike, kungadöme</span><span class="rad">φιλέω gilla, älska</span><span class="rad">γάρ för, ty</span><span class="rad">ἡ ἀλήθεια sanning</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Systrarna söker Guds rike; ty de älskar sanningen.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> γάρ (’ty/för’) är postpositivt och står som satsens andra ord; det inleder en förklaring till det föregående. ζητοῦσιν/φιλοῦσι är kontraherade verb (-έω).</div>
@@ -745,6 +784,7 @@
           <li class="ov-item">
             <span class="ov-num">8</span><div class="ov-grek gr-grek">ὁ Ἰησοῦς ποιεῖ καλὰ σημεῖα.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ Ἰησοῦς Jesus</span><span class="rad">ποιέω göra</span><span class="rad">τὸ σημεῖον tecken, under, underverk</span><span class="rad">καλός -ή -όν skön, vacker</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Jesus gör sköna under(verk).</div>
             </div>
@@ -755,6 +795,7 @@
         <section class="gr-card ov-card" id="sem4-breakout" style="--accent:#3f7a4f">
           <h3>Breakout <span class="ov-tema">Satsdelar &amp; översättning</span> <span class="sem">Sem 4</span></h3>
           <p class="note">Identifiera satsdelar och översätt till svenska; läs meningarna för varandra.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">κηρύσσω predika</span><span class="rad">ἡ ἀλήθεια, -ας sanning</span><span class="rad">ὁ κύριος, -ου herre</span><span class="rad">ὁ κόσμος, -ου värld</span><span class="rad">τὸ τέκνον, -ου barn</span><span class="rad">τὸ σημεῖον, -ου tecken</span><span class="rad">ἡ ψυχή, -ῆς själ</span><span class="rad">ἡ ἀγάπη, -ης kärlek</span><span class="rad">σῴζω rädda</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">λέγει ὁ ἄγγελος τὴν ἀλήθειαν.</div>
@@ -860,6 +901,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ἄγουσιν οἱ δοῦλοι τὰς παρθένους ἐκ τοῦ οἴκου εἰς τὴν κώμην, ὁ δὲ οἰκοδεσπότης τηρεῖ τὰ τέκνα σὺν τοῖς νεανίαις πρὸ τοῦ ἱεροῦ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἄγω leda</span><span class="rad">ὁ δοῦλος slav</span><span class="rad">ἡ παρθένος flicka (B § 60.2)</span><span class="rad">ἐκ + gen. ur ut, ur, från</span><span class="rad">εἰς + ack. till</span><span class="rad">ἡ κώμη by</span><span class="rad">δέ men, och (står i regel på andra plats i en mening, därför hamnar det här mellan bestämd artikel och substantiv)</span><span class="rad">ὁ οἰκοδεσπότης husbonde (B § 57)</span><span class="rad">τηρέω övervaka</span><span class="rad">ὁ νεανίας yngling (B § 57)</span><span class="rad">σύν + dat. med, tillsammans med</span><span class="rad">πρό + gen. framför (rum), före (tid)</span><span class="rad">τὸ ἱερόν tempel</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Slavarna leder flickorna från huset till byn, men husbonden övervakar barnen tillsammans med ynglingarna framför templet.</div>
             </div>
@@ -867,6 +909,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">ἐν τῇ ἐκκλησίᾳ βλέπομεν τὴν δόξαν τοῦ θεοῦ· μαρτυροῦσι γὰρ οἱ ἀδελφοὶ τῇ δικαιοσύνῃ καὶ τῇ ἀληθείᾳ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἐν + dat. i</span><span class="rad">ἡ ἐκκλησία kyrka</span><span class="rad">βλέπω se</span><span class="rad">ἡ δόξα härlighet</span><span class="rad">ὁ ἀδελφός bror</span><span class="rad">μαρτυρέω bära vittnesbörd om (+ dat. för det man vittnar om)</span><span class="rad">ἡ δικαιοσύνη rättvisa</span><span class="rad">καί och</span><span class="rad">ἡ ἀλήθεια sanning</span><span class="rad">Notera att en hög punkt ( · ) i grekiskan motsvarar kolon ( : ) eller semikolon ( ; ) i svenskan</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">I kyrkan ser vi Guds härlighet; ty bröderna avlägger vittnesmål om rättvisan och sanningen.</div>
             </div>
@@ -874,6 +917,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">καλεῖτε τοὺς νεανίας πρὸ τοῦ σαββάτου, καὶ αἰτοῦσιν ἄρτον τοῖς τέκνοις.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">καλέω kalla</span><span class="rad">ὁ νεανίας yngling (B § 57)</span><span class="rad">πρό + gen. framför (rum), före (tid)</span><span class="rad">καί och</span><span class="rad">αἰτέω be om (med dativ för den man ber om någonting för)</span><span class="rad">τὸ τέκνον barn</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Ni kallar på ynglingarna före sabbaten, och de ber om bröd åt barnen.</div>
             </div>
@@ -881,6 +925,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">ὦ Κύριε, σῴζεις τὸν κόσμον καὶ τοὺς ἀνθρώπους ἐκ τῆς ἐξουσίας τῶν δαιμονίων· πιστεύομεν οὖν εἰς τὴν ἀλήθειαν τοῦ εὐαγγελίου.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ Κύριος Herren</span><span class="rad">σῴζω rädda</span><span class="rad">ὁ κόσμος världen</span><span class="rad">ἐκ + gen. ur ut, ur, från</span><span class="rad">ἡ ἐξουσία makt</span><span class="rad">τὸ δαιμόνιον demon</span><span class="rad">πιστεύω tro (med ren dativ/εἰς + ack. för den man tror på)</span><span class="rad">οὖν alltså (står alltid på andra plats)</span><span class="rad">ἡ ἀλήθεια sanning</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">O Herre, du räddar världen och människorna från demonernas makt; alltså tror vi på evangeliets sanning.</div>
             <div class="ov-meta">Avvikelse: Övningsbladet skriver σῴζω utan iota subscriptum (σώζε/σώζεις/σώζω); formerna är här normaliserade till standardstavningen σῴζω (imperativ σῷζε).</div>
@@ -889,6 +934,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ τηρεῖ τὰς ἐντολὰς τοῦ θεοῦ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">θεραπεύω hela</span><span class="rad">ἡ παρθένος jungfru</span><span class="rad">ἡ νόσος sjukdom (B § 60)</span><span class="rad">ὁ προφήτης profet (B § 57)</span><span class="rad">ἀλλά men, utan</span><span class="rad">τηρέω bevara, här följa</span><span class="rad">ἡ ἐντολή bud</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Flickan helar inte sjukdomarna, o profet, men hon älskar barnen och följer Guds bud.</div>
             </div>
@@ -896,6 +942,7 @@
           <li class="ov-item">
             <span class="ov-num">6</span><div class="ov-grek gr-grek">κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι καὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">κηρύσσω predika (med dat. för den man predikar för)</span><span class="rad">ὁ υἱός τοῦ ἀνθρώπου Människosonen</span><span class="rad">τὸ πλοῖον båt</span><span class="rad">ὁ μαθητής lärjunge</span><span class="rad">ἀκούω höra</span><span class="rad">γράφω skriva</span><span class="rad">ὁ λόγος ord</span><span class="rad">ὁ οἰκοδεσπότης husbonde</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Människosonen predikar till lärjungarna från båten, och de lyssnar och skriver (antecknar) orden för husbondens barn.</div>
             </div>
@@ -906,6 +953,7 @@
         <section class="gr-card ov-card" id="sem5-prepositionsfraser" style="--accent:#3f7a4f">
           <h3>Breakout 1 <span class="ov-tema">Prepositionsfraser</span> <span class="sem">Sem 5</span></h3>
           <p class="note">Översätt prepositionsfraserna. Prepositionen styr kasus och färgar betydelsen.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">ἡ θάλασσα hav</span><span class="rad">ἡ κώμη by</span><span class="rad">ἡ ἔρημος öken</span><span class="rad">ἡ γῆ jord</span><span class="rad">ὁ λίθος sten</span><span class="rad">ὁ μαθητής lärjunge (se B § 57 för böjningsmönster efter ναύτης)</span><span class="rad">ὁ ἁμαρτωλός syndare</span><span class="rad">ἡ νόσος sjukdom</span><span class="rad">ἀπό + gen. från, av</span><span class="rad">διά + gen. genom, + ack. på grund av</span><span class="rad">εἰς + ack. in i, i</span><span class="rad">ἐκ, ἐξ + gen. ur, ut ur</span><span class="rad">ἐν + dat. i</span><span class="rad">ἐπί + gen., på, över, + dat., vid, + ack. mot</span><span class="rad">κατά + gen., utför, mot, + ack. enligt</span><span class="rad">μετά + gen. med + ack. efter</span><span class="rad">παρά + gen. från + dat. hos, vid + ack. bredvid</span><span class="rad">περί + gen. om, angående, + ack. kring</span><span class="rad">πρός + gen. på (ngns sida), + dat. vid, + ack. hos, till</span><span class="rad">σύν + dat. med, jämte</span><span class="rad">ὑπέρ + gen. över, för, i stället för, + ack. över, mer än</span><span class="rad">ὑπό + gen. av, genom, + ack. under</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">εἰς τὴν θάλασσαν</div>
@@ -984,6 +1032,7 @@
         <section class="gr-card ov-card" id="sem5-negation" style="--accent:#4a6a8a">
           <h3>Breakout 2 <span class="ov-tema">Negationen οὐ</span> <span class="sem">Sem 5</span></h3>
           <p class="note">Sätt in rätt form av οὐ och översätt. Formen (οὐ/οὐκ/οὐχ) styrs av ljudet efter.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">ὁ φίλος vän</span><span class="rad">ἀκούω höra</span><span class="rad">πιστεύω tro</span><span class="rad">ἁμαρτάνω synda</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">οἱ φίλοι __ πιστεύουσιν.</div>
@@ -1044,6 +1093,7 @@
         <section class="gr-card ov-card" id="sem5-pronomen" style="--accent:#b0642f">
           <h3>Breakout 3 <span class="ov-tema">Personliga pronomen</span> <span class="sem">Sem 5</span></h3>
           <p class="note">Översätt. Håll koll på de obetonade (enklitiska) pronomenformerna.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">ζητέω söka</span><span class="rad">φιλέω gilla, älska</span><span class="rad">λαλέω tala (med dativ för den man talar med)</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ζητοῦμεν ὑμᾶς.</div>
@@ -1177,6 +1227,7 @@
         <section class="gr-card ov-card" id="sem6-breakout-1" style="--accent:#3f7a4f">
           <h3>Breakout 1 <span class="ov-tema">Personliga &amp; possessiva pronomen</span> <span class="sem">Sem 6</span></h3>
           <p class="note">Översätt till svenska. Håll koll på enklitiska (obetonade) pronomen och på αὐτός i genitiv som possessivt ord.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">βαπτίζω döpa</span><span class="rad">λέγω tala, säga</span><span class="rad">ζητέω söka</span><span class="rad">εὑρίσκω finna</span><span class="rad">ἡ ἐρήμος öken</span><span class="rad">ἡ εἰρήνη fred</span><span class="rad">ἐξάγω leda ut, föra ut</span><span class="rad">φέρω föra</span><span class="rad">ὁ θάνατος döden</span><span class="rad">ὁ τόπος plats</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">βαπτίζω σε</div>
@@ -1260,6 +1311,7 @@
         <section class="gr-card ov-card" id="sem6-breakout-2" style="--accent:#4a6a8a">
           <h3>Breakout 2 <span class="ov-tema">Interrogativa pronomen</span> <span class="sem">Sem 6</span></h3>
           <p class="note">Översätt till svenska. Frågeorden τίς/τί böjs i kasus och numerus.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">τίς τίνος; vem, vad (självständigt)? vilken/vilket (förenat)? (B § 122:1)</span><span class="rad">ποῦ; var?</span><span class="rad">ποῖ; vart?</span><span class="rad">πόθεν; varifrån?</span><span class="rad">πότε; när?</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">τίς ἐστιν;</div>
@@ -1279,6 +1331,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">τίνα οἶνον πίνεις;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ οἶνος vin</span><span class="rad">πίνω dricka</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Vilket vin dricker du? (förenat)</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Här står τίνα attributivt till οἶνον: ’vilket vin?’. τίς/τί kan användas både självständigt (’vad?’) och attributivt (’vilken?’).</div>
@@ -1301,6 +1354,7 @@
           <li class="ov-item">
             <span class="ov-num">6</span><div class="ov-grek gr-grek">τίσι λαλεῖτε;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">λαλέω tala, med dativ</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Med vilka talar ni?</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> τίσι(ν) är dativ plural. λαλέω konstrueras med dativ: ’till/med vilka talar ni?’.</div>
@@ -1312,6 +1366,7 @@
         <section class="gr-card ov-card" id="sem6-breakout-3" style="--accent:#b0642f">
           <h3>Breakout 3 <span class="ov-tema">Futurum</span> <span class="sem">Sem 6</span></h3>
           <p class="note">Översätt till svenska. Futurum känns igen på tempustecknet σ före ändelsen — men några meningar är insmugen presens.</p>
+          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span><span class="rad">πιστεύω tro, lita på (med dativ)</span><span class="rad">παιδεύω undervisa, uppfostra</span><span class="rad">λαλέω tala, säga</span><span class="rad">ὁ μαθητής lärjunge</span><span class="rad">ὁ ἄγγελος ängel</span><span class="rad">ὁ ἀπόστολος apostel</span><span class="rad">ὁ προφήτης profet</span><span class="rad">τὸ τέκνον barn</span><span class="rad">ἡ ἀλήθεια sanning</span></div>
           <ol class="ov-list">
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">οἱ μαθηταὶ πιστεύσουσιν</div>
@@ -1414,6 +1469,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ἐγείρουσιν αὐτὸν καὶ λέγουσιν αὐτῷ, ὦ Διδάσκαλε […]</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ διδάσκαλος lärare</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">De väcker honom och säger till honom, o lärare!</div>
             <div class="ov-meta">Mark 4:38</div>
@@ -1422,6 +1478,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής·</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">οὗτος denne</span><span class="rad">ὁ βαπτιστής döpare</span><span class="rad">apposition B § 217</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Denne är Johannes Döparen.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> οὗτός bär två accenter därför att det enklitiska ἐστιν skjuter tillbaka sin accent på föregående ord. Grundformen är οὗτος.</div>
@@ -1431,6 +1488,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">φωνὴ ἐκ τῶν οὐρανῶν λέγει· Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἀγαπητός -ή -όν älskad, kär</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">En röst ur himlen säger: Denne är min älskade son.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Attributivt adjektiv i efterställd ställning upprepar artikeln: ὁ υἱός μου ὁ ἀγαπητός = ’min älskade son’ (ordagrant ’sonen min, den älskade’).</div>
@@ -1448,6 +1506,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">ταῦτα λέγεις καὶ ἡμᾶς ὑβρίζεις.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ταῦτα form av οὗτος αὕτη τοῦτο ’dessa (ting)’/’detta’</span><span class="rad">ὑβρίζω förolämpa (jfr. hybris)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Du säger detta och förolämpar oss.</div>
             <div class="ov-meta">Luk 11:45</div>
@@ -1464,6 +1523,7 @@
           <li class="ov-item">
             <span class="ov-num">7</span><div class="ov-grek gr-grek">οἱ δὲ ὄχλοι λέγουσιν· Οὗτός ἐστιν ὁ προφήτης Ἰησοῦς ὁ ἀπὸ Ναζαρὲθ τῆς Γαλιλαίας.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">δέ och, men</span><span class="rad">τῆς Γαλιλαίας genitiv ’i …’</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Folkhoparna säger: Denne är profeten Jesus från Nasaret i Galileen.</div>
             <div class="ov-meta">Matt 21:11</div>
@@ -1480,6 +1540,7 @@
           <li class="ov-item">
             <span class="ov-num">9</span><div class="ov-grek gr-grek">πάντες δὲ ὑμεῖς ἀδελφοί ἐστε</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">πάντες form av πᾶς πᾶσα πᾶν</span><span class="rad">ἐστε form av εἰμί</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Och alla ni är bröder.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> πάντες är nom. pl. mask. av πᾶς ’all/alla’. δέ är postpositivt och står alltid som satsens andra ord.</div>
@@ -1489,6 +1550,7 @@
           <li class="ov-item">
             <span class="ov-num">10</span><div class="ov-grek gr-grek">λέγει δὲ ὁ Πέτρος, Κύριε, πρὸς ἡμᾶς τὴν παραβολὴν ταύτην λέγεις ἢ καὶ πρὸς πάντας;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἡ παραβολή liknelse</span><span class="rad">ταύτην form av οὗτος</span><span class="rad">ἢ καὶ eller också</span><span class="rad">πάντας form av πᾶς</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Och Petrus säger, Herre, säger du denna liknelse till oss eller också till alla?</div>
             <div class="ov-meta">Luk 12:41</div>
@@ -1497,6 +1559,7 @@
           <li class="ov-item">
             <span class="ov-num">11</span><div class="ov-grek gr-grek">καὶ μετὰ ἡμέρας ἓξ παραλαμβάνει ὁ Ἰησοῦς τὸν Πέτρον καὶ τὸν Ἰάκωβον καὶ τὸν Ἰωάννην, καὶ ἀναφέρει αὐτοὺς εἰς ὄρος ὑψηλόν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἕξ sex</span><span class="rad">παραλαμβάνω ta med sig</span><span class="rad">ἀναφέρω föra upp</span><span class="rad">τὸ ὄρος berg (tredje deklinationen, ej behandlad; samma form i ack. och nom.)</span><span class="rad">ὑψηλός hög</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Och efter sex dagar tog Jesus med sig Petrus och Jakob och Johannes och för dem upp till ett högt berg.</div>
             <div class="ov-meta">Mark 9:2</div>
@@ -1505,6 +1568,7 @@
           <li class="ov-item">
             <span class="ov-num">12</span><div class="ov-grek gr-grek">Κύριον τὸν θεόν σου προσκυνήσεις καὶ αὐτῷ μόνῳ λατρεύσεις.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">Κύριος Herren (bestämd form trots avsaknad av artikel)</span><span class="rad">apposition B § 217</span><span class="rad">προσκυνέω tillbedja</span><span class="rad">λατρεύω tjäna (med dativ)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Du ska tillbedja Herren, din Gud, och tjäna honom allena.</div>
             <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> Futurum med budkraft: ’du SKA tillbe’ (ett bud, inte en förutsägelse) — vanligt i GT-citat. Notera rektionen: προσκυνέω + ackusativ (Κύριον), men λατρεύω + dativ (αὐτῷ μόνῳ).</div>
@@ -1898,6 +1962,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">λέγει δὲ ὁ κύριος τοῦ ἀμπελῶνος, Τί ποιήσω; πέμψω τὸν υἱόν μου ἀγαπητόν·</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ ἀμπελών ῶνος vingård (3:e deklinationen, se presentation)</span><span class="rad">ἀγαπητός älskad</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Och vingårdens herre säger: vad ska jag göra? Jag ska skicka min älskade son.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἀμπελῶνος är genitiv av ἀμπελών (3:e deklinationen) — samma nasalstam som ἡγεμών, fast med lång stamvokal ω.</div>
@@ -1907,6 +1972,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">καὶ ἔσται ὁ μισθὸς ὑμῶν πολύς, καὶ ἔσεσθε υἱοὶ τοῦ ὑψίστου</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ μισθός lön</span><span class="rad">πολύς πολλή πολύ mycket, stor, pl: många</span><span class="rad">ἔσται och ἔσεσθε är futurformer av εἰμι, se § 171 (se presentation 6)</span><span class="rad">ὁ ὕψιστος den Högste</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Och er lön ska vara stor, och ni ska vara den högstes söner.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἔσται/ἔσεσθε är futurum av εἰμί (§171, se sem 6). πολύς står predikativt: &#x27;lönen ska vara stor&#x27;.</div>
@@ -1916,6 +1982,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">ὁ θεὸς τῆς ἀγάπης καὶ εἰρήνης ἔσται μεθ’ ὑμῶν</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">μεθ’ = μετά</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Kärlekens och fridens Gud ska vara med er.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> μεθ’ är μετά med apostrof (elision) framför vokal.</div>
@@ -1925,6 +1992,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">λέγει οὖν αὐτοῖς ὁ Ἰησοῦς, Ὁ καιρὸς ὁ ἐμὸς οὔπω πάρεστιν, ὁ δὲ καιρὸς ὁ ὑμέτερος πάντοτέ ἐστιν ἕτοιμος.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">οὔπω ännu inte</span><span class="rad">πάρειμι vara inne (böjs som εἰμι)</span><span class="rad">πάντοτε alltid</span><span class="rad">ἕτοιμος beredd, redo</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Jesus säger alltså till dem, Min tid är ännu inte inne, men er tid är alltid redo.</div>
             <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> ὁ καιρὸς ὁ ἐμός visar den upprepade artikeln: betonad possessiv kan antingen stå mellan artikel och substantiv (ὁ ἐμὸς καιρός) eller efter en upprepad artikel (ὁ καιρὸς ὁ ἐμός). Båda betyder &#x27;min tid&#x27;.</div>
@@ -1934,6 +2002,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">ἐγὼ δέ σοι λέγω ὅτι σὺ εἶ Πέτρος, καὶ ἐπὶ ταύτῃ τῇ πέτρᾳ οἰκοδομήσω μου τὴν ἐκκλησίαν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὅτι att</span><span class="rad">εἶ form av εἰμι (§ 156)</span><span class="rad">ταύτῃ form av οὗτος</span><span class="rad">ἡ πέτρα klippa</span><span class="rad">οἰκοδομέω bygga</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Och jag säger till dig att du (betonat) är Petrus, och på denna klippa ska jag bygga min kyrka.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> μου τὴν ἐκκλησίαν visar undantaget: den obetonade possessiven står i regel EFTER substantivet, men kan också stå före artikeln.</div>
@@ -1943,6 +2012,7 @@
           <li class="ov-item">
             <span class="ov-num">6</span><div class="ov-grek gr-grek">Ὁ διδάσκαλος λέγει, Ὁ καιρός μου ἐγγύς ἐστιν· πρὸς σὲ ποιῶ τὸ πάσχα μετὰ τῶν μαθητῶν μου.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἐγγύς nära</span><span class="rad">πρός + ack. hos</span><span class="rad">τὸ πάσχα (oböjligt) påskmåltid</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Läraren säger, min tid är nära; hos dig firar jag (ordagrant: gör jag) påskmåltiden med mina lärjungar.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> σέ är den betonade formen — den krävs efter preposition (πρὸς σέ).</div>
@@ -1952,6 +2022,7 @@
           <li class="ov-item">
             <span class="ov-num">7</span><div class="ov-grek gr-grek">Τίς ἐστιν ἡ μήτηρ μου, καὶ τίνες εἰσὶν οἱ ἀδελφοί μου;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἡ μήτηρ moder (3:e deklinationen, § 80)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Vem är min mor, och vilka är mina bröder?</div>
             <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> τίς har akut accent på iota = INTERROGATIVT (&#x27;vem?&#x27;). Utan accent (τις) hade det betytt &#x27;någon&#x27;.</div>
@@ -1961,6 +2032,7 @@
           <li class="ov-item">
             <span class="ov-num">8</span><div class="ov-grek gr-grek">Εἴ τις θέλει πρῶτος εἶναι, ἔσται πάντων διάκονος.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">εἰ om</span><span class="rad">τις någon (ingen accent på första iotat = indefinit, inte interrogativt)</span><span class="rad">εἶναι infinitiv till εἰμι</span><span class="rad">διάκονος (ὁ) tjänare</span><span class="rad">πάντων form av πᾶς πᾶσα πᾶν</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Om någon vill vara först, ska han vara allas tjänare.</div>
             <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> τις utan accent på iota = INDEFINIT (&#x27;någon&#x27;). Jämför mening 7. εἶναι är infinitiv som komplement till θέλει.</div>
@@ -1970,6 +2042,7 @@
           <li class="ov-item">
             <span class="ov-num">9</span><div class="ov-grek gr-grek">Τί μέλλεις ποιεῖν;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">μέλλω tänka, komma att (+ infinitiv)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Vad tänker du göra?</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> μέλλω + infinitiv (ποιεῖν) — samma konstruktion som svenskans &#x27;tänker göra&#x27;.</div>
@@ -1979,6 +2052,7 @@
           <li class="ov-item">
             <span class="ov-num">10</span><div class="ov-grek gr-grek">Ὁ Παῦλος πρὸς αὐτὸν λέγει, Τύπτειν σε μέλλει ὁ θεός,</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">μέλλω tänka, komma att (+ infinitiv)</span><span class="rad">τύπτω slå</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Paulus säger till honom, Gud kommer att slå dig.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Infinitiven τύπτειν står först för emfas; σε är dess objekt. Ordagrant: &#x27;slå dig kommer Gud att&#x27;.</div>
@@ -1988,6 +2062,7 @@
           <li class="ov-item">
             <span class="ov-num">11</span><div class="ov-grek gr-grek">Ἀκούεις τί οὗτοι λέγουσιν;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">οὗτοι form av οὗτος</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Hör du vad dessa säger?</div>
             <div class="ov-meta">Matt 21:16</div>
@@ -1996,6 +2071,7 @@
           <li class="ov-item">
             <span class="ov-num">12</span><div class="ov-grek gr-grek">Ἄκουε, Ἰσραήλ, κύριος ὁ θεὸς ἡμῶν κύριος εἷς ἐστιν</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">Ἰσραήλ Israel, oböjligt</span><span class="rad">εἷς en</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Lyssna, Israel, Herren, vår Gud, är en Herre.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Ἄκουε är imperativ 2:a sg (stam + -ε) — inte indikativ ἀκούεις.</div>
@@ -2022,6 +2098,7 @@
           <li class="ov-item">
             <span class="ov-num">15</span><div class="ov-grek gr-grek">οἱ Φαρισαῖοι ἔλεγον τοῖς μαθηταῖς αὐτοῦ, Διὰ τί μετὰ τῶν τελωνῶν καὶ ἁμαρτωλῶν ἐσθίει ὁ διδάσκαλος ὑμῶν;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">διδάσκαλος (ὁ) lärare</span><span class="rad">διὰ τί varför</span><span class="rad">τελώνης (ὁ) tulltjänsteman (första deklinationen, maskulint substantiv)</span><span class="rad">ἁμαρτωλός (ὁ) syndare</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Fariséerna sade till hans lärjungar, varför äter er lärare med tulltjänstemän och syndare?</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> διὰ τί = &#x27;varför&#x27; (ordagrant &#x27;på grund av vad&#x27;).</div>
@@ -2031,6 +2108,7 @@
           <li class="ov-item">
             <span class="ov-num">16</span><div class="ov-grek gr-grek">δαιμόνια πολλὰ ἐξέβαλλον, καὶ ἤλειφον ἐλαίῳ πολλοὺς ἀρρώστους καὶ ἐθεράπευον αὐτούς</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἐξέβαλλον – om ett verb konstrueras med ett prefix, placeras augmentet mellan prefixet (ἐκ) och den enkla verbformen (βάλλω). I stället för ἐκ används ἐξ eftersom det följs av en vokal (B § 138:7).</span><span class="rad">πολλά, πολλοὺς former av πολύς</span><span class="rad">ἀλείφω smörja</span><span class="rad">ἔλαιον (τό) olja (översätt denna dativ ’med…’)</span><span class="rad">ἄρρωστος sjuk</span><span class="rad">θεραπεύω hela, bota</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">De (alt. jag) fördrev många onda andar, och smorde många sjuka med olja och helade dem.</div>
             <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> ἐξέβαλλον visar inre augment: i sammansatta verb sätts augmentet MELLAN prefixet och verbet (ἐκ + ἔβαλλον → ἐξέβαλλον, med ἐκ → ἐξ framför vokal, § 138:7). Formen är dessutom tvetydig: 1:a sg eller 3:e pl.</div>
@@ -2040,6 +2118,7 @@
           <li class="ov-item">
             <span class="ov-num">17</span><div class="ov-grek gr-grek">ἐν ταῖς συναγωγαῖς ἐκήρυσσεν ὅτι ὁ Ἰησοῦς ἐστιν ὁ υἱὸς τοῦ θεοῦ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὅτι att</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">I synagogorna predikade han att Jesus är Guds son.</div>
             <div class="ov-meta">Apg 9:20</div>
@@ -2070,6 +2149,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">γράφει αὐτοῖς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">γράφω skriva</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Han/hon skriver till dem</div>
             </div>
@@ -2085,6 +2165,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">ὑπάγει αὐτάς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὑπάγω föra bort</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Han/hon för bort dem</div>
             </div>
@@ -2116,6 +2197,7 @@
           <li class="ov-item">
             <span class="ov-num">9</span><div class="ov-grek gr-grek">πέμψει ὁ κύριος ἡμῶν τὸ πλοῖον πρὸς ὑμᾶς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τὸ πλοῖον båt</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Vår herre ska skicka båten till er</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Verbet står först — grekiskan har fri ordföljd; kasus, inte platsen, visar att ὁ κύριος är subjekt.</div>
@@ -2155,6 +2237,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">οἱ ἐχθροὶ ὑμῶν</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ ἔχθρος fiende</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">era fiender</div>
             </div>
@@ -2185,6 +2268,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">ὁ ἡμέτερος οἰκοδεσπότης</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ οἰκοδεσπότης husbonde</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">vår husbonde</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἡμέτερος är betonad possessiv och böjs som ett vanligt 2-1-2-adjektiv — därför står den mellan artikel och substantiv, precis som ὁ ἀγαθὸς δοῦλος.</div>
@@ -2200,6 +2284,7 @@
           <li class="ov-item">
             <span class="ov-num">7</span><div class="ov-grek gr-grek">ὁ φίλος ἡμῶν</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ φίλος vän</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">vår vän</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Obetonat ἡμῶν efter substantivet. Betonat blir det ὁ ἡμέτερος φίλος — samma betydelse, men med eftertryck (&#x27;VÅR vän, inte er&#x27;).</div>
@@ -2237,6 +2322,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">πάντες ἔλεγον ὅτι οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἔλεγον (= λέγω)</span><span class="rad">ὅτι att</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Alla sade att han är Johannes Döparen.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἔλεγον kan vara både 1:a sg (&#x27;jag sade&#x27;) och 3:e pl (&#x27;de sade&#x27;) — ändelserna sammanfaller i imperfekt. Här visar πάντες (&#x27;alla&#x27;) att det är 3:e plural.</div>
@@ -2245,6 +2331,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">ὁ Ἰωάννης ἐβάπτιζε πολλοὺς ἀνθρώπους.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">πολλοὺς form av πολύς</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Johannes döpte många människor.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Augmentet ἐ- framför konsonant: βαπτίζω → ἐβάπτιζε. πολλούς är ackusativ pl av πολύς.</div>
@@ -2261,6 +2348,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">πολλοὶ ἤκουον αὐτοῦ καὶ ἐπίστευον αὐτῷ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἤκουον (= ἀκούω; detta verb vill ofta ha ett direkt objekt i genitiv!)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Många hörde honom och trodde på honom</div>
             <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> ἀκούω tar ofta objektet i GENITIV (αὐτοῦ), och πιστεύω tar det i DATIV (αὐτῷ). Ingen av dem är possessiv här — det är verbens rektion.</div>
@@ -2413,6 +2501,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ἤκουσαν φωνῆς μεγάλης ἐκ τοῦ οὐρανοῦ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">μέγας μεγάλη μέγα stor</span><span class="rad">ἤκουσαν form av ἀκούω (notera att verbet ofta styr genitiv i stället för ackusativ)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">De hörde en stor (=hög) röst ur himlen.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἀκούω styr ofta genitiv (φωνῆς) i stället för ackusativ.</div>
@@ -2422,6 +2511,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">Ἐξ Αἰγύπτου ἐκάλεσα τὸν υἱόν μου.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἐκάλεσα form av καλέω kalla (notera att detta verb avviker från regeln att kontraherade verb på -έω får epsilon förlängt till eta framför sigmat, dvs. ἐκάλεσα är den normala aoristformen, inte ἐκάλησα)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Ut ur Egypten kallade jag min son.</div>
             <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> καλέω avviker: aoristen är ἐκάλεσα (kort ε), inte ἐκάλησα.</div>
@@ -2431,6 +2521,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">Ἄνθρωπός τις ἐποίει δεῖπνον μέγα.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τις form av det indefinita pronomenet τις τινός, här använt som obestämd artikel (B § 224:7)</span><span class="rad">τὸ δεῖπνον middag</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">En man höll på att förbereda en stor middag.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἐποίει är imperfekt (pågående); τις fungerar som obestämd artikel ’en’.</div>
@@ -2440,6 +2531,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">ὡς ἤγγισεν τῇ οἰκίᾳ, ἤκουσεν συμφωνίας καὶ χορῶν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὡς då</span><span class="rad">ἐγγίζω närma sig (med dativ för det man närmar sig)</span><span class="rad">ἤκουσαν form av ἀκούω (notera att verbet ofta styr genitiv i stället för ackusativ)</span><span class="rad">ἡ συμφωνία musik</span><span class="rad">ὁ χορός dans</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">När han närmade sig huset, hörde han musik och dans.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Bisats inledd med ὡς (då/när). ἐγγίζω tar dativ.</div>
@@ -2449,6 +2541,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">ἀπὸ τοῦ ὄρους ἠκολούθησαν αὐτῷ ὄχλοι πολλοί.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὄρους genitiv singular av τὸ ὄρος (B § 82, 83:1-2)</span><span class="rad">ἀκολουθέω följa (med dativ för den man följer)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Från berget följde honom många folkhopar.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ὄρους är genitiv sg av τὸ ὄρος (3:e dekl., -ους).</div>
@@ -2457,6 +2550,7 @@
           <li class="ov-item">
             <span class="ov-num">6</span><div class="ov-grek gr-grek">οὐκ ἔγραψα ταῦτα.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἔγραψα form av γράφω</span><span class="rad">ταῦτα form av οὗτος</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Jag skrev inte dessa (=detta).</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἔγραψα aorist av γράφω; ταῦτα form av οὗτος.</div>
@@ -2465,6 +2559,7 @@
           <li class="ov-item">
             <span class="ov-num">7</span><div class="ov-grek gr-grek">ἔπεμψαν αὐτὸν εἰς τοὺς ἀγροὺς αὐτοῦ βόσκειν χοίρους.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἔπεμψαν form av πέμπω</span><span class="rad">ὁ ἀγρός fält</span><span class="rad">βόσκω utfordra, vakta (formen här är presens infinitiv, och den används efter verb som betyder ’skicka’ för att beteckna målet med handlingen. Alltså: ’för att…’ B § 270:1)</span><span class="rad">ὁ χοῖρος svin</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">De skickade honom till sina fält för att vakta svin.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Infinitiv βόσκειν efter ’skicka’ anger målet: ’för att…’.</div>
@@ -2474,6 +2569,7 @@
           <li class="ov-item">
             <span class="ov-num">8</span><div class="ov-grek gr-grek">οὗτος σώσει τὸν λαὸν ἀπὸ τῶν ἁμαρτιῶν αὐτῶν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">σώζω ἀπό + gen. rädda från</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Denne ska rädda folket från deras synder.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> σώσει futurum av σῴζω; σῴζω ἀπό + gen. = rädda från.</div>
@@ -2483,6 +2579,7 @@
           <li class="ov-item">
             <span class="ov-num">9</span><div class="ov-grek gr-grek">ὅτε ἦν ἐν τῇ Γαλιλαίᾳ, ἠκολούθουν αὐτῷ πολλαὶ γυναῖκες.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἦν form av εἰμι (se B § 156)</span><span class="rad">ἡ γυνή γυναικός kvinna (tredje deklinationen, B § 73:2)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">När han var i Galileen, följde många kvinnor honom.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Bisats med ὅτε (när). γυνή, γυναικός är 3:e dekl.</div>
@@ -2492,6 +2589,7 @@
           <li class="ov-item">
             <span class="ov-num">10</span><div class="ov-grek gr-grek">οἱ Ἰουδαῖοι ἐζήτουν αὐτὸν ἐν τῇ ἑορτῇ καὶ ἔλεγον· Ποῦ ἐστιν ἐκεῖνος;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἡ ἑορτή fest</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Judarna sökte honom på festen och sade: ’Var är den där (=han)?’</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Imperfekt ἐζήτουν: de sökte gång på gång (pågående/upprepat).</div>
@@ -2501,6 +2599,7 @@
           <li class="ov-item">
             <span class="ov-num">11</span><div class="ov-grek gr-grek">μετὰ ταῦτα περιεπάτει ὁ Ἰησοῦς ἐν τῇ Γαλιλαίᾳ· οὐ γὰρ ἤθελεν ἐν τῇ Ἰουδαίᾳ περιπατεῖν, ὅτι ἐζήτουν αὐτὸν οἱ Ἰουδαῖοι ἀποκτείνειν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἐθέλω vilja (samma som θέλω; det man vill konstrueras med infinitiv)</span><span class="rad">ὅτι att; eftersom</span><span class="rad">ζητέω söka, konstrueras med infinitiv (’söka att göra något’)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Efter detta vandrade Jesus i Galileen; han ville nämligen inte vandra i Judéen, eftersom judarna sökte att döda honom.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ὅτι här kausalt (eftersom). Bisatsen bär eget predikat (ἐζήτουν).</div>
@@ -2510,6 +2609,7 @@
           <li class="ov-item">
             <span class="ov-num">12</span><div class="ov-grek gr-grek">ἐγὼ ἐβάπτισα ὑμᾶς ὕδατι, οὗτος δὲ βαπτίσει ὑμᾶς ἐν πνεύματι ἁγίῳ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὕδατι form av ὕδωρ, πνεύματι form av πνεῦμα (se B § 72), i båda fallen kan man översätta med ’med…’ (B § 238:1)</span><span class="rad">Notera de betonade personliga pronomina!</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Jag döpte er med vatten, men denne (=han) ska döpa er med helig Ande.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ὕδατι, πνεύματι är dativer av 3:e-dekl. neutra ὕδωρ, πνεῦμα (’med…’). Betonade pronomina ἐγώ/οὗτος.</div>
@@ -2519,6 +2619,7 @@
           <li class="ov-item">
             <span class="ov-num">13</span><div class="ov-grek gr-grek">Ἄλλους ἔσωσεν, σωσάτω ἑαυτόν, εἰ οὗτός ἐστιν ὁ Χριστὸς τοῦ θεοῦ ὁ ἐκλεκτός.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">εἰ om</span><span class="rad">ἄλλος η ον sg. annan, pl. andra</span><span class="rad">ἔσωσεν och σωσάτω former av σώζω; imperativen kan översättas med ’låt honom…’ osv (för översättningsmöjligheter se B § 265:2)</span><span class="rad">ἑαυτόν sig</span><span class="rad">ἐκλεκτός utvald (här substantiverat)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Andra räddade han, låt honom rädda sig själv, om denne är Guds Kristus, den utvalde.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Villkorsbisats med εἰ (om). σωσάτω aorist imperativ (’låt honom rädda’).</div>
@@ -2528,6 +2629,7 @@
           <li class="ov-item">
             <span class="ov-num">14</span><div class="ov-grek gr-grek">εἰ ἐμὲ ἐδίωξαν, καὶ ὑμᾶς διώξουσιν· εἰ τὸν λόγον μου ἐτήρησαν, καὶ τὸν ὑμέτερον λόγον τηρήσουσιν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">εἰ om</span><span class="rad">διώκω förfölja</span><span class="rad">ὑμέτερος -α -ον er, ert (betonat possessivt pronomen, se presentation 7)</span><span class="rad">καί och, också</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Om de förföljde mig, ska de också förfölja er; om de bevarade mitt ord, ska de också bevara ert ord.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Två εἰ-bisatser. Aorist (ἐδίωξαν/ἐτήρησαν) i villkoret, futurum i huvudsatsen.</div>
@@ -2544,6 +2646,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ἐδίδασκεν αὐτοὺς ἐν παραβολαῖς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἐδίδασκεν form av διδάσκω</span><span class="rad">ἡ παραβολή liknelse</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Han undervisade dem i/med liknelser.</div>
             <div class="ov-meta">Mark 4:2</div>
@@ -2552,6 +2655,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">εἰς τὸ πλοῖον παρεκάλει αὐτόν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">παρεκάλει form av παρακαλέω tillkalla</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Till båten kallade han honom.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> παρεκάλει imperfekt av παρακαλέω (kontraherat -έω).</div>
@@ -2561,6 +2665,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">ἀνεγίνωσκεν τὸν προφήτην Ἠσαΐαν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἀναγινώσκω läsa</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Han läste profeten Jesaja.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἀναγινώσκω med augment inne i ordet (elision): ἀν-ε-γίνωσκεν.</div>
@@ -2570,6 +2675,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">ἠκολούθει αὐτῷ ὄχλος πολύς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἠκολούθει form av ἀκολουθέω följa (med dativ för den man följer)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">En stor folkhop följde honom.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἀκολουθέω tar dativ (αὐτῷ).</div>
@@ -2579,6 +2685,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">σὺ δὲ τί κρίνεις τὸν ἀδελφόν σου;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τί form av det interrogativa pronomenet τίς, här självständigt och i betydelse ’varför’</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Men varför dömer du din bror?</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> τί här självständigt = ’varför’.</div>
@@ -2588,6 +2695,7 @@
           <li class="ov-item">
             <span class="ov-num">6</span><div class="ov-grek gr-grek">ἄνθρωπός τις κατέβαινεν ἀπὸ Ἰερουσαλὴμ εἰς Ἰεριχώ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">καταβαίνω gå ned</span><span class="rad">τις indefinit pronomen (B § 123), kan översättas med ’en’</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">En människa gick ned från Jerusalem till Jeriko.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Sammansatt verb κατα-βαίνω med augment inne i ordet: κατ-έ-βαινεν.</div>
@@ -2597,6 +2705,7 @@
           <li class="ov-item">
             <span class="ov-num">7</span><div class="ov-grek gr-grek">Πέτρος καὶ Ἰωάννης ἀνέβαινον εἰς τὸ ἱερόν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἀναβαίνω gå upp</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Petrus och Johannes gick upp till templet.</div>
             <div class="ov-meta">Apg 3:1</div>
@@ -2605,6 +2714,7 @@
           <li class="ov-item">
             <span class="ov-num">8</span><div class="ov-grek gr-grek">περιεπάτει ὁ Ἰησοῦς ἐν τῷ ἱερῷ ἐν τῇ στοᾷ τοῦ Σολομῶνος.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">περιεπάτει form av περιπατέω</span><span class="rad">ἡ στοά portik, pelarhall</span><span class="rad">ὁ Σολομών -ῶνος Salomo (namnet böjs efter tredje deklinationen, ungefär som ἡγεμών -όνος, se B § 76)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Jesus vandrade i templet, i Salomos pelarhall.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Σολομών, -ῶνος böjs efter 3:e dekl. (jfr. ἡγεμών).</div>
@@ -2621,6 +2731,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ἐλάλησεν αὐτοῖς ἐν παραβολαῖς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἐλάλησεν form av λαλέω</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Han talade med dem i liknelser.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἐλάλησεν sigmatisk aorist av λαλέω.</div>
@@ -2630,6 +2741,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">Ἰωάννης ἐδίδαξεν τοὺς μαθητάς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἐδίδαξεν aoristform av διδάσκω</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Johannes undervisade lärjungarna.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἐδίδαξεν aorist av διδάσκω: διδακ + σ = διδαξ.</div>
@@ -2639,6 +2751,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">ὁ δὲ Πιλᾶτος ἔλεγεν αὐτοῖς· Τί ἐποίησεν κακόν;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τί (interrogativt pronomen) står här tillsammans med adjektivet κακόν och betyder ’vad?’, dvs. ’vad ont?’ eller ’vad för ont?’</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Men Pilatus sade till dem: ’Vad ont gjorde han?’</div>
             <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> ἐποίησεν är aorist (’gjorde’), inte imperfekt ἐποίει (’höll på att göra’).</div>
@@ -2648,6 +2761,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">Ἄνθρωπός τις ἐφύτευσεν ἀμπελῶνα.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τις form av det indefinita pronomenet τις τινός (B § 123)</span><span class="rad">φυτεύω plantera</span><span class="rad">ὁ ἀμπελών -ῶνος vingård (B § 76)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">En man planterade en vingård.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἀμπελών, -ῶνος 3:e dekl. (jfr. ἡγεμών).</div>
@@ -2657,6 +2771,7 @@
           <li class="ov-item">
             <span class="ov-num">5</span><div class="ov-grek gr-grek">καὶ ἠκολούθησαν αὐτῷ πολλοί, καὶ ἐθεράπευσεν αὐτοὺς πάντας.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἠκολούθησαν form av ἀκολουθέω följa (med dativ för den man följer)</span><span class="rad">θεραπεύω hela</span><span class="rad">πολλοί form av πολύς πολλή πολύ</span><span class="rad">πάντας form av πᾶς πᾶσα πᾶν</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Och många följde honom, och han helade dem alla.</div>
             <div class="ov-meta">Matt 12:15</div>
@@ -2665,6 +2780,7 @@
           <li class="ov-item">
             <span class="ov-num">6</span><div class="ov-grek gr-grek">τίνα τῶν προφητῶν οὐκ ἐδίωξαν οἱ πατέρες ὑμῶν;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τίνα form av det interrogativa pronomenet τίς (den följande genitiven kan översättas ’av…’)</span><span class="rad">διώκω förfölja</span><span class="rad">ὁ πατήρ πατρός fader (B § 80)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Vem av profeterna förföljde inte era fäder?</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> πατήρ, πατρός 3:e dekl. med avljud.</div>
@@ -2681,6 +2797,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">Ἀμὴν λέγω ὑμῖν ὅτι πλούσιος δυσκόλως εἰσελεύσεται εἰς τὴν βασιλείαν τῶν οὐρανῶν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὅτι att</span><span class="rad">πλούσιος rik man</span><span class="rad">δυσκόλως med svårighet (adverb)</span><span class="rad">εἰσελεύσεται ska komma in</span><span class="rad">ἡ βασιλεία, -ας rike</span><span class="rad">ὁ οὐρανός, -ου himmel</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Sannerligen säger jag er att en rik man svårligen kommer in i himlarnas rike.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ὅτι-sats (att) efter sägeverbet λέγω.</div>
@@ -2690,6 +2807,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">Ὡς ἦν ἐν τοῖς Ἱεροσολύμοις ἐν τῷ πάσχα ἐν τῇ ἑορτῇ, πολλοὶ ἐπίστευσαν εἰς τὸ ὄνομα αὐτοῦ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὡς när</span><span class="rad">τὰ Ἱεροσόλυμα Jerusalem</span><span class="rad">τὸ πάσχα påsk</span><span class="rad">ἡ ἑορτή, -ῆς fest</span><span class="rad">πιστεύω tro på (med dativ för den man tror på)</span><span class="rad">τὸ ὄνομα, ὀνόματος namn (med den vidare betydelsen ’väsen’, ’person’, ’den man är’)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">När han var i Jerusalem under påsken, under festen, trodde många på hans namn.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Bisats med ὡς (när). ὄνομα, ὀνόματος 3:e-dekl. neutrum.</div>
@@ -2737,6 +2855,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">Τίς ἐστιν ὁ ἄνθρωπος ὁ ἅγιος ὃν ἀπεκεφάλισεν ὁ Ἡρῴδης;</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἀποκεφαλίζω halshugga</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Vem är den heliga människan som Herodes halshögg?</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Relativsatsen är ὃν ἀπεκεφάλισεν ὁ Ἡρῴδης. ὅν är maskulinum sg (efter korrelatet ἄνθρωπος) men ackusativ, eftersom det är direkt objekt i bisatsen.</div>
@@ -2746,6 +2865,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">καὶ οὗτος ὃς οὐ λαμβάνει τὸν σταυρὸν αὐτοῦ οὐκ ἔστιν μου ἄξιος.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">λαμβάνω ta</span><span class="rad">ὁ σταυρός kors</span><span class="rad">αὐτοῦ sitt</span><span class="rad">ἄξιος värdig (det man är värdig står i genitiv)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Och den som inte tar sitt kors är inte värdig mig.</div>
             <div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> ὅς är här subjekt i bisatsen → nominativ. αὐτοῦ ’sitt’; det man är värdig (μου) står i genitiv.</div>
@@ -2755,6 +2875,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">οἱ μαθηταὶ ἐπίστευσαν τῷ λόγῳ ὃν ἔλεγεν ὁ Ἰησοῦς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ὁ λόγος ord</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Lärjungarna trodde på ordet som Jesus sade.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Korrelatet λόγῳ står i dativ (πιστεύω styr dativ), men relativpronomenet ὅν är ackusativ — det är objekt i sin egen bisats.</div>
@@ -2764,6 +2885,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">εἰσὶν ἐξ ὑμῶν τινες οἳ οὐ πιστεύουσιν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">εἰσίν form av εἰμι, vara finnas</span><span class="rad">τινες form av τις τινός, någon</span><span class="rad">ἐξ översätts bäst med ’av’</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Det finns några av er som inte tror.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> οἵ är maskulinum pluralis, subjekt i bisatsen. εἰσίν form av εἰμί; ἐξ översätts bäst ’av’.</div>
@@ -2780,6 +2902,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">ὁ τρώγων</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">τρώγω äta</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Den som äter</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Substantiverat particip: bestämd artikel + particip utan substantiv = ’den som …’. τρώγω äta.</div>
@@ -2789,6 +2912,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">ὁ πίνων</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">πίνω dricka</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Den som dricker</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> πίνω dricka. Maskulinum nominativ singular ger ’den som’.</div>
@@ -2798,6 +2922,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">ὁ πιστεύων εἰς τὸν υἱὸν ἔχει ζωὴν αἰώνιον·</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἔχω ha</span><span class="rad">ἡ ζωή liv</span><span class="rad">αἰώνιος, -ον evig (”adjektiv med två slut”)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Den som tror på sonen har evigt liv.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Participet ὁ πιστεύων är satsens subjekt; huvudverbet är ἔχει. αἰώνιος ’evig’ är ett adjektiv med två slut.</div>
@@ -2807,6 +2932,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">ὁ τρώγων μου τὴν σάρκα καὶ πίνων μου τὸ αἷμα ἔχει ζωὴν αἰώνιον.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἡ σάρξ, σαρκός kött (tredje deklinationen)</span><span class="rad">τὸ αἷμα, τὸ αἵματος blod (tredje deklinationen)</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Den som äter mitt kött och dricker mitt blod har evigt liv.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Två samordnade particip (τρώγων … καὶ πίνων) med varsitt objekt. ἡ σάρξ σαρκός, τὸ αἷμα αἵματος — tredje deklinationen.</div>
@@ -2823,6 +2949,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">Ἰωάννης ὁ βαπτιστὴς ἀπέστειλεν ἡμᾶς πρὸς σέ.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἀποστέλλω ἀπέστειλα (sigmatisk aorist utan sigma) sända</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Johannes Döparen sände ut oss till dig.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἀπέστειλεν är aorist av ἀποστέλλω utan sigma: ἀπεστελ-σ- → ἀπέστειλ- (σ faller, ε→ει).</div>
@@ -2832,6 +2959,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">ἀπήγγειλαν δὲ αὐτῷ ὅτι Ἰησοῦς ὁ Ναζωραῖος πάρεστιν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἀπαγγέλλω ἀπήγγειλα (sigmatisk aorist utan sigma) berätta, meddela</span><span class="rad">πάρειμι jag är närvarande, jag är där</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Och de meddelade honom att Jesus av Nasaret var där.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἀπήγγειλαν aorist av ἀπαγγέλλω (utan sigma). ὅτι inleder en att-sats. πάρειμι ’vara närvarande, vara där’.</div>
@@ -2841,6 +2969,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">καθὼς ἐμὲ ἀπέστειλας εἰς τὸν κόσμον, κἀγὼ ἀπέστειλα αὐτοὺς εἰς τὸν κόσμον·</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">καθώς såsom</span><span class="rad">ἀποστέλλω, ἀπέστειλα (sigmatisk aorist utan sigma) sända</span><span class="rad">ὁ κόσμος värld</span><span class="rad">κἀγώ = καὶ ἐγώ också jag</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Såsom du sände ut mig till världen, sände också jag ut dem till världen.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Två aoristformer av ἀποστέλλω (2 sg ἀπέστειλας, 1 sg ἀπέστειλα). καθώς ’såsom’; κἀγώ = καὶ ἐγώ.</div>
@@ -2850,6 +2979,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">ἔκρινεν τὴν πόρνην τὴν μεγάλην ἣ ἔφθειρεν τὴν γῆν ἐν τῇ πορνείᾳ αὐτῆς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">κρίνω, ἔκρῑνα (sigmatisk aorist utan sigma) döma</span><span class="rad">ἡ πόρνη sköka</span><span class="rad">ἥ (relativpronomen)</span><span class="rad">φθείρω, ἔφθειρα (sigmatisk aorist utan sigma) fördärva</span><span class="rad">ἡ γῆ jorden</span><span class="rad">ἡ πορνεία otukt</span><span class="rad">ἐν + dat. i, här med</span><span class="rad">αὐτῆς sin</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Han dömde den stora skökan som fördärvade jorden med sin otukt.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> ἔκρινεν aorist av κρίνω utan sigma (ἐκριν-σ- → ἔκρῑνα, ι förlängs). ἥ är relativpronomen (subjekt i bisatsen). ἔφθειρεν aorist av φθείρω.</div>
@@ -2866,6 +2996,7 @@
           <li class="ov-item">
             <span class="ov-num">1</span><div class="ov-grek gr-grek">εἰρήνην τὴν ἐμὴν δίδωμι ὑμῖν.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἡ εἰρήνη fred</span><span class="rad">ἐμός, -ή, -όν min</span><span class="rad">δίδωμι ge</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Min fred ger jag till er.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> δίδωμι är ett μι-verb (1 sg presens). ἡ εἰρήνη fred; ἐμός ’min’.</div>
@@ -2875,6 +3006,7 @@
           <li class="ov-item">
             <span class="ov-num">2</span><div class="ov-grek gr-grek">Ἰησοῦς λαμβάνει τὸν ἄρτον καὶ δίδωσιν αὐτοῖς.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">λαμβάνω ta</span><span class="rad">ὁ ἄρτος bröd</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Jesus tar brödet och ger till dem.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> δίδωσιν är 3 sg presens av δίδωμι (-σι(ν)-ändelsen). ὁ ἄρτος bröd.</div>
@@ -2884,6 +3016,7 @@
           <li class="ov-item">
             <span class="ov-num">3</span><div class="ov-grek gr-grek">ὁδὸν ὑμῖν δείκνυμι.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">ἡ ὁδός väg</span><span class="rad">δείκνυμι visa</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">En väg visar jag för er.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> δείκνυμι μι-verb, 1 sg presens ’jag visar’. ἡ ὁδός väg.</div>
@@ -2893,6 +3026,7 @@
           <li class="ov-item">
             <span class="ov-num">4</span><div class="ov-grek gr-grek">οὐκ ἔστιν καλὸν λαμβάνειν τὸν ἄρτον τῶν τέκνων καὶ βάλλειν τοῖς κυναρίοις.</div>
             <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span><span class="rad">καλός, -ή, -όν vacker</span><span class="rad">λαμβάνω ta</span><span class="rad">ὁ ἄρτος bröd</span><span class="rad">τὸ τέκνον barn</span><span class="rad">βάλλω kasta</span><span class="rad">τὸ κυνάριον hund</span></div>
             <div class="ov-facit" hidden>
             <div class="ov-sv">Det är inte vackert att ta barnens bröd och kasta det till hundarna.</div>
             <div class="ov-komm"><span class="ov-tag">💡 Kommentar</span> Två infinitiver (λαμβάνειν, βάλλειν) som subjekt till οὐκ ἔστιν καλόν. τὸ κυνάριον ’hund(valp)’.</div>

@@ -185,23 +185,35 @@ def render_item(nr, sats):
 
     facit = "\n            ".join(facit_bitar)
     num = f'<span class="ov-num">{nr}</span>' if nr else ""
+    # Lärarens glosor visas SYNLIGT under grekiskan (översättningshjälp), inte
+    # gömda i facit — precis som på lärarens övningsblad.
+    gloss = ""
+    if sats.get("ordlista"):
+        rader = "".join(f'<span class="rad">{esc(r)}</span>' for r in sats["ordlista"])
+        gloss = f'\n            <div class="ov-gloss"><span class="ov-gloss-h">Glosor</span>{rader}</div>'
     return f'''          <li class="ov-item">
             {num}<div class="ov-grek gr-grek">{grek}</div>
-            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>
+            <button class="ov-toggle" type="button" aria-expanded="false">Visa facit</button>{gloss}
             <div class="ov-facit" hidden>
             {facit}
             </div>
           </li>'''
 
 
-def render_sektion(sem, gid, poster):
+def render_sektion(sem, gid, poster, sektionsordlistor):
     rub, tema, note, accent = grupp_meta(sem, gid)
     sekid = f"sem{sem}-{gid}"
     items = "\n".join(render_item(i + 1, s) for i, s in enumerate(poster))
     temahtml = f' <span class="ov-tema">{tema}</span>' if tema else ""
+    # Delad ordlista som läraren gav en gång per breakout-rum: ruta överst.
+    ordl = sektionsordlistor.get(sekid)
+    ordlhtml = ""
+    if ordl:
+        rader = "".join(f'<span class="rad">{esc(r)}</span>' for r in ordl)
+        ordlhtml = f'\n          <div class="ov-ordlista"><span class="ov-ordlista-h">Ordlista</span>{rader}</div>'
     return f'''        <section class="gr-card ov-card" id="{sekid}" style="--accent:{accent}">
           <h3>{rub}{temahtml} <span class="sem">Sem {sem}</span></h3>
-          <p class="note">{esc(note)}</p>
+          <p class="note">{esc(note)}</p>{ordlhtml}
           <ol class="ov-list">
 {items}
           </ol>
@@ -214,8 +226,13 @@ def render_sektion(sem, gid, poster):
 # täckas med en pappersremsa medan man övar; band-x är detsamma på alla sidor.
 def render_item_print(nr, sats):
     grek = esc(sats["grekiska"])
-    # Frågecell: nummer + grekiska (fråga man ska översätta/omvandla).
-    fraga = f'<span class="ov-num">{nr}</span><span class="ov-grek">{grek}</span>'
+    # Frågecell: nummer + grekiska + lärarens glosor (översättningshjälp som
+    # står kvar synlig medan facit-kolumnen täcks med papper).
+    gloss = ""
+    if sats.get("ordlista"):
+        rader = "".join(f'<span class="g">{esc(r)}</span>' for r in sats["ordlista"])
+        gloss = f'<div class="ov-gloss">{rader}</div>'
+    fraga = f'<span class="ov-num">{nr}</span><span class="ov-grek">{grek}</span>{gloss}'
 
     # Facitcell: svaret + alla noter (fälla, kommentar, referens).
     sv = esc(sats.get("oversattning") or "")
@@ -248,13 +265,18 @@ def render_item_print(nr, sats):
             f'</tr>')
 
 
-def render_sektion_print(sem, gid, poster):
+def render_sektion_print(sem, gid, poster, sektionsordlistor):
     rub, tema, note, _ = grupp_meta(sem, gid)
     rader = "\n".join(render_item_print(i + 1, s) for i, s in enumerate(poster))
     temahtml = f' <span class="ex">{tema}</span>' if tema else ""
+    ordl = sektionsordlistor.get(f"sem{sem}-{gid}")
+    ordlhtml = ""
+    if ordl:
+        inner = "".join(f'<span class="g">{esc(r)}</span>' for r in ordl)
+        ordlhtml = f'\n        <div class="ov-ordlista"><b>Ordlista.</b> {inner}</div>'
     return f'''      <section class="gr-card">
         <h3>{rub}{temahtml} <span class="sem">Sem {sem}</span></h3>
-        <p class="note">{esc(note)}</p>
+        <p class="note">{esc(note)}</p>{ordlhtml}
         <table class="ov-list">
           <colgroup><col class="c-q" /><col class="c-a" /></colgroup>
           <thead><tr><th>Grekiska</th><th>Facit</th></tr></thead>
@@ -297,6 +319,7 @@ def las_fontface():
 def main():
     d = json.loads(DATA.read_text())
     alla = [s for s in d["satser"] if s.get("seminarium") in SEMINARIER]
+    sektionsordlistor = d.get("sektionsordlistor", {})
 
     toc_block = []
     sektion_block = []
@@ -311,8 +334,8 @@ def main():
         toc_block.append(toc_for_sem(sem, grupper))
         toc_print_block.append(toc_print_for_sem(sem, grupper))
         for gid, poster in grupper.items():
-            sektion_block.append(render_sektion(sem, gid, poster))
-            sektion_print_block.append(render_sektion_print(sem, gid, poster))
+            sektion_block.append(render_sektion(sem, gid, poster, sektionsordlistor))
+            sektion_print_block.append(render_sektion_print(sem, gid, poster, sektionsordlistor))
             antal += len(poster)
 
     # Webbversion
@@ -440,8 +463,28 @@ SIDMALL = '''<!doctype html>
       }}
       .ov-toggle:hover {{ border-color: var(--gold); color: var(--gold); }}
       .ov-toggle[aria-expanded="true"] {{ background: transparent; color: var(--gold); border-color: var(--gold); }}
+      .ov-gloss {{
+        grid-row: 2; grid-column: 2 / 4; margin: 0.1rem 0 0.15rem;
+        font-size: var(--fs-xs); color: var(--ink-soft); line-height: 1.5;
+      }}
+      .ov-gloss .ov-gloss-h {{
+        font-weight: 700; font-size: var(--fs-3xs); text-transform: uppercase;
+        letter-spacing: 0.05em; color: var(--ink-soft); margin-right: 0.5rem;
+      }}
+      .ov-gloss .rad {{ display: block; color: var(--ink); }}
+      .ov-ordlista {{
+        margin: 0 0 1.1rem; padding: 0.7rem 0.9rem;
+        background: var(--paper-2); border-radius: 10px; font-size: var(--fs-sm);
+        line-height: 1.55;
+      }}
+      .ov-ordlista .ov-ordlista-h {{
+        display: block; font-weight: 700; font-size: var(--fs-3xs);
+        text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft);
+        margin-bottom: 0.35rem;
+      }}
+      .ov-ordlista .rad {{ display: block; color: var(--ink); }}
       .ov-facit {{
-        grid-row: 2; grid-column: 2 / 4; margin: 0.15rem 0 0.1rem;
+        grid-row: 3; grid-column: 2 / 4; margin: 0.15rem 0 0.1rem;
         padding: 0.7rem 0.9rem; background: var(--paper-2); border-radius: 10px;
         font-size: var(--fs-sm); display: flex; flex-direction: column; gap: 0.5rem;
       }}
@@ -458,8 +501,9 @@ SIDMALL = '''<!doctype html>
         .gr-layout {{ grid-template-columns: 1fr; }}
         .gr-toc {{ position: static; max-height: none; margin-bottom: 1rem; }}
         .ov-item {{ grid-template-columns: 1.4rem 1fr; }}
-        .ov-toggle {{ grid-row: 2; grid-column: 2; justify-self: start; margin-top: 0.2rem; }}
-        .ov-facit {{ grid-row: 3; grid-column: 1 / 3; }}
+        .ov-gloss {{ grid-row: 2; grid-column: 1 / 3; }}
+        .ov-toggle {{ grid-row: 3; grid-column: 2; justify-self: start; margin-top: 0.2rem; }}
+        .ov-facit {{ grid-row: 4; grid-column: 1 / 3; }}
       }}
     </style>
   </head>
@@ -615,6 +659,10 @@ html, body {{
 .gr-card h3 .sem::before {{ content: "["; }}
 .gr-card h3 .sem::after  {{ content: "]"; }}
 .note {{ margin: 0 0 1.6mm; font-size: 8.2pt; line-height: 1.3; font-style: italic; break-after: avoid; }}
+/* Delad ordlista (breakout-rum) som en rad överst i sektionen. */
+.ov-ordlista {{ margin: 0 0 2mm; font-size: 7.9pt; line-height: 1.4; color: #222; break-after: avoid; }}
+.ov-ordlista b {{ font-weight: 600; }}
+.ov-ordlista .g:not(:last-child)::after {{ content: " · "; color: #999; }}
 
 /* ── Tvåkolumns självtest: fråga | facit ────────────────────────────
    Fast kolumnbredd (table-layout: fixed) håller facit-bandet på samma
@@ -643,6 +691,9 @@ html, body {{
   font-variant-numeric: tabular-nums; color: #555;
 }}
 .ov-grek {{ font-family: "Cardo", "Spectral", serif; font-size: 1.12em; }}
+/* Lärarens glosor i frågecellen, under grekiskan (står kvar när facit täcks). */
+.ov-gloss {{ margin: 0.7mm 0 0; font-size: 7.3pt; line-height: 1.28; color: #333; }}
+.ov-gloss .g {{ display: block; }}
 .ov-svar {{ font-size: 8.5pt; }}
 .ov-form {{ font-family: "Cardo", "Spectral", serif; }}
 .ov-note {{ font-size: 7.7pt; line-height: 1.26; margin: 0.4mm 0 0; color: #222; }}

@@ -87,10 +87,11 @@
  "_falt": {
   "index": "Per arkiv: kalla, seminarium, typ, antal_sidor, amneskarta (sektioner med slide-intervall), sidor (sida, bild, har_grafik, har_grekiska, text). Sidtexten är trogen källan MED undantag för de fel som listas i _avvikelser — de är normaliserade till korrekt grekiska (se _verifiering).",
   "glosa": "lemma, artikel, glosa (sv), ordklass, nt_lemma, nt_frekvens, i_glosor_master, forekomster[].",
-  "sats": "grekiska, instruktion, oversattning (om facit), satsdelar[] (om annoterat), diffar[]/avvikelse_ref, kalla/sida, kommentar (💡 förklarande), falla (⚠︎ varning för fälla), ovningsgrupp, uteslut (ovningsgrupp = sektionsnyckel; uteslut = misextraherad, hoppas). facit_form = den omvandlade grekiska formen (formläreövningar, sem 7); negerad = formen med rätt negation (οὐ/μή); bibelreferens = NT-ställe. Sem 7:s ovningsgrupp-nycklar: formlara-fut/-imp/-ind/-impf/-pres, oversattning, breakout-1/2/3 (generatorn slår upp gruppmetadata på '7:breakout-1' före 'breakout-1', eftersom sem 6 och 7 delar grupp-id men har olika teman).",
+  "sats": "grekiska, instruktion, oversattning (om facit), satsdelar[] (om annoterat), diffar[]/avvikelse_ref, kalla/sida, kommentar (💡 förklarande), falla (⚠︎ varning för fälla), ovningsgrupp, uteslut (ovningsgrupp = sektionsnyckel; uteslut = misextraherad, hoppas). facit_form = den omvandlade grekiska formen (formläreövningar, sem 7); negerad = formen med rätt negation (οὐ/μή); bibelreferens = NT-ställe. Sem 7:s ovningsgrupp-nycklar: formlara-fut/-imp/-ind/-impf/-pres, oversattning, breakout-1/2/3 (generatorn slår upp gruppmetadata på '7:breakout-1' före 'breakout-1', eftersom sem 6 och 7 delar grupp-id men har olika teman). ordlista[] = lärarens ordagranna ordförklaringar för just denna mening (glosor/inline-noter ur övnings- och breakout-bladen), visas synligt som översättningshjälp.",
   "verb": "lemma, glosa, klass (omega/kontrakt_e/oregelbunden), stam, seminarium, nt_frekvens, attesterade_former[] (verifierade ur seminarier), former_kompletta (bool), se_paradigm (mallreferens). Master-formad för framtida verb.json.",
   "kongruens": "substantiv, fras (med __ för adjektivluckan), kasus/genus/numerus, adjektiv[] (lemma+kongruent form), oversattning. För kongruensspelet.",
-  "paradigm": "mallar & regler för böjning (subst/adj/verb): former/andelser/regler; tacks_av_master pekar på masterfil om formerna redan finns där."
+  "paradigm": "mallar & regler för böjning (subst/adj/verb): former/andelser/regler; tacks_av_master pekar på masterfil om formerna redan finns där.",
+  "sektionsordlista": "sektionsordlistor['sem<N>-<gid>'] = de delade 'Ordlista'-block läraren gav en gång per breakout-rum (sem 2–6), ordagrant, en lista med glosrader. Renderas som en ruta överst i sektionen på seminarieövningssidan."
  },
  "_kallor": [
   {
@@ -6863,7 +6864,12 @@
    "grekiska": "οἱ πονηροὶ ἄνθρωποι ἀκούουσι τὸ καλὸν εὐαγγέλιον.",
    "instruktion": null,
    "oversattning": "De onda människorna lyssnar till det vackra evangeliet.",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "ἀκούω höra",
+    "πονηρός ond, fördärvad",
+    "καλός vacker"
+   ]
   },
   {
    "typ": "sats",
@@ -6873,7 +6879,10 @@
    "grekiska": "τῷ θεῷ πιστεύουσιν.",
    "instruktion": null,
    "oversattning": "De tror på Gud.",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "πιστεύω tro (konstrueras med dativ för den man tror på)"
+   ]
   },
   {
    "typ": "sats",
@@ -7109,7 +7118,11 @@
    "grekiska": "ὦ ἀδελφέ, πιστεύεις ταῖς καλαῖς ἐντολαῖς τῶν ἀγγέλων.",
    "instruktion": null,
    "oversattning": "Du, o broder, tror på änglarnas vackra bud.",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "πιστεύω tro på (med dativ för det man tror på)",
+    "ἡ ἐντολή bud, uppdrag"
+   ]
   },
   {
    "typ": "sats",
@@ -7119,7 +7132,13 @@
    "grekiska": "κλέπτει τὰ πονηρὰ τέκνα τὸ ἀργύριον τῶν πτωχῶν δούλων.",
    "instruktion": null,
    "oversattning": "De onda barnen stjäl de fattiga slavarnas pengar.",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "κλέπτω stjäla",
+    "πονηρός -ά -όν ond",
+    "τὸ ἀργύριον pengar",
+    "πτωχός -ή -όν fattig"
+   ]
   },
   {
    "typ": "sats",
@@ -7129,7 +7148,14 @@
    "grekiska": "τηρεῖ καὶ σῴζει ὁ Κύριος τὸν κόσμον.",
    "instruktion": null,
    "oversattning": "Herren bevakar och beskyddar världen.",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "τηρέω bevaka",
+    "καί och",
+    "σῴζω rädda, beskydda",
+    "ὁ κόσμος värld",
+    "ὁ Κύριος Herren"
+   ]
   },
   {
    "typ": "sats",
@@ -7139,7 +7165,10 @@
    "grekiska": "λαλοῦσιν οἱ ἄγγελοι τοὺς λόγους τοῦ Θεοῦ.",
    "instruktion": null,
    "oversattning": "Änglarna talar Guds ord.",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "λαλέω tala"
+   ]
   },
   {
    "typ": "sats",
@@ -7149,7 +7178,13 @@
    "grekiska": "ζητοῦμεν ἐν τῷ ἀγρῷ τοὺς δούλους τοῦ κυρίου.",
    "instruktion": null,
    "oversattning": "Vi söker husbondens slavar på fältet.",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "ζητέω söka",
+    "ἐν i (preposition som kräver dativ)",
+    "ὁ ἀγρός fält",
+    "ὁ κύριος herre, husbonde"
+   ]
   },
   {
    "typ": "sats",
@@ -7159,7 +7194,12 @@
    "grekiska": "οἱ ἀδελφοὶ ἄγουσι τὰ τέκνα εἰς τὸν οἶκον.",
    "instruktion": null,
    "oversattning": "Bröderna leder barnen till huset.",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "ἄγω leda",
+    "ὁ οἶκος hus",
+    "εἰς till (preposition som kräver ackusativ)"
+   ]
   },
   {
    "typ": "sats",
@@ -7170,7 +7210,16 @@
    "instruktion": null,
    "oversattning": "Systrarna söker Guds rike; ty de älskar sanningen.",
    "kommentar": "γάρ (’ty/för’) är postpositivt och står som satsens andra ord; det inleder en förklaring till det föregående. ζητοῦσιν/φιλοῦσι är kontraherade verb (-έω).",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "τοῦ Θεοῦ· φιλοῦσι: Notera att en hög punkt ( · ) i grekiskan motsvarar kolon ( : ) eller semikolon ( ; ) i svenskan.",
+    "ζητέω söka efter",
+    "ἡ ἀδελφή syster",
+    "ἡ βασιλεία rike, kungadöme",
+    "φιλέω gilla, älska",
+    "γάρ för, ty",
+    "ἡ ἀλήθεια sanning"
+   ]
   },
   {
    "typ": "sats",
@@ -7180,7 +7229,13 @@
    "grekiska": "ὁ Ἰησοῦς ποιεῖ καλὰ σημεῖα.",
    "instruktion": null,
    "oversattning": "Jesus gör sköna under(verk).",
-   "ovningsgrupp": "satser"
+   "ovningsgrupp": "satser",
+   "ordlista": [
+    "ὁ Ἰησοῦς Jesus",
+    "ποιέω göra",
+    "τὸ σημεῖον tecken, under, underverk",
+    "καλός -ή -όν skön, vacker"
+   ]
   },
   {
    "typ": "sats",
@@ -7295,7 +7350,22 @@
    "grekiska": "ἄγουσιν οἱ δοῦλοι τὰς παρθένους ἐκ τοῦ οἴκου εἰς τὴν κώμην, ὁ δὲ οἰκοδεσπότης τηρεῖ τὰ τέκνα σὺν τοῖς νεανίαις πρὸ τοῦ ἱεροῦ.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 1)",
    "oversattning": "Slavarna leder flickorna från huset till byn, men husbonden övervakar barnen tillsammans med ynglingarna framför templet.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "ἄγω leda",
+    "ὁ δοῦλος slav",
+    "ἡ παρθένος flicka (B § 60.2)",
+    "ἐκ + gen. ur ut, ur, från",
+    "εἰς + ack. till",
+    "ἡ κώμη by",
+    "δέ men, och (står i regel på andra plats i en mening, därför hamnar det här mellan bestämd artikel och substantiv)",
+    "ὁ οἰκοδεσπότης husbonde (B § 57)",
+    "τηρέω övervaka",
+    "ὁ νεανίας yngling (B § 57)",
+    "σύν + dat. med, tillsammans med",
+    "πρό + gen. framför (rum), före (tid)",
+    "τὸ ἱερόν tempel"
+   ]
   },
   {
    "typ": "sats",
@@ -7305,7 +7375,19 @@
    "grekiska": "ἐν τῇ ἐκκλησίᾳ βλέπομεν τὴν δόξαν τοῦ θεοῦ· μαρτυροῦσι γὰρ οἱ ἀδελφοὶ τῇ δικαιοσύνῃ καὶ τῇ ἀληθείᾳ.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 2)",
    "oversattning": "I kyrkan ser vi Guds härlighet; ty bröderna avlägger vittnesmål om rättvisan och sanningen.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "ἐν + dat. i",
+    "ἡ ἐκκλησία kyrka",
+    "βλέπω se",
+    "ἡ δόξα härlighet",
+    "ὁ ἀδελφός bror",
+    "μαρτυρέω bära vittnesbörd om (+ dat. för det man vittnar om)",
+    "ἡ δικαιοσύνη rättvisa",
+    "καί och",
+    "ἡ ἀλήθεια sanning",
+    "Notera att en hög punkt ( · ) i grekiskan motsvarar kolon ( : ) eller semikolon ( ; ) i svenskan"
+   ]
   },
   {
    "typ": "sats",
@@ -7315,7 +7397,15 @@
    "grekiska": "καλεῖτε τοὺς νεανίας πρὸ τοῦ σαββάτου, καὶ αἰτοῦσιν ἄρτον τοῖς τέκνοις.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 3)",
    "oversattning": "Ni kallar på ynglingarna före sabbaten, och de ber om bröd åt barnen.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "καλέω kalla",
+    "ὁ νεανίας yngling (B § 57)",
+    "πρό + gen. framför (rum), före (tid)",
+    "καί och",
+    "αἰτέω be om (med dativ för den man ber om någonting för)",
+    "τὸ τέκνον barn"
+   ]
   },
   {
    "typ": "sats",
@@ -7326,7 +7416,18 @@
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 4)",
    "oversattning": "O Herre, du räddar världen och människorna från demonernas makt; alltså tror vi på evangeliets sanning.",
    "avvikelse": "Övningsbladet skriver σῴζω utan iota subscriptum (σώζε/σώζεις/σώζω); formerna är här normaliserade till standardstavningen σῴζω (imperativ σῷζε).",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "ὁ Κύριος Herren",
+    "σῴζω rädda",
+    "ὁ κόσμος världen",
+    "ἐκ + gen. ur ut, ur, från",
+    "ἡ ἐξουσία makt",
+    "τὸ δαιμόνιον demon",
+    "πιστεύω tro (med ren dativ/εἰς + ack. för den man tror på)",
+    "οὖν alltså (står alltid på andra plats)",
+    "ἡ ἀλήθεια sanning"
+   ]
   },
   {
    "typ": "sats",
@@ -7336,7 +7437,16 @@
    "grekiska": "οὐ θεραπεύει ἡ παρθένος τὰς νόσους, ὦ προφῆτα, ἀλλὰ φιλεῖ τὰ τέκνα καὶ τηρεῖ τὰς ἐντολὰς τοῦ θεοῦ.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 5)",
    "oversattning": "Flickan helar inte sjukdomarna, o profet, men hon älskar barnen och följer Guds bud.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "θεραπεύω hela",
+    "ἡ παρθένος jungfru",
+    "ἡ νόσος sjukdom (B § 60)",
+    "ὁ προφήτης profet (B § 57)",
+    "ἀλλά men, utan",
+    "τηρέω bevara, här följa",
+    "ἡ ἐντολή bud"
+   ]
   },
   {
    "typ": "sats",
@@ -7346,7 +7456,17 @@
    "grekiska": "κηρύσσει ὁ υἱὸς τοῦ ἀνθρώπου ἐκ τοῦ πλοίου τοῖς μαθηταῖς, καὶ ἀκούουσι καὶ γράφουσι τοὺς λόγους τοῖς τέκνοις τοῦ οἰκοδεσπότου.",
    "instruktion": "Översättningsmening för självstudium (facit s. 4). (mening 6)",
    "oversattning": "Människosonen predikar till lärjungarna från båten, och de lyssnar och skriver (antecknar) orden för husbondens barn.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "κηρύσσω predika (med dat. för den man predikar för)",
+    "ὁ υἱός τοῦ ἀνθρώπου Människosonen",
+    "τὸ πλοῖον båt",
+    "ὁ μαθητής lärjunge",
+    "ἀκούω höra",
+    "γράφω skriva",
+    "ὁ λόγος ord",
+    "ὁ οἰκοδεσπότης husbonde"
+   ]
   },
   {
    "typ": "fras",
@@ -7705,7 +7825,11 @@
    "grekiska": "τίνα οἶνον πίνεις;",
    "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 3)",
    "oversattning": "Vilket vin dricker du? (förenat)",
-   "kommentar": "Här står τίνα attributivt till οἶνον: ’vilket vin?’. τίς/τί kan användas både självständigt (’vad?’) och attributivt (’vilken?’)."
+   "kommentar": "Här står τίνα attributivt till οἶνον: ’vilket vin?’. τίς/τί kan användas både självständigt (’vad?’) och attributivt (’vilken?’).",
+   "ordlista": [
+    "ὁ οἶνος vin",
+    "πίνω dricka"
+   ]
   },
   {
    "typ": "sats",
@@ -7733,7 +7857,10 @@
    "grekiska": "τίσι λαλεῖτε;",
    "instruktion": "Breakout 2: översätt (interrogativa pronomen). (mening 6)",
    "oversattning": "Med vilka talar ni?",
-   "kommentar": "τίσι(ν) är dativ plural. λαλέω konstrueras med dativ: ’till/med vilka talar ni?’."
+   "kommentar": "τίσι(ν) är dativ plural. λαλέω konstrueras med dativ: ’till/med vilka talar ni?’.",
+   "ordlista": [
+    "λαλέω tala, med dativ"
+   ]
   },
   {
    "typ": "sats",
@@ -7857,7 +7984,10 @@
    "sida": 1,
    "grekiska": "ἐγείρουσιν αὐτὸν καὶ λέγουσιν αὐτῷ, ὦ Διδάσκαλε […]",
    "instruktion": "Översättningsmening för självstudium (Mark 4:38, facit s. 4). (mening 1)",
-   "oversattning": "De väcker honom och säger till honom, o lärare!"
+   "oversattning": "De väcker honom och säger till honom, o lärare!",
+   "ordlista": [
+    "ὁ διδάσκαλος lärare"
+   ]
   },
   {
    "typ": "sats",
@@ -7867,7 +7997,12 @@
    "grekiska": "οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής·",
    "instruktion": "Översättningsmening för självstudium (Matt 14:2, facit s. 4). (mening 2)",
    "oversattning": "Denne är Johannes Döparen.",
-   "kommentar": "οὗτός bär två accenter därför att det enklitiska ἐστιν skjuter tillbaka sin accent på föregående ord. Grundformen är οὗτος."
+   "kommentar": "οὗτός bär två accenter därför att det enklitiska ἐστιν skjuter tillbaka sin accent på föregående ord. Grundformen är οὗτος.",
+   "ordlista": [
+    "οὗτος denne",
+    "ὁ βαπτιστής döpare",
+    "apposition B § 217"
+   ]
   },
   {
    "typ": "sats",
@@ -7877,7 +8012,10 @@
    "grekiska": "φωνὴ ἐκ τῶν οὐρανῶν λέγει· Οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός",
    "instruktion": "Översättningsmening för självstudium (Matt 3:17, facit s. 4). (mening 3)",
    "oversattning": "En röst ur himlen säger: Denne är min älskade son.",
-   "kommentar": "Attributivt adjektiv i efterställd ställning upprepar artikeln: ὁ υἱός μου ὁ ἀγαπητός = ’min älskade son’ (ordagrant ’sonen min, den älskade’)."
+   "kommentar": "Attributivt adjektiv i efterställd ställning upprepar artikeln: ὁ υἱός μου ὁ ἀγαπητός = ’min älskade son’ (ordagrant ’sonen min, den älskade’).",
+   "ordlista": [
+    "ἀγαπητός -ή -όν älskad, kär"
+   ]
   },
   {
    "typ": "sats",
@@ -7895,7 +8033,11 @@
    "sida": 1,
    "grekiska": "ταῦτα λέγεις καὶ ἡμᾶς ὑβρίζεις.",
    "instruktion": "Översättningsmening för självstudium (Luk 11:45, facit s. 4). (mening 5)",
-   "oversattning": "Du säger detta och förolämpar oss."
+   "oversattning": "Du säger detta och förolämpar oss.",
+   "ordlista": [
+    "ταῦτα form av οὗτος αὕτη τοῦτο ’dessa (ting)’/’detta’",
+    "ὑβρίζω förolämpa (jfr. hybris)"
+   ]
   },
   {
    "typ": "sats",
@@ -7913,7 +8055,11 @@
    "sida": 1,
    "grekiska": "οἱ δὲ ὄχλοι λέγουσιν· Οὗτός ἐστιν ὁ προφήτης Ἰησοῦς ὁ ἀπὸ Ναζαρὲθ τῆς Γαλιλαίας.",
    "instruktion": "Översättningsmening för självstudium (Matt 21:11, facit s. 4). (mening 7)",
-   "oversattning": "Folkhoparna säger: Denne är profeten Jesus från Nasaret i Galileen."
+   "oversattning": "Folkhoparna säger: Denne är profeten Jesus från Nasaret i Galileen.",
+   "ordlista": [
+    "δέ och, men",
+    "τῆς Γαλιλαίας genitiv ’i …’"
+   ]
   },
   {
    "typ": "sats",
@@ -7932,7 +8078,11 @@
    "grekiska": "πάντες δὲ ὑμεῖς ἀδελφοί ἐστε",
    "instruktion": "Översättningsmening för självstudium (Matt 23:8, facit s. 4). (mening 9)",
    "oversattning": "Och alla ni är bröder.",
-   "kommentar": "πάντες är nom. pl. mask. av πᾶς ’all/alla’. δέ är postpositivt och står alltid som satsens andra ord."
+   "kommentar": "πάντες är nom. pl. mask. av πᾶς ’all/alla’. δέ är postpositivt och står alltid som satsens andra ord.",
+   "ordlista": [
+    "πάντες form av πᾶς πᾶσα πᾶν",
+    "ἐστε form av εἰμί"
+   ]
   },
   {
    "typ": "sats",
@@ -7941,7 +8091,13 @@
    "sida": 1,
    "grekiska": "λέγει δὲ ὁ Πέτρος, Κύριε, πρὸς ἡμᾶς τὴν παραβολὴν ταύτην λέγεις ἢ καὶ πρὸς πάντας;",
    "instruktion": "Översättningsmening för självstudium (Luk 12:41, facit s. 4). (mening 10)",
-   "oversattning": "Och Petrus säger, Herre, säger du denna liknelse till oss eller också till alla?"
+   "oversattning": "Och Petrus säger, Herre, säger du denna liknelse till oss eller också till alla?",
+   "ordlista": [
+    "ἡ παραβολή liknelse",
+    "ταύτην form av οὗτος",
+    "ἢ καὶ eller också",
+    "πάντας form av πᾶς"
+   ]
   },
   {
    "typ": "sats",
@@ -7950,7 +8106,14 @@
    "sida": 1,
    "grekiska": "καὶ μετὰ ἡμέρας ἓξ παραλαμβάνει ὁ Ἰησοῦς τὸν Πέτρον καὶ τὸν Ἰάκωβον καὶ τὸν Ἰωάννην, καὶ ἀναφέρει αὐτοὺς εἰς ὄρος ὑψηλόν.",
    "instruktion": "Översättningsmening för självstudium (Mark 9:2, facit s. 4). (mening 11)",
-   "oversattning": "Och efter sex dagar tog Jesus med sig Petrus och Jakob och Johannes och för dem upp till ett högt berg."
+   "oversattning": "Och efter sex dagar tog Jesus med sig Petrus och Jakob och Johannes och för dem upp till ett högt berg.",
+   "ordlista": [
+    "ἕξ sex",
+    "παραλαμβάνω ta med sig",
+    "ἀναφέρω föra upp",
+    "τὸ ὄρος berg (tredje deklinationen, ej behandlad; samma form i ack. och nom.)",
+    "ὑψηλός hög"
+   ]
   },
   {
    "typ": "sats",
@@ -7960,7 +8123,13 @@
    "grekiska": "Κύριον τὸν θεόν σου προσκυνήσεις καὶ αὐτῷ μόνῳ λατρεύσεις.",
    "instruktion": "Översättningsmening för självstudium (Matt 4:10, facit s. 4). (mening 12)",
    "oversattning": "Du ska tillbedja Herren, din Gud, och tjäna honom allena.",
-   "falla": "Futurum med budkraft: ’du SKA tillbe’ (ett bud, inte en förutsägelse) — vanligt i GT-citat. Notera rektionen: προσκυνέω + ackusativ (Κύριον), men λατρεύω + dativ (αὐτῷ μόνῳ)."
+   "falla": "Futurum med budkraft: ’du SKA tillbe’ (ett bud, inte en förutsägelse) — vanligt i GT-citat. Notera rektionen: προσκυνέω + ackusativ (Κύριον), men λατρεύω + dativ (αὐτῷ μόνῳ).",
+   "ordlista": [
+    "Κύριος Herren (bestämd form trots avsaknad av artikel)",
+    "apposition B § 217",
+    "προσκυνέω tillbedja",
+    "λατρεύω tjäna (med dativ)"
+   ]
   },
   {
    "typ": "sats",
@@ -8185,7 +8354,11 @@
    "oversattning": "Och vingårdens herre säger: vad ska jag göra? Jag ska skicka min älskade son.",
    "bibelreferens": "Luk 20:13",
    "kommentar": "ἀμπελῶνος är genitiv av ἀμπελών (3:e deklinationen) — samma nasalstam som ἡγεμών, fast med lång stamvokal ω.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "ὁ ἀμπελών ῶνος vingård (3:e deklinationen, se presentation)",
+    "ἀγαπητός älskad"
+   ]
   },
   {
    "typ": "sats",
@@ -8197,7 +8370,13 @@
    "oversattning": "Och er lön ska vara stor, och ni ska vara den högstes söner.",
    "bibelreferens": "Luk 6:35",
    "kommentar": "ἔσται/ἔσεσθε är futurum av εἰμί (§171, se sem 6). πολύς står predikativt: 'lönen ska vara stor'.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "ὁ μισθός lön",
+    "πολύς πολλή πολύ mycket, stor, pl: många",
+    "ἔσται och ἔσεσθε är futurformer av εἰμι, se § 171 (se presentation 6)",
+    "ὁ ὕψιστος den Högste"
+   ]
   },
   {
    "typ": "sats",
@@ -8209,7 +8388,10 @@
    "oversattning": "Kärlekens och fridens Gud ska vara med er.",
    "bibelreferens": "2 Kor 13:11",
    "kommentar": "μεθ’ är μετά med apostrof (elision) framför vokal.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "μεθ’ = μετά"
+   ]
   },
   {
    "typ": "sats",
@@ -8221,7 +8403,13 @@
    "oversattning": "Jesus säger alltså till dem, Min tid är ännu inte inne, men er tid är alltid redo.",
    "bibelreferens": "Joh 7:6",
    "falla": "ὁ καιρὸς ὁ ἐμός visar den upprepade artikeln: betonad possessiv kan antingen stå mellan artikel och substantiv (ὁ ἐμὸς καιρός) eller efter en upprepad artikel (ὁ καιρὸς ὁ ἐμός). Båda betyder 'min tid'.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "οὔπω ännu inte",
+    "πάρειμι vara inne (böjs som εἰμι)",
+    "πάντοτε alltid",
+    "ἕτοιμος beredd, redo"
+   ]
   },
   {
    "typ": "sats",
@@ -8233,7 +8421,14 @@
    "oversattning": "Och jag säger till dig att du (betonat) är Petrus, och på denna klippa ska jag bygga min kyrka.",
    "bibelreferens": "Matt 16:18",
    "kommentar": "μου τὴν ἐκκλησίαν visar undantaget: den obetonade possessiven står i regel EFTER substantivet, men kan också stå före artikeln.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "ὅτι att",
+    "εἶ form av εἰμι (§ 156)",
+    "ταύτῃ form av οὗτος",
+    "ἡ πέτρα klippa",
+    "οἰκοδομέω bygga"
+   ]
   },
   {
    "typ": "sats",
@@ -8245,7 +8440,12 @@
    "oversattning": "Läraren säger, min tid är nära; hos dig firar jag (ordagrant: gör jag) påskmåltiden med mina lärjungar.",
    "bibelreferens": "Matt 26:18",
    "kommentar": "σέ är den betonade formen — den krävs efter preposition (πρὸς σέ).",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "ἐγγύς nära",
+    "πρός + ack. hos",
+    "τὸ πάσχα (oböjligt) påskmåltid"
+   ]
   },
   {
    "typ": "sats",
@@ -8257,7 +8457,10 @@
    "oversattning": "Vem är min mor, och vilka är mina bröder?",
    "bibelreferens": "Matt 12:48",
    "falla": "τίς har akut accent på iota = INTERROGATIVT ('vem?'). Utan accent (τις) hade det betytt 'någon'.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "ἡ μήτηρ moder (3:e deklinationen, § 80)"
+   ]
   },
   {
    "typ": "sats",
@@ -8269,7 +8472,14 @@
    "oversattning": "Om någon vill vara först, ska han vara allas tjänare.",
    "bibelreferens": "Mark 9:35",
    "falla": "τις utan accent på iota = INDEFINIT ('någon'). Jämför mening 7. εἶναι är infinitiv som komplement till θέλει.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "εἰ om",
+    "τις någon (ingen accent på första iotat = indefinit, inte interrogativt)",
+    "εἶναι infinitiv till εἰμι",
+    "διάκονος (ὁ) tjänare",
+    "πάντων form av πᾶς πᾶσα πᾶν"
+   ]
   },
   {
    "typ": "sats",
@@ -8281,7 +8491,10 @@
    "oversattning": "Vad tänker du göra?",
    "bibelreferens": "Apg 22:26",
    "kommentar": "μέλλω + infinitiv (ποιεῖν) — samma konstruktion som svenskans 'tänker göra'.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "μέλλω tänka, komma att (+ infinitiv)"
+   ]
   },
   {
    "typ": "sats",
@@ -8293,7 +8506,11 @@
    "oversattning": "Paulus säger till honom, Gud kommer att slå dig.",
    "bibelreferens": "Apg 23:3",
    "kommentar": "Infinitiven τύπτειν står först för emfas; σε är dess objekt. Ordagrant: 'slå dig kommer Gud att'.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "μέλλω tänka, komma att (+ infinitiv)",
+    "τύπτω slå"
+   ]
   },
   {
    "typ": "sats",
@@ -8304,7 +8521,10 @@
    "instruktion": "II. Översätt till svenska (facit s. 5). (mening 11)",
    "oversattning": "Hör du vad dessa säger?",
    "bibelreferens": "Matt 21:16",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "οὗτοι form av οὗτος"
+   ]
   },
   {
    "typ": "sats",
@@ -8316,7 +8536,11 @@
    "oversattning": "Lyssna, Israel, Herren, vår Gud, är en Herre.",
    "bibelreferens": "Mark 12:29",
    "kommentar": "Ἄκουε är imperativ 2:a sg (stam + -ε) — inte indikativ ἀκούεις.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "Ἰσραήλ Israel, oböjligt",
+    "εἷς en"
+   ]
   },
   {
    "typ": "sats",
@@ -8351,7 +8575,13 @@
    "oversattning": "Fariséerna sade till hans lärjungar, varför äter er lärare med tulltjänstemän och syndare?",
    "bibelreferens": "Matt 9:11",
    "kommentar": "διὰ τί = 'varför' (ordagrant 'på grund av vad').",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "διδάσκαλος (ὁ) lärare",
+    "διὰ τί varför",
+    "τελώνης (ὁ) tulltjänsteman (första deklinationen, maskulint substantiv)",
+    "ἁμαρτωλός (ὁ) syndare"
+   ]
   },
   {
    "typ": "sats",
@@ -8363,7 +8593,15 @@
    "oversattning": "De (alt. jag) fördrev många onda andar, och smorde många sjuka med olja och helade dem.",
    "bibelreferens": "Mark 6:13",
    "falla": "ἐξέβαλλον visar inre augment: i sammansatta verb sätts augmentet MELLAN prefixet och verbet (ἐκ + ἔβαλλον → ἐξέβαλλον, med ἐκ → ἐξ framför vokal, § 138:7). Formen är dessutom tvetydig: 1:a sg eller 3:e pl.",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "ἐξέβαλλον – om ett verb konstrueras med ett prefix, placeras augmentet mellan prefixet (ἐκ) och den enkla verbformen (βάλλω). I stället för ἐκ används ἐξ eftersom det följs av en vokal (B § 138:7).",
+    "πολλά, πολλοὺς former av πολύς",
+    "ἀλείφω smörja",
+    "ἔλαιον (τό) olja (översätt denna dativ ’med…’)",
+    "ἄρρωστος sjuk",
+    "θεραπεύω hela, bota"
+   ]
   },
   {
    "typ": "sats",
@@ -8374,7 +8612,10 @@
    "instruktion": "II. Översätt till svenska (facit s. 5). (mening 17)",
    "oversattning": "I synagogorna predikade han att Jesus är Guds son.",
    "bibelreferens": "Apg 9:20",
-   "ovningsgrupp": "oversattning"
+   "ovningsgrupp": "oversattning",
+   "ordlista": [
+    "ὅτι att"
+   ]
   },
   {
    "typ": "sats",
@@ -8402,7 +8643,10 @@
    "sida": 1,
    "grekiska": "γράφει αὐτοῖς.",
    "instruktion": "Breakout 1: översätt (futurum och personliga pronomen). (mening 3)",
-   "oversattning": "Han/hon skriver till dem"
+   "oversattning": "Han/hon skriver till dem",
+   "ordlista": [
+    "γράφω skriva"
+   ]
   },
   {
    "typ": "sats",
@@ -8421,7 +8665,10 @@
    "sida": 1,
    "grekiska": "ὑπάγει αὐτάς.",
    "instruktion": "Breakout 1: översätt (futurum och personliga pronomen). (mening 5)",
-   "oversattning": "Han/hon för bort dem"
+   "oversattning": "Han/hon för bort dem",
+   "ordlista": [
+    "ὑπάγω föra bort"
+   ]
   },
   {
    "typ": "sats",
@@ -8461,7 +8708,10 @@
    "grekiska": "πέμψει ὁ κύριος ἡμῶν τὸ πλοῖον πρὸς ὑμᾶς.",
    "instruktion": "Breakout 1: översätt (futurum och personliga pronomen). (mening 9)",
    "oversattning": "Vår herre ska skicka båten till er",
-   "kommentar": "Verbet står först — grekiskan har fri ordföljd; kasus, inte platsen, visar att ὁ κύριος är subjekt."
+   "kommentar": "Verbet står först — grekiskan har fri ordföljd; kasus, inte platsen, visar att ὁ κύριος är subjekt.",
+   "ordlista": [
+    "τὸ πλοῖον båt"
+   ]
   },
   {
    "typ": "sats",
@@ -8500,7 +8750,10 @@
    "sida": 2,
    "grekiska": "οἱ ἐχθροὶ ὑμῶν",
    "instruktion": "Breakout 2: översätt (possessiva pronomen). (mening 1)",
-   "oversattning": "era fiender"
+   "oversattning": "era fiender",
+   "ordlista": [
+    "ὁ ἔχθρος fiende"
+   ]
   },
   {
    "typ": "sats",
@@ -8539,7 +8792,10 @@
    "grekiska": "ὁ ἡμέτερος οἰκοδεσπότης",
    "instruktion": "Breakout 2: översätt (possessiva pronomen). (mening 5)",
    "oversattning": "vår husbonde",
-   "kommentar": "ἡμέτερος är betonad possessiv och böjs som ett vanligt 2-1-2-adjektiv — därför står den mellan artikel och substantiv, precis som ὁ ἀγαθὸς δοῦλος."
+   "kommentar": "ἡμέτερος är betonad possessiv och böjs som ett vanligt 2-1-2-adjektiv — därför står den mellan artikel och substantiv, precis som ὁ ἀγαθὸς δοῦλος.",
+   "ordlista": [
+    "ὁ οἰκοδεσπότης husbonde"
+   ]
   },
   {
    "typ": "sats",
@@ -8558,7 +8814,10 @@
    "grekiska": "ὁ φίλος ἡμῶν",
    "instruktion": "Breakout 2: översätt (possessiva pronomen). (mening 7)",
    "oversattning": "vår vän",
-   "kommentar": "Obetonat ἡμῶν efter substantivet. Betonat blir det ὁ ἡμέτερος φίλος — samma betydelse, men med eftertryck ('VÅR vän, inte er')."
+   "kommentar": "Obetonat ἡμῶν efter substantivet. Betonat blir det ὁ ἡμέτερος φίλος — samma betydelse, men med eftertryck ('VÅR vän, inte er').",
+   "ordlista": [
+    "ὁ φίλος vän"
+   ]
   },
   {
    "typ": "sats",
@@ -8596,7 +8855,11 @@
    "grekiska": "πάντες ἔλεγον ὅτι οὗτός ἐστιν Ἰωάννης ὁ βαπτιστής.",
    "instruktion": "Breakout 3: översätt (imperfekt). (mening 1)",
    "oversattning": "Alla sade att han är Johannes Döparen.",
-   "kommentar": "ἔλεγον kan vara både 1:a sg ('jag sade') och 3:e pl ('de sade') — ändelserna sammanfaller i imperfekt. Här visar πάντες ('alla') att det är 3:e plural."
+   "kommentar": "ἔλεγον kan vara både 1:a sg ('jag sade') och 3:e pl ('de sade') — ändelserna sammanfaller i imperfekt. Här visar πάντες ('alla') att det är 3:e plural.",
+   "ordlista": [
+    "ἔλεγον (= λέγω)",
+    "ὅτι att"
+   ]
   },
   {
    "typ": "sats",
@@ -8606,7 +8869,10 @@
    "grekiska": "ὁ Ἰωάννης ἐβάπτιζε πολλοὺς ἀνθρώπους.",
    "instruktion": "Breakout 3: översätt (imperfekt). (mening 2)",
    "oversattning": "Johannes döpte många människor.",
-   "kommentar": "Augmentet ἐ- framför konsonant: βαπτίζω → ἐβάπτιζε. πολλούς är ackusativ pl av πολύς."
+   "kommentar": "Augmentet ἐ- framför konsonant: βαπτίζω → ἐβάπτιζε. πολλούς är ackusativ pl av πολύς.",
+   "ordlista": [
+    "πολλοὺς form av πολύς"
+   ]
   },
   {
    "typ": "sats",
@@ -8627,7 +8893,10 @@
    "instruktion": "Breakout 3: översätt (imperfekt). (mening 4)",
    "oversattning": "Många hörde honom och trodde på honom",
    "falla": "ἀκούω tar ofta objektet i GENITIV (αὐτοῦ), och πιστεύω tar det i DATIV (αὐτῷ). Ingen av dem är possessiv här — det är verbens rektion.",
-   "kommentar": "Augment vid vokalstam: ἀκούω → ἤκουον (ἐ + ἀ = η)."
+   "kommentar": "Augment vid vokalstam: ἀκούω → ἤκουον (ἐ + ἀ = η).",
+   "ordlista": [
+    "ἤκουον (= ἀκούω; detta verb vill ofta ha ett direkt objekt i genitiv!)"
+   ]
   },
   {
    "typ": "sats",
@@ -8690,7 +8959,12 @@
    "sida": 1,
    "grekiska": "ὁ καλὸς ἀδελφὸς λέγει.",
    "oversattning": "Den vackre brodern talar.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "καλός vacker",
+    "ὁ ἀδελφός bror",
+    "λέγω säga"
+   ]
   },
   {
    "typ": "sats",
@@ -8699,7 +8973,12 @@
    "sida": 1,
    "grekiska": "οἱ πιστοὶ ἀπόστολοι κηρύσσουσι τὸ ἅγιον εὐαγγέλιον.",
    "oversattning": "De trogna apostlarna predikar det heliga evangeliet.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "πιστός trogen",
+    "κηρύσσω predika",
+    "ἅγιος helig"
+   ]
   },
   {
    "typ": "sats",
@@ -8708,7 +8987,12 @@
    "sida": 1,
    "grekiska": "τὰ μικρὰ τέκνα βαπτίζετε.",
    "oversattning": "Ni döper de små barnen.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "τὸ τέκνον barn",
+    "μικρός liten",
+    "βαπτίζω döpa"
+   ]
   },
   {
    "typ": "sats",
@@ -8717,7 +9001,12 @@
    "sida": 1,
    "grekiska": "ἐσθίομεν τὸν ἀγαθὸν ἄρτον.",
    "oversattning": "Vi äter det goda brödet.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "ἐσθίω äta",
+    "ὁ ἄρτος bröd",
+    "ἀγαθός god"
+   ]
   },
   {
    "typ": "sats",
@@ -8726,7 +9015,11 @@
    "sida": 1,
    "grekiska": "τὸν υἱὸν ὁ θεὸς πέμπει τοῖς ἀνθρώποις.",
    "oversattning": "Gud skickar sin son till människorna.",
-   "ovningsgrupp": "sjalvstudium"
+   "ovningsgrupp": "sjalvstudium",
+   "ordlista": [
+    "ὁ υἱός son",
+    "πέμπω skicka (konstrueras med dativ för den som man skickar något till)"
+   ]
   },
   {
    "typ": "sats",
@@ -9318,7 +9611,11 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Upp 11:12",
    "kommentar": "ἀκούω styr ofta genitiv (φωνῆς) i stället för ackusativ.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "μέγας μεγάλη μέγα stor",
+    "ἤκουσαν form av ἀκούω (notera att verbet ofta styr genitiv i stället för ackusativ)"
+   ]
   },
   {
    "typ": "sats",
@@ -9329,7 +9626,10 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Matt 2:15",
    "falla": "καλέω avviker: aoristen är ἐκάλεσα (kort ε), inte ἐκάλησα.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἐκάλεσα form av καλέω kalla (notera att detta verb avviker från regeln att kontraherade verb på -έω får epsilon förlängt till eta framför sigmat, dvs. ἐκάλεσα är den normala aoristformen, inte ἐκάλησα)"
+   ]
   },
   {
    "typ": "sats",
@@ -9340,7 +9640,11 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Luk 14:16",
    "kommentar": "ἐποίει är imperfekt (pågående); τις fungerar som obestämd artikel ’en’.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "τις form av det indefinita pronomenet τις τινός, här använt som obestämd artikel (B § 224:7)",
+    "τὸ δεῖπνον middag"
+   ]
   },
   {
    "typ": "sats",
@@ -9351,7 +9655,14 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Luk 15:25",
    "kommentar": "Bisats inledd med ὡς (då/när). ἐγγίζω tar dativ.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ὡς då",
+    "ἐγγίζω närma sig (med dativ för det man närmar sig)",
+    "ἤκουσαν form av ἀκούω (notera att verbet ofta styr genitiv i stället för ackusativ)",
+    "ἡ συμφωνία musik",
+    "ὁ χορός dans"
+   ]
   },
   {
    "typ": "sats",
@@ -9361,7 +9672,11 @@
    "oversattning": "Från berget följde honom många folkhopar.",
    "ovningsgrupp": "sjalvstudium",
    "kommentar": "ὄρους är genitiv sg av τὸ ὄρος (3:e dekl., -ους).",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ὄρους genitiv singular av τὸ ὄρος (B § 82, 83:1-2)",
+    "ἀκολουθέω följa (med dativ för den man följer)"
+   ]
   },
   {
    "typ": "sats",
@@ -9371,7 +9686,11 @@
    "oversattning": "Jag skrev inte dessa (=detta).",
    "ovningsgrupp": "sjalvstudium",
    "kommentar": "ἔγραψα aorist av γράφω; ταῦτα form av οὗτος.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἔγραψα form av γράφω",
+    "ταῦτα form av οὗτος"
+   ]
   },
   {
    "typ": "sats",
@@ -9382,7 +9701,13 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Luk 15:15",
    "kommentar": "Infinitiv βόσκειν efter ’skicka’ anger målet: ’för att…’.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἔπεμψαν form av πέμπω",
+    "ὁ ἀγρός fält",
+    "βόσκω utfordra, vakta (formen här är presens infinitiv, och den används efter verb som betyder ’skicka’ för att beteckna målet med handlingen. Alltså: ’för att…’ B § 270:1)",
+    "ὁ χοῖρος svin"
+   ]
   },
   {
    "typ": "sats",
@@ -9393,7 +9718,10 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Matt 1:21",
    "kommentar": "σώσει futurum av σῴζω; σῴζω ἀπό + gen. = rädda från.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "σώζω ἀπό + gen. rädda från"
+   ]
   },
   {
    "typ": "sats",
@@ -9404,7 +9732,11 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Mark 15:41",
    "kommentar": "Bisats med ὅτε (när). γυνή, γυναικός är 3:e dekl.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἦν form av εἰμι (se B § 156)",
+    "ἡ γυνή γυναικός kvinna (tredje deklinationen, B § 73:2)"
+   ]
   },
   {
    "typ": "sats",
@@ -9415,7 +9747,10 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Joh 7:11",
    "kommentar": "Imperfekt ἐζήτουν: de sökte gång på gång (pågående/upprepat).",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἡ ἑορτή fest"
+   ]
   },
   {
    "typ": "sats",
@@ -9426,7 +9761,12 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Joh 7:1",
    "kommentar": "ὅτι här kausalt (eftersom). Bisatsen bär eget predikat (ἐζήτουν).",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἐθέλω vilja (samma som θέλω; det man vill konstrueras med infinitiv)",
+    "ὅτι att; eftersom",
+    "ζητέω söka, konstrueras med infinitiv (’söka att göra något’)"
+   ]
   },
   {
    "typ": "sats",
@@ -9437,7 +9777,11 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Mark 1:8",
    "kommentar": "ὕδατι, πνεύματι är dativer av 3:e-dekl. neutra ὕδωρ, πνεῦμα (’med…’). Betonade pronomina ἐγώ/οὗτος.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ὕδατι form av ὕδωρ, πνεύματι form av πνεῦμα (se B § 72), i båda fallen kan man översätta med ’med…’ (B § 238:1)",
+    "Notera de betonade personliga pronomina!"
+   ]
   },
   {
    "typ": "sats",
@@ -9448,7 +9792,14 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Luk 23:35",
    "kommentar": "Villkorsbisats med εἰ (om). σωσάτω aorist imperativ (’låt honom rädda’).",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "εἰ om",
+    "ἄλλος η ον sg. annan, pl. andra",
+    "ἔσωσεν och σωσάτω former av σώζω; imperativen kan översättas med ’låt honom…’ osv (för översättningsmöjligheter se B § 265:2)",
+    "ἑαυτόν sig",
+    "ἐκλεκτός utvald (här substantiverat)"
+   ]
   },
   {
    "typ": "sats",
@@ -9459,7 +9810,13 @@
    "ovningsgrupp": "sjalvstudium",
    "bibelreferens": "Joh 15:20",
    "kommentar": "Två εἰ-bisatser. Aorist (ἐδίωξαν/ἐτήρησαν) i villkoret, futurum i huvudsatsen.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "εἰ om",
+    "διώκω förfölja",
+    "ὑμέτερος -α -ον er, ert (betonat possessivt pronomen, se presentation 7)",
+    "καί och, också"
+   ]
   },
   {
    "typ": "sats",
@@ -9469,7 +9826,11 @@
    "oversattning": "Han undervisade dem i/med liknelser.",
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Mark 4:2",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἐδίδασκεν form av διδάσκω",
+    "ἡ παραβολή liknelse"
+   ]
   },
   {
    "typ": "sats",
@@ -9480,7 +9841,10 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Mark 5:18",
    "kommentar": "παρεκάλει imperfekt av παρακαλέω (kontraherat -έω).",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "παρεκάλει form av παρακαλέω tillkalla"
+   ]
   },
   {
    "typ": "sats",
@@ -9491,7 +9855,10 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Apg 8:28",
    "kommentar": "ἀναγινώσκω med augment inne i ordet (elision): ἀν-ε-γίνωσκεν.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἀναγινώσκω läsa"
+   ]
   },
   {
    "typ": "sats",
@@ -9502,7 +9869,10 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Mark 5:24",
    "kommentar": "ἀκολουθέω tar dativ (αὐτῷ).",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἠκολούθει form av ἀκολουθέω följa (med dativ för den man följer)"
+   ]
   },
   {
    "typ": "sats",
@@ -9513,7 +9883,10 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Rom 14:10",
    "kommentar": "τί här självständigt = ’varför’.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "τί form av det interrogativa pronomenet τίς, här självständigt och i betydelse ’varför’"
+   ]
   },
   {
    "typ": "sats",
@@ -9524,7 +9897,11 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Luk 10:30",
    "kommentar": "Sammansatt verb κατα-βαίνω med augment inne i ordet: κατ-έ-βαινεν.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "καταβαίνω gå ned",
+    "τις indefinit pronomen (B § 123), kan översättas med ’en’"
+   ]
   },
   {
    "typ": "sats",
@@ -9534,7 +9911,10 @@
    "oversattning": "Petrus och Johannes gick upp till templet.",
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Apg 3:1",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἀναβαίνω gå upp"
+   ]
   },
   {
    "typ": "sats",
@@ -9545,7 +9925,12 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Joh 10:23",
    "kommentar": "Σολομών, -ῶνος böjs efter 3:e dekl. (jfr. ἡγεμών).",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "περιεπάτει form av περιπατέω",
+    "ἡ στοά portik, pelarhall",
+    "ὁ Σολομών -ῶνος Salomo (namnet böjs efter tredje deklinationen, ungefär som ἡγεμών -όνος, se B § 76)"
+   ]
   },
   {
    "typ": "sats",
@@ -9556,7 +9941,10 @@
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "Matt 13:3",
    "kommentar": "ἐλάλησεν sigmatisk aorist av λαλέω.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἐλάλησεν form av λαλέω"
+   ]
   },
   {
    "typ": "sats",
@@ -9567,7 +9955,10 @@
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "Luk 11:1",
    "kommentar": "ἐδίδαξεν aorist av διδάσκω: διδακ + σ = διδαξ.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἐδίδαξεν aoristform av διδάσκω"
+   ]
   },
   {
    "typ": "sats",
@@ -9578,7 +9969,10 @@
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "Mark 15:14",
    "falla": "ἐποίησεν är aorist (’gjorde’), inte imperfekt ἐποίει (’höll på att göra’).",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "τί (interrogativt pronomen) står här tillsammans med adjektivet κακόν och betyder ’vad?’, dvs. ’vad ont?’ eller ’vad för ont?’"
+   ]
   },
   {
    "typ": "sats",
@@ -9589,7 +9983,12 @@
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "Luk 20:9",
    "kommentar": "ἀμπελών, -ῶνος 3:e dekl. (jfr. ἡγεμών).",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "τις form av det indefinita pronomenet τις τινός (B § 123)",
+    "φυτεύω plantera",
+    "ὁ ἀμπελών -ῶνος vingård (B § 76)"
+   ]
   },
   {
    "typ": "sats",
@@ -9599,7 +9998,13 @@
    "oversattning": "Och många följde honom, och han helade dem alla.",
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "Matt 12:15",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ἠκολούθησαν form av ἀκολουθέω följa (med dativ för den man följer)",
+    "θεραπεύω hela",
+    "πολλοί form av πολύς πολλή πολύ",
+    "πάντας form av πᾶς πᾶσα πᾶν"
+   ]
   },
   {
    "typ": "sats",
@@ -9610,7 +10015,12 @@
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "Apg 7:52",
    "kommentar": "πατήρ, πατρός 3:e dekl. med avljud.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "τίνα form av det interrogativa pronomenet τίς (den följande genitiven kan översättas ’av…’)",
+    "διώκω förfölja",
+    "ὁ πατήρ πατρός fader (B § 80)"
+   ]
   },
   {
    "typ": "sats",
@@ -9621,7 +10031,15 @@
    "ovningsgrupp": "breakout-3",
    "bibelreferens": "Matt 19:23",
    "kommentar": "ὅτι-sats (att) efter sägeverbet λέγω.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ὅτι att",
+    "πλούσιος rik man",
+    "δυσκόλως med svårighet (adverb)",
+    "εἰσελεύσεται ska komma in",
+    "ἡ βασιλεία, -ας rike",
+    "ὁ οὐρανός, -ου himmel"
+   ]
   },
   {
    "typ": "sats",
@@ -9632,7 +10050,15 @@
    "ovningsgrupp": "breakout-3",
    "bibelreferens": "Joh 2:23",
    "kommentar": "Bisats med ὡς (när). ὄνομα, ὀνόματος 3:e-dekl. neutrum.",
-   "_sem8": true
+   "_sem8": true,
+   "ordlista": [
+    "ὡς när",
+    "τὰ Ἱεροσόλυμα Jerusalem",
+    "τὸ πάσχα påsk",
+    "ἡ ἑορτή, -ῆς fest",
+    "πιστεύω tro på (med dativ för den man tror på)",
+    "τὸ ὄνομα, ὀνόματος namn (med den vidare betydelsen ’väsen’, ’person’, ’den man är’)"
+   ]
   },
   {
    "typ": "sats",
@@ -9673,7 +10099,10 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Mark 6:16",
    "kommentar": "Relativsatsen är ὃν ἀπεκεφάλισεν ὁ Ἡρῴδης. ὅν är maskulinum sg (efter korrelatet ἄνθρωπος) men ackusativ, eftersom det är direkt objekt i bisatsen.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "ἀποκεφαλίζω halshugga"
+   ]
   },
   {
    "typ": "sats",
@@ -9684,7 +10113,13 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Matt 10:38",
    "falla": "ὅς är här subjekt i bisatsen → nominativ. αὐτοῦ ’sitt’; det man är värdig (μου) står i genitiv.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "λαμβάνω ta",
+    "ὁ σταυρός kors",
+    "αὐτοῦ sitt",
+    "ἄξιος värdig (det man är värdig står i genitiv)"
+   ]
   },
   {
    "typ": "sats",
@@ -9695,7 +10130,10 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Joh 2:22",
    "kommentar": "Korrelatet λόγῳ står i dativ (πιστεύω styr dativ), men relativpronomenet ὅν är ackusativ — det är objekt i sin egen bisats.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "ὁ λόγος ord"
+   ]
   },
   {
    "typ": "sats",
@@ -9706,7 +10144,12 @@
    "ovningsgrupp": "breakout-1",
    "bibelreferens": "Joh 6:64",
    "kommentar": "οἵ är maskulinum pluralis, subjekt i bisatsen. εἰσίν form av εἰμί; ἐξ översätts bäst ’av’.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "εἰσίν form av εἰμι, vara finnas",
+    "τινες form av τις τινός, någon",
+    "ἐξ översätts bäst med ’av’"
+   ]
   },
   {
    "typ": "sats",
@@ -9717,7 +10160,10 @@
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "—",
    "kommentar": "Substantiverat particip: bestämd artikel + particip utan substantiv = ’den som …’. τρώγω äta.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "τρώγω äta"
+   ]
   },
   {
    "typ": "sats",
@@ -9728,7 +10174,10 @@
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "—",
    "kommentar": "πίνω dricka. Maskulinum nominativ singular ger ’den som’.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "πίνω dricka"
+   ]
   },
   {
    "typ": "sats",
@@ -9739,7 +10188,12 @@
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "Joh 3:3",
    "kommentar": "Participet ὁ πιστεύων är satsens subjekt; huvudverbet är ἔχει. αἰώνιος ’evig’ är ett adjektiv med två slut.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "ἔχω ha",
+    "ἡ ζωή liv",
+    "αἰώνιος, -ον evig (”adjektiv med två slut”)"
+   ]
   },
   {
    "typ": "sats",
@@ -9750,7 +10204,11 @@
    "ovningsgrupp": "breakout-2",
    "bibelreferens": "Joh 6:54",
    "kommentar": "Två samordnade particip (τρώγων … καὶ πίνων) med varsitt objekt. ἡ σάρξ σαρκός, τὸ αἷμα αἵματος — tredje deklinationen.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "ἡ σάρξ, σαρκός kött (tredje deklinationen)",
+    "τὸ αἷμα, τὸ αἵματος blod (tredje deklinationen)"
+   ]
   },
   {
    "typ": "sats",
@@ -9761,7 +10219,10 @@
    "ovningsgrupp": "breakout-3",
    "bibelreferens": "Luk 7:20",
    "kommentar": "ἀπέστειλεν är aorist av ἀποστέλλω utan sigma: ἀπεστελ-σ- → ἀπέστειλ- (σ faller, ε→ει).",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "ἀποστέλλω ἀπέστειλα (sigmatisk aorist utan sigma) sända"
+   ]
   },
   {
    "typ": "sats",
@@ -9772,7 +10233,11 @@
    "ovningsgrupp": "breakout-3",
    "bibelreferens": "Luk 18:37",
    "kommentar": "ἀπήγγειλαν aorist av ἀπαγγέλλω (utan sigma). ὅτι inleder en att-sats. πάρειμι ’vara närvarande, vara där’.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "ἀπαγγέλλω ἀπήγγειλα (sigmatisk aorist utan sigma) berätta, meddela",
+    "πάρειμι jag är närvarande, jag är där"
+   ]
   },
   {
    "typ": "sats",
@@ -9783,7 +10248,13 @@
    "ovningsgrupp": "breakout-3",
    "bibelreferens": "Joh 17:18",
    "kommentar": "Två aoristformer av ἀποστέλλω (2 sg ἀπέστειλας, 1 sg ἀπέστειλα). καθώς ’såsom’; κἀγώ = καὶ ἐγώ.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "καθώς såsom",
+    "ἀποστέλλω, ἀπέστειλα (sigmatisk aorist utan sigma) sända",
+    "ὁ κόσμος värld",
+    "κἀγώ = καὶ ἐγώ också jag"
+   ]
   },
   {
    "typ": "sats",
@@ -9794,7 +10265,17 @@
    "ovningsgrupp": "breakout-3",
    "bibelreferens": "Upp 19:2",
    "kommentar": "ἔκρινεν aorist av κρίνω utan sigma (ἐκριν-σ- → ἔκρῑνα, ι förlängs). ἥ är relativpronomen (subjekt i bisatsen). ἔφθειρεν aorist av φθείρω.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "κρίνω, ἔκρῑνα (sigmatisk aorist utan sigma) döma",
+    "ἡ πόρνη sköka",
+    "ἥ (relativpronomen)",
+    "φθείρω, ἔφθειρα (sigmatisk aorist utan sigma) fördärva",
+    "ἡ γῆ jorden",
+    "ἡ πορνεία otukt",
+    "ἐν + dat. i, här med",
+    "αὐτῆς sin"
+   ]
   },
   {
    "typ": "sats",
@@ -9805,7 +10286,12 @@
    "ovningsgrupp": "breakout-4",
    "bibelreferens": "Joh 14:27",
    "kommentar": "δίδωμι är ett μι-verb (1 sg presens). ἡ εἰρήνη fred; ἐμός ’min’.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "ἡ εἰρήνη fred",
+    "ἐμός, -ή, -όν min",
+    "δίδωμι ge"
+   ]
   },
   {
    "typ": "sats",
@@ -9816,7 +10302,11 @@
    "ovningsgrupp": "breakout-4",
    "bibelreferens": "Joh 21:13",
    "kommentar": "δίδωσιν är 3 sg presens av δίδωμι (-σι(ν)-ändelsen). ὁ ἄρτος bröd.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "λαμβάνω ta",
+    "ὁ ἄρτος bröd"
+   ]
   },
   {
    "typ": "sats",
@@ -9827,7 +10317,11 @@
    "ovningsgrupp": "breakout-4",
    "bibelreferens": "1 Kor 12:31",
    "kommentar": "δείκνυμι μι-verb, 1 sg presens ’jag visar’. ἡ ὁδός väg.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "ἡ ὁδός väg",
+    "δείκνυμι visa"
+   ]
   },
   {
    "typ": "sats",
@@ -9838,7 +10332,15 @@
    "ovningsgrupp": "breakout-4",
    "bibelreferens": "Matt 15:26",
    "kommentar": "Två infinitiver (λαμβάνειν, βάλλειν) som subjekt till οὐκ ἔστιν καλόν. τὸ κυνάριον ’hund(valp)’.",
-   "_sem9": true
+   "_sem9": true,
+   "ordlista": [
+    "καλός, -ή, -όν vacker",
+    "λαμβάνω ta",
+    "ὁ ἄρτος bröd",
+    "τὸ τέκνον barn",
+    "βάλλω kasta",
+    "τὸ κυνάριον hund"
+   ]
   }
  ],
  "verb": [
@@ -11864,5 +12366,139 @@
    "not": "Speglar de interrogativa adverben från seminarium 6 (par-adverb-interrogativa). Läggs INTE i glosor.json: de är accentlösa tvillingar till ποῦ/πόθεν och skulle bli förvirrande som glosskort — de hör hemma i grammatikreferensen. ποι förekommer inte i NT."
   }
  ],
- "_kallor_not": "Seminarium 5 extraherades ur PDF (rent textlager), ej ur zip-arkiv med JPEG-sidecar; därför bild=null för seminarium-5-poster. Detsamma gäller seminarium 6 och 7 (rena PDF:er, bild=null). Seminarium 7 = kurs-PDF:erna för BG 1:7 (14 juli 2026), normaliserade filnamn: '7. Presentation_14_juli_2026.pdf' → 7__Presentation.pdf, '7. Övningsblad.pdf' → 7__O_vningsblad.pdf, '7. Breakout rooms.pdf' → 7__Breakout_rooms.pdf."
+ "_kallor_not": "Seminarium 5 extraherades ur PDF (rent textlager), ej ur zip-arkiv med JPEG-sidecar; därför bild=null för seminarium-5-poster. Detsamma gäller seminarium 6 och 7 (rena PDF:er, bild=null). Seminarium 7 = kurs-PDF:erna för BG 1:7 (14 juli 2026), normaliserade filnamn: '7. Presentation_14_juli_2026.pdf' → 7__Presentation.pdf, '7. Övningsblad.pdf' → 7__O_vningsblad.pdf, '7. Breakout rooms.pdf' → 7__Breakout_rooms.pdf.",
+ "sektionsordlistor": {
+  "sem2-verbformer": [
+   "ἀκούω jag hör",
+   "λέγω jag säger",
+   "βλέπω jag ser",
+   "γράφω jag skriver",
+   "ἐσθίω jag äter",
+   "κηρύσσω jag predikar",
+   "λαμβάνω jag tar, jag griper",
+   "παιδεύω jag uppfostrar",
+   "πέμπω jag skickar",
+   "εὑρίσκω jag finner"
+  ],
+  "sem2-breakout": [
+   "ἄνθρωπος människa",
+   "βλέπω se",
+   "οἶκος hus",
+   "ἄγγελος budbärare, ängel",
+   "γράφω skriva",
+   "ἀδελφός bror",
+   "ἀπόστολος apostel",
+   "θεός gud",
+   "οὐρανός himmel",
+   "κύριος herre",
+   "δοῦλος slav",
+   "λόγος ord, berättelse"
+  ],
+  "sem3-satser": [
+   "ὁ δοῦλος ’slav’",
+   "βλέπω ’titta’",
+   "ὁ οἶκος ’hus’",
+   "σῴζω ’rädda’",
+   "ὁ ἀδελφός ’broder’",
+   "λέγω ’säga’",
+   "γράφω ’skriva’",
+   "ὁ λόγος ’ord’",
+   "τὸ εὐαγγέλιον ’glatt budskap, evangelium’",
+   "εὑρίσκω ’finna’",
+   "πέμπω ’skicka’",
+   "τὸ πλοῖον ’båt’",
+   "τὸ σημεῖον ’tecken’ (jfr. semantik)",
+   "τὸ τέκνον ’barn’"
+  ],
+  "sem3-substantivfraser": [
+   "ἅγιος (adj.) ’helig’",
+   "πονηρός (adj.) ’ond’",
+   "καλός (adj.) ’vacker’",
+   "ἀγαθός (adj.) ’god’",
+   "ὁ ἄγγελος (subst. mask.) ’ängel, budbärare’",
+   "ὁ δοῦλος (subst. mask.) ’slav’",
+   "ὁ ἀδελφός (subst. mask.) ’bror’",
+   "ὁ οὐρανός (subst. mask.) ’himmel’",
+   "ὁ θεός (subst. mask.) ’Gud’",
+   "τὸ εὐαγγέλιον (subst. neutr.) ’evangelium’",
+   "τὸ ἱερόν (subst. neutr.) ’tempel’",
+   "τὸ τέκνον (subst. neutr.) ’barn’"
+  ],
+  "sem4-breakout": [
+   "κηρύσσω predika",
+   "ἡ ἀλήθεια, -ας sanning",
+   "ὁ κύριος, -ου herre",
+   "ὁ κόσμος, -ου värld",
+   "τὸ τέκνον, -ου barn",
+   "τὸ σημεῖον, -ου tecken",
+   "ἡ ψυχή, -ῆς själ",
+   "ἡ ἀγάπη, -ης kärlek",
+   "σῴζω rädda"
+  ],
+  "sem5-prepositionsfraser": [
+   "ἡ θάλασσα hav",
+   "ἡ κώμη by",
+   "ἡ ἔρημος öken",
+   "ἡ γῆ jord",
+   "ὁ λίθος sten",
+   "ὁ μαθητής lärjunge (se B § 57 för böjningsmönster efter ναύτης)",
+   "ὁ ἁμαρτωλός syndare",
+   "ἡ νόσος sjukdom",
+   "ἀπό + gen. från, av",
+   "διά + gen. genom, + ack. på grund av",
+   "εἰς + ack. in i, i",
+   "ἐκ, ἐξ + gen. ur, ut ur",
+   "ἐν + dat. i",
+   "ἐπί + gen., på, över, + dat., vid, + ack. mot",
+   "κατά + gen., utför, mot, + ack. enligt",
+   "μετά + gen. med + ack. efter",
+   "παρά + gen. från + dat. hos, vid + ack. bredvid",
+   "περί + gen. om, angående, + ack. kring",
+   "πρός + gen. på (ngns sida), + dat. vid, + ack. hos, till",
+   "σύν + dat. med, jämte",
+   "ὑπέρ + gen. över, för, i stället för, + ack. över, mer än",
+   "ὑπό + gen. av, genom, + ack. under"
+  ],
+  "sem5-negation": [
+   "ὁ φίλος vän",
+   "ἀκούω höra",
+   "πιστεύω tro",
+   "ἁμαρτάνω synda"
+  ],
+  "sem5-pronomen": [
+   "ζητέω söka",
+   "φιλέω gilla, älska",
+   "λαλέω tala (med dativ för den man talar med)"
+  ],
+  "sem6-breakout-1": [
+   "βαπτίζω döpa",
+   "λέγω tala, säga",
+   "ζητέω söka",
+   "εὑρίσκω finna",
+   "ἡ ἐρήμος öken",
+   "ἡ εἰρήνη fred",
+   "ἐξάγω leda ut, föra ut",
+   "φέρω föra",
+   "ὁ θάνατος döden",
+   "ὁ τόπος plats"
+  ],
+  "sem6-breakout-2": [
+   "τίς τίνος; vem, vad (självständigt)? vilken/vilket (förenat)? (B § 122:1)",
+   "ποῦ; var?",
+   "ποῖ; vart?",
+   "πόθεν; varifrån?",
+   "πότε; när?"
+  ],
+  "sem6-breakout-3": [
+   "πιστεύω tro, lita på (med dativ)",
+   "παιδεύω undervisa, uppfostra",
+   "λαλέω tala, säga",
+   "ὁ μαθητής lärjunge",
+   "ὁ ἄγγελος ängel",
+   "ὁ ἀπόστολος apostel",
+   "ὁ προφήτης profet",
+   "τὸ τέκνον barn",
+   "ἡ ἀλήθεια sanning"
+  ]
+ }
 }
