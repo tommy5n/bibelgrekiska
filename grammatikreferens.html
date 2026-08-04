@@ -201,15 +201,40 @@
       th.h-gen { color: #8a5a86; } th.h-dat { color: #3f7a4f; } th.h-ack { color: #b0642f; }
       .swe-inline { font-size: var(--fs-2xs); color: var(--ink-soft); }
 
-      /* ── S1 Självtest: dölj formerna, klicka för att visa ───────────── */
-      body.test-mode table.gr td.gr-el {
-        filter: blur(5px); cursor: pointer; border-radius: 0;
-        transition: filter 0.12s ease; user-select: none;
+      /* ── S1 Självtest per kort: dölj formerna, tryck för att avslöja ──── */
+      /* Knappen sitter i varje korts rubrik och skjuts åt höger. */
+      .gr-selftest {
+        margin-left: auto; align-self: center;
+        font: inherit; font-size: var(--fs-3xs); font-weight: 600;
+        color: var(--ink-soft); background: transparent;
+        border: 1px solid var(--line); border-radius: 999px;
+        padding: 0.14rem 0.7rem; cursor: pointer; white-space: nowrap;
+        -webkit-tap-highlight-color: transparent;
+        transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
       }
-      body.test-mode table.gr td.gr-el.revealed {
-        filter: none; cursor: default; user-select: auto;
+      .gr-selftest:hover { color: var(--ink); border-color: var(--gold); }
+      .gr-card.testing .gr-selftest {
+        color: #fff; background: var(--accent, var(--gold));
+        border-color: var(--accent, var(--gold));
+      }
+      /* Sudda via text-shadow — inget filter-lager som slocknar/laggar på iPad.
+         Glyfen görs osynlig (color:transparent, även barn-spans) och skuggan
+         blir en färgad suddklump. Bara det aktiva kortet suddas åt gången. */
+      .gr-card.testing table.gr td.gr-el:not(.revealed),
+      .gr-card.testing table.gr td.gr-el:not(.revealed) * {
+        color: transparent;
+      }
+      .gr-card.testing table.gr td.gr-el:not(.revealed) {
+        text-shadow: 0 0 0.5em var(--ink);
+        cursor: pointer; user-select: none; -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .gr-card.testing table.gr td.gr-el.revealed {
         background: color-mix(in srgb, var(--gold) 13%, transparent);
       }
+      /* Andmatrisen har färgade former — låt suddklumpen ärva färgen */
+      .gr-andmatris.testing table.gr td.gr-el:not(.revealed) { text-shadow: 0 0 0.5em var(--gold); }
+      .gr-andmatris.testing table.gr tr.eimi td.gr-el:not(.revealed) { text-shadow: 0 0 0.5em #b0642f; }
       /* toggles staplas snyggt */
       .gr-controls { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; margin: -0.6rem 0 1.1rem; }
       .gr-controls .gr-arttoggle { margin: 0; }
@@ -391,10 +416,6 @@
           <b>nom · gen · dat · ack · vok</b>.
         </p>
         <div class="gr-controls">
-          <label class="gr-arttoggle">
-            <input type="checkbox" id="gr-studytoggle" />
-            <b>Testa dig själv</b> — dölj formerna, klicka på en cell för att avslöja
-          </label>
           <label class="gr-arttoggle">
             <input type="checkbox" id="gr-arttoggle" />
             Visa <b>artikeln</b> framför formerna (<span class="gr-grek">ὁ ἄνθρωπος …</span>)
@@ -1030,7 +1051,7 @@
         <!-- ══ Personändelser — översikt (självtest-fusklapp) ══ -->
         <section class="gr-card gr-andmatris" id="verb-andelser" style="--accent:#8a5a86">
           <h3>Personändelser — hela översikten <span class="ex">λύω · φιλέω</span> <span class="sem">Sem 2–4</span></h3>
-          <p class="note">Alla personändelser ni gått igenom, samlade på ett ställe — samma sammanställning som lärarens två bilder. Slå på <b>”Testa dig själv”</b> högst upp för att sudda ändelserna; klicka på en cell för att avslöja. Nöta <b>nedåt</b> i en kolumn (samma person genom alla tempus) och <b>tvärs</b> en rad (hela paradigmet).</p>
+          <p class="note">Alla personändelser ni gått igenom, samlade på ett ställe — samma sammanställning som lärarens två bilder. Tryck på <b>”Testa dig själv”</b> uppe i kortet för att sudda ändelserna; tryck på en cell för att avslöja. Nöta <b>nedåt</b> i en kolumn (samma person genom alla tempus) och <b>tvärs</b> en rad (hela paradigmet).</p>
 
           <div class="amtable-wrap">
             <table class="gr">
@@ -2118,20 +2139,36 @@
         document.body.classList.toggle('show-artikel', artToggle.checked);
       });
 
-      // S1 Självtest: dölj formerna; klicka på en cell för att avslöja.
-      const studyToggle = document.getElementById('gr-studytoggle');
-      studyToggle.addEventListener('change', () => {
-        document.body.classList.toggle('test-mode', studyToggle.checked);
-        if (!studyToggle.checked)
-          document.querySelectorAll('td.gr-el.revealed').forEach((c) => c.classList.remove('revealed'));
-      });
-      document.querySelectorAll('table.gr').forEach((tbl) =>
-        tbl.addEventListener('click', (ev) => {
-          if (!document.body.classList.contains('test-mode')) return;
+      // S1 Självtest per kort: en knapp i varje korts rubrik suddar just det
+      // kortets former; tryck på en cell för att avslöja den. Scopat per kort
+      // så att aldrig fler än ett korts celler suddas åt gången.
+      document.querySelectorAll('.gr-card').forEach((card) => {
+        if (!card.querySelector('table.gr td.gr-el')) return; // bara kort med former
+        const h3 = card.querySelector('h3');
+        if (!h3) return;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'gr-selftest';
+        btn.textContent = 'Testa dig själv';
+        btn.setAttribute('aria-pressed', 'false');
+        h3.appendChild(btn);
+
+        const setTesting = (on) => {
+          card.classList.toggle('testing', on);
+          btn.setAttribute('aria-pressed', String(on));
+          btn.textContent = on ? 'Visa alla' : 'Testa dig själv';
+          if (!on)
+            card.querySelectorAll('td.gr-el.revealed').forEach((c) => c.classList.remove('revealed'));
+        };
+        btn.addEventListener('click', () => setTesting(!card.classList.contains('testing')));
+
+        card.addEventListener('click', (ev) => {
+          if (!card.classList.contains('testing')) return;
           const cell = ev.target.closest('td.gr-el');
           if (cell) cell.classList.toggle('revealed');
-        }),
-      );
+        });
+      });
 
       // S3 Hover-markera alla rader med samma kasus inom samma kort.
       const KCLS = ['k-nom', 'k-gen', 'k-dat', 'k-ack', 'k-vok'];
