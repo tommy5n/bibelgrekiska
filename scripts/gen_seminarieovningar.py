@@ -34,7 +34,7 @@ def css_version():
     return m.group(1)
 
 # Vilka seminarier som renderas.
-SEMINARIER = [2, 3, 4, 5, 6, 7, 8, 9]
+SEMINARIER = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 # ── Parsning av instruktion (sem 6: grupp härleds ur instruktionstexten) ─
 RE_BREAKOUT = re.compile(r"Breakout\s+(\S+?):\s*översätt\s*\(([^)]*)\)")
@@ -51,6 +51,11 @@ def esc(s):
 # Nyckeln "<sem>:<gid>" vinner över "<gid>" — sem 6 och 7 delar grupp-id
 # (breakout-1/2/3) men har olika teman.
 GRUPPER = {
+    # sem 1 — läsövningar (alfabet/ordkunskap): läs och gissa betydelsen
+    "lasovning-1": ("Läsövning 1", "Läs &amp; gissa betydelsen",
+        "Skriv av orden, läs högt och gissa betydelsen. Många är grekiska lånord du känner igen i svenskan.", "#3f7a4f"),
+    "lasovning-2": ("Läsövning 2", "Gissa betydelse &amp; ordklass",
+        "Läs orden, gissa betydelsen och bestäm ordklass (substantiv, verb eller adjektiv).", "#4a6a8a"),
     # sem 2–5 (grupp bärs av fältet ovningsgrupp)
     "verbformer": ("Verbformer", "Presens indikativ",
         "Skriv av, läs högt och översätt. Personändelsen avslöjar vem som handlar — subjektet behöver inte skrivas ut.", "#3f7a4f"),

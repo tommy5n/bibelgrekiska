@@ -10543,6 +10543,412 @@
     "βάλλω kasta",
     "τὸ κυνάριον hund"
    ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "τὸ ἅγιον πνεῦμα",
+   "oversattning": "den heliga Anden",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ett adjektivattribut med bestämd artikel kan placeras på tre ställen: (1) mellan artikel och substantiv, (2) med upprepad artikel efter substantivet, (3) med egen artikel efter ett substantiv utan artikel. Alla tre översätts i regel likadant. (B § 225:2)",
+   "kommentar": "Placering 1: attributet mellan artikel och substantiv. (πνεῦμα är 3:e-dekl. neutrum.)"
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "τὸ πνεῦμα τὸ ἅγιον",
+   "oversattning": "den heliga Anden",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ett adjektivattribut med bestämd artikel kan placeras på tre ställen: (1) mellan artikel och substantiv, (2) med upprepad artikel efter substantivet, (3) med egen artikel efter ett substantiv utan artikel. Alla tre översätts i regel likadant. (B § 225:2)",
+   "kommentar": "Placering 2: substantivet först, sedan artikeln upprepad + attributet."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "πνεῦμα τὸ ἅγιον",
+   "oversattning": "den heliga Anden",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ett adjektivattribut med bestämd artikel kan placeras på tre ställen: (1) mellan artikel och substantiv, (2) med upprepad artikel efter substantivet, (3) med egen artikel efter ett substantiv utan artikel. Alla tre översätts i regel likadant. (B § 225:2)",
+   "kommentar": "Placering 3: obestämt substantiv följt av artikel + attribut — ändå bestämd betydelse."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ τοῦ ἀποστόλου οἶκος",
+   "oversattning": "apostelns hus",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ett genitivattribut till ett bestämt substantiv kan på samma sätt placeras mellan, efter eller före huvudordet, och översätts i regel likadant.",
+   "kommentar": "Genitivattributet τοῦ ἀποστόλου inkilat mellan artikel och substantiv."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ οἶκος τοῦ ἀποστόλου",
+   "oversattning": "apostelns hus",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ett genitivattribut till ett bestämt substantiv kan på samma sätt placeras mellan, efter eller före huvudordet, och översätts i regel likadant.",
+   "kommentar": "Genitivattributet efter substantivet — den vanligaste ordföljden."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "τοῦ ἀποστόλου ὁ οἶκος",
+   "oversattning": "apostelns hus",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ett genitivattribut till ett bestämt substantiv kan på samma sätt placeras mellan, efter eller före huvudordet, och översätts i regel likadant.",
+   "kommentar": "Genitivattributet före hela frasen."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "τὸ πρόβατον φεύγει τὸν λύκον, ὅς ἐστι πονηρός.",
+   "oversattning": "Fåret flyr vargen, som är ond.",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Relativpronomenets genus och numerus följer korrelatet; kasus avgörs av dess roll i relativsatsen.",
+   "kommentar": "Korrelat τὸν λύκον (mask. sg.) → ὅς är maskulinum singular; som subjekt i bisatsen står det i nominativ. τὸ πρόβατον ’fåret’, ὁ λύκος ’vargen’, φεύγω ’fly (undan)’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "τὸ πρόβατον φεύγει τοὺς λύκους, οὓς οὐ φιλεῖ.",
+   "oversattning": "Fåret flyr vargarna, som det inte gillar.",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Relativpronomenets genus och numerus följer korrelatet; kasus avgörs av dess roll i relativsatsen.",
+   "kommentar": "Korrelat τοὺς λύκους (mask. pl.) → οὕς; här objekt i bisatsen → ackusativ. φιλέω ’gilla’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ πιστεύων ἄνθρωπος",
+   "oversattning": "den troende människan / människan som tror",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Om participet står direkt efter bestämd artikel (som ett adjektiv) översätts det som ett adjektiv eller som en relativsats med predikat i presens.",
+   "kommentar": "Participet ὁ πιστεύων bestämmer ἄνθρωπος attributivt — som adjektiv (’den troende’) eller relativsats (’som tror’). Kan också stå ὁ ἄνθρωπος ὁ πιστεύων."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ ἀκούων",
+   "oversattning": "den som hör",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Väldigt vanligt i NT: ett presens particip med endast bestämd artikel (utan substantiv), som översätts ’den som …’ (relativsats). Particip negeras ofta med μή.",
+   "kommentar": "Maskulinum nominativ singular av participet (-ων): ’den som hör’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ βλέπων",
+   "oversattning": "den som tittar",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Väldigt vanligt i NT: ett presens particip med endast bestämd artikel (utan substantiv), som översätts ’den som …’ (relativsats). Particip negeras ofta med μή.",
+   "kommentar": "’Den som tittar/ser’ — samma mönster som ὁ ἀκούων."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ἡ βλέπουσα",
+   "oversattning": "hon som tittar",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Väldigt vanligt i NT: ett presens particip med endast bestämd artikel (utan substantiv), som översätts ’den som …’ (relativsats). Particip negeras ofta med μή.",
+   "kommentar": "Femininum (-ουσα) med femininartikel ἡ: ’hon som tittar’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ μὴ πιστεύων",
+   "oversattning": "den som inte tror",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Väldigt vanligt i NT: ett presens particip med endast bestämd artikel (utan substantiv), som översätts ’den som …’ (relativsats). Particip negeras ofta med μή.",
+   "kommentar": "Participet negeras med μή (inte οὐ): ’den som inte tror’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ πιστεύων τῷ θεῷ",
+   "oversattning": "den som tror på Gud",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Particip visar sin verbala natur genom att kunna ta direkt och indirekt objekt; objektet kan också placeras mellan artikeln och participet.",
+   "kommentar": "Participet tar dativobjekt (πιστεύω styr dativ): ’den som tror på Gud’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ ἀκούων τὸν λόγον μου",
+   "oversattning": "den som hör mitt ord",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Particip visar sin verbala natur genom att kunna ta direkt och indirekt objekt; objektet kan också placeras mellan artikeln och participet.",
+   "kommentar": "Participet tar ackusativobjekt τὸν λόγον μου: ’den som hör mitt ord’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ τῷ θεῷ πιστεύων",
+   "oversattning": "den som tror på Gud",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Particip visar sin verbala natur genom att kunna ta direkt och indirekt objekt; objektet kan också placeras mellan artikeln och participet.",
+   "kommentar": "Samma betydelse som ὁ πιστεύων τῷ θεῷ, men med objektet τῷ θεῷ inkilat mellan artikel och particip."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 9,
+   "kalla": "9. Presentation_28_juli_2026.pdf",
+   "grekiska": "ὁ τὸν λόγον μου ἀκούων",
+   "oversattning": "den som hör mitt ord",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Particip visar sin verbala natur genom att kunna ta direkt och indirekt objekt; objektet kan också placeras mellan artikeln och participet.",
+   "kommentar": "Objektet τὸν λόγον μου står mellan artikel och particip — samma betydelse som ὁ ἀκούων τὸν λόγον μου."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 8,
+   "kalla": "8. Presentation_21_juli_2026.pdf",
+   "grekiska": "αὕτη ἀγγέλλει ὅτι ὁ προφήτης κηρύσσει ἐν τῇ ἐρήμῳ.",
+   "oversattning": "Hon meddelar att profeten predikar i öknen.",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Bisatser: ὅτι (att) står efter sägeverb som λέγω (säga) och ἀγγέλλω (meddela).",
+   "kommentar": "αὕτη = det demonstrativa ’hon/denna’ (spiritus asper + akut), inte αὐτή. ὅτι-satsen är objekt till ἀγγέλλει."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 8,
+   "kalla": "8. Presentation_21_juli_2026.pdf",
+   "grekiska": "λέγει τὴν ἀλήθειαν.",
+   "oversattning": "Han/hon säger sanningen.",
+   "ovningsgrupp": "presentation",
+   "lararnot": "Notera: en bisats som inleds med ὅτι (’att’) har ofta samma funktion som ett enkelt objekt — jämför λέγει τὴν ἀλήθειαν med λέγει ὅτι …",
+   "kommentar": "Här är objektet ett vanligt substantiv (τὴν ἀλήθειαν, ackusativ). Poängen: en ὅτι-sats kan fylla samma objektsroll som detta enkla objekt."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "θεός",
+   "oversattning": "gud",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. teologi, ateism, panteon."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "γυμνάσιον",
+   "oversattning": "övningsplats",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. gymnasium, gymnastik (γυμνός ’naken’ — grekerna tränade nakna)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "στάδιον",
+   "oversattning": "tävlingsbana",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. stadion; först ett längdmått för själva löpbanan."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "δρᾶμα",
+   "oversattning": "drama",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. drama, dramatik (δράω ’handla, göra’)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "διάβολος",
+   "oversattning": "djävul",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. diabolisk; ordagrant ’förtalaren’ (διαβάλλω ’anklaga’)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "θέατρον",
+   "oversattning": "åskådarplats (teater)",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. teater (θεάομαι ’betrakta’)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "ἀρχαιολογία",
+   "oversattning": "forntidsberättelse (arkeologi)",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. arkeologi (ἀρχαῖος ’gammal’ + λόγος ’lära’)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "παράδεισος",
+   "oversattning": "trädgård (paradis)",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. paradis; ett persiskt lånord för inhägnad park."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "εὐχαριστία",
+   "oversattning": "tacksägelse (nattvard)",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. eukaristi (εὖ ’väl’ + χάρις ’tack, nåd’)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "φιλοσοφία",
+   "oversattning": "filosofi",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. filosofi; ’kärlek till vishet’ (φίλος + σοφία)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "χαρακτήρ",
+   "oversattning": "stämpel, karaktär",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. karaktär; ursprungligen en inpräglad stämpel/prägel."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "κατάλογος",
+   "oversattning": "förteckning, katalog",
+   "ovningsgrupp": "lasovning-1",
+   "kommentar": "Jfr. katalog (κατά + λέγω ’räkna upp’)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "ἄγγελος",
+   "oversattning": "budbärare, ängel (subst.)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "Jfr. ängel, evangelium; en ἄγγελος är en ’budbärare’."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "εὑρίσκω",
+   "oversattning": "finna, jfr. Heureka! (verb)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "Arkimedes ’εὕρηκα!’ = ’jag har funnit det!’."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "εὐαγγέλιον",
+   "oversattning": "evangelium (subst.)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "’Gott budskap’ (εὖ ’väl’ + ἄγγελος ’budbärare’); jfr. evangelist."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "υἱός",
+   "oversattning": "son (subst.)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "Vanligt i uttrycket ὁ υἱὸς τοῦ ἀνθρώπου ’Människosonen’."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "ὀρχήστρα",
+   "oversattning": "dansplats, orkester (subst.)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "Jfr. orkester; i teatern platsen framför scenen där kören dansade."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "ῥῆμα",
+   "oversattning": "tal, ord (subst.)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "Jfr. retorik (samma rot som ῥήτωρ ’talare’)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "ὅλος",
+   "oversattning": "hel, jfr. katolicism, holism (adjektiv)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "καθ’ ὅλου ’i det hela’ → ’katolsk’ (allomfattande)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "ἅγιος",
+   "oversattning": "helig, ren, jfr. Hagia Sofia (adjektiv)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "Hagia Sofia = ’Den heliga visheten’ (kyrkan i Istanbul)."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "μέταλλον",
+   "oversattning": "gruva (subst.)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "Jfr. metall; grundbetydelsen är ’gruva, malmåder’."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "δαιμόνιον",
+   "oversattning": "gudomlighet, ond ande (subst.)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "Jfr. demon (δαίμων ’gudomlig makt’); i NT oftast ’ond ande’."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "πρόθεσις",
+   "oversattning": "uppställning, jfr. protes (subst.)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "πρό ’före’ + θέσις ’sättande’; jfr. även ’preposition’."
+  },
+  {
+   "typ": "lasord",
+   "seminarium": 1,
+   "kalla": "1__Breakout_rooms.pdf",
+   "grekiska": "ἐγκαλέω",
+   "oversattning": "beskylla (verb)",
+   "ovningsgrupp": "lasovning-2",
+   "kommentar": "ἐν ’in, mot’ + καλέω ’kalla, ropa’ → ’anklaga’."
   }
  ],
  "verb": [
