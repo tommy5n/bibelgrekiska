@@ -150,6 +150,25 @@ def bygg_grupper(satser):
     return grupper
 
 
+# Sektionsordning inom varje seminarium: presentation → breakout → självstudium.
+# Kategorin avgörs av källfilen för gruppens första sats (Presentation- /
+# Breakout-/Seminarium- vs. Övningsblad-PDF); övningsbladen ÄR
+# självstudiematerialet ("Övningar/Översättningsmeningar för självstudium").
+def sektion_bucket(poster):
+    kalla = poster[0].get("kalla") or ""
+    if "Presentation" in kalla:
+        return 0
+    if "Breakout" in kalla or "Seminarium" in kalla:
+        return 1
+    return 2  # Övningsblad = självstudium
+
+
+def ordna_grupper(grupper):
+    """Sorterar grupperna presentation→breakout→självstudium. Stabil sort
+    bevarar ordningen inom varje kategori (= PDF-/förekomstordning)."""
+    return dict(sorted(grupper.items(), key=lambda kv: sektion_bucket(kv[1])))
+
+
 def facit_ref(sats):
     """Bibelreferens: eget fält, annars ur självstudie-instruktionen."""
     ref = sats.get("bibelreferens")
@@ -334,7 +353,7 @@ def main():
         satser = [s for s in alla if s.get("seminarium") == sem]
         if not satser:
             continue
-        grupper = bygg_grupper(satser)
+        grupper = ordna_grupper(bygg_grupper(satser))
         toc_block.append(toc_for_sem(sem, grupper))
         toc_print_block.append(toc_print_for_sem(sem, grupper))
         for gid, poster in grupper.items():
