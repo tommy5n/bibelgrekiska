@@ -624,6 +624,19 @@
    "seminarium": []
   },
   {
+   "lemma": "βαστάζω",
+   "glosa": "bära, lyfta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 27,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    10
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
    "lemma": "βλέπω",
    "glosa": "se, titta",
    "ordklass": "verb",
@@ -785,6 +798,32 @@
    "seminarium": []
   },
   {
+   "lemma": "δείκνυμι",
+   "glosa": "visa, peka",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 33,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    10
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
+   "lemma": "δέχομαι",
+   "glosa": "ta emot",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 56,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    10
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
    "lemma": "διά",
    "glosa": "genom; på grund av",
    "ordklass": "preposition",
@@ -818,7 +857,9 @@
    "frekvens": 415,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": [],
+   "seminarium": [
+    10
+   ],
    "listor": [
     "prov"
    ]
@@ -1265,6 +1306,19 @@
    "seminarium": []
   },
   {
+   "lemma": "ἐργάζομαι",
+   "glosa": "arbeta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 41,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    10
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
    "lemma": "ἔργον",
    "glosa": "verk, gärning",
    "ordklass": "substantiv",
@@ -1289,7 +1343,9 @@
    "frekvens": 631,
    "harParadigm": false,
    "status": "exakt",
-   "seminarium": []
+   "seminarium": [
+    10
+   ]
   },
   {
    "lemma": "ἐσθίω",
@@ -1493,6 +1549,19 @@
    "seminarium": [
     6
    ]
+  },
+  {
+   "lemma": "θεάομαι",
+   "glosa": "skåda, betrakta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 22,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    10
+   ],
+   "kalla": "seminarium-ordlista"
   },
   {
    "lemma": "θέλημα",
@@ -1759,6 +1828,19 @@
    ]
   },
   {
+   "lemma": "κυνάριον",
+   "glosa": "hund, liten hund",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 4,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    10
+   ],
+   "kalla": "seminarium-ordlista"
+  },
+  {
    "lemma": "κύριος",
    "glosa": "herre, härskare",
    "ordklass": "substantiv",
@@ -1853,6 +1935,19 @@
    "listor": [
     "prov"
    ]
+  },
+  {
+   "lemma": "λούω",
+   "glosa": "tvätta",
+   "ordklass": "verb",
+   "genus": null,
+   "frekvens": 5,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    10
+   ],
+   "kalla": "seminarium-ordlista"
   },
   {
    "lemma": "μαθητής",
@@ -2347,6 +2442,19 @@
    "seminarium": [
     7
    ]
+  },
+  {
+   "lemma": "παιδίον",
+   "glosa": "litet barn",
+   "ordklass": "substantiv",
+   "genus": "n",
+   "frekvens": 52,
+   "harParadigm": false,
+   "status": "exakt",
+   "seminarium": [
+    10
+   ],
+   "kalla": "seminarium-ordlista"
   },
   {
    "lemma": "πάλιν",

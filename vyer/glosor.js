@@ -4,7 +4,7 @@ export function teardown(){ if(__kh){ document.removeEventListener("keydown", __
 const MARKUP = `<div class="vy vy-glosor">
 <header>
   <h1>Bibelgrekiska — glosor</h1>
-  <div class="sub" id="subtitle">seminarium 2–9 · grekiska → svenska</div>
+  <div class="sub" id="subtitle">seminarium 2–10 · grekiska → svenska</div>
 </header>
 
 <div class="modes" role="group" aria-label="Spelläge">
@@ -107,6 +107,7 @@ const GLOSOR = [
   {"l": "βαπτίζω", "g": "döpa", "o": "verb", "gen": null, "f": 77, "s": [3, 6, 7], "d": ["sem", "60", "prov"]},
   {"l": "βασιλεία", "g": "rike", "o": "substantiv", "gen": "f", "f": 162, "s": [4, 8], "d": ["sem", "60"]},
   {"l": "βασιλεύς", "g": "kung", "o": "substantiv", "gen": "m", "f": 115, "s": [], "d": ["60"]},
+  {"l": "βαστάζω", "g": "bära, lyfta", "o": "verb", "gen": null, "f": 27, "s": [10], "d": ["sem"]},
   {"l": "βλέπω", "g": "se, titta", "o": "verb", "gen": null, "f": 133, "s": [2, 3, 5, 7], "d": ["sem", "60", "prov"]},
   {"l": "γάρ", "g": "ty, för, ju", "o": "partikel", "gen": null, "f": 1039, "s": [4, 5], "d": ["sem", "60", "prov"]},
   {"l": "γεννάω", "g": "föda, avla, framkalla", "o": "verb", "gen": null, "f": 97, "s": [], "d": ["60"]},
@@ -119,9 +120,11 @@ const GLOSOR = [
   {"l": "δαιμόνιον", "g": "ond ande, demon", "o": "substantiv", "gen": "n", "f": 63, "s": [5, 7], "d": ["sem", "60"]},
   {"l": "δέ", "g": "och, men", "o": "partikel", "gen": null, "f": 2766, "s": [5, 6], "d": ["sem", "60", "prov"]},
   {"l": "δεῖ", "g": "man måste, det åligger", "o": "verb", "gen": null, "f": null, "s": [], "d": []},
+  {"l": "δείκνυμι", "g": "visa, peka", "o": "verb", "gen": null, "f": 33, "s": [10], "d": ["sem"]},
+  {"l": "δέχομαι", "g": "ta emot", "o": "verb", "gen": null, "f": 56, "s": [10], "d": ["sem"]},
   {"l": "διά", "g": "genom; på grund av", "o": "preposition", "gen": null, "f": 666, "s": [5, 7], "d": ["sem", "60"]},
   {"l": "διδάσκω", "g": "undervisa, lära", "o": "verb", "gen": null, "f": 96, "s": [7, 8], "d": ["sem", "60"]},
-  {"l": "δίδωμι", "g": "ge", "o": "verb", "gen": null, "f": 415, "s": [], "d": ["60", "prov"]},
+  {"l": "δίδωμι", "g": "ge", "o": "verb", "gen": null, "f": 415, "s": [10], "d": ["sem", "60", "prov"]},
   {"l": "δίκαιος", "g": "rättvis, rättfärdig", "o": "adjektiv", "gen": null, "f": 79, "s": [4, 5], "d": ["sem", "60", "prov"]},
   {"l": "δικαιοσύνη", "g": "rättvisa, rättfärdighet", "o": "substantiv", "gen": "f", "f": 91, "s": [5], "d": ["sem", "60"]},
   {"l": "δόξα", "g": "ära, heder; glans", "o": "substantiv", "gen": "f", "f": 165, "s": [5], "d": ["sem", "60"]},
@@ -157,8 +160,9 @@ const GLOSOR = [
   {"l": "ἐξουσία", "g": "rätt, fullmakt, myndighet", "o": "substantiv", "gen": "f", "f": 102, "s": [5], "d": ["sem", "60"]},
   {"l": "ἐπί", "g": "på, över, vid, mot", "o": "preposition", "gen": null, "f": 885, "s": [5, 7], "d": ["sem", "60"]},
   {"l": "ἑπτά", "g": "sju", "o": "räkneord", "gen": null, "f": 88, "s": [], "d": ["60"]},
+  {"l": "ἐργάζομαι", "g": "arbeta", "o": "verb", "gen": null, "f": 41, "s": [10], "d": ["sem"]},
   {"l": "ἔργον", "g": "verk, gärning", "o": "substantiv", "gen": "n", "f": 169, "s": [4, 5, 7], "d": ["sem", "60", "prov"]},
-  {"l": "ἔρχομαι", "g": "gå, komma", "o": "verb", "gen": null, "f": 631, "s": [], "d": ["60"]},
+  {"l": "ἔρχομαι", "g": "gå, komma", "o": "verb", "gen": null, "f": 631, "s": [10], "d": ["sem", "60"]},
   {"l": "ἐσθίω", "g": "äta", "o": "verb", "gen": null, "f": 157, "s": [2, 3, 4, 7, 8], "d": ["sem", "60"]},
   {"l": "ἕτερος", "g": "annan, övrig", "o": "pron.adj", "gen": null, "f": 97, "s": [], "d": ["60"]},
   {"l": "ἔτι", "g": "ännu, fortfarande", "o": "partikel", "gen": null, "f": 93, "s": [], "d": ["60"]},
@@ -176,6 +180,7 @@ const GLOSOR = [
   {"l": "ἡμέρα", "g": "dag", "o": "substantiv", "gen": "f", "f": 389, "s": [], "d": ["60"]},
   {"l": "θάλασσα", "g": "hav, sjö", "o": "substantiv", "gen": "f", "f": 90, "s": [5], "d": ["sem", "60"]},
   {"l": "θάνατος", "g": "död", "o": "substantiv", "gen": "m", "f": 120, "s": [6], "d": ["sem", "60"]},
+  {"l": "θεάομαι", "g": "skåda, betrakta", "o": "verb", "gen": null, "f": 22, "s": [10], "d": ["sem"]},
   {"l": "θέλημα", "g": "vilja, lust", "o": "substantiv", "gen": "n", "f": 62, "s": [], "d": ["60"]},
   {"l": "θέλω", "g": "vilja, önska", "o": "verb", "gen": null, "f": 208, "s": [7, 8], "d": ["sem", "60"]},
   {"l": "θεός", "g": "gud", "o": "substantiv", "gen": "m", "f": 1307, "s": [2, 3, 5, 7], "d": ["sem", "60", "prov"]},
@@ -197,12 +202,14 @@ const GLOSOR = [
   {"l": "κεφαλή", "g": "huvud", "o": "substantiv", "gen": "f", "f": 75, "s": [], "d": ["60"]},
   {"l": "κόσμος", "g": "värld, världsordning", "o": "substantiv", "gen": "m", "f": 185, "s": [4, 5, 9], "d": ["sem", "60"]},
   {"l": "κρίνω", "g": "döma, bedöma", "o": "verb", "gen": null, "f": 114, "s": [8], "d": ["sem", "60"]},
+  {"l": "κυνάριον", "g": "hund, liten hund", "o": "substantiv", "gen": "n", "f": 4, "s": [10], "d": ["sem"]},
   {"l": "κύριος", "g": "herre, härskare", "o": "substantiv", "gen": "m", "f": 713, "s": [2, 4, 5, 7], "d": ["sem", "60", "prov"]},
   {"l": "λαλέω", "g": "prata, tala", "o": "verb", "gen": null, "f": 297, "s": [4, 5, 6, 7, 8], "d": ["sem", "60", "prov"]},
   {"l": "λαμβάνω", "g": "ta, ta emot, få", "o": "verb", "gen": null, "f": 258, "s": [2], "d": ["sem", "60"]},
   {"l": "λαός", "g": "folk", "o": "substantiv", "gen": "m", "f": 141, "s": [], "d": ["60"]},
   {"l": "λέγω", "g": "tala, säga", "o": "verb", "gen": null, "f": 2345, "s": [2, 3, 5, 6, 7], "d": ["sem", "60", "prov"]},
   {"l": "λόγος", "g": "ord, tal, berättelse", "o": "substantiv", "gen": "m", "f": 330, "s": [2, 3, 5, 7], "d": ["sem", "60", "prov"]},
+  {"l": "λούω", "g": "tvätta", "o": "verb", "gen": null, "f": 5, "s": [10], "d": ["sem"]},
   {"l": "μαθητής", "g": "lärjunge", "o": "substantiv", "gen": "m", "f": 262, "s": [5, 6, 7], "d": ["sem", "60", "prov"]},
   {"l": "μᾶλλον", "g": "mer, snarare", "o": "adverb", "gen": null, "f": 81, "s": [], "d": ["60"]},
   {"l": "μαρτυρέω", "g": "vittna, intyga", "o": "verb", "gen": null, "f": 76, "s": [5, 7], "d": ["sem", "60"]},
@@ -243,6 +250,7 @@ const GLOSOR = [
   {"l": "οὕτω(ς)", "g": "på så sätt, sålunda", "o": "pron.adv", "gen": null, "f": 207, "s": [], "d": ["60"]},
   {"l": "ὀφθαλμός", "g": "öga", "o": "substantiv", "gen": "m", "f": 100, "s": [], "d": ["60"]},
   {"l": "ὄχλος", "g": "folkhop", "o": "substantiv", "gen": "m", "f": 174, "s": [7], "d": ["sem", "60"]},
+  {"l": "παιδίον", "g": "litet barn", "o": "substantiv", "gen": "n", "f": 52, "s": [10], "d": ["sem"]},
   {"l": "πάλιν", "g": "igen, åter", "o": "adverb", "gen": null, "f": 139, "s": [], "d": ["60"]},
   {"l": "παρά", "g": "från; hos, vid; bredvid", "o": "preposition", "gen": null, "f": 193, "s": [5], "d": ["sem", "60"]},
   {"l": "παραδίδωμι", "g": "överlämna, uppge", "o": "verb", "gen": null, "f": 119, "s": [], "d": ["60"]},
@@ -565,10 +573,10 @@ const FORMER = {
   "ὥρα": [{"f": "ὥρα", "p": "nominativ singular"}, {"f": "ὧραι", "p": "nominativ plural"}, {"f": "ὥρας", "p": "genitiv singular"}, {"f": "ὡρῶν", "p": "genitiv plural"}, {"f": "ὥρᾳ", "p": "dativ singular"}, {"f": "ὥραις", "p": "dativ plural"}, {"f": "ὥραν", "p": "ackusativ singular"}]
 };
 
-const SEMINARIER = [2, 3, 4, 5, 6, 7, 8, 9];
+const SEMINARIER = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 const ORDKLASSER = [...new Set(GLOSOR.map(w => w.o))];   // i förekomstordning
 const DECKS = [
-  { id:"sem", namn:"Seminarium 2–9", desc:"Kursens ordlistor, seminarium 2–9." },
+  { id:"sem", namn:"Seminarium 2–10", desc:"Kursens ordlistor, seminarium 2–10." },
   { id:"60",  namn:"NT-frekvens > 60", desc:"Alla ord som förekommer fler än 60 ggr i NT (244 ord)." },
   { id:"prov", namn:"Inför provet", desc:"Ordkunskapslistan inför tentamen (Oskars ORDKUNSKAP 1–10): subjunktioner, verb, substantiv, adjektiv, prepositioner och småord som ska kunnas utantill." },
 ];
@@ -980,7 +988,7 @@ function uppdateraDackVy(){
 function uppdateraSubtitle(){
   const dackNamn = state.deck === "60" ? "NT-frekvens > 60"
     : state.deck === "prov" ? "inför provet"
-    : "seminarium 2–9";
+    : "seminarium 2–10";
   const riktning = state.mode === "former" ? "böjd form → glosa" : "grekiska → svenska";
   document.getElementById("subtitle").textContent = dackNamn + " · " + riktning;
 }

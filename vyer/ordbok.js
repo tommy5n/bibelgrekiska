@@ -141,6 +141,7 @@ const ORDBOK = [
   {"l": "βαπτίζω", "g": "döpa", "o": "verb", "gen": null, "f": 77, "s": [3, 6, 7], "d": ["sem", "60"], "not": "av βάπτω ”indoppa”", "lst": ["prov"]},
   {"l": "βασιλεία", "g": "rike", "o": "substantiv", "gen": "f", "f": 162, "s": [4, 8], "d": ["sem", "60"]},
   {"l": "βασιλεύς", "g": "kung", "o": "substantiv", "gen": "m", "f": 115, "s": [], "d": ["60"]},
+  {"l": "βαστάζω", "g": "bära, lyfta", "o": "verb", "gen": null, "f": 27, "s": [10], "d": ["sem"]},
   {"l": "βλέπω", "g": "se, titta", "o": "verb", "gen": null, "f": 133, "s": [2, 3, 5, 7], "d": ["sem", "60"], "lst": ["prov"]},
   {"l": "γάρ", "g": "ty, för, ju", "o": "partikel", "gen": null, "f": 1039, "s": [4, 5], "d": ["sem", "60"], "lst": ["prov"]},
   {"l": "γεννάω", "g": "föda, avla, framkalla", "o": "verb", "gen": null, "f": 97, "s": [], "d": ["60"]},
@@ -153,9 +154,11 @@ const ORDBOK = [
   {"l": "δαιμόνιον", "g": "ond ande, demon", "o": "substantiv", "gen": "n", "f": 63, "s": [5, 7], "d": ["sem", "60"]},
   {"l": "δέ", "g": "och, men", "o": "partikel", "gen": null, "f": 2766, "s": [5, 6], "d": ["sem", "60"], "lst": ["prov"]},
   {"l": "δεῖ", "g": "man måste, det åligger", "o": "verb", "gen": null, "f": null, "s": [], "d": []},
+  {"l": "δείκνυμι", "g": "visa, peka", "o": "verb", "gen": null, "f": 33, "s": [10], "d": ["sem"]},
+  {"l": "δέχομαι", "g": "ta emot", "o": "verb", "gen": null, "f": 56, "s": [10], "d": ["sem"]},
   {"l": "διά", "g": "genom; på grund av", "o": "preposition", "gen": null, "f": 666, "s": [5, 7], "d": ["sem", "60"], "rekt": [["gen", "genom"], ["ack", "på grund av"]]},
   {"l": "διδάσκω", "g": "undervisa, lära", "o": "verb", "gen": null, "f": 96, "s": [7, 8], "d": ["sem", "60"]},
-  {"l": "δίδωμι", "g": "ge", "o": "verb", "gen": null, "f": 415, "s": [], "d": ["60"], "lst": ["prov"]},
+  {"l": "δίδωμι", "g": "ge", "o": "verb", "gen": null, "f": 415, "s": [10], "d": ["sem", "60"], "lst": ["prov"]},
   {"l": "δίκαιος", "g": "rättvis, rättfärdig", "o": "adjektiv", "gen": null, "f": 79, "s": [4, 5], "d": ["sem", "60"], "lst": ["prov"]},
   {"l": "δικαιοσύνη", "g": "rättvisa, rättfärdighet", "o": "substantiv", "gen": "f", "f": 91, "s": [5], "d": ["sem", "60"]},
   {"l": "δόξα", "g": "ära, heder; glans", "o": "substantiv", "gen": "f", "f": 165, "s": [5], "d": ["sem", "60"]},
@@ -191,8 +194,9 @@ const ORDBOK = [
   {"l": "ἐξουσία", "g": "rätt, fullmakt, myndighet", "o": "substantiv", "gen": "f", "f": 102, "s": [5], "d": ["sem", "60"]},
   {"l": "ἐπί", "g": "på, över, vid, mot", "o": "preposition", "gen": null, "f": 885, "s": [5, 7], "d": ["sem", "60"], "rekt": [["gen", "på, över"], ["dat", "vid"], ["ack", "mot, fram till"]]},
   {"l": "ἑπτά", "g": "sju", "o": "räkneord", "gen": null, "f": 88, "s": [], "d": ["60"]},
+  {"l": "ἐργάζομαι", "g": "arbeta", "o": "verb", "gen": null, "f": 41, "s": [10], "d": ["sem"]},
   {"l": "ἔργον", "g": "verk, gärning", "o": "substantiv", "gen": "n", "f": 169, "s": [4, 5, 7], "d": ["sem", "60"], "lst": ["prov"]},
-  {"l": "ἔρχομαι", "g": "gå, komma", "o": "verb", "gen": null, "f": 631, "s": [], "d": ["60"]},
+  {"l": "ἔρχομαι", "g": "gå, komma", "o": "verb", "gen": null, "f": 631, "s": [10], "d": ["sem", "60"]},
   {"l": "ἐσθίω", "g": "äta", "o": "verb", "gen": null, "f": 157, "s": [2, 3, 4, 7, 8], "d": ["sem", "60"]},
   {"l": "ἕτερος", "g": "annan, övrig", "o": "pron.adj", "gen": null, "f": 97, "s": [], "d": ["60"]},
   {"l": "ἔτι", "g": "ännu, fortfarande", "o": "partikel", "gen": null, "f": 93, "s": [], "d": ["60"]},
@@ -210,6 +214,7 @@ const ORDBOK = [
   {"l": "ἡμέρα", "g": "dag", "o": "substantiv", "gen": "f", "f": 389, "s": [], "d": ["60"]},
   {"l": "θάλασσα", "g": "hav, sjö", "o": "substantiv", "gen": "f", "f": 90, "s": [5], "d": ["sem", "60"]},
   {"l": "θάνατος", "g": "död", "o": "substantiv", "gen": "m", "f": 120, "s": [6], "d": ["sem", "60"]},
+  {"l": "θεάομαι", "g": "skåda, betrakta", "o": "verb", "gen": null, "f": 22, "s": [10], "d": ["sem"]},
   {"l": "θέλημα", "g": "vilja, lust", "o": "substantiv", "gen": "n", "f": 62, "s": [], "d": ["60"]},
   {"l": "θέλω", "g": "vilja, önska", "o": "verb", "gen": null, "f": 208, "s": [7, 8], "d": ["sem", "60"]},
   {"l": "θεός", "g": "gud", "o": "substantiv", "gen": "m", "f": 1307, "s": [2, 3, 5, 7], "d": ["sem", "60"], "lst": ["prov"]},
@@ -231,12 +236,14 @@ const ORDBOK = [
   {"l": "κεφαλή", "g": "huvud", "o": "substantiv", "gen": "f", "f": 75, "s": [], "d": ["60"]},
   {"l": "κόσμος", "g": "värld, världsordning", "o": "substantiv", "gen": "m", "f": 185, "s": [4, 5, 9], "d": ["sem", "60"]},
   {"l": "κρίνω", "g": "döma, bedöma", "o": "verb", "gen": null, "f": 114, "s": [8], "d": ["sem", "60"]},
+  {"l": "κυνάριον", "g": "hund, liten hund", "o": "substantiv", "gen": "n", "f": 4, "s": [10], "d": ["sem"]},
   {"l": "κύριος", "g": "herre, härskare", "o": "substantiv", "gen": "m", "f": 713, "s": [2, 4, 5, 7], "d": ["sem", "60"], "lst": ["prov"]},
   {"l": "λαλέω", "g": "prata, tala", "o": "verb", "gen": null, "f": 297, "s": [4, 5, 6, 7, 8], "d": ["sem", "60"], "lst": ["prov"]},
   {"l": "λαμβάνω", "g": "ta, ta emot, få", "o": "verb", "gen": null, "f": 258, "s": [2], "d": ["sem", "60"]},
   {"l": "λαός", "g": "folk", "o": "substantiv", "gen": "m", "f": 141, "s": [], "d": ["60"]},
   {"l": "λέγω", "g": "tala, säga", "o": "verb", "gen": null, "f": 2345, "s": [2, 3, 5, 6, 7], "d": ["sem", "60"], "lst": ["prov"]},
   {"l": "λόγος", "g": "ord, tal, berättelse", "o": "substantiv", "gen": "m", "f": 330, "s": [2, 3, 5, 7], "d": ["sem", "60"], "lst": ["prov"]},
+  {"l": "λούω", "g": "tvätta", "o": "verb", "gen": null, "f": 5, "s": [10], "d": ["sem"]},
   {"l": "μαθητής", "g": "lärjunge", "o": "substantiv", "gen": "m", "f": 262, "s": [5, 6, 7], "d": ["sem", "60"], "lst": ["prov"]},
   {"l": "μᾶλλον", "g": "mer, snarare", "o": "adverb", "gen": null, "f": 81, "s": [], "d": ["60"]},
   {"l": "μαρτυρέω", "g": "vittna, intyga", "o": "verb", "gen": null, "f": 76, "s": [5, 7], "d": ["sem", "60"]},
@@ -277,6 +284,7 @@ const ORDBOK = [
   {"l": "οὕτω(ς)", "g": "på så sätt, sålunda", "o": "pron.adv", "gen": null, "f": 207, "s": [], "d": ["60"]},
   {"l": "ὀφθαλμός", "g": "öga", "o": "substantiv", "gen": "m", "f": 100, "s": [], "d": ["60"]},
   {"l": "ὄχλος", "g": "folkhop", "o": "substantiv", "gen": "m", "f": 174, "s": [7], "d": ["sem", "60"]},
+  {"l": "παιδίον", "g": "litet barn", "o": "substantiv", "gen": "n", "f": 52, "s": [10], "d": ["sem"]},
   {"l": "πάλιν", "g": "igen, åter", "o": "adverb", "gen": null, "f": 139, "s": [], "d": ["60"]},
   {"l": "παρά", "g": "från; hos, vid; bredvid", "o": "preposition", "gen": null, "f": 193, "s": [5], "d": ["sem", "60"], "rekt": [["gen", "från"], ["dat", "hos, vid"], ["ack", "bredvid, längs"]]},
   {"l": "παραδίδωμι", "g": "överlämna, uppge", "o": "verb", "gen": null, "f": 119, "s": [], "d": ["60"]},
@@ -438,7 +446,7 @@ const ORDBOK = [
   {"l": "θυγάτηρ", "g": "dotter", "o": "substantiv", "gen": "f", "f": 28, "s": [9], "d": ["sem"], "git": "θυγατρός"}
 ];
 
-const SEMINARIER = [2, 3, 4, 5, 6, 7, 8, 9];
+const SEMINARIER = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 const ORDKLASSER = [...new Set(ORDBOK.map(w => w.o))];   // i förekomstordning
 const DECKS = [
   { id:"alla", namn:"Alla",             desc:"Alla kursens ord — seminarielistor och >60-listan." },

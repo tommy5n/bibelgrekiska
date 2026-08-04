@@ -34,7 +34,7 @@ def css_version():
     return m.group(1)
 
 # Vilka seminarier som renderas.
-SEMINARIER = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+SEMINARIER = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # ── Parsning av instruktion (sem 6: grupp härleds ur instruktionstexten) ─
 RE_BREAKOUT = re.compile(r"Breakout\s+(\S+?):\s*översätt\s*\(([^)]*)\)")
@@ -120,6 +120,10 @@ GRUPPER = {
         "Översätt. Likvidaverb (λ/ρ/μ/ν) tappar σ i aoristen och förlänger vokalen: ἀπέστειλα, ἔκρῑνα.", "#b0642f"),
     "9:breakout-4": ("Breakout 4", "μι-verb",
         "Översätt. μι-verben (δίδωμι, δείκνυμι) böjs avvikande i presens: ändelserna -μι, -ς, -σι(ν), -μεν, -τε, -ασι(ν).", "#8a5a86"),
+    # sem 10 — medium-passivum (diates). Breakout 1 (μι-verb) är en repris av sem 9:s
+    # breakout-4 och skördas inte igen; sem 10:s enda egna breakout är passivum-paret.
+    "10:breakout-2": ("Breakout 2", "Passivum",
+        "Översätt till svenska. Meningarna kommer i aktiva/passiva par: i passivsatsen blir objektet subjekt, verbet får passivändelse (-εται, -ονται, -ετο …) och agenten uttrycks med ὑπό + genitiv (’av …’).", "#4a6a8a"),
     "ovrigt": ("Övrigt", "", "", "#a8842c"),
 }
 

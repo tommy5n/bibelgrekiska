@@ -10949,6 +10949,218 @@
    "oversattning": "beskylla (verb)",
    "ovningsgrupp": "lasovning-2",
    "kommentar": "ἐν ’in, mot’ + καλέω ’kalla, ropa’ → ’anklaga’."
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "τὸ τέκνον λαμβάνει τὸν ἄρτον.",
+   "oversattning": "Barnet tar brödet.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Aktiv sats: subjektet τὸ τέκνον (nominativ) utför handlingen och τὸν ἄρτον är direkt objekt (ackusativ). Jämför den passiva motsvarigheten i mening 2.",
+   "_sem10": true,
+   "ordlista": [
+    "τὸ τέκνον, -ου barn",
+    "ὁ ἄρτος, -ου bröd"
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "λαμβάνεται ὁ ἄρτος ὑπὸ τοῦ τέκνου.",
+   "oversattning": "Brödet tas av barnet.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Passiv sats: verbet λαμβάνεται (’tas’) bär passivändelsen -εται, och det tidigare objektet ὁ ἄρτος är nu subjekt (nominativ). Agenten — den som utför handlingen — uttrycks med ὑπό + genitiv (τοῦ τέκνου ’av barnet’).",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "ὁ βαπτιστὴς σῴζει ἡμᾶς.",
+   "oversattning": "Döparen räddar oss.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Aktiv sats. ἡμᾶς ’oss’ är direkt objekt (ackusativ av det personliga pronomenet). Jämför den passiva motsvarigheten i mening 4.",
+   "_sem10": true,
+   "ordlista": [
+    "ὁ βαπτιστής, -οῦ döpare",
+    "σῴζω rädda, frälsa"
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "σῳζόμεθα ὑπὸ τοῦ βαπτιστοῦ.",
+   "oversattning": "Vi räddas av döparen.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Passiv sats, 1:a person pl (’vi räddas’) med ändelsen -όμεθα. Agenten ὑπὸ τοῦ βαπτιστοῦ ’av döparen’ (genitiv). Notera ι subscriptum i σῳζόμεθα.",
+   "falla": "Källbladet skriver ὑπὸ τοῦ βαπτίστου; korrekt genitiv av det oxytona βαπτιστής är βαπτιστοῦ (cirkumflex på ultima).",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "λούει ἡ μήτηρ τὸ παιδίον.",
+   "oversattning": "Modern tvättar det lilla barnet.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Aktiv sats. Subjektet ἡ μήτηρ (nominativ) står efter verbet — ordföljden är fri, kasus avgör rollen. τὸ παιδίον är direkt objekt (neutrum, samma form i nominativ och ackusativ).",
+   "_sem10": true,
+   "ordlista": [
+    "λούω tvätta",
+    "ἡ μήτηρ, μητρός mor",
+    "τὸ παιδίον, -ου litet barn"
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "λούεται τὸ παιδίον ὑπὸ τῆς μητρός.",
+   "oversattning": "Det lilla barnet tvättas av modern.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Passiv sats. τὸ παιδίον är nu subjekt. Eftersom det är neutrum syns skillnaden mot mening 5 bara på verbet (λούεται ’tvättas’) och på agenten ὑπὸ τῆς μητρός ’av modern’ (genitiv).",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "ὁ κύριος καλεῖ τὸν δοῦλον.",
+   "oversattning": "Herren kallar slaven.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Aktiv sats. καλεῖ är kontraherat (-έω-verb): καλέ-ει → καλεῖ. Jämför den passiva formen καλεῖται i mening 8.",
+   "_sem10": true,
+   "ordlista": [
+    "ὁ κύριος, -ου herre",
+    "καλέω kalla",
+    "ὁ δοῦλος, -ου slav, tjänare"
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "ὁ δοῦλος καλεῖται ὑπὸ τοῦ κυρίου.",
+   "oversattning": "Slaven kallas av herren.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Passiv sats. Det kontraherade verbet i passiv presens 3:e sg: καλέ-εται → καλεῖται ’kallas’. Agenten ὑπὸ τοῦ κυρίου ’av herren’.",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "ὁ μαθητὴς θέλει ὑπὸ τοῦ διδασκάλου διδάσκεσθαι.",
+   "oversattning": "Lärjungen vill undervisas av läraren.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "διδάσκεσθαι är passiv infinitiv (’att undervisas’) med ändelsen -εσθαι; den styrs av θέλει ’vill’. Agenten ὑπὸ τοῦ διδασκάλου står inskjuten före infinitiven — grekisk ordföljd är fri.",
+   "_sem10": true,
+   "ordlista": [
+    "ὁ μαθητής, -οῦ lärjunge",
+    "θέλω vilja",
+    "ὁ διδάσκαλος, -ου lärare",
+    "διδάσκω undervisa"
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "ὁ μαθητὴς ἐδιδάσκετο ὑπὸ τοῦ διδασκάλου.",
+   "oversattning": "Lärjungen undervisades av läraren.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Passiv imperfekt (’undervisades, höll på att undervisas’): augment ἐ- + passivändelsen -ετο. Imperfekt beskriver en pågående eller upprepad handling i dåtid. Agenten ὑπὸ τοῦ διδασκάλου.",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "ὁ Ἰησοῦς βαστάζει τὸν σταυρὸν τὸν μέγαν.",
+   "oversattning": "Jesus lyfter det stora korset.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Aktiv sats. τὸν σταυρὸν τὸν μέγαν ’det stora korset’ — adjektivet står i attributiv ställning med upprepad artikel (substantiv + artikel + adjektiv). Jämför mening 12.",
+   "_sem10": true,
+   "ordlista": [
+    "βαστάζω bära, lyfta",
+    "ὁ σταυρός, -οῦ kors",
+    "μέγας, μεγάλη, μέγα stor"
+   ]
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10. Breakout room.pdf",
+   "grekiska": "ὁ σταυρὸς ὁ μέγας ὑπὸ τοῦ Ἰησοῦ βαστάζεται.",
+   "oversattning": "Det stora korset lyfts av Jesus.",
+   "ovningsgrupp": "breakout-2",
+   "kommentar": "Passiv sats. Subjektet ὁ σταυρὸς ὁ μέγας (nominativ, attributiv ställning), agenten ὑπὸ τοῦ Ἰησοῦ ’av Jesus’, och verbet sist: βαστάζεται ’lyfts’ (passiv presens 3:e sg).",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10_Presentation_4_augusti_2026.pdf",
+   "grekiska": "βαπτίζονται ὑπὸ τοῦ προφήτου.",
+   "oversattning": "De döps av profeten.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "βαπτίζονται är passiv presens 3:e pl (’de döps’), ändelsen -ονται. ὑπὸ τοῦ προφήτου ’av profeten’ är agenten (genitiv).",
+   "lararnot": "Agenten vid passivum: det svenska ’av’ motsvaras av ὑπό + genitiv (agentpreposition, B § 260:3, 241:18).",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10_Presentation_4_augusti_2026.pdf",
+   "grekiska": "οὗτος Ῥαββὶ ἐκαλεῖτο ὑπὸ τῶν ἀνθρώπων.",
+   "oversattning": "Denne brukade kallas rabbi av människorna.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "ἐκαλεῖτο är passiv imperfekt av det kontraherade καλέω (’brukade kallas’): augment + -ε-ετο → -εῖτο. Ῥαββί är predikatsfyllnad och ὑπὸ τῶν ἀνθρώπων agent (genitiv).",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10_Presentation_4_augusti_2026.pdf",
+   "grekiska": "ὁ μαθητὴς ὑπὸ τοῦ διδασκάλου ἐπαιδεύθη.",
+   "oversattning": "Lärjungen undervisades av läraren.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "ἐπαιδεύθη är aorist passivum 3:e sg (’undervisades’) — aoristpassiv känns igen på -θη-: augment + rot + -θη. Aoristen ser handlingen som avslutad, till skillnad mot imperfektens pågående ἐδιδάσκετο. Agenten ὑπὸ τοῦ διδασκάλου.",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10_Presentation_4_augusti_2026.pdf",
+   "grekiska": "θέλω παιδεύεσθαι ὑπὸ τοῦ διδασκάλου.",
+   "oversattning": "Jag vill uppfostras av läraren.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "παιδεύεσθαι är passiv presens infinitiv (’att uppfostras’), styrd av θέλω ’jag vill’.",
+   "lararnot": "Passiv infinitiv: presens -εσθαι (-εῖσθαι vid kontraktion), aorist -θῆναι. Båda översätts som presens (’att uppfostras’).",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10_Presentation_4_augusti_2026.pdf",
+   "grekiska": "θέλω παιδευθῆναι ὑπὸ τοῦ διδασκάλου.",
+   "oversattning": "Jag vill uppfostras av läraren.",
+   "ovningsgrupp": "presentation",
+   "kommentar": "παιδευθῆναι är passiv aorist infinitiv (-θῆναι). Betydelsen är densamma som presens infinitiv παιδεύεσθαι i föregående mening — aspekt, inte tid, skiljer dem, och båda återges ’att uppfostras’.",
+   "_sem10": true
+  },
+  {
+   "typ": "sats",
+   "seminarium": 10,
+   "kalla": "10_Presentation_4_augusti_2026.pdf",
+   "grekiska": "τὸ τέκνον λούεται.",
+   "oversattning": "Barnet tvättas (el. barnet tvättar sig).",
+   "ovningsgrupp": "presentation",
+   "lararnot": "I presens och imperfekt är medium och passivum identiska till formen. τὸ τέκνον λούεται kan därför betyda ’barnet tvättas’ (passivum) eller ’barnet tvättar sig’ (medium), beroende på sammanhanget.",
+   "_sem10": true
   }
  ],
  "verb": [
