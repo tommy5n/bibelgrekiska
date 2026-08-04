@@ -87,7 +87,7 @@
  "_falt": {
   "index": "Per arkiv: kalla, seminarium, typ, antal_sidor, amneskarta (sektioner med slide-intervall), sidor (sida, bild, har_grafik, har_grekiska, text). Sidtexten är trogen källan MED undantag för de fel som listas i _avvikelser — de är normaliserade till korrekt grekiska (se _verifiering).",
   "glosa": "lemma, artikel, glosa (sv), ordklass, nt_lemma, nt_frekvens, i_glosor_master, forekomster[].",
-  "sats": "grekiska, instruktion, oversattning (om facit), satsdelar[] (om annoterat), diffar[]/avvikelse_ref, kalla/sida, kommentar (💡 förklarande), falla (⚠︎ varning för fälla), ovningsgrupp, uteslut (ovningsgrupp = sektionsnyckel; uteslut = misextraherad, hoppas). facit_form = den omvandlade grekiska formen (formläreövningar, sem 7); negerad = formen med rätt negation (οὐ/μή); bibelreferens = NT-ställe. Sem 7:s ovningsgrupp-nycklar: formlara-fut/-imp/-ind/-impf/-pres, oversattning, breakout-1/2/3 (generatorn slår upp gruppmetadata på '7:breakout-1' före 'breakout-1', eftersom sem 6 och 7 delar grupp-id men har olika teman). ordlista[] = lärarens ordagranna ordförklaringar för just denna mening (glosor/inline-noter ur övnings- och breakout-bladen), visas synligt som översättningshjälp.",
+  "sats": "grekiska, instruktion, oversattning (om facit), satsdelar[] (om annoterat), diffar[]/avvikelse_ref, kalla/sida, kommentar (💡 förklarande), falla (⚠︎ varning för fälla), ovningsgrupp, uteslut (ovningsgrupp = sektionsnyckel; uteslut = misextraherad, hoppas). facit_form = den omvandlade grekiska formen (formläreövningar, sem 7); negerad = formen med rätt negation (οὐ/μή); bibelreferens = NT-ställe. Sem 7:s ovningsgrupp-nycklar: formlara-fut/-imp/-ind/-impf/-pres, oversattning, breakout-1/2/3 (generatorn slår upp gruppmetadata på '7:breakout-1' före 'breakout-1', eftersom sem 6 och 7 delar grupp-id men har olika teman). ordlista[] = lärarens ordagranna ordförklaringar för just denna mening (glosor/inline-noter ur övnings- och breakout-bladen), visas synligt som översättningshjälp. lararnot = lärarens ordagranna grammatikförklaring för ett presentationsexempel (rubrik/förklaring från slidet), visas som egen not i facit skild från min kommentar.",
   "verb": "lemma, glosa, klass (omega/kontrakt_e/oregelbunden), stam, seminarium, nt_frekvens, attesterade_former[] (verifierade ur seminarier), former_kompletta (bool), se_paradigm (mallreferens). Master-formad för framtida verb.json.",
   "kongruens": "substantiv, fras (med __ för adjektivluckan), kasus/genus/numerus, adjektiv[] (lemma+kongruent form), oversattning. För kongruensspelet.",
   "paradigm": "mallar & regler för böjning (subst/adj/verb): former/andelser/regler; tacks_av_master pekar på masterfil om formerna redan finns där.",
@@ -8905,7 +8905,8 @@
    "sida": 36,
    "grekiska": "ὁ ἄνθρωπος βλέπει τὸν ἄγγελον.",
    "oversattning": "Människan ser ängeln.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "När vi tar ut satsdelar börjar vi alltid med att fråga oss vilken verbhandlingen är. På så vis får vi fram det som kallas för predikatet."
   },
   {
    "typ": "sats",
@@ -8914,7 +8915,8 @@
    "sida": 44,
    "grekiska": "ὁ ἀπόστολος γράφει λόγον τοῖς ἀνθρώποις.",
    "oversattning": "Aposteln skriver en berättelse för människorna.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Indirekt objekt i dativ: Den, det eller de som indirekt är föremål för en verbhandling kallas för indirekt objekt, och står i dativ."
   },
   {
    "typ": "sats",
@@ -8923,7 +8925,8 @@
    "sida": 47,
    "grekiska": "βλέπω τὸν οἶκον τοῦ ἀποστόλου.",
    "oversattning": "Jag ser apostelns hus.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Genitivattribut i genitiv: Den eller det som fungerar som ägare till något kallas för genitivattribut och står i genitiv. De är ofta en bestämning till ett substantiv som är subjekt, objekt eller indirekt objekt."
   },
   {
    "typ": "sats",
@@ -8932,7 +8935,8 @@
    "sida": 50,
    "grekiska": "ὦ ἄγγελε, βλέπεις τὸν οἶκον τοῦ ἀποστόλου.",
    "oversattning": "Du, o ängel, ser apostelns hus.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Vokativ: Den eller det som tilltalas står i vokativ."
   },
   {
    "typ": "sats",
@@ -8941,7 +8945,8 @@
    "sida": 54,
    "grekiska": "οἱ ἄνθρωποι βλέπουσι τὸν οὐρανόν.",
    "oversattning": "Människorna ser himlen.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Övning: Vilken är handlingen? (predikatet) Vem/vad utför handlingen? (subjektet, står i nominativ) Vem/vad påverkas av handlingen? (direkt objekt, står i ackusativ)"
   },
   {
    "typ": "sats",
@@ -8950,7 +8955,8 @@
    "sida": 54,
    "grekiska": "ὁ ἀδελφὸς γράφει λόγον.",
    "oversattning": "Brodern skriver en berättelse.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Övning: Vilken är handlingen? (predikatet) Vem/vad utför handlingen? (subjektet, står i nominativ) Vem/vad påverkas av handlingen? (direkt objekt, står i ackusativ)"
   },
   {
    "typ": "sats",
@@ -9028,7 +9034,8 @@
    "sida": 41,
    "grekiska": "ὁ ἄνθρωπός ἐστι πονηρός.",
    "oversattning": "Människan är ond.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ett adjektiv eller substantiv som följer vid verbet ”att vara” (εἰμί) kallas för predikatsfyllnad."
   },
   {
    "typ": "sats",
@@ -9037,7 +9044,8 @@
    "sida": 41,
    "grekiska": "τὸ εὐαγγέλιόν ἐστι καλόν.",
    "oversattning": "Evangeliet är vackert.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ett adjektiv eller substantiv som följer vid verbet ”att vara” (εἰμί) kallas för predikatsfyllnad."
   },
   {
    "typ": "sats",
@@ -9046,7 +9054,8 @@
    "sida": 41,
    "grekiska": "οἱ ἄνθρωποί εἰσι καλοί.",
    "oversattning": "Människorna är vackra.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ett adjektiv eller substantiv som följer vid verbet ”att vara” (εἰμί) kallas för predikatsfyllnad."
   },
   {
    "typ": "sats",
@@ -9055,7 +9064,8 @@
    "sida": 42,
    "grekiska": "ὁ Ἰησοῦς ἐστιν ὁ υἱὸς τοῦ θεοῦ.",
    "oversattning": "Jesus är Guds son.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "När vi har verbet ’vara’ i satsen, så tillkommer en ny satsdel. Ett adjektiv eller substantiv som följer vid verbet ”att vara” (εἰμί) kallas för predikatsfyllnad."
   },
   {
    "typ": "sats",
@@ -9065,7 +9075,7 @@
    "grekiska": "τὰ εὐαγγέλιά ἐστι καλά.",
    "oversattning": "Evangelierna är vackra.",
    "ovningsgrupp": "presentation",
-   "kommentar": "Neutrum plural tar singularverb (ἐστι, inte εἰσι) — den klassiska regeln, som sliden visar utan att namnge den."
+   "lararnot": "Överkurs: neutrala substantiv i plural tar i attiskan, men inte alltid i NT, ett verb i tredje person singular."
   },
   {
    "typ": "sats",
@@ -9074,7 +9084,8 @@
    "sida": 14,
    "grekiska": "ὁ Ἰησοῦς ἦν ὁ υἱὸς τοῦ θεοῦ.",
    "oversattning": "Jesus var Guds son.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Predikatsfyllnaden kan också vara ett substantiv. Det står åtminstone i samma kasus som substantivet (kongruens)."
   },
   {
    "typ": "sats",
@@ -9083,7 +9094,8 @@
    "sida": 14,
    "grekiska": "τὰ τέκνα ἦσαν δοῦλοι.",
    "oversattning": "Barnen var slavar.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Predikatsfyllnaden kan också vara ett substantiv. Det står åtminstone i samma kasus som substantivet (kongruens)."
   },
   {
    "typ": "sats",
@@ -9120,7 +9132,8 @@
    "sida": 44,
    "grekiska": "ἐν τῷ οἴκῳ ὁ ἀπόστολος γράφει.",
    "oversattning": "I huset skriver aposteln.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Ny satsdel: adverbial. Prepositionsfraser (dvs. prepositioner + substantiv/rektion) fungerar ofta som adverbial i satsen. Ett adverbial är en satsdel som berättar exempelvis om när eller var en verbhandling äger rum."
   },
   {
    "typ": "sats",
@@ -9158,7 +9171,7 @@
    "grekiska": "ἐν ἀρχῇ",
    "oversattning": "i begynnelsen",
    "ovningsgrupp": "presentation",
-   "kommentar": "Grekiskan utelämnar ofta artikeln där svenskan har den."
+   "lararnot": "Tillägg till prepositioner: Notera att substantivet som följer på en preposition inte alltid har bestämd artikel i grekiskan där vi skulle ha det i svenskan."
   },
   {
    "typ": "sats",
@@ -9167,7 +9180,8 @@
    "sida": 48,
    "grekiska": "ἐν ἀγρῷ",
    "oversattning": "på fältet",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Tillägg till prepositioner: Notera att substantivet som följer på en preposition inte alltid har bestämd artikel i grekiskan där vi skulle ha det i svenskan."
   },
   {
    "typ": "sats",
@@ -9177,7 +9191,7 @@
    "grekiska": "πρὸς ἐμέ",
    "oversattning": "till/hos mig",
    "ovningsgrupp": "presentation",
-   "kommentar": "Betonad form — de betonade formerna sätts ut efter prepositioner."
+   "lararnot": "Betonade former av ἐγώ, σύ: De betonade formerna sätts ut efter prepositioner."
   },
   {
    "typ": "sats",
@@ -9187,7 +9201,8 @@
    "grekiska": "ἐγὼ μὲν λέγω, σὺ δὲ ἀκούεις.",
    "oversattning": "Jag talar och du lyssnar.",
    "ovningsgrupp": "presentation",
-   "kommentar": "Betonade former används för emfas, särskilt i motsatser: μέν … δέ ställer ’jag’ mot ’du’."
+   "kommentar": "Betonade former används för emfas, särskilt i motsatser: μέν … δέ ställer ’jag’ mot ’du’.",
+   "lararnot": "De betonade formerna används också för emfas, exv. i motsatser."
   },
   {
    "typ": "sats",
@@ -9197,7 +9212,8 @@
    "grekiska": "κηρύσσομέν σοι.",
    "oversattning": "Vi predikar för dig.",
    "ovningsgrupp": "presentation",
-   "kommentar": "Obetonad (enklitisk) form — varken preposition eller emfas. Enklitikonet kastar en akut bakåt: κηρύσσομεν + σοι → κηρύσσομέν σοι."
+   "kommentar": "Obetonad (enklitisk) form — varken preposition eller emfas. Enklitikonet kastar en akut bakåt: κηρύσσομεν + σοι → κηρύσσομέν σοι.",
+   "lararnot": "Obetonade former av ἐγώ, σύ: De obetonade formerna används i övriga fall, det vill säga när det varken handlar om betoning eller om en preposition."
   },
   {
    "typ": "sats",
@@ -9206,7 +9222,8 @@
    "sida": 64,
    "grekiska": "πιστεύετέ μοι.",
    "oversattning": "Ni tror på mig.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Obetonade former av ἐγώ, σύ: De obetonade formerna används i övriga fall, det vill säga när det varken handlar om betoning eller om en preposition."
   },
   {
    "typ": "sats",
@@ -9215,7 +9232,8 @@
    "sida": 64,
    "grekiska": "βλέπομέν σε.",
    "oversattning": "Vi ser dig.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Notera: nominativ singular har ingen obetonad form, eftersom den rena verbformen (βλέπω ’jag ser’) används för ett obetonat ’jag’."
   },
   {
    "typ": "sats",
@@ -9224,7 +9242,8 @@
    "sida": 8,
    "grekiska": "περὶ σοῦ",
    "oversattning": "om dig",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Betonade former av ἐγώ, σύ: De betonade formerna sätts ut efter prepositioner."
   },
   {
    "typ": "sats",
@@ -9234,7 +9253,8 @@
    "grekiska": "ὁ υἱός μου",
    "oversattning": "min son",
    "ovningsgrupp": "presentation",
-   "kommentar": "Obetonat possessivt genitiv efter substantivet."
+   "kommentar": "Obetonat possessivt genitiv efter substantivet.",
+   "lararnot": "Obetonade former av ἐγώ, σύ (=utan accenttecken) används i övriga fall för genitiv, dativ och ackusativ. Det vill säga när det varken handlar om en preposition eller om emfas."
   },
   {
    "typ": "sats",
@@ -9244,7 +9264,7 @@
    "grekiska": "πρὸς ἡμᾶς",
    "oversattning": "till oss",
    "ovningsgrupp": "presentation",
-   "kommentar": "I plural finns inga obetonade former kvar — samma form används vid preposition, betoning och icke-betoning."
+   "lararnot": "ἡμεῖς ’vi’, ὑμεῖς ’ni’: För första och andra person plural finns inga obetonade alternativ (kvar). Här används samma form för genitiv, dativ och ackusativ oavsett om det handlar om en preposition, betoning eller icke-betoning."
   },
   {
    "typ": "sats",
@@ -9253,7 +9273,8 @@
    "sida": 13,
    "grekiska": "κηρύσσομεν ὑμῖν.",
    "oversattning": "Vi predikar för er.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "ἡμεῖς ’vi’, ὑμεῖς ’ni’: För första och andra person plural finns inga obetonade alternativ (kvar). Här används samma form för genitiv, dativ och ackusativ oavsett om det handlar om en preposition, betoning eller icke-betoning."
   },
   {
    "typ": "sats",
@@ -9262,7 +9283,8 @@
    "sida": 13,
    "grekiska": "βλέπομεν ὑμᾶς.",
    "oversattning": "Vi ser er.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "ἡμεῖς ’vi’, ὑμεῖς ’ni’: För första och andra person plural finns inga obetonade alternativ (kvar). Här används samma form för genitiv, dativ och ackusativ oavsett om det handlar om en preposition, betoning eller icke-betoning."
   },
   {
    "typ": "sats",
@@ -9272,7 +9294,7 @@
    "grekiska": "ἡμεῖς μὲν λέγομεν, ὑμεῖς δὲ ἀκούετε.",
    "oversattning": "Vi talar och ni lyssnar.",
    "ovningsgrupp": "presentation",
-   "kommentar": "Nominativ ἡμεῖς/ὑμεῖς är alltid betonad — personändelsen ensam (-ομεν, -ετε) ger redan ett obetonat ’vi’, ’ni’."
+   "lararnot": "Däremot är nominativ singular (ἡμεῖς) alltid betonad, eftersom ju personändelsen ensam (-ομεν, -ετε) alltid ger ett obetonat ’vi’, ’ni’."
   },
   {
    "typ": "sats",
@@ -9281,7 +9303,8 @@
    "sida": 17,
    "grekiska": "βλέπομεν αὐτόν.",
    "oversattning": "Vi ser honom.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "αὐτός αὐτή αὐτό ’han, hon, det’: Ett självständigt αὐτός αὐτή αὐτό i genitiv, dativ och ackusativ motsvarar ett obetonat ’hans, till honom, honom, hon, hennes, till henne, dess, till det, det’, osv. OBS. dessa former står även efter prepositioner."
   },
   {
    "typ": "sats",
@@ -9290,7 +9313,8 @@
    "sida": 17,
    "grekiska": "κηρύσσομεν αὐτῇ.",
    "oversattning": "Vi predikar för henne.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "αὐτός αὐτή αὐτό ’han, hon, det’: Ett självständigt αὐτός αὐτή αὐτό i genitiv, dativ och ackusativ motsvarar ett obetonat ’hans, till honom, honom, hon, hennes, till henne, dess, till det, det’, osv. OBS. dessa former står även efter prepositioner."
   },
   {
    "typ": "sats",
@@ -9300,7 +9324,8 @@
    "grekiska": "λέγομεν αὐτοῖς.",
    "oversattning": "Vi säger till dem.",
    "ovningsgrupp": "presentation",
-   "kommentar": "Dativ utan preposition — jämför λέγομεν πρὸς αὐτούς, som betyder detsamma."
+   "kommentar": "Dativ utan preposition — jämför λέγομεν πρὸς αὐτούς, som betyder detsamma.",
+   "lararnot": "αὐτός αὐτή αὐτό ’han, hon, det’: Ett självständigt αὐτός αὐτή αὐτό i genitiv, dativ och ackusativ motsvarar ett obetonat ’hans, till honom, honom, hon, hennes, till henne, dess, till det, det’, osv. OBS. dessa former står även efter prepositioner."
   },
   {
    "typ": "sats",
@@ -9310,7 +9335,8 @@
    "grekiska": "λέγομεν πρὸς αὐτούς.",
    "oversattning": "Vi säger till dem.",
    "ovningsgrupp": "presentation",
-   "falla": "αὐτός-formerna står kvar i sin obetonade roll även efter preposition — till skillnad från ἐγώ/σύ, som byter till betonad form."
+   "falla": "αὐτός-formerna står kvar i sin obetonade roll även efter preposition — till skillnad från ἐγώ/σύ, som byter till betonad form.",
+   "lararnot": "αὐτός αὐτή αὐτό ’han, hon, det’: Ett självständigt αὐτός αὐτή αὐτό i genitiv, dativ och ackusativ motsvarar ett obetonat ’hans, till honom, honom, hon, hennes, till henne, dess, till det, det’, osv. OBS. dessa former står även efter prepositioner."
   },
   {
    "typ": "sats",
@@ -9320,7 +9346,7 @@
    "grekiska": "λέγετε περὶ ἐμοῦ.",
    "oversattning": "Ni talar om mig.",
    "ovningsgrupp": "presentation",
-   "kommentar": "Oskar påminner om att paradigmens glosor (’min’, ’åt mig’) är FÖRENKLINGAR — de fungerar vid objekt, inte efter preposition."
+   "lararnot": "Notera att översättningarna är FÖRENKLINGAR och främst ska exemplifiera bruket vid direkt/indirekt objekt och inte fungerar vid prepositioner, osv.!"
   },
   {
    "typ": "sats",
@@ -9329,7 +9355,8 @@
    "sida": 23,
    "grekiska": "λαλῶ ὑμῖν.",
    "oversattning": "Jag talar med er.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Notera att översättningarna är FÖRENKLINGAR och främst ska exemplifiera bruket vid direkt/indirekt objekt och inte fungerar vid prepositioner, osv.!"
   },
   {
    "typ": "sats",
@@ -9339,7 +9366,8 @@
    "grekiska": "οὗτός ἐστι προφήτης.",
    "oversattning": "Denne är en profet.",
    "ovningsgrupp": "presentation",
-   "kommentar": "Självständigt/substantiviskt bruk — demonstrativen är här en betonad form av ’han’."
+   "kommentar": "Självständigt/substantiviskt bruk — demonstrativen är här en betonad form av ’han’.",
+   "lararnot": "Två demonstrativa pronomen (§ 120:3, 4): Demonstrativa pronomina kan användas självständigt/substantiviskt (1) och förenat/adjektiviskt (2)."
   },
   {
    "typ": "sats",
@@ -9349,7 +9377,8 @@
    "grekiska": "δίκαιος καὶ ἅγιός ἐστιν οὗτος ὁ προφήτης.",
    "oversattning": "Rättrådig och helig är denne profet.",
    "ovningsgrupp": "presentation",
-   "kommentar": "Förenat/adjektiviskt bruk. δίκαιος och ἅγιος står predikativt (utanför artikelns grepp)."
+   "kommentar": "Förenat/adjektiviskt bruk. δίκαιος och ἅγιος står predikativt (utanför artikelns grepp).",
+   "lararnot": "Två demonstrativa pronomen (§ 120:3, 4): Demonstrativa pronomina kan användas självständigt/substantiviskt (1) och förenat/adjektiviskt (2)."
   },
   {
    "typ": "sats",
@@ -9359,7 +9388,7 @@
    "grekiska": "οὗτος ὁ προφήτης",
    "oversattning": "den här profeten",
    "ovningsgrupp": "presentation",
-   "kommentar": "οὗτος pekar ut det som ligger NÄRA talaren."
+   "lararnot": "När former av οὗτος och ἐκεῖνος står tillsammans med ett substantiv hjälper de till att placera substantivet i förhållande till den som talar i tid/rum: οὗτος ὁ προφήτης (den här [dvs. nära mig] profeten), ἐκεῖνος ὁ προφήτης (den där [dvs. längre bort från mig] profeten)."
   },
   {
    "typ": "sats",
@@ -9369,7 +9398,7 @@
    "grekiska": "ἐκεῖνος ὁ προφήτης",
    "oversattning": "den där profeten",
    "ovningsgrupp": "presentation",
-   "kommentar": "ἐκεῖνος pekar ut det som ligger LÄNGRE BORT från talaren."
+   "lararnot": "När former av οὗτος och ἐκεῖνος står tillsammans med ett substantiv hjälper de till att placera substantivet i förhållande till den som talar i tid/rum: οὗτος ὁ προφήτης (den här [dvs. nära mig] profeten), ἐκεῖνος ὁ προφήτης (den där [dvs. längre bort från mig] profeten)."
   },
   {
    "typ": "sats",
@@ -9379,7 +9408,8 @@
    "grekiska": "τί ἐστιν;",
    "oversattning": "Vad är det?",
    "ovningsgrupp": "presentation",
-   "falla": "Grekiskan saknar vårt frågetecken — semikolon (;) markerar frågan."
+   "falla": "Grekiskan saknar vårt frågetecken — semikolon (;) markerar frågan.",
+   "lararnot": "τίς τίνος kan stå självständigt (τίς vem?) eller förenat med ett substantiv (τίς ἄνθρωπος vilken människa?). Grekiskan har inte samma frågetecken som germanska och romanska språk. I stället använder man sig av semikolon."
   },
   {
    "typ": "sats",
@@ -9389,7 +9419,7 @@
    "grekiska": "τίς ἄνθρωπος λέγει;",
    "oversattning": "Vilken människa pratar?",
    "ovningsgrupp": "presentation",
-   "kommentar": "Förenat bruk: τίς står till ett substantiv."
+   "lararnot": "τίς τίνος kan stå självständigt (τίς vem?) eller förenat med ett substantiv (τίς ἄνθρωπος vilken människa?). Grekiskan har inte samma frågetecken som germanska och romanska språk. I stället använder man sig av semikolon."
   },
   {
    "typ": "sats",
@@ -9398,7 +9428,8 @@
    "sida": 35,
    "grekiska": "τίνας παρθένους βλέπομεν;",
    "oversattning": "Vilka flickor ser vi?",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "τίς τίνος kan stå självständigt (τίς vem?) eller förenat med ett substantiv (τίς ἄνθρωπος vilken människa?). Grekiskan har inte samma frågetecken som germanska och romanska språk. I stället använder man sig av semikolon."
   },
   {
    "typ": "sats",
@@ -9407,7 +9438,8 @@
    "sida": 43,
    "grekiska": "πᾶς ἄνθρωπος",
    "oversattning": "varje människa",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Bruket av πᾶς πᾶσα πᾶν. Exempel i singular: πᾶς ἄνθρωπος (varje människa), πᾶσα Ἱεροσόλυμα (hela Jerusalem). Exempel i plural: πάντες ἄνθρωποι (alla människor)."
   },
   {
    "typ": "sats",
@@ -9417,7 +9449,8 @@
    "grekiska": "πᾶσα Ἱεροσόλυμα",
    "oversattning": "hela Jerusalem",
    "ovningsgrupp": "presentation",
-   "kommentar": "πᾶς i singular betyder ’varje’ vid räknebara ord, ’hel’ vid odelbara."
+   "kommentar": "πᾶς i singular betyder ’varje’ vid räknebara ord, ’hel’ vid odelbara.",
+   "lararnot": "Bruket av πᾶς πᾶσα πᾶν. Exempel i singular: πᾶς ἄνθρωπος (varje människa), πᾶσα Ἱεροσόλυμα (hela Jerusalem). Exempel i plural: πάντες ἄνθρωποι (alla människor)."
   },
   {
    "typ": "sats",
@@ -9427,7 +9460,7 @@
    "grekiska": "πάντες ἄνθρωποι",
    "oversattning": "alla människor",
    "ovningsgrupp": "presentation",
-   "kommentar": "I plural blir πᾶς ’alla’."
+   "lararnot": "Bruket av πᾶς πᾶσα πᾶν. Exempel i singular: πᾶς ἄνθρωπος (varje människa), πᾶσα Ἱεροσόλυμα (hela Jerusalem). Exempel i plural: πάντες ἄνθρωποι (alla människor)."
   },
   {
    "typ": "sats",
@@ -9437,7 +9470,7 @@
    "grekiska": "κακῶς πάσχω.",
    "oversattning": "Jag lider ont.",
    "ovningsgrupp": "presentation",
-   "kommentar": "Adverbet bildas ur adjektivets genitiv maskulinum plural: κακός → κακῶν → κακῶς. Alltså ’jag lider svårt’."
+   "lararnot": "Adverb i koine-grekiskan (B. § 113): I koine-grekiskan bildas regelbundna adverb genom att man ersätter ändelsen för genitiv maskulinum plural av ett adjektiv med ändelsen -ως, till exempel: κακός ond => κακ-ῶν ondas => κακ-ῶς ont."
   },
   {
    "typ": "sats",
@@ -9446,7 +9479,8 @@
    "sida": 22,
    "grekiska": "θέλω κηρύσσειν ὑμῖν.",
    "oversattning": "Jag vill predika för er.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Infinitiven förekommer exempelvis, precis som i svenskan, som ett komplement efter vissa verb: θέλω (jag vill), μέλλω (jag tänker, jag ämnar)."
   },
   {
    "typ": "sats",
@@ -9455,7 +9489,8 @@
    "sida": 22,
    "grekiska": "μέλλω κηρύσσειν ὑμῖν.",
    "oversattning": "Jag tänker predika för er.",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Infinitiven förekommer exempelvis, precis som i svenskan, som ett komplement efter vissa verb: θέλω (jag vill), μέλλω (jag tänker, jag ämnar)."
   },
   {
    "typ": "sats",
@@ -9465,7 +9500,8 @@
    "grekiska": "θέλει ἀγαθὸς εἶναι.",
    "oversattning": "Han vill vara god.",
    "ovningsgrupp": "presentation",
-   "kommentar": "εἶναι är εἰμί:s oregelbundna infinitiv. Predikatsfyllnaden (ἀγαθός) står i nominativ."
+   "kommentar": "εἶναι är εἰμί:s oregelbundna infinitiv. Predikatsfyllnaden (ἀγαθός) står i nominativ.",
+   "lararnot": "Infinitiven förekommer exempelvis, precis som i svenskan, som ett komplement efter vissa verb: θέλω (jag vill), μέλλω (jag tänker, jag ämnar)."
   },
   {
    "typ": "sats",
@@ -9474,7 +9510,8 @@
    "sida": 31,
    "grekiska": "ὁ μέγας οἶκος",
    "oversattning": "det stora huset",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Bruket av μέγας μεγάλη μέγα."
   },
   {
    "typ": "sats",
@@ -9484,7 +9521,8 @@
    "grekiska": "μεγάλη ἁμαρτία",
    "oversattning": "en stor synd",
    "ovningsgrupp": "presentation",
-   "kommentar": "Femininum bygger på den längre stammen μεγαλ- och är helt regelbunden."
+   "kommentar": "Femininum bygger på den längre stammen μεγαλ- och är helt regelbunden.",
+   "lararnot": "Bruket av μέγας μεγάλη μέγα."
   },
   {
    "typ": "sats",
@@ -9494,7 +9532,8 @@
    "grekiska": "μέγα σημεῖον",
    "oversattning": "ett stort tecken",
    "ovningsgrupp": "presentation",
-   "falla": "μέγα (inte *μέγαν) — neutrum nominativ/ackusativ är en av de fem oregelbundna cellerna."
+   "falla": "μέγα (inte *μέγαν) — neutrum nominativ/ackusativ är en av de fem oregelbundna cellerna.",
+   "lararnot": "Bruket av μέγας μεγάλη μέγα."
   },
   {
    "typ": "sats",
@@ -9503,7 +9542,8 @@
    "sida": 37,
    "grekiska": "πολὺς καρπός",
    "oversattning": "mycket frukt",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Bruket av πολύς πολλή πολύ."
   },
   {
    "typ": "sats",
@@ -9513,7 +9553,8 @@
    "grekiska": "πολλὰ σημεῖα",
    "oversattning": "många tecken",
    "ovningsgrupp": "presentation",
-   "kommentar": "Samma ord i plural betyder ’många’, i singular ’mycken’ — på den längre stammen πολλ-."
+   "kommentar": "Samma ord i plural betyder ’många’, i singular ’mycken’ — på den längre stammen πολλ-.",
+   "lararnot": "Bruket av πολύς πολλή πολύ."
   },
   {
    "typ": "sats",
@@ -9523,7 +9564,8 @@
    "grekiska": "ὁ υἱὸς ἡμῶν",
    "oversattning": "vår son",
    "ovningsgrupp": "presentation",
-   "kommentar": "Obetonat possessivt uttryck: genitiv av det personliga pronomenet EFTER substantivet."
+   "kommentar": "Obetonat possessivt uttryck: genitiv av det personliga pronomenet EFTER substantivet.",
+   "lararnot": "Possessiva pronomen: obetonade."
   },
   {
    "typ": "sats",
@@ -9532,7 +9574,8 @@
    "sida": 43,
    "grekiska": "ὁ υἱὸς ὑμῶν",
    "oversattning": "er son",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Possessiva pronomen: obetonade."
   },
   {
    "typ": "sats",
@@ -9541,7 +9584,8 @@
    "sida": 43,
    "grekiska": "ὁ υἱὸς αὐτῶν",
    "oversattning": "deras son",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Possessiva pronomen: obetonade."
   },
   {
    "typ": "sats",
@@ -9551,7 +9595,7 @@
    "grekiska": "μου ὁ υἱός",
    "oversattning": "min son",
    "ovningsgrupp": "presentation",
-   "kommentar": "Det obetonade possessivet står i regel efter substantivet, men kan också stå före artikeln."
+   "lararnot": "Notera att det obetonade possessivpronomenet i regel står efter substantivet. Men de kan också stå före den bestämda artikeln: μου ὁ υἱός (min son)."
   },
   {
    "typ": "sats",
@@ -9561,7 +9605,7 @@
    "grekiska": "ὁ τούτου οἶκος",
    "oversattning": "hans hus",
    "ovningsgrupp": "presentation",
-   "kommentar": "Betonat possessivt i 3:e person = genitiv av οὗτος/ἐκεῖνος, mellan artikel och substantiv."
+   "lararnot": "Betonade former av possessiva pronomen för tredje person är genitivformer i singular eller plural av οὗτος eller ἐκεῖνος. Notera att det betonade possessivpronomenet alltid står mellan artikel och substantiv."
   },
   {
    "typ": "sats",
@@ -9571,7 +9615,8 @@
    "grekiska": "ὁ ἐμὸς υἱός",
    "oversattning": "min son",
    "ovningsgrupp": "presentation",
-   "kommentar": "Betonat possessivt i 1:a/2:a person = eget adjektiv (ἐμός), mellan artikel och substantiv."
+   "kommentar": "Betonat possessivt i 1:a/2:a person = eget adjektiv (ἐμός), mellan artikel och substantiv.",
+   "lararnot": "Betonade former av possessiva pronomen för tredje person är genitivformer i singular eller plural av οὗτος eller ἐκεῖνος. Notera att det betonade possessivpronomenet alltid står mellan artikel och substantiv."
   },
   {
    "typ": "sats",
@@ -9581,7 +9626,8 @@
    "grekiska": "ὁ ἐμὸς ὁ υἱός",
    "oversattning": "min son",
    "ovningsgrupp": "presentation",
-   "falla": "Artikeln kan upprepas — samma betydelse, samma betonade konstruktion."
+   "falla": "Artikeln kan upprepas — samma betydelse, samma betonade konstruktion.",
+   "lararnot": "Betonade former av possessiva pronomen för tredje person är genitivformer i singular eller plural av οὗτος eller ἐκεῖνος. Notera att det betonade possessivpronomenet alltid står mellan artikel och substantiv."
   },
   {
    "typ": "sats",
@@ -9590,7 +9636,8 @@
    "sida": 47,
    "grekiska": "οἱ ἀδελφοὶ ἡμῶν",
    "oversattning": "våra bröder",
-   "ovningsgrupp": "presentation"
+   "ovningsgrupp": "presentation",
+   "lararnot": "Obetonat: οἱ ἀδελφοὶ ἡμῶν (våra bröder). Betonat: οἱ ἡμέτεροι ἀδελφοί (våra bröder <inte era, eller dylikt>)."
   },
   {
    "typ": "sats",
@@ -9600,7 +9647,8 @@
    "grekiska": "ἄνθρωπός τις",
    "oversattning": "någon människa",
    "ovningsgrupp": "presentation",
-   "kommentar": "Förenat bruk. τις är enklitiskt och kastar en akut bakåt (ἄνθρωπος + τις → ἄνθρωπός τις)."
+   "kommentar": "Förenat bruk. τις är enklitiskt och kastar en akut bakåt (ἄνθρωπος + τις → ἄνθρωπός τις).",
+   "lararnot": "Indefinit pronomen: τις τινός kan stå självständigt (τις någon) eller förenat (ἄνθρωπός τις någon människa)."
   },
   {
    "typ": "sats",
@@ -10067,8 +10115,8 @@
    "grekiska": "οὗτος λέγει ὅτι ὁ προφήτης ἐστὶν ἐν τῇ ἐρήμῳ.",
    "oversattning": "Han säger att profeten är i öknen.",
    "ovningsgrupp": "presentation",
-   "kommentar": "ὅτι (att) efter sägeverb (λέγω).",
-   "_sem8": true
+   "_sem8": true,
+   "lararnot": "Bisatser: ὅτι (att) står efter sägeverb som λέγω (säga) och ἀγγέλλω (meddela)."
   },
   {
    "typ": "sats",
@@ -10077,8 +10125,8 @@
    "grekiska": "οὗτος ἀκούει ὅτι ὁ προφήτης λαλεῖ ἐν τῇ ἐρήμῳ.",
    "oversattning": "Han hör att profeten talar i öknen.",
    "ovningsgrupp": "presentation",
-   "kommentar": "ὅτι (att) efter förnimmelseverb (ἀκούω).",
-   "_sem8": true
+   "_sem8": true,
+   "lararnot": "Bisatser: ὅτι (att) står efter förnimmelseverb som ἀκούω (höra), βλέπω (se), γινώσκω (märka)."
   },
   {
    "typ": "sats",
@@ -10087,8 +10135,8 @@
    "grekiska": "αὕτη βλέπει ὅτι ὁ βαπτιστὴς κηρύσσει ἐν τῇ κώμῃ.",
    "oversattning": "Hon ser att döparen predikar i byn.",
    "ovningsgrupp": "presentation",
-   "kommentar": "ὅτι (att) efter förnimmelseverb (βλέπω).",
-   "_sem8": true
+   "_sem8": true,
+   "lararnot": "Bisatser: ὅτι (att) står efter förnimmelseverb som ἀκούω (höra), βλέπω (se), γινώσκω (märka)."
   },
   {
    "typ": "sats",

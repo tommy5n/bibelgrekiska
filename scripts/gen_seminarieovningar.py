@@ -170,6 +170,8 @@ def render_item(nr, sats):
         facit_bitar.append(f'<div class="ov-sv"><span class="ov-lbl">Rätt form:</span> <span class="gr-grek">{esc(sats["facit_form"])}</span></div>')
     if sats.get("negerad"):
         facit_bitar.append(f'<div class="ov-sv"><span class="ov-lbl">Negerad:</span> <span class="gr-grek">{esc(sats["negerad"])}</span></div>')
+    if sats.get("lararnot"):
+        facit_bitar.append(f'<div class="ov-larar"><span class="ov-tag">📖 Från föreläsningen</span> {esc(sats["lararnot"])}</div>')
     if sats.get("falla"):
         facit_bitar.append(f'<div class="ov-falla"><span class="ov-tag">⚠︎ Fälla</span> {esc(sats["falla"])}</div>')
     if sats.get("kommentar"):
@@ -245,6 +247,8 @@ def render_item_print(nr, sats):
         svar_bitar.append(f'<span class="ov-form">neg. {esc(sats["negerad"])}</span>')
     svar = " ".join(svar_bitar)
     delar = [f'<div class="ov-svar">{svar}</div>'] if svar else []
+    if sats.get("lararnot"):
+        delar.append(f'<div class="ov-note"><b>Från föreläsningen:</b> {esc(sats["lararnot"])}</div>')
     if sats.get("falla"):
         delar.append(f'<div class="ov-note"><b>Fälla:</b> {esc(sats["falla"])}</div>')
     if sats.get("kommentar"):
@@ -492,6 +496,8 @@ SIDMALL = '''<!doctype html>
       .ov-sv {{ color: var(--ink); font-size: var(--fs-md); }}
       .ov-lbl {{ color: var(--ink-soft); font-size: var(--fs-xs); font-weight: 600; }}
       .ov-tag {{ font-weight: 700; font-size: var(--fs-2xs); margin-right: 0.3rem; white-space: nowrap; }}
+      .ov-larar {{ color: var(--ink); border-left: 3px solid var(--accent, var(--gold)); padding-left: 0.6rem; }}
+      .ov-larar .ov-tag {{ color: var(--accent, var(--gold)); }}
       .ov-falla {{ color: var(--ink); border-left: 3px solid #b0642f; padding-left: 0.6rem; }}
       .ov-falla .ov-tag {{ color: #b0642f; }}
       .ov-komm {{ color: var(--ink-soft); border-left: 3px solid var(--line); padding-left: 0.6rem; }}
