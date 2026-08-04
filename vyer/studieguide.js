@@ -98,6 +98,10 @@ const SEMINARIER = [
     ova:[
       { spel:"Alfabetet", route:"#/alfabet", vad:"bokstäver, namn och ljud tills de sitter" },
     ],
+    gor:[
+      { text:"Läsövning 1: läs & gissa betydelsen", anchor:"sem1-lasovning-1" },
+      { text:"Läsövning 2: gissa & bestäm ordklass", anchor:"sem1-lasovning-2" },
+    ],
     slaupp:[],
     mal:"Du kan läsa vilken grekisk form som helst högt utan att staka dig.",
   },
@@ -385,7 +389,11 @@ const SEMINARIER = [
       { spel:"Glosor", route:"#/glosor", filter:"Sem 7", vad:"det nyaste ordförrådet" },
     ],
     gor:[
-      { text:"Formlära (a–e)", anchor:"sem7-formlara-fut" },
+      { text:"Formlära (a): presens → futurum", anchor:"sem7-formlara-fut" },
+      { text:"Formlära (b): indikativ → imperativ", anchor:"sem7-formlara-imp" },
+      { text:"Formlära (c): imperativ → indikativ", anchor:"sem7-formlara-ind" },
+      { text:"Formlära (d): presens → imperfekt", anchor:"sem7-formlara-impf" },
+      { text:"Formlära (e): imperfekt → presens", anchor:"sem7-formlara-pres" },
       { text:"Översättning", anchor:"sem7-oversattning" },
       { text:"Breakout 1: futurum", anchor:"sem7-breakout-1" },
       { text:"Breakout 2: possessiva", anchor:"sem7-breakout-2" },
@@ -507,6 +515,7 @@ const SEMINARIER = [
       { text:"Breakout 2: presens particip", anchor:"sem9-breakout-2" },
       { text:"Breakout 3: aorist utan sigma", anchor:"sem9-breakout-3" },
       { text:"Breakout 4: μι-verb", anchor:"sem9-breakout-4" },
+      { text:"Presentationens exempel", anchor:"sem9-presentation" },
     ],
     slaupp:[
       { text:"Relativpronomen", anchor:"relativ" },
