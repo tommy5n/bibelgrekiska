@@ -112,6 +112,12 @@ const SPEL = [
     desc: "Receptivt: läs personen, tempus och modus ur ändelsen",
     route: "#/verbandelser",
   },
+  {
+    nr: 17,
+    namn: "Medium-passivum",
+    desc: "Diates: läs passiv/medium ur formen och känn igen agenten ὑπό + gen",
+    route: "#/diates",
+  },
 ];
 
 const ROUTES = {
@@ -131,6 +137,7 @@ const ROUTES = {
   "/former": () => import(`./vyer/former.js${vv}`),
   "/ordbok": () => import(`./vyer/ordbok.js${vv}`),
   "/verbandelser": () => import(`./vyer/verbandelser.js${vv}`),
+  "/diates": () => import(`./vyer/diates.js${vv}`),
 };
 
 let current = null;
