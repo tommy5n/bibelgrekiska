@@ -1,0 +1,132 @@
+{
+ "_om": "Generalrepetitionen (övningstentamen) för Bibelgrekiska I ST 2026, ordagrant ur 'Repetitionsövning_2026 - m. facit.pdf' (seminarium-10). Fast dokument — driver inte från någon master. Genereras till ovningstentamen.html (webb, döljbart facit) + ovningstentamen-utskrift.html (utskrift) via scripts/gen_ovningstentamen.py. Grekiska normaliserad till koine där bladet råkar skriva attiskt (θάλαττα→θάλασσα) eller slarvar med accent; se korrekthet-fore-kursmaterial.",
+ "delar": [
+  {
+   "nr": "I",
+   "rubrik": "Ordkunskap",
+   "tema": "Översätt orden",
+   "instruktion": "Översätt följande ord till svenska — ta hänsyn till kasusform, tempus och så vidare.",
+   "typ": "ord",
+   "poster": [
+    { "gr": "ἡ ἀδελφή", "sv": "systern" },
+    { "gr": "ἀδελφή", "sv": "syster / en syster" },
+    { "gr": "ἀκούει", "sv": "han/hon/det hör" },
+    { "gr": "ὁ ἀκούων", "sv": "den/han som hör (particip!)" },
+    { "gr": "δοῦλος", "sv": "slav / en slav" },
+    { "gr": "τοῦ δούλου", "sv": "slavens" },
+    { "gr": "ἐμέ", "sv": "mig" },
+    { "gr": "βλέψει", "sv": "han/hon/det ska se (futurum)" },
+    { "gr": "τοῦ ἱεροῦ", "sv": "templets" },
+    { "gr": "τὸν μαθητήν", "sv": "lärjungen (ackusativ)" },
+    { "gr": "τῷ θεῷ", "sv": "till Gud (eller guden) — dativ" },
+    { "gr": "βαπτίζουσιν", "sv": "de döper" },
+    { "gr": "τίς;", "sv": "vem?" },
+    { "gr": "ἔργα ἀγαθά", "sv": "goda verk (neutrum plural)" },
+    { "gr": "οὗτος", "sv": "denne / den här / han" },
+    { "gr": "τῶν τέκνων", "sv": "barnens" },
+    { "gr": "ἐπίστευσεν", "sv": "han/hon/det trodde (aorist)" },
+    { "gr": "τοῦ πνεύματος", "sv": "Andens" },
+    { "gr": "πρὸς μέγα πλοῖον", "sv": "till en stor båt" },
+    { "gr": "ἔγραφον", "sv": "jag/de höll på att skriva (imperfekt)" },
+    { "gr": "ἡ μήτηρ μου", "sv": "min moder" }
+   ]
+  },
+  {
+   "nr": "II",
+   "rubrik": "Satslära",
+   "tema": "Ta ut satsdelar",
+   "instruktion": "Ta ut satsdelarna (predikat, subjekt, direkt objekt, indirekt objekt, predikatsfyllnad, rums-/tidsadverbial). Alla satsdelar behöver inte finnas representerade.",
+   "typ": "sats",
+   "poster": [
+    {
+     "gr": "λέγει αὐτῷ ὁ Ἰησοῦς, Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή·",
+     "ref": "Joh 14:6",
+     "ordlista": ["ἡ ἀλήθεια sanning", "ἡ ζωή liv"],
+     "facit": "λέγει (predikat) · αὐτῷ (indirekt objekt) · ὁ Ἰησοῦς (subjekt). I citatet: Ἐγώ (subjekt) · εἰμι (predikat) · ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή (predikatsfyllnad)."
+    },
+    {
+     "gr": "Φωνὴ λέγει ἐν τῇ ἐρήμῳ, ἑτοιμάζετε τὴν ὁδὸν τοῦ κυρίου.",
+     "ref": "Matt 3:3",
+     "ordlista": ["ἡ φωνή röst", "ἡ ἔρημος, -ου öken", "ἑτοιμάζω bereda"],
+     "facit": "Φωνή (subjekt) · λέγει (predikat) · ἐν τῇ ἐρήμῳ (rumsadverbial). I uppmaningen: ἑτοιμάζετε (predikat) · τὴν ὁδὸν τοῦ κυρίου (direkt objekt)."
+    }
+   ]
+  },
+  {
+   "nr": "III",
+   "rubrik": "Form- & satslära",
+   "tema": "Fyll i rätt form",
+   "instruktion": "Sätt in rätt form av ordet/orden som saknas i luckorna. Den svenska ledtråden står inom parentes.",
+   "typ": "lucka",
+   "poster": [
+    {
+     "gr": "ἐν τῇ μεγάλῃ ⟨…⟩ (byn) εὑρίσκετε πολλὰ ⟨…⟩ (goda) τέκνα.",
+     "ordlista": ["ἡ κώμη by", "εὑρίσκω finna"],
+     "facit": "κώμῃ (byn — dativ, kongruerar med τῇ μεγάλῃ) · ἀγαθὰ (goda — neutrum plural, kongruerar med τέκνα)."
+    },
+    {
+     "gr": "⟨…⟩ (vandrar) ὁ Ἰησοῦς πρὸς τὴν θάλασσαν.",
+     "ordlista": ["περιπατέω vandra", "ἡ θάλασσα hav"],
+     "facit": "περιπατεῖ (vandrar — 3:e person singular presens av det kontraherade περιπατέω: περιπατέ-ει → περιπατεῖ)."
+    },
+    {
+     "gr": "ἐβάστασεν ὁ Ἰησοῦς ⟨…⟩ (korset), οἱ δὲ μαθηταὶ ⟨…⟩ (honom) οὐκ ἠκολούθησαν.",
+     "ordlista": ["βαστάζω lyfta", "ὁ σταυρός kors", "ἀκολουθέω följa (med dativ för den man följer)"],
+     "facit": "τὸν σταυρόν (korset — ackusativ, direkt objekt) · αὐτῷ (honom — dativ, eftersom ἀκολουθέω styr dativ för den man följer)."
+    }
+   ]
+  },
+  {
+   "nr": "IV",
+   "rubrik": "Form- och satslära — blandat",
+   "tema": "Blandade uppgifter",
+   "instruktion": "Blandade frågor om formlära och syntax, samt två meningar att översätta.",
+   "typ": "blandat",
+   "poster": [
+    {
+     "fraga": "Hur bildas sigmatisk aorist i indikativ aktivum?",
+     "facit": "Augment + rot + sigma + personändelser (t.ex. ἐ + παιδευ + σ + α → ἐπαίδευσα)."
+    },
+    {
+     "fraga": "Vilken är skillnaden i betydelse mellan de två verbformerna av παιδεύω (uppfostra): ἐπαίδευον och ἐπαίδευσα?",
+     "facit": "Imperfekt respektive aorist. Båda beskriver dåtid, men imperfekt uttrycker att något pågick eller upprepades (’höll på att’, ’brukade’), medan aorist bara säger att handlingen är avslutad."
+    },
+    {
+     "fraga": "Vilken är skillnaden mellan de tre verbformerna av πέμπω (skicka): πέμπεις, πέμψεις och πέμπε?",
+     "facit": "Presens, futurum, imperativ. De skiljer sig i tempus — och den tredje även i modus: πέμπε är imperativ, medan de två första är indikativ."
+    },
+    {
+     "gr": "Τότε παραλαμβάνει αὐτὸν ὁ διάβολος εἰς τὴν ἁγίαν πόλιν, καὶ ἵστησιν αὐτὸν ἐπὶ τὸ πτερύγιον τοῦ ἱεροῦ, καὶ λέγει αὐτῷ, Εἰ υἱὸς εἶ τοῦ θεοῦ, βάλλε σεαυτὸν κάτω·",
+     "ref": "Matt 4:5–6",
+     "instruktion": "Översätt och stryk under bisatsen.",
+     "ordlista": ["τότε då", "παραλαμβάνω ta med sig", "ἡ πόλις stad (πόλιν ackusativ)", "ἵστημι ställa", "ἐπί + ack. på", "τὸ πτερύγιον yttersta randen", "βάλλω kasta", "σεαυτόν dig", "κάτω nedför"],
+     "facit": "Då tar djävulen med sig honom till den heliga staden och ställer honom på templets yttersta rand och säger till honom: ’Om du är Guds son, kasta dig nedför.’",
+     "extra": "Bisats: Εἰ υἱὸς εἶ τοῦ θεοῦ (’om du är Guds son’) — villkorsbisats inledd av εἰ."
+    },
+    {
+     "gr": "Οἱ δὲ Φαρισαῖοι λέγουσιν αὐτῷ, Ἰδού, οἱ μαθηταί σου ποιοῦσιν αὐτό, ὃ οὐκ ἔξεστιν ποιεῖν ἐν σαββάτῳ.",
+     "ref": "Matt 12:2",
+     "instruktion": "Översätt och stryk under bisatsen.",
+     "ordlista": ["ἰδού se!", "ἔξεστιν det är tillåtet"],
+     "facit": "Och fariséerna säger till honom: ’Se, dina lärjungar gör detta som det inte är tillåtet att göra på sabbaten.’",
+     "extra": "Relativ bisats: ὃ οὐκ ἔξεστιν ποιεῖν ἐν σαββάτῳ (’som det inte är tillåtet att göra på sabbaten’)."
+    },
+    {
+     "fraga": "Vad utmärker en bisats syntaktiskt sett?",
+     "facit": "Den inleds med en subjunktion (eller ett relativpronomen) och kan inte stå för sig själv — den hör alltid till en huvudsats."
+    },
+    {
+     "gr": "Λέγει αὐτοῖς ὁ Πιλᾶτος, λαμβάνετε αὐτὸν ὑμεῖς καὶ ἀποκτείνετε, ἐγὼ γὰρ οὐχ εὑρίσκω ἐν αὐτῷ αἰτίαν.",
+     "ref": "Joh 18:31, 38",
+     "instruktion": "Översätt och besvara följdfrågorna.",
+     "ordlista": ["λαμβάνω ta", "ἀποκτείνω döda", "εὑρίσκω finna", "ἡ αἰτία skuld"],
+     "facit": "Pilatus säger till dem: ’Ta honom ni och döda (honom), ty jag finner ingen skuld hos (= i) honom.’",
+     "foljd": [
+      { "q": "Vilka pronomen finns i meningen, och hur används de?", "a": "Personliga pronomen: αὐτοῖς, αὐτόν (obetonade) samt ὑμεῖς, ἐγώ (betonade). Verbändelsen räcker för att ange subjektet, så de utsatta ὑμεῖς/ἐγώ ger extra eftertryck." },
+      { "q": "Varför används formen οὐχ i detta fall?", "a": "Efterföljande ord (εὑρίσκω) börjar med sträv anda (aspirerat) — då används οὐχ, inte οὐκ." }
+     ]
+    }
+   ]
+  }
+ ]
+}

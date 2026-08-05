@@ -177,6 +177,13 @@ function renderHub(root) {
           <span class="desc">Allt ordkunskapsprovet kräver, samlat – med dolda översättningar</span>
         </span>
       </a>
+      <a class="hub-card" href="ovningstentamen.html">
+        <span class="num">✓</span>
+        <span class="body">
+          <span class="name">Övningstentamen</span>
+          <span class="desc">Kursens generalrepetition med facit – hela provet i fyra delar att pröva dig på</span>
+        </span>
+      </a>
     </div>
   </div>`;
 }

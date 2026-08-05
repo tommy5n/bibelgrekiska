@@ -527,6 +527,51 @@ const SEMINARIER = [
     ],
     mal:"Du känner igen relativpronomenet och dess bisats, böjer πατήρ med stamväxling, bildar aorist och futurum på likvidaverb utan σ, böjer μι-verben i presens och läser det substantiverade participet som ’den som …’.",
   },
+  {
+    n:10, titel:"Medium-passivum, deponens och generalrepetition",
+    tema:"Kursens sista pass lägger till verbets tredje dimension — verbgenus (diates). Aktivt, medium och passivt, med agenten ὑπό + genitiv. Sedan generalrepetition inför skrivningen.",
+    nytt:[
+      "Diates (verbgenus): aktivum, medium och passivum",
+      "Passiv presens, imperfekt och aorist (λύομαι, ἐλυόμην, ἐλύθην; kontraherat φιλοῦμαι, ἐφιλήθην)",
+      "Agenten vid passiv: ὑπό + genitiv (’av …’)",
+      "Medium — identiskt med passiv i presens/imperfekt, eget i aorist (ἐλουσάμην)",
+      "Passiv infinitiv (-εσθαι, -θῆναι) och imperativ (-ου, -θητι)",
+      "Deponens: medial/passiv form men aktiv betydelse (ἔρχομαι, δέχομαι, ἐργάζομαι)",
+    ],
+    begrepp:[
+      { rubrik:"Verbets tredje dimension: diates",
+        text:"Utöver <b>tempus</b> (när) och <b>modus</b> (hur talaren ställer sig) bär verbet ett <b>verbgenus</b> (diates): <b>aktivum</b> — subjektet handlar (<span class='grek'>λύω</span> ’jag löser’), <b>passivum</b> — subjektet berörs (<span class='grek'>λύομαι</span> ’jag löses’), och <b>medium</b> mitt emellan, där subjektet både handlar och berörs, ofta reflexivt (<span class='grek'>λούομαι</span> ’jag tvättar mig’)." },
+      { rubrik:"Passivets former och agenten",
+        text:"Passiv presens och imperfekt bygger på presensstammen med medium-passiv-ändelser (<span class='grek'>-ομαι, -εται, -ονται</span>; imperfekt <span class='grek'>-όμην, -ετο</span>). Aoristen har eget tecken <span class='grek'>-θη-</span> (<span class='grek'>ἐλύθην</span>). Den som utför handlingen — <b>agenten</b> — står i <span class='grek'>ὑπό</span> + genitiv: <span class='grek'>ὁ δοῦλος καλεῖται ὑπὸ τοῦ κυρίου</span> ’slaven kallas av herren’." },
+      { rubrik:"Medium — och varför formen är tvetydig",
+        text:"I presens och imperfekt är medium och passivum <b>identiska till formen</b>; sammanhanget avgör (<span class='grek'>τὸ τέκνον λούεται</span> = ’barnet tvättas’ eller ’barnet tvättar sig’). Först i aoristen skiljer de sig: passiv <span class='grek'>-θη-</span>, medium <span class='grek'>-σα-</span> (<span class='grek'>ἐλούσατο</span> ’tvättade sig’). Infinitiv och imperativ finns i alla tre genera." },
+      { rubrik:"Deponens",
+        text:"En del verb har <b>bara</b> medial/passiv form men <b>aktiv betydelse</b> — deponens: <span class='grek'>ἔρχομαι</span> komma, <span class='grek'>δέχομαι</span> ta emot, <span class='grek'>ἐργάζομαι</span> arbeta, <span class='grek'>θεάομαι</span> skåda. De översätts aktivt trots den mediala formen." },
+    ],
+    fallor:[
+      "<b>Presens/imperfekt medium = passiv till formen:</b> <span class='grek'>λύεται</span> kan vara både ’löses’ och ’löser sig’. Låt sammanhanget avgöra — formen ensam räcker inte.",
+      "<b>Aoristen skiljer:</b> <span class='grek'>-θη-</span> är passiv (<span class='grek'>ἐλύθη</span> ’blev löst’), medan <span class='grek'>-σα-</span> med medium-ändelser är medium (<span class='grek'>ἐλύσατο</span> ’tvättade sig’).",
+      "<b>Agenten står i genitiv med <span class='grek'>ὑπό</span>, inte i nominativ:</b> i <span class='grek'>ὁ ἄρτος λαμβάνεται ὑπὸ τοῦ τέκνου</span> är <span class='grek'>ὁ ἄρτος</span> subjekt och <span class='grek'>τοῦ τέκνου</span> agent — inte tvärtom.",
+      "<b>Deponens ser passivt ut men betyder aktivt:</b> <span class='grek'>ἔρχεται</span> är ’han kommer’, inte ’han kommes’.",
+    ],
+    ova:[
+      { spel:"Medium-passivum", route:"#/diates", vad:"läs av formen: tempus · diates · person" },
+      { spel:"Medium-passivum", route:"#/diates/sats", vad:"översätt den passiva satsen med agent ὑπό + genitiv" },
+      { spel:"Verbböjning", route:"#/verb", vad:"repetera aktivum inför generalrepetitionen" },
+      { spel:"Glosor", route:"#/glosor", filter:"Sem 10", vad:"seminariets nya ord (λούω, δέχομαι, βαστάζω …)" },
+      { spel:"Övningstentamen", route:"ovningstentamen.html", vad:"kursens generalrepetition med facit — hela provet i fyra delar" },
+    ],
+    gor:[
+      { text:"Breakout 2: passivum", anchor:"sem10-breakout-2" },
+      { text:"Presentationens exempel", anchor:"sem10-presentation" },
+    ],
+    slaupp:[
+      { text:"Medium-passivum", anchor:"verb-diates" },
+      { text:"μι-verb", anchor:"verb-mi" },
+      { text:"Prepositioner (ὑπό)", anchor:"prepositioner" },
+    ],
+    mal:"Du känner igen aktiv, medium och passiv på formen, läser passivsatsens agent (ὑπό + genitiv), skiljer aoristens passiva -θη- från mediets -σα-, och vet att deponens översätts aktivt. Sedan är du redo för generalrepetitionen och provet.",
+  },
 ];
 
 // Inför provet — hubben som samlar Oskars ORDKUNSKAP 1–10 (seminarium-9-mappen).
