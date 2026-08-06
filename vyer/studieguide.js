@@ -579,9 +579,55 @@ const SEMINARIER = [
 // i respektive spel); det fjärde är en sluten gloslista som ska sitta utantill
 // och som har ett eget "Inför provet"-däck i Glosor och Uppslagsboken.
 const PROV = {
-  intro:"Provet prövar <b>ordkunskap</b> i fyra delar. De tre första är formigenkänning över hela kursen — öva dem genom att välja <b>alla seminarier</b> i respektive spel. Den fjärde är en sluten gloslista som ska kunnas utantill; den har ett eget däck <b>Inför provet</b> i Glosor och Uppslagsboken.<br>Spelen öppnar numera i sitt <b>receptiva läge</b> (grekisk form → svenska), samma riktning som provet: <i>Läs formen</i>/<i>Läs frasen</i> i böjningsspelen, <i>Översätt</i> i Verb, <i>Grekiska → svenska</i> i Pronomen. De produktiva lägena (bygg formen) finns kvar som val.",
+  intro:"Provet har <b>fyra delar</b> — ordkunskap, satslära, form- &amp; satslära och blandade uppgifter. Nedan står vad varje del prövar och <b>hur du tränar den</b>, med länk till det spel eller kort som mäter samma sak. Spelen öppnar i sitt <b>receptiva läge</b> (grekisk form → svenska), samma riktning som provet; de <b>produktiva</b> lägena (bygg formen) finns kvar som val och behövs särskilt i del III.",
+  helheten:{
+    rubrik:"Träna allt på en gång",
+    text:"Gör hela <b>Övningstentamen</b> — Oskars generalrepetition med facit, i provets fyra delar — och gå sedan tillbaka till det som vacklade. Sidan <b>Inför provet</b> samlar ordkunskapen i detalj (former, verbtema och gloslistan).",
+    ova:[
+      { spel:"Övningstentamen", route:"ovningstentamen.html", vad:"hela provet i fyra delar, med döljbart facit" },
+      { spel:"Inför provet", route:"provoversikt.html", vad:"ordkunskapen samlad — former, verbtema och gloslista" },
+    ],
+  },
   delar:[
-    { rubrik:"1. Artikelns, substantivens och adjektivens former",
+    { rubrik:"I. Ordkunskap — översätt formerna",
+      text:"Översätt enskilda former till svenska och <b>ta hänsyn till kasus och tempus</b> (ἡ ἀδελφή ’systern’, βλέψει ’ska se’). Lär verben som <b>verbtema</b> (presens · futurum · aorist) och tredje-deklinationens substantiv med <b>både nominativ och genitiv</b>. Exakt vilka former står under ’Ordkunskapens former i detalj’ längre ner.",
+      ova:[
+        { spel:"Kasus", route:"#/kasus", filter:"Översätt", vad:"substantiv och adjektiv: läs formen → svenska" },
+        { spel:"Pronomen", route:"#/pronomen", filter:"Grek → sv", vad:"alla pronomenformer i kontext" },
+        { spel:"Verbböjning", route:"#/verb", filter:"Översätt", vad:"personändelser i alla tempus och modus" },
+        { spel:"Medium-passivum", route:"#/diates", vad:"läs av medium/passiv ur formen" },
+        { spel:"Glosor", route:"#/glosor", filter:"Inför provet", vad:"den slutna gloslistan som flashcard" },
+      ],
+      slaupp:[ { text:"Jämför deklinationerna", anchor:"subst-jmf" }, { text:"Verb — översikt", anchor:"verb-oversikt" }, { text:"Medium-passivum", anchor:"verb-diates" } ] },
+    { rubrik:"II. Satslära — ta ut satsdelarna",
+      text:"Peka ut <b>subjekt, predikat, direkt och indirekt objekt, predikatsfyllnad och rums-/tidsadverbial</b>. Kom ihåg att det är <b>kasus, inte ordföljden</b>, som avgör satsdelen — och att alla satsdelar inte behöver finnas i varje mening.",
+      ova:[
+        { spel:"Satsanalys", route:"#/satsanalys", vad:"markera satsdelarna i riktiga NT-satser" },
+        { spel:"Kasus", route:"#/kasus", filter:"Läs ordet", vad:"säkra kasus — nyckeln till satsdelen" },
+      ],
+      slaupp:[ { text:"Kasus &amp; satsdelar", anchor:"kasus" }, { text:"Satsanalys", anchor:"satsanalys" } ] },
+    { rubrik:"III. Form- & satslära — bygg rätt form",
+      text:"Sätt in den form som saknas i en lucka — <b>kongruent adjektiv, rätt verbform, rätt kasus</b>. Här ska du <b>producera</b> formen, inte bara läsa av den, så växla till spelens <b>bygg-läge</b>.",
+      ova:[
+        { spel:"Kongruens", route:"#/kongruens", filter:"Bygg", vad:"böj adjektivet så det kongruerar med substantivet" },
+        { spel:"Artiklar & ändelser", route:"#/andelser", filter:"Bygg", vad:"bygg formen i rätt deklination, kasus och numerus" },
+        { spel:"Formverkstaden", route:"#/former", vad:"omvandla former: presens ↔ imperfekt, futurum, imperativ" },
+        { spel:"Paradigm", route:"#/paradigm", vad:"fyll hela böjningstabellen, cell för cell" },
+      ],
+      slaupp:[ { text:"Kongruens", anchor:"kongruens" }, { text:"Personändelser", anchor:"verb-andelser" } ] },
+    { rubrik:"IV. Blandade uppgifter — förklara och översätt",
+      text:"<b>Förklara</b> hur en form bildas och skillnaden mellan former (ἐπαίδευον ’höll på att uppfostra’ vs ἐπαίδευσα ’uppfostrade’), <b>översätt</b> en mening och <b>stryk under bisatsen</b>, och <b>analysera pronomenen</b>. Här sätter du ord på grammatiken — läs begreppskorten och gör översättningsmeningarna.",
+      ova:[
+        { spel:"Satsläran", route:"#/satslara", vad:"hitta bisatsen och känn igen subjunktionen" },
+        { spel:"Medium-passivum", route:"#/diates/sats", filter:"Läs satsen", vad:"passiv sats med agent ὑπό + gen → svenska" },
+        { spel:"Formverkstaden", route:"#/former", vad:"se skillnaden presens / imperfekt / aorist i praktiken" },
+      ],
+      slaupp:[ { text:"Bisatser", anchor:"bisatser" }, { text:"Tempus &amp; aspekt", anchor:"verb-oversikt" }, { text:"Negation (οὐ/μή)", anchor:"negation" } ] },
+  ],
+  ordkunskap:{
+    intro:"Del I i detalj — de former som ordkunskapen prövar (ORDKUNSKAP 1–10). Öva formigenkänning över <b>hela kursen</b>: välj alla seminarier i spelet.",
+    delar:[
+    { rubrik:"Artikel, substantiv och adjektiv — alla former",
       text:"Kunna översätta bestämd artikel, substantiv och adjektiv i <b>alla kasus och numerus</b>, alla tre deklinationerna.",
       ova:[
         { spel:"Kasus", route:"#/kasus", filter:"Översätt / Läs ordet", vad:"läs formen och översätt — genus, kasus och bestämd artikel" },
@@ -593,7 +639,7 @@ const PROV = {
         { text:"Jämför deklinationerna", anchor:"subst-jmf" },
         { text:"Adjektiv 2-1-2", anchor:"adjektiv" },
       ] },
-    { rubrik:"2. Alla pronomenformer",
+    { rubrik:"Alla pronomenformer",
       text:"Kunna översätta samtliga pronomenformer kursen tagit upp — personliga, possessiva, demonstrativa, interrogativa, indefinita och relativa.",
       ova:[
         { spel:"Pronomen", route:"#/pronomen", filter:"Grekiska → svenska", vad:"form → betydelse i kontext, över alla seminarier" },
@@ -603,10 +649,11 @@ const PROV = {
         { text:"3:e person (αὐτός)", anchor:"pron-autos" },
         { text:"Relativpronomen", anchor:"relativ" },
       ] },
-    { rubrik:"3. Alla verbformer",
-      text:"Kunna översätta personändelserna i alla tempus (presens, imperfekt, futurum, aorist), samt infinitiv och imperativ.",
+    { rubrik:"Alla verbformer",
+      text:"Kunna översätta personändelserna i alla tempus (presens, imperfekt, futurum, aorist) och alla verbgenus (<b>aktivum, medium och passivum</b>), samt infinitiv, imperativ och particip. Lär verben som <b>verbtema</b>: presens · futurum · aorist.",
       ova:[
         { spel:"Verbböjning", route:"#/verb", filter:"Översätt", vad:"läs formen och översätt — personändelser i alla tempus och modus" },
+        { spel:"Medium-passivum", route:"#/diates", filter:"Läs formen", vad:"läs av verbgenus (aktiv/medium/passiv) och agenten" },
         { spel:"Formverkstaden", route:"#/former", filter:"Läs formen", vad:"läs av tempus, modus och person — eller bygg om formen" },
         { spel:"Presens particip", route:"#/particip", filter:"Den som …", vad:"det substantiverade participet: ὁ πιστεύων ’den som tror’" },
       ],
@@ -614,9 +661,11 @@ const PROV = {
         { text:"ω-verb", anchor:"verb-omega" },
         { text:"Futurum", anchor:"verb-futurum" },
         { text:"Sigmatisk aorist", anchor:"verb-aorist" },
+        { text:"Medium-passivum", anchor:"verb-diates" },
         { text:"μι-verb", anchor:"verb-mi" },
       ] },
-  ],
+    ],
+  },
   glosor:{
     intro:"Följande glosor ska kunnas <b>specifikt</b>. Öva dem samlat i Glosor eller Uppslagsboken — välj däcket <b>Inför provet</b>.",
     ova:[
@@ -650,16 +699,19 @@ function slauppBlockHTML(lista){
 }
 
 function provHTML(){
-  const delar = PROV.delar.map(d =>
-    `<div class="begrepp-item"><p class="rubrik">${d.rubrik}</p><p>${d.text}</p>
-      ${ovaBlockHTML(d.ova)}${slauppBlockHTML(d.slaupp)}</div>`).join("");
-  const glosor = `<div class="begrepp-item"><p class="rubrik">4. Glosor som ska kunnas specifikt</p>
+  const item = d => `<div class="begrepp-item"><p class="rubrik">${d.rubrik}</p><p>${d.text}</p>
+      ${ovaBlockHTML(d.ova)}${d.slaupp ? slauppBlockHTML(d.slaupp) : ""}</div>`;
+  const helheten = item(PROV.helheten);
+  const delar = PROV.delar.map(item).join("");
+  const ordk = `<div class="begrepp-item"><p class="rubrik">Ordkunskapens former i detalj</p>
+    <p>${PROV.ordkunskap.intro}</p></div>` + PROV.ordkunskap.delar.map(item).join("");
+  const glosor = `<div class="begrepp-item"><p class="rubrik">Glosor som ska kunnas utantill</p>
     <p>${PROV.glosor.intro}</p>${ovaBlockHTML(PROV.glosor.ova)}
     ${PROV.glosor.grupper.map(g => `<div class="ko-avd"><p class="rubrik">${g.etikett}</p><p class="grek">${g.ord}</p></div>`).join("")}</div>`;
   return `<div class="kursoversikt" id="infor-provet">
     <h2>Inför provet</h2>
     <p class="ko-inledning">${PROV.intro}</p>
-    <div class="begrepp-inner">${delar}${glosor}</div>
+    <div class="begrepp-inner">${helheten}${delar}${ordk}${glosor}</div>
   </div>`;
 }
 
@@ -722,7 +774,7 @@ const MARKUP = `<div class="vy vy-studieguide">
 
   <div class="guide-info">
     <h2>Så använder du guiden</h2>
-    <p>Guiden går igenom kursen ett seminarium i taget. För varje seminarium hittar du <b>vad som är nytt</b>, <b>begreppen bakom</b> och <b>fällorna</b> att se upp med — samt länkar vidare till rätt spel (<i>Öva</i>), till seminariets alla uppgifter och breakout-rum med facit (<i>Gör</i>) och till rätt kort i grammatikreferensen (<i>Slå upp</i>). Allt Oskar går igenom finns här — du behöver inte öppna presentationerna.</p>
+    <p>Guiden går igenom kursen ett seminarium i taget. För varje seminarium hittar du <b>vad som är nytt</b>, <b>begreppen bakom</b> och <b>fällorna</b> att se upp med — samt länkar vidare till rätt spel (<i>Öva</i>), till seminariets alla uppgifter och breakout-rum med facit (<i>Gör</i>) och till rätt kort i grammatikreferensen (<i>Slå upp</i>). Allt Oskar går igenom finns här — du behöver inte öppna presentationerna. Längst ner samlar <b>Inför provet</b> provets fyra delar och hur du tränar var och en.</p>
   </div>
 
   <div class="bakgrund">
