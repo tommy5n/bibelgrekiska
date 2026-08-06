@@ -120,13 +120,21 @@
         border-top: 1px solid var(--line); padding-top: 0.7rem; }
 
       /* Gloslistan (punkt 4) */
-      .pv-ord { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      .pv-ord { display: grid; grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
         gap: 0.15rem 1.4rem; }
-      .pv-word { display: flex; align-items: baseline; gap: 0.55rem;
+      .pv-word { display: flex; align-items: baseline; gap: 0.55rem; flex-wrap: wrap;
         padding: 0.32rem 0.4rem; border-radius: 7px; border-bottom: 1px solid var(--line); }
       .pv-word .grek { font-size: var(--fs-lg); color: var(--ink); white-space: nowrap; }
       .pv-word .gen { font-size: var(--fs-sm); color: var(--gold); font-weight: 600;
         white-space: nowrap; margin-left: -0.25rem; }
+      /* Verbtema (futurum · aorist) — gyllene formkunskap, som genitiven */
+      .pv-word .tema { font-size: var(--fs-sm); color: var(--gold); font-weight: 600;
+        white-space: nowrap; margin-left: -0.25rem; }
+      .pv-word .tema .oreg { color: var(--warn, #b0642f); margin-left: 0.15rem; }
+      /* Tredje deklinationen — liten badge efter nominativet */
+      .pv-d3 { font-size: var(--fs-3xs); font-weight: 700; color: var(--ink-soft);
+        border: 1px solid var(--line); border-radius: 5px; padding: 0 0.32em; line-height: 1.4;
+        align-self: center; }
       .pv-word .sv { font-size: var(--fs-sm); color: var(--ink-soft); }
 
       /* Självtest: dölj svenskan, klicka för att avslöja */
@@ -322,8 +330,8 @@
       // Regenereras med: python3 scripts/gen_provoversikt.py — handredigera inte.
       const PROV = [
   {"kat": "Subjunktioner", "not": "Inleder bisatser. Lär in dem tillsammans med bisatskortet.", "ord": [{"grek": "ὅτι", "sv": "att, eftersom"}, {"grek": "ὅτε", "sv": "när"}, {"grek": "ὡς", "sv": "såsom"}, {"grek": "ἐπεί", "sv": "då, eftersom"}, {"grek": "εἰ", "sv": "om"}]},
-  {"kat": "Verb", "not": "Grundbetydelsen räcker — böjningsformerna testas i punkt 3.", "ord": [{"grek": "ἀκολουθέω", "sv": "följa"}, {"grek": "ἀκούω", "sv": "höra, lyssna"}, {"grek": "ἀποστέλλω", "sv": "sända ut, skicka"}, {"grek": "βαπτίζω", "sv": "döpa"}, {"grek": "βλέπω", "sv": "se, titta"}, {"grek": "γράφω", "sv": "skriva, rita"}, {"grek": "δίδωμι", "sv": "ge"}, {"grek": "εἰμί", "sv": "vara"}, {"grek": "καλέω", "sv": "kalla"}, {"grek": "κηρύσσω", "sv": "predika"}, {"grek": "λαλέω", "sv": "prata, tala"}, {"grek": "λέγω", "sv": "tala, säga"}, {"grek": "λύω", "sv": "lösa"}, {"grek": "πέμπω", "sv": "skicka"}, {"grek": "πιστεύω", "sv": "tro, lita på"}, {"grek": "ποιέω", "sv": "göra, handla"}]},
-  {"kat": "Substantiv", "not": "Kan artikeln (= genus) och grundbetydelsen.", "ord": [{"grek": "ἡ ἀδελφή", "sv": "syster", "gen": "-ῆς"}, {"grek": "ὁ ἀδελφός", "sv": "bror", "gen": "-οῦ"}, {"grek": "ὁ ἄγγελος", "sv": "budbärare, ängel", "gen": "-ου"}, {"grek": "ὁ ἀνήρ", "sv": "man", "gen": "ἀνδρός"}, {"grek": "ὁ ἄνθρωπος", "sv": "människa", "gen": "-ου"}, {"grek": "ὁ ἀπόστολος", "sv": "sändebud, apostel", "gen": "-ου"}, {"grek": "ἡ ἀρχή", "sv": "begynnelse", "gen": "-ῆς"}, {"grek": "ὁ βαπτιστής", "sv": "döpare", "gen": "-οῦ"}, {"grek": "ὁ δοῦλος", "sv": "tjänare, slav", "gen": "-ου"}, {"grek": "ἡ ἐκκλησία", "sv": "församling", "gen": "-ας"}, {"grek": "τό ἔργον", "sv": "verk, gärning", "gen": "-ου"}, {"grek": "ἡ ζωή", "sv": "liv", "gen": "-ῆς"}, {"grek": "ὁ θεός", "sv": "gud", "gen": "-οῦ"}, {"grek": "τό ἱερόν", "sv": "tempel, helgedom", "gen": "-οῦ"}, {"grek": "ὁ κύριος", "sv": "herre, härskare", "gen": "-ου"}, {"grek": "ὁ λόγος", "sv": "ord, tal, berättelse", "gen": "-ου"}, {"grek": "ὁ μαθητής", "sv": "lärjunge", "gen": "-οῦ"}, {"grek": "ἡ μήτηρ", "sv": "mor", "gen": "μητρός"}, {"grek": "ἡ ὁδός", "sv": "väg, färd", "gen": "-οῦ"}, {"grek": "ὁ οἶκος", "sv": "hus", "gen": "-ου"}, {"grek": "ὁ οὐρανός", "sv": "himmel", "gen": "-οῦ"}, {"grek": "τό ὄρος", "sv": "berg", "gen": "ὄρους"}, {"grek": "τό τέκνον", "sv": "barn", "gen": "-ου"}, {"grek": "τό ὕδωρ", "sv": "vatten", "gen": "ὕδατος"}, {"grek": "ὁ υἱός", "sv": "son", "gen": "-οῦ"}, {"grek": "ὁ πατήρ", "sv": "far", "gen": "πατρός"}, {"grek": "τό πλοῖον", "sv": "båt", "gen": "-ου"}, {"grek": "τό πνεῦμα", "sv": "ande", "gen": "πνεύματος"}, {"grek": "ὁ προφήτης", "sv": "profet", "gen": "-ου"}, {"grek": "τό φῶς", "sv": "ljus", "gen": "φωτός"}]},
+  {"kat": "Verb", "not": "Lär verbet som <b>verbtema</b> — presens · futurum · aorist (t.ex. λύω · λύσω · ἔλυσα). Presens är uppslagsformen; de gyllene formerna är futurum och aorist. † = oregelbundet/suppletivt tema som måste läras utantill.", "ord": [{"grek": "ἀκολουθέω", "sv": "följa", "tema": "ἀκολουθήσω · ἠκολούθησα"}, {"grek": "ἀκούω", "sv": "höra, lyssna", "tema": "ἀκούσω · ἤκουσα"}, {"grek": "ἀποστέλλω", "sv": "sända ut, skicka", "tema": "ἀποστελῶ · ἀπέστειλα"}, {"grek": "βαπτίζω", "sv": "döpa", "tema": "βαπτίσω · ἐβάπτισα"}, {"grek": "βλέπω", "sv": "se, titta", "tema": "βλέψω · ἔβλεψα"}, {"grek": "γράφω", "sv": "skriva, rita", "tema": "γράψω · ἔγραψα"}, {"grek": "δίδωμι", "sv": "ge", "tema": "δώσω · ἔδωκα", "oregelb": true}, {"grek": "εἰμί", "sv": "vara", "tema": "ἔσομαι · —", "oregelb": true}, {"grek": "καλέω", "sv": "kalla", "tema": "καλέσω · ἐκάλεσα"}, {"grek": "κηρύσσω", "sv": "predika", "tema": "κηρύξω · ἐκήρυξα"}, {"grek": "λαλέω", "sv": "prata, tala", "tema": "λαλήσω · ἐλάλησα"}, {"grek": "λέγω", "sv": "tala, säga", "tema": "ἐρῶ · εἶπον", "oregelb": true}, {"grek": "λύω", "sv": "lösa", "tema": "λύσω · ἔλυσα"}, {"grek": "πέμπω", "sv": "skicka", "tema": "πέμψω · ἔπεμψα"}, {"grek": "πιστεύω", "sv": "tro, lita på", "tema": "πιστεύσω · ἐπίστευσα"}, {"grek": "ποιέω", "sv": "göra, handla", "tema": "ποιήσω · ἐποίησα"}]},
+  {"kat": "Substantiv", "not": "Kan artikeln (= genus) och grundbetydelsen. <b>Tredje deklinationen</b> (märkt <span class=\"pv-d3\">3</span>) lärs med både nominativ och genitiv — genitiven visas som hel form (ὁ πατήρ, πατρός).", "ord": [{"grek": "ἡ ἀδελφή", "sv": "syster", "gen": "-ῆς"}, {"grek": "ὁ ἀδελφός", "sv": "bror", "gen": "-οῦ"}, {"grek": "ὁ ἄγγελος", "sv": "budbärare, ängel", "gen": "-ου"}, {"grek": "ὁ ἀνήρ", "sv": "man", "gen": "ἀνδρός", "dekl3": true}, {"grek": "ὁ ἄνθρωπος", "sv": "människa", "gen": "-ου"}, {"grek": "ὁ ἀπόστολος", "sv": "sändebud, apostel", "gen": "-ου"}, {"grek": "ἡ ἀρχή", "sv": "begynnelse", "gen": "-ῆς"}, {"grek": "ὁ βαπτιστής", "sv": "döpare", "gen": "-οῦ"}, {"grek": "ὁ δοῦλος", "sv": "tjänare, slav", "gen": "-ου"}, {"grek": "ἡ ἐκκλησία", "sv": "församling", "gen": "-ας"}, {"grek": "τό ἔργον", "sv": "verk, gärning", "gen": "-ου"}, {"grek": "ἡ ζωή", "sv": "liv", "gen": "-ῆς"}, {"grek": "ὁ θεός", "sv": "gud", "gen": "-οῦ"}, {"grek": "τό ἱερόν", "sv": "tempel, helgedom", "gen": "-οῦ"}, {"grek": "ὁ κύριος", "sv": "herre, härskare", "gen": "-ου"}, {"grek": "ὁ λόγος", "sv": "ord, tal, berättelse", "gen": "-ου"}, {"grek": "ὁ μαθητής", "sv": "lärjunge", "gen": "-οῦ"}, {"grek": "ἡ μήτηρ", "sv": "mor", "gen": "μητρός", "dekl3": true}, {"grek": "ἡ ὁδός", "sv": "väg, färd", "gen": "-οῦ"}, {"grek": "ὁ οἶκος", "sv": "hus", "gen": "-ου"}, {"grek": "ὁ οὐρανός", "sv": "himmel", "gen": "-οῦ"}, {"grek": "τό ὄρος", "sv": "berg", "gen": "ὄρους", "dekl3": true}, {"grek": "τό τέκνον", "sv": "barn", "gen": "-ου"}, {"grek": "τό ὕδωρ", "sv": "vatten", "gen": "ὕδατος", "dekl3": true}, {"grek": "ὁ υἱός", "sv": "son", "gen": "-οῦ"}, {"grek": "ὁ πατήρ", "sv": "far", "gen": "πατρός", "dekl3": true}, {"grek": "τό πλοῖον", "sv": "båt", "gen": "-ου"}, {"grek": "τό πνεῦμα", "sv": "ande", "gen": "πνεύματος", "dekl3": true}, {"grek": "ὁ προφήτης", "sv": "profet", "gen": "-ου"}, {"grek": "τό φῶς", "sv": "ljus", "gen": "φωτός", "dekl3": true}]},
   {"kat": "Adjektiv", "not": "μέγας, πᾶς och πολύς böjs oregelbundet — se de egna korten.", "ord": [{"grek": "ἀγαθός", "sv": "god"}, {"grek": "ἅγιος", "sv": "helig, vördnadsvärd"}, {"grek": "δίκαιος", "sv": "rättvis, rättfärdig"}, {"grek": "μέγας", "sv": "stor, stark"}, {"grek": "πᾶς", "sv": "var och en, all"}, {"grek": "πολύς", "sv": "mycket, många"}, {"grek": "πονηρός", "sv": "dålig, ond"}]},
   {"kat": "Prepositioner", "not": "Betydelsen skiftar med kasus — se prepositionskortet.", "ord": [{"grek": "ἐν", "sv": "i, med"}, {"grek": "εἰς", "sv": "in i, mot"}, {"grek": "ἐκ / ἐξ", "sv": "ur, ut ur, från"}, {"grek": "περί", "sv": "om, angående; kring"}, {"grek": "πρός", "sv": "på; vid; till, hos"}, {"grek": "σύν", "sv": "med, jämte"}]},
   {"kat": "Blandade småord", "not": "Vanliga men lätta att blanda ihop.", "ord": [{"grek": "γάρ", "sv": "ty, för, ju"}, {"grek": "δέ", "sv": "och, men"}, {"grek": "καί", "sv": "och, också"}, {"grek": "μή", "sv": "inte"}, {"grek": "οὐ (οὐκ, οὐχ)", "sv": "inte"}, {"grek": "εὖ", "sv": "väl, gott"}]}
@@ -353,14 +361,18 @@
       mount.innerHTML = PROV.map((g) => {
         const rader = g.ord.map((o) =>
           `<div class="pv-word"><span class="grek">${esc(o.grek)}</span>${
+            o.dekl3 ? `<span class="pv-d3" title="tredje deklinationen">3</span>` : ""
+          }${
             o.gen ? `<span class="gen">${esc(o.gen)}</span>` : ""
+          }${
+            o.tema ? `<span class="tema">${esc(o.tema)}${o.oregelb ? '<span class="oreg" title="oregelbundet/suppletivt tema">†</span>' : ""}</span>` : ""
           }<span class="sv">${esc(o.sv)}</span></div>`
         ).join("");
         const [ank, txt] = KAT_LANK[g.kat];
         return `<section class="gr-card" id="${KAT_ID[g.kat]}" style="--accent:${KAT_ACCENT[g.kat]}">
           <h3>${esc(g.kat)} <span class="antal">${g.ord.length} ord</span>
             <a class="pv-grlink" href="grammatikreferens.html#${ank}">§ ${txt} →</a></h3>
-          <p class="note">${esc(g.not)}</p>
+          <p class="note">${g.not}</p>
           <div class="pv-ord">${rader}</div>
         </section>`;
       }).join("");

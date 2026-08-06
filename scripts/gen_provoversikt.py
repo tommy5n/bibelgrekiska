@@ -57,8 +57,8 @@ KATEGORIER = [
 # Kort ledtext per kategori (författad, inte ur mastern).
 NOTER = {
     "Subjunktioner": "Inleder bisatser. Lär in dem tillsammans med bisatskortet.",
-    "Verb": "Grundbetydelsen räcker — böjningsformerna testas i punkt 3.",
-    "Substantiv": "Kan artikeln (= genus) och grundbetydelsen.",
+    "Verb": "Lär verbet som <b>verbtema</b> — presens · futurum · aorist (t.ex. λύω · λύσω · ἔλυσα). Presens är uppslagsformen; de gyllene formerna är futurum och aorist. † = oregelbundet/suppletivt tema som måste läras utantill.",
+    "Substantiv": "Kan artikeln (= genus) och grundbetydelsen. <b>Tredje deklinationen</b> (märkt <span class=\"pv-d3\">3</span>) lärs med både nominativ och genitiv — genitiven visas som hel form (ὁ πατήρ, πατρός).",
     "Adjektiv": "μέγας, πᾶς och πολύς böjs oregelbundet — se de egna korten.",
     "Prepositioner": "Betydelsen skiftar med kasus — se prepositionskortet.",
     "Blandade småord": "Vanliga men lätta att blanda ihop.",
@@ -69,6 +69,36 @@ DISPLAY = {
     "ἐκ": "ἐκ / ἐξ",
     "οὐ": "οὐ (οὐκ, οὐχ)",
 }
+
+# Verbtema (principaldelar) per provverb: (presens 1sg, futurum 1sg, aorist 1sg).
+# Läraren tipsar om att lära verb som verbtema — presens · futurum · aorist.
+# Presens = uppslagsformen (= lemmat). Hämtas i första hand ur verb.json och
+# KORSVALIDERAS mot den (assert i main), men banken kompletterar de temadelar som
+# verb.json medvetet utelämnat för SPELET (suppletiva/μι-former, se
+# [[seminarier-data]]): δίδωμι, λέγω och καλέω:fut. Detta bor BARA på provsidan —
+# spelet rörs inte. εἰμί saknar aorist (defekt verb). Suppletiva/oregelbundna
+# teman flaggas (OREGELB) så eleven ser att de inte följer det sigmatiska mönstret.
+VERBTEMA = {
+    "ἀκολουθέω": ("ἀκολουθῶ", "ἀκολουθήσω", "ἠκολούθησα"),
+    "ἀκούω":     ("ἀκούω", "ἀκούσω", "ἤκουσα"),
+    "ἀποστέλλω": ("ἀποστέλλω", "ἀποστελῶ", "ἀπέστειλα"),
+    "βαπτίζω":   ("βαπτίζω", "βαπτίσω", "ἐβάπτισα"),
+    "βλέπω":     ("βλέπω", "βλέψω", "ἔβλεψα"),
+    "γράφω":     ("γράφω", "γράψω", "ἔγραψα"),
+    "δίδωμι":    ("δίδωμι", "δώσω", "ἔδωκα"),
+    "εἰμί":      ("εἰμί", "ἔσομαι", None),
+    "καλέω":     ("καλῶ", "καλέσω", "ἐκάλεσα"),
+    "κηρύσσω":   ("κηρύσσω", "κηρύξω", "ἐκήρυξα"),
+    "λαλέω":     ("λαλῶ", "λαλήσω", "ἐλάλησα"),
+    "λέγω":      ("λέγω", "ἐρῶ", "εἶπον"),
+    "λύω":       ("λύω", "λύσω", "ἔλυσα"),
+    "πέμπω":     ("πέμπω", "πέμψω", "ἔπεμψα"),
+    "πιστεύω":   ("πιστεύω", "πιστεύσω", "ἐπίστευσα"),
+    "ποιέω":     ("ποιῶ", "ποιήσω", "ἐποίησα"),
+}
+# Teman som INTE följer det regelbundna (sigmatiska) mönstret från presensstammen
+# — markeras med † och en not, så eleven vet att de måste läras utantill.
+OREGELB = {"δίδωμι", "εἰμί", "λέγω"}
 
 ARTIKEL = {"m": "ὁ", "f": "ἡ", "n": "τό"}
 
@@ -124,6 +154,46 @@ def genitiv_display(x):
     return None                              # okänt mönster → visa ingen genitiv
 
 
+def valideraverbtema(prov):
+    """Verbtema-banken måste täcka exakt provverben och stämma med verb.json.
+
+    Drift-vakt: (1) varje provverb måste ha ett tema, och inga extra; (2) de
+    temadelar verb.json FAKTISKT bär (pres/fut/aor 1sg indikativ) måste vara
+    byte-identiska med bankens — så en rättad form i mastern inte tyst driver isär.
+    Delar som verb.json medvetet utelämnat (δίδωμι/λέγω fut+aor, καλέω fut) hoppas.
+    """
+    provverb = {l for l, x in prov.items() if x.get("ordklass") == "verb"}
+    saknas = provverb - set(VERBTEMA)
+    extra = set(VERBTEMA) - provverb
+    if saknas:
+        raise SystemExit("Provverb utan verbtema i gen_provoversikt.py: " + ", ".join(sorted(saknas)))
+    if extra:
+        raise SystemExit("Verbtema för lemman som inte är provverb: " + ", ".join(sorted(extra)))
+
+    vd = json.loads((ROOT / "json" / "verb.json").read_text())
+    verbs = {v["lemma"]: v for v in vd["verb"]}
+
+    def f1(v, key):
+        f = (v.get("former") or {}).get(key) or {}
+        return f.get("1sg")
+
+    avvik = []
+    for lemma, (pres, fut, aor) in VERBTEMA.items():
+        v = verbs.get(lemma)
+        if not v:
+            continue
+        for tempus, egen, keys in (
+            ("presens", pres, ["pres.ind.akt", "pres.ind.med"]),
+            ("futurum", fut, ["fut.ind.akt", "fut.ind.med"]),
+            ("aorist", aor, ["aor.ind.akt", "aor.ind.med"]),
+        ):
+            master = next((f1(v, k) for k in keys if f1(v, k)), None)
+            if master and egen and master != egen:
+                avvik.append(f"{lemma} {tempus}: bank {egen} ≠ verb.json {master}")
+    if avvik:
+        raise SystemExit("Verbtema avviker från verb.json:\n  " + "\n  ".join(avvik))
+
+
 def main():
     glosor = json.loads(MASTER.read_text())["glosor"]
     prov = {x["lemma"]: x for x in glosor if "prov" in (x.get("listor") or [])}
@@ -142,6 +212,8 @@ def main():
             + ", ".join(sorted(om_mycket))
         )
 
+    valideraverbtema(prov)
+
     grupper = []
     for namn, lemman in KATEGORIER:
         ord = []
@@ -155,6 +227,16 @@ def main():
                 gen = genitiv_display(x)
                 if gen:
                     post["gen"] = gen
+                # Tredje deklinationen har lagrad (hel) genitiv → märks så eleven
+                # vet att just dessa ska läras med både nominativ och genitiv.
+                if x.get("genitiv"):
+                    post["dekl3"] = True
+            # Verb visas med verbtema: futurum · aorist (presens = uppslagsformen).
+            if x.get("ordklass") == "verb" and lemma in VERBTEMA:
+                _, fut, aor = VERBTEMA[lemma]
+                post["tema"] = f"{fut} · {aor}" if aor else f"{fut} · —"
+                if lemma in OREGELB:
+                    post["oregelb"] = True
             ord.append(post)
         grupper.append({"kat": namn, "not": NOTER[namn], "ord": ord})
 
@@ -180,15 +262,27 @@ def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+PV_LEGEND = (
+    '<p class="pv-legend">Verb visas som <b>verbtema</b>: presens (uppslagsformen) · '
+    '<i>futurum · aorist</i>; † = oregelbundet/suppletivt tema. '
+    '<b>3</b> = tredje deklinationen — lär både nominativ och genitiv.</p>'
+)
+
+
 def render_utskrift(grupper):
     sektioner = []
     for g in grupper:
         rader = []
         for o in g["ord"]:
+            d3 = '<span class="d3">3</span> ' if o.get("dekl3") else ""
             gen = f'<span class="gen">{esc(o["gen"])}</span> ' if o.get("gen") else ""
+            tema = ""
+            if o.get("tema"):
+                dagger = "†" if o.get("oregelb") else ""
+                tema = f'<span class="tema">{esc(o["tema"])}{dagger}</span> '
             rader.append(
                 f'<div class="pv-word"><span class="g">{esc(o["grek"])}</span> '
-                f'{gen}<span class="sv">{esc(o["sv"])}</span></div>'
+                f'{d3}{gen}{tema}<span class="sv">{esc(o["sv"])}</span></div>'
             )
         sektioner.append(
             f'<section class="pv-cat">\n'
@@ -196,7 +290,7 @@ def render_utskrift(grupper):
             f'  <div class="pv-list">\n    ' + "\n    ".join(rader) + "\n  </div>\n"
             f"</section>"
         )
-    blob = "\n".join(sektioner)
+    blob = PV_LEGEND + "\n" + "\n".join(sektioner)
     src = UTSKRIFT.read_text()
     ny, n = re.subn(
         r"(<!-- GEN:vocab START -->).*?(<!-- GEN:vocab END -->)",
