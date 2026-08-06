@@ -221,15 +221,21 @@
          Glyfen görs osynlig (color:transparent, även barn-spans) och skuggan
          blir en färgad suddklump. Bara det aktiva kortet suddas åt gången. */
       .gr-card.testing table.gr td.gr-el:not(.revealed),
-      .gr-card.testing table.gr td.gr-el:not(.revealed) * {
+      .gr-card.testing table.gr td.gr-el:not(.revealed) *,
+      .gr-card.testing table.gr td.end:not(.revealed),
+      .gr-card.testing table.gr td.end:not(.revealed) * {
         color: transparent;
       }
-      .gr-card.testing table.gr td.gr-el:not(.revealed) {
+      .gr-card.testing table.gr td.gr-el:not(.revealed),
+      .gr-card.testing table.gr td.end:not(.revealed) {
         text-shadow: 0 0 0.5em var(--ink);
         cursor: pointer; user-select: none; -webkit-user-select: none;
         -webkit-tap-highlight-color: transparent;
       }
-      .gr-card.testing table.gr td.gr-el.revealed {
+      /* ändelsekolumnerna är gyllene — låt suddklumpen ärva den färgen */
+      .gr-card.testing table.gr td.end:not(.revealed) { text-shadow: 0 0 0.5em var(--gold); }
+      .gr-card.testing table.gr td.gr-el.revealed,
+      .gr-card.testing table.gr td.end.revealed {
         background: color-mix(in srgb, var(--gold) 13%, transparent);
       }
       /* Andmatrisen har färgade former — låt suddklumpen ärva färgen */
@@ -2200,7 +2206,7 @@
       // kortets former; tryck på en cell för att avslöja den. Scopat per kort
       // så att aldrig fler än ett korts celler suddas åt gången.
       document.querySelectorAll('.gr-card').forEach((card) => {
-        if (!card.querySelector('table.gr td.gr-el')) return; // bara kort med former
+        if (!card.querySelector('table.gr td.gr-el, table.gr td.end')) return; // bara kort med former/ändelser
         const h3 = card.querySelector('h3');
         if (!h3) return;
 
@@ -2216,13 +2222,13 @@
           btn.setAttribute('aria-pressed', String(on));
           btn.textContent = on ? 'Visa alla' : 'Testa dig själv';
           if (!on)
-            card.querySelectorAll('td.gr-el.revealed').forEach((c) => c.classList.remove('revealed'));
+            card.querySelectorAll('td.gr-el.revealed, td.end.revealed').forEach((c) => c.classList.remove('revealed'));
         };
         btn.addEventListener('click', () => setTesting(!card.classList.contains('testing')));
 
         card.addEventListener('click', (ev) => {
           if (!card.classList.contains('testing')) return;
-          const cell = ev.target.closest('td.gr-el');
+          const cell = ev.target.closest('td.gr-el, td.end');
           if (cell) cell.classList.toggle('revealed');
         });
       });
