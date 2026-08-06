@@ -72,12 +72,12 @@ DISPLAY = {
 
 # Verbtema (principaldelar) per provverb: (presens 1sg, futurum 1sg, aorist 1sg).
 # Läraren tipsar om att lära verb som verbtema — presens · futurum · aorist.
-# Presens = uppslagsformen (= lemmat). Hämtas i första hand ur verb.json och
-# KORSVALIDERAS mot den (assert i main), men banken kompletterar de temadelar som
-# verb.json medvetet utelämnat för SPELET (suppletiva/μι-former, se
-# [[seminarier-data]]): δίδωμι, λέγω och καλέω:fut. Detta bor BARA på provsidan —
-# spelet rörs inte. εἰμί saknar aorist (defekt verb). Suppletiva/oregelbundna
-# teman flaggas (OREGELB) så eleven ser att de inte följer det sigmatiska mönstret.
+# Presens = uppslagsformen (= lemmat). Denna bank är visnings-/ordningskällan och
+# KORSVALIDERAS mot verb.json (valideraverbtema): sedan 2026-08-06 bär verb.json
+# alla dessa former (även de suppletiva δίδωμι/λέγω och καλέω:fut), så banken och
+# mastern måste stämma överens. εἰμί saknar aorist (defekt verb). Suppletiva/
+# oregelbundna teman flaggas (OREGELB) så eleven ser att de inte följer det
+# sigmatiska mönstret.
 VERBTEMA = {
     "ἀκολουθέω": ("ἀκολουθῶ", "ἀκολουθήσω", "ἠκολούθησα"),
     "ἀκούω":     ("ἀκούω", "ἀκούσω", "ἤκουσα"),

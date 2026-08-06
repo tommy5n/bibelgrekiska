@@ -1,5 +1,5 @@
 {
- "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope: presens indikativ aktiv (ω-verb, kontraherade -έω, εἰμί); seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι). Seminarium 7 (kurs-PDF 2026-07-14) tillför: imperfekt indikativ aktiv (impf.ind.akt) på hela inventariet, presens aktiv imperativ (pres.imp.akt), presens aktiv infinitiv (pres.inf.akt) och futurum aktiv infinitiv (fut.inf.akt: παιδεύσειν) samt futurum på konsonantstammar. Syntaxen (infinitiv B § 266-271, imperativ B § 265, tempus/aspekt § 251-255) hör till grammatikreferensen, inte hit. Seminarium 8 tillför sigmatisk aorist (aor.ind/imp/inf.akt) för sigmatiska verb; andraaorister (utan sigma) skjuts till seminarium 9. Seminarium 9 (kurs-PDF 2026-07-28) tillför: μι-verb δίδωμι/δείκνυμι (presens ind. akt., klass 'mi'); kontraherat futurum (fut.ind.akt utan σ, φιλέω-mönster) och sigmatisk aorist utan sigma (aor.ind.akt) för likvida/nasal-stammar ἀποστέλλω/κρίνω/ἀγγέλλω. εἰμί är sedan tidigare det enda μι-verbet i inventariet.",
+ "_om": "Verb för bibelgrekiska verbspel. Sanningskälla, seedad ur seminarier.json och verifierad mot facit/MorphGNT/LSJ/Smyth. Strukturen expanderar additivt: varje tempus/modus/diates är en egen nyckel under 'former', så nya böjningar läggs till utan schemaändring. Scope: presens indikativ aktiv (ω-verb, kontraherade -έω, εἰμί); seminarium 6 tillför futurum indikativ aktiv (fut.ind.akt) samt εἰμί futurum medium (ἔσομαι). Seminarium 7 (kurs-PDF 2026-07-14) tillför: imperfekt indikativ aktiv (impf.ind.akt) på hela inventariet, presens aktiv imperativ (pres.imp.akt), presens aktiv infinitiv (pres.inf.akt) och futurum aktiv infinitiv (fut.inf.akt: παιδεύσειν) samt futurum på konsonantstammar. Syntaxen (infinitiv B § 266-271, imperativ B § 265, tempus/aspekt § 251-255) hör till grammatikreferensen, inte hit. Seminarium 8 tillför sigmatisk aorist (aor.ind/imp/inf.akt) för sigmatiska verb; andraaorister (utan sigma) skjuts till seminarium 9. Seminarium 9 (kurs-PDF 2026-07-28) tillför: μι-verb δίδωμι/δείκνυμι (presens ind. akt., klass 'mi'); kontraherat futurum (fut.ind.akt utan σ, φιλέω-mönster) och sigmatisk aorist utan sigma (aor.ind.akt) för likvida/nasal-stammar ἀποστέλλω/κρίνω/ἀγγέλλω. εἰμί är sedan tidigare det enda μι-verbet i inventariet. Seminarium 10 (2026-08-06) kompletterar provverben + modellerna (παιδεύω/λύω/φιλέω) med REFERENSDATA för medium-passivum: pres/impf medium-passivum (diates 'mp', syncretisk), aorist passivum (attesterad -θη-/-η-stam), pres. M/P infinitiv+imperativ; modellerna även aorist medium + aorist inf/imperativ. Suppletiva/μι-verbtema (λέγω ἐρῶ/εἶπον, δίδωμι δώσω/ἔδωκα, καλέω καλέσω) tillagda som aktiv verbtema. βλέπω/λέγω saknar aorist passivum avsiktligt (sällsynt/suppletiv i NT — hittas ej på). Allt nytt UTESLUTS ur spel-snapshoten (gen_verb_snapshot.py: voice-filter + UTESLUT) så Verbböjning/Formverkstaden är byte-identiska; medium-passiv övas i det egna diates-spelet. Particip bor i vyer/particip.js, ej här.",
  "_genererad": "2026-07-07",
  "_nycklar": {
   "_forklaring": "Formnyckel = 'tempus.modus.diates'. Person/numerus = '1sg'..'3pl'. Kortformer för konsekvens med ord.json; långformer nedan.",
@@ -22,7 +22,8 @@
   "diates": {
    "akt": "aktiv",
    "med": "medium",
-   "pass": "passiv"
+   "pass": "passiv",
+   "mp": "medium-passivum (syncretisk pres/impf)"
   },
   "person_numerus": {
    "1sg": "1:a person singular",
@@ -281,6 +282,59 @@
     },
     "aor.inf.akt": {
      "inf": "λῦσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "λύομαι",
+     "2sg": "λύῃ",
+     "3sg": "λύεται",
+     "1pl": "λυόμεθα",
+     "2pl": "λύεσθε",
+     "3pl": "λύονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐλυόμην",
+     "2sg": "ἐλύου",
+     "3sg": "ἐλύετο",
+     "1pl": "ἐλυόμεθα",
+     "2pl": "ἐλύεσθε",
+     "3pl": "ἐλύοντο"
+    },
+    "pres.inf.mp": {
+     "inf": "λύεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "λύου",
+     "2pl": "λύεσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐλύθην",
+     "2sg": "ἐλύθης",
+     "3sg": "ἐλύθη",
+     "1pl": "ἐλύθημεν",
+     "2pl": "ἐλύθητε",
+     "3pl": "ἐλύθησαν"
+    },
+    "aor.ind.med": {
+     "1sg": "ἐλυσάμην",
+     "2sg": "ἐλύσω",
+     "3sg": "ἐλύσατο",
+     "1pl": "ἐλυσάμεθα",
+     "2pl": "ἐλύσασθε",
+     "3pl": "ἐλύσαντο"
+    },
+    "aor.inf.pass": {
+     "inf": "λυθῆναι"
+    },
+    "aor.imp.pass": {
+     "2sg": "λύθητι",
+     "2pl": "λύθητε"
+    },
+    "aor.inf.med": {
+     "inf": "λύσασθαι"
+    },
+    "aor.imp.med": {
+     "2sg": "λῦσαι",
+     "2pl": "λύσασθε"
     }
    },
    "belagda_former": [
@@ -376,6 +430,29 @@
     },
     "aor.inf.akt": {
      "inf": "βλέψαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "βλέπομαι",
+     "2sg": "βλέπῃ",
+     "3sg": "βλέπεται",
+     "1pl": "βλεπόμεθα",
+     "2pl": "βλέπεσθε",
+     "3pl": "βλέπονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐβλεπόμην",
+     "2sg": "ἐβλέπου",
+     "3sg": "ἐβλέπετο",
+     "1pl": "ἐβλεπόμεθα",
+     "2pl": "ἐβλέπεσθε",
+     "3pl": "ἐβλέποντο"
+    },
+    "pres.inf.mp": {
+     "inf": "βλέπεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "βλέπου",
+     "2pl": "βλέπεσθε"
     }
    },
    "belagda_former": [
@@ -461,6 +538,29 @@
     },
     "aor.inf.akt": {
      "inf": "ἀκολουθῆσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "ἀκολουθοῦμαι",
+     "2sg": "ἀκολουθῇ",
+     "3sg": "ἀκολουθεῖται",
+     "1pl": "ἀκολουθούμεθα",
+     "2pl": "ἀκολουθεῖσθε",
+     "3pl": "ἀκολουθοῦνται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἠκολουθούμην",
+     "2sg": "ἠκολουθοῦ",
+     "3sg": "ἠκολουθεῖτο",
+     "1pl": "ἠκολουθούμεθα",
+     "2pl": "ἠκολουθεῖσθε",
+     "3pl": "ἠκολουθοῦντο"
+    },
+    "pres.inf.mp": {
+     "inf": "ἀκολουθεῖσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "ἀκολουθοῦ",
+     "2pl": "ἀκολουθεῖσθε"
     }
    },
    "belagda_former": [],
@@ -545,6 +645,37 @@
     },
     "aor.inf.akt": {
      "inf": "ἀκοῦσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "ἀκούομαι",
+     "2sg": "ἀκούῃ",
+     "3sg": "ἀκούεται",
+     "1pl": "ἀκουόμεθα",
+     "2pl": "ἀκούεσθε",
+     "3pl": "ἀκούονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἠκουόμην",
+     "2sg": "ἠκούου",
+     "3sg": "ἠκούετο",
+     "1pl": "ἠκουόμεθα",
+     "2pl": "ἠκούεσθε",
+     "3pl": "ἠκούοντο"
+    },
+    "pres.inf.mp": {
+     "inf": "ἀκούεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "ἀκούου",
+     "2pl": "ἀκούεσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἠκούσθην",
+     "2sg": "ἠκούσθης",
+     "3sg": "ἠκούσθη",
+     "1pl": "ἠκούσθημεν",
+     "2pl": "ἠκούσθητε",
+     "3pl": "ἠκούσθησαν"
     }
    },
    "belagda_former": [
@@ -601,6 +732,45 @@
      "1pl": "ἐλέγομεν",
      "2pl": "ἐλέγετε",
      "3pl": "ἔλεγον"
+    },
+    "pres.ind.mp": {
+     "1sg": "λέγομαι",
+     "2sg": "λέγῃ",
+     "3sg": "λέγεται",
+     "1pl": "λεγόμεθα",
+     "2pl": "λέγεσθε",
+     "3pl": "λέγονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐλεγόμην",
+     "2sg": "ἐλέγου",
+     "3sg": "ἐλέγετο",
+     "1pl": "ἐλεγόμεθα",
+     "2pl": "ἐλέγεσθε",
+     "3pl": "ἐλέγοντο"
+    },
+    "pres.inf.mp": {
+     "inf": "λέγεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "λέγου",
+     "2pl": "λέγεσθε"
+    },
+    "fut.ind.akt": {
+     "1sg": "ἐρῶ",
+     "2sg": "ἐρεῖς",
+     "3sg": "ἐρεῖ",
+     "1pl": "ἐροῦμεν",
+     "2pl": "ἐρεῖτε",
+     "3pl": "ἐροῦσι(ν)"
+    },
+    "aor.ind.akt": {
+     "1sg": "εἶπον",
+     "2sg": "εἶπες",
+     "3sg": "εἶπε(ν)",
+     "1pl": "εἴπομεν",
+     "2pl": "εἴπετε",
+     "3pl": "εἶπον"
     }
    },
    "belagda_former": [
@@ -686,6 +856,37 @@
     },
     "aor.inf.akt": {
      "inf": "γράψαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "γράφομαι",
+     "2sg": "γράφῃ",
+     "3sg": "γράφεται",
+     "1pl": "γραφόμεθα",
+     "2pl": "γράφεσθε",
+     "3pl": "γράφονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐγραφόμην",
+     "2sg": "ἐγράφου",
+     "3sg": "ἐγράφετο",
+     "1pl": "ἐγραφόμεθα",
+     "2pl": "ἐγράφεσθε",
+     "3pl": "ἐγράφοντο"
+    },
+    "pres.inf.mp": {
+     "inf": "γράφεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "γράφου",
+     "2pl": "γράφεσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐγράφην",
+     "2sg": "ἐγράφης",
+     "3sg": "ἐγράφη",
+     "1pl": "ἐγράφημεν",
+     "2pl": "ἐγράφητε",
+     "3pl": "ἐγράφησαν"
     }
    },
    "belagda_former": [
@@ -825,6 +1026,37 @@
     },
     "aor.inf.akt": {
      "inf": "κηρῦξαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "κηρύσσομαι",
+     "2sg": "κηρύσσῃ",
+     "3sg": "κηρύσσεται",
+     "1pl": "κηρυσσόμεθα",
+     "2pl": "κηρύσσεσθε",
+     "3pl": "κηρύσσονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐκηρυσσόμην",
+     "2sg": "ἐκηρύσσου",
+     "3sg": "ἐκηρύσσετο",
+     "1pl": "ἐκηρυσσόμεθα",
+     "2pl": "ἐκηρύσσεσθε",
+     "3pl": "ἐκηρύσσοντο"
+    },
+    "pres.inf.mp": {
+     "inf": "κηρύσσεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "κηρύσσου",
+     "2pl": "κηρύσσεσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐκηρύχθην",
+     "2sg": "ἐκηρύχθης",
+     "3sg": "ἐκηρύχθη",
+     "1pl": "ἐκηρύχθημεν",
+     "2pl": "ἐκηρύχθητε",
+     "3pl": "ἐκηρύχθησαν"
     }
    },
    "belagda_former": [
@@ -974,6 +1206,59 @@
     },
     "aor.inf.akt": {
      "inf": "παιδεῦσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "παιδεύομαι",
+     "2sg": "παιδεύῃ",
+     "3sg": "παιδεύεται",
+     "1pl": "παιδευόμεθα",
+     "2pl": "παιδεύεσθε",
+     "3pl": "παιδεύονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐπαιδευόμην",
+     "2sg": "ἐπαιδεύου",
+     "3sg": "ἐπαιδεύετο",
+     "1pl": "ἐπαιδευόμεθα",
+     "2pl": "ἐπαιδεύεσθε",
+     "3pl": "ἐπαιδεύοντο"
+    },
+    "pres.inf.mp": {
+     "inf": "παιδεύεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "παιδεύου",
+     "2pl": "παιδεύεσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐπαιδεύθην",
+     "2sg": "ἐπαιδεύθης",
+     "3sg": "ἐπαιδεύθη",
+     "1pl": "ἐπαιδεύθημεν",
+     "2pl": "ἐπαιδεύθητε",
+     "3pl": "ἐπαιδεύθησαν"
+    },
+    "aor.ind.med": {
+     "1sg": "ἐπαιδευσάμην",
+     "2sg": "ἐπαιδεύσω",
+     "3sg": "ἐπαιδεύσατο",
+     "1pl": "ἐπαιδευσάμεθα",
+     "2pl": "ἐπαιδεύσασθε",
+     "3pl": "ἐπαιδεύσαντο"
+    },
+    "aor.inf.pass": {
+     "inf": "παιδευθῆναι"
+    },
+    "aor.imp.pass": {
+     "2sg": "παιδεύθητι",
+     "2pl": "παιδεύθητε"
+    },
+    "aor.inf.med": {
+     "inf": "παιδεύσασθαι"
+    },
+    "aor.imp.med": {
+     "2sg": "παίδευσαι",
+     "2pl": "παιδεύσασθε"
     }
    },
    "belagda_former": [
@@ -1062,6 +1347,37 @@
     },
     "aor.inf.akt": {
      "inf": "πέμψαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "πέμπομαι",
+     "2sg": "πέμπῃ",
+     "3sg": "πέμπεται",
+     "1pl": "πεμπόμεθα",
+     "2pl": "πέμπεσθε",
+     "3pl": "πέμπονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐπεμπόμην",
+     "2sg": "ἐπέμπου",
+     "3sg": "ἐπέμπετο",
+     "1pl": "ἐπεμπόμεθα",
+     "2pl": "ἐπέμπεσθε",
+     "3pl": "ἐπέμποντο"
+    },
+    "pres.inf.mp": {
+     "inf": "πέμπεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "πέμπου",
+     "2pl": "πέμπεσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐπέμφθην",
+     "2sg": "ἐπέμφθης",
+     "3sg": "ἐπέμφθη",
+     "1pl": "ἐπέμφθημεν",
+     "2pl": "ἐπέμφθητε",
+     "3pl": "ἐπέμφθησαν"
     }
    },
    "belagda_former": [
@@ -1207,6 +1523,37 @@
     },
     "aor.inf.akt": {
      "inf": "πιστεῦσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "πιστεύομαι",
+     "2sg": "πιστεύῃ",
+     "3sg": "πιστεύεται",
+     "1pl": "πιστευόμεθα",
+     "2pl": "πιστεύεσθε",
+     "3pl": "πιστεύονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐπιστευόμην",
+     "2sg": "ἐπιστεύου",
+     "3sg": "ἐπιστεύετο",
+     "1pl": "ἐπιστευόμεθα",
+     "2pl": "ἐπιστεύεσθε",
+     "3pl": "ἐπιστεύοντο"
+    },
+    "pres.inf.mp": {
+     "inf": "πιστεύεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "πιστεύου",
+     "2pl": "πιστεύεσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐπιστεύθην",
+     "2sg": "ἐπιστεύθης",
+     "3sg": "ἐπιστεύθη",
+     "1pl": "ἐπιστεύθημεν",
+     "2pl": "ἐπιστεύθητε",
+     "3pl": "ἐπιστεύθησαν"
     }
    },
    "belagda_former": [
@@ -1295,6 +1642,37 @@
     },
     "aor.inf.akt": {
      "inf": "βαπτίσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "βαπτίζομαι",
+     "2sg": "βαπτίζῃ",
+     "3sg": "βαπτίζεται",
+     "1pl": "βαπτιζόμεθα",
+     "2pl": "βαπτίζεσθε",
+     "3pl": "βαπτίζονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐβαπτιζόμην",
+     "2sg": "ἐβαπτίζου",
+     "3sg": "ἐβαπτίζετο",
+     "1pl": "ἐβαπτιζόμεθα",
+     "2pl": "ἐβαπτίζεσθε",
+     "3pl": "ἐβαπτίζοντο"
+    },
+    "pres.inf.mp": {
+     "inf": "βαπτίζεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "βαπτίζου",
+     "2pl": "βαπτίζεσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐβαπτίσθην",
+     "2sg": "ἐβαπτίσθης",
+     "3sg": "ἐβαπτίσθη",
+     "1pl": "ἐβαπτίσθημεν",
+     "2pl": "ἐβαπτίσθητε",
+     "3pl": "ἐβαπτίσθησαν"
     }
    },
    "belagda_former": [
@@ -1614,6 +1992,59 @@
     },
     "aor.inf.akt": {
      "inf": "φιλῆσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "φιλοῦμαι",
+     "2sg": "φιλῇ",
+     "3sg": "φιλεῖται",
+     "1pl": "φιλούμεθα",
+     "2pl": "φιλεῖσθε",
+     "3pl": "φιλοῦνται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐφιλούμην",
+     "2sg": "ἐφιλοῦ",
+     "3sg": "ἐφιλεῖτο",
+     "1pl": "ἐφιλούμεθα",
+     "2pl": "ἐφιλεῖσθε",
+     "3pl": "ἐφιλοῦντο"
+    },
+    "pres.inf.mp": {
+     "inf": "φιλεῖσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "φιλοῦ",
+     "2pl": "φιλεῖσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐφιλήθην",
+     "2sg": "ἐφιλήθης",
+     "3sg": "ἐφιλήθη",
+     "1pl": "ἐφιλήθημεν",
+     "2pl": "ἐφιλήθητε",
+     "3pl": "ἐφιλήθησαν"
+    },
+    "aor.ind.med": {
+     "1sg": "ἐφιλησάμην",
+     "2sg": "ἐφιλήσω",
+     "3sg": "ἐφιλήσατο",
+     "1pl": "ἐφιλησάμεθα",
+     "2pl": "ἐφιλήσασθε",
+     "3pl": "ἐφιλήσαντο"
+    },
+    "aor.inf.pass": {
+     "inf": "φιληθῆναι"
+    },
+    "aor.imp.pass": {
+     "2sg": "φιλήθητι",
+     "2pl": "φιλήθητε"
+    },
+    "aor.inf.med": {
+     "inf": "φιλήσασθαι"
+    },
+    "aor.imp.med": {
+     "2sg": "φίλησαι",
+     "2pl": "φιλήσασθε"
     }
    },
    "belagda_former": [
@@ -1787,6 +2218,45 @@
     },
     "aor.inf.akt": {
      "inf": "καλέσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "καλοῦμαι",
+     "2sg": "καλῇ",
+     "3sg": "καλεῖται",
+     "1pl": "καλούμεθα",
+     "2pl": "καλεῖσθε",
+     "3pl": "καλοῦνται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐκαλούμην",
+     "2sg": "ἐκαλοῦ",
+     "3sg": "ἐκαλεῖτο",
+     "1pl": "ἐκαλούμεθα",
+     "2pl": "ἐκαλεῖσθε",
+     "3pl": "ἐκαλοῦντο"
+    },
+    "pres.inf.mp": {
+     "inf": "καλεῖσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "καλοῦ",
+     "2pl": "καλεῖσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐκλήθην",
+     "2sg": "ἐκλήθης",
+     "3sg": "ἐκλήθη",
+     "1pl": "ἐκλήθημεν",
+     "2pl": "ἐκλήθητε",
+     "3pl": "ἐκλήθησαν"
+    },
+    "fut.ind.akt": {
+     "1sg": "καλέσω",
+     "2sg": "καλέσεις",
+     "3sg": "καλέσει",
+     "1pl": "καλέσομεν",
+     "2pl": "καλέσετε",
+     "3pl": "καλέσουσι(ν)"
     }
    },
    "belagda_former": [
@@ -1872,6 +2342,37 @@
     },
     "aor.inf.akt": {
      "inf": "λαλῆσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "λαλοῦμαι",
+     "2sg": "λαλῇ",
+     "3sg": "λαλεῖται",
+     "1pl": "λαλούμεθα",
+     "2pl": "λαλεῖσθε",
+     "3pl": "λαλοῦνται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐλαλούμην",
+     "2sg": "ἐλαλοῦ",
+     "3sg": "ἐλαλεῖτο",
+     "1pl": "ἐλαλούμεθα",
+     "2pl": "ἐλαλεῖσθε",
+     "3pl": "ἐλαλοῦντο"
+    },
+    "pres.inf.mp": {
+     "inf": "λαλεῖσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "λαλοῦ",
+     "2pl": "λαλεῖσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐλαλήθην",
+     "2sg": "ἐλαλήθης",
+     "3sg": "ἐλαλήθη",
+     "1pl": "ἐλαλήθημεν",
+     "2pl": "ἐλαλήθητε",
+     "3pl": "ἐλαλήθησαν"
     }
    },
    "belagda_former": [
@@ -2047,6 +2548,37 @@
     },
     "aor.inf.akt": {
      "inf": "ποιῆσαι"
+    },
+    "pres.ind.mp": {
+     "1sg": "ποιοῦμαι",
+     "2sg": "ποιῇ",
+     "3sg": "ποιεῖται",
+     "1pl": "ποιούμεθα",
+     "2pl": "ποιεῖσθε",
+     "3pl": "ποιοῦνται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἐποιούμην",
+     "2sg": "ἐποιοῦ",
+     "3sg": "ἐποιεῖτο",
+     "1pl": "ἐποιούμεθα",
+     "2pl": "ἐποιεῖσθε",
+     "3pl": "ἐποιοῦντο"
+    },
+    "pres.inf.mp": {
+     "inf": "ποιεῖσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "ποιοῦ",
+     "2pl": "ποιεῖσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἐποιήθην",
+     "2sg": "ἐποιήθης",
+     "3sg": "ἐποιήθη",
+     "1pl": "ἐποιήθημεν",
+     "2pl": "ἐποιήθητε",
+     "3pl": "ἐποιήθησαν"
     }
    },
    "belagda_former": [
@@ -2205,6 +2737,9 @@
      "3sg": "ἔστω",
      "2pl": "ἔστε",
      "3pl": "ἔστωσαν"
+    },
+    "fut.inf.med": {
+     "inf": "ἔσεσθαι"
     }
    },
    "varianter": {
@@ -3177,6 +3712,22 @@
      "1pl": "δίδομεν",
      "2pl": "δίδοτε",
      "3pl": "διδόασι(ν)"
+    },
+    "fut.ind.akt": {
+     "1sg": "δώσω",
+     "2sg": "δώσεις",
+     "3sg": "δώσει",
+     "1pl": "δώσομεν",
+     "2pl": "δώσετε",
+     "3pl": "δώσουσι(ν)"
+    },
+    "aor.ind.akt": {
+     "1sg": "ἔδωκα",
+     "2sg": "ἔδωκας",
+     "3sg": "ἔδωκε(ν)",
+     "1pl": "ἐδώκαμεν",
+     "2pl": "ἐδώκατε",
+     "3pl": "ἔδωκαν"
     }
    },
    "belagda_former": [
@@ -3271,6 +3822,37 @@
      "1pl": "ἀπεστείλαμεν",
      "2pl": "ἀπεστείλατε",
      "3pl": "ἀπέστειλαν"
+    },
+    "pres.ind.mp": {
+     "1sg": "ἀποστέλομαι",
+     "2sg": "ἀποστέλῃ",
+     "3sg": "ἀποστέλεται",
+     "1pl": "ἀποστελόμεθα",
+     "2pl": "ἀποστέλεσθε",
+     "3pl": "ἀποστέλονται"
+    },
+    "impf.ind.mp": {
+     "1sg": "ἀπεστελλόμην",
+     "2sg": "ἀπεστέλλου",
+     "3sg": "ἀπεστέλλετο",
+     "1pl": "ἀπεστελλόμεθα",
+     "2pl": "ἀπεστέλλεσθε",
+     "3pl": "ἀπεστέλλοντο"
+    },
+    "pres.inf.mp": {
+     "inf": "ἀποστέλεσθαι"
+    },
+    "pres.imp.mp": {
+     "2sg": "ἀποστέλου",
+     "2pl": "ἀποστέλεσθε"
+    },
+    "aor.ind.pass": {
+     "1sg": "ἀπεστάλην",
+     "2sg": "ἀπεστάλης",
+     "3sg": "ἀπεστάλη",
+     "1pl": "ἀπεστάλημεν",
+     "2pl": "ἀπεστάλητε",
+     "3pl": "ἀπεστάλησαν"
     }
    },
    "belagda_former": [

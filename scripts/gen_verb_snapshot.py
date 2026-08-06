@@ -37,6 +37,29 @@ IMP4 = ["2sg", "3sg", "2pl", "3pl"]
 # lärt (B § 171, sem 6) och används i övningsblad 7 → den tas med.
 UTESLUT = {("λαμβάνω", "fut.ind.med")}
 
+# verb.json kompletterades 2026-08-06 med medium/passiv-, aorist-passiv- och
+# suppletiva verbtema-former (provverben + modellerna) — som REFERENSDATA. Spelen
+# ska förbli oförändrade, så snapshoten utesluter allt det nya:
+#  • medium/passivum (diates mp/med/pass) fälls bort — kursens diates övas i det
+#    egna medium-passiv-spelet; εἰμί:s förlärda fut.ind.med behålls dock.
+#  • de nytillagda AKTIVA suppletiva/μι-verbtemana utesluts per (lemma, nyckel)
+#    nedan, så snapshoten blir byte-identisk med den förra. (εἰμί:s εἶναι/ἴσθι fanns
+#    redan och behålls; dess nya fut.inf.med ἔσεσθαι faller på voice-filtret.)
+UTESLUT |= {
+    ("δίδωμι", "fut.ind.akt"), ("δίδωμι", "aor.ind.akt"),
+    ("λέγω", "fut.ind.akt"), ("λέγω", "aor.ind.akt"),
+    ("καλέω", "fut.ind.akt"),
+}
+
+
+def spelbar(k):
+    """True om formnyckeln ska med i spel-snapshoten (bara aktivum; εἰμί:s
+    förlärda futurum medium ἔσομαι är enda undantaget)."""
+    diates = k.split(".")[2] if k.count(".") >= 2 else "akt"
+    if diates == "akt":
+        return True
+    return k.rsplit(".", 1)[0] == "fut.ind" and diates == "med"  # εἰμί ἔσομαι
+
 
 def jsstr(s):
     return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
@@ -56,7 +79,7 @@ def bygg_rad(v):
     lemma = v["lemma"]
     former = collections.OrderedDict()
     for k, c in v["former"].items():
-        if (lemma, k) in UTESLUT:
+        if (lemma, k) in UTESLUT or not spelbar(k):
             continue
         former[".".join(k.split(".")[:2])] = rendera_celler(k, c)
 
