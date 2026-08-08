@@ -118,6 +118,12 @@ const SPEL = [
     desc: "Diates: läs passiv/medium ur formen och känn igen agenten ὑπό + gen",
     route: "#/diates",
   },
+  {
+    nr: 18,
+    namn: "Dynamisk tenta",
+    desc: "Generalrepetition som lottas fram: en ny fyrdelad övningstenta varje gång",
+    route: "#/tenta",
+  },
 ];
 
 const ROUTES = {
@@ -138,6 +144,7 @@ const ROUTES = {
   "/ordbok": () => import(`./vyer/ordbok.js${vv}`),
   "/verbandelser": () => import(`./vyer/verbandelser.js${vv}`),
   "/diates": () => import(`./vyer/diates.js${vv}`),
+  "/tenta": () => import(`./vyer/tenta.js${vv}`),
 };
 
 let current = null;
@@ -181,7 +188,7 @@ function renderHub(root) {
         <span class="num">✓</span>
         <span class="body">
           <span class="name">Övningstentamen</span>
-          <span class="desc">Kursens generalrepetition med facit – hela provet i fyra delar att pröva dig på</span>
+          <span class="desc">Lärarens fasta generalrepetition med facit – hela provet i fyra delar (se även Dynamisk tenta)</span>
         </span>
       </a>
     </div>

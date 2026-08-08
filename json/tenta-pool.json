@@ -1,0 +1,177 @@
+{
+ "_om": "Kurerad frågebank för den DYNAMISKA övningstentamen (vyer/tenta.js, #/tenta). Ett FAST material — driver inte från någon master, men speglar samma prov (ORDKUNSKAP 1–10 + provspecen, sem 10) som ovningstentamen.json. Här bor bara de delar som INTE kan härledas ur ett befintligt spel: del III (luckor), del IV begreppsfrågor och del IV översättningsmeningar med bisats. Del I (översätt former) plockas i körtid ur verb.js + kasus.js filtrerat till provlistorna; del II (satslära) genereras ur json/satsanalys-satser.json. Snapshot: scripts/gen_tenta_snapshot.py → vyer/tenta-data.js. Alla grekiska former är korsverifierade mot repots paradigm (kasus.js, verb.js, json/adjektiv.json) — se korrekthet-fore-kursmaterial. Bisats-meningarna är hämtade ordagrant ur satslära-spelets bank (vyer/satslara.js): grekiskan verbatim, svenskan och bisatsavgränsningen därifrån.",
+ "_falt": {
+  "luckor": "Del III. mall: mening där ⟨…⟩ markerar en lucka; ledtråden står i (parentes) direkt efter. svar: rätt(a) form(er) i ordning. ordlista: hjälpglosor. facit: förklaring med regeln.",
+  "begrepp": "Del IV, begreppsfrågor. fraga + facit. niva: 'grund' (sem 1–9) | 'diates' (sem 10, medium/passivum) — tenta.js kan vikta urvalet.",
+  "oversattning": "Del IV, översätt + markera bisatsen. gr verbatim, sv = facit, bisats = det underordnade ledet, inledare = subjunktion/relativpronomen, funktion = dess roll. ordlista: hjälpglosor för ord utanför kärnvokabulären."
+ },
+
+ "luckor": [
+  { "id": "l01", "mall": "ἐν τῇ μεγάλῃ ⟨…⟩ (byn) εὑρίσκετε πολλὰ ⟨…⟩ (goda) τέκνα.",
+    "ordlista": ["ἡ κώμη by", "εὑρίσκω finna"],
+    "svar": ["κώμῃ", "ἀγαθὰ"],
+    "facit": "κώμῃ (byn — dativ singular, kongruerar med τῇ μεγάλῃ efter ἐν) · ἀγαθὰ (goda — neutrum plural, ackusativt objekt som kongruerar med τέκνα)." },
+
+  { "id": "l02", "mall": "⟨…⟩ (vandrar) ὁ Ἰησοῦς πρὸς τὴν θάλασσαν.",
+    "ordlista": ["περιπατέω vandra", "ἡ θάλασσα hav"],
+    "svar": ["περιπατεῖ"],
+    "facit": "περιπατεῖ (3:e person singular presens av det kontraherade περιπατέω: περιπατέ-ει → περιπατεῖ)." },
+
+  { "id": "l03", "mall": "ἐβάστασεν ὁ Ἰησοῦς ⟨…⟩ (korset), οἱ δὲ μαθηταὶ ⟨…⟩ (honom) οὐκ ἠκολούθησαν.",
+    "ordlista": ["βαστάζω lyfta, bära", "ὁ σταυρός kors", "ἀκολουθέω följa (styr dativ)"],
+    "svar": ["τὸν σταυρόν", "αὐτῷ"],
+    "facit": "τὸν σταυρόν (korset — ackusativ singular, direkt objekt) · αὐτῷ (honom — dativ, eftersom ἀκολουθέω styr dativ för den man följer)." },
+
+  { "id": "l04", "mall": "οἱ μαθηταὶ ⟨…⟩ (hör) τὸν λόγον τοῦ κυρίου.",
+    "ordlista": ["ἀκούω höra"],
+    "svar": ["ἀκούουσι(ν)"],
+    "facit": "ἀκούουσι(ν) — 3:e person plural presens; rörligt ν läggs till framför vokal eller vid paus." },
+
+  { "id": "l05", "mall": "τὸ τέκνον τοῦ ⟨…⟩ (apostelns) βλέπει τὸν κύριον.",
+    "ordlista": ["ὁ ἀπόστολος apostel"],
+    "svar": ["ἀποστόλου"],
+    "facit": "ἀποστόλου (genitiv singular — genitivattribut som hör till τέκνον, 'apostelns barn')." },
+
+  { "id": "l06", "mall": "τὰ ἔργα τῶν ἀνθρώπων ⟨…⟩ (goda) ἐστιν.",
+    "ordlista": ["τὸ ἔργον verk, gärning"],
+    "svar": ["ἀγαθά"],
+    "facit": "ἀγαθά (neutrum plural, predikatsfyllnad som kongruerar med τὰ ἔργα). Neutrum plural tar predikatet i singular — därför ἐστιν, inte εἰσιν." },
+
+  { "id": "l07", "mall": "ὁ προφήτης λέγει ⟨…⟩ (folket) τὴν ἀλήθειαν.",
+    "ordlista": ["ὁ λαός folk", "ἡ ἀλήθεια sanning"],
+    "svar": ["τῷ λαῷ"],
+    "facit": "τῷ λαῷ (dativ singular — indirekt objekt: den man talar till)." },
+
+  { "id": "l08", "mall": "ὁ Ἰησοῦς ἄγει τοὺς μαθητὰς εἰς ⟨…⟩ (staden).",
+    "ordlista": ["ἄγω leda", "ἡ πόλις stad (3:e dekl.)"],
+    "svar": ["τὴν πόλιν"],
+    "facit": "τὴν πόλιν (ackusativ singular — εἰς styr ackusativ; ἡ πόλις böjs i 3:e deklinationen, ackusativ πόλιν)." },
+
+  { "id": "l09", "mall": "ὁ ἀπόστολος ⟨…⟩ (höll på att skriva) τὸν λόγον.",
+    "ordlista": ["γράφω skriva"],
+    "svar": ["ἔγραφε(ν)"],
+    "facit": "ἔγραφε(ν) — 3:e person singular imperfekt (augment ἐ- + presensstam); imperfekt uttrycker pågående eller upprepad handling i dåtid." },
+
+  { "id": "l10", "mall": "ὁ θεὸς ⟨…⟩ (ska skicka) τὸν υἱὸν εἰς τὸν κόσμον.",
+    "ordlista": ["πέμπω skicka"],
+    "svar": ["πέμψει"],
+    "facit": "πέμψει — 3:e person singular futurum. Tempustecknet σ smälter med labialen π: πεμπ + σ → πεμψ." },
+
+  { "id": "l11", "mall": "⟨…⟩ (älskar) ὁ πατὴρ τὸν υἱόν.",
+    "ordlista": ["φιλέω älska, tycka om"],
+    "svar": ["φιλεῖ"],
+    "facit": "φιλεῖ — 3:e person singular presens av kontraherade φιλέω (φιλέ-ει → φιλεῖ)." },
+
+  { "id": "l12", "mall": "ὁ διδάσκαλος καλεῖ ⟨…⟩ (lärjungen).",
+    "ordlista": ["ὁ διδάσκαλος lärare", "ὁ μαθητής lärjunge", "καλέω kalla, ropa på"],
+    "svar": ["τὸν μαθητήν"],
+    "facit": "τὸν μαθητήν (ackusativ singular, direkt objekt; ὁ μαθητής är 1:a deklinationen maskulinum, ackusativ μαθητήν)." },
+
+  { "id": "l13", "mall": "βλέπομεν τὰ ⟨…⟩ (heliga) τέκνα ἐν τῷ ⟨…⟩ (templet).",
+    "ordlista": ["ἅγιος helig", "τὸ ἱερόν tempel"],
+    "svar": ["ἅγια", "ἱερῷ"],
+    "facit": "ἅγια (neutrum plural, kongruerar med τέκνα) · ἱερῷ (dativ singular efter ἐν; τὸ ἱερόν, dativ ἱερῷ)." },
+
+  { "id": "l14", "mall": "⟨…⟩ (var, 3 pl impf) οἱ μαθηταὶ ἐν τῇ συναγωγῇ.",
+    "ordlista": ["εἰμί vara", "ἡ συναγωγή synagoga"],
+    "svar": ["ἦσαν"],
+    "facit": "ἦσαν — 3:e person plural imperfekt av εἰμί ('de var'). εἰμί är oregelbundet och saknar augment i vanlig mening." }
+ ],
+
+ "begrepp": [
+  { "id": "b01", "niva": "grund", "fraga": "Hur bildas sigmatisk aorist i indikativ aktivum?",
+    "facit": "Augment + verbstam + σ + (sekundära) personändelser, t.ex. ἐ + παιδευ + σ + α → ἐπαίδευσα." },
+  { "id": "b02", "niva": "grund", "fraga": "Vad är skillnaden i betydelse mellan imperfekt och aorist?",
+    "facit": "Båda är dåtid. Imperfekt beskriver en pågående, upprepad eller påbörjad handling ('höll på att', 'brukade'), medan aorist ser handlingen som en avslutad helhet." },
+  { "id": "b03", "niva": "grund", "fraga": "Vad utmärker en bisats syntaktiskt?",
+    "facit": "Den har ett eget predikat men kan inte stå för sig själv. Den inleds av en subjunktion (ὅτι, ὅτε, εἰ, ἵνα …) eller ett relativpronomen och hör alltid till en huvudsats." },
+  { "id": "b04", "niva": "grund", "fraga": "När används οὐ, οὐκ respektive οὐχ?",
+    "facit": "οὐ framför konsonant; οὐκ framför vokal med slät anda; οὐχ framför vokal med sträv anda (aspirerat), t.ex. οὐχ εὑρίσκω." },
+  { "id": "b05", "niva": "grund", "fraga": "Vad är ett augment och var sitter det?",
+    "facit": "Ett förstavelse-ε som markerar dåtid (imperfekt och aorist indikativ). Framför konsonant blir det ἐ-; framför vokal förlängs vokalen (ἀκούω → ἤκουον)." },
+  { "id": "b06", "niva": "grund", "fraga": "Hur skiljer sig indikativ och imperativ som modus?",
+    "facit": "Indikativ konstaterar ett faktum (βλέπεις 'du ser'); imperativ uttrycker en uppmaning eller vilja (βλέπε 'se!')." },
+  { "id": "b07", "niva": "grund", "fraga": "Vad är en predikatsfyllnad, och vid vilket verb uppträder den?",
+    "facit": "En nominativ (substantiv eller adjektiv) som beskriver subjektet via ett kopulaverb, framför allt εἰμί ('vara'): ὁ λόγος ἐστὶν ἀληθής — 'ordet är sant'." },
+  { "id": "b08", "niva": "grund", "fraga": "Vad kännetecknar kontraherade verb (t.ex. φιλέω, ποιέω)?",
+    "facit": "Verbstammen slutar på en vokal (ε/α/ο) som smälter samman med ändelsens vokal: φιλέ-ω → φιλῶ, φιλέ-ει → φιλεῖ." },
+  { "id": "b09", "niva": "grund", "fraga": "Hur bildas futurum i indikativ aktivum?",
+    "facit": "Verbstam + tempustecknet σ + primära personändelser (λύ-σ-ω). En labial + σ blir ψ (πέμπω → πέμψω), en velar + σ blir ξ." },
+  { "id": "b10", "niva": "grund", "fraga": "Vad är skillnaden mellan direkt och indirekt objekt, och vilka kasus står de i?",
+    "facit": "Direkt objekt står i ackusativ (den som påverkas av handlingen); indirekt objekt i dativ (mottagaren, 'till/åt vem')." },
+  { "id": "b11", "niva": "grund", "fraga": "Vad menas med att ett verb 'styr' ett visst kasus? Ge ett exempel.",
+    "facit": "Vissa verb tar sitt objekt i annat kasus än ackusativ. ἀκολουθέω ('följa') styr dativ: ἀκολουθῶ τῷ κυρίῳ — 'jag följer Herren'." },
+  { "id": "b12", "niva": "grund", "fraga": "Hur känner man igen ett presens particip aktivum, och hur översätts det?",
+    "facit": "Det är ett verbaladjektiv (λύων, λύουσα, λῦον) som kongruerar med sitt substantiv i genus, numerus och kasus. Ofta 'den som …' eller '-ande': ὁ ἀκούων — 'den som hör'." },
+  { "id": "b13", "niva": "diates", "fraga": "Vad är diates (genus verbi), och vilka tre finns i grekiskan?",
+    "facit": "Diates anger subjektets förhållande till handlingen: aktivum (subjektet utför), medium (utför för egen räkning eller på sig själv) och passivum (subjektet blir utsatt för handlingen)." },
+  { "id": "b14", "niva": "diates", "fraga": "Hur uttrycks agenten ('av vem') vid en passiv verbform?",
+    "facit": "Med ὑπό + genitiv: ὁ μαθητὴς διδάσκεται ὑπὸ τοῦ ἀποστόλου — 'lärjungen undervisas av aposteln'." },
+  { "id": "b15", "niva": "diates", "fraga": "Vad är ett deponens?",
+    "facit": "Ett verb som saknar aktiva former och böjs i medium/passivum men har aktiv betydelse, t.ex. ἔρχομαι ('jag kommer')." },
+  { "id": "b16", "niva": "diates", "fraga": "Hur skiljer sig medium och passivum till formen i presens och imperfekt?",
+    "facit": "De är identiska (synkretiska) — samma ändelser (-ομαι, -ῃ/-ει, -εται …). Först i aoristen får passivum egna former (tecknet -θη-). Sammanhanget avgör betydelsen." }
+ ],
+
+ "oversattning": [
+  { "id": "o01", "ref": "Joh 7:1 (förkortad)",
+    "gr": "περιεπάτει ὁ Ἰησοῦς ἐν τῇ Γαλιλαίᾳ, ὅτι ἐζήτουν αὐτὸν οἱ Ἰουδαῖοι.",
+    "sv": "Jesus vandrade i Galileen, eftersom judarna sökte honom.",
+    "bisats": "ὅτι ἐζήτουν αὐτὸν οἱ Ἰουδαῖοι", "inledare": "ὅτι", "funktion": "kausal bisats (eftersom)",
+    "ordlista": ["περιπατέω vandra", "ζητέω söka", "ὁ Ἰουδαῖος jude", "ἡ Γαλιλαία Galileen"] },
+
+  { "id": "o02", "ref": "Joh 15:20",
+    "gr": "εἰ ἐμὲ ἐδίωξαν, καὶ ὑμᾶς διώξουσιν.",
+    "sv": "Om de förföljde mig, ska de också förfölja er.",
+    "bisats": "εἰ ἐμὲ ἐδίωξαν", "inledare": "εἰ", "funktion": "villkorsbisats (om)",
+    "ordlista": ["διώκω förfölja"] },
+
+  { "id": "o03", "ref": "Matt 19:23",
+    "gr": "ἀμὴν λέγω ὑμῖν ὅτι πλούσιος δυσκόλως εἰσελεύσεται εἰς τὴν βασιλείαν τῶν οὐρανῶν.",
+    "sv": "Sannerligen säger jag er att en rik människa svårligen kommer in i himlarnas rike.",
+    "bisats": "ὅτι πλούσιος δυσκόλως εἰσελεύσεται εἰς τὴν βασιλείαν τῶν οὐρανῶν", "inledare": "ὅτι", "funktion": "att-sats efter sägeverb",
+    "ordlista": ["ἀμήν sannerligen", "πλούσιος rik", "δυσκόλως svårligen", "εἰσέρχομαι gå in", "ἡ βασιλεία rike"] },
+
+  { "id": "o04", "ref": "Presentation 8 (§280)",
+    "gr": "οὗτος λέγει ὅτι ὁ προφήτης ἐστὶν ἐν τῇ ἐρήμῳ.",
+    "sv": "Han säger att profeten är i öknen.",
+    "bisats": "ὅτι ὁ προφήτης ἐστὶν ἐν τῇ ἐρήμῳ", "inledare": "ὅτι", "funktion": "att-sats efter λέγω",
+    "ordlista": ["ὁ προφήτης profet", "ἡ ἔρημος öken"] },
+
+  { "id": "o05", "ref": "Presentation 8 (§280)",
+    "gr": "αὕτη βλέπει ὅτι ὁ βαπτιστὴς κηρύσσει ἐν τῇ κώμῃ.",
+    "sv": "Hon ser att döparen predikar i byn.",
+    "bisats": "ὅτι ὁ βαπτιστὴς κηρύσσει ἐν τῇ κώμῃ", "inledare": "ὅτι", "funktion": "att-sats efter βλέπω",
+    "ordlista": ["ὁ βαπτιστής döpare", "κηρύσσω predika", "ἡ κώμη by"] },
+
+  { "id": "o06", "ref": "Mark 15:41",
+    "gr": "ὅτε ἦν ἐν τῇ Γαλιλαίᾳ, ἠκολούθουν αὐτῷ πολλαὶ γυναῖκες.",
+    "sv": "När han var i Galileen, följde många kvinnor honom.",
+    "bisats": "ὅτε ἦν ἐν τῇ Γαλιλαίᾳ", "inledare": "ὅτε", "funktion": "temporal bisats (när)",
+    "ordlista": ["ἀκολουθέω följa (med dativ)", "ἡ γυνή kvinna (pl. γυναῖκες)", "πολλαί många"] },
+
+  { "id": "o07", "ref": "Joh 14:29 (jfr)",
+    "gr": "ὁ Ἰησοῦς ταῦτα λέγει ἵνα πιστεύητε.",
+    "sv": "Jesus säger detta för att ni ska tro.",
+    "bisats": "ἵνα πιστεύητε", "inledare": "ἵνα", "funktion": "final bisats (för att); tar konjunktiv",
+    "ordlista": ["ταῦτα detta (neutr. pl.)", "πιστεύω tro"] },
+
+  { "id": "o08", "ref": "Joh 2:22",
+    "gr": "οἱ μαθηταὶ ἐπίστευσαν τῷ λόγῳ ὃν ἔλεγεν ὁ Ἰησοῦς.",
+    "sv": "Lärjungarna trodde på ordet som Jesus sade.",
+    "bisats": "ὃν ἔλεγεν ὁ Ἰησοῦς", "inledare": "ὅν", "funktion": "relativ bisats (som — direkt objekt i bisatsen)",
+    "ordlista": ["πιστεύω tro (med dativ)", "λέγω säga"] },
+
+  { "id": "o09", "ref": "Matt 10:38",
+    "gr": "καὶ οὗτος ὃς οὐ λαμβάνει τὸν σταυρὸν αὐτοῦ οὐκ ἔστιν μου ἄξιος.",
+    "sv": "Och den som inte tar sitt kors är inte värdig mig.",
+    "bisats": "ὃς οὐ λαμβάνει τὸν σταυρὸν αὐτοῦ", "inledare": "ὅς", "funktion": "relativ bisats (som — subjekt i bisatsen)",
+    "ordlista": ["λαμβάνω ta", "ὁ σταυρός kors", "ἄξιος värdig (med genitiv)"] },
+
+  { "id": "o10", "ref": "Luk 23:35 (förkortad)",
+    "gr": "σωσάτω ἑαυτόν, εἰ οὗτός ἐστιν ὁ Χριστὸς τοῦ θεοῦ.",
+    "sv": "Låt honom rädda sig själv, om denne är Guds Kristus.",
+    "bisats": "εἰ οὗτός ἐστιν ὁ Χριστὸς τοῦ θεοῦ", "inledare": "εἰ", "funktion": "villkorsbisats (om)",
+    "ordlista": ["σῴζω rädda (σωσάτω 'må han rädda')", "ἑαυτόν sig själv"] }
+ ]
+}

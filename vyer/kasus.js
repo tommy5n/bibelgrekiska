@@ -122,30 +122,15 @@ const MARKUP = `<div class="vy vy-kasus">
   <code>människas</code> — parsa formen); Läs ordet samma form av andra ord (känn igen glosan).
 </footer>
 </div>`;
-export function render(root, opts = {}){
-  root.innerHTML = MARKUP;
-
-/* ── DATA ─────────────────────────────────────────────────────────────
-   Artikeln är genusberoende (m/n/f) — den visas alltid och gör kortet
-   lösbart. Ordformerna är utskrivna explicit, inte genererade ur stam+
-   ändelse: accenten är inte mekanisk (ἀρχή→ἀρχῆς, θάλασσα→θαλάσσης).   */
-
-const ARTIKEL = {
-  m:{ nom:{sg:"ὁ",  pl:"οἱ"  }, gen:{sg:"τοῦ",pl:"τῶν" }, dat:{sg:"τῷ",pl:"τοῖς"}, ack:{sg:"τὸν",pl:"τοὺς"}, vok:{sg:"ὦ",pl:"ὦ"} },
-  n:{ nom:{sg:"τὸ", pl:"τὰ"  }, gen:{sg:"τοῦ",pl:"τῶν" }, dat:{sg:"τῷ",pl:"τοῖς"}, ack:{sg:"τὸ", pl:"τὰ"  }, vok:{sg:"ὦ",pl:"ὦ"} },
-  f:{ nom:{sg:"ἡ",  pl:"αἱ"  }, gen:{sg:"τῆς",pl:"τῶν" }, dat:{sg:"τῇ",pl:"ταῖς"}, ack:{sg:"τὴν",pl:"τὰς" }, vok:{sg:"ὦ",pl:"ὦ"} },
-};   // grav på ack (τὸν/τὴν) — artikeln står före substantivet; vok ὦ är interjektion
-
-const KASUS = {
-  nom:{namn:"nominativ", satsdel:"subjekt",         fraga:"vem/vad gör?",          not:""},
-  gen:{namn:"genitiv",   satsdel:"genitivattribut", fraga:"vems?",                 not:"Hör till ett substantiv, inte direkt till verbet — ett attribut."},
-  dat:{namn:"dativ",     satsdel:"indirekt objekt", fraga:"till/åt/för vem?",      not:""},
-  ack:{namn:"ackusativ", satsdel:"direkt objekt",   fraga:"vem/vad påverkas?",     not:""},
-  vok:{namn:"vokativ",   satsdel:"tilltal",         fraga:"vem tilltalas?",        not:"ὦ är en interjektion, inte en artikel."},
-};
-const KASUS_ORDNING = ["nom","gen","dat","ack","vok"];
-
-const ord = [
+/* ── Delade substantivparadigm (modulnivå) ─────────────────────────────
+   Substantivdatan, dess svensk-kasus-komposition och provlistan bor på
+   modulnivå så att den dynamiska övningstentamen (vyer/tenta.js) kan
+   importera dem — samma delning som former.js↔verb.js. render() nedan
+   använder dem via closure. ──────────────────────────────────────────── */
+// Exporterad så den dynamiska övningstentamen (vyer/tenta.js) kan återbruka de
+// verifierade substantivparadigmen — samma mönster som former.js↔verb.js. Rör
+// inte kopplingen utan att uppdatera importören.
+export const ord = [
   { lemma:"ἄνθρωπος", glosa:"människa", glosaGen:"människas", glosaPl:"människor", genus:"m", sem:[2], former:{
     nom:{sg:"ἄνθρωπος",pl:"ἄνθρωποι"}, gen:{sg:"ἀνθρώπου",pl:"ἀνθρώπων"}, dat:{sg:"ἀνθρώπῳ",pl:"ἀνθρώποις"}, ack:{sg:"ἄνθρωπον",pl:"ἀνθρώπους"}, vok:{sg:"ἄνθρωπε",pl:"ἄνθρωποι"} }},
   { lemma:"λόγος", glosa:"ord, berättelse", glosaGen:"ords, berättelses", glosaPl:"ord, berättelser", glosaGenPl:"ords, berättelsers", genus:"m", sem:[2], former:{
@@ -316,6 +301,55 @@ const ord = [
     nom:{sg:"ἀνήρ",pl:"ἄνδρες"}, gen:{sg:"ἀνδρός",pl:"ἀνδρῶν"}, dat:{sg:"ἀνδρί",pl:"ἀνδράσι(ν)"}, ack:{sg:"ἄνδρα",pl:"ἄνδρας"}, vok:{sg:"ἄνερ",pl:"ἄνδρες"} }}
 ];
 
+/* Inför provet — provets substantivlista (ORDKUNSKAP 1–10, punkt 4c; källa:
+   json/glosor.json listor:"prov"). Ett fokusurval: samma parsning som "alla
+   seminarier" prövar, men enbart på de ord examinatorn pekat ut — vilket också
+   är de knepigaste paradigmen (πατήρ/ἀνήρ/μήτηρ stamväxlar, ὁδός fem. på -ος,
+   3:e dekl. πνεῦμα/ὕδωρ/φῶς/ὄρος). Snittas mot ord[] så chipet aldrig blir tomt. */
+export const PROV_SUBST = ["ἄγγελος","ἀδελφός","ἀνήρ","ἄνθρωπος","ἀπόστολος","δοῦλος","ἐκκλησία","ἔργον","ζωή","θεός","ἱερόν","κύριος","λόγος","μαθητής","μήτηρ","ὁδός","οἶκος","ὄρος","οὐρανός","πατήρ","πλοῖον","πνεῦμα","προφήτης","τέκνον","ὕδωρ","υἱός","φῶς","ἀδελφή","ἀρχή","βαπτιστής"];
+
+/* Svensk kasusmarkör på glosan. Svenskan böjer inte i kasus — vi markerar
+   funktionen: gen tar -s (svenskans enda äkta kasusböjning), dat och vok får
+   ett ord framför som muterar inget. nom/ack är bara — svenskan skiljer dem
+   med ordföljd, inte på ordet. Flerordiga/-s-slutande glosor har explicit glosaGen. */
+export function glosaMedKasus(w, k, n){
+  // svensk genitiv: + "s", utom när basen redan slutar på s/x/z (då ingen extra)
+  const genS = b => /[sxz]$/.test(b) ? b : b + "s";
+  const bas  = n === "pl" ? (w.glosaPl || w.glosa) : w.glosa;   // numerus-bas
+  if(k === "gen"){
+    if(n === "pl") return w.glosaGenPl || genS(bas);            // människors
+    return w.glosaGen || genS(bas);                             // människas (ev. oregelb.)
+  }
+  if(k === "dat") return "till " + bas;
+  if(k === "vok") return "o " + bas;
+  return bas;                                                   // nom, ack
+}
+
+export function render(root, opts = {}){
+  root.innerHTML = MARKUP;
+
+/* ── DATA ─────────────────────────────────────────────────────────────
+   Artikeln är genusberoende (m/n/f) — den visas alltid och gör kortet
+   lösbart. Ordformerna är utskrivna explicit, inte genererade ur stam+
+   ändelse: accenten är inte mekanisk (ἀρχή→ἀρχῆς, θάλασσα→θαλάσσης).   */
+
+const ARTIKEL = {
+  m:{ nom:{sg:"ὁ",  pl:"οἱ"  }, gen:{sg:"τοῦ",pl:"τῶν" }, dat:{sg:"τῷ",pl:"τοῖς"}, ack:{sg:"τὸν",pl:"τοὺς"}, vok:{sg:"ὦ",pl:"ὦ"} },
+  n:{ nom:{sg:"τὸ", pl:"τὰ"  }, gen:{sg:"τοῦ",pl:"τῶν" }, dat:{sg:"τῷ",pl:"τοῖς"}, ack:{sg:"τὸ", pl:"τὰ"  }, vok:{sg:"ὦ",pl:"ὦ"} },
+  f:{ nom:{sg:"ἡ",  pl:"αἱ"  }, gen:{sg:"τῆς",pl:"τῶν" }, dat:{sg:"τῇ",pl:"ταῖς"}, ack:{sg:"τὴν",pl:"τὰς" }, vok:{sg:"ὦ",pl:"ὦ"} },
+};   // grav på ack (τὸν/τὴν) — artikeln står före substantivet; vok ὦ är interjektion
+
+const KASUS = {
+  nom:{namn:"nominativ", satsdel:"subjekt",         fraga:"vem/vad gör?",          not:""},
+  gen:{namn:"genitiv",   satsdel:"genitivattribut", fraga:"vems?",                 not:"Hör till ett substantiv, inte direkt till verbet — ett attribut."},
+  dat:{namn:"dativ",     satsdel:"indirekt objekt", fraga:"till/åt/för vem?",      not:""},
+  ack:{namn:"ackusativ", satsdel:"direkt objekt",   fraga:"vem/vad påverkas?",     not:""},
+  vok:{namn:"vokativ",   satsdel:"tilltal",         fraga:"vem tilltalas?",        not:"ὦ är en interjektion, inte en artikel."},
+};
+const KASUS_ORDNING = ["nom","gen","dat","ack","vok"];
+
+
+
 /* Kategori-förval på deklinations-/typaxeln, som predikat på paradigmKeyK —
    härleds ur ord-listan (även de bedrägliga: νόσος är 2:a-dekl femininum, böjs
    som -ος; μαθητής är 1:a-dekl maskulinum). Klick sätter ordurvalet; chipet blir
@@ -333,12 +367,7 @@ const KATEGORIER = {
 };
 const katLemman = key => new Set(ord.filter(KATEGORIER[key]).map(o => o.lemma));
 
-/* Inför provet — provets substantivlista (ORDKUNSKAP 1–10, punkt 4c; källa:
-   json/glosor.json listor:"prov"). Ett fokusurval: samma parsning som "alla
-   seminarier" prövar, men enbart på de ord examinatorn pekat ut — vilket också
-   är de knepigaste paradigmen (πατήρ/ἀνήρ/μήτηρ stamväxlar, ὁδός fem. på -ος,
-   3:e dekl. πνεῦμα/ὕδωρ/φῶς/ὄρος). Snittas mot ord[] så chipet aldrig blir tomt. */
-const PROV_SUBST = ["ἄγγελος","ἀδελφός","ἀνήρ","ἄνθρωπος","ἀπόστολος","δοῦλος","ἐκκλησία","ἔργον","ζωή","θεός","ἱερόν","κύριος","λόγος","μαθητής","μήτηρ","ὁδός","οἶκος","ὄρος","οὐρανός","πατήρ","πλοῖον","πνεῦμα","προφήτης","τέκνον","ὕδωρ","υἱός","φῶς","ἀδελφή","ἀρχή","βαπτιστής"];
+
 const PROV_ORD = new Set(PROV_SUBST.filter(l => ord.some(o => o.lemma === l)));
 function ärProvUrval(){ return setEq(state.valdaSem, new Set(SEM_VARDEN)) && setEq(state.valdaOrd, PROV_ORD); }
 function valjProv(){ state.valdaSem = new Set(SEM_VARDEN); state.valdaOrd = new Set(PROV_ORD); }
@@ -462,22 +491,7 @@ function byggOptioner(facitSet){
   return shuffle([...facitSet, ...shuffle(pool).slice(0,behov)]);
 }
 
-/* Svensk kasusmarkör på glosan. Svenskan böjer inte i kasus — vi markerar
-   funktionen: gen tar -s (svenskans enda äkta kasusböjning), dat och vok får
-   ett ord framför som muterar inget. nom/ack är bara — svenskan skiljer dem
-   med ordföljd, inte på ordet. Flerordiga/-s-slutande glosor har explicit glosaGen. */
-function glosaMedKasus(w, k, n){
-  // svensk genitiv: + "s", utom när basen redan slutar på s/x/z (då ingen extra)
-  const genS = b => /[sxz]$/.test(b) ? b : b + "s";
-  const bas  = n === "pl" ? (w.glosaPl || w.glosa) : w.glosa;   // numerus-bas
-  if(k === "gen"){
-    if(n === "pl") return w.glosaGenPl || genS(bas);            // människors
-    return w.glosaGen || genS(bas);                             // människas (ev. oregelb.)
-  }
-  if(k === "dat") return "till " + bas;
-  if(k === "vok") return "o " + bas;
-  return bas;                                                   // nom, ack
-}
+
 
 /* Översätt-lägena vänder frågan: den grekiska FORMEN visas, svaret är den svenska
    betydelsen. "oversatt" = distraktorer ur SAMMA ords andra kasus (parsa formen

@@ -96,7 +96,7 @@ const cellerFor = k => modusAv(k)==="inf" ? ["inf"] : modusAv(k)==="imp" ? IMP_O
    "kommer att" + inf; 3:e person imperativ som "må <pron> <inf>". Returnerar null
    när svenskan saknar en rimlig form (t.ex. imperativ av "vilja") → vyn faller då
    tillbaka på den rena grammatiska etiketten. */
-function svenskFras(c){
+export function svenskFras(c){
   const sv = c.svenska;
   if(!sv || !sv.inf) return null;
   const pron = (PN[c.pn] && PN[c.pn].pron) || "";
@@ -124,7 +124,7 @@ const LEKAR = {
    modus prövas ändå, men på just de 16 verb examinatorn räknar upp (λύω-modell,
    kontraktverb, μι-verbet δίδωμι, εἰμί, likvidaverbet ἀποστέλλω). Snittas mot
    verb[] så chipet aldrig blir tomt. */
-const PROV_VERB_LISTA = ["ἀκολουθέω","ἀκούω","ἀποστέλλω","βαπτίζω","βλέπω","γράφω","δίδωμι","εἰμί","καλέω","κηρύσσω","λαλέω","λέγω","λύω","πέμπω","πιστεύω","ποιέω"];
+export const PROV_VERB_LISTA = ["ἀκολουθέω","ἀκούω","ἀποστέλλω","βαπτίζω","βλέπω","γράφω","δίδωμι","εἰμί","καλέω","κηρύσσω","λαλέω","λέγω","λύω","πέμπω","πιστεύω","ποιέω"];
 const PROV_VERB = new Set(PROV_VERB_LISTA.filter(l => verb.some(v => v.lemma === l)));
 
 /* Seminarie-axel: varje verb bär sem:[…] ur verb.json. Skalar till fler
