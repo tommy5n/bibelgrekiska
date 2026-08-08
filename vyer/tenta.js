@@ -193,6 +193,19 @@ const CSS = `
 .vy-tenta .facit .sv { font-weight: 700; }
 .vy-tenta .facit .upp { color: var(--ink-soft); }
 .vy-tenta .facit .bisats { display: block; margin-top: 0.35rem; }
+.vy-tenta .resurser { margin: 0 0 1.2rem; font-size: var(--fs-2xs); color: var(--ink-soft); }
+.vy-tenta .resurser a { color: var(--gold); text-decoration: none; font-weight: 600; }
+@media (hover: hover) { .vy-tenta .resurser a:hover { text-decoration: underline; } }
+.vy-tenta .fallor { margin-bottom: 1.6rem; border: 1px solid var(--line); border-left: 4px solid var(--gold); border-radius: 14px; background: var(--card); padding: 0 1.3rem; }
+.vy-tenta .fallor > summary { cursor: pointer; padding: 0.9rem 0; font-weight: 700; font-size: var(--fs-md); list-style: none; }
+.vy-tenta .fallor > summary::-webkit-details-marker { display: none; }
+.vy-tenta .fallor > summary::before { content: "▸ "; color: var(--gold); }
+.vy-tenta .fallor[open] > summary::before { content: "▾ "; }
+.vy-tenta .fallor h3 { font-size: var(--fs-3xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin: 1rem 0 0.25rem; }
+.vy-tenta .fallor ul { margin: 0 0 0.5rem; padding-left: 1.15rem; }
+.vy-tenta .fallor li { margin: 0.28rem 0; font-size: var(--fs-2xs); line-height: 1.5; }
+.vy-tenta .fallor li b { color: var(--ink); }
+.vy-tenta .fallor .foot { color: var(--ink-soft); font-size: var(--fs-3xs); padding-bottom: 1rem; margin: 0.6rem 0 0; }
 `;
 
 function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
@@ -285,23 +298,70 @@ function renderDel5(begrepp, oversatt) {
   </section>`;
 }
 
+// Statisk studiehjälp: de fällor och oregelbundna former som lönar sig att öva
+// extra. Korsar seminarier-data-minnets fällor + provspecens diateskrav.
+function fallorPanel() {
+  return `<details class="fallor">
+    <summary>Fällor &amp; svåra former att öva extra på</summary>
+
+    <h3>Oregelbundna &amp; suppletiva verbteman (lär utantill)</h3>
+    <ul>
+      <li><b>λέγω → ἐρῶ · εἶπον</b> — helt suppletivt (futurum och aorist från andra stammar).</li>
+      <li><b>δίδωμι → δώσω · ἔδωκα</b> — μι-verb med κ-aorist.</li>
+      <li><b>εἰμί → ἔσομαι</b> (futurum medium); <b>saknar aorist</b> — imperfekt ἤμην/ἦν.</li>
+      <li><b>ἀποστέλλω → ἀποστελῶ</b> — <b>kontraherat futurum</b> (§166a, ingen σ), aorist ἀπέστειλα (stamändring).</li>
+      <li>Futurum med ljudmöte: labial + σ → ψ (πέμπω→πέμψω, γράφω→γράψω, βλέπω→βλέψω); velar + σ → ξ (κηρύσσω→κηρύξω).</li>
+    </ul>
+
+    <h3>Tredje deklinationen — nom. ≠ genitivstam</h3>
+    <ul>
+      <li><b>πατήρ/πατρός, μήτηρ/μητρός, θυγάτηρ/θυγατρός</b> (stamväxling), <b>ἀνήρ/ἀνδρός</b> (δ-inskott).</li>
+      <li>Neutra på -ματ-: <b>πνεῦμα/πνεύματος, ὄνομα/ὀνόματος, σῶμα/σώματος, αἷμα/αἵματος</b>.</li>
+      <li><b>φῶς/φωτός, ὕδωρ/ὕδατος, ὄρος/ὄρους</b> — lär alltid substantivet med genitiven.</li>
+    </ul>
+
+    <h3>Genusfällor</h3>
+    <ul>
+      <li>Femininum trots -ος: <b>ἡ ὁδός, ἡ νόσος, ἡ ἔρημος, ἡ παρθένος</b> (böjs som mask. -ος, men tar ἡ/τήν).</li>
+      <li>Maskulinum i 1:a dekl.: <b>ὁ μαθητής, ὁ προφήτης, ὁ βαπτιστής, ὁ νεανίας</b> (-ης/-ας).</li>
+    </ul>
+
+    <h3>Kongruens &amp; rektion</h3>
+    <ul>
+      <li><b>Neutrum plural subjekt → predikat i singular</b> (τὰ τέκνα ἐστίν, inte εἰσίν).</li>
+      <li><b>πᾶς, μέγας, πολύς</b> — blandad deklination: korta former i mask./neutr. nom./ack. sg. (μέγαν, πολύν, πᾶν), annars 2-1-2.</li>
+      <li>Verb som styr dativ: <b>ἀκολουθέω</b> (följa), <b>πιστεύω</b> (tro på) — objektet står i dativ, inte ackusativ.</li>
+    </ul>
+
+    <h3>Ljud- &amp; accentfällor</h3>
+    <ul>
+      <li><b>οὐ / οὐκ / οὐχ</b> efter följande ljud (konsonant / vokal med slät anda / vokal med sträv anda: οὐχ εὑρίσκω).</li>
+      <li><b>τίς;</b> (betonat = ”vem? vad?”) mot <b>τις</b> (enklitiskt, obetonat = ”någon”).</li>
+      <li>Relativpronomen <b>ὅς ἥ ὅ</b> (anda + accent) mot artikeln <b>ὁ ἡ τό</b>.</li>
+      <li><b>σῴζω</b>: imperativen är <b>σῷζε</b> (cirkumflex), inte σῴζε.</li>
+    </ul>
+
+    <h3>Diates (uppdaterade provspecen)</h3>
+    <ul>
+      <li><b>Medium och passivum är identiska i presens/imperfekt</b> (synkretiska); först i aorist får passivum egna former med <b>-θη-</b> (ἐλύθην ”blev löst”).</li>
+      <li>Agenten vid passiv uttrycks med <b>ὑπό + genitiv</b>.</li>
+      <li><b>Deponens</b> (t.ex. ἔρχομαι): medium/passiv form men aktiv betydelse.</li>
+    </ul>
+
+    <p class="foot">Öva riktat i spelen: Verbböjning &amp; Formverkstaden (verbteman), Kasusigenkänning &amp; Paradigm (deklinationer), Medium-passivum (diates), Kongruens (adjektiv).</p>
+  </details>`;
+}
+
 function nySeed() {
   return Math.floor((Math.random() * 36 ** 6)).toString(36).padStart(6, "0");
 }
 
 export function teardown() {
-  const s = document.getElementById("vy-tenta-style");
-  if (s) s.remove();
+  // Stilen ligger inne i vyns markup (som diates/particip) och städas när
+  // app.js nollställer #vy — inget att riva här.
 }
 
 export function render(root, opts = {}) {
-  if (!document.getElementById("vy-tenta-style")) {
-    const st = document.createElement("style");
-    st.id = "vy-tenta-style";
-    st.textContent = CSS;
-    document.head.appendChild(st);
-  }
-
   // Seed: djuplänkens token (#/tenta/<seed>) ger en reproducerbar tenta; utan
   // token lottas en ny varje laddning.
   const seed = opts.mode || nySeed();
@@ -318,16 +378,19 @@ export function render(root, opts = {}) {
   const del5o = sample(TENTA.oversattning, 2);
 
   root.innerHTML = `<div class="vy vy-tenta">
+    <style>${CSS}</style>
     <div class="kopf">
       <h1>Övningstentamen</h1>
       <span class="seed">Tenta #${esc(seed)}${delbar ? " · delbar länk" : " · slumpad"}</span>
     </div>
     <p class="lead">Hela provets bredd — substantiv, adjektiv, pronomen, verb (även particip och medium/passivum), satslära och glosor — men frågorna lottas fram på nytt varje gång. Ladda om sidan eller tryck <b>Ny tenta</b> för en helt ny uppsättning. Skriv/säg ditt svar och fäll sedan ut facit.</p>
+    <p class="resurser">Öva vokabulären separat: <a href="#/glosor/prov">Glosor · Inför provet</a> &nbsp;·&nbsp; <a href="provoversikt.html">Inför provet — översikt &amp; självtest</a></p>
     <div class="verktyg">
       <button type="button" class="primar" id="t-ny">🎲 Ny tenta</button>
       <button type="button" id="t-visa">Visa alla facit</button>
       <button type="button" id="t-dolj">Dölj alla facit</button>
     </div>
+    ${fallorPanel()}
     ${renderDel1(del1)}
     ${renderDel2(del2)}
     ${renderDel3(del3p, del3d)}
