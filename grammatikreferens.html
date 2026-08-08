@@ -101,6 +101,16 @@
 
       /* Tabeller */
       .gr-tables { display: flex; flex-wrap: wrap; gap: 1.2rem 1.6rem; }
+      /* Bred jämförelsetabell som får scrolla vågrätt i sitt eget fönster */
+      .gr-scroll { overflow-x: auto; margin: 0.2rem 0 1rem; }
+      .gr-jmf { min-width: 100%; }
+      .gr-jmf thead th.gr-grek { color: var(--ink); font-weight: 600; }
+      .gr-jmf thead th .g { font-size: var(--fs-3xs); color: var(--ink-soft); font-weight: 500; margin-left: 0.15rem; }
+      .gr-jmf tr.grp th {
+        text-align: left; color: var(--ink-soft); font-weight: 600;
+        font-size: var(--fs-3xs); text-transform: uppercase; letter-spacing: 0.05em;
+        padding-top: 0.55rem; border-bottom: 1px solid var(--line);
+      }
       table.gr {
         border-collapse: collapse; font-size: var(--fs-md);
       }
@@ -805,14 +815,32 @@
               </tbody>
             </table>
           </div>
+          <div class="gr-scroll">
+            <table class="gr" style="min-width:100%">
+              <caption>Dativ plural: <span class="gr-grek">-σι</span> möter stammens slutljud (den knepigaste formen)</caption>
+              <thead><tr><th class="kasus">Stammens slut</th><th>Blir</th><th>Exempel (nom → dat pl)</th></tr></thead>
+              <tbody>
+                <tr><th class="kasus">velar κ γ χ</th><td class="gr-grek">ξι</td><td><span class="gr-grek">σάρξ (σαρκ-) → σαρξί(ν)</span></td></tr>
+                <tr><th class="kasus">labial π β φ</th><td class="gr-grek">ψι</td><td><span class="gr-grek">Ἄραψ (ἀραβ-) → Ἄραψι(ν)</span></td></tr>
+                <tr><th class="kasus">dental τ δ θ</th><td class="gr-grek">σι</td><td><span class="gr-grek">ὄνομα (ὀνοματ-) → ὀνόμασι(ν)</span> — dentalen faller</td></tr>
+                <tr><th class="kasus">enkelt ν</th><td class="gr-grek">σι</td><td><span class="gr-grek">ἡγεμών (ἡγεμον-) → ἡγεμόσι(ν)</span> — ν faller</td></tr>
+                <tr><th class="kasus">ντ</th><td class="gr-grek">ουσι</td><td><span class="gr-grek">ἄρχων (ἀρχοντ-) → ἄρχουσι(ν)</span> — ντ faller, ο förlängs</td></tr>
+              </tbody>
+            </table>
+          </div>
           <div class="gr-rule">
             <b>Genitiven är nyckeln:</b> nominativ kan se ut hur som helst, men <b>gen sg -ος</b> ger stammen som alla andra former byggs på. Samma ändelser (utom nominativ) för mask och fem.
             <ul>
-              <li><b>Dativ plural -σι</b> möter stammens slutkonsonant och drar ihop den: velar <span class="gr-grek">κ/γ/χ + σι → ξι</span> (<span class="gr-grek">σαρκ- → σαρξί</span>), labial <span class="gr-grek">π/β/φ + σι → ψι</span>, dental <span class="gr-grek">τ/δ/θ</span> faller bort (<span class="gr-grek">ὀνοματ- → ὀνόμασι</span>, <span class="gr-grek">ἐλπιδ- → ἐλπίσι</span>), enkelt <span class="gr-grek">ν</span> faller bort (<span class="gr-grek">ἡγεμον- → ἡγεμόσι</span>), och <span class="gr-grek">ντ</span> faller med förlängning (<span class="gr-grek">ἀρχοντ- → ἄρχουσι</span>). Rörligt <b>ν</b> som vanligt.</li>
+              <li><b>Dativ plural -σι</b> drar ihop sig med stammens slutljud — se tabellen ovan. Samma ljudmöte som i verbens <span class="gr-grek">-σι(ν)</span>. Rörligt <b>ν</b> som vanligt.</li>
               <li><b>Neutrumregeln gäller:</b> nom = ack = vok, och plural slutar på <b>-α</b> (<span class="gr-grek">ὄνομα → ὀνόματα</span>).</li>
               <li><b>Stamväxling (§ 80–81):</b> <span class="gr-grek">ὁ πατήρ</span> fader växlar stam i singular — <span class="gr-grek">πατήρ, πατρός, πατρί, πατέρα</span> (vok <span class="gr-grek">πάτερ</span>), pl <span class="gr-grek">πατέρες, πατέρων, πατράσι(ν), πατέρας</span>. Likadant <span class="gr-grek">ἡ μήτηρ (μητρός)</span> mor, <span class="gr-grek">ἡ θυγάτηρ (θυγατρός)</span> dotter, <span class="gr-grek">ὁ ἀνήρ (ἀνδρός)</span> man — den senare med δ-inskott.</li>
             </ul>
             Jfr <span class="gr-grek">ἡ σάρξ (σαρκός)</span> kött, <span class="gr-grek">ἡ ἐλπίς (ἐλπίδος)</span> hopp, <span class="gr-grek">ὁ αἰών (αἰῶνος)</span> tidsålder, <span class="gr-grek">ἡ χάρις (χάριτος)</span> nåd, <span class="gr-grek">τὸ σῶμα (σώματος)</span> kropp, <span class="gr-grek">τὸ πνεῦμα (πνεύματος)</span> ande, <span class="gr-grek">τὸ ὄρος (ὄρους)</span> berg, <span class="gr-grek">ὁ ἄρχων (ἄρχοντος)</span> härskare. Neutra på <b>-ος</b> (σ-stam) som <span class="gr-grek">ὄρος</span> kontraherar: gen. sg. <span class="gr-grek">ὄρους</span>, pl. <span class="gr-grek">ὄρη</span>; gen. pl. skrivs i NT <span class="gr-grek">ὀρέων</span> (presentationen ger den kortare formen <span class="gr-grek">ὄρων</span>).
+          </div>
+          <div class="gr-tip"><span class="tip-label">Studietips</span>
+            Böj vilket 3:e-dekl-ord som helst i tre steg: <b>1)</b> stryk <span class="gr-grek">-ος</span> ur genitiv singular → där är stammen. <b>2)</b> klistra på ändelserna i tabellen ”Ändelser” (samma för mask och fem). <b>3)</b> lär nominativ för sig — den är alltid undantaget som döljer stammen. Därför pluggar man orden som <b>par</b>: <span class="gr-grek">σάρξ, σαρκός</span> · <span class="gr-grek">ὄνομα, ὀνόματος</span>.
+            <br><br>
+            <b>Betoningsfälla:</b> enstaviga stammar flyttar betoningen till <b>ändelsen</b> i gen och dat (alla numerus): <span class="gr-grek">σάρξ</span> men <span class="gr-grek">σαρκός, σαρκί, σαρκῶν, σαρξί(ν)</span>. Likaså <span class="gr-grek">ἡ νύξ (νυκτός)</span> natt och <span class="gr-grek">ὁ πούς (ποδός)</span> fot. I nom och ack sitter betoningen kvar på stammen: <span class="gr-grek">σάρκα, σάρκες, σάρκας</span>.
           </div>
           <div class="gr-exempel">
             <span class="gr-exlabel">I sammanhang</span>
@@ -824,7 +852,42 @@
         <!-- ══ Jämför deklinationerna ══ -->
         <section class="gr-card" id="subst-jmf" style="--accent:#8a6d3b">
           <h3>Jämför deklinationerna <span class="sem">Sem 2–7</span></h3>
-          <p class="note">Tre deklinationer, samma fem kasus. Det som skiljer dem är stammens vokal och ändelsernas form. Här är kännetecknen och de vanligaste fällorna.</p>
+          <p class="note">Tre deklinationer, samma fem kasus. Det som skiljer dem är stammens vokal och ändelsernas form. Nedan står <b>alla former</b> sida vid sida — sedan kännetecknen och de vanligaste fällorna.</p>
+          <div class="gr-scroll">
+            <table class="gr gr-jmf">
+              <caption>Alla former: en representant ur varje deklination</caption>
+              <thead>
+                <tr>
+                  <th class="kasus" rowspan="2">Kasus</th>
+                  <th colspan="2">1:a dekl.</th>
+                  <th colspan="2">2:a dekl.</th>
+                  <th colspan="2">3:e dekl.</th>
+                </tr>
+                <tr>
+                  <th class="gr-grek">ἀρχή<span class="g">f</span></th>
+                  <th class="gr-grek">μαθητής<span class="g">m</span></th>
+                  <th class="gr-grek">λόγος<span class="g">m</span></th>
+                  <th class="gr-grek">ἔργον<span class="g">n</span></th>
+                  <th class="gr-grek">σάρξ<span class="g">f</span></th>
+                  <th class="gr-grek">ὄνομα<span class="g">n</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="grp"><th colspan="7">Singular</th></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἀρχή</td><td class="gr-el">μαθητής</td><td class="gr-el">λόγος</td><td class="gr-el">ἔργον</td><td class="gr-el">σάρξ</td><td class="gr-el">ὄνομα</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἀρχῆς</td><td class="gr-el">μαθητοῦ</td><td class="gr-el">λόγου</td><td class="gr-el">ἔργου</td><td class="gr-el">σαρκός</td><td class="gr-el">ὀνόματος</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἀρχῇ</td><td class="gr-el">μαθητῇ</td><td class="gr-el">λόγῳ</td><td class="gr-el">ἔργῳ</td><td class="gr-el">σαρκί</td><td class="gr-el">ὀνόματι</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἀρχήν</td><td class="gr-el">μαθητήν</td><td class="gr-el">λόγον</td><td class="gr-el">ἔργον</td><td class="gr-el">σάρκα</td><td class="gr-el">ὄνομα</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἀρχή</td><td class="gr-el">μαθητά</td><td class="gr-el">λόγε</td><td class="gr-el">ἔργον</td><td class="gr-el">σάρξ</td><td class="gr-el">ὄνομα</td></tr>
+                <tr class="grp"><th colspan="7">Plural</th></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἀρχαί</td><td class="gr-el">μαθηταί</td><td class="gr-el">λόγοι</td><td class="gr-el">ἔργα</td><td class="gr-el">σάρκες</td><td class="gr-el">ὀνόματα</td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἀρχῶν</td><td class="gr-el">μαθητῶν</td><td class="gr-el">λόγων</td><td class="gr-el">ἔργων</td><td class="gr-el">σαρκῶν</td><td class="gr-el">ὀνομάτων</td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἀρχαῖς</td><td class="gr-el">μαθηταῖς</td><td class="gr-el">λόγοις</td><td class="gr-el">ἔργοις</td><td class="gr-el">σαρξί(ν)</td><td class="gr-el">ὀνόμασι(ν)</td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἀρχάς</td><td class="gr-el">μαθητάς</td><td class="gr-el">λόγους</td><td class="gr-el">ἔργα</td><td class="gr-el">σάρκας</td><td class="gr-el">ὀνόματα</td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἀρχαί</td><td class="gr-el">μαθηταί</td><td class="gr-el">λόγοι</td><td class="gr-el">ἔργα</td><td class="gr-el">σάρκες</td><td class="gr-el">ὀνόματα</td></tr>
+              </tbody>
+            </table>
+          </div>
           <table class="gr" style="width:100%">
             <thead><tr><th class="kasus">Kännetecken</th><th>1:a dekl.</th><th>2:a dekl.</th><th>3:e dekl.</th></tr></thead>
             <tbody>
