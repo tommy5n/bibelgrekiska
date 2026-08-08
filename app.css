@@ -2993,6 +2993,14 @@ body {
   font-size: var(--fs-3xl);
   font-weight: 500;
 }
+/* Svensk analys inuti facitraden: Spectral som svarsknapparna, dämpad och
+   något mindre — den grekiska formen framför bär raden. */
+.vy-andelser .reveal .form .analys {
+  font-family: "Spectral", serif;
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  color: var(--ink-soft);
+}
 .vy-andelser .reveal .glosa {
   margin-top: 0.25rem;
 }

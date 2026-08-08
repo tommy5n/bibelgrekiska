@@ -94,6 +94,25 @@ export const END = {
   f1a:{nom:{sg:"α",pl:"αι"},  gen:{sg:"ας",pl:"ων"}, dat:{sg:"ᾳ",pl:"αις"}, ack:{sg:"αν",pl:"ας"},  vok:{sg:"α",pl:"αι"} },
   f1m:{nom:{sg:"α",pl:"αι"},  gen:{sg:"ης",pl:"ων"}, dat:{sg:"ῃ",pl:"αις"}, ack:{sg:"αν",pl:"ας"},  vok:{sg:"α",pl:"αι"} },
 };
+// 3:e deklinationens ändelser — ENBART för ändelsespelets produktiva lägen (#7).
+// Skild från END med flit: paradigm.js rör den inte, och END:s "en ändelse på en
+// stam"-modell för dekl. 1–2 hålls ren. Här gäller andra regler:
+//   • Bara cellerna med en ÄKTA, ändelsebar ändelse finns med. nom/vok sg (mask/
+//     fem) och nom/ack sg (neutrum) är ÄNDELSELÖSA (bar stam + ev. stamförlängning:
+//     ἡγεμών, πνεῦμα) och utelämnas — spelet väljer aldrig en odefinierad cell.
+//   • Ändelserna är uniforma över stamtyperna på ÄNDELSENIVÅ (ν-stam ἡγεμών, r-stam
+//     πατήρ med stamväxling, dental πνεῦμα): -ος/-ι/-α/-ες/-ων/-σι(ν)/-ας. Stam-
+//     fenomenen (πατρ~πατερ, dat.pl sväljer stamkonsonanten πνευματ+σι→πνεύμασι)
+//     hör till stammen, inte ändelsen — facit visar hela attesterade formen ändå.
+//   • σ-stammen (neutrum på -ος, ὄρος→ὄρους) drar ihop sig och får egna ändelser
+//     (n3s): gen -ους, dat -ει, plural -η. andelser.js skiljer n3/n3s på gen sg -ους.
+// Verifierad mot alla attesterade dekl:3-former i json/ord.json.
+export const END3 = {
+  m3: { gen:{sg:"ος",pl:"ων"}, dat:{sg:"ι",pl:"σι(ν)"}, ack:{sg:"α",pl:"ας"}, nom:{pl:"ες"} },
+  f3: { gen:{sg:"ος",pl:"ων"}, dat:{sg:"ι",pl:"σι(ν)"}, ack:{sg:"α",pl:"ας"}, nom:{pl:"ες"} },
+  n3: { gen:{sg:"ος",pl:"ων"}, dat:{sg:"ι",pl:"σι(ν)"}, nom:{pl:"α"}, ack:{pl:"α"} },
+  n3s:{ gen:{sg:"ους",pl:"ων"},dat:{sg:"ει",pl:"σι(ν)"},nom:{pl:"η"}, ack:{pl:"η"} },
+};
 export const PARADIGM_NAMN = { m2:"deklination 2 (-ος)", n2:"deklination 2, neutrum (-ον)",
   f1h:"deklination 1, η-stam", f1a:"deklination 1, ren α", f1m:"deklination 1, blandad α",
   m3:"deklination 3", n3:"deklination 3", f3:"deklination 3" };

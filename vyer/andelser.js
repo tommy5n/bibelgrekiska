@@ -3,7 +3,7 @@
 // i båda vyerna — 138 rader, utan något som fällde om bara den ena uppdaterades.
 // Versionen ärvs ur den egna URL:en så importen cache-bustas som allt annat.
 const vv = new URL(import.meta.url).search;
-const { ord, ARTIKEL, END, PARADIGM_NAMN, paradigmKey } = await import(`./ord-data.js${vv}`);
+const { ord, ARTIKEL, END, END3, PARADIGM_NAMN, paradigmKey } = await import(`./ord-data.js${vv}`);
 
 // Vy: Artiklar & ändelser — portad exakt från grekiska-andelsespel.html
 let __kh = null;
@@ -83,7 +83,7 @@ const MARKUP = `<div class="vy vy-andelser">
         <button class="chip" data-deck="oxytona">Oxytona</button>
         <button class="chip" data-deck="neutrum">Neutrum</button>
         <button class="chip" data-deck="feminina">Feminina</button>
-        <button class="chip" data-deck="tredje" title="Tredje deklinationen — bara i Läs formen">Dekl. 3</button>
+        <button class="chip" data-deck="tredje" title="Tredje deklinationen">Dekl. 3</button>
       </div>
       <div class="grid" id="grid-ord"></div>
     </div>
@@ -116,6 +116,8 @@ const MARKUP = `<div class="vy vy-andelser">
   ordet och dyker upp först i facit (<code>ἄνθρωπος → ἀνθρώπῳ</code>). I läget
   <i>bara ändelse</i> är artikeln redan given. Deklination 1 har tre singular-typer som bara
   nominativ avslöjar: <code>ἀρχή</code> (η), <code>ἡμέρα</code> (ren α), <code>θάλασσα</code> (blandad α).
+  Deklination 3 böjs på genitivstammen; dess ändelselösa nominativ (<code>ἡγεμών</code>, <code>πνεῦμα</code>)
+  drillas därför inte i bygg-lägena — där övas de ändelsebara kasusen (gen&nbsp;-ος, dat&nbsp;-ι, dat.pl&nbsp;-σι(ν) …).
 </footer>
 </div>`;
 export function render(root, opts = {}){
@@ -139,8 +141,7 @@ const KORTLEKAR = {
   oxytona: ["θεός","ἀδελφός","καιρός","καρπός","λαός","οὐρανός","ὀφθαλμός","υἱός","Χριστός","ἱερόν","ἀρχή","φωνή","ψυχή","ζωή","ἐντολή","ἀδελφή","κεφαλή","συναγωγή","ὁδός","μαθητής"],
   neutrum: ["ἔργον","τέκνον","εὐαγγέλιον","ἱερόν","σημεῖον","πλοῖον","σάββατον","δαιμόνιον"],
   feminina: ["ἀρχή","φωνή","ψυχή","ζωή","ἐντολή","ἀδελφή","κεφαλή","συναγωγή","ἀγάπη","εἰρήνη","δικαιοσύνη","ἐκκλησία","ἡμέρα","ἁμαρτία","ἐξουσία","καρδία","βασιλεία","ὥρα","ἀλήθεια","θάλασσα","κώμη","δόξα","νόσος","ὁδός","ἔρημος","παρθένος"],
-  // Härleds ur snapshoten (dekl:3) — bara meningsfull i Läs formen, chippet
-  // avaktiveras i de produktiva lägena.
+  // Härleds ur snapshoten (dekl:3) — övas nu i alla lägen (END3 bär ändelserna).
   tredje: ord.filter(o => o.dekl === 3).map(o => o.lemma),
 };
 
@@ -163,12 +164,31 @@ const semMatch = o => o.sem.length
 /* ── HJÄLPARE ────────────────────────────────────────────────────────── */
 function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
-/* END-baserad ändelselära: härleder paradigm ur GENUS + ut­ljud, fungerar bara
-   för deklination 1–2. Tredje deklinationen finns numera i snapshoten (dekl:3)
-   men når ALDRIG hit — synligaOrd() gömmer den i de produktiva lägena, så
-   andelseOptioner/END slår aldrig upp m3/n3/f3. Den övas receptivt (Läs formen)
-   här och i paradigmspelet. 2:a-dekl-feminina och 1:a-dekl-maskulina utelämnas
-   fortfarande helt av generatorn. Se json/ord.json → _tredjeklasser._om. */
+/* Ändelselära, deklination 1–3. Dekl. 1–2 böjs ur END (paradigm ur GENUS + ut­ljud);
+   3:e deklinationen ur END3 (skild tabell, se ord-data.js) med förfinad nyckel pk3().
+   END3 har BARA celler med en äkta ändelse — de ändelselösa nom/vok sg (m/f) och
+   nom/ack sg (n) saknas, så valjProduktivCell() väljer aldrig en tom cell. 2:a-dekl-
+   feminina och 1:a-dekl-maskulina utelämnas fortfarande helt av generatorn.
+   Se json/ord.json → _tredjeklasser._om. */
+
+/* Förfinad nyckel för 3:e dekl. i bygg-lägena: σ-stammen (neutrum på -ος,
+   ὄρος→ὄρους) skiljs från den dentala (πνεῦμα→πνεύματος) på gen sg -ους, för den
+   drar ihop ändelserna (-ους/-ει/-η). paradigmKey delas med paradigm.js och rörs
+   inte — den här bor lokalt. */
+function pk3(o){
+  if(o.genus === "m") return "m3";
+  if(o.genus === "f") return "f3";
+  return o.former.gen.sg.endsWith("ους") ? "n3s" : "n3";
+}
+// Genus visas redan via GENUS_NAMN i taggen, så namnen upprepar det inte.
+const NAMN3 = { m3:"deklination 3", f3:"deklination 3", n3:"deklination 3", n3s:"deklination 3, σ-stam" };
+
+/* Distraktor-reservoar: alla ändelser i dekl. 1–3 (END + END3). */
+function allaAndelser(){
+  const s = new Set();
+  for(const tbl of [END, END3]) for(const p in tbl) for(const k in tbl[p]) for(const n in tbl[p][k]) s.add(tbl[p][k][n]);
+  return s;
+}
 
 /* Distraktorer: most-constrained-first. Tier 1 = rätt slot men FEL paradigm/
    genus (den vassaste förväxlingen), tier 2 = samma paradigm men annan slot,
@@ -180,13 +200,13 @@ function byggDistraktorer(facit, tier1, tier2, tier3, antal){
   }
   return shuffle(ut);
 }
-function andelseOptioner(pk, k, n, antal){
-  const facit = END[pk][k][n];
+// tabell = END (dekl. 1–2) eller END3 (dekl. 3). ?.-vakterna tål END3:s glesa rader.
+function andelseOptioner(tabell, pk, k, n, antal){
+  const facit = tabell[pk][k][n];
   const t1=[], t2=[], t3=[];
-  for(const p in END){ if(p!==pk){ const e=END[p][k][n]; if(e!==facit) t1.push(e); } }
-  for(const kk of KASUS_ORDNING) for(const nn of ["sg","pl"]){ const e=END[pk][kk][nn]; if(e!==facit) t2.push(e); }
-  const alla=new Set(); for(const p in END) for(const kk of KASUS_ORDNING) for(const nn of ["sg","pl"]) alla.add(END[p][kk][nn]);
-  alla.forEach(e=>{ if(e!==facit) t3.push(e); });
+  for(const p in tabell){ if(p!==pk){ const e=tabell[p][k]?.[n]; if(e!==undefined && e!==facit) t1.push(e); } }
+  for(const kk of KASUS_ORDNING) for(const nn of ["sg","pl"]){ const e=tabell[pk][kk]?.[nn]; if(e!==undefined && e!==facit) t2.push(e); }
+  allaAndelser().forEach(e=>{ if(e!==facit) t3.push(e); });
   return { facit, optioner: byggDistraktorer(facit, t1, t2, t3, antal) };
 }
 function artikelOptioner(genus, k, n, antal){
@@ -213,6 +233,12 @@ function glosaMedKasus(w, k, n){
 function byggNot(o, pk, k, n){
   if(k === "vok") return "ὦ är en interjektion vid tilltal, inte en riktig artikel."
     + (pk === "m2" && n === "sg" ? " Vokativ singular har egen ändelse -ε i deklination 2 mask." : "");
+  if(pk === "m3" || pk === "f3" || pk === "n3" || pk === "n3s"){
+    if(k === "dat" && n === "pl") return "Dativ plural -σι(ν): ändelsen fäster på stammen och sväljer ofta stamkonsonanten (πνευματ+σι → πνεύμασι). Rörligt ν sist.";
+    if(pk === "n3s") return "σ-stam (neutrum på -ος): ändelserna drar ihop sig — gen -ους, dat -ει, plural -η. Jfr γένος, γένους.";
+    if(pk === "n3" && (k === "nom" || k === "ack")) return "Neutrum: nominativ och ackusativ lika — plural -α.";
+    return "3:e deklinationen böjs på stammen som genitiven visar (gen -ος → stam). Nominativ lär du dig separat.";
+  }
   if(pk === "n2" && (k === "nom" || k === "ack"))
     return "Neutrum: nominativ och ackusativ är alltid lika (-ον i singular, -α i plural) — bara satsen avgör vilket.";
   if(pk === "f1h") return "η-stam: η genom hela singularis (nom -η, gen -ης, dat -ῃ, ack -ην).";
@@ -235,16 +261,28 @@ const state = {
   rk: { ko: [], kvar: 0, forra: null, forraRen: true, bas: null },  // rundkö (glosmodell)
 };
 
-// De produktiva lägena (bygg formen) grundar sig på END[paradigmKey] — en ändelse
-// som läggs på EN stam. Det går bara för dekl. 1–2; 3:e deklinationen böjs på
-// genitivstammen och sväljer stamkonsonanten i dat.pl (πνευματ+σι → πνεύμασι),
-// så den visas bara i "Läs formen". Därför gömmer produktiva lägen dekl:3.
-function produktiv(){ return state.mode === "full" || state.mode === "end"; }
+// Alla tre deklinationerna övas nu i alla lägen: dekl. 1–2 ur END, dekl. 3 ur END3
+// (bygg-lägena) och receptivt i "Läs formen". Ordrutnätet är därmed lägesoberoende.
 // Seminarie-urvalet styr vilka ord som visas i rutnätet; ordrutnätet finjusterar.
 function synligaOrd(){
-  const pool = produktiv() ? ord.filter(o => o.dekl !== 3) : ord;
-  const p = pool.filter(semMatch);
-  return p.length ? p : pool;
+  const p = ord.filter(semMatch);
+  return p.length ? p : ord;
+}
+// Väljer en cell (kasus × numerus) som HAR en ändelse i tabellen — 3:e dekl. saknar
+// ändelse i nom/vok sg m.m., så de cellerna finns inte i END3 och hoppas över. För
+// dekl. 1–2 är alla celler definierade → beteendet är oförändrat. Faller tillbaka
+// till bredare urval om det valda kasus/numerus-snittet är tomt för ordet.
+function valjProduktivCell(pk, tabell){
+  const nums = state.numerus === "blandat" ? ["sg","pl"] : [state.numerus];
+  const celler = (kasus, num) => {
+    const out = [];
+    for(const k of kasus) for(const n of num) if(tabell[pk]?.[k]?.[n] !== undefined) out.push({ k, n });
+    return out;
+  };
+  let c = celler(aktivaKasus(), nums);            // valt kasus + numerus
+  if(!c.length) c = celler(KASUS_ORDNING, nums);  // alla kasus, valt numerus
+  if(!c.length) c = celler(KASUS_ORDNING, ["sg","pl"]);
+  return pick(c);
 }
 function aktivaOrd(){
   const v = synligaOrd().filter(o => state.valdaOrd.has(o.lemma));
@@ -297,18 +335,17 @@ function newQuestion(){
   uppdateraAntal();
   const _id = rkNasta();
   const o = ord.find(x => x.lemma === _id) || pick(ordLista);
-  const k = pick(kasusLista);
-  const n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
-
-  const pk = paradigmKey(o), g = o.genus;
-  const form = o.former[k][n];
+  const g = o.genus, pk = paradigmKey(o);
 
   // Receptivt läge: visa hela formen (artikel + substantiv), läs av kasus & numerus.
   // Artikeln disambiguerar (τῷ λόγῳ = entydigt dativ sg); enda synkretismen är
   // neutrum nom = ack, som viks ihop till "nom./ack." så ingen distraktor är rätt.
   if(state.mode === "lasa"){
+    const k = pick(kasusLista);
+    const n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
+    const form = o.former[k][n];
     const numN = n === "sg" ? "singular" : "plural";
-    const neutrum = pk === "n2" || pk === "n3";   // neutrum nom = ack i BÅDA numerus (även 3:e dekl.)
+    const neutrum = pk[0] === "n";   // neutrum nom = ack i BÅDA numerus (n2, n3, även σ-stam)
     const neutSyncr = neutrum && (k === "nom" || k === "ack");
     const ratt = (neutSyncr ? "nom./ack." : KASUS[k].namn) + " · " + numN;
     const kombo = (kk, nn) => ((neutrum && (kk === "nom" || kk === "ack")) ? "nom./ack." : KASUS[kk].namn) + " · " + (nn === "sg" ? "singular" : "plural");
@@ -332,18 +369,25 @@ function newQuestion(){
     return;
   }
 
-  const eo = andelseOptioner(pk, k, n, 6);
+  // Produktivt läge (bygg formen): dekl. 3 använder END3 och en förfinad nyckel;
+  // dekl. 1–2 kör som förr på END. valjProduktivCell hoppar över ändelselösa celler.
+  const pkE = o.dekl === 3 ? pk3(o) : pk;
+  const tabell = o.dekl === 3 ? END3 : END;
+  const { k, n } = valjProduktivCell(pkE, tabell);
+  const form = o.former[k][n];
+
+  const eo = andelseOptioner(tabell, pkE, k, n, 6);
   const ao = artikelOptioner(g, k, n, 6);
 
   state.card = {
-    lemma:o.lemma, genus:g, pk:pk, kasus:k, numerus:n,
-    tag: GENUS_NAMN[g] + " · " + PARADIGM_NAMN[pk],
+    lemma:o.lemma, genus:g, pk:pkE, kasus:k, numerus:n,
+    tag: GENUS_NAMN[g] + " · " + (o.dekl === 3 ? NAMN3[pkE] : PARADIGM_NAMN[pkE]),
     slot: KASUS[k].namn + " " + (n === "sg" ? "singular" : "plural"),
     artFacit:ao.facit, artOpt:ao.optioner,
     endFacit:eo.facit, endOpt:eo.optioner,
     formFull: ARTIKEL[g][k][n] + " " + form,
     glosa: glosaMedKasus(o, k, n),
-    not: byggNot(o, pk, k, n),
+    not: byggNot(o, pkE, k, n),
   };
   state.selArt = null; state.selEnd = null; state.besvarad = false;
   render();
@@ -423,7 +467,12 @@ function renderLasa(c){
   kort.classList.toggle("svar-fel",  state.besvarad && !rätt);
 
   if(state.besvarad){
-    $("r-form").textContent = c.formFull + " — " + c.analys;
+    // Grekisk form i Cardo, svensk analys i Spectral (som svarsknapparna) — annars
+    // ärver hela raden Cardos latinska glyfer och analysen ser avvikande ut.
+    $("r-form").innerHTML = "";
+    $("r-form").append(c.formFull + " — ");
+    const an = document.createElement("span"); an.className = "analys"; an.textContent = c.analys;
+    $("r-form").append(an);
     $("r-glosa").textContent = c.glosa;
     if(c.not){ $("r-not").textContent = c.not; $("r-not").classList.remove("hidden"); }
     else $("r-not").classList.add("hidden");
@@ -548,16 +597,12 @@ function uppdateraSub(){
 function uppdateraKategoriChips(){
   document.querySelectorAll("[data-deck]").forEach(b =>
     b.setAttribute("aria-pressed", setEq(state.valdaOrd, new Set(deckLemman(b.dataset.deck)))));
-  // Dekl. 3 finns bara i Läs formen — avaktivera chippet i de produktiva lägena.
-  const tredje = document.querySelector('[data-deck="tredje"]');
-  if(tredje) tredje.disabled = produktiv();
 }
 
 /* ── HÄNDELSER ───────────────────────────────────────────────────────── */
-// Ordrutnätet beror på läget (dekl:3 göms produktivt), så det byggs om vid lägesbyte.
-$("mode-lasa").onclick = () => { state.mode="lasa"; uppdateraLägesknappar(); uppdateraSub(); byggGridOrd(); spara(); newQuestion(); };
-$("mode-full").onclick = () => { state.mode="full"; uppdateraLägesknappar(); uppdateraSub(); byggGridOrd(); spara(); newQuestion(); };
-$("mode-end").onclick  = () => { state.mode="end";  uppdateraLägesknappar(); uppdateraSub(); byggGridOrd(); spara(); newQuestion(); };
+$("mode-lasa").onclick = () => { state.mode="lasa"; uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
+$("mode-full").onclick = () => { state.mode="full"; uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
+$("mode-end").onclick  = () => { state.mode="end";  uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
 $("btn-go").onclick = () => { if(state.besvarad) newQuestion(); else rätta(); };
 
 $("picker-toggle").onclick = () => {
