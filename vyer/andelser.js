@@ -16,6 +16,7 @@ const MARKUP = `<div class="vy vy-andelser">
 
 <div class="modes" role="group" aria-label="Läge">
   <button class="mode" id="mode-lasa" aria-pressed="true">Läs formen</button>
+  <button class="mode" id="mode-bar" aria-pressed="false">Läs ändelsen</button>
   <button class="mode" id="mode-full" aria-pressed="false">Artikel + ändelse</button>
   <button class="mode" id="mode-end" aria-pressed="false">Bara ändelse</button>
 </div>
@@ -114,7 +115,9 @@ const MARKUP = `<div class="vy vy-andelser">
   Du får lemmat (nominativ) och en målruta — välj <b>artikel</b> och <b>ändelse</b>, så visas
   hela den attesterade formen. Ändelserna står accent-fritt på knapparna; accenten hör till
   ordet och dyker upp först i facit (<code>ἄνθρωπος → ἀνθρώπῳ</code>). I läget
-  <i>bara ändelse</i> är artikeln redan given. Deklination 1 har tre singular-typer som bara
+  <i>bara ändelse</i> är artikeln redan given. <i>Läs formen</i> visar formen med artikel;
+  <i>läs ändelsen</i> tar bort artikeln så ändelsen är enda ledtråden — då kan en naken form
+  ha flera läsningar (<code>ἡμέρας</code> = gen. sg. <i>och</i> ack. pl.), och facit rymmer alla. Deklination 1 har tre singular-typer som bara
   nominativ avslöjar: <code>ἀρχή</code> (η), <code>ἡμέρα</code> (ren α), <code>θάλασσα</code> (blandad α).
   Deklination 3 böjs på genitivstammen; dess ändelselösa nominativ (<code>ἡγεμών</code>, <code>πνεῦμα</code>)
   drillas därför inte i bygg-lägena — där övas de ändelsebara kasusen (gen&nbsp;-ος, dat&nbsp;-ι, dat.pl&nbsp;-σι(ν) …).
@@ -134,6 +137,7 @@ const GENUS_NAMN = { m:"maskulinum", n:"neutrum", f:"femininum" };
 const KASUS = {
   nom:{namn:"nominativ"}, gen:{namn:"genitiv"}, dat:{namn:"dativ"}, ack:{namn:"ackusativ"}, vok:{namn:"vokativ"},
 };
+const KASUS_KORT = { nom:"nom.", gen:"gen.", dat:"dat.", ack:"ack.", vok:"vok." };
 const KASUS_ORDNING = ["nom","gen","dat","ack","vok"];
 
 
@@ -219,6 +223,27 @@ function artikelOptioner(genus, k, n, antal){
   return { facit, optioner: byggDistraktorer(facit, t1, t2, t3, antal) };
 }
 
+/* "Läs ändelsen" (utan artikel): den nakna formen är ofta homograf med flera
+   celler i SAMMA ords paradigm — nom = vok (λόγοι), neutrum nom/ack/vok (ἔργον),
+   och tvärs över numerus ἡμέρας (gen sg = ack pl). Artikeln som skiljer dem visas
+   inte, så facit måste rymma ALLA läsningar. readingar() ger cellerna vars form är
+   identisk med en given yta; foldEtikett() gör dem till en läslig etikett. */
+function readingar(o, form){
+  const ut = [];
+  for(const k of KASUS_ORDNING) for(const n of ["sg","pl"]) if(o.former[k][n] === form) ut.push({ k, n });
+  return ut;
+}
+function foldEtikett(rs){                              // t.ex. "nom./vok. · plural", "gen. · singular / ack. · plural"
+  const delar = [];
+  for(const n of ["sg","pl"]){
+    const ks = KASUS_ORDNING.filter(k => rs.some(r => r.k === k && r.n === n));
+    if(!ks.length) continue;
+    const namn = ks.length === 1 ? KASUS[ks[0]].namn : ks.map(k => KASUS_KORT[k]).join("/");
+    delar.push(namn + " · " + (n === "sg" ? "singular" : "plural"));
+  }
+  return delar.join(" / ");
+}
+
 /* Svensk glosa med kasusmarkör — samma princip som kasusspelet. */
 function glosaMedKasus(w, k, n){
   const genS = b => /[sxz]$/.test(b) ? b : b + "s";
@@ -250,7 +275,7 @@ function byggNot(o, pk, k, n){
 /* ── TILLSTÅND ───────────────────────────────────────────────────────── */
 const LAGER = "grekiska-andelsespel";
 const state = {
-  mode: "lasa",                                   // "lasa" (receptivt: läs formen → parsa) | "full" | "end" (produktivt: bygg)
+  mode: "lasa",                                   // receptivt: "lasa" (med artikel), "bar" (utan) — parsa | produktivt: "full", "end" — bygg
   numerus: "sg",                                  // "sg" | "pl" | "blandat"
   valdaOrd: new Set(ord.map(o => o.lemma)),
   valdaSem: new Set(SEM_VARDEN),
@@ -360,6 +385,34 @@ function newQuestion(){
       lasa: true, lemma: o.lemma, genus: g, pk, kasus: k, numerus: n,
       formFull: ARTIKEL[g][k][n] + " " + form,
       analys: GENUS_NAMN[g] + " · " + (neutSyncr ? "nominativ/ackusativ" : KASUS[k].namn) + " · " + numN,
+      glosa: glosaMedKasus(o, k, n),
+      not: byggNot(o, pk, k, n),
+      parseRatt: ratt, parseOpt: shuffle([ratt, ...distr]),
+    };
+    state.valt = null; state.besvarad = false;
+    render();
+    return;
+  }
+
+  // Receptivt utan artikel: visa BARA formen — ändelsen är enda ledtråden. Ingen
+  // artikel som disambiguerar, så facit rymmer alla homografa läsningar (foldEtikett).
+  if(state.mode === "bar"){
+    const k = pick(kasusLista);
+    const n = state.numerus === "blandat" ? pick(["sg","pl"]) : state.numerus;
+    const form = o.former[k][n];
+    const etikett = f => foldEtikett(readingar(o, f));
+    const ratt = etikett(form);
+    const combos = new Set(); for(const kk of kasusLista) for(const nn of ["sg","pl"]) combos.add(etikett(o.former[kk][nn]));
+    let distr = shuffle([...combos].filter(x => x !== ratt)).slice(0, 3);
+    if(distr.length < 3){                                   // för smalt urval → fyll ur alla kasus
+      const alla = new Set(); for(const kk of KASUS_ORDNING) for(const nn of ["sg","pl"]) alla.add(etikett(o.former[kk][nn]));
+      const extra = shuffle([...alla].filter(x => x !== ratt && !distr.includes(x)));
+      while(distr.length < 3 && extra.length) distr.push(extra.shift());
+    }
+    state.card = {
+      lasa: true, lemma: o.lemma, genus: g, pk, kasus: k, numerus: n,
+      formFull: form,                                       // ingen artikel
+      analys: GENUS_NAMN[g] + " · " + ratt,
       glosa: glosaMedKasus(o, k, n),
       not: byggNot(o, pk, k, n),
       parseRatt: ratt, parseOpt: shuffle([ratt, ...distr]),
@@ -583,12 +636,14 @@ function uppdateraNumKnappar(){
 }
 function uppdateraLägesknappar(){
   $("mode-lasa").setAttribute("aria-pressed", state.mode === "lasa");
+  $("mode-bar").setAttribute("aria-pressed", state.mode === "bar");
   $("mode-full").setAttribute("aria-pressed", state.mode === "full");
   $("mode-end").setAttribute("aria-pressed", state.mode === "end");
 }
 function uppdateraSub(){
   $("sub").textContent =
     state.mode === "lasa" ? "Läs formen och ange kasus och numerus — artikeln visar vägen." :
+    state.mode === "bar"  ? "Ingen artikel — läs bara ändelsen och ange kasus och numerus." :
     state.mode === "end"  ? "Bygg formen: välj rätt ändelse (artikeln är given)." :
                             "Bygg formen: välj rätt artikel och ändelse för kasuset.";
 }
@@ -601,6 +656,7 @@ function uppdateraKategoriChips(){
 
 /* ── HÄNDELSER ───────────────────────────────────────────────────────── */
 $("mode-lasa").onclick = () => { state.mode="lasa"; uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
+$("mode-bar").onclick  = () => { state.mode="bar";  uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
 $("mode-full").onclick = () => { state.mode="full"; uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
 $("mode-end").onclick  = () => { state.mode="end";  uppdateraLägesknappar(); uppdateraSub(); spara(); newQuestion(); };
 $("btn-go").onclick = () => { if(state.besvarad) newQuestion(); else rätta(); };
@@ -638,7 +694,7 @@ __kh = e => {
 /* ── START ───────────────────────────────────────────────────────────── */
 ladda();
 // Djuplänk kan förvälja läge (#/andelser/lasa) — vinner över persistensen.
-if(["lasa","full","end"].includes(opts.mode)) state.mode = opts.mode;
+if(["lasa","bar","full","end"].includes(opts.mode)) state.mode = opts.mode;
 uppdateraLägesknappar(); uppdateraSub(); uppdateraNumKnappar();
 byggGridOrd(); byggGridKasus(); byggGridSem(); newQuestion();
 
