@@ -101,8 +101,13 @@
 
       /* Tabeller */
       .gr-tables { display: flex; flex-wrap: wrap; gap: 1.2rem 1.6rem; }
-      /* Bred jämförelsetabell som får scrolla vågrätt i sitt eget fönster */
-      .gr-scroll { overflow-x: auto; margin: 0.2rem 0 1rem; }
+      /* Alla tabeller lindas (i JS) i .gr-scroll så de scrollar vågrätt i sitt
+         eget fönster på smala skärmar i stället för att spränga sidan. Måste
+         funka både som blockelement och som flex-barn inuti .gr-tables. */
+      .gr-scroll { overflow-x: auto; max-width: 100%; min-width: 0; }
+      /* stackade tabeller direkt i ett kort behöver luft mellan sig */
+      .gr-card > .gr-scroll + .gr-scroll,
+      .gr-tables + .gr-scroll { margin-top: 1.1rem; }
       .gr-jmf { min-width: 100%; }
       .gr-jmf thead th.gr-grek { color: var(--ink); font-weight: 600; }
       .gr-jmf thead th .g { font-size: var(--fs-3xs); color: var(--ink-soft); font-weight: 500; margin-left: 0.15rem; }
@@ -391,6 +396,14 @@
       @media (max-width: 900px) {
         .gr-layout { grid-template-columns: 1fr; }
         .gr-toc { position: static; max-height: none; margin-bottom: 1rem; }
+      }
+      /* På smala skärmar: krymp topplisten så den inte spränger sidan; den
+         långa titeln får kortas av med ellips i stället. */
+      @media (max-width: 480px) {
+        .gr-bar { gap: 0.7rem; padding: 0.7rem 1rem; }
+        .gr-bar .wordmark {
+          min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
       }
     </style>
   </head>
@@ -2273,6 +2286,17 @@
     </div>
 
     <script>
+      // Gör varje tabell vågrätt scrollbar på smala skärmar: linda den i ett
+      // eget scroll-fönster om den inte redan sitter i ett. Körs först så att
+      // resten av skripten ser samma tabeller (allt matchas via descendant).
+      document.querySelectorAll('table.gr').forEach((tbl) => {
+        if (tbl.closest('.gr-scroll, .amtable-wrap')) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'gr-scroll';
+        tbl.parentNode.insertBefore(wrap, tbl);
+        wrap.appendChild(tbl);
+      });
+
       // Artikel-toggle: klistra genus-matchad artikel framför varje böjd form.
       const ART = {
         m: { sg: { nom: 'ὁ', gen: 'τοῦ', dat: 'τῷ', ack: 'τὸν', vok: '' },
