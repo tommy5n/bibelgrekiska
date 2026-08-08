@@ -173,5 +173,34 @@
     "sv": "Låt honom rädda sig själv, om denne är Guds Kristus.",
     "bisats": "εἰ οὗτός ἐστιν ὁ Χριστὸς τοῦ θεοῦ", "inledare": "εἰ", "funktion": "villkorsbisats (om)",
     "ordlista": ["σῴζω rädda (σωσάτω 'må han rädda')", "ἑαυτόν sig själv"] }
+ ],
+
+ "fraser": [
+  { "id": "f01", "gr": "ὁ ἀγαθὸς λόγος", "sv": "det goda ordet (maskulinum nominativ singular)" },
+  { "id": "f02", "gr": "τὸν ἀγαθὸν δοῦλον", "sv": "den gode slaven (ackusativ — direkt objekt)" },
+  { "id": "f03", "gr": "τῇ ἁγίᾳ ἐκκλησίᾳ", "sv": "åt den heliga församlingen (femininum dativ singular)" },
+  { "id": "f04", "gr": "τὰ ἅγια τέκνα", "sv": "de heliga barnen (neutrum nominativ/ackusativ plural)" },
+  { "id": "f05", "gr": "τῶν καλῶν ἔργων", "sv": "de goda gärningarnas (genitiv plural)" },
+  { "id": "f06", "gr": "οἱ πρῶτοι μαθηταί", "sv": "de första lärjungarna (maskulinum nominativ plural)" },
+  { "id": "f07", "gr": "ἐν τῇ μεγάλῃ κώμῃ", "sv": "i den stora byn (μέγας, femininum dativ singular)" },
+  { "id": "f08", "gr": "μέγαν οἶκον", "sv": "ett stort hus (μέγας, maskulinum ackusativ singular)" },
+  { "id": "f09", "gr": "πολλοὶ ἄνθρωποι", "sv": "många människor (πολύς, maskulinum nominativ plural)" },
+  { "id": "f10", "gr": "πολλὰ σημεῖα", "sv": "många tecken (πολύς, neutrum nominativ/ackusativ plural)" },
+  { "id": "f11", "gr": "πᾶς ἄνθρωπος", "sv": "varje människa (πᾶς, maskulinum nominativ singular)" },
+  { "id": "f12", "gr": "πάντα τὰ ἔργα", "sv": "alla gärningarna (πᾶς, neutrum nominativ/ackusativ plural)" },
+  { "id": "f13", "gr": "πᾶσαι αἱ ἡμέραι", "sv": "alla dagarna (πᾶς, femininum nominativ plural)" },
+  { "id": "f14", "gr": "ὁ πονηρὸς ἄνθρωπος", "sv": "den onda människan (maskulinum nominativ singular)" },
+  { "id": "f15", "gr": "τῆς καλῆς ἡμέρας", "sv": "den vackra dagens (femininum genitiv singular)" }
+ ],
+
+ "particip": [
+  { "id": "p01", "gr": "ὁ ἀκούων", "sv": "den som hör, den hörande", "analys": "presens particip aktivum, maskulinum nominativ singular" },
+  { "id": "p02", "gr": "οἱ πιστεύοντες", "sv": "de som tror, de troende", "analys": "presens particip aktivum, maskulinum nominativ plural" },
+  { "id": "p03", "gr": "τὸν βλέποντα", "sv": "den som ser (som objekt)", "analys": "presens particip aktivum, maskulinum ackusativ singular" },
+  { "id": "p04", "gr": "ἡ λέγουσα", "sv": "hon som säger, den talande (kvinna)", "analys": "presens particip aktivum, femininum nominativ singular" },
+  { "id": "p05", "gr": "τῷ γράφοντι", "sv": "åt den som skriver", "analys": "presens particip aktivum, maskulinum dativ singular" },
+  { "id": "p06", "gr": "τοὺς λύοντας", "sv": "dem som löser", "analys": "presens particip aktivum, maskulinum ackusativ plural" },
+  { "id": "p07", "gr": "ἡ πιστεύουσα", "sv": "hon som tror", "analys": "presens particip aktivum, femininum nominativ singular" },
+  { "id": "p08", "gr": "οἱ κηρύσσοντες", "sv": "de som predikar", "analys": "presens particip aktivum, maskulinum nominativ plural" }
  ]
 }

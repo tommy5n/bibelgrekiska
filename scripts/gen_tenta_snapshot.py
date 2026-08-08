@@ -24,7 +24,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SATSANALYS = ROOT / "json" / "satsanalys-satser.json"
 POOL = ROOT / "json" / "tenta-pool.json"
+VERB = ROOT / "json" / "verb.json"
 UT = ROOT / "vyer" / "tenta-data.js"
+
+# Provets verb (ORDKUNSKAP 4b) + de tre modellverben som bär hela diates-paradigm.
+DIATES_VERB = {
+    "ἀκολουθέω", "ἀκούω", "ἀποστέλλω", "βαπτίζω", "βλέπω", "γράφω", "δίδωμι",
+    "εἰμί", "καλέω", "κηρύσσω", "λαλέω", "λέγω", "λύω", "πέμπω", "πιστεύω",
+    "ποιέω", "παιδεύω", "φιλέω",
+}
+# Nycklar vi tar med (den uppdaterade provspecens diateser): synkretisk
+# medium-passivum i presens/imperfekt, aorist passivum och medium.
+DIATES_NYCKLAR = {
+    "pres.ind.mp", "impf.ind.mp", "aor.ind.pass", "aor.ind.med",
+    "pres.inf.mp", "aor.inf.pass", "pres.imp.mp", "aor.imp.pass",
+}
+TEMPUS = {"pres": "presens", "impf": "imperfekt", "aor": "aorist", "fut": "futurum"}
+DIATES = {"mp": "medium-passivum", "pass": "passivum", "med": "medium", "akt": "aktivum"}
+PERSON = {
+    "1sg": "1:a person singular", "2sg": "2:a person singular", "3sg": "3:e person singular",
+    "1pl": "1:a person plural", "2pl": "2:a person plural", "3pl": "3:e person plural",
+}
 
 # Rollkod → läsbar satsdelsetikett (speglar satsanalys-satser.json:s _nycklar.roll
 # och ovningstentamen.json:s facit-språk).
@@ -71,6 +91,37 @@ def bygg_satslara():
     return ut
 
 
+def bygg_diates():
+    """Läs av medium/passivum ur formen — analysuppgifter ur verb.json-mastern.
+    Svenskan skiljer inte impf/aor passiv, så uppgiften är ANALYS (tempus·diates·
+    person), precis som diates-spelet #17 — ingen översättning hittas på."""
+    verbs = json.loads(VERB.read_text())["verb"]
+    ut = []
+    for v in verbs:
+        if v["lemma"] not in DIATES_VERB:
+            continue
+        sedda = set()
+        for nyckel, former in v["former"].items():
+            if nyckel not in DIATES_NYCKLAR:
+                continue
+            tempus, modus, diates = nyckel.split(".")
+            for pn, form in former.items():
+                if form in sedda:
+                    continue  # synkretiska dubbletter (t.ex. imp = ind 2pl) — behåll en
+                sedda.add(form)
+                if modus == "inf":
+                    analys = f"{TEMPUS[tempus]} infinitiv {DIATES[diates]}"
+                elif modus == "imp":
+                    analys = f"{TEMPUS[tempus]} imperativ {DIATES[diates]}, {PERSON[pn]}"
+                else:
+                    analys = f"{TEMPUS[tempus]} {DIATES[diates]}, {PERSON[pn]}"
+                facit = f"{analys} — av {v['lemma']} ({v['glosa']})."
+                if diates == "mp" and tempus in ("pres", "impf"):
+                    facit += " I presens/imperfekt sammanfaller medium och passivum."
+                ut.append({"gr": form, "facit": facit, "lemma": v["lemma"]})
+    return ut
+
+
 def js_block(namn, rader):
     """`namn: [ {…}, … ]` med en post per rad — diffvänligt."""
     inner = "\n".join("    " + json.dumps(r, ensure_ascii=False) + "," for r in rader)
@@ -80,12 +131,16 @@ def js_block(namn, rader):
 def main():
     pool = json.loads(POOL.read_text())
     satslara = bygg_satslara()
+    diates = bygg_diates()
 
     delar = [
         js_block("satslara", satslara),
         js_block("luckor", pool["luckor"]),
         js_block("begrepp", pool["begrepp"]),
         js_block("oversattning", pool["oversattning"]),
+        js_block("fraser", pool["fraser"]),
+        js_block("particip", pool["particip"]),
+        js_block("diates", diates),
     ]
 
     src = (
@@ -101,10 +156,13 @@ def main():
 
     print(f"Skrev {UT.relative_to(ROOT)}")
     print(f"  del II satslära     : {len(satslara)} satser")
-    print(f"  del III luckor      : {len(pool['luckor'])}")
-    print(f"  del IV begrepp      : {len(pool['begrepp'])} "
+    print(f"  del I adjektivfraser: {len(pool['fraser'])}")
+    print(f"  particip            : {len(pool['particip'])}")
+    print(f"  diates (ur verb.json): {len(diates)} former")
+    print(f"  luckor              : {len(pool['luckor'])}")
+    print(f"  begrepp             : {len(pool['begrepp'])} "
           f"(diates {sum(1 for b in pool['begrepp'] if b.get('niva') == 'diates')})")
-    print(f"  del IV översättning : {len(pool['oversattning'])}")
+    print(f"  översättning        : {len(pool['oversattning'])}")
 
 
 if __name__ == "__main__":

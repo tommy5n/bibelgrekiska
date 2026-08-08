@@ -43,6 +43,21 @@ const PRONOMEN = [
   { gr: "τίς;", sv: "vem?", upp: "τίς — vem, vilken (interrogativt)" },
   { gr: "τί;", sv: "vad? / varför?", upp: "τίς — vem, vilken (interrogativt)" },
   { gr: "τίνος;", sv: "vems?", upp: "τίς — vem, vilken (interrogativt)" },
+  // Possessiva
+  { gr: "ἐμός", sv: "min", upp: "ἐμός — min (possessivt)" },
+  { gr: "σός", sv: "din", upp: "σός — din (possessivt)" },
+  { gr: "ἡμέτερος", sv: "vår", upp: "ἡμέτερος — vår (possessivt)" },
+  // Indefinita (enklitiskt τις, obetonat — skilj från interrogativa τίς)
+  { gr: "τις", sv: "någon, en viss", upp: "τις — någon (indefinit, enklitiskt — obetonat)" },
+  { gr: "τι", sv: "något", upp: "τις — någon (indefinit, enklitiskt — obetonat)" },
+  { gr: "τινά", sv: "någon (ackusativ)", upp: "τις — någon (indefinit)" },
+  // Relativpronomen (ὅς ἥ ὅ — anda + accent skiljer från artikeln)
+  { gr: "ὅς", sv: "som, vilken (subjekt)", upp: "ὅς ἥ ὅ — relativpronomen" },
+  { gr: "ἥ", sv: "som, hon som", upp: "ὅς ἥ ὅ — relativpronomen (femininum)" },
+  { gr: "ὅν", sv: "som, vilken (ackusativ — objekt)", upp: "ὅς ἥ ὅ — relativpronomen" },
+  { gr: "οὗ", sv: "vars, vilkens", upp: "ὅς ἥ ὅ — relativpronomen (genitiv)" },
+  { gr: "ᾧ", sv: "åt vilken, som", upp: "ὅς ἥ ὅ — relativpronomen (dativ)" },
+  { gr: "οἵ", sv: "som, vilka (plural)", upp: "ὅς ἥ ὅ — relativpronomen (maskulinum plural)" },
 ];
 
 /* ── Seedbar slump (mulberry32) så en tenta är reproducerbar via #/tenta/<seed>.
@@ -100,8 +115,13 @@ function partIPool() {
     }
   }
 
-  // Pronomen: den handverifierade poolen.
+  // Pronomen: den handverifierade poolen (personliga, possessiva, indefinita,
+  // interrogativa, demonstrativa, relativa).
   for (const p of PRONOMEN) items.push({ ...p, typ: "pron" });
+
+  // Adjektiv i kongruens med substantiv (punkt 1) + πᾶς/μέγας/πολύς. Kurerade
+  // fraser med verifierad svenska; upp tomt → visas utan uppslagstagg.
+  for (const f of TENTA.fraser) items.push({ gr: f.gr, sv: f.sv, upp: "", typ: "fras" });
 
   return items;
 }
@@ -110,11 +130,13 @@ function partIPool() {
    utan dubbletter på vare sig form eller svensk betydelse. */
 function valjDel1(antal) {
   const pool = partIPool();
-  const grupper = { verb: [], subst: [], pron: [] };
+  const grupper = { verb: [], subst: [], pron: [], fras: [] };
   for (const it of pool) grupper[it.typ].push(it);
 
-  const kvot = { verb: Math.round(antal * 0.4), subst: Math.round(antal * 0.4) };
-  kvot.pron = antal - kvot.verb - kvot.subst;
+  // Kvoter så alla fyra kategorierna (substantiv, aktiva verb, pronomen,
+  // adjektivfraser) garanterat är representerade i varje tenta.
+  const kvot = { verb: 5, subst: 4, fras: 3 };
+  kvot.pron = antal - kvot.verb - kvot.subst - kvot.fras;
 
   const valda = [];
   const settGr = new Set(), settSv = new Set(), settUpp = new Set();
@@ -122,14 +144,16 @@ function valjDel1(antal) {
     for (const it of shuffle(grupp)) {
       if (valda.length >= antal) break;
       if (n <= 0) break;
-      // Undvik dubbletter på form, betydelse och uppslagsord — varje lemma
-      // (upp) syns på sin höjd en gång, vilket också breddar täckningen.
-      if (settGr.has(it.gr) || settSv.has(it.sv) || settUpp.has(it.upp)) continue;
-      settGr.add(it.gr); settSv.add(it.sv); settUpp.add(it.upp); valda.push(it); n--;
+      // Undvik dubbletter på form och betydelse; ett uppslagsord (upp) syns
+      // dessutom på sin höjd en gång (tomt upp = fras → ingen sådan spärr).
+      if (settGr.has(it.gr) || settSv.has(it.sv) || (it.upp && settUpp.has(it.upp))) continue;
+      settGr.add(it.gr); settSv.add(it.sv); if (it.upp) settUpp.add(it.upp);
+      valda.push(it); n--;
     }
   };
   taFran(grupper.verb, kvot.verb);
   taFran(grupper.subst, kvot.subst);
+  taFran(grupper.fras, kvot.fras);
   taFran(grupper.pron, kvot.pron);
   // Fyll upp ur allt om någon grupp var för liten.
   taFran(pool, antal - valda.length);
@@ -190,16 +214,29 @@ function upg(inner, facitHtml) {
 }
 
 function renderDel1(items) {
-  const rader = items.map((it) =>
-    upg(
-      `<div class="fraga-gr">${esc(it.gr)}</div>`,
-      `<span class="sv">${esc(it.sv)}</span> &nbsp;<span class="upp">· ${esc(it.upp)}</span>`
-    )
-  ).join("");
+  const rader = items.map((it) => {
+    const tagg = it.upp ? ` &nbsp;<span class="upp">· ${esc(it.upp)}</span>` : "";
+    return upg(`<div class="fraga-gr">${esc(it.gr)}</div>`, `<span class="sv">${esc(it.sv)}</span>${tagg}`);
+  }).join("");
   return `<section class="del">
     <h2>Del I · Ordkunskap</h2>
-    <p class="instr">Översätt formerna till svenska — ta hänsyn till kasus, tempus, modus och så vidare.</p>
+    <p class="instr">Översätt formerna till svenska — substantiv, adjektiv, pronomen och verb. Ta hänsyn till kasus, numerus, tempus och modus.</p>
     ${rader}
+  </section>`;
+}
+
+// Del III: läs av verbets övriga former — particip (översätt) och medium/
+// passivum/aorist passivum (analysera tempus, diates och person).
+function renderDel3(particip, diates) {
+  const p = particip.map((it) =>
+    upg(`<div class="fraga-gr">${esc(it.gr)}</div>`,
+      `<span class="sv">${esc(it.sv)}</span> &nbsp;<span class="upp">· ${esc(it.analys)}</span>`));
+  const d = diates.map((it) =>
+    upg(`<div class="fraga-gr">${esc(it.gr)}</div>`, esc(it.facit)));
+  return `<section class="del">
+    <h2>Del III · Particip &amp; diates</h2>
+    <p class="instr">Particip: översätt (”den som …”). Medium/passivum: ange formens tempus, diates (aktivum/medium/passivum) och person.</p>
+    ${[...p, ...d].join("")}
   </section>`;
 }
 
@@ -217,20 +254,20 @@ function renderDel2(satser) {
   </section>`;
 }
 
-function renderDel3(luckor) {
+function renderDel4(luckor) {
   const rader = luckor.map((l) => {
     const ordl = l.ordlista && l.ordlista.length
       ? `<p class="ordlista">Ordlista: ${l.ordlista.map(esc).join(" · ")}</p>` : "";
     return upg(`<div class="fraga-gr">${markeraLuckor(l.mall)}</div>${ordl}`, esc(l.facit));
   }).join("");
   return `<section class="del">
-    <h2>Del III · Form- &amp; satslära</h2>
+    <h2>Del IV · Form- &amp; satslära</h2>
     <p class="instr">Sätt in rätt form i luckorna ⟨____⟩. Den svenska ledtråden står inom parentes.</p>
     ${rader}
   </section>`;
 }
 
-function renderDel4(begrepp, oversatt) {
+function renderDel5(begrepp, oversatt) {
   const b = begrepp.map((q) => upg(`<div class="fraga-sv">${esc(q.fraga)}</div>`, esc(q.facit)));
   const o = oversatt.map((s) => {
     const ordl = s.ordlista && s.ordlista.length
@@ -242,7 +279,7 @@ function renderDel4(begrepp, oversatt) {
   });
   // Väv samman: begreppsfrågor först, sedan översättningarna.
   return `<section class="del">
-    <h2>Del IV · Blandat</h2>
+    <h2>Del V · Blandat</h2>
     <p class="instr">Blandade frågor om form- och satslära, samt meningar att översätta.</p>
     ${[...b, ...o].join("")}
   </section>`;
@@ -274,16 +311,18 @@ export function render(root, opts = {}) {
 
   const del1 = valjDel1(16);
   const del2 = sample(TENTA.satslara, 2);
-  const del3 = sample(TENTA.luckor, 3);
-  const del4b = sample(TENTA.begrepp, 4);
-  const del4o = sample(TENTA.oversattning, 2);
+  const del3p = sample(TENTA.particip, 2);
+  const del3d = sample(TENTA.diates, 3);
+  const del4 = sample(TENTA.luckor, 3);
+  const del5b = sample(TENTA.begrepp, 4);
+  const del5o = sample(TENTA.oversattning, 2);
 
   root.innerHTML = `<div class="vy vy-tenta">
     <div class="kopf">
       <h1>Övningstentamen</h1>
       <span class="seed">Tenta #${esc(seed)}${delbar ? " · delbar länk" : " · slumpad"}</span>
     </div>
-    <p class="lead">Hela provet i fyra delar — men frågorna lottas fram ur provets ord, verb och satser. Ladda om sidan eller tryck <b>Ny tenta</b> för en helt ny uppsättning. Skriv/säg ditt svar och fäll sedan ut facit.</p>
+    <p class="lead">Hela provets bredd — substantiv, adjektiv, pronomen, verb (även particip och medium/passivum), satslära och glosor — men frågorna lottas fram på nytt varje gång. Ladda om sidan eller tryck <b>Ny tenta</b> för en helt ny uppsättning. Skriv/säg ditt svar och fäll sedan ut facit.</p>
     <div class="verktyg">
       <button type="button" class="primar" id="t-ny">🎲 Ny tenta</button>
       <button type="button" id="t-visa">Visa alla facit</button>
@@ -291,8 +330,9 @@ export function render(root, opts = {}) {
     </div>
     ${renderDel1(del1)}
     ${renderDel2(del2)}
-    ${renderDel3(del3)}
-    ${renderDel4(del4b, del4o)}
+    ${renderDel3(del3p, del3d)}
+    ${renderDel4(del4)}
+    ${renderDel5(del5b, del5o)}
   </div>`;
 
   const vy = root.querySelector(".vy-tenta");
