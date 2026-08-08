@@ -204,7 +204,7 @@
       /* ── S1 Självtest per kort: dölj formerna, tryck för att avslöja ──── */
       /* Knappen sitter i varje korts rubrik och skjuts åt höger. */
       .gr-selftest {
-        margin-left: auto; align-self: center;
+        align-self: center;
         font: inherit; font-size: var(--fs-3xs); font-weight: 600;
         color: var(--ink-soft); background: transparent;
         border: 1px solid var(--line); border-radius: 999px;
@@ -213,10 +213,13 @@
         transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
       }
       .gr-selftest:hover { color: var(--ink); border-color: var(--gold); }
-      .gr-card.testing .gr-selftest {
+      /* varje knapp lyser upp av sitt eget läge (grek/sv oberoende) */
+      .gr-selftest[aria-pressed="true"] {
         color: #fff; background: var(--accent, var(--gold));
         border-color: var(--accent, var(--gold));
       }
+      /* de två testknapparna hålls ihop och skjuts åt höger i rubriken */
+      .gr-selftest-group { margin-left: auto; display: inline-flex; gap: 0.35rem; }
       /* Sudda via text-shadow — inget filter-lager som slocknar/laggar på iPad.
          Glyfen görs osynlig (color:transparent, även barn-spans) och skuggan
          blir en färgad suddklump. Bara det aktiva kortet suddas åt gången. */
@@ -225,6 +228,10 @@
       .gr-card.testing table.gr td.end:not(.revealed),
       .gr-card.testing table.gr td.end:not(.revealed) * {
         color: transparent;
+      }
+      /* Den svenska glosan är ledtråden när grekiskan är dold — håll den kvar. */
+      .gr-card.testing table.gr td.gr-el:not(.revealed) .sv {
+        color: var(--ink-soft); text-shadow: none;
       }
       .gr-card.testing table.gr td.gr-el:not(.revealed),
       .gr-card.testing table.gr td.end:not(.revealed) {
@@ -241,9 +248,33 @@
       /* Andmatrisen har färgade former — låt suddklumpen ärva färgen */
       .gr-andmatris.testing table.gr td.gr-el:not(.revealed) { text-shadow: 0 0 0.5em var(--gold); }
       .gr-andmatris.testing table.gr tr.eimi td.gr-el:not(.revealed) { text-shadow: 0 0 0.5em #b0642f; }
+
+      /* ── S1b Självtest åt andra hållet: dölj den svenska översättningen ─── */
+      /* Suddar antingen den inbäddade glosan (.sv i grek-cellen) eller en hel
+         Svenska-kolumn (td.sv-cell). Grekiskan står kvar som ledtråd. */
+      .gr-card.testing-sv table.gr td.gr-el .sv,
+      .gr-card.testing-sv table.gr td.sv-cell {
+        color: transparent;
+        text-shadow: 0 0 0.45em var(--ink-soft);
+      }
+      .gr-card.testing-sv table.gr td.gr-el.has-sv,
+      .gr-card.testing-sv table.gr td.sv-cell {
+        cursor: pointer; user-select: none; -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .gr-card.testing-sv table.gr td.gr-el.revealed-sv .sv,
+      .gr-card.testing-sv table.gr td.sv-cell.revealed-sv {
+        color: var(--ink-soft); text-shadow: none;
+      }
+      .gr-card.testing-sv table.gr td.gr-el.revealed-sv,
+      .gr-card.testing-sv table.gr td.sv-cell.revealed-sv {
+        background: color-mix(in srgb, var(--gold) 13%, transparent);
+      }
       /* toggles staplas snyggt */
-      .gr-controls { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; margin: -0.6rem 0 1.1rem; }
+      .gr-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1.6rem; margin: -0.6rem 0 1.1rem; }
       .gr-controls .gr-arttoggle { margin: 0; }
+      .gr-hint { font-size: var(--fs-2xs); color: var(--ink-soft); }
+      .gr-hint b { color: var(--gold); font-weight: 600; }
 
       /* ── S2 Färgnyckel för kasus ────────────────────────────────────── */
       .gr-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; margin: 0 0 1.6rem; font-size: var(--fs-2xs); color: var(--ink-soft); }
@@ -429,6 +460,7 @@
             <input type="checkbox" id="gr-arttoggle" />
             Visa <b>artikeln</b> framför formerna (<span class="gr-grek">ὁ ἄνθρωπος …</span>)
           </label>
+          <span class="gr-hint">Varje kort har knappar för att <b>dölja grekiskan</b> eller <b>svenskan</b> — öva åt båda hållen; tryck på en cell för att avslöja.</span>
         </div>
         <div class="gr-legend" aria-label="Färgnyckel för kasus">
           <span><i class="l-nom"></i> nominativ</span>
@@ -558,11 +590,11 @@
               <caption>ἄνθρωπος</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἄνθρωπος</td><td class="gr-el">ἄνθρωποι</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἀνθρώπου</td><td class="gr-el">ἀνθρώπων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἀνθρώπῳ</td><td class="gr-el">ἀνθρώποις</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἄνθρωπον</td><td class="gr-el">ἀνθρώπους</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἄνθρωπε</td><td class="gr-el">ἄνθρωποι</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἄνθρωπος<span class="sv">människan</span></td><td class="gr-el">ἄνθρωποι<span class="sv">människorna</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἀνθρώπου<span class="sv">människans</span></td><td class="gr-el">ἀνθρώπων<span class="sv">människornas</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἀνθρώπῳ<span class="sv">till människan</span></td><td class="gr-el">ἀνθρώποις<span class="sv">till människorna</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἄνθρωπον<span class="sv">människan</span></td><td class="gr-el">ἀνθρώπους<span class="sv">människorna</span></td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἄνθρωπε<span class="sv">människa!</span></td><td class="gr-el">ἄνθρωποι<span class="sv">människor!</span></td></tr>
               </tbody>
             </table>
             <table class="gr">
@@ -598,11 +630,11 @@
               <caption>ἔργον</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἔργον</td><td class="gr-el">ἔργα</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἔργου</td><td class="gr-el">ἔργων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἔργῳ</td><td class="gr-el">ἔργοις</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἔργον</td><td class="gr-el">ἔργα</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἔργον</td><td class="gr-el">ἔργα</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἔργον<span class="sv">verket</span></td><td class="gr-el">ἔργα<span class="sv">verken</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἔργου<span class="sv">verkets</span></td><td class="gr-el">ἔργων<span class="sv">verkens</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἔργῳ<span class="sv">till verket</span></td><td class="gr-el">ἔργοις<span class="sv">till verken</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἔργον<span class="sv">verket</span></td><td class="gr-el">ἔργα<span class="sv">verken</span></td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἔργον<span class="sv">verk!</span></td><td class="gr-el">ἔργα<span class="sv">verk!</span></td></tr>
               </tbody>
             </table>
             <table class="gr">
@@ -682,11 +714,11 @@
               <caption>ὁδός</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ὁδός</td><td class="gr-el">ὁδοί</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ὁδοῦ</td><td class="gr-el">ὁδῶν</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ὁδῷ</td><td class="gr-el">ὁδοῖς</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ὁδόν</td><td class="gr-el">ὁδούς</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ὁδέ</td><td class="gr-el">ὁδοί</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ὁδός<span class="sv">vägen</span></td><td class="gr-el">ὁδοί<span class="sv">vägarna</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ὁδοῦ<span class="sv">vägens</span></td><td class="gr-el">ὁδῶν<span class="sv">vägarnas</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ὁδῷ<span class="sv">till vägen</span></td><td class="gr-el">ὁδοῖς<span class="sv">till vägarna</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ὁδόν<span class="sv">vägen</span></td><td class="gr-el">ὁδούς<span class="sv">vägarna</span></td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ὁδέ<span class="sv">väg!</span></td><td class="gr-el">ὁδοί<span class="sv">vägar!</span></td></tr>
               </tbody>
             </table>
           </div>
@@ -707,22 +739,22 @@
               <caption>μαθητής (η-typ)</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">μαθητής</td><td class="gr-el">μαθηταί</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">μαθητοῦ</td><td class="gr-el">μαθητῶν</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">μαθητῇ</td><td class="gr-el">μαθηταῖς</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">μαθητήν</td><td class="gr-el">μαθητάς</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">μαθητά</td><td class="gr-el">μαθηταί</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">μαθητής<span class="sv">lärjungen</span></td><td class="gr-el">μαθηταί<span class="sv">lärjungarna</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">μαθητοῦ<span class="sv">lärjungens</span></td><td class="gr-el">μαθητῶν<span class="sv">lärjungarnas</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">μαθητῇ<span class="sv">till lärjungen</span></td><td class="gr-el">μαθηταῖς<span class="sv">till lärjungarna</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">μαθητήν<span class="sv">lärjungen</span></td><td class="gr-el">μαθητάς<span class="sv">lärjungarna</span></td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">μαθητά<span class="sv">lärjunge!</span></td><td class="gr-el">μαθηταί<span class="sv">lärjungar!</span></td></tr>
               </tbody>
             </table>
             <table class="gr" data-artikel="m">
               <caption>νεανίας (α-typ)</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">νεανίας</td><td class="gr-el">νεανίαι</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">νεανίου</td><td class="gr-el">νεανιῶν</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">νεανίᾳ</td><td class="gr-el">νεανίαις</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">νεανίαν</td><td class="gr-el">νεανίας</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">νεανία</td><td class="gr-el">νεανίαι</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">νεανίας<span class="sv">ynglingen</span></td><td class="gr-el">νεανίαι<span class="sv">ynglingarna</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">νεανίου<span class="sv">ynglingens</span></td><td class="gr-el">νεανιῶν<span class="sv">ynglingarnas</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">νεανίᾳ<span class="sv">till ynglingen</span></td><td class="gr-el">νεανίαις<span class="sv">till ynglingarna</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">νεανίαν<span class="sv">ynglingen</span></td><td class="gr-el">νεανίας<span class="sv">ynglingarna</span></td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">νεανία<span class="sv">yngling!</span></td><td class="gr-el">νεανίαι<span class="sv">ynglingar!</span></td></tr>
               </tbody>
             </table>
           </div>
@@ -743,22 +775,22 @@
               <caption>ἡγεμών (ἡγεμον-) · ståthållare, mask.</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἡγεμών</td><td class="gr-el">ἡγεμόνες</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἡγεμόνος</td><td class="gr-el">ἡγεμόνων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἡγεμόνι</td><td class="gr-el">ἡγεμόσι(ν)</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἡγεμόνα</td><td class="gr-el">ἡγεμόνας</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἡγεμών</td><td class="gr-el">ἡγεμόνες</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ἡγεμών<span class="sv">ståthållaren</span></td><td class="gr-el">ἡγεμόνες<span class="sv">ståthållarna</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ἡγεμόνος<span class="sv">ståthållarens</span></td><td class="gr-el">ἡγεμόνων<span class="sv">ståthållarnas</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ἡγεμόνι<span class="sv">till ståthållaren</span></td><td class="gr-el">ἡγεμόσι(ν)<span class="sv">till ståthållarna</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ἡγεμόνα<span class="sv">ståthållaren</span></td><td class="gr-el">ἡγεμόνας<span class="sv">ståthållarna</span></td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ἡγεμών<span class="sv">ståthållare!</span></td><td class="gr-el">ἡγεμόνες<span class="sv">ståthållare!</span></td></tr>
               </tbody>
             </table>
             <table class="gr" data-artikel="n">
               <caption>ὄνομα (ὀνοματ-) · namn, neutr.</caption>
               <thead><tr><th class="kasus">Kasus</th><th>Singular</th><th>Plural</th></tr></thead>
               <tbody>
-                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ὄνομα</td><td class="gr-el">ὀνόματα</td></tr>
-                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ὀνόματος</td><td class="gr-el">ὀνομάτων</td></tr>
-                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ὀνόματι</td><td class="gr-el">ὀνόμασι(ν)</td></tr>
-                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ὄνομα</td><td class="gr-el">ὀνόματα</td></tr>
-                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ὄνομα</td><td class="gr-el">ὀνόματα</td></tr>
+                <tr class="k-nom"><th class="kasus">nom</th><td class="gr-el">ὄνομα<span class="sv">namnet</span></td><td class="gr-el">ὀνόματα<span class="sv">namnen</span></td></tr>
+                <tr class="k-gen"><th class="kasus">gen</th><td class="gr-el">ὀνόματος<span class="sv">namnets</span></td><td class="gr-el">ὀνομάτων<span class="sv">namnens</span></td></tr>
+                <tr class="k-dat"><th class="kasus">dat</th><td class="gr-el">ὀνόματι<span class="sv">till namnet</span></td><td class="gr-el">ὀνόμασι(ν)<span class="sv">till namnen</span></td></tr>
+                <tr class="k-ack"><th class="kasus">ack</th><td class="gr-el">ὄνομα<span class="sv">namnet</span></td><td class="gr-el">ὀνόματα<span class="sv">namnen</span></td></tr>
+                <tr class="k-vok"><th class="kasus">vok</th><td class="gr-el">ὄνομα<span class="sv">namn!</span></td><td class="gr-el">ὀνόματα<span class="sv">namn!</span></td></tr>
               </tbody>
             </table>
             <table class="gr">
@@ -1061,7 +1093,7 @@
         <!-- ══ Personändelser — översikt (självtest-fusklapp) ══ -->
         <section class="gr-card gr-andmatris" id="verb-andelser" style="--accent:#8a5a86">
           <h3>Personändelser — hela översikten <span class="ex">λύω · φιλέω</span> <span class="sem">Sem 2–10</span></h3>
-          <p class="note">Alla personändelser ni gått igenom, samlade på ett ställe — lärarens två bilder, här utökad med <b>medium-passivum</b> (sem 10). Tryck på <b>”Testa dig själv”</b> uppe i kortet för att sudda ändelserna; tryck på en cell för att avslöja. Nöta <b>nedåt</b> i en kolumn (samma person genom alla tempus/diateser) och <b>tvärs</b> en rad (hela paradigmet).</p>
+          <p class="note">Alla personändelser ni gått igenom, samlade på ett ställe — lärarens två bilder, här utökad med <b>medium-passivum</b> (sem 10). Tryck på <b>”Dölj grekiskan”</b> uppe i kortet för att sudda ändelserna; tryck på en cell för att avslöja. Nöta <b>nedåt</b> i en kolumn (samma person genom alla tempus/diateser) och <b>tvärs</b> en rad (hela paradigmet).</p>
 
           <div class="amtable-wrap">
             <table class="gr">
@@ -2211,34 +2243,88 @@
         document.body.classList.toggle('show-artikel', artToggle.checked);
       });
 
-      // S1 Självtest per kort: en knapp i varje korts rubrik suddar just det
-      // kortets former; tryck på en cell för att avslöja den. Scopat per kort
-      // så att aldrig fler än ett korts celler suddas åt gången.
+      // S1 Självtest per kort — åt båda hållen. En knapp döljer grekiskan
+      // (öva form ur betydelse), en annan döljer svenskan (öva betydelse ur
+      // form). Lägena utesluter varandra; tryck på en cell för att avslöja.
+      // Scopat per kort så att aldrig mer än ett kort suddas åt gången.
+
+      // Märk upp var det svenska sitter: dels hela ”Svenska”-kolumner, dels
+      // inbäddade glosor (.sv) direkt i grek-cellen.
+      document.querySelectorAll('table.gr').forEach((tbl) => {
+        const svHead = [...tbl.querySelectorAll('thead th')].find((th) =>
+          th.textContent.trim().startsWith('Svenska'),
+        );
+        if (svHead) {
+          const idx = [...svHead.parentElement.children].indexOf(svHead);
+          tbl.querySelectorAll('tbody tr').forEach((tr) => {
+            const cell = tr.children[idx];
+            if (cell && cell.tagName === 'TD') cell.classList.add('sv-cell');
+          });
+        }
+      });
+      document.querySelectorAll('table.gr td.gr-el > .sv').forEach((sv) => {
+        sv.parentElement.classList.add('has-sv');
+      });
+
       document.querySelectorAll('.gr-card').forEach((card) => {
-        if (!card.querySelector('table.gr td.gr-el, table.gr td.end')) return; // bara kort med former/ändelser
+        const hasForms = card.querySelector('table.gr td.gr-el, table.gr td.end');
+        const hasSwedish = card.querySelector('table.gr td.sv-cell, table.gr td.gr-el > .sv');
+        if (!hasForms && !hasSwedish) return;
         const h3 = card.querySelector('h3');
         if (!h3) return;
 
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'gr-selftest';
-        btn.textContent = 'Testa dig själv';
-        btn.setAttribute('aria-pressed', 'false');
-        h3.appendChild(btn);
+        const group = document.createElement('span');
+        group.className = 'gr-selftest-group';
 
-        const setTesting = (on) => {
-          card.classList.toggle('testing', on);
-          btn.setAttribute('aria-pressed', String(on));
-          btn.textContent = on ? 'Visa alla' : 'Testa dig själv';
-          if (!on)
-            card.querySelectorAll('td.gr-el.revealed, td.end.revealed').forEach((c) => c.classList.remove('revealed'));
+        const makeBtn = (label) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'gr-selftest';
+          b.textContent = label;
+          b.setAttribute('aria-pressed', 'false');
+          group.appendChild(b);
+          return b;
         };
-        btn.addEventListener('click', () => setTesting(!card.classList.contains('testing')));
+
+        const grBtn = hasForms ? makeBtn('Dölj grekiskan') : null;
+        const svBtn = hasSwedish ? makeBtn('Dölj svenskan') : null;
+
+        const setMode = (mode) => {
+          // mode: 'gr' | 'sv' | null
+          card.classList.toggle('testing', mode === 'gr');
+          card.classList.toggle('testing-sv', mode === 'sv');
+          card
+            .querySelectorAll('.revealed, .revealed-sv')
+            .forEach((c) => c.classList.remove('revealed', 'revealed-sv'));
+          if (grBtn) {
+            grBtn.setAttribute('aria-pressed', String(mode === 'gr'));
+            grBtn.textContent = mode === 'gr' ? 'Visa grekiskan' : 'Dölj grekiskan';
+          }
+          if (svBtn) {
+            svBtn.setAttribute('aria-pressed', String(mode === 'sv'));
+            svBtn.textContent = mode === 'sv' ? 'Visa svenskan' : 'Dölj svenskan';
+          }
+        };
+
+        if (grBtn)
+          grBtn.addEventListener('click', () =>
+            setMode(card.classList.contains('testing') ? null : 'gr'),
+          );
+        if (svBtn)
+          svBtn.addEventListener('click', () =>
+            setMode(card.classList.contains('testing-sv') ? null : 'sv'),
+          );
+
+        h3.appendChild(group);
 
         card.addEventListener('click', (ev) => {
-          if (!card.classList.contains('testing')) return;
-          const cell = ev.target.closest('td.gr-el, td.end');
-          if (cell) cell.classList.toggle('revealed');
+          if (card.classList.contains('testing')) {
+            const cell = ev.target.closest('td.gr-el, td.end');
+            if (cell) cell.classList.toggle('revealed');
+          } else if (card.classList.contains('testing-sv')) {
+            const cell = ev.target.closest('td.sv-cell, td.gr-el.has-sv');
+            if (cell) cell.classList.toggle('revealed-sv');
+          }
         });
       });
 
