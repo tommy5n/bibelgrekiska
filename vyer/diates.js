@@ -19,6 +19,19 @@ let __kh = null;
 export function teardown(){ if(__kh){ document.removeEventListener("keydown", __kh); __kh = null; } }
 
 const CSS = `
+/* Layout-skelett — scopas per vy (app.css delar inte ut det globalt). */
+.vy-diates header { text-align: center; margin: 0.4rem 0 1.4rem; }
+.vy-diates h1 { font-size: var(--fs-3xl); font-weight: 600; margin: 0 0 0.25rem; color: var(--ink); }
+.vy-diates .sub { color: var(--ink-soft); font-size: var(--fs-md); font-style: italic; }
+.vy-diates .stage { width: min(440px, 100%); margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.vy-diates .card { width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 2rem 1.4rem; text-align: center; }
+.vy-diates .controls { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1.1rem; width: 100%; }
+.vy-diates .btn { font-family: inherit; font-size: var(--fs-lg); padding: 0.55rem 1.2rem; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; transition: 0.18s; }
+.vy-diates .btn.ghost { background: transparent; }
+.vy-diates .btn.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+@media (hover: hover) { .vy-diates .btn:hover { border-color: var(--gold); } }
+.vy-diates .streak { color: var(--ink-soft); font-size: var(--fs-sm); margin-top: 0.2rem; }
+.vy-diates footer { margin: 1.6rem auto 0; max-width: 40rem; color: var(--ink-soft); font-size: var(--fs-2xs); text-align: center; line-height: 1.5; }
 .vy-diates .modes { display: flex; gap: 0.5rem; justify-content: center; margin: 0.9rem 0 0.2rem; flex-wrap: wrap; }
 .vy-diates .mode {
   font-family: inherit; font-size: var(--fs-sm); color: var(--ink-soft); background: var(--card);
