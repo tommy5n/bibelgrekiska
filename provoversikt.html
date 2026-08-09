@@ -164,16 +164,46 @@
         position: relative; top: 0.15em; }
       .pv-vtoggle b { color: var(--gold); font-weight: 600; }
 
-      /* Klickbar dold form (futurum / aorist) i drill-läge */
-      .gr-card.verb-drill .pv-word .cz { visibility: hidden; position: relative; cursor: pointer; }
-      .gr-card.verb-drill .pv-word .cz::before {
+      /* Verben som block: presens / futurum · aorist / svenska — tre rader, symmetriskt */
+      .pv-vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+        gap: 0.7rem; margin: 0.1rem 0 0; }
+      .pv-vblock { display: grid; gap: 0.2rem; align-content: start; justify-items: center;
+        text-align: center; padding: 0.7rem 0.55rem; background: var(--paper-2);
+        border: 1px solid var(--line); border-radius: 11px; }
+      .pv-vblock .v-pres { font-size: var(--fs-lg); color: var(--ink); line-height: 1.2; }
+      .pv-vblock .v-tema { font-size: var(--fs-sm); color: var(--gold); font-weight: 600;
+        line-height: 1.3; min-height: 1.3em; }
+      .pv-vblock .v-tema .oreg { color: var(--warn, #b0642f); margin-left: 0.1rem; }
+      .pv-vblock .v-sv { font-size: var(--fs-2xs); color: var(--ink-soft); margin-top: 0.05rem; }
+      /* Kort grammatisk kommentar om avvikelser från det förutsägbara mönstret */
+      .pv-vblock .v-note { font-size: var(--fs-3xs); color: var(--ink-soft); line-height: 1.4;
+        margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px dashed var(--line);
+        text-align: center; text-wrap: balance; }
+      .pv-vblock .v-note .grek { color: var(--gold); white-space: nowrap; }
+      .pv-vblock .v-note b { color: var(--ink); font-weight: 600; }
+      .pv-vblock .v-note .fella { color: var(--warn, #b0642f); font-weight: 600; }
+      /* Under drill döljs kommentaren — den skulle annars avslöja formerna */
+      .gr-card.verb-drill .pv-vblock .v-note { display: none; }
+
+      /* Självtest (Dölj översättningar): maskera svenskan i verbblocken också */
+      body.test-mode .pv-vblock { cursor: pointer; }
+      body.test-mode .pv-vblock .v-sv { visibility: hidden; position: relative; }
+      body.test-mode .pv-vblock .v-sv::before {
+        content: ""; position: absolute; left: -0.3em; right: -0.3em; top: 0.1em; bottom: 0.1em;
+        background: var(--card); border-radius: 5px; visibility: visible; }
+      body.test-mode .pv-vblock.revealed .v-sv { visibility: visible; }
+      body.test-mode .pv-vblock.revealed .v-sv::before { display: none; }
+
+      /* Drilla formerna: klickbar dold futurum / aorist i verbblocket */
+      .gr-card.verb-drill .pv-vblock .cz { visibility: hidden; position: relative; cursor: pointer; }
+      .gr-card.verb-drill .pv-vblock .cz::before {
         content: ""; position: absolute; left: -0.2em; right: -0.2em; top: 0.02em; bottom: 0.02em;
-        background: var(--paper-2); border: 1px dashed color-mix(in srgb, var(--gold) 45%, var(--line));
+        background: var(--card); border: 1px dashed color-mix(in srgb, var(--gold) 45%, var(--line));
         border-radius: 5px; visibility: visible; }
-      .gr-card.verb-drill .pv-word .cz.revealed { visibility: visible; }
-      .gr-card.verb-drill .pv-word .cz.revealed::before { display: none; }
+      .gr-card.verb-drill .pv-vblock .cz.revealed { visibility: visible; }
+      .gr-card.verb-drill .pv-vblock .cz.revealed::before { display: none; }
       @media (hover: hover) {
-        .gr-card.verb-drill .pv-word .cz:hover::before { border-color: var(--gold); }
+        .gr-card.verb-drill .pv-vblock .cz:hover::before { border-color: var(--gold); }
       }
 
       /* Utfällbara paradigm för de oregelbundna verben */
@@ -204,6 +234,20 @@
       .pv-ptab th { text-align: left; color: var(--ink-soft); font-weight: 600;
         font-size: var(--fs-3xs); padding: 0.1rem 0.6rem 0.1rem 0; white-space: nowrap; }
       .pv-ptab td.grek { color: var(--ink); font-size: var(--fs-md); white-space: nowrap; padding: 0.1rem 0; }
+
+      /* Drilla paradigmen: en egen brytare i sektionen döljer formerna (th/tempus kvar) */
+      .pv-pdrill-wrap { margin: 0 0 1rem; }
+      .pv-vtoggle.para { margin: 0; }
+      .pv-paradigm.para-drill .pv-ptab .p-cz { visibility: hidden; position: relative; cursor: pointer; }
+      .pv-paradigm.para-drill .pv-ptab .p-cz::before {
+        content: ""; position: absolute; left: -0.15em; right: -0.15em; top: 0.05em; bottom: 0.05em;
+        background: var(--card); border: 1px dashed color-mix(in srgb, var(--gold) 45%, var(--line));
+        border-radius: 4px; visibility: visible; }
+      .pv-paradigm.para-drill .pv-ptab .p-cz.revealed { visibility: visible; }
+      .pv-paradigm.para-drill .pv-ptab .p-cz.revealed::before { display: none; }
+      @media (hover: hover) {
+        .pv-paradigm.para-drill .pv-ptab .p-cz:hover::before { border-color: var(--gold); }
+      }
 
       .pv-tips { margin: 0.8rem 0 0; padding-left: 1.05rem; display: grid; gap: 0.28rem;
         font-size: var(--fs-2xs); color: var(--ink-soft); }
@@ -719,10 +763,11 @@
       };
 
       // Bygger den utfällbara paradigm-sektionen ur OREG_PARADIGM + TIPS.
+      // Formerna wrappas i .p-cz så att de kan drillas (döljas/avslöjas) i para-drill-läget.
       const renderParadigm = () => {
         const tabell = (t) =>
           `<table class="pv-ptab"><caption>${esc(t.t)}</caption><tbody>${
-            t.rows.map(([p, f]) => `<tr><th>${esc(p)}</th><td class="grek">${esc(f)}</td></tr>`).join("")
+            t.rows.map(([p, f]) => `<tr><th>${esc(p)}</th><td class="grek"><span class="p-cz">${esc(f)}</span></td></tr>`).join("")
           }</tbody></table>`;
         const kort = Object.entries(OREG_PARADIGM).map(([lem, v]) =>
           `<div class="pv-oreg">
@@ -738,6 +783,11 @@
             det sigmatiska mönstret. <span class="grek">δίδωμι</span> är ett μι-verb med egen presensböjning,
             <span class="grek">εἰμί</span> saknar aorist, och <span class="grek">λέγω</span> lånar futurum och
             aorist från andra rötter. Här står hela indikativböjningen — läs och jämför.</p>
+          <div class="pv-pdrill-wrap">
+            <label class="pv-vtoggle para"><input type="checkbox" class="pv-pdrill" />
+              <span><b>Drilla paradigmen</b> — dölj formerna och läs dem ur person + tempus.
+              Klicka på en lucka för att avslöja den.</span></label>
+          </div>
           ${kort}
         </details>`;
       };
@@ -761,18 +811,55 @@
           o.tema ? `<span class="tema">${temaHtml(o.tema)}${o.oregelb ? '<span class="oreg" title="oregelbundet/suppletivt tema">†</span>' : ""}</span>` : ""
         }<span class="sv">${esc(o.sv)}</span></div>`;
 
+      // Kort grammatisk kommentar per verb om SMÅ avvikelser från det förutsägbara
+      // mönstret (λύω: presens + σ → fut., augment + σα → aor.). Författade, korrekta
+      // termer; utelämnas för de helt regelbundna. Innehåller grekiska former, så de
+      // döljs i drill-läget (annars avslöjas svaret). Nyckel = lemmat (= o.grek).
+      const VERB_NOTES = {
+        "ἀκολουθέω": `Kontraherat <span class="grek">-έω</span>: stamvokalen ε förlängs till η före σ.`,
+        "ἀκούω": `Vokalstam, regelbunden — men <b>temporalt augment</b> i aoristen: α- → <span class="grek">ἠ-</span> (<span class="grek">ἤκουσα</span>).`,
+        "ἀποστέλλω": `<b>Likvidaverb:</b> σ faller i futurum (kontraherat <span class="grek">ἀποστελῶ</span>) och aorist (<span class="grek">ἀπέστειλα</span>, ε → ει); presensens <span class="grek">-λλ-</span> blir <span class="grek">-λ-</span>.`,
+        "βαπτίζω": `Dentalstam på <span class="grek">-ζ-</span>: <span class="grek">δ/ζ + σ → σ</span>.`,
+        "βλέπω": `Labialstam: <span class="grek">π + σ → ψ</span>.`,
+        "γράφω": `Labialstam: <span class="grek">φ + σ → ψ</span>.`,
+        "δίδωμι": `<b>μι-verb</b> med <b>κ-aorist</b> (<span class="grek">ἔδωκα</span>, ej -σα) — se paradigmet nedan.`,
+        "εἰμί": `<b>Oregelbundet:</b> deponent futurum (<span class="grek">ἔσομαι</span>), saknar aorist — se paradigmet nedan.`,
+        "καλέω": `<span class="fella">Fälla:</span> <span class="grek">-έω</span> men ε förlängs <b>inte</b> — <span class="grek">καλέσω, ἐκάλεσα</span> (kort ε).`,
+        "κηρύσσω": `Bakom <span class="grek">-σσω</span> döljs en velar (<span class="grek">κηρυκ-</span>): <span class="grek">κ + σ → ξ</span>.`,
+        "λαλέω": `Kontraherat <span class="grek">-έω</span>: stamvokalen ε förlängs till η före σ.`,
+        "λέγω": `<b>Suppletivt:</b> futurum och aorist från andra rötter — se paradigmet nedan.`,
+        "λύω": `Mönsterverbet — helt regelbundet: presens + σ (fut.), augment + σα (aor.).`,
+        "πέμπω": `Labialstam: <span class="grek">π + σ → ψ</span>.`,
+        "πιστεύω": `Vokalstam på <span class="grek">-ευ</span> — helt regelbunden.`,
+        "ποιέω": `Kontraherat <span class="grek">-έω</span>: stamvokalen ε förlängs till η före σ.`,
+      };
+
+      // Verben renderas som block: presens överst, futurum · aorist på rad två (drillbart),
+      // svenskan på rad tre, och en kort grammatisk kommentar underst. Ett block per verb.
+      const verbBlock = (o) =>
+        `<div class="pv-vblock">
+          <div class="v-pres grek">${esc(o.grek)}</div>
+          <div class="v-tema">${o.tema ? temaHtml(o.tema) : ""}${
+            o.oregelb ? '<span class="oreg" title="oregelbundet/suppletivt tema">†</span>' : ""
+          }</div>
+          <div class="v-sv">${esc(o.sv)}</div>
+          ${VERB_NOTES[o.grek] ? `<div class="v-note">${VERB_NOTES[o.grek]}</div>` : ""}
+        </div>`;
+
       const mount = document.getElementById("glosor-mount");
       mount.innerHTML = PROV.map((g) => {
-        const rader = g.ord.map(rad).join("");
         const [ank, txt] = KAT_LANK[g.kat];
         const isVerb = g.kat === "Verb";
+        const listHtml = isVerb
+          ? `<div class="pv-vgrid">${g.ord.map(verbBlock).join("")}</div>`
+          : `<div class="pv-ord">${g.ord.map(rad).join("")}</div>`;
         return `<section class="gr-card" id="${KAT_ID[g.kat]}" style="--accent:${KAT_ACCENT[g.kat]}">
           <h3>${esc(g.kat)} <span class="antal">${g.ord.length} ord</span>
             <a class="pv-grlink" href="grammatikreferens.html#${ank}">§ ${txt} →</a></h3>
           <p class="note">${g.not}</p>
           ${isVerb ? VERB_TIPS_HTML : ""}
           ${isVerb ? VERB_DRILL_HTML : ""}
-          <div class="pv-ord">${rader}</div>
+          ${listHtml}
           ${isVerb ? renderParadigm() : ""}
         </section>`;
       }).join("");
@@ -785,25 +872,40 @@
           document.querySelectorAll(".pv-word.revealed").forEach((w) => w.classList.remove("revealed"));
       });
       mount.addEventListener("click", (ev) => {
-        // Verbdrill: klick på en lucka avslöjar bara den formen (oberoende av testläget).
+        // Verbdrill: klick på en lucka (futurum/aorist) avslöjar bara den formen.
         const cz = ev.target.closest(".cz");
         if (cz && cz.closest(".verb-drill")) {
           cz.classList.toggle("revealed");
           return;
         }
+        // Paradigmdrill: klick på en dold paradigmform avslöjar den.
+        const pcz = ev.target.closest(".p-cz");
+        if (pcz && pcz.closest(".para-drill")) {
+          pcz.classList.toggle("revealed");
+          return;
+        }
         if (!document.body.classList.contains("test-mode")) return;
-        const w = ev.target.closest(".pv-word");
+        const w = ev.target.closest(".pv-word, .pv-vblock");
         if (w) w.classList.toggle("revealed");
       });
 
-      // Verbdrill: brytaren döljer/visar futurum · aorist på verbkortet.
+      // Brytare: verbdrill (futurum · aorist på kortet) och paradigmdrill (formerna nere).
       mount.addEventListener("change", (ev) => {
         const cb = ev.target.closest(".pv-drill");
-        if (!cb) return;
-        const card = cb.closest(".gr-card");
-        card.classList.toggle("verb-drill", cb.checked);
-        if (!cb.checked)
-          card.querySelectorAll(".cz.revealed").forEach((e) => e.classList.remove("revealed"));
+        if (cb) {
+          const card = cb.closest(".gr-card");
+          card.classList.toggle("verb-drill", cb.checked);
+          if (!cb.checked)
+            card.querySelectorAll(".pv-vblock .cz.revealed").forEach((e) => e.classList.remove("revealed"));
+          return;
+        }
+        const pb = ev.target.closest(".pv-pdrill");
+        if (pb) {
+          const det = pb.closest(".pv-paradigm");
+          det.classList.toggle("para-drill", pb.checked);
+          if (!pb.checked)
+            det.querySelectorAll(".p-cz.revealed").forEach((e) => e.classList.remove("revealed"));
+        }
       });
 
       // Scrollspy: markera aktivt avsnitt i innehållsförteckningen.
