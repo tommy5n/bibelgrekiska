@@ -594,9 +594,11 @@ export function render(root, opts = {}){
   };
   document.addEventListener("keydown", __vh);
 
-  // Deep-link: #/verbandelser/<niva> landar direkt i rätt nivå (annars sparat val).
+  // Deep-link: #/verbandelser/<niva> landar direkt i rätt nivå; #/verbandelser/prov
+  // slår på provfiltret (studieguiden länkar hit). Token vinner över sparat val.
   ladda();
-  if(opts.mode && NIVA_IDS.includes(opts.mode)) state.niva = opts.mode;
+  if(opts.mode === "prov") state.prov = true;
+  else if(opts.mode && NIVA_IDS.includes(opts.mode)) state.niva = opts.mode;
   uppdateraLäge(); uppdateraSub();
   byggGridTempus(); byggGridModus(); byggGridKlass(); byggGridPN(); uppdateraProvChip();
   visaVerbSektion(); byggGridVerb();

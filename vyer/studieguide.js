@@ -578,7 +578,9 @@ const SEMINARIER = [
 // Inför provet — hubben som samlar Oskars ORDKUNSKAP 1–10 (seminarium-9-mappen).
 // De tre första kraven är formigenkänning över HELA kursen (välj alla seminarier
 // i respektive spel); det fjärde är en sluten gloslista som ska sitta utantill
-// och som har ett eget "Inför provet"-däck i Glosor och Uppslagsboken.
+// och som har ett eget "Inför provet"-däck i Glosor och Uppslagsboken. Provfiltren
+// är numera drillbara i detalj: enskilda glosor (Glosor), enskilda verb
+// (Verbändelser) och urval på verbgenus/tempus/verb (Medium-passivum).
 const PROV = {
   intro:"Provet har <b>fyra delar</b> — ordkunskap, satslära, form- &amp; satslära och blandade uppgifter. Nedan står vad varje del prövar och <b>hur du tränar den</b>, med länk till det spel eller kort som mäter samma sak. Spelen öppnar i sitt <b>receptiva läge</b> (grekisk form → svenska), samma riktning som provet; de <b>produktiva</b> lägena (bygg formen) finns kvar som val och behövs särskilt i del III.",
   helheten:{
@@ -597,7 +599,7 @@ const PROV = {
         { spel:"Pronomen", route:"#/pronomen", filter:"Grek → sv", vad:"alla pronomenformer i kontext" },
         { spel:"Verbböjning", route:"#/verb", filter:"Översätt", vad:"personändelser i alla tempus och modus" },
         { spel:"Medium-passivum", route:"#/diates", vad:"läs av medium/passiv ur formen" },
-        { spel:"Glosor", route:"#/glosor", filter:"Inför provet", vad:"den slutna gloslistan som flashcard" },
+        { spel:"Glosor", route:"#/glosor/prov", filter:"Inför provet", vad:"den slutna gloslistan som flashcard — eller drilla ett enskilt ord (chip per glosa)" },
       ],
       slaupp:[ { text:"Jämför deklinationerna", anchor:"subst-jmf" }, { text:"Verb — översikt", anchor:"verb-oversikt" }, { text:"Medium-passivum", anchor:"verb-diates" } ] },
     { rubrik:"II. Satslära — ta ut satsdelarna",
@@ -654,7 +656,8 @@ const PROV = {
       text:"Kunna översätta personändelserna i alla tempus (presens, imperfekt, futurum, aorist) och alla verbgenus (<b>aktivum, medium och passivum</b>), samt infinitiv, imperativ och particip. Lär verben som <b>verbtema</b>: presens · futurum · aorist.",
       ova:[
         { spel:"Verbböjning", route:"#/verb", filter:"Översätt", vad:"läs formen och översätt — personändelser i alla tempus och modus" },
-        { spel:"Medium-passivum", route:"#/diates", filter:"Läs formen", vad:"läs av verbgenus (aktiv/medium/passiv) och agenten" },
+        { spel:"Verbändelser", route:"#/verbandelser/prov", filter:"Inför provet", vad:"provets 16 verb — läs personen ur ändelsen, ett verb i taget" },
+        { spel:"Medium-passivum", route:"#/diates", filter:"Läs formen", vad:"läs av verbgenus (aktiv/medium/passiv) — filtrera på diates, tempus eller verb" },
         { spel:"Formverkstaden", route:"#/former", filter:"Läs formen", vad:"läs av tempus, modus och person — eller bygg om formen" },
         { spel:"Presens particip", route:"#/particip", filter:"Den som …", vad:"det substantiverade participet: ὁ πιστεύων ’den som tror’" },
       ],
@@ -670,8 +673,8 @@ const PROV = {
   glosor:{
     intro:"Följande glosor ska kunnas <b>specifikt</b>. Öva dem samlat i Glosor eller Uppslagsboken — välj däcket <b>Inför provet</b>.",
     ova:[
-      { spel:"Glosor", route:"#/glosor", filter:"Inför provet", vad:"provlistan som flashcard eller flerval" },
-      { spel:"Uppslagsbok", route:"#/ordbok", filter:"Inför provet", vad:"slå upp och bläddra provlistan med genitiv" },
+      { spel:"Glosor", route:"#/glosor/prov", filter:"Inför provet", vad:"provlistan som flashcard eller flerval — eller ett enskilt ord i taget" },
+      { spel:"Uppslagsbok", route:"#/ordbok/prov", filter:"Inför provet", vad:"slå upp och bläddra provlistan med genitiv" },
     ],
     grupper:[
       { etikett:"Subjunktioner", ord:"ὅτι, ὅτε, ὡς, ἐπεί, εἰ" },
