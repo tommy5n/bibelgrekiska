@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#a8842c" />
     <link rel="apple-touch-icon" href="appletouchicon.png" />
     <!-- Ärver Cardo/Spectral-fonter och :root-temat från appen -->
-    <link rel="stylesheet" href="app.css?v=30" />
+    <link rel="stylesheet" href="app.css?v=33" />
     <style>
       /* ── Inför provet — namnrymdad layout (.pv-*), ärver .gr-* från referensen ── */
       body { background: var(--paper); }
@@ -148,6 +148,69 @@
       @media (hover: hover) {
         body.test-mode .pv-word:hover { background: var(--paper-2); }
       }
+
+      /* ── Verbkortet: drilla formerna + oregelbundna paradigm ── */
+      /* Tipsruta under kortets not */
+      .pv-vtips { background: var(--paper-2); border-radius: 10px;
+        padding: 0.6rem 0.85rem; margin: 0 0 0.9rem; font-size: var(--fs-2xs);
+        color: var(--ink-soft); border-left: 3px solid color-mix(in srgb, var(--accent) 55%, var(--line)); }
+      .pv-vtips b { color: var(--ink); font-weight: 600; }
+      .pv-vtips .grek { color: var(--gold); }
+
+      /* Drill-brytaren */
+      .pv-vtoggle { display: inline-flex; align-items: baseline; gap: 0.5rem; cursor: pointer;
+        font-size: var(--fs-2xs); color: var(--ink-soft); user-select: none; margin: 0 0 0.9rem; }
+      .pv-vtoggle input { accent-color: var(--gold); width: 1rem; height: 1rem; cursor: pointer;
+        position: relative; top: 0.15em; }
+      .pv-vtoggle b { color: var(--gold); font-weight: 600; }
+
+      /* Klickbar dold form (futurum / aorist) i drill-läge */
+      .gr-card.verb-drill .pv-word .cz { visibility: hidden; position: relative; cursor: pointer; }
+      .gr-card.verb-drill .pv-word .cz::before {
+        content: ""; position: absolute; left: -0.2em; right: -0.2em; top: 0.02em; bottom: 0.02em;
+        background: var(--paper-2); border: 1px dashed color-mix(in srgb, var(--gold) 45%, var(--line));
+        border-radius: 5px; visibility: visible; }
+      .gr-card.verb-drill .pv-word .cz.revealed { visibility: visible; }
+      .gr-card.verb-drill .pv-word .cz.revealed::before { display: none; }
+      @media (hover: hover) {
+        .gr-card.verb-drill .pv-word .cz:hover::before { border-color: var(--gold); }
+      }
+
+      /* Utfällbara paradigm för de oregelbundna verben */
+      .pv-paradigm { margin: 1.1rem 0 0; border-top: 1px solid var(--line); padding-top: 0.9rem; }
+      .pv-paradigm > summary { cursor: pointer; font-weight: 600; color: var(--ink);
+        font-size: var(--fs-sm); list-style: none; display: flex; align-items: baseline;
+        gap: 0.5rem; flex-wrap: wrap; }
+      .pv-paradigm > summary::-webkit-details-marker { display: none; }
+      .pv-paradigm > summary::before { content: "▸"; color: var(--gold); font-size: 0.85em; }
+      .pv-paradigm[open] > summary::before { content: "▾"; }
+      .pv-paradigm > summary .hint { font-size: var(--fs-2xs); color: var(--ink-soft); font-weight: 400; }
+      @media (hover: hover) { .pv-paradigm > summary:hover { color: var(--gold); } }
+      .pv-pintro { margin: 0.7rem 0 1rem; font-size: var(--fs-2xs); color: var(--ink-soft); max-width: 66ch; }
+      .pv-pintro .grek { color: var(--gold); }
+
+      .pv-oreg { margin: 0 0 1.3rem; padding: 0.9rem 1rem; background: var(--paper-2); border-radius: 11px; }
+      .pv-oreg:last-child { margin-bottom: 0; }
+      .pv-oreg > h4 { margin: 0 0 0.7rem; font-size: var(--fs-lg); display: flex;
+        align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+      .pv-oreg > h4 .grek { color: var(--ink); }
+      .pv-oreg > h4 .sv { font-size: var(--fs-sm); color: var(--ink-soft); font-weight: 400; }
+      .pv-oreg > h4 .dagger { color: var(--warn, #b0642f); font-size: var(--fs-sm); }
+
+      .pv-ptabs { display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; }
+      .pv-ptab { border-collapse: collapse; }
+      .pv-ptab caption { text-align: left; font-weight: 700; color: var(--ink);
+        font-size: var(--fs-xs); padding-bottom: 0.25rem; letter-spacing: 0.01em; }
+      .pv-ptab th { text-align: left; color: var(--ink-soft); font-weight: 600;
+        font-size: var(--fs-3xs); padding: 0.1rem 0.6rem 0.1rem 0; white-space: nowrap; }
+      .pv-ptab td.grek { color: var(--ink); font-size: var(--fs-md); white-space: nowrap; padding: 0.1rem 0; }
+
+      .pv-tips { margin: 0.8rem 0 0; padding-left: 1.05rem; display: grid; gap: 0.28rem;
+        font-size: var(--fs-2xs); color: var(--ink-soft); }
+      .pv-tips li::marker { color: var(--gold); }
+      .pv-tips b { color: var(--ink); font-weight: 600; }
+      .pv-tips .grek { color: var(--gold); white-space: nowrap; }
+      .pv-tips .fella { color: var(--warn, #b0642f); font-weight: 600; }
 
       @media (max-width: 900px) {
         .gr-layout { grid-template-columns: 1fr; gap: 1.2rem; }
@@ -337,6 +400,259 @@
   {"kat": "Blandade småord", "not": "Vanliga men lätta att blanda ihop.", "ord": [{"grek": "γάρ", "sv": "ty, för, ju"}, {"grek": "δέ", "sv": "och, men"}, {"grek": "καί", "sv": "och, också"}, {"grek": "μή", "sv": "inte"}, {"grek": "οὐ (οὐκ, οὐχ)", "sv": "inte"}, {"grek": "εὖ", "sv": "väl, gott"}]}
 ];
 
+      // Hela paradigm (presens · futurum · aorist, indikativ) för verbkortets tre
+      // oregelbundna/suppletiva verb. Snapshot ur json/verb.json — regenereras med
+      // samma skript som PROV (python3 scripts/gen_provoversikt.py). Handredigera inte.
+      const OREG_PARADIGM = {
+  "δίδωμι": {
+    "sv": "ge",
+    "tempus": [
+      {
+        "t": "Presens",
+        "rows": [
+          [
+            "1 sg",
+            "δίδωμι"
+          ],
+          [
+            "2 sg",
+            "δίδως"
+          ],
+          [
+            "3 sg",
+            "δίδωσι(ν)"
+          ],
+          [
+            "1 pl",
+            "δίδομεν"
+          ],
+          [
+            "2 pl",
+            "δίδοτε"
+          ],
+          [
+            "3 pl",
+            "διδόασι(ν)"
+          ]
+        ]
+      },
+      {
+        "t": "Futurum",
+        "rows": [
+          [
+            "1 sg",
+            "δώσω"
+          ],
+          [
+            "2 sg",
+            "δώσεις"
+          ],
+          [
+            "3 sg",
+            "δώσει"
+          ],
+          [
+            "1 pl",
+            "δώσομεν"
+          ],
+          [
+            "2 pl",
+            "δώσετε"
+          ],
+          [
+            "3 pl",
+            "δώσουσι(ν)"
+          ]
+        ]
+      },
+      {
+        "t": "Aorist",
+        "rows": [
+          [
+            "1 sg",
+            "ἔδωκα"
+          ],
+          [
+            "2 sg",
+            "ἔδωκας"
+          ],
+          [
+            "3 sg",
+            "ἔδωκε(ν)"
+          ],
+          [
+            "1 pl",
+            "ἐδώκαμεν"
+          ],
+          [
+            "2 pl",
+            "ἐδώκατε"
+          ],
+          [
+            "3 pl",
+            "ἔδωκαν"
+          ]
+        ]
+      }
+    ]
+  },
+  "εἰμί": {
+    "sv": "vara",
+    "tempus": [
+      {
+        "t": "Presens",
+        "rows": [
+          [
+            "1 sg",
+            "εἰμί"
+          ],
+          [
+            "2 sg",
+            "εἶ"
+          ],
+          [
+            "3 sg",
+            "ἐστί(ν)"
+          ],
+          [
+            "1 pl",
+            "ἐσμέν"
+          ],
+          [
+            "2 pl",
+            "ἐστέ"
+          ],
+          [
+            "3 pl",
+            "εἰσί(ν)"
+          ]
+        ]
+      },
+      {
+        "t": "Futurum",
+        "rows": [
+          [
+            "1 sg",
+            "ἔσομαι"
+          ],
+          [
+            "2 sg",
+            "ἔσῃ"
+          ],
+          [
+            "3 sg",
+            "ἔσται"
+          ],
+          [
+            "1 pl",
+            "ἐσόμεθα"
+          ],
+          [
+            "2 pl",
+            "ἔσεσθε"
+          ],
+          [
+            "3 pl",
+            "ἔσονται"
+          ]
+        ]
+      }
+    ]
+  },
+  "λέγω": {
+    "sv": "säga",
+    "tempus": [
+      {
+        "t": "Presens",
+        "rows": [
+          [
+            "1 sg",
+            "λέγω"
+          ],
+          [
+            "2 sg",
+            "λέγεις"
+          ],
+          [
+            "3 sg",
+            "λέγει"
+          ],
+          [
+            "1 pl",
+            "λέγομεν"
+          ],
+          [
+            "2 pl",
+            "λέγετε"
+          ],
+          [
+            "3 pl",
+            "λέγουσι(ν)"
+          ]
+        ]
+      },
+      {
+        "t": "Futurum",
+        "rows": [
+          [
+            "1 sg",
+            "ἐρῶ"
+          ],
+          [
+            "2 sg",
+            "ἐρεῖς"
+          ],
+          [
+            "3 sg",
+            "ἐρεῖ"
+          ],
+          [
+            "1 pl",
+            "ἐροῦμεν"
+          ],
+          [
+            "2 pl",
+            "ἐρεῖτε"
+          ],
+          [
+            "3 pl",
+            "ἐροῦσι(ν)"
+          ]
+        ]
+      },
+      {
+        "t": "Aorist",
+        "rows": [
+          [
+            "1 sg",
+            "εἶπον"
+          ],
+          [
+            "2 sg",
+            "εἶπες"
+          ],
+          [
+            "3 sg",
+            "εἶπε(ν)"
+          ],
+          [
+            "1 pl",
+            "εἴπομεν"
+          ],
+          [
+            "2 pl",
+            "εἴπετε"
+          ],
+          [
+            "3 pl",
+            "εἶπον"
+          ]
+        ]
+      }
+    ]
+  }
+};
+
       const KAT_ID = {
         "Subjunktioner": "g-subjunktioner", "Verb": "g-verb", "Substantiv": "g-substantiv",
         "Adjektiv": "g-adjektiv", "Prepositioner": "g-prepositioner", "Blandade småord": "g-smaord",
@@ -357,23 +673,107 @@
       const esc = (s) =>
         s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+      // ── Verbkortet: inlärningstips (författade, ej ur mastern) ──
+      // Kort ledtext överst i kortet + brytaren för drill-läget.
+      const VERB_TIPS_HTML =
+        `<div class="pv-vtips">💡 <b>Så pluggar du:</b> lär varje verb som <b>tre former</b> —
+         presens (uppslagsformen) · <span class="grek">futurum</span> · <span class="grek">aorist</span>.
+         De regelbundna bildar futurum och aorist med ett insatt <span class="grek">σ</span>
+         (<span class="grek">λύω → λύσω → ἔλυσα</span>); de tre verben med <b>†</b> följer inte
+         mönstret och måste läras utantill — hela böjningen står i paradigmen längst ner.</div>`;
+      const VERB_DRILL_HTML =
+        `<label class="pv-vtoggle"><input type="checkbox" class="pv-drill" />
+         <span><b>Drilla formerna</b> — dölj futurum · aorist och återge dem ur minnet.
+         Klicka på en lucka för att avslöja den.</span></label>`;
+
+      // Per verb: inlärningstips som pekar ut var det avviker från σ-mönstret
+      // (korrekthetsprincipen — flagga avvikelsen, inte bara "oregelbundet").
+      const TIPS = {
+        "δίδωμι": [
+          `<b>μι-verb.</b> Presens böjs avvikande med stamväxling — lång vokal i singular
+           (<span class="grek">δῐδω-</span>), kort i plural (<span class="grek">δῐδο-</span>) —
+           men bara i presenssystemet.`,
+          `<b>Futurum är regelbundet:</b> insatt σ på den långa stammen, <span class="grek">δώσω</span>.`,
+          `<span class="fella">Fälla:</span> aoristen <span class="grek">ἔδωκα</span> är en
+           <b>κ-aorist</b>, inte den σ-aorist kursen lär (<span class="grek">-σα</span>).
+           Lär den som en gloska.`,
+        ],
+        "εἰμί": [
+          `<b>Presens är enklitiskt</b> — obetonat och uttalas ihop med ordet före
+           (utom 2 sg <span class="grek">εἶ</span>).`,
+          `<b>Futurum är deponent:</b> <span class="grek">ἔσομαι</span> har medium-ändelser
+           men aktiv betydelse (”jag ska vara”).`,
+          `<span class="fella">Saknar aorist.</span> Dåtiden uttrycks med <b>imperfekt</b>:
+           <span class="grek">ἤμην, ἦς, ἦν, ἦμεν, ἦτε, ἦσαν</span> (se
+           <a href="grammatikreferens.html#verb-eimi">εἰμί-kortet</a>).`,
+        ],
+        "λέγω": [
+          `<b>Presens är helt regelbundet</b> (<span class="grek">λέγω, λέγεις, λέγει …</span>).`,
+          `<span class="fella">Futurum och aorist är suppletiva</span> — hämtade från andra
+           rötter: <span class="grek">ἐρῶ</span> (kontraherat, böjs som
+           <span class="grek">φιλέω</span>) och <span class="grek">εἶπον</span>
+           (2:a aorist med <span class="grek">-ον, -ες, -ε …</span>, inte <span class="grek">-σα</span>).`,
+          `<b>Knep:</b> lär de tre delarna som tre skilda ord —
+           <span class="grek">λέγω · ἐρῶ · εἶπον</span>.`,
+        ],
+      };
+
+      // Bygger den utfällbara paradigm-sektionen ur OREG_PARADIGM + TIPS.
+      const renderParadigm = () => {
+        const tabell = (t) =>
+          `<table class="pv-ptab"><caption>${esc(t.t)}</caption><tbody>${
+            t.rows.map(([p, f]) => `<tr><th>${esc(p)}</th><td class="grek">${esc(f)}</td></tr>`).join("")
+          }</tbody></table>`;
+        const kort = Object.entries(OREG_PARADIGM).map(([lem, v]) =>
+          `<div class="pv-oreg">
+            <h4><span class="grek">${esc(lem)}</span> <span class="sv">${esc(v.sv)}</span>
+              <span class="dagger" title="oregelbundet/suppletivt tema">†</span></h4>
+            <div class="pv-ptabs">${v.tempus.map(tabell).join("")}</div>
+            ${(TIPS[lem] || []).length ? `<ul class="pv-tips">${TIPS[lem].map((t) => `<li>${t}</li>`).join("")}</ul>` : ""}
+          </div>`
+        ).join("");
+        return `<details class="pv-paradigm">
+          <summary>Oregelbundna verb — hela paradigm <span class="hint">(presens · futurum · aorist, med tips)</span></summary>
+          <p class="pv-pintro">De tre verben märkta <b>†</b> bildar <b>inte</b> futurum och aorist med
+            det sigmatiska mönstret. <span class="grek">δίδωμι</span> är ett μι-verb med egen presensböjning,
+            <span class="grek">εἰμί</span> saknar aorist, och <span class="grek">λέγω</span> lånar futurum och
+            aorist från andra rötter. Här står hela indikativböjningen — läs och jämför.</p>
+          ${kort}
+        </details>`;
+      };
+
+      // Verbtema-strängen "futurum · aorist" delas i två klickbara luckor, så att
+      // formerna kan döljas och återges ur minnet i drill-läget. "—" (εἰμί saknar
+      // aorist) döljs aldrig — det finns inget att drilla.
+      const temaHtml = (tema) => {
+        const [fut = "", aor = ""] = tema.split(" · ");
+        const luck = (s, cls) =>
+          s === "—" ? esc(s) : `<span class="cz ${cls}">${esc(s)}</span>`;
+        return `${luck(fut, "fut")} · ${luck(aor, "aor")}`;
+      };
+
+      const rad = (o) =>
+        `<div class="pv-word"><span class="grek">${esc(o.grek)}</span>${
+          o.dekl3 ? `<span class="pv-d3" title="tredje deklinationen">3</span>` : ""
+        }${
+          o.gen ? `<span class="gen">${esc(o.gen)}</span>` : ""
+        }${
+          o.tema ? `<span class="tema">${temaHtml(o.tema)}${o.oregelb ? '<span class="oreg" title="oregelbundet/suppletivt tema">†</span>' : ""}</span>` : ""
+        }<span class="sv">${esc(o.sv)}</span></div>`;
+
       const mount = document.getElementById("glosor-mount");
       mount.innerHTML = PROV.map((g) => {
-        const rader = g.ord.map((o) =>
-          `<div class="pv-word"><span class="grek">${esc(o.grek)}</span>${
-            o.dekl3 ? `<span class="pv-d3" title="tredje deklinationen">3</span>` : ""
-          }${
-            o.gen ? `<span class="gen">${esc(o.gen)}</span>` : ""
-          }${
-            o.tema ? `<span class="tema">${esc(o.tema)}${o.oregelb ? '<span class="oreg" title="oregelbundet/suppletivt tema">†</span>' : ""}</span>` : ""
-          }<span class="sv">${esc(o.sv)}</span></div>`
-        ).join("");
+        const rader = g.ord.map(rad).join("");
         const [ank, txt] = KAT_LANK[g.kat];
+        const isVerb = g.kat === "Verb";
         return `<section class="gr-card" id="${KAT_ID[g.kat]}" style="--accent:${KAT_ACCENT[g.kat]}">
           <h3>${esc(g.kat)} <span class="antal">${g.ord.length} ord</span>
             <a class="pv-grlink" href="grammatikreferens.html#${ank}">§ ${txt} →</a></h3>
           <p class="note">${g.not}</p>
+          ${isVerb ? VERB_TIPS_HTML : ""}
+          ${isVerb ? VERB_DRILL_HTML : ""}
           <div class="pv-ord">${rader}</div>
+          ${isVerb ? renderParadigm() : ""}
         </section>`;
       }).join("");
 
@@ -385,9 +785,25 @@
           document.querySelectorAll(".pv-word.revealed").forEach((w) => w.classList.remove("revealed"));
       });
       mount.addEventListener("click", (ev) => {
+        // Verbdrill: klick på en lucka avslöjar bara den formen (oberoende av testläget).
+        const cz = ev.target.closest(".cz");
+        if (cz && cz.closest(".verb-drill")) {
+          cz.classList.toggle("revealed");
+          return;
+        }
         if (!document.body.classList.contains("test-mode")) return;
         const w = ev.target.closest(".pv-word");
         if (w) w.classList.toggle("revealed");
+      });
+
+      // Verbdrill: brytaren döljer/visar futurum · aorist på verbkortet.
+      mount.addEventListener("change", (ev) => {
+        const cb = ev.target.closest(".pv-drill");
+        if (!cb) return;
+        const card = cb.closest(".gr-card");
+        card.classList.toggle("verb-drill", cb.checked);
+        if (!cb.checked)
+          card.querySelectorAll(".cz.revealed").forEach((e) => e.classList.remove("revealed"));
       });
 
       // Scrollspy: markera aktivt avsnitt i innehållsförteckningen.

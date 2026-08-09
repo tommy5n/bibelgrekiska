@@ -99,6 +99,9 @@ VERBTEMA = {
 # Teman som INTE följer det regelbundna (sigmatiska) mönstret från presensstammen
 # — markeras med † och en not, så eleven vet att de måste läras utantill.
 OREGELB = {"δίδωμι", "εἰμί", "λέγω"}
+# De oregelbundna verben i verbkortets ordning — verbkortet visar hela paradigm för
+# just dessa (presens · futurum · aorist, indikativ), snapshottade ur verb.json.
+OREG_ORDNING = ["δίδωμι", "εἰμί", "λέγω"]
 
 ARTIKEL = {"m": "ὁ", "f": "ἡ", "n": "τό"}
 
@@ -194,6 +197,39 @@ def valideraverbtema(prov):
         raise SystemExit("Verbtema avviker från verb.json:\n  " + "\n  ".join(avvik))
 
 
+def oreg_paradigm_block():
+    """Bygger 'const OREG_PARADIGM = {...};' ur verb.json för OREG_ORDNING-verben.
+
+    Verbkortet visar hela indikativböjningen (presens · futurum · aorist) för de tre
+    oregelbundna verben. Formerna hämtas direkt ur mastern (verb.json) — samma källa
+    som valideraverbtema korsvaliderar teman mot — så paradigmen aldrig kan driva från
+    resten av sajten. εἰμί saknar aorist (defekt) och får bara presens + futurum.
+    """
+    vd = json.loads((ROOT / "json" / "verb.json").read_text())
+    verbs = {v["lemma"]: v for v in vd["verb"]}
+    personer = [("1sg", "1 sg"), ("2sg", "2 sg"), ("3sg", "3 sg"),
+                ("1pl", "1 pl"), ("2pl", "2 pl"), ("3pl", "3 pl")]
+
+    def tempus(v, label, keys):
+        f = next(((v.get("former") or {}).get(k) for k in keys if (v.get("former") or {}).get(k)), None)
+        if not f:
+            return None
+        rows = [[lbl, f[nyckel]] for nyckel, lbl in personer if f.get(nyckel)]
+        return {"t": label, "rows": rows}
+
+    data = {}
+    for lemma in OREG_ORDNING:
+        v = verbs[lemma]
+        tlist = [blk for blk in (
+            tempus(v, "Presens", ["pres.ind.akt", "pres.ind.med"]),
+            tempus(v, "Futurum", ["fut.ind.akt", "fut.ind.med"]),
+            tempus(v, "Aorist", ["aor.ind.akt", "aor.ind.med"]),
+        ) if blk]
+        data[lemma] = {"sv": v.get("glosa", ""), "tempus": tlist}
+
+    return "const OREG_PARADIGM = " + json.dumps(data, ensure_ascii=False, indent=2) + ";"
+
+
 def main():
     glosor = json.loads(MASTER.read_text())["glosor"]
     prov = {x["lemma"]: x for x in glosor if "prov" in (x.get("listor") or [])}
@@ -248,6 +284,11 @@ def main():
     ny, n = re.subn(r"const PROV = \[.*?\n\s*\];", lambda m: block, src, count=1, flags=re.S)
     if not n:
         raise SystemExit("Hittade ingen 'const PROV = [...]' i provoversikt.html")
+
+    oreg = oreg_paradigm_block()
+    ny, n2 = re.subn(r"const OREG_PARADIGM = \{.*?\n\};", lambda m: oreg, ny, count=1, flags=re.S)
+    if not n2:
+        raise SystemExit("Hittade ingen 'const OREG_PARADIGM = {...}' i provoversikt.html")
     SIDA.write_text(ny)
 
     # Utskriften bär samma gloslista som statisk (JS-fri) HTML — renderas här in
