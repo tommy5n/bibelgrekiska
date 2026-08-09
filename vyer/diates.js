@@ -56,6 +56,9 @@ const CSS = `
 .vy-diates .helfras { font-size: var(--fs-xl); color: var(--ink); margin-bottom: 0.3rem; }
 .vy-diates .analys { font-size: var(--fs-sm); color: var(--ink-soft); }
 .vy-diates .not { font-size: var(--fs-xs); color: var(--ink-soft); font-style: italic; margin-top: 0.3rem; }
+.vy-diates .picker { width: min(440px, 100%); margin: 1.5rem auto 0; }
+.vy-diates .picker-body > div { margin-bottom: 1rem; }
+.vy-diates .picker .note { color: var(--ink-soft); font-size: var(--fs-xs); font-style: italic; margin-top: 0.2rem; }
 `;
 
 const MARKUP = `<div class="vy vy-diates"><style>${CSS}</style>
@@ -86,6 +89,28 @@ const MARKUP = `<div class="vy vy-diates"><style>${CSS}</style>
   </div>
   <div class="streak">
     Svit: <b id="streak">0</b> &nbsp;·&nbsp; bästa: <b id="best">0</b>
+  </div>
+</div>
+
+<div class="picker" id="picker">
+  <button class="picker-toggle" id="picker-toggle" aria-expanded="false"><span>Anpassa övningen <span class="count" id="di-count"></span></span><span>▾</span></button>
+  <div class="picker-body hidden" id="picker-body">
+    <div>
+      <h2>Verbgenus</h2>
+      <div class="quickrow"><span class="quicklabel">Snabbval:</span><button class="chip" data-alla="diates">alla</button></div>
+      <div class="grid" id="grid-diates"></div>
+    </div>
+    <div>
+      <h2>Tempus</h2>
+      <div class="quickrow"><span class="quicklabel">Snabbval:</span><button class="chip" data-alla="tempus">alla</button></div>
+      <div class="grid" id="grid-tempus"></div>
+    </div>
+    <div>
+      <h2>Verb</h2>
+      <div class="quickrow"><span class="quicklabel">Snabbval:</span><button class="chip" data-alla="verb">alla</button></div>
+      <div class="grid" id="grid-verb"></div>
+    </div>
+    <div class="note" id="picker-note"></div>
   </div>
 </div>
 
@@ -158,17 +183,39 @@ export function render(root, opts){
   const ALLA_ANALYSER = [...new Set(FORMER.map(f => `${f.t} ${f.d}, ${f.pn}`))];
   const ALLA_SV = [...new Set(SATSER.map(s => s.sv))];
 
+  /* Urvals-axlar för "Läs formen": verbgenus (diates), tempus, verb. Ordningen är
+     pedagogisk (tempus) resp. datans (diates); verben i bokstavsordning. */
+  const DIATES = [...new Set(FORMER.map(f => f.d))];                 // medium-passivum, passivum, medium
+  const TEMPUS = ["presens", "imperfekt", "aorist"];
+  const VERB   = [...new Set(FORMER.map(f => f.lemma))].sort((a, b) => a.localeCompare(b, "el"));
+
   /* ── TILLSTÅND ────────────────────────────────────────────────────────── */
   const LAGER = "grekiska-diates";
-  const state = { mode:"form", streak:0, best:0, q:null, besvarad:false, ko:[], forra:null, __valt:null };
+  const state = { mode:"form", streak:0, best:0, q:null, besvarad:false, ko:[], forra:null, __valt:null,
+    selDiates:new Set(DIATES), selTempus:new Set(TEMPUS), selVerb:new Set(VERB) };
 
   const $ = id => document.getElementById(id);
   const pick = arr => arr[Math.floor(Math.random()*arr.length)];
   function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
-  function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({best:state.best, mode:state.mode})); }catch(e){} }
-  function ladda(){ try{ const r=JSON.parse(localStorage.getItem(LAGER)||"{}"); if(typeof r.best==="number") state.best=r.best; if(r.mode==="form"||r.mode==="sats") state.mode=r.mode; }catch(e){} }
+  function spara(){ try{ localStorage.setItem(LAGER, JSON.stringify({ best:state.best, mode:state.mode,
+    selDiates:[...state.selDiates], selTempus:[...state.selTempus], selVerb:[...state.selVerb] })); }catch(e){} }
+  function ladda(){ try{ const r=JSON.parse(localStorage.getItem(LAGER)||"{}");
+    if(typeof r.best==="number") state.best=r.best;
+    if(r.mode==="form"||r.mode==="sats") state.mode=r.mode;
+    if(Array.isArray(r.selDiates)) state.selDiates = new Set(r.selDiates.filter(x => DIATES.includes(x)));
+    if(Array.isArray(r.selTempus)) state.selTempus = new Set(r.selTempus.filter(x => TEMPUS.includes(x)));
+    if(Array.isArray(r.selVerb))   state.selVerb   = new Set(r.selVerb.filter(x => VERB.includes(x)));
+    if(!state.selDiates.size) state.selDiates = new Set(DIATES);
+    if(!state.selTempus.size) state.selTempus = new Set(TEMPUS);
+    if(!state.selVerb.size)   state.selVerb   = new Set(VERB);
+  }catch(e){} }
 
-  const kalla = () => state.mode==="form" ? FORMER : SATSER;
+  // Läs formen: formerna som matchar urvalet (verbgenus · tempus · verb). Tomt
+  // urval (t.ex. verb utan den valda diatesen) → skyddsnät: visa alla, med not.
+  const aktivaFormerStrict = () => FORMER.filter(f =>
+    state.selDiates.has(f.d) && state.selTempus.has(f.t) && state.selVerb.has(f.lemma));
+  const aktivaFormer = () => { const r = aktivaFormerStrict(); return r.length ? r : FORMER; };
+  const kalla = () => state.mode==="form" ? aktivaFormer() : SATSER;
   function fyllKo(){ state.ko = shuffle(kalla().map((_,i)=>i)); }
   function nyRunda(){ state.forra=null; fyllKo(); newQuestion(); }
 
@@ -181,7 +228,7 @@ export function render(root, opts){
   }
 
   function newForm(){
-    const f = FORMER[nästaIndex()];
+    const f = kalla()[nästaIndex()];
     const korrekt = `${f.t} ${f.d}, ${f.pn}`;
     const distr = shuffle(ALLA_ANALYSER.filter(a => a!==korrekt)).slice(0,3);
     state.q = { typ:"form", f, korrekt, alternativ: shuffle([korrekt, ...distr]) };
@@ -270,10 +317,40 @@ export function render(root, opts){
     $("mode-form").setAttribute("aria-pressed", m==="form");
     $("mode-sats").setAttribute("aria-pressed", m==="sats");
     $("sub").textContent = SUB_TEXT[m];
+    $("picker").classList.toggle("hidden", m!=="form");
+    uppdateraAntal(); uppdateraNote();
     nyRunda();
   }
   $("mode-form").onclick = ()=>setMode("form");
   $("mode-sats").onclick = ()=>setMode("sats");
+
+  /* ── Picker (bara i "Läs formen") ───────────────────────────────────────── */
+  function toggla(set, v, alla){ set.has(v) ? set.delete(v) : set.add(v); if(!set.size) alla.forEach(x=>set.add(x)); }
+  function byggGrid(id, alla, set){
+    const g = $(id); g.innerHTML = "";
+    alla.forEach(v => {
+      const b = document.createElement("button");
+      b.className = "toggle"; b.textContent = v;
+      b.setAttribute("aria-pressed", set.has(v));
+      b.onclick = () => { toggla(set, v, alla); b.setAttribute("aria-pressed", set.has(v)); efterUrval(); };
+      g.appendChild(b);
+    });
+  }
+  function byggGrids(){ byggGrid("grid-diates", DIATES, state.selDiates);
+    byggGrid("grid-tempus", TEMPUS, state.selTempus); byggGrid("grid-verb", VERB, state.selVerb); }
+  function uppdateraAntal(){ const el = $("di-count"); if(el) el.textContent = "(" + aktivaFormer().length + " former)"; }
+  function uppdateraNote(){ const el = $("picker-note"); if(el) el.textContent =
+    aktivaFormerStrict().length ? "" : "Inga former med det urvalet — visar alla."; }
+  function efterUrval(){ state.streak = 0; spara(); uppdateraAntal(); uppdateraNote(); nyRunda(); }
+
+  $("picker-toggle").onclick = () => { const o = $("picker-toggle").getAttribute("aria-expanded")==="true";
+    $("picker-toggle").setAttribute("aria-expanded", !o); $("picker-body").classList.toggle("hidden", o); };
+  document.querySelectorAll("[data-alla]").forEach(btn => btn.onclick = () => {
+    if(btn.dataset.alla==="diates") state.selDiates = new Set(DIATES);
+    if(btn.dataset.alla==="tempus") state.selTempus = new Set(TEMPUS);
+    if(btn.dataset.alla==="verb")   state.selVerb   = new Set(VERB);
+    byggGrids(); efterUrval();
+  });
 
   __kh=(e)=>{
     if(e.key==="Enter"){ if(state.besvarad) newQuestion(); e.preventDefault(); }
@@ -288,5 +365,8 @@ export function render(root, opts){
   $("mode-form").setAttribute("aria-pressed", state.mode==="form");
   $("mode-sats").setAttribute("aria-pressed", state.mode==="sats");
   $("sub").textContent = SUB_TEXT[state.mode];
+  byggGrids();
+  $("picker").classList.toggle("hidden", state.mode!=="form");
+  uppdateraAntal(); uppdateraNote();
   nyRunda();
 }
