@@ -133,6 +133,7 @@ const SEMINARIER = [
       { spel:"Glosor", route:"#/glosor", filter:"Sem 2", vad:"starta ordförrådsmotorn — och sedan några minuter varje dag" },
       { spel:"Uppslagsboken", route:"#/ordbok", vad:"kursens ordlista: slå upp och bläddra orden du möter (kursmål IV)" },
       { spel:"Kasus", route:"#/kasus", filter:"maskulinum", vad:"nöt själva kasusformerna" },
+      { spel:"Artiklar & ändelser", route:"#/andelser/lasa", filter:"Läs formen", vad:"koppla artikel och ändelse till kasus och numerus — läs formen, eller bygg den själv" },
       { spel:"Satsanalys", route:"#/satsanalys", filter:"Seminarium 2", vad:"läs rollen ur kasus, inte ur ordföljden" },
     ],
     gor:[
