@@ -7,3 +7,5 @@ __pycache__/
 # Kursens PDF:er/bilder per seminarium. Yttersta källan för json/seminarier.json,
 # men Oskars upphovsrätt — de committas inte. Extraherad data bor i json/.
 seminarier/
+# Administrativt kursdokument (examinationsregler) — lokal referens, ej del av appen.
+Anvisningar för digital examination på distans med stöd av realtidsströmning_rev. 2024-09-17.pdf
