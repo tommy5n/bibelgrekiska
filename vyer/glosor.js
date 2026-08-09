@@ -57,6 +57,14 @@ const MARKUP = `<div class="vy vy-glosor">
       </div>
       <div class="grid" id="ok-grid"></div>
     </div>
+    <div class="picker-section" id="ord-section" hidden>
+      <h2>Välj ett ord att drilla</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-quick="ord-alla">alla ord</button>
+      </div>
+      <div class="grid ord-grid" id="ord-grid"></div>
+    </div>
     <div class="note" id="picker-note"></div>
   </div>
 </div>
@@ -588,6 +596,8 @@ const BAND = [
 ];
 const BAND_IDS = BAND.map(b => b.id);
 const DECK_IDS = DECKS.map(d => d.id);
+// Provets ord i bokstavsordning (grekisk kollation) — chip-listan för enskild-ord-drill.
+const PROV_ORD = GLOSOR.filter(w => w.d.includes("prov")).slice().sort((a, b) => a.l.localeCompare(b.l, "el"));
 const ARTIKEL = { m: "ὁ", f: "ἡ", n: "τό" };
 const GENUS_NAMN = { m: "maskulinum", f: "femininum", n: "neutrum" };
 const LAGER = "grek-glosspel-v1";
@@ -595,7 +605,8 @@ const LAGER = "grek-glosspel-v1";
 /* ── STATE ───────────────────────────────────────────────────────────── */
 const state = {
   mode: "flashcard",                              // "flashcard" | "flerval" | "former"
-  deck: "sem",                                    // "sem" | "60"
+  deck: "sem",                                    // "sem" | "60" | "prov"
+  valtOrd: null,                                  // prov-däcket: valt enskilt lemma att drilla (null = alla)
   valdaSem: new Set(SEMINARIER),
   valdaBand: new Set(BAND_IDS),
   valdaOk:  new Set(ORDKLASSER),
@@ -624,6 +635,8 @@ function basAktiva(){
     );
   }
   if(state.deck === "prov"){
+    // Valt enskilt ord vinner över ordklass-filtret (drilla exakt den glosan).
+    if(state.valtOrd) return GLOSOR.filter(w => w.l === state.valtOrd && w.d.includes("prov"));
     return GLOSOR.filter(w =>
       w.d.includes("prov") &&
       state.valdaOk.has(w.o)
@@ -959,22 +972,50 @@ function byggPicker(){
     b.className = "toggle"; b.dataset.ok = o;
     b.innerHTML = `${o}<span class="n">${antalForOk(o)}</span>`;
     b.setAttribute("aria-pressed", state.valdaOk.has(o));
-    b.onclick = () => { toggleSet(state.valdaOk, o); b.setAttribute("aria-pressed", state.valdaOk.has(o)); efterUrval(); };
+    b.onclick = () => { toggleSet(state.valdaOk, o); b.setAttribute("aria-pressed", state.valdaOk.has(o)); byggOrdChips(); efterUrval(); };
     okGrid.appendChild(b);
   });
+  byggOrdChips();
   uppdateraDackVy();
 }
 
 function setDeck(id){
   if(state.deck === id) return;
   state.deck = id;
+  state.valtOrd = null;                            // enskild-ord-valet gäller bara prov-däcket
   uppdateraDackVy();
+  efterUrval();
+}
+// Prov-däcket: bygg chip-listan (bokstavsordning) för provorden i vald(a) ordklass(er).
+// Krymper när ordklasser avmarkeras; faller ett valt ord bort → tillbaka till alla.
+function byggOrdChips(){
+  const grid = document.getElementById("ord-grid");
+  if(!grid) return;
+  const ord = PROV_ORD.filter(w => state.valdaOk.has(w.o));
+  if(state.valtOrd && !ord.some(w => w.l === state.valtOrd)) state.valtOrd = null;
+  grid.innerHTML = "";
+  ord.forEach(w => {
+    const b = document.createElement("button");
+    b.className = "chip"; b.dataset.ord = w.l;
+    b.textContent = w.l;
+    b.setAttribute("aria-pressed", state.valtOrd === w.l);
+    b.onclick = () => valjOrd(state.valtOrd === w.l ? null : w.l);
+    grid.appendChild(b);
+  });
+}
+// Prov-däcket: välj ett enskilt ord att drilla (null = alla ordklassvalda prov-ord).
+function valjOrd(lemma){
+  state.valtOrd = lemma;
+  document.querySelectorAll("#ord-grid .chip").forEach(b =>
+    b.setAttribute("aria-pressed", b.dataset.ord === lemma));
   efterUrval();
 }
 
 function uppdateraDackVy(){
   document.getElementById("sem-section").hidden  = state.deck !== "sem";
   document.getElementById("band-section").hidden = state.deck !== "60";
+  document.getElementById("ord-section").hidden  = state.deck !== "prov";
+  byggOrdChips();
   const d = DECKS.find(x => x.id === state.deck);
   document.querySelectorAll("#deck-grid .toggle").forEach(b =>
     b.setAttribute("aria-pressed", b.dataset.deck === state.deck));
@@ -1044,7 +1085,8 @@ document.querySelectorAll("[data-quick]").forEach(btn => {
     if(q === "band-none") state.valdaBand = new Set();
     if(q === "ok-all")    state.valdaOk   = new Set(ORDKLASSER);
     if(q === "ok-none")   state.valdaOk   = new Set();
-    synkaToggles(); efterUrval();
+    if(q === "ord-alla"){ valjOrd(null); return; } // prov: tillbaka till alla ord
+    synkaToggles(); byggOrdChips(); efterUrval();
   };
 });
 

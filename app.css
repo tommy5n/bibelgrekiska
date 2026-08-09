@@ -1011,6 +1011,13 @@ body {
 .vy-glosor .picker-section[hidden] {
   display: none;
 }
+/* Prov-däckets ordlista: 70 chip i bokstavsordning — håll den som ett rullbart
+   block så pickern inte blir orimligt hög. */
+.vy-glosor .ord-grid {
+  max-height: 42vh;
+  overflow-y: auto;
+  padding: 0.1rem 0.2rem 0.2rem 0;
+}
 .vy-glosor .site-foot {
   margin: 2.4rem 0 0.5rem;
   text-align: center;
