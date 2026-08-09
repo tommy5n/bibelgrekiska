@@ -49,6 +49,11 @@ const ANDELSEKLASSER = ["omega","kontrakt_e"];
 /* Inför provet — provets 16 verb (samma lista som verb.js). */
 const PROV_VERB_LISTA = ["ἀκολουθέω","ἀκούω","ἀποστέλλω","βαπτίζω","βλέπω","γράφω","δίδωμι","εἰμί","καλέω","κηρύσσω","λαλέω","λέγω","λύω","πέμπω","πιστεύω","ποιέω"];
 const PROV_VERB = new Set(PROV_VERB_LISTA.filter(l => verb.some(v => v.lemma === l)));
+// Provets verb i bokstavsordning (grekisk kollation), med sin verbklass — chip-listan
+// för enskild-verb-drill (visas när "Inför provet" är på och verbklassen vald).
+const PROV_VERB_SORTERAD = [...PROV_VERB]
+  .sort((a, b) => a.localeCompare(b, "el"))
+  .map(l => ({ lemma: l, klass: verb.find(v => v.lemma === l).klass }));
 
 /* Svensk ledtråd, samma regler som verb.js (svenskan böjs inte efter person). */
 function svenskFras(sv, pn, tempus, modus){
@@ -166,6 +171,14 @@ const MARKUP = `<div class="vy vy-verband">
       </div>
       <div class="grid" id="grid-klass"></div>
     </div>
+    <div id="sec-verb" class="hidden">
+      <h2>Verb i provet</h2>
+      <div class="quickrow">
+        <span class="quicklabel">Snabbval:</span>
+        <button class="chip" data-verb="alla">alla verb</button>
+      </div>
+      <div class="grid" id="grid-verb"></div>
+    </div>
     <div id="sec-pn">
       <h2>Person &amp; numerus</h2>
       <div class="quickrow">
@@ -196,6 +209,7 @@ export function render(root, opts = {}){
     selKlass: new Set(KLASSER),
     selPN: new Set(PN_ORDNING),
     prov: false,
+    valtVerb: null,                                 // Inför provet: valt enskilt verb att drilla (null = alla prov-verb)
     streak: 0, best: 0, card: null, besvarad: false,
     valdPerson: null, valdKey: null,
   };
@@ -223,7 +237,9 @@ export function render(root, opts = {}){
   }catch(e){} }
 
   /* ── Urval ─────────────────────────────────────────────────────── */
-  const klassAktiv = v => state.selKlass.has(v.klass) && (!state.prov || PROV_VERB.has(v.lemma));
+  const klassAktiv = v => state.valtVerb
+    ? v.lemma === state.valtVerb                    // valt enskilt verb vinner över klass/prov
+    : state.selKlass.has(v.klass) && (!state.prov || PROV_VERB.has(v.lemma));
   const keyAktiv   = k => state.selTempus.has(tempusAv(k)) && state.selModus.has(modusAv(k));
 
   // Former att parsa (nivå 1/3/4). kravPerson=true hoppar över infinitiv (ingen person).
@@ -243,7 +259,14 @@ export function render(root, opts = {}){
 
   // Ändelser att parsa (nivå 2) — direkt ur kartan, klass-agnostiskt.
   function andelseItems(ignorera){
-    const klasser = ANDELSEKLASSER.filter(kl => ignorera==="klass" || state.selKlass.has(kl));
+    let klasser;
+    if(state.valtVerb){
+      // Enskilt verb valt → dess klass endelser (εἰμί/μι saknar ändelse-karta → fallback).
+      const v = verb.find(x => x.lemma === state.valtVerb);
+      klasser = (v && ANDELSEKLASSER.includes(v.klass)) ? [v.klass] : [];
+    } else {
+      klasser = ANDELSEKLASSER.filter(kl => ignorera==="klass" || state.selKlass.has(kl));
+    }
     const use = klasser.length ? klasser : ANDELSEKLASSER;
     const ut = [];
     use.forEach(kl => Object.keys(VERB_ANDELSER[kl]).filter(k => ignorera==="key" || keyAktiv(k)).forEach(k => {
@@ -481,9 +504,35 @@ export function render(root, opts = {}){
       const b = document.createElement("button");
       b.className = "toggle"; b.textContent = KLASSNAMN[kl];
       b.setAttribute("aria-pressed", state.selKlass.has(kl));
-      b.onclick = () => { toggla(state.selKlass, kl, KLASSER); byggGridKlass(); uppdateraProvChip(); spara(); newQuestion(); };
+      b.onclick = () => { toggla(state.selKlass, kl, KLASSER); byggGridKlass(); uppdateraProvChip(); byggGridVerb(); spara(); newQuestion(); };
       g.appendChild(b);
     });
+  }
+  // Inför provet: chip per prov-verb (bokstavsordning), filtrerat på vald(a) verbklass(er).
+  // Krymper när klasser avmarkeras; faller ett valt verb bort → tillbaka till alla.
+  function byggGridVerb(){
+    const g = $("grid-verb"); if(!g) return;
+    const lista = PROV_VERB_SORTERAD.filter(x => state.selKlass.has(x.klass));
+    if(state.valtVerb && !lista.some(x => x.lemma === state.valtVerb)) state.valtVerb = null;
+    g.innerHTML = "";
+    lista.forEach(x => {
+      const b = document.createElement("button");
+      b.className = "chip"; b.dataset.verb = x.lemma; b.textContent = x.lemma;
+      b.setAttribute("aria-pressed", state.valtVerb === x.lemma);
+      b.onclick = () => valjVerb(state.valtVerb === x.lemma ? null : x.lemma);
+      g.appendChild(b);
+    });
+    uppdateraVerbAllaChip();
+  }
+  function uppdateraVerbAllaChip(){ const c = document.querySelector('[data-verb="alla"]');
+    if(c) c.setAttribute("aria-pressed", !state.valtVerb); }
+  function visaVerbSektion(){ const s = $("sec-verb"); if(s) s.classList.toggle("hidden", !state.prov); }
+  function valjVerb(lemma){
+    state.valtVerb = lemma;                          // null = alla prov-verb i vald klass
+    document.querySelectorAll("#grid-verb .chip").forEach(b =>
+      b.setAttribute("aria-pressed", b.dataset.verb === lemma));
+    uppdateraVerbAllaChip();
+    spara(); newQuestion();
   }
   function byggGridPN(){
     const g = $("grid-pn"); g.innerHTML = "";
@@ -515,8 +564,9 @@ export function render(root, opts = {}){
     : state.niva === "andelse" ? "Bara ändelsen visas — vilken person?"
     : state.niva === "tempus" ? "Läs formen och avgör tempus och modus."
     : "Läs formen och ange person, tempus och modus."; }
-  function uppdateraAntal(){ const el = $("vb-count");
-    if(el) el.textContent = "(" + [...state.selKlass].map(k => KLASSNAMN[k]).join(", ") + ")"; }
+  function uppdateraAntal(){ const el = $("vb-count"); if(!el) return;
+    if(state.valtVerb){ el.textContent = "(" + state.valtVerb + ")"; return; }
+    el.textContent = "(" + [...state.selKlass].map(k => KLASSNAMN[k]).join(", ") + ")"; }
 
   /* ── Händelser ─────────────────────────────────────────────────── */
   const bytNiva = id => { state.niva = id; uppdateraLäge(); uppdateraSub(); byggGridPN(); spara(); newQuestion(); };
@@ -524,7 +574,8 @@ export function render(root, opts = {}){
   $("btn-next").onclick = () => newQuestion();
   $("picker-toggle").onclick = () => { const o = $("picker-toggle").getAttribute("aria-expanded")==="true";
     $("picker-toggle").setAttribute("aria-expanded", !o); $("picker-body").classList.toggle("hidden", o); };
-  $("picker-body").querySelector("[data-prov]").onclick = () => { state.prov = !state.prov; uppdateraProvChip(); spara(); newQuestion(); };
+  $("picker-body").querySelector("[data-prov]").onclick = () => { state.prov = !state.prov; if(!state.prov) state.valtVerb = null; uppdateraProvChip(); visaVerbSektion(); byggGridVerb(); spara(); newQuestion(); };
+  $("picker-body").querySelector('[data-verb="alla"]').onclick = () => valjVerb(null);
   document.querySelectorAll("[data-pn]").forEach(b => b.onclick = () => {
     state.selPN = new Set(PN_GRUPPER[b.dataset.pn] || PN_ORDNING); byggGridPN(); spara(); newQuestion(); });
 
@@ -548,5 +599,6 @@ export function render(root, opts = {}){
   if(opts.mode && NIVA_IDS.includes(opts.mode)) state.niva = opts.mode;
   uppdateraLäge(); uppdateraSub();
   byggGridTempus(); byggGridModus(); byggGridKlass(); byggGridPN(); uppdateraProvChip();
+  visaVerbSektion(); byggGridVerb();
   newQuestion();
 }
