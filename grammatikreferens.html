@@ -347,6 +347,10 @@
       /* skiljelinje där aktivum övergår till medium-passivum */
       .gr-andmatris table.gr tr.amdiv > * { border-top: 2px solid var(--line); }
       .gr-andmatris .tsign { color: #3f7a4f; font-weight: 700; }
+      /* underrubrik inuti paradigm-tabell (t.ex. medium-passivum-blocket) */
+      table.gr td.am-sub { text-align: left; border-top: 2px solid var(--line); padding-top: .55rem;
+        color: var(--ink-soft); font-family: "Spectral", serif; font-size: var(--fs-xs);
+        font-weight: 600; letter-spacing: .04em; }
 
       /* ── V3 Attributiv vs predikativ ställning ──────────────────────── */
       .gr-pos { display: flex; flex-wrap: wrap; gap: 1rem 1.4rem; margin: 0.7rem 0 0.2rem; }
@@ -1921,33 +1925,98 @@
 
         <section class="gr-card" id="verb-jmf-system" style="--accent:#8a6d3b">
           <h3>Samma verb i alla former <span class="ex">λύω · en karta över systemet</span> <span class="sem">Sem 2–10</span></h3>
-          <p class="note">Alla korten ovan tar en form i taget. Här står de samlade på <i>ett</i> verb, med översättning och den axel (tid eller aspekt) som varje form bär. Läs kolumnen ”Svenska” och ”Bär” tillsammans — det är där de skenbart lika formerna skiljer sig åt.</p>
+          <p class="note">Alla korten ovan tar en form i taget. Här står de samlade på <i>ett</i> verb, med översättning och den axel (tid, aspekt eller modus) som varje form bär. Läs kolumnen ”Svenska” och ”Bär” tillsammans — det är där de skenbart lika formerna skiljer sig åt. Kartan körs i <b>två personer</b>: <b>överst 2:a person singular</b> (du-formen), den mest diagnostiska — personen hålls konstant genom hela paradigmet, så indikativ och imperativ ställs mot varandra rakt av (<span class="gr-grek">λύεις</span> ”du löser” vs <span class="gr-grek">λῦε</span> ”lös!”) och aoristens <span class="gr-grek">-σα-</span> syns öppet (<span class="gr-grek">ἔλυσας</span>). <b>Nederst samma indikativ i 3:e person singular</b> (han/hon/det), formen som dominerar löpande berättande text. Den andra tabellen i varje block kör samma karta på det oregelbundna μι-verbet <span class="gr-grek">δίδωμι</span> (i provet). Tryck på <b>”Dölj grekiskan”</b> eller <b>”Dölj svenskan”</b> uppe i kortet för att drilla, och på en cell för att avslöja.</p>
+
+          <p class="note" style="margin-bottom:.3rem"><b>1 · Hela paradigmet i 2 sg</b> ”du”</p>
           <div class="gr-tables">
             <table class="gr">
-              <caption><span class="gr-grek">λύω</span> ”lösa” · aktiv (3 sg där tempus finns, annars grundform)</caption>
+              <caption><span class="gr-grek">λύω</span> ”lösa” · 2 sg · aktiv &amp; medium-passiv (infinitiv &amp; particip saknar person)</caption>
+              <thead><tr><th class="kasus">Form</th><th>Grekiska</th><th>Svenska</th><th>Bär</th></tr></thead>
+              <tbody>
+                <tr><th class="kasus">presens ind.</th><td class="gr-el">λύεις</td><td>du löser</td><td>nutid · pågående</td></tr>
+                <tr><th class="kasus">imperfekt ind.</th><td class="gr-el">ἔλυες</td><td>du höll på att lösa</td><td>dåtid · pågående</td></tr>
+                <tr><th class="kasus">aorist ind.</th><td class="gr-el">ἔλυσας</td><td>du löste (en gång)</td><td>dåtid · helhet</td></tr>
+                <tr><th class="kasus">futurum ind.</th><td class="gr-el">λύσεις</td><td>du ska lösa</td><td>framtid</td></tr>
+                <tr><th class="kasus">presens imperativ</th><td class="gr-el">λῦε</td><td>lös! (fortsätt)</td><td>modus · pågående</td></tr>
+                <tr><th class="kasus">aorist imperativ</th><td class="gr-el">λῦσον</td><td>lös! (nu, en gång)</td><td>modus · helhet</td></tr>
+                <tr><th class="kasus">presens inf.</th><td class="gr-el">λύειν</td><td>att lösa (pågående)</td><td>aspekt · pågående</td></tr>
+                <tr><th class="kasus">futurum inf.</th><td class="gr-el">λύσειν</td><td>att skola lösa</td><td>framtid</td></tr>
+                <tr><th class="kasus">aorist inf.</th><td class="gr-el">λῦσαι</td><td>att lösa (helhet)</td><td>aspekt · helhet</td></tr>
+                <tr><th class="kasus">presens particip</th><td class="gr-el">λύων</td><td>(en som är) lösande</td><td>verbaladjektiv · pågående</td></tr>
+                <tr><td class="am-sub" colspan="4">Medium-passivum · sem 10</td></tr>
+                <tr><th class="kasus">presens m-p ind.</th><td class="gr-el">λύῃ / λύει</td><td>du löses (blir löst)</td><td>nutid · pågående · m-p</td></tr>
+                <tr><th class="kasus">imperfekt m-p ind.</th><td class="gr-el">ἐλύου</td><td>du löstes</td><td>dåtid · pågående · m-p</td></tr>
+                <tr><th class="kasus">aorist pass. ind.</th><td class="gr-el">ἐλύθης</td><td>du blev löst</td><td>dåtid · helhet · passiv</td></tr>
+                <tr><th class="kasus">aorist med. ind.</th><td class="gr-el">ἐλύσω</td><td>du löste (för egen del)</td><td>dåtid · helhet · medium</td></tr>
+                <tr><th class="kasus">presens m-p inf.</th><td class="gr-el">λύεσθαι</td><td>att lösas</td><td>aspekt · pågående · m-p</td></tr>
+                <tr><th class="kasus">aorist pass. inf.</th><td class="gr-el">λυθῆναι</td><td>att bli löst</td><td>aspekt · helhet · passiv</td></tr>
+                <tr><th class="kasus">aorist med. inf.</th><td class="gr-el">λύσασθαι</td><td>att lösa (för egen del)</td><td>aspekt · helhet · medium</td></tr>
+              </tbody>
+            </table>
+            <table class="gr">
+              <caption>Samma karta i 2 sg på ett oregelbundet provverb · <span class="gr-grek">δίδωμι</span> ”ge” (μι-verb)</caption>
+              <thead><tr><th class="kasus">Form</th><th>Grekiska</th><th>Svenska</th></tr></thead>
+              <tbody>
+                <tr><th class="kasus">presens ind.</th><td class="gr-el">δίδως</td><td>du ger</td></tr>
+                <tr><th class="kasus">imperfekt ind.</th><td class="gr-el">ἐδίδους</td><td>du höll på att ge</td></tr>
+                <tr><th class="kasus">aorist ind.</th><td class="gr-el">ἔδωκας</td><td>du gav (en gång)</td></tr>
+                <tr><th class="kasus">futurum ind.</th><td class="gr-el">δώσεις</td><td>du ska ge</td></tr>
+                <tr><th class="kasus">presens imperativ</th><td class="gr-el">δίδου</td><td>ge! (fortsätt)</td></tr>
+                <tr><th class="kasus">aorist imperativ</th><td class="gr-el">δός</td><td>ge! (nu, en gång)</td></tr>
+                <tr><th class="kasus">presens inf.</th><td class="gr-el">διδόναι</td><td>att ge (pågående)</td></tr>
+                <tr><th class="kasus">futurum inf.</th><td class="gr-el">δώσειν</td><td>att skola ge</td></tr>
+                <tr><th class="kasus">aorist inf.</th><td class="gr-el">δοῦναι</td><td>att ge (helhet)</td></tr>
+                <tr><th class="kasus">presens particip</th><td class="gr-el">διδούς</td><td>(en som är) givande</td></tr>
+                <tr><td class="am-sub" colspan="3">Medium-passivum · sällsynt hos δίδωμι, bortom provets kärna</td></tr>
+                <tr><th class="kasus">presens m-p ind.</th><td class="gr-el">δίδοσαι</td><td>du ges (blir given)</td></tr>
+                <tr><th class="kasus">imperfekt m-p ind.</th><td class="gr-el">ἐδίδοσο</td><td>du gavs</td></tr>
+                <tr><th class="kasus">aorist pass. ind.</th><td class="gr-el">ἐδόθης</td><td>du blev given</td></tr>
+                <tr><th class="kasus">aorist med. ind.</th><td class="gr-el">ἔδου</td><td>du gav (för egen del)</td></tr>
+                <tr><th class="kasus">presens m-p inf.</th><td class="gr-el">δίδοσθαι</td><td>att ges</td></tr>
+                <tr><th class="kasus">aorist pass. inf.</th><td class="gr-el">δοθῆναι</td><td>att bli given</td></tr>
+                <tr><th class="kasus">aorist med. inf.</th><td class="gr-el">δόσθαι</td><td>att ge (för egen del)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="gr-rule">
+            <b>Stökiga rutor i 2 sg — och varför de ändå lönar sig.</b>
+            <ul>
+              <li><b>Presens m-p 2 sg <span class="gr-grek">-ῃ/-ει</span>:</b> skrivs <span class="gr-grek">λύῃ</span> eller <span class="gr-grek">λύει</span>. Stavningen <span class="gr-grek">λύει</span> sammanfaller med <b>aktiv presens 3 sg</b> <span class="gr-grek">λύει</span> ”han löser” — bara sammanhanget (och ändelsens funktion) skiljer dem.</li>
+              <li><b>Aorist medium 2 sg <span class="gr-grek">-σω</span>:</b> <span class="gr-grek">ἐλύσω</span> liknar <b>futurum aktiv 1 sg</b> <span class="gr-grek">λύσω</span> ”jag ska lösa”. Skillnaden är <b>augmentet</b> <span class="gr-grek">ἐ-</span>: det röjer dåtid, futurum saknar det.</li>
+              <li><b>Vinsten:</b> aoristens tecken <span class="gr-grek">-σα-</span> står <i>synligt</i> i 2 sg (<span class="gr-grek">ἔλυσας</span>, <span class="gr-grek">δίδωμι → ἔδωκας</span>), där 3 sg krymper det till <span class="gr-grek">-σε(ν)</span> och döljer <span class="gr-grek">α</span>:et. Och eftersom imperativen till sin natur är 2:a person står modus-paret rent: <span class="gr-grek">λύεις</span> (påstår) vs <span class="gr-grek">λῦε</span> (befaller).</li>
+            </ul>
+          </div>
+
+          <p class="note" style="margin-bottom:.3rem"><b>2 · Samma indikativ i 3 sg</b> ”han/hon/det” — berättartextens vanligaste form. Bara indikativ här: imperativ (till sin natur 2:a person), infinitiv och particip (utan person) står i 2 sg-blocket ovan.</p>
+          <div class="gr-tables">
+            <table class="gr">
+              <caption><span class="gr-grek">λύω</span> ”lösa” · 3 sg indikativ · aktiv &amp; medium-passiv</caption>
               <thead><tr><th class="kasus">Form</th><th>Grekiska</th><th>Svenska</th><th>Bär</th></tr></thead>
               <tbody>
                 <tr><th class="kasus">presens ind.</th><td class="gr-el">λύει</td><td>han löser</td><td>nutid · pågående</td></tr>
                 <tr><th class="kasus">imperfekt ind.</th><td class="gr-el">ἔλυεν</td><td>han höll på att lösa</td><td>dåtid · pågående</td></tr>
                 <tr><th class="kasus">aorist ind.</th><td class="gr-el">ἔλυσεν</td><td>han löste (en gång)</td><td>dåtid · helhet</td></tr>
                 <tr><th class="kasus">futurum ind.</th><td class="gr-el">λύσει</td><td>han ska lösa</td><td>framtid</td></tr>
-                <tr><th class="kasus">presens inf.</th><td class="gr-el">λύειν</td><td>att lösa (pågående)</td><td>aspekt · pågående</td></tr>
-                <tr><th class="kasus">aorist inf.</th><td class="gr-el">λῦσαι</td><td>att lösa (helhet)</td><td>aspekt · helhet</td></tr>
-                <tr><th class="kasus">presens imperativ</th><td class="gr-el">λῦε</td><td>lös! (fortsätt)</td><td>modus · pågående</td></tr>
-                <tr><th class="kasus">aorist imperativ</th><td class="gr-el">λῦσον</td><td>lös! (nu, en gång)</td><td>modus · helhet</td></tr>
-                <tr><th class="kasus">presens particip</th><td class="gr-el">λύων</td><td>(en som är) lösande</td><td>verbaladjektiv · pågående</td></tr>
+                <tr><td class="am-sub" colspan="4">Medium-passivum · sem 10</td></tr>
+                <tr><th class="kasus">presens m-p ind.</th><td class="gr-el">λύεται</td><td>han löses (blir löst)</td><td>nutid · pågående · m-p</td></tr>
+                <tr><th class="kasus">imperfekt m-p ind.</th><td class="gr-el">ἐλύετο</td><td>han löstes</td><td>dåtid · pågående · m-p</td></tr>
+                <tr><th class="kasus">aorist pass. ind.</th><td class="gr-el">ἐλύθη</td><td>han blev löst</td><td>dåtid · helhet · passiv</td></tr>
+                <tr><th class="kasus">aorist med. ind.</th><td class="gr-el">ἐλύσατο</td><td>han löste (för egen del)</td><td>dåtid · helhet · medium</td></tr>
               </tbody>
             </table>
             <table class="gr">
-              <caption>Samma karta på ett glosverb · <span class="gr-grek">πιστεύω</span> ”tro”</caption>
+              <caption>Samma indikativ i 3 sg · <span class="gr-grek">δίδωμι</span> ”ge” (μι-verb)</caption>
               <thead><tr><th class="kasus">Form</th><th>Grekiska</th><th>Svenska</th></tr></thead>
               <tbody>
-                <tr><th class="kasus">presens ind.</th><td class="gr-el">πιστεύει</td><td>han tror</td></tr>
-                <tr><th class="kasus">imperfekt ind.</th><td class="gr-el">ἐπίστευεν</td><td>han trodde (levde i tro)</td></tr>
-                <tr><th class="kasus">aorist ind.</th><td class="gr-el">ἐπίστευσεν</td><td>han kom till tro</td></tr>
-                <tr><th class="kasus">futurum ind.</th><td class="gr-el">πιστεύσει</td><td>han ska tro</td></tr>
-                <tr><th class="kasus">presens inf.</th><td class="gr-el">πιστεύειν</td><td>att tro (pågående)</td></tr>
-                <tr><th class="kasus">aorist inf.</th><td class="gr-el">πιστεῦσαι</td><td>att komma till tro</td></tr>
+                <tr><th class="kasus">presens ind.</th><td class="gr-el">δίδωσι(ν)</td><td>han ger</td></tr>
+                <tr><th class="kasus">imperfekt ind.</th><td class="gr-el">ἐδίδου</td><td>han höll på att ge</td></tr>
+                <tr><th class="kasus">aorist ind.</th><td class="gr-el">ἔδωκεν</td><td>han gav (en gång)</td></tr>
+                <tr><th class="kasus">futurum ind.</th><td class="gr-el">δώσει</td><td>han ska ge</td></tr>
+                <tr><td class="am-sub" colspan="3">Medium-passivum · sällsynt hos δίδωμι, bortom provets kärna</td></tr>
+                <tr><th class="kasus">presens m-p ind.</th><td class="gr-el">δίδοται</td><td>det ges (blir givet)</td></tr>
+                <tr><th class="kasus">imperfekt m-p ind.</th><td class="gr-el">ἐδίδοτο</td><td>det gavs</td></tr>
+                <tr><th class="kasus">aorist pass. ind.</th><td class="gr-el">ἐδόθη</td><td>det blev givet</td></tr>
+                <tr><th class="kasus">aorist med. ind.</th><td class="gr-el">ἔδοτο</td><td>han gav (för egen del)</td></tr>
               </tbody>
             </table>
           </div>
