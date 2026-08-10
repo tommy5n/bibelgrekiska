@@ -203,7 +203,8 @@ def oreg_paradigm_block():
     Verbkortet visar hela indikativböjningen (presens · futurum · aorist) för de tre
     oregelbundna verben. Formerna hämtas direkt ur mastern (verb.json) — samma källa
     som valideraverbtema korsvaliderar teman mot — så paradigmen aldrig kan driva från
-    resten av sajten. εἰμί saknar aorist (defekt) och får bara presens + futurum.
+    resten av sajten. εἰμί saknar aorist (defekt); imperfekten uttrycker dåtiden och
+    tar aoristens plats i paradigmet.
     """
     vd = json.loads((ROOT / "json" / "verb.json").read_text())
     verbs = {v["lemma"]: v for v in vd["verb"]}
@@ -220,11 +221,16 @@ def oreg_paradigm_block():
     data = {}
     for lemma in OREG_ORDNING:
         v = verbs[lemma]
-        tlist = [blk for blk in (
+        blocks = [
             tempus(v, "Presens", ["pres.ind.akt", "pres.ind.med"]),
             tempus(v, "Futurum", ["fut.ind.akt", "fut.ind.med"]),
             tempus(v, "Aorist", ["aor.ind.akt", "aor.ind.med"]),
-        ) if blk]
+        ]
+        # εἰμί saknar aorist (defekt verb) — imperfekten bär dåtiden och tar
+        # aoristens plats sist i paradigmet.
+        if not blocks[2]:
+            blocks[2] = tempus(v, "Imperfekt", ["impf.ind.akt", "impf.ind.med"])
+        tlist = [blk for blk in blocks if blk]
         data[lemma] = {"sv": v.get("glosa", ""), "tempus": tlist}
 
     return "const OREG_PARADIGM = " + json.dumps(data, ensure_ascii=False, indent=2) + ";"

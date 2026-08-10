@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#a8842c" />
     <link rel="apple-touch-icon" href="appletouchicon.png" />
     <!-- Ärver Cardo/Spectral-fonter och :root-temat från appen -->
-    <link rel="stylesheet" href="app.css?v=33" />
+    <link rel="stylesheet" href="app.css?v=34" />
     <style>
       /* ── Inför provet — namnrymdad layout (.pv-*), ärver .gr-* från referensen ── */
       body { background: var(--paper); }
@@ -161,6 +161,28 @@
         color: var(--ink-soft); border-left: 3px solid color-mix(in srgb, var(--accent) 55%, var(--line)); }
       .pv-vtips b { color: var(--ink); font-weight: 600; }
       .pv-vtips .grek { color: var(--gold); }
+
+      /* Utfällbar förklaring: varför tre principaldelar + hur man räknar ut resten */
+      .pv-why { margin: 0 0 0.9rem; background: var(--paper-2); border-radius: 10px;
+        border-left: 3px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+        padding: 0.6rem 0.85rem; }
+      .pv-why > summary { cursor: pointer; font-weight: 600; color: var(--ink);
+        font-size: var(--fs-2xs); list-style: none; display: flex; align-items: baseline;
+        gap: 0.5rem; flex-wrap: wrap; }
+      .pv-why > summary::-webkit-details-marker { display: none; }
+      .pv-why > summary::before { content: "▸"; color: var(--gold); font-size: 0.85em; }
+      .pv-why[open] > summary::before { content: "▾"; }
+      .pv-why > summary .hint { font-weight: 400; color: var(--ink-soft); }
+      @media (hover: hover) { .pv-why > summary:hover { color: var(--gold); } }
+      .pv-why-p { margin: 0.7rem 0 0.4rem; font-size: var(--fs-2xs); color: var(--ink-soft);
+        max-width: 68ch; }
+      .pv-why-p b { color: var(--ink); font-weight: 600; }
+      .pv-why-list { margin: 0.2rem 0 0; padding-left: 1.05rem; display: grid; gap: 0.34rem;
+        font-size: var(--fs-2xs); color: var(--ink-soft); max-width: 68ch; }
+      .pv-why-list li::marker { color: var(--gold); }
+      .pv-why-list b { color: var(--ink); font-weight: 600; }
+      .pv-why-list .grek { color: var(--gold); white-space: nowrap; }
+      .pv-why-list .fella { color: var(--warn, #b0642f); font-weight: 600; }
 
       /* Drill-brytaren */
       .pv-vtoggle { display: inline-flex; align-items: baseline; gap: 0.5rem; cursor: pointer;
@@ -629,6 +651,35 @@
             "ἔσονται"
           ]
         ]
+      },
+      {
+        "t": "Imperfekt",
+        "rows": [
+          [
+            "1 sg",
+            "ἤμην"
+          ],
+          [
+            "2 sg",
+            "ἦς"
+          ],
+          [
+            "3 sg",
+            "ἦν"
+          ],
+          [
+            "1 pl",
+            "ἦμεν"
+          ],
+          [
+            "2 pl",
+            "ἦτε"
+          ],
+          [
+            "3 pl",
+            "ἦσαν"
+          ]
+        ]
       }
     ]
   },
@@ -754,6 +805,41 @@
          De regelbundna bildar futurum och aorist med ett insatt <span class="grek">σ</span>
          (<span class="grek">λύω → λύσω → ἔλυσα</span>); de tre verben med <b>†</b> följer inte
          mönstret och måste läras utantill — hela böjningen står i paradigmen längst ner.</div>`;
+      // Utfällbar förklaring: varför just de tre principaldelarna, och hur man
+      // räknar ut övriga former ur dem (författat, korrekthetsprincipen).
+      const VERB_WHY_HTML =
+        `<details class="pv-why">
+          <summary>Varför just presens · futurum · aorist? <span class="hint">— och hur du räknar ut resten</span></summary>
+          <p class="pv-why-p">Ett grekiskt verb har sex personformer men bara <b>en uppsättning
+            ändelser per tempus</b> — du böjer genom att byta <b>stam</b>, inte ändelse. Haken är
+            att en stam sällan går att gissa ur en annan. Därför lär man verbet som <b>tre
+            principaldelar</b> (verbtema), där var och en avslöjar en egen stam:</p>
+          <ul class="pv-why-list">
+            <li><b>Presens</b> (uppslagsformen) → <b>presensstammen</b>. Bär allt i presens
+              (indikativ, imperativ, infinitiv, particip …) <b>och hela imperfekt</b>.</li>
+            <li><b>Futurum</b> → <b>futurumstammen</b>. Oftast presensstam + <span class="grek">σ</span>,
+              men likvida- och kontraktverb bildar den annorlunda
+              (<span class="grek">ἀποστελῶ, καλέσω</span>) och kan alltså inte gissas.</li>
+            <li><b>Aorist</b> → <b>aoriststammen</b>. Bär hela aoristen (och längre fram dess
+              konjunktiv, infinitiv och particip).</li>
+          </ul>
+          <p class="pv-why-p"><b>Så räknar du ut övriga former ur de tre:</b></p>
+          <ul class="pv-why-list derive">
+            <li><b>Imperfekt</b> behöver ingen egen del — den byggs på <b>presens</b>: sätt augment
+              <span class="grek">ἐ-</span> framför presensstammen och byt till sekundärändelserna
+              (<span class="grek">λύω → ἔ-λυ-ον</span>). <span class="fella">Undantag:</span>
+              <span class="grek">εἰμί</span>, vars imperfekt är oregelbunden och lärs utantill.</li>
+            <li><b>Futurum</b> tar <b>samma ändelser som presens</b>
+              (<span class="grek">-ω, -εις, -ει …</span>) — bara <span class="grek">σ</span>:et och
+              stammen skiljer (<span class="grek">λύσω</span> böjs precis som <span class="grek">λύω</span>).</li>
+            <li><b>Aorist</b> är en dåtid: augment framför aoriststammen, plus aoristens egna
+              ändelser (<span class="grek">-α, -ας, -ε …</span>). Ser du
+              <span class="grek">σ</span> vet du att det är regelbundet.</li>
+            <li><span class="fella">Regel:</span> <span class="grek">σ</span> i futurum/aorist =
+              regelbundet. Saknas det, eller kommer formen från en annan rot, är verbet
+              oregelbundet — då gäller paradigmen längst ner.</li>
+          </ul>
+        </details>`;
       const VERB_DRILL_HTML =
         `<label class="pv-vtoggle"><input type="checkbox" class="pv-drill" />
          <span><b>Drilla formerna</b> — dölj futurum · aorist och återge dem ur minnet.
@@ -776,9 +862,10 @@
            (utom 2 sg <span class="grek">εἶ</span>).`,
           `<b>Futurum är deponent:</b> <span class="grek">ἔσομαι</span> har medium-ändelser
            men aktiv betydelse (”jag ska vara”).`,
-          `<span class="fella">Saknar aorist.</span> Dåtiden uttrycks med <b>imperfekt</b>:
-           <span class="grek">ἤμην, ἦς, ἦν, ἦμεν, ἦτε, ἦσαν</span> (se
-           <a href="grammatikreferens.html#verb-eimi">εἰμί-kortet</a>).`,
+          `<span class="fella">Saknar aorist.</span> Istället bär <b>imperfekten</b> dåtiden
+           (<span class="grek">ἤμην, ἦς, ἦν …</span>) — den står som tredje kolumn i paradigmet
+           här och tar aoristens plats. Fördjupning på
+           <a href="grammatikreferens.html#verb-eimi">εἰμί-kortet</a>.`,
         ],
         "λέγω": [
           `<b>Presens är helt regelbundet</b> (<span class="grek">λέγω, λέγεις, λέγει …</span>).`,
@@ -810,8 +897,9 @@
           <summary>Oregelbundna verb — hela paradigm <span class="hint">(presens · futurum · aorist, med tips)</span></summary>
           <p class="pv-pintro">De tre verben märkta <b>†</b> bildar <b>inte</b> futurum och aorist med
             det sigmatiska mönstret. <span class="grek">δίδωμι</span> är ett μι-verb med egen presensböjning,
-            <span class="grek">εἰμί</span> saknar aorist, och <span class="grek">λέγω</span> lånar futurum och
-            aorist från andra rötter. Här står hela indikativböjningen — läs och jämför.</p>
+            <span class="grek">εἰμί</span> saknar aorist (imperfekten står i dess ställe), och
+            <span class="grek">λέγω</span> lånar futurum och aorist från andra rötter. Här står hela
+            indikativböjningen — läs och jämför.</p>
           <div class="pv-pdrill-wrap">
             <label class="pv-vtoggle para"><input type="checkbox" class="pv-pdrill" />
               <span><b>Drilla paradigmen</b> — dölj formerna och läs dem ur person + tempus.
@@ -984,6 +1072,7 @@
           <p class="note">${g.not}</p>
           ${HIDE_TOGGLE_HTML}
           ${isVerb ? VERB_TIPS_HTML : ""}
+          ${isVerb ? VERB_WHY_HTML : ""}
           ${isVerb ? VERB_DRILL_HTML : ""}
           ${listHtml}
           ${isVerb ? renderParadigm() : ""}
